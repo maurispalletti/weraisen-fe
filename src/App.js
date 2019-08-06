@@ -1,21 +1,18 @@
 import React from 'react';
-// import logo from './logo.svg';
-import './App.css';
+import { Router, Route } from 'react-router';
+import login from './Login';
+import home from './Home';
+
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
 
 function App() {
   return (
-    <div className="App">
-        <form>
-        {/* <form onSubmit={this.handleSignIn.bind(this)}> */}
-        <h3>WE RAISEN</h3>
-        <p><input className="login-input" type="text" placeholder="enter you username" /></p>
-        <p><input className="login-input" type="password" placeholder="enter password" /></p>
-        <p><input className="login-button" type="submit" value="Login" /></p>
-        {/* <input type="text" ref="username" placeholder="enter you username" /> */}
-        {/* <input type="password" ref="password" placeholder="enter password" /> */}
-        {/* <input type="submit" value="Login" /> */}
-      </form>
-    </div>
+    <Router history={history}>
+      <Route path={'/'} component={login} />
+      <Route exact path={'/home'} component={home} />
+    </Router>
   );
 }
 

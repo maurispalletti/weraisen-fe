@@ -1,0 +1,100 @@
+.Home {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  text-align: center;
+  overflow: hidden;
+  background-color: white;
+  height: 100vh;
+  align-items: center;
+  justify-content: top;
+  font-size: calc(10px + 2vmin);
+  color: green;
+}
+
+.Header {
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  text-align: left;
+  overflow: hidden;
+  float: left;
+  background-color: green;
+  height: 10vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: left;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.HeaderButton {
+  color: white;
+  left: 0;
+  margin: 0 10px 0 30px;
+  text-decoration: none;
+}
+
+.HeaderImage {
+  position: fixed;
+  width: 8vh;
+  height: 8vh;
+  margin-top: 1vh;
+  margin-right: 1vh;
+  right: 0;
+  top: 0;
+  background-color: green;
+}
+
+.Body {
+  padding-top: 15vh;
+  color: green;
+}
+
+.Section {
+  padding-bottom: 20px;
+  justify-content: center;
+}
+
+.ActivitiesSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Activity {
+  width: 8vh;
+  height: 8vh;
+  margin: 0 20px 20px;
+}
+
+.SearchButton {
+  text-decoration: none;
+  background-color: green;
+  color: white;
+  border-radius: 12px;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px;
+}
+
+.Dropdown {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  background-color: orange;
+  font-size: 15px;
+  width: 60vw;
+  text-align: center;
+}
