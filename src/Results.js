@@ -78,7 +78,7 @@ const Results = () => (
 
 
       <div className="Section">
-        <a href={"/home"} className="SearchButton">Volver al menú principal</a>
+        <a href={"/home"} className="ResultsButton">Volver al menú principal</a>
       </div>
 
 

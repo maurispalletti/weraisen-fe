@@ -51,7 +51,7 @@ const Home = () => (
         </select>
       </div>
 
-      <div className="Section">
+      <div className="LastSection">
         <h4>Por último, elige una categoría:</h4>
         <div className="ActivitiesSection">
           <div className="Activity">

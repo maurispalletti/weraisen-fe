@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: top;
   font-size: calc(10px + 2vmin);
-  color: green;
+  color: white;
 }
 
 .Header {
@@ -65,11 +65,11 @@
 
 .Body {
   padding-top: 10vh;
-  color: green;
+  color: white;
 }
 
 .Section {
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   justify-content: center;
 }
 
@@ -85,7 +85,7 @@
   margin: 0 20px 20px;
 }
 
-.SearchButton {
+.ResultsButton {
   text-decoration: none;
   background-color: #f7913c;
   border-radius: 12px;
@@ -97,22 +97,13 @@
   display: inline-block;
   font-size: 16px;
   margin: 20px;
-}
-
-.Dropdown {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-  background-color: #f9aa68;
-  font-size: 15px;
-  width: 60vw;
-  text-align: center;
+  font-weight: bold;
 }
 
 .GuideCard {
   display: flex;
   flex-direction: row;
-  background-color: #7dca96;
+  background-color: white;
   border-radius: 12px;
   border: none;
   color: white;
@@ -133,7 +124,7 @@
   right: -3%;
   width: 8vh;
   height: 8vh;
-  background-color: #7dca96;
+  background-color: white;
 }
 
 .GuideCardText {
