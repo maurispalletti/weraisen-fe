@@ -1,6 +1,7 @@
 import React from 'react';
 import './Home.css';
-import logo from './logo.svg';
+import avatar_1 from './avatars/avatar_1.svg';
+import home from './icons/home.svg'
 import basketball from './icons/basketball.svg'
 import camera from './icons/camera.svg'
 import cinema from './icons/cinema.svg'
@@ -11,14 +12,13 @@ import coffee from './icons/coffee.svg'
 const Home = () => (
   <div className="Home">
     <div className="Header">
-      <a href={"/"} className="HeaderButton">
-        <h3>HOME</h3>
-      </a>
-      <a href={"/"} className="HeaderButton">
-        <h3>QUIERO SER GUIA</h3>
+      <a href={"/home"} className="HomeIcon">
+      <img src={home} alt={"Home"} />
       </a>
       <div className="HeaderImage">
-        <img src={logo} alt={"User"} />
+        <a href={"/profile"}>
+          <img src={avatar_1} alt={"User"} />
+        </a>
       </div>
     </div>
 
@@ -77,7 +77,7 @@ const Home = () => (
       </div>
 
       <div className="Section">
-        <a href={"/"} className="SearchButton">Buscar guías disponibles</a>
+        <a href={"/results"} className="SearchButton">Buscar guías disponibles</a>
       </div>
 
 

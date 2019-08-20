@@ -1,4 +1,4 @@
-.Login {
+.SignUp {
   text-align: center;
   background-color: #7dca96;
   height: 100vh;
@@ -10,6 +10,10 @@
   color: white;
 }
 
+.App-link {
+  color: #61dafb;
+}
+
 .login-button {
   color: white;
   background-color: #f7913c;
@@ -17,32 +21,14 @@
   padding: 20px;
   text-align: center;
   text-decoration: none;
-  font-weight: 600;
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
   border-radius: 12px;
-  width: 60vw;
-}
-
-.signup-button {
-  color: white;
-  background-color: #f9aa68;
-  border: none;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  border-radius: 12px;
-  width: 60vw;
-  font-weight: 600;
 }
 
 .login-input {
   border: none;
-  width: 60vw;
   padding: 20px;
   text-align: center;
   text-decoration: none;
@@ -52,7 +38,11 @@
   border-radius: 12px;
 }
 
-.signup {
-  margin-top: 40px;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-
