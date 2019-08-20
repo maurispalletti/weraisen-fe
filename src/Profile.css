@@ -1,0 +1,162 @@
+.Profile {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  text-align: center;
+  overflow: scroll;
+  height: 100vh;
+  align-items: center;
+  justify-content: top;
+  font-size: calc(10px + 2vmin);
+  color: green;
+  text-align: center;
+  background-color: #7dca96;
+  color: white;
+}
+
+.button {
+  color: white;
+  background-color: #f7913c;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0px 5px;
+  border-radius: 12px;
+  width: 30vw;
+  height: 40px;
+}
+
+.cancel-button {
+  color: white;
+  background-color: #f9aa68;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  margin: 0px 5px;
+  border-radius: 12px;
+  width: 30vw;
+  height: 40px;
+  line-height: 40px;
+}
+
+.profileTitle {
+  color: white;
+  font-weight: bolder;
+  font-size: 25px;
+  margin: 40px 0 20px;
+}
+
+.profileData {
+  color: white;
+  font-weight: bolder;
+  display: flex;
+  flex-direction: column;
+}
+
+.guideSection {
+  color: white;
+  font-weight: bolder;
+  margin-top: 30px;
+}
+
+.buttonsSection {
+  margin: 30px 10%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  text-align: center;
+}
+
+.profile-input {
+  border: none;
+  height: 1px;
+  width: 65vw;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px 2px;
+  border-radius: 12px;
+}
+
+.be-guide {
+  margin: 10px;
+  height: 40px;
+  line-height: 35px;
+}
+
+/* ////////////////// Round Slider ///////////////// */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 3px 10px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #f7913c;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #f7913c;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+/* ////////////////// Round Slider ///////////////// */

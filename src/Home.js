@@ -13,7 +13,7 @@ const Home = () => (
   <div className="Home">
     <div className="Header">
       <a href={"/home"} className="HomeIcon">
-      <img src={home} alt={"Home"} />
+        <img src={home} alt={"Home"} />
       </a>
       <div className="HeaderImage">
         <a href={"/profile"}>
@@ -23,6 +23,7 @@ const Home = () => (
     </div>
 
     <div className="Body">
+      <h2>¿Qué quieres hacer hoy?</h2>
 
       <div className="Section">
         <h4>Primero, selecciona una ciudad:</h4>

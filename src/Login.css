@@ -43,6 +43,7 @@
 .login-input {
   border: none;
   width: 60vw;
+  height: 20px;
   padding: 20px;
   text-align: center;
   text-decoration: none;

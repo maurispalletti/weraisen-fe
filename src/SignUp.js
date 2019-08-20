@@ -1,16 +1,25 @@
 import React from 'react';
 import './SignUp.css';
 
-const SignUp = () => (
-<div className="SignUp">
-        <form>
-        {/* <form onSubmit={this.handleSignIn.bind(this)}> */}
-        <h3>WE RAISEN</h3>
-        <p><input className="login-input" type="text" placeholder="enter you username" /></p>
-        <p><input className="login-input" type="password" placeholder="enter password" /></p>
-        <p><a href={'/home'} className="login-button">Crear</a></p>
-      </form>
-    </div>
+const Profile = () => (
+  <div className="SignUp">
+    <form>
+      {/* <form onSubmit={this.handleSignIn.bind(this)}> */}
+      <div className="signUpTitle">
+        CREA TU CUENTA
+      </div>
+      <input className="input" type="text" placeholder="Nombre" />
+      <input className="input" type="text" placeholder="Apellido" />
+      <input className="input" type="text" placeholder="Fecha de nacimiento" />
+      <input className="input" type="text" placeholder="DNI / Pasaporte / ID" />
+      <input className="input" type="text" placeholder="Género" />
+      <input className="input" type="text" placeholder="Ciudad de residencia" />
+      <input className="input" type="text" placeholder="Email" />
+      <input className="input" type="password" placeholder="Contraseña" />
+      <input className="input" type="password" placeholder="Repite tu contraseña" />
+      <a href={'/home'} className="create-account-button">CREAR CUENTA</a>
+    </form>
+  </div>
 );
 
-export default SignUp;
+export default Profile;

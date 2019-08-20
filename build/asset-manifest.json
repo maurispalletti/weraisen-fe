@@ -1,22 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.b401af16.chunk.css",
-    "main.js": "/static/js/main.54996a0d.chunk.js",
-    "main.js.map": "/static/js/main.54996a0d.chunk.js.map",
+    "main.css": "/static/css/main.dcfb5488.chunk.css",
+    "main.js": "/static/js/main.1d1fd659.chunk.js",
+    "main.js.map": "/static/js/main.1d1fd659.chunk.js.map",
     "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
     "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.0698e516.chunk.js": "/static/js/2.0698e516.chunk.js",
-    "static/js/2.0698e516.chunk.js.map": "/static/js/2.0698e516.chunk.js.map",
+    "static/js/2.980c2959.chunk.js": "/static/js/2.980c2959.chunk.js",
+    "static/js/2.980c2959.chunk.js.map": "/static/js/2.980c2959.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.c9e8b6d78c0845df12d339740f8c6a58.js": "/precache-manifest.c9e8b6d78c0845df12d339740f8c6a58.js",
+    "precache-manifest.6903612119cc1295ce7938eca5c25442.js": "/precache-manifest.6903612119cc1295ce7938eca5c25442.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.b401af16.chunk.css.map": "/static/css/main.b401af16.chunk.css.map",
+    "static/css/main.dcfb5488.chunk.css.map": "/static/css/main.dcfb5488.chunk.css.map",
+    "static/media/avatar_1.svg": "/static/media/avatar_1.0240eb1f.svg",
+    "static/media/avatar_2.svg": "/static/media/avatar_2.27112df9.svg",
+    "static/media/avatar_3.svg": "/static/media/avatar_3.568ca2f8.svg",
+    "static/media/avatar_4.svg": "/static/media/avatar_4.6358f1c4.svg",
+    "static/media/avatar_5.svg": "/static/media/avatar_5.e50570f6.svg",
     "static/media/basketball.svg": "/static/media/basketball.05bd35f0.svg",
     "static/media/camera.svg": "/static/media/camera.fce1bcdd.svg",
     "static/media/cinema.svg": "/static/media/cinema.a2584007.svg",
     "static/media/climbing.svg": "/static/media/climbing.89426f39.svg",
     "static/media/cocktail.svg": "/static/media/cocktail.beafd622.svg",
     "static/media/coffee.svg": "/static/media/coffee.1e8c327f.svg",
-    "static/media/logo.svg": "/static/media/logo.c7629ad0.svg"
+    "static/media/home.svg": "/static/media/home.b5561266.svg"
   }
 }
