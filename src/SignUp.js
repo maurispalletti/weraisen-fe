@@ -12,7 +12,14 @@ const Profile = () => (
       <input className="input" type="text" placeholder="Apellido" />
       <input className="input" type="text" placeholder="Fecha de nacimiento" />
       <input className="input" type="text" placeholder="DNI / Pasaporte / ID" />
-      <input className="input" type="text" placeholder="Género" />
+
+      <select className="Dropdown-g">
+          <option value="" selected disabled hidden>Selecciona un género...</option>
+          <option value={1}>Femenino</option>
+          <option value={2}>Masculino</option>
+          <option value={3}>Otro</option>
+        </select>
+
       <input className="input" type="text" placeholder="Ciudad de residencia" />
       <input className="input" type="text" placeholder="Email" />
       <input className="input" type="password" placeholder="Contraseña" />

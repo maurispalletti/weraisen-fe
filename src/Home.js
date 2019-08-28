@@ -8,6 +8,7 @@ import cinema from './icons/cinema.svg'
 import climbing from './icons/climbing.svg'
 import cocktail from './icons/cocktail.svg'
 import coffee from './icons/coffee.svg'
+import Calendar from 'react-calendar'
 
 const Home = () => (
   <div className="Home">
@@ -23,12 +24,13 @@ const Home = () => (
     </div>
 
     <div className="Body">
-      <h2>¿Qué quieres hacer hoy?</h2>
+      
+      <h2>¡Planifica tu recorrido!</h2>
 
       <div className="Section">
         <h4>Primero, selecciona una ciudad:</h4>
         <select className="Dropdown">
-          <option value="" selected disabled hidden>Ingresa las primeras letras...</option>
+          <option value="" selected disabled hidden>Ingresa las 3 primeras letras...</option>
           <option value={1}>Córdoba</option>
           <option value={2}>Buenos Aires</option>
           <option value={3}>La Pampa</option>
@@ -46,13 +48,17 @@ const Home = () => (
         <select className="Dropdown">
           <option value="" selected disabled hidden>Selecciona una fecha...</option>
           <option value={1}>Ahora</option>
-          <option value={2}>En 24 hs.</option>
-          <option value={3}>Fecha personalizada</option>
+          <option value={2}>En 24 hs</option>
+          <option value={3}>En una semana</option>
+          <option value={4}>Fecha personalizada</option>
         </select>
+        
+      
       </div>
+   {/* <Calendar></Calendar> */}
 
       <div className="LastSection">
-        <h4>Por último, elige una categoría:</h4>
+        <h4>Por último, elige la categoría que desees:</h4>
         <div className="ActivitiesSection">
           <div className="Activity">
             <img alt={"Activity"} src={basketball} />
@@ -78,7 +84,7 @@ const Home = () => (
       </div>
 
       <div className="Section">
-        <a href={"/results"} className="SearchButton">Buscar guías disponibles</a>
+        <a href={"/results"} className="SearchButton">BUSCAR GUÍAS</a>
       </div>
 
 

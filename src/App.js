@@ -5,6 +5,7 @@ import home from './Home';
 import results from './Results';
 import signup from './SignUp';
 import profile from './Profile';
+import serguia from './SerGuia';
 
 import { createBrowserHistory } from 'history';
 
@@ -18,6 +19,7 @@ function App() {
       <Route exact path={'/results'} component={results} />
       <Route exact path={'/signup'} component={signup} />
       <Route exact path={'/profile'} component={profile} />
+      <Route exact path={'/serguia'} component={serguia} />
     </Router>
   );
 }
