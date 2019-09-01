@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "calendar": "^0.1.0",
+    "calender": "^1.0.3",
     "react": "^16.8.6",
+    "react-calendar": "^2.19.1",
     "react-dom": "^16.8.6",
     "react-router": "^5.0.1",
     "react-scripts": "3.0.1"

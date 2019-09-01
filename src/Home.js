@@ -9,6 +9,12 @@ import climbing from './icons/climbing.svg'
 import cocktail from './icons/cocktail.svg'
 import coffee from './icons/coffee.svg'
 import Calendar from 'react-calendar'
+import bar from './icons/BAR.png'
+import culture from './icons/CULTURE.png'
+import walking from './icons/WALKING.png'
+import food from './icons/FOOD.png'
+import shopping from './icons/SHOPPING.png'
+import nature from './icons/NATURE.png'
 
 const Home = () => (
   <div className="Home">
@@ -61,24 +67,24 @@ const Home = () => (
         <h4>Por último, elige la categoría que desees:</h4>
         <div className="ActivitiesSection">
           <div className="Activity">
-            <img alt={"Activity"} src={basketball} />
+            <img alt={"Activity"} src={culture} />
           </div>
           <div className="Activity">
-            <img alt={"Activity"} src={camera} />
+            <img alt={"Activity"} src={food} />
           </div>
           <div className="Activity">
-            <img alt={"Activity"} src={coffee} />
+            <img alt={"Activity"} src={walking} />
           </div>
         </div>
         <div className="ActivitiesSection">
           <div className="Activity">
-            <img alt={"Activity"} src={climbing} />
+            <img alt={"Activity"} src={nature} />
           </div>
           <div className="Activity">
-            <img alt={"Activity"} src={cinema} />
-          </div>
+            <img alt={"Activity"} src={shopping} />
+          </div >
           <div className="Activity">
-            <img alt={"Activity"} src={cocktail} />
+            <img alt={"Activity"} src={bar} />
           </div>
         </div>
       </div>

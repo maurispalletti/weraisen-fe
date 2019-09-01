@@ -90,8 +90,7 @@
 .Activity {
   width: 8vh;
   height: 8vh;
-  margin: 10px 10px;
-  background-color: white;
+  margin: 10px 10px;  
   border-radius: 12px;
   padding: 10px;
 }
