@@ -21,8 +21,8 @@ const Profile = () => (
         {/* Datos que puede modificar */}
         <input className="profile-input" type="text" placeholder="Email" />
        
-        <div className="buttonsSection">
-          <a href={'/serguia'} className="button" >QUIERO SER GUÍA</a>
+        <div className="buttonsSectionGuia">
+          <a href={'/serguia'} className="buttonGuia" >QUIERO SER GUÍA</a>
           </div>
 
           <div className="guideSection">
