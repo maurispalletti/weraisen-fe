@@ -14,8 +14,7 @@ import culture from './icons/CULTURE.png'
 import walking from './icons/WALKING.png'
 import food from './icons/FOOD.png'
 import shopping from './icons/SHOPPING.png'
-import nature from './icons/NATURE.png'
-
+import PostList from '../src/PostList.js'
 const Home = () => (
   <div className="Home">
     <div className="Header">
@@ -36,28 +35,32 @@ const Home = () => (
       <div className="Section">
         <h4>Primero, selecciona una ciudad:</h4>
         <select className="Dropdown">
+                  
           <option value="" selected disabled hidden>Ingresa las 3 primeras letras...</option>
-          <option value={1}>Córdoba</option>
-          <option value={2}>Buenos Aires</option>
-          <option value={3}>La Pampa</option>
-          <option value={4}>Misiones</option>
+          <option value={3}>PostList</option>
+          <option value={4}>PostList</option>
           <option value={5}>Salta</option>
           <option value={6}>Jujuy</option>
           <option value={7}>Nequen</option>
           <option value={8}>Chubut</option>
           <option value={9}>Rio Negro</option>
+          
+
         </select>
       </div>
 
       <div className="Section">
         <h4>¿Cuándo?</h4>
-        <select className="Dropdown">
+        
+        
+        <select className="Dropdown" >
           <option value="" selected disabled hidden>Selecciona una fecha...</option>
           <option value={1}>Ahora</option>
           <option value={2}>En 24 hs</option>
           <option value={3}>En una semana</option>
           <option value={4}>Fecha personalizada</option>
         </select>
+       
         
       
       </div>
