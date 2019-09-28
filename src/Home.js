@@ -62,6 +62,18 @@ const Home = () => (
         
       
       </div>
+      <div className="Section">
+        <h4>Género de tu guia</h4>
+        <select className="Dropdown">          
+          <option value={1} selected>Cualquiera</option>
+          <option value={2}>Femenino</option>
+          <option value={3}>Masculino</option>
+          <option value={4}>Otros</option>          
+        </select>
+        
+      
+      </div>
+      
    {/* <Calendar></Calendar> */}
 
       <div className="LastSection">
