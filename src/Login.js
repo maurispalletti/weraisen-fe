@@ -1,6 +1,7 @@
 import React from 'react';
 import './Login.css';
 import logo from './icons/logo.png'
+import Buttom from './Boton'
 
 const Login = () => (
   
@@ -19,7 +20,10 @@ const Login = () => (
         Recordarme
       </p> */}
 
-      <p><a href={'/home'} className="login-button">INGRESAR</a></p>
+
+      
+        <Buttom link={'/home'} className={"login-button"} name={"INGRESAR"} />   
+      {/* <p><a href={'/home'} className="login-button">INGRESAR</a></p> */}
       <div className="signup">
         <h5>¿Primera vez en WERAISEN? <a className="forgotPass" href={'/signup'}>Registrate ya.</a></h5> 
         {/* <p><a href={'/signup'} className="signup-button">CREAR CUENTA</a></p> */}
