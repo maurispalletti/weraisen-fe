@@ -1,12 +1,14 @@
 import React from 'react';
 import './Login.css';
 import logo from './icons/logo.png'
+import Cabecera from './components/header/header.js'
+import Footer from "./components/footer/footer"
 
 const Login = () => (
   
   <div className="Login">
-    <div className="Header">
-     <img src={logo} alt={"WeRaisen"} width="100" />
+    <div>
+     <Cabecera></Cabecera>
      <h3 align="right">WERAISEN</h3>
  </div>
     <form>
@@ -28,7 +30,10 @@ const Login = () => (
         {/* <input type="submit" value="Login" /> */}
       </div>
     </form>
+    <Footer />
   </div>
+
+
   
 
   

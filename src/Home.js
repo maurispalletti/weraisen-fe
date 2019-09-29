@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './Home.css';
 import avatar_1 from './avatars/avatar_1.svg';
 import home from './icons/home.svg'
@@ -15,20 +15,21 @@ import walking from './icons/WALKING.png'
 import food from './icons/FOOD.png'
 import shopping from './icons/SHOPPING.png'
 import nature from './icons/NATURE.png'
+import Cabecera from './components/header/header.js'
+import Footer from "./components/footer/footer"
+ 
+
+
 
 const Home = () => (
-  <div className="Home">
-    <div className="Header">
-      <a href={"/home"} className="HomeIcon">
-        <img src={home} alt={"Home"} />
-      </a>
-      <div className="HeaderImage">
-        <a href={"/profile"}>
-          <img src={avatar_1} alt={"User"} />
-        </a>
-      </div>
-    </div>
 
+ 
+  <div className="Home">
+
+   <div>
+    <Cabecera></Cabecera>
+    </div> 
+    
     <div className="Body">
       
       <h2>¡Planificá tu recorrido!</h2>
@@ -96,7 +97,7 @@ const Home = () => (
 
 
     </div>
+    <Footer />
   </div>
 );
-
-export default Home;
+ export default Home;

@@ -15,24 +15,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
   background-color: #7dca96;
+
 }
 
-.Header {
-  top: 0;
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  text-align: left;
-  overflow: hidden;
-  float: left;
-  background-color: #f7913c;
-  height: 10vh;
-  width: 100vw;
-  align-items: center;
-  justify-content: left;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+
 
 .HeaderButton {
   color: white;
@@ -41,27 +27,8 @@
   text-decoration: none;
 }
 
-.HeaderImage {
-  position: fixed;
-  width: 8vh;
-  height: 8vh;
-  margin-top: 1vh;
-  margin-right: 1vh;
-  right: 0;
-  top: 0;
-  background-color: #f7913c;
-}
 
-.HomeIcon {
-  position: fixed;
-  width: 8vh;
-  height: 8vh;
-  margin-top: 1vh;
-  margin-left: 1vh;
-  left: 0;
-  top: 0;
-  background-color: #f7913c;
-}
+
 
 .Body {
   padding-top: 15vh;

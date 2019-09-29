@@ -1,9 +1,16 @@
 import React from 'react';
 import './Profile.css';
+import Header from './components/header/header.js'
+import Footer from "./components/footer/footer"
 
 
 const Profile = () => (
+ 
+
   <div className="Profile">
+     <div className ="Header">
+  <Header></Header>
+  </div>
     {/* <form onSubmit={this.handleSignIn.bind(this)}> */}
     <div className="profileTitle">
       ¡Hola Irina!
@@ -41,6 +48,7 @@ const Profile = () => (
         </div>
       </form>
     </div>
+    <Footer/>
   </div>
 );
 

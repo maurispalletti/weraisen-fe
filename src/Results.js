@@ -6,18 +6,13 @@ import avatar_2 from './avatars/avatar_2.svg';
 import avatar_3 from './avatars/avatar_3.svg';
 import avatar_4 from './avatars/avatar_4.svg';
 import avatar_5 from './avatars/avatar_5.svg';
+import Footer from "./components/footer/footer"
+
 
 const Results = () => (
   <div className="Home">
     <div className="Header">
-      <a href={"/home"} className="HomeIcon">
-        <img src={home} alt={"Home"} />
-      </a>
-      <div className="HeaderImage">
-        <a href={"/profile"}>
-          <img src={avatar_1} alt={"User"} />
-        </a>
-      </div>
+      
     </div>
 
     <div className="Body">
@@ -80,11 +75,13 @@ const Results = () => (
       <div className="Section">
         <a href={"/home"} className="ResultsButton">Volver al menú principal</a>
       </div>
+      <div>
+     <Footer />
+      </div>
 
-
-
-    </div>
+  </div>
   </div>
 );
 
 export default Results;
+

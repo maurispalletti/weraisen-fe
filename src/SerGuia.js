@@ -8,18 +8,13 @@ import cocktail from './icons/cocktail.svg';
 import coffee from './icons/coffee.svg';
 import home from './icons/home.svg';
 import './SerGuia.css';
+import Footer from "./components/footer/footer"
+
 
 const SerGuia = () => (
   <div className="SerGuia">
-    <div className="Header">
-      <a href={"/home"} className="HomeIcon">
-        <img src={home} alt={"Home"} />
-      </a>
-      <div className="HeaderImage">
-        <a href={"/profile"}>
-          <img src={avatar_1} alt={"User"} />
-        </a>
-      </div>
+    <div className="HeaderImagen">
+            
     </div>
 
     <div className="Body">
@@ -97,8 +92,11 @@ const SerGuia = () => (
         </div>
       </form>
     </div>
-
+    <Footer/>
   </div>
+
+  
+  
 
 );
 

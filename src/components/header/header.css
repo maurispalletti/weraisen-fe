@@ -1,0 +1,52 @@
+.HeaderImagen {
+  position: absolute;
+  width: 100;
+  overflow: hidden;
+  height:10;
+  margin-top: 1wh;
+  margin-right: 1wh;
+  right: 0;
+  top: 0;
+  left: 0;
+  background-color: #f7913c;
+  z-index: 9999;
+}
+ 
+ 
+ 
+ /* .Header {
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    text-align: left;
+    overflow: hidden;
+    float: left;
+    background-color: #f7913c;
+    height: 10vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: left;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .HeaderButton {
+    color: white;
+    left: 0;
+    margin: 0 10px 0 30px;
+    text-decoration: none;
+  } 
+  
+  
+
+  .HeaderIcon {
+    position: fixed;
+    width: 8vh;
+    height: 8vh;
+    margin-top: 1vh;
+    margin-left: 1vh;
+    left: 0;
+    top: 0;
+    background-color: #f7913c;
+  } */
