@@ -22,7 +22,6 @@
   font-size: 16px;
   margin: 4px 2px;
   border-radius: 12px;
-  width: 66vw;
 }
 
 .forgotPass {
@@ -68,5 +67,4 @@
   padding-top: 5px;
   color: #ff0000;
   font-size: 16px;
-  text-align: left;
 }

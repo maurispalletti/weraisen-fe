@@ -42,7 +42,7 @@ class Login extends Component {
 
   render() {
     if (this.state.goToHome) {
-      return <Redirect to="/signup" />
+      return <Redirect to="/home" />
     }
 
     return (
