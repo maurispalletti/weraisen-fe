@@ -2,8 +2,8 @@ import * as Yup from 'yup'
 
 export function LoginSchema () {
   return Yup.object().shape({
-    email: Yup.string().required('Required'),
-    password: Yup.string().required('Required')
+    email: Yup.string().required('Ingresa un email'),
+    password: Yup.string().required('Ingresa una contraseña')
   })
 }
 

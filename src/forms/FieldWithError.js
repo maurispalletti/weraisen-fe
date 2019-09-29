@@ -4,7 +4,7 @@ import { Field, ErrorMessage } from 'formik'
 
 export default function FieldWithError(props) {
   return (
-    <div className="form-field-container">
+    <div>
       {props.label && <label>{props.label}</label>}
       <Field {...props} />
       <ErrorMessage className="form-error" component="div" name={props.name} />
