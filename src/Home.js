@@ -2,13 +2,6 @@ import React from 'react';
 import './Home.css';
 import avatar_1 from './avatars/avatar_1.svg';
 import home from './icons/home.svg'
-import basketball from './icons/basketball.svg'
-import camera from './icons/camera.svg'
-import cinema from './icons/cinema.svg'
-import climbing from './icons/climbing.svg'
-import cocktail from './icons/cocktail.svg'
-import coffee from './icons/coffee.svg'
-import Calendar from 'react-calendar'
 import bar from './icons/BAR.png'
 import culture from './icons/CULTURE.png'
 import walking from './icons/WALKING.png'
