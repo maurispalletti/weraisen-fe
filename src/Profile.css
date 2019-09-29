@@ -34,6 +34,21 @@
   height: 40px;
 }
 
+.buttonGuia {
+  color: white;
+  background-color: #f7913c;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0px 5px;
+  border-radius: 12px;
+  width: 30vw;
+  height: 40px;
+}
+
 .cancel-button {
   color: white;
   background-color: #f9aa68;
@@ -76,6 +91,12 @@
   margin: 30px 10%;
   display: flex;
   flex-direction: row;
+  align-content: center;
+  text-align: center;
+}
+
+.buttonsSectionGuia {
+  margin: 30px 10%;
   align-content: center;
   text-align: center;
 }

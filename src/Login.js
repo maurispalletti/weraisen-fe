@@ -14,14 +14,14 @@ const Login = () => (
       <h3>Iniciar sesión </h3>
       <p><input className="login-input" type="text" placeholder="Email" /></p>
       <p><input className="login-input" type="password" placeholder="Contraseña" />
-      <a href={'/signup'}><h6 align="center">¿Olvidaste tu contraseña?</h6></a></p>
+      <a className="forgotPass" href={'/signup'}><h5 align="center">¿Olvidaste tu contraseña?</h5></a></p>
       {/* <p><input className="login-input" align="left" type="checkbox" placeholder="Recordarme"/>
         Recordarme
       </p> */}
 
       <p><a href={'/home'} className="login-button">INGRESAR</a></p>
       <div className="signup">
-        <p>¿Primera vez en WERAISEN? <a href={'/signup'}>Registrate ya.</a></p> 
+        <h5>¿Primera vez en WERAISEN? <a className="forgotPass" href={'/signup'}>Registrate ya.</a></h5> 
         {/* <p><a href={'/signup'} className="signup-button">CREAR CUENTA</a></p> */}
         {/* <input type="text" ref="username" placeholder="enter you username" /> */}
         {/* <input type="password" ref="password" placeholder="enter password" /> */}

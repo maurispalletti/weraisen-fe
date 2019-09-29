@@ -53,7 +53,7 @@ import Desplega from './Component/Desplega.js'
 
 
       <div className="LastSection">
-        <h4>Por último, elige la categoría que desees:</h4>
+        <h4>Por último, elegí la categoría que desees:</h4>
         <div className="ActivitiesSection">
           <div className="Activity">
             <img alt={"Activity"} src={culture} />

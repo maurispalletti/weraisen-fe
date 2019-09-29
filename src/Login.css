@@ -25,6 +25,12 @@
   width: 60vw;
 }
 
+.forgotPass {
+  text-decoration: none;
+    color: white;
+    font-size: larger;
+}
+
 .signup-button {
   color: white;
   background-color: #f9aa68;

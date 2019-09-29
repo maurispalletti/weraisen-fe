@@ -12,7 +12,7 @@ import '../Home.css'
     handleChange = (event) => {
       this.setState({value: event.target.value});
     }
-  
+   
     componentDidMount(){
         let hoy = new Date();
         const dia = hoy.getDate();

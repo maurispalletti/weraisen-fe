@@ -73,7 +73,7 @@
   justify-content: center;
 }
 
-.ActivitiesSection {
+/* .ActivitiesSection {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -83,7 +83,7 @@
   width: 8vh;
   height: 8vh;
   margin: 0 20px 20px;
-}
+} */
 
 .ResultsButton {
   text-decoration: none;
