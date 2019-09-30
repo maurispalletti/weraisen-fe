@@ -8,6 +8,7 @@ import walking from './icons/WALKING.png'
 import food from './icons/FOOD.png'
 import shopping from './icons/SHOPPING.png'
 import nature from './icons/NATURE.png'
+import Buttom from './Boton';
 
 const Home = () => (
   <div className="Home">
@@ -54,6 +55,18 @@ const Home = () => (
         
       
       </div>
+      <div className="Section">
+        <h4>Género de tu guia</h4>
+        <select className="Dropdown">          
+          <option value={1} selected>Cualquiera</option>
+          <option value={2}>Femenino</option>
+          <option value={3}>Masculino</option>
+          <option value={4}>Otros</option>          
+        </select>
+        
+      
+      </div>
+      
    {/* <Calendar></Calendar> */}
 
       <div className="LastSection">
@@ -83,7 +96,8 @@ const Home = () => (
       </div>
 
       <div className="Section">
-        <a href={"/results"} className="SearchButton">BUSCAR GUÍAS</a>
+      <Buttom link={'/results'} className={"SearchButton"} name={"BUSCAR GUÍAS"} />
+        
       </div>
 
 
