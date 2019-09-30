@@ -55,16 +55,18 @@
 }
 
 .Dropdown-g {
-  color: gray;
+  padding-left: 50%;
   margin: 5px 2px;
-  text-decoration: none;
+  color: grey;
   display: inline-block;
   background-color: white;
-  font-size: 22px;
-  width: 70vw;
-  height: 30px;
+  font-size: 16px;
+  width: 66vw;
+  height: 50px;
   text-align: center;
-  font-weight: bold;
   border-radius: 12px;
-  padding: 20px;
+}
+
+.gender-selector {
+  color: gray;
 }

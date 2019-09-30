@@ -2,19 +2,13 @@ import React from 'react';
 import './Home.css';
 import avatar_1 from './avatars/avatar_1.svg';
 import home from './icons/home.svg'
-import basketball from './icons/basketball.svg'
-import camera from './icons/camera.svg'
-import cinema from './icons/cinema.svg'
-import climbing from './icons/climbing.svg'
-import cocktail from './icons/cocktail.svg'
-import coffee from './icons/coffee.svg'
-import Calendar from 'react-calendar'
 import bar from './icons/BAR.png'
 import culture from './icons/CULTURE.png'
 import walking from './icons/WALKING.png'
 import food from './icons/FOOD.png'
 import shopping from './icons/SHOPPING.png'
 import nature from './icons/NATURE.png'
+import Buttom from './Boton';
 
 const Home = () => (
   <div className="Home">
@@ -61,6 +55,18 @@ const Home = () => (
         
       
       </div>
+      <div className="Section">
+        <h4>Género de tu guia</h4>
+        <select className="Dropdown">          
+          <option value={1} selected>Cualquiera</option>
+          <option value={2}>Femenino</option>
+          <option value={3}>Masculino</option>
+          <option value={4}>Otros</option>          
+        </select>
+        
+      
+      </div>
+      
    {/* <Calendar></Calendar> */}
 
       <div className="LastSection">
@@ -90,7 +96,8 @@ const Home = () => (
       </div>
 
       <div className="Section">
-        <a href={"/results"} className="SearchButton">BUSCAR GUÍAS</a>
+      <Buttom link={'/results'} className={"SearchButton"} name={"BUSCAR GUÍAS"} />
+        
       </div>
 
 

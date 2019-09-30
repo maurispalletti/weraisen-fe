@@ -1,5 +1,6 @@
 import React from 'react';
 import './Profile.css';
+import Buttom from './Boton';
 
 
 const Profile = () => (
@@ -22,7 +23,9 @@ const Profile = () => (
         <input className="profile-input" type="text" placeholder="Email" />
        
         <div className="buttonsSectionGuia">
-          <a href={'/serguia'} className="buttonGuia" >QUIERO SER GUÍA</a>
+
+        <Buttom link={'/serguia'} className={"buttonGuia"} name={"QUIERO SER GUÍA"} />
+          
           </div>
 
           <div className="guideSection">
@@ -35,8 +38,9 @@ const Profile = () => (
           </div>
         
           <div className="buttonsSection">
-          <a href={'/home'} className="cancel-button">CANCELAR</a>
-          <a href={'/home'} className="button">GUARDAR CAMBIOS</a>
+          <Buttom link={'/home'} className={"cancel-button"} name={"CANCELAR"} />
+          <Buttom link={'/home'} className={"button"} name={"GUARDAR CAMBIOS"} />
+          
         </div>
         </div>
       </form>
