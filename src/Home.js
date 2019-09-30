@@ -2,6 +2,7 @@ import React from 'react';
 import './Home.css';
 import avatar_1 from './avatars/avatar_1.svg';
 import home from './icons/home.svg'
+import Buttom from './Boton';
 import basketball from './icons/basketball.svg'
 import camera from './icons/camera.svg'
 import cinema from './icons/cinema.svg'
@@ -61,6 +62,18 @@ const Home = () => (
         
       
       </div>
+      <div className="Section">
+        <h4>Género de tu guia</h4>
+        <select className="Dropdown">          
+          <option value={1} selected>Cualquiera</option>
+          <option value={2}>Femenino</option>
+          <option value={3}>Masculino</option>
+          <option value={4}>Otros</option>          
+        </select>
+        
+      
+      </div>
+      
    {/* <Calendar></Calendar> */}
 
       <div className="LastSection">
@@ -90,7 +103,8 @@ const Home = () => (
       </div>
 
       <div className="Section">
-        <a href={"/results"} className="SearchButton">BUSCAR GUÍAS</a>
+      <Buttom link={'/results'} className={"SearchButton"} name={"BUSCAR GUÍAS"} />
+        
       </div>
 
 
