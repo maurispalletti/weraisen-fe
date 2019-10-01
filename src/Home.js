@@ -12,6 +12,8 @@ import Desplegable from './Component/Desplegable.js'
 import ciudadesCba from './Component/CiudadesCba.js'
 import idiomas from './Component/Idiomas.js'
 import Desplega from './Component/Desplega.js'
+import nature from './icons/NATURE.png'
+import Buttom from './Boton';
 
 
  const Home = () => (
@@ -50,7 +52,19 @@ import Desplega from './Component/Desplega.js'
         <Desplegable/>
          
       </div>
-
+      <div className="Section">
+        <h4>Género de tu guia</h4>
+        <select className="Dropdown">          
+          <option value={1} selected>Cualquiera</option>
+          <option value={2}>Femenino</option>
+          <option value={3}>Masculino</option>
+          <option value={4}>Otros</option>          
+        </select>
+        
+      
+      </div>
+      
+   {/* <Calendar></Calendar> */}
 
       <div className="LastSection">
         <h4>Por último, elegí la categoría que desees:</h4>
@@ -79,7 +93,8 @@ import Desplega from './Component/Desplega.js'
       </div>
 
       <div className="Section">
-        <a href={"/results"} className="SearchButton">BUSCAR GUÍAS</a>
+      <Buttom link={'/results'} className={"SearchButton"} name={"BUSCAR GUÍAS"} />
+        
       </div>
 
 
