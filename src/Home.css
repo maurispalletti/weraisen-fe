@@ -28,6 +28,7 @@
   background-color: #f7913c;
   height: 10vh;
   width: 100vw;
+  z-index: 1000;
   align-items: center;
   justify-content: left;
   font-size: calc(10px + 2vmin);

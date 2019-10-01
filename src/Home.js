@@ -15,7 +15,6 @@ import ciudadesCba from './Component/CiudadesCba.js'
 import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
-import loginServices from './services/userServices'
 import DropdownGender from './forms/DropdownGender'
 
 const genders = [
@@ -50,29 +49,36 @@ class Home extends Component {
   state = {
     goToResults: false,
     searchFailed: false,
+    ageValidationFailed: false,
     notLoggedInUser: false,
   }
 
-  searchGuides = async (filters) => {
-    const city = localStorage.getItem("filter_city");
-    const language = localStorage.getItem("filter_language");
-    const knowledge = localStorage.getItem("filter_knowledge");
+  searchGuides = async ({ fromAge, toAge, gender }) => {
 
-    filters[`city`] = city;
-    filters[`language`] = language;
-    filters[`knowledge`] = knowledge;
+    const filters = { fromAge, toAge, gender }
 
-    const filtersString = JSON.stringify(filters);
-    console.log(filtersString);
-    localStorage.setItem(`filters`, filtersString);
+    if (parseFloat(fromAge) > parseFloat(toAge)) {
+      this.setState({ ageValidationFailed: true })
+    } else {
 
-    localStorage.removeItem("filter_city");
-    localStorage.removeItem("filter_language");
-    localStorage.removeItem("filter_knowledge");
+      const city = localStorage.getItem("filter_city");
+      const language = localStorage.getItem("filter_language");
+      const knowledge = localStorage.getItem("filter_knowledge");
 
-    // let fil = localStorage.getItem("filters");
-    // fil = JSON.parse(fil)
-    this.setState({ goToResults: true})
+      filters[`city`] = city;
+      filters[`language`] = language;
+      filters[`knowledge`] = knowledge;
+
+      const filtersString = JSON.stringify(filters);
+      console.log(filtersString);
+      localStorage.setItem(`filters`, filtersString);
+
+      localStorage.removeItem("filter_city");
+      localStorage.removeItem("filter_language");
+      localStorage.removeItem("filter_knowledge");
+
+      this.setState({ goToResults: true })
+    }
   }
 
   render() {
@@ -95,7 +101,6 @@ class Home extends Component {
         <div className="Body">
           <Formik
             initialValues={INITIAL_VALUES}
-            // validationSchema={GuideProfileSchema}
             onSubmit={(filters) => this.searchGuides(filters)}>
             <Form>
               <h2>¡Planifica tu recorrido!</h2>
@@ -121,6 +126,9 @@ class Home extends Component {
                 <h4>Rango de edad</h4>
                 <FieldWithError name="fromAge" placeholder="Desde" aria-label="description" className="TextBox-input" />
                 <FieldWithError name="toAge" placeholder="Hasta" aria-label="description" className="TextBox-input" />
+                {this.state.ageValidationFailed && (
+                  <p className="form-error">La edad en el campo 'Desde' debe ser menor a la edad en el campo 'Hasta'.</p>
+                )}
               </div>
               <div className="LastSection">
                 <h4>Por último, elegí la categoría que desees:</h4>

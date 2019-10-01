@@ -48,6 +48,25 @@ class userServices {
 		return axios.put(url, body, { headers })
 	}
 
+	static async getGuides({
+		city,
+		fromAge,
+		toAge,
+		gender,
+		language,
+		knowledge }) {
+		const url = `http://localhost:3001/api/v1/guides`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			city,
+			fromAge,
+			toAge,
+			gender,
+			language,
+			knowledge
+		}
+		return axios.get(url, body, { headers })
+	}
 }
 
 export default userServices
