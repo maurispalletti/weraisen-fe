@@ -2,20 +2,12 @@ import React, { Component } from 'react';
 import './Results.css';
 import home from './icons/home.svg';
 import avatar_woman_1 from './avatars/avatar_1.svg';
-import avatar_woman_2 from './avatars/avatar_2.svg';
-import avatar_woman_3 from './avatars/avatar_3.svg';
-import avatar_man_1 from './avatars/avatar_4.svg';
-import avatar_man_2 from './avatars/avatar_5.svg';
-import Buttom from './Boton';
 import GuideCard from './GuideCard';
 import { Redirect } from 'react-router'
 
 import loginServices from './services/userServices'
-import { returnStatement } from '@babel/types';
-
 
 class Results extends Component {
-
   state = {
     goToHome: false,
     searchFailed: false,
@@ -24,6 +16,9 @@ class Results extends Component {
 
   getGuides = async (filters) => {
     try {
+      console.log(`!!!!!!!!!!!!!!!!`)
+      console.log(filters)
+
       const response = await loginServices.getGuides(filters);
 
       if (response && response.data && response.data.length > 0) {
@@ -48,14 +43,14 @@ class Results extends Component {
     if (guides.length > 0) {
       return guides.map(guide => {
         const { firstName, lastName, age, city, languages, knowledge, description, gender } = guide
-        const languagesString = languages.join(', ')
         return (
           <GuideCard
+            key={`lastName_${lastName}`}
             firstName={firstName}
             lastName={lastName}
             city={city}
             age={age}
-            languages={languagesString}
+            languages={languages}
             gender={gender}
             knowledge={knowledge}
             description={description}

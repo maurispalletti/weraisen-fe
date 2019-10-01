@@ -23,15 +23,15 @@ const INITIAL_VALUES = {
 
 const genders = [
   {
-    value: "FEMALE",
+    value: "Femenino",
     description: 'Femenino'
   },
   {
-    value: "MALE",
+    value: "Masculino",
     description: 'Masculino'
   },
   {
-    value: "OTHER",
+    value: "Otro",
     description: 'Otro'
   },
 ]

@@ -59,13 +59,13 @@ class userServices {
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			city,
-			fromAge,
-			toAge,
+			fromAge: parseInt(fromAge),
+			toAge: parseInt(toAge),
 			gender,
 			language,
 			knowledge
 		}
-		return axios.get(url, body, { headers })
+		return axios.post(url, body, { headers })
 	}
 }
 

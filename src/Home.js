@@ -19,19 +19,19 @@ import DropdownGender from './forms/DropdownGender'
 
 const genders = [
   {
-    value: "ALL",
+    value: "Cualquiera",
     description: 'Cualquiera'
   },
   {
-    value: "FEMALE",
+    value: "Femenino",
     description: 'Femenino'
   },
   {
-    value: "MALE",
+    value: "Masculino",
     description: 'Masculino'
   },
   {
-    value: "OTHER",
+    value: "Otro",
     description: 'Otro'
   },
 ]

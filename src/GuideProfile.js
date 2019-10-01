@@ -34,7 +34,7 @@ const languages = [
 
 const knowledge = [
   { description: 'Bares', value: 'Bares' },
-  { description: 'Restaurantes', value: 'RESTAURANT' },
+  { description: 'Restaurantes', value: 'Restaurantes' },
   { description: "Montaña", value: 'Montaña' },
   { description: "Museos", value: 'Museos' },
   { description: "Historia", value: 'Historia' },
@@ -115,7 +115,7 @@ class GuideProfile extends Component {
               <h2>Quiero ser guía</h2>
               <div className="Section">
                 <h4>Describite brevemente para que otros te conozcan: </h4>
-                <FieldWithError name="description" placeholder="Ingresa tu descripción" aria-label="description" className="descripcion-input" />
+                <FieldWithError component={'textarea'} name="description" placeholder="Ingresa tu descripción" aria-label="description" className="descripcion-input" />
                 <div className="IdiomsSection">
                   <h4>Idiomas que manejas:</h4>
                   <CheckboxGroupWithError name="languages" values={languages} />
