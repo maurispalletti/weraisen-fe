@@ -4,8 +4,8 @@ import loginServices from './services/userServices'
 import { Redirect } from 'react-router'
 
 import { Formik, Form } from 'formik'
-import { SignUpSchema } from './helpers/validators'
 import FieldWithError from './forms/FieldWithError'
+import { SignUpSchema } from './helpers/validators'
 import DropdownGender from './forms/DropdownGender'
 
 
