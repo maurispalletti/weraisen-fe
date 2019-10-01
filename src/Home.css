@@ -52,6 +52,7 @@
   background-color: #f7913c;
 }
 
+
 .HomeIcon {
   position: fixed;
   width: 8vh;
@@ -73,7 +74,7 @@
 }
 
 .Section {
-  padding-bottom: 15px;
+  padding-bottom: 1px;
   justify-content: center;
 }
 
@@ -109,7 +110,7 @@
   font-weight: bold;
 }
 
-.Dropdown {
+/* .Dropdown {
   color: white;
   margin: 0 10px;
   text-decoration: none;
@@ -121,4 +122,4 @@
   font-weight: bold;
   border-radius: 12px;
   padding: 2px;
-}
+} */
