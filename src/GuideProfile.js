@@ -18,24 +18,32 @@ import { GuideProfileSchema } from './helpers/validators'
 import loginServices from './services/userServices'
 
 const languages = [
-  { description: 'Español', value: 'SPANISH' },
-  { description: 'Inglés', value: 'ENGLISH' },
-  { description: "Alemán", value: 'GERMAN' },
-  { description: "Italiano", value: 'ITALIAN' },
-  { description: "Portugués", value: 'PORTUGUESE' },
-  { description: "Francés", value: 'FRENCH' },
-  { description: "Japonés", value: 'JAPANESE' },
+  { description: 'Español', value: 'Español' },
+  { description: 'Inglés', value: 'Inglés' },
+  { description: "Alemán", value: 'Alemán' },
+  { description: "Italiano", value: 'Italiano' },
+  { description: "Portugués", value: 'Portugués' },
+  { description: "Francés", value: 'Francés' },
+  { description: "Japonés", value: 'Japonés' },
+  { description: "Chino", value: 'Chino' },
+  { description: "Ruso", value: 'Ruso' },
+  { description: "Turco", value: 'Turco' },
+  { description: "Neerlandés", value: 'Neerlandés' },
+  { description: "Polaco", value: 'Polaco' },
 ];
 
 const knowledge = [
-  { description: 'Bares', value: 'BAR' },
-  { description: 'Restaurantes', value: 'RESTAURANT' },
-  { description: "Montaña", value: 'MOUNTAIN' },
-  { description: "Museos", value: 'MUSEUM' },
-  { description: "Historia", value: 'HISTORY' },
-  { description: "Deportes", value: 'SPORT' },
-  { description: "Espectáculos", value: 'SHOWS' },
-  { description: "Fotografía", value: 'PHOTOGRAPHY' },
+  { description: 'Bares', value: 'Bares' },
+  { description: 'Restaurantes', value: 'Restaurantes' },
+  { description: "Montaña", value: 'Montaña' },
+  { description: "Museos", value: 'Museos' },
+  { description: "Historia", value: 'Historia' },
+  { description: "Deportes", value: 'Deportes' },
+  { description: "Espectáculos", value: 'Espectáculos' },
+  { description: "Fotografía", value: 'Fotografía' },
+  { description: "Naturaleza", value: 'Naturaleza' },
+  { description: "Arte", value: 'Arte' },
+  { description: "Fiesta", value: 'Fiesta' },
 ];
 
 const INITIAL_VALUES = {
@@ -107,7 +115,7 @@ class GuideProfile extends Component {
               <h2>Quiero ser guía</h2>
               <div className="Section">
                 <h4>Describite brevemente para que otros te conozcan: </h4>
-                <FieldWithError name="description" placeholder="Ingresa tu descripción" aria-label="description" className="descripcion-input" />
+                <FieldWithError component={'textarea'} name="description" placeholder="Ingresa tu descripción" aria-label="description" className="descripcion-input" />
                 <div className="IdiomsSection">
                   <h4>Idiomas que manejas:</h4>
                   <CheckboxGroupWithError name="languages" values={languages} />

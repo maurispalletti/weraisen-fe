@@ -12,7 +12,6 @@ export default function Checkbox (props) {
             {...props}
             checked={field.value.includes(props.value.value)}
             onChange={() => {
-              {debugger}
               if (field.value.includes(props.value.value)) {
                 const nextValue = field.value.filter(value => value !== props.value.value)
                 form.setFieldValue(props.name, nextValue)
