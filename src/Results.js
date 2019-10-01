@@ -6,8 +6,8 @@ import avatar_2 from './avatars/avatar_2.svg';
 import avatar_3 from './avatars/avatar_3.svg';
 import avatar_4 from './avatars/avatar_4.svg';
 import avatar_5 from './avatars/avatar_5.svg';
-import Buttom from './Boton';
-import GuideCard from './GuideCard';
+import Buttom from './components/Boton.js';
+import GuideCard from './components/GuideCard';
 
 const Results = () => (
   <div className="Home">

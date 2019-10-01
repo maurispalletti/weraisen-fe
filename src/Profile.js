@@ -1,6 +1,6 @@
 import React from 'react';
 import './Profile.css';
-import Buttom from './Boton';
+import Buttom from './components/Boton';
 
 
 const Profile = () => (
@@ -24,7 +24,7 @@ const Profile = () => (
        
         <div className="buttonsSectionGuia">
 
-        <Buttom link={'/serguia'} className={"buttonGuia"} name={"QUIERO SER GUÍA"} />
+        <Buttom link={'/guide'} className={"buttonGuia"} name={"QUIERO SER GUÍA"} />
           
           </div>
 

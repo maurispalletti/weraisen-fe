@@ -1,0 +1,19 @@
+
+.calendario {
+    color:white;
+    background-color: #7dca96;
+}
+.calendario input {
+    width: 25%;
+    font-weight: bold;
+    align-self: center;
+    font-size: 15px;
+    text-align: center;
+    padding: 2px;
+    height: 32px;
+    color:white;
+    margin: 0 30px;
+    text-decoration: none;
+    border-radius: 12px;
+    background-color: #f7913c;
+}

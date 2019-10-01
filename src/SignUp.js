@@ -4,8 +4,8 @@ import loginServices from './services/userServices'
 import { Redirect } from 'react-router'
 
 import { Formik, Form } from 'formik'
-import { SignUpSchema } from './helpers/validators'
 import FieldWithError from './forms/FieldWithError'
+import { SignUpSchema } from './helpers/validators'
 import DropdownGender from './forms/DropdownGender'
 
 
@@ -70,12 +70,8 @@ class SignUp extends Component {
 
         const { data: { id } } = response
 
-        // // save Id in local storage
-        // localStorage.setItem("userId", id);
-
-        // console.log(`GET ID`)
-        // localStorage.getItem("userId");
-        console.log(`!!!!!!!!!!!` + id)
+        // save Id in local storage
+        localStorage.setItem("userId", id);
 
         this.setState({ passwordsMissmatch: false, goToHome: true, signUpFailed: false })
       } else {
