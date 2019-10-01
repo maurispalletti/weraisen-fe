@@ -13,32 +13,26 @@ export default class AutoComplete extends React.Component {
     }
 
     onTextChanged = (e) => {
-
         const { items } = this.props;
-       
         const value = e.target.value;
         let suggestions = [];
-
-        if (value.length > 0){
+        if (value.length > 0) {
             const regex = new RegExp(`^${value}`, 'i');
-            suggestions = items.sort().filter( v => regex.test(v));
+            suggestions = items.sort().filter(v => regex.test(v));
         }
-      
-
-       this.setState(() => ({ suggestions, text: value}));
+        this.setState(() => ({ suggestions, text: value }));
     }
 
-    suggestionSelected (value) {
+    suggestionSelected(value) {
         this.setState(() => ({
- 
             text: value,
             suggestions: [],
         }))
     }
 
-    renderSuggestions () {
-        const {suggestions} = this.state;
-        if (suggestions.lengt === 0){
+    renderSuggestions() {
+        const { suggestions } = this.state;
+        if (suggestions.lengt === 0) {
             return null;
         }
         return (
@@ -47,15 +41,13 @@ export default class AutoComplete extends React.Component {
             </ul>
         );
     }
-  
+
     render() {
-        const {text} = this.state;
+        const { text } = this.state;
         return (
             <div className="AutoComplete" >
-
-                <input value={text} onChange={this.onTextChanged} type="text" required/>
+                <input value={text} onChange={this.onTextChanged} type="text" required />
                 {this.renderSuggestions()}
-     
             </div>
         )
     }
