@@ -21,36 +21,10 @@ export function SignUpSchema () {
   })
 }
 
-// export function TalentPartnerSignUpSchema () {
-//   return Yup.object().shape({
-//     name: Yup.string().required('Required'),
-//     email: Yup.string().required('Required'),
-//     password: Yup.string().required('Required')
-//   })
-// }
-
-
-// export function JobOrderSchema () {
-//   return Yup.object().shape({
-//     jobTitle: Yup.string().required('Required'),
-//     company: Yup.string().required('Required'),
-//     jobLocation: Yup.string().required('Required'),
-//     baseSalary: Yup.number()
-//       .min(0)
-//       .required('Required'),
-//     salaryPeriod: Yup.string().required('Required'),
-//     fullName: Yup.string().required('Required'),
-//     email: Yup.string()
-//       .required('Required')
-//       .email()
-//   })
-// }
-
-// export function ResetPasswordSchema () {
-//   return Yup.object().shape({
-//     password: Yup.string().required('Password is required'),
-//     passwordConfirm: Yup.string()
-//       .oneOf([Yup.ref('password'), null], 'Passwords must match')
-//       .required('Password confirm is required')
-//   })
-// }
+export function GuideProfileSchema () {
+  return Yup.object().shape({
+    description: Yup.string().required('Ingresa una descripción'),
+    languages: Yup.string().required('Selecciona un lenguaje'),
+    knowledge: Yup.string().required('Selecciona un conocimiento'),
+  })
+}

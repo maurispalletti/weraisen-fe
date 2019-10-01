@@ -24,7 +24,7 @@ const Profile = () => (
        
         <div className="buttonsSectionGuia">
 
-        <Buttom link={'/serguia'} className={"buttonGuia"} name={"QUIERO SER GUÍA"} />
+        <Buttom link={'/guide'} className={"buttonGuia"} name={"QUIERO SER GUÍA"} />
           
           </div>
 

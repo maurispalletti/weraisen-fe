@@ -30,10 +30,22 @@ class userServices {
 			email,
 			password
 		}
-
-		console.log(body)
-
 		return axios.post(url, body, { headers })
+	}
+
+	static async updateGuide({
+		userId,
+		description,
+		languages,
+		knowledge }) {
+		const url = `http://localhost:3001/api/v1/guides/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			description,
+			languages,
+			knowledge
+		}
+		return axios.put(url, body, { headers })
 	}
 
 }
