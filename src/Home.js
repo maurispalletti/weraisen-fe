@@ -63,6 +63,17 @@ import Buttom from './Boton';
         
       
       </div>
+      <form class="form-inline" role="form">
+      <div className="Section">
+
+        <h4>Rango de edad</h4>                
+        <p><input className="TextBox-input" type="text" id="formGroupExampleInput" placeholder="Desde"  /></p>
+        <p><input className="TextBox-input" type="text" id="formGroupExampleInput" placeholder="Hasta" /></p>              
+      
+      </div>
+
+      </form>
+      
       
    {/* <Calendar></Calendar> */}
 
