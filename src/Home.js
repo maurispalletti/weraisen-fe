@@ -36,9 +36,9 @@ const genders = [
   },
 ]
 
-const languages = ['español', 'inglés', 'alemán', 'italiano', 'francés', 'portugués', 'japonés', 'ruso']
+const languages = ['Español', 'Inglés', 'Alemán', 'Italiano', 'Francés', 'Portugués', 'Japonés', 'Chino', 'Ruso', 'Turco', 'Neerlandés', 'Polaco']
 
-const knowledge = ['bares', 'restaurantes', 'museos', 'espectáculos', 'deportes', 'montaña', 'fotografía']
+const knowledge = ['Bares', 'Restaurantes', 'Museos', 'Espectáculos', 'Deportes', 'Montaña', 'Fotografía', 'Naturaleza', 'Arte', 'Fiesta']
 
 const INITIAL_VALUES = {
   fromAge: '',
