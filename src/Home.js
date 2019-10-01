@@ -2,22 +2,21 @@ import React from 'react';
 import './Home.css';
 import avatar_1 from './avatars/avatar_1.svg';
 import home from './icons/home.svg'
-import Buttom from './Boton';
-import basketball from './icons/basketball.svg'
-import camera from './icons/camera.svg'
-import cinema from './icons/cinema.svg'
-import climbing from './icons/climbing.svg'
-import cocktail from './icons/cocktail.svg'
-import coffee from './icons/coffee.svg'
-import Calendar from 'react-calendar'
 import bar from './icons/BAR.png'
 import culture from './icons/CULTURE.png'
 import walking from './icons/WALKING.png'
 import food from './icons/FOOD.png'
 import shopping from './icons/SHOPPING.png'
+import Autocomplete from './Component/Autocomplete.js'
+import Desplegable from './Component/Desplegable.js'
+import ciudadesCba from './Component/CiudadesCba.js'
+import idiomas from './Component/Idiomas.js'
+import Desplega from './Component/Desplega.js'
 import nature from './icons/NATURE.png'
+import Buttom from './Boton';
 
-const Home = () => (
+
+ const Home = () => (
   <div className="Home">
     <div className="Header">
       <a href={"/home"} className="HomeIcon">
@@ -31,36 +30,27 @@ const Home = () => (
     </div>
 
     <div className="Body">
-      
-      <h2>¡Planificá tu recorrido!</h2>
+     
+      <h2>¡Planifica tu recorrido!</h2>
 
       <div className="Section">
         <h4>¿A dónde querés ir?</h4>
-        <select className="Dropdown">
-          <option value="" selected disabled hidden>Seleccioná una ciudad...</option>
-          <option value={1}>Córdoba</option>
-          <option value={2}>Buenos Aires</option>
-          <option value={3}>Carlos Paz</option>
-          <option value={4}>Posadas</option>
-          <option value={5}>Salta</option>
-          <option value={6}>Rosario</option>
-          <option value={7}>Bariloche</option>
-          <option value={8}>Puerto Madryn</option>
-          <option value={9}>Mendoza</option>
-        </select>
+        <h7>Ingrese las primeras letras de la ciudad...</h7>
+        <Autocomplete items={ciudadesCba} ></Autocomplete>
       </div>
 
       <div className="Section">
+        <h4>Elige el idioma de tu guía:</h4>
+        <h7>Ingrese las primeras letras del idioma...</h7>
+        <Desplega items={idiomas} ></Desplega>
+      </div>
+
+
+      <div className="Section">
         <h4>¿Cuándo?</h4>
-        <select className="Dropdown">
-          <option value="" selected disabled hidden>Seleccioná una fecha...</option>
-          <option value={1}>Ahora</option>
-          <option value={2}>En 24 hs</option>
-          <option value={3}>En una semana</option>
-          <option value={4}>Fecha personalizada</option>
-        </select>
-        
       
+        <Desplegable/>
+         
       </div>
       <div className="Section">
         <h4>Género de tu guia</h4>
@@ -101,9 +91,9 @@ const Home = () => (
           </div>
         </div>
         <div className="ActivitiesSection">
-          <div className="Activity">
+          {/* <div className="Activity">
             <img alt={"Activity"} src={nature} />
-          </div>
+          </div> */}
           <div className="Activity">
             <img alt={"Activity"} src={shopping} />
           </div >
@@ -122,6 +112,6 @@ const Home = () => (
 
     </div>
   </div>
-);
+ );
 
-export default Home;
+ export default Home;

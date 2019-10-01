@@ -3,13 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.0",
     "calendar": "^0.1.0",
     "calender": "^1.0.3",
+    "rc-datepicker": "^5.0.14",
+    "formik": "^1.5.8",
     "react": "^16.8.6",
     "react-calendar": "^2.19.1",
+    "react-datepicker": "^2.9.6",
     "react-dom": "^16.8.6",
     "react-router": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "semantic-ui-react": "^0.88.1",
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",

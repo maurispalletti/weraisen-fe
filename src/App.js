@@ -1,11 +1,11 @@
 import React from 'react';
 import { Router, Route } from 'react-router';
-import login from './Login';
-import home from './Home';
-import results from './Results';
-import signup from './SignUp';
-import profile from './Profile';
-import serguia from './SerGuia';
+import Login from './Login';
+import Home from './Home';
+import Results from './Results';
+import Signup from './SignUp';
+import Profile from './Profile';
+import GuideProfile from './GuideProfile';
 
 import { createBrowserHistory } from 'history';
 
@@ -14,12 +14,12 @@ const history = createBrowserHistory();
 function App() {
   return (
     <Router history={history}>
-      <Route path={'/'} component={login} />
-      <Route exact path={'/home'} component={home} />
-      <Route exact path={'/results'} component={results} />
-      <Route exact path={'/signup'} component={signup} />
-      <Route exact path={'/profile'} component={profile} />
-      <Route exact path={'/serguia'} component={serguia} />
+      <Route path={'/'} component={Login} />
+      <Route exact path={'/home'} component={Home} />
+      <Route exact path={'/results'} component={Results} />
+      <Route exact path={'/signup'} component={Signup} />
+      <Route exact path={'/profile'} component={Profile} />
+      <Route exact path={'/guide'} component={GuideProfile} />
     </Router>
   );
 }
