@@ -4,8 +4,8 @@ import loginServices from './services/userServices'
 import { Redirect } from 'react-router'
 
 import { Formik, Form } from 'formik'
-import { SignUpSchema } from './helpers/validators'
 import FieldWithError from './forms/FieldWithError'
+import { SignUpSchema } from './helpers/validators'
 import DropdownGender from './forms/DropdownGender'
 
 
@@ -23,15 +23,15 @@ const INITIAL_VALUES = {
 
 const genders = [
   {
-    value: "FEMALE",
+    value: "Femenino",
     description: 'Femenino'
   },
   {
-    value: "MALE",
+    value: "Masculino",
     description: 'Masculino'
   },
   {
-    value: "OTHER",
+    value: "Otro",
     description: 'Otro'
   },
 ]
@@ -70,12 +70,8 @@ class SignUp extends Component {
 
         const { data: { id } } = response
 
-        // // save Id in local storage
-        // localStorage.setItem("userId", id);
-
-        // console.log(`GET ID`)
-        // localStorage.getItem("userId");
-        console.log(`!!!!!!!!!!!` + id)
+        // save Id in local storage
+        localStorage.setItem("userId", id);
 
         this.setState({ passwordsMissmatch: false, goToHome: true, signUpFailed: false })
       } else {
@@ -106,7 +102,7 @@ class SignUp extends Component {
             <FieldWithError name="lastName" placeholder="Apellido" aria-label="lastName" className="input" />
             <FieldWithError name="age" placeholder="Edad" aria-label="age" className="input" />
             <FieldWithError name="identification" placeholder="ID / DNI / PASAPORTE" aria-label="identification" className="input" />
-            <DropdownGender name="gender" options={genders} />
+            <DropdownGender name="gender" styleName={"Dropdown-g"} options={genders} />
             <FieldWithError name="city" placeholder="Ciudad de residencia" aria-label="city" className="input" />
             <FieldWithError name="email" placeholder="Email" aria-label="email" className="input" />
             <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" className="input" />

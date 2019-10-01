@@ -28,6 +28,7 @@
   background-color: #f7913c;
   height: 10vh;
   width: 100vw;
+  z-index: 1000;
   align-items: center;
   justify-content: left;
   font-size: calc(10px + 2vmin);
@@ -52,6 +53,7 @@
   background-color: #f7913c;
 }
 
+
 .HomeIcon {
   position: fixed;
   width: 8vh;
@@ -73,7 +75,7 @@
 }
 
 .Section {
-  padding-bottom: 15px;
+  padding-bottom: 1px;
   justify-content: center;
 }
 
@@ -109,16 +111,57 @@
   font-weight: bold;
 }
 
-.Dropdown {
+.Dropdown-home {
   color: white;
   margin: 0 10px;
   text-decoration: none;
   background-color: #f7913c;
   font-size: 17px;
-  width: 80vw;
   height: 40px;
   text-align: center;
   font-weight: bold;
   border-radius: 12px;
   padding: 2px;
 }
+
+.TextBox-input {
+  color: white;
+  margin: 5px 10px;
+  text-decoration: none;
+  background-color: #f7913c;
+  font-size: 17px;
+  width: 15vw;
+  height: 40px;
+  text-align: center;  
+  border-radius: 12px;
+  padding: 2px;
+  border: none;  
+  display: inline-block; 
+  font-weight: bold;
+  -webkit-text-fill-color: white;
+}
+
+/* .mi-input::placeholder {
+   color: white;
+   font-weight: bold;
+  } */
+/* 
+  #formGroupExampleInput {
+    color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  background-color: #f7913c;
+  font-size: 17px;
+  width: 35vw;
+  height: 40px;
+  text-align: center;  
+  border-radius: 12px;
+  padding: 2px;
+  border: none;  
+  display: inline-block; 
+  }
+  #formGroupExampleInput::-webkit-input-placeholder {
+    color: white;
+    font-weight: bold
+  } */
+  

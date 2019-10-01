@@ -1,74 +1,100 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Results.css';
 import home from './icons/home.svg';
-import avatar_1 from './avatars/avatar_1.svg';
-import avatar_2 from './avatars/avatar_2.svg';
-import avatar_3 from './avatars/avatar_3.svg';
-import avatar_4 from './avatars/avatar_4.svg';
-import avatar_5 from './avatars/avatar_5.svg';
-import Buttom from './Boton';
+import avatar_woman_1 from './avatars/avatar_1.svg';
 import GuideCard from './GuideCard';
+import { Redirect } from 'react-router'
 
-const Results = () => (
-  <div className="Home">
-    <div className="Header">
-      <a href={"/home"} className="HomeIcon">
-        <img src={home} alt={"Home"} />
-      </a>
-      <div className="HeaderImage">
-        <a href={"/profile"}>
-          <img src={avatar_1} alt={"User"} />
-        </a>
-      </div>
-    </div>
+import loginServices from './services/userServices'
 
-    <div className="Body">
+class Results extends Component {
+  state = {
+    goToHome: false,
+    searchFailed: false,
+    guides: [],
+  }
 
-      <div className="Section">
-        <h4>Guías que coinciden con tu búsqueda:</h4>
+  getGuides = async (filters) => {
+    try {
+      console.log(`!!!!!!!!!!!!!!!!`)
+      console.log(filters)
 
+      const response = await loginServices.getGuides(filters);
 
-        <GuideCard  
-        name = "VICTORIA DIAZ"
-        ubicacion = "Córdoba, Argentina"
-        edad = "25 años"
-        idiomas = "Español, Portugués"
-        avatar ={avatar_2}
+      if (response && response.data && response.data.length > 0) {
+        this.setState({ guides: response.data })
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get guides: ${error}`)
+      this.setState({ searchFailed: true })
+      return null
+    }
+  }
+
+  async componentWillMount() {
+    let filters = localStorage.getItem("filters");
+    filters = JSON.parse(filters)
+    await this.getGuides(filters)
+  }
+
+  renderGuides = () => {
+    const { guides } = this.state
+    debugger;
+    if (guides.length > 0) {
+      return guides.map(guide => {
+        const { firstName, lastName, age, city, languages, knowledge, description, gender } = guide
+        return (
+          <GuideCard
+            key={`lastName_${lastName}`}
+            firstName={firstName}
+            lastName={lastName}
+            city={city}
+            age={age}
+            languages={languages}
+            gender={gender}
+            knowledge={knowledge}
+            description={description}
           />
-        <GuideCard  
-        name = "PAULA LOSANO"
-        ubicacion = "Córdoba, Argentina"
-        edad = "23 años"
-        idiomas = "Español, Italiano, Portugués"
-        avatar ={avatar_3}
-          />
-        <GuideCard  
-        name = "ÁLVARO OSCARES"
-        ubicacion = "Córdoba, Argentina"
-        edad = "24 años"
-        idiomas = "Español, Francés"
-        avatar ={avatar_4}
-          />
-          <GuideCard  
-        name = "MAURICIO SPALLETTI"
-        ubicacion = "Córdoba, Argentina"
-        edad = "24 años"
-        idiomas = "Español, Inglés, Alemán"
-        avatar ={avatar_5}
-          />       
-      
+        )
+      });
+    }
+  }
 
+  render() {
+    if (this.state.goToHome) {
+      return <Redirect to="/home" />
+    }
+
+    return (
+      <div className="Home">
+        <div className="Header">
+          <a href={"/home"} className="HomeIcon">
+            <img src={home} alt={"Home"} />
+          </a>
+          <div className="HeaderImage">
+            <a href={"/profile"}>
+              <img src={avatar_woman_1} alt={"User"} />
+            </a>
+          </div>
+        </div>
+
+        <div className="Body">
+
+          <div className="Section">
+            <h4>Guías que coinciden con tu búsqueda:</h4>
+            {this.renderGuides()}
+            {/* {this.state.guides} */}
+          </div>
+
+          <div className="Section">
+            <input type="button" className="ResultsButton" value="Volver al menú principal" onClick={() => this.setState({ goToHome: true })} />
+          </div>
+          {this.state.searchFailed && (
+            <p className="form-error">La búsqueda de guías falló. Intantá de nuevo.</p>
+          )}
+        </div>
       </div>
-
-      <div className="Section">
-      <Buttom link={'/home'} className={"ResultsButton"} name={"Volver al menú principal"} />
-        
-      </div>
-
-
-
-    </div>
-  </div>
-);
-
+    );
+  }
+}
 export default Results;
