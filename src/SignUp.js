@@ -70,12 +70,8 @@ class SignUp extends Component {
 
         const { data: { id } } = response
 
-        // // save Id in local storage
-        // localStorage.setItem("userId", id);
-
-        // console.log(`GET ID`)
-        // localStorage.getItem("userId");
-        console.log(`!!!!!!!!!!!` + id)
+        // save Id in local storage
+        localStorage.setItem("userId", id);
 
         this.setState({ passwordsMissmatch: false, goToHome: true, signUpFailed: false })
       } else {

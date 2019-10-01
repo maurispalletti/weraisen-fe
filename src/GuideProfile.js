@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router'
+
 import avatar_1 from './avatars/avatar_1.svg';
 // import basketball from './icons/basketball.svg';
 // import camera from './icons/camera.svg';
@@ -13,12 +15,11 @@ import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
 import { GuideProfileSchema } from './helpers/validators'
-
+import loginServices from './services/userServices'
 
 const languages = [
   { description: 'Español', value: 'SPANISH' },
   { description: 'Inglés', value: 'ENGLISH' },
-  { description: "Alemán", value: 'GERMAN' },
   { description: "Alemán", value: 'GERMAN' },
   { description: "Italiano", value: 'ITALIAN' },
   { description: "Portugués", value: 'PORTUGUESE' },
@@ -37,75 +38,52 @@ const knowledge = [
   { description: "Fotografía", value: 'PHOTOGRAPHY' },
 ];
 
-
 const INITIAL_VALUES = {
   description: '',
-  languages: '',
-  knowledge: '',
+  languages: [],
+  knowledge: [],
 }
 
 class GuideProfile extends Component {
-
-  
-  // state = {
-  //   goToHome: false,
-  //   signUpFailed: false,
-  //   passwordsMissmatch: false,
-  // }
-
-  updateGuide = ({ description, languages, knowledge }) => {
-
-    const values = { description, languages, knowledge }
-
-    console.log(values)
+  state = {
+    goToHome: false,
+    updateFailed: false,
+    notLoggedInUser: false,
   }
 
+  updateGuide = async ({ description, languages, knowledge }) => {
+    try {
+      const userId = localStorage.getItem("userId");
 
-  // createUser = async ({
-  //   firstName,
-  //   lastName,
-  //   age,
-  //   identification,
-  //   gender,
-  //   city,
-  //   email,
-  //   password,
-  //   passwordRepeated,
-  // }) => {
-  //   try {
-  //     if (password === passwordRepeated) {
-  //       const response = await loginServices.createUser({
-  //         firstName,
-  //         lastName,
-  //         identification,
-  //         age,
-  //         city,
-  //         gender,
-  //         email,
-  //         password
-  //       })
+      if (userId) {
+        const response = await loginServices.updateGuide({
+          userId,
+          description,
+          languages,
+          knowledge,
+        })
 
-  //       const { data: { id } } = response
+        console.log(response);
 
-  //       // // save Id in local storage
-  //       // localStorage.setItem("userId", id);
+        const { data: { id } } = response
 
-  //       // console.log(`GET ID`)
-  //       // localStorage.getItem("userId");
-  //       console.log(`!!!!!!!!!!!` + id)
+        console.log(id);
 
-  //       this.setState({ passwordsMissmatch: false, goToHome: true, signUpFailed: false })
-  //     } else {
-  //       this.setState({ signUpFailed: true, passwordsMissmatch: true })
-  //     }
-
-  //   } catch (error) {
-  //     this.setState({ signUpFailed: true })
-  //     console.error(`There was an error trying to create the user`)
-  //   }
-  // }
+        this.setState({ goToHome: true, updateFailed: false, notLoggedInUser: false })
+      } else {
+        this.setState({ notLoggedInUser: true })
+      }
+    } catch (error) {
+      this.setState({ updateFailed: true })
+      console.error(`There was an error trying to update the guide`)
+    }
+  }
 
   render() {
+    if (this.state.goToHome) {
+      return <Redirect to="/home" />
+    }
+
     return (
       <div className="GuideProfile">
         <div className="Header">
@@ -122,7 +100,7 @@ class GuideProfile extends Component {
         <div className="Body">
 
           <Formik
-            initialValues={INITIAL_VALUES} // ADD INITIAL VALUES 
+            initialValues={INITIAL_VALUES}
             validationSchema={GuideProfileSchema}
             onSubmit={(values) => this.updateGuide(values)}>
             <Form>
@@ -141,15 +119,15 @@ class GuideProfile extends Component {
               </div>
 
               <div className="buttonsSection">
-                <input type="button" className="cancel-button" value="Cancelar" />
-                <input type="submit" className="button" value="Guardar cambios" />
-                {false && (
-                  // {this.state.signUpFailed && (
-                  <p className="form-error">
-                    Actualización de datos de guía falló. Intanta de nuevo.
-                    </p>
-                )}
+                <input type="button" className="button" value="Cancelar" onClick={() => this.setState({ goToHome: true })} />
+                <input type="submit" className="button" value="Guardar" />
               </div>
+              {this.state.notLoggedInUser && (
+                <p className="form-error">Usuario no logueado.</p>
+              )}
+              {this.state.updateFailed && (
+                <p className="form-error">Actualización de datos de guía falló. Intanta de nuevo.</p>
+              )}
             </Form>
           </Formik>
         </div>
