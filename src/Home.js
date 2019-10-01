@@ -10,7 +10,7 @@ import home from './icons/home.svg'
 // import shopping from './icons/SHOPPING.png'
 import Autocomplete from './Component/Autocomplete.js'
 import Desplegable from './Component/Desplegable.js'
-import ciudadesCba from './Component/CiudadesCba.js'
+// import ciudadesCba from './Component/CiudadesCba.js'
 
 import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
@@ -39,6 +39,8 @@ const genders = [
 const languages = ['Español', 'Inglés', 'Alemán', 'Italiano', 'Francés', 'Portugués', 'Japonés', 'Chino', 'Ruso', 'Turco', 'Neerlandés', 'Polaco']
 
 const knowledge = ['Bares', 'Restaurantes', 'Museos', 'Espectáculos', 'Deportes', 'Montaña', 'Fotografía', 'Naturaleza', 'Arte', 'Fiesta']
+
+const cities = ['Cordoba', 'Buenos Aires', 'Rosario', 'Villa Carlos Paz', 'Mendoza', 'Hernando', 'Bariloche', 'La Pampa', 'Salta', 'Neuquen', 'Posadas', 'La Plata', 'Villa General Belgrano', 'Miramar', 'Puerto Madryn']
 
 const INITIAL_VALUES = {
   fromAge: '',
@@ -107,7 +109,7 @@ class Home extends Component {
               <div className="Section">
                 <h4>¿A dónde querés ir?</h4>
                 <h5>Ingresá las primeras letras de la ciudad...</h5>
-                <Autocomplete name={'city'} items={ciudadesCba}></Autocomplete>
+                <Autocomplete name={'city'} items={cities}></Autocomplete>
               </div>
               <div className="Section">
                 <h4>Elegí el idioma de tu guía:</h4>
