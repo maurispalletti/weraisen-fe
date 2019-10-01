@@ -25,16 +25,15 @@ export default class Desplegable extends React.Component {
     hoy = año + "-" + mes + "-" + dia;
     this.setState({ value: hoy, min: hoy })
   }
+
   render() {
-
-
     return (
-      <form onSubmit={this.handleSubmit}>
+      // <form onSubmit={this.handleSubmit}>
         <div className="calendario"><label>
           <input name="trip-start" min={this.state.min} value={this.state.value} onChange={this.handleChange} required type="date" />
         </label>
         </div>
-      </form>
+      // </form>
     );
   }
 }

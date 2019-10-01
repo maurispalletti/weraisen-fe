@@ -24,6 +24,7 @@ export default class AutoComplete extends React.Component {
     }
 
     suggestionSelected(value) {
+        localStorage.setItem(`filter_${this.props.name}`, value);
         this.setState(() => ({
             text: value,
             suggestions: [],
@@ -37,7 +38,7 @@ export default class AutoComplete extends React.Component {
         }
         return (
             <ul>
-                {suggestions.map((item) => <li onClick={() => this.suggestionSelected(item)}>{item}</li>)}
+                {suggestions.map((item) => <li key={`item-${item}`} onClick={() => this.suggestionSelected(item)}>{item}</li>)}
             </ul>
         );
     }
