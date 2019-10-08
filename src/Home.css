@@ -77,6 +77,7 @@
 .Section {
   padding-bottom: 1px;
   justify-content: center;
+  
 }
 
 .LastSection {
@@ -123,6 +124,7 @@
   border-radius: 12px;
   padding: 2px;
 }
+
 
 .TextBox-input {
   color: white;

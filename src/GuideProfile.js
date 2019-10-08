@@ -115,7 +115,7 @@ class GuideProfile extends Component {
               <h2>Quiero ser guía</h2>
               <div className="Section">
                 <h4>Describite brevemente para que otros te conozcan: </h4>
-                <FieldWithError component={'textarea'} name="description" placeholder="Ingresa tu descripción" aria-label="description" className="descripcion-input" />
+                <FieldWithError component={'textarea'} name="description" placeholder="<< Hola mi nombre es Juan, me encanta el arte. Llevo más de 5 años acompañando a gente en Museos y centros de arte contemporáneo. Me fascina el intercambio de cultura y hacer nuevos amigos.>>" aria-label="description" className="descripcion-input" />
                 <div className="IdiomsSection">
                   <h4>Idiomas que manejas:</h4>
                   <CheckboxGroupWithError name="languages" values={languages} />

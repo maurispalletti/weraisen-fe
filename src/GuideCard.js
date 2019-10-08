@@ -1,4 +1,5 @@
 import React from 'react';
+import './GuideCard.css';
 
 import avatar_woman_1 from './avatars/avatar_1.svg';
 // import avatar_woman_2 from './avatars/avatar_2.svg';
@@ -20,11 +21,12 @@ export default class GuideCard extends React.Component {
     const knowledgeString = knowledge.join(', ')
 
     return (
+      
       <div onClick={() => this.setState({ show: !this.state.show })} className="GuideCard">
         <div className="GuideCardText">
           <div className="GuideNameText">{firstName} {lastName}</div>
           <div className="GuideText">Ciudad: {city}</div>
-          <div className="GuideText">Edad: {age}</div>
+          <div className="GuideText">Edad: {age} años</div>
           <div className="GuideText">Idiomas: {languagesString}</div>
           {this.state.show && <div className="GuideText">Descripción: {description}</div>}
           {this.state.show && <div className="GuideText">Conocimientos: {knowledgeString}</div>}
