@@ -39,7 +39,6 @@ class Results extends Component {
 
   renderGuides = () => {
     const { guides } = this.state
-    debugger;
     if (guides.length > 0) {
       return guides.map(guide => {
         const { firstName, lastName, age, city, languages, knowledge, description, gender } = guide
