@@ -1,11 +1,9 @@
 import axios from 'axios'
-// const customUrl = `https://94b237d3.ngrok.io`;
 const customUrl = `http://localhost:3001`;
 
 class userServices {
 	static async login({ email, password }) {
 		const url = `${customUrl}/api/v1/users/login`
-		// const url = `http://localhost:3001/api/v1/users/login`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = { email, password }
 
@@ -22,7 +20,6 @@ class userServices {
 		email,
 		password }) {
 		const url = `${customUrl}/api/v1/users/signup`
-		// const url = `http://localhost:3001/api/v1/users/signup`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			firstName,
@@ -43,7 +40,6 @@ class userServices {
 		languages,
 		knowledge }) {
 		const url = `${customUrl}/api/v1/guides/${userId}`
-		// const url = `http://localhost:3001/api/v1/guides/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			description,
@@ -61,7 +57,6 @@ class userServices {
 		language,
 		knowledge }) {
 		const url = `${customUrl}/api/v1/guides`
-		// const url = `http://localhost:3001/api/v1/guides`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			city,

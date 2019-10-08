@@ -3,20 +3,6 @@ import './Profile.css';
 import Buttom from './Boton';
 
 
-
-
-import React, { Component } from 'react'
-import './Login.css'
-import logo from './icons/logo.png'
-import loginServices from './services/userServices'
-import { Redirect } from 'react-router'
-
-import { Formik, Form } from 'formik'
-import { LoginSchema } from './helpers/validators'
-import FieldWithError from './forms/FieldWithError'
-
-
-
 const Profile = () => (
   <div className="Profile">
     {/* <form onSubmit={this.handleSignIn.bind(this)}> */}
