@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import './Home.css';
 import avatar_1 from './avatars/avatar_1.svg';
 import home from './icons/home.svg'
-import Autocomplete from './components/Autocomplete.js.js'
-import Desplegable from './components/Desplegable.js.js'
+import Autocomplete from './components/Autocomplete.js'
+import Desplegable from './components/Desplegable.js'
 
-import Categorias from './components/Categorias.js.js'
+import Categorias from './components/Categorias.js'
 // import ciudadesCba from './Component/CiudadesCba.js'
 
 import { Redirect } from 'react-router'
@@ -130,8 +130,8 @@ class Home extends Component {
               </div>
 
               <div className="LastSection">
-              <h4>Por último, elegí la categoría que desees:</h4>
-            <h5>Ingresá las primeras letras de la categoría...</h5>
+              <h4>Por último, seleccioná la categoría que desees:</h4>
+        
               <Categorias></Categorias>
                 {/* <h4>Por último, elegí la categoría que desees:</h4>
                 <h5>Ingresá las primeras letras de la categoría...</h5>

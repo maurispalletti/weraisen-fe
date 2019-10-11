@@ -1,0 +1,36 @@
+.Container {
+    align-content: center;
+    grid-template-columns: 100px 50px 100px;
+    grid-template-rows: 80px auto 80px; 
+  
+  }
+.fila {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  
+}
+
+  .ItemSeleccionado {
+    cursor:pointer;
+    background: #f7913c; 
+     width:130px;
+     padding:5px;
+     margin:10px;
+
+  }
+
+  .ItemNoSeleccionado {
+    grid-column-start: 2;
+    grid-column-end: five;
+    grid-row-start: row1-start;
+    grid-row-end: 3;
+    cursor:pointer;
+    background: #7dca96;
+     width:130px;
+   
+    
+  }
+
