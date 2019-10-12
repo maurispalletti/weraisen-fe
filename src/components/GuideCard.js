@@ -1,9 +1,9 @@
 import React from 'react';
 
-import avatar_woman_1 from './avatars/avatar_1.svg';
+import avatar_woman_1 from '../avatars/avatar_1.svg';
 // import avatar_woman_2 from './avatars/avatar_2.svg';
 // import avatar_woman_3 from './avatars/avatar_3.svg';
-import avatar_man_1 from './avatars/avatar_4.svg';
+import avatar_man_1 from '../avatars/avatar_4.svg';
 // import avatar_man_2 from './avatars/avatar_5.svg';
 
 export default class GuideCard extends React.Component {

@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import './Home.css';
 import avatar_1 from './avatars/avatar_1.svg';
 import home from './icons/home.svg'
-// import bar from './icons/BAR.png'
-// import culture from './icons/CULTURE.png'
-// import walking from './icons/WALKING.png'
-// import food from './icons/FOOD.png'
-// import nature from './icons/NATURE.png'
-// import shopping from './icons/SHOPPING.png'
-import Autocomplete from './Component/Autocomplete.js'
-import Desplegable from './Component/Desplegable.js'
+import Autocomplete from './components/Autocomplete.js'
+import Desplegable from './components/Desplegable.js'
+
+import Categorias from './components/Categorias.js'
 // import ciudadesCba from './Component/CiudadesCba.js'
 
 import { Redirect } from 'react-router'
@@ -36,11 +32,11 @@ const genders = [
   },
 ]
 
-const languages = ['Español', 'Inglés', 'Alemán', 'Italiano', 'Francés', 'Portugués', 'Japonés', 'Chino', 'Ruso', 'Turco', 'Neerlandés', 'Polaco']
+const languages = ['Castellano', 'Inglés', 'Alemán', 'Italiano', 'Francés', 'Portugués', 'Japonés', 'Chino', 'Ruso', 'Turco', 'Neerlandés', 'Polaco']
 
-const knowledge = ['Bares', 'Restaurantes', 'Museos', 'Espectáculos', 'Deportes', 'Montaña', 'Fotografía', 'Naturaleza', 'Arte', 'Fiesta']
+// const knowledge = ['Bares', 'Restaurantes', 'Museos', 'Espectáculos', 'Deportes', 'Montaña', 'Fotografía', 'Naturaleza', 'Arte', 'Fiesta']
 
-const cities = ['Cordoba', 'Buenos Aires', 'Rosario', 'Villa Carlos Paz', 'Mendoza', 'Hernando', 'Bariloche', 'La Pampa', 'Salta', 'Neuquen', 'Posadas', 'La Plata', 'Villa General Belgrano', 'Miramar', 'Puerto Madryn']
+const cities = ['Cordoba', 'Buenos Aires', 'Rosario', 'Villa Carlos Paz', 'Mendoza', 'Hernando', 'Bariloche', 'General Pico', 'Salta', 'Neuquen', 'Posadas', 'La Plata', 'Villa General Belgrano', 'Miramar', 'Puerto Madryn']
 
 const INITIAL_VALUES = {
   fromAge: '',
@@ -136,10 +132,14 @@ class Home extends Component {
                   <p className="form-error">La edad en el campo 'Desde' debe ser menor a la edad en el campo 'Hasta'.</p>
                 )}
               </div>
+
               <div className="LastSection">
-                <h4>Por último, elegí la categoría que desees:</h4>
+              <h4>Por último, seleccioná la categoría que desees:</h4>
+        
+              <Categorias></Categorias>
+                {/* <h4>Por último, elegí la categoría que desees:</h4>
                 <h5>Ingresá las primeras letras de la categoría...</h5>
-                <Autocomplete name={'knowledge'} items={knowledge} ></Autocomplete>
+                <Autocomplete name={'knowledge'} items={knowledge} ></Autocomplete> */}
               </div>
               <div className="Section">
                 <input type="submit" className="SearchButton" value="Buscar guías" />
@@ -162,25 +162,3 @@ export default Home;
 
 
 
-/* <div className="ActivitiesSection">
-<div className="Activity">
-  <img alt={"Activity"} src={culture} />
-</div>
-<div className="Activity">
-  <img alt={"Activity"} src={food} />
-</div>
-<div className="Activity">
-  <img alt={"Activity"} src={walking} />
-</div>
-</div>
-<div className="ActivitiesSection">
-<div className="Activity">
-  <img alt={"Activity"} src={nature} />
-</div>
-<div className="Activity">
-  <img alt={"Activity"} src={shopping} />
-</div >
-<div className="Activity">
-  <img alt={"Activity"} src={bar} />
-</div>
-</div> */

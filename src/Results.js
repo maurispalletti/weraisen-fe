@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Results.css';
 import home from './icons/home.svg';
 import avatar_woman_1 from './avatars/avatar_1.svg';
-import GuideCard from './GuideCard';
+import GuideCard from './components/GuideCard';
 import { Redirect } from 'react-router'
 
 import userServices from './services/userServices'

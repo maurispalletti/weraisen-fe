@@ -162,7 +162,7 @@ class Profile extends Component {
                 </div>
 
                 <div className="buttonsSectionGuia">
-                  <input type="button" className="button" value="Quiero ser guía"
+                  <input type="button" className="buttonGuia" value="Quiero ser guía"
                     onClick={() => this.setState({ goToGuideProfile: true })} />
                 </div>
 
