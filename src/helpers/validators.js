@@ -28,3 +28,11 @@ export function GuideProfileSchema () {
     knowledge: Yup.string().required('Selecciona un conocimiento'),
   })
 }
+
+export function ProfileSchema () {
+  return Yup.object().shape({
+    // description: Yup.string().required('Ingresa una descripción'),
+    // languages: Yup.string().required('Selecciona un lenguaje'),
+    // knowledge: Yup.string().required('Selecciona un conocimiento'),
+  })
+}

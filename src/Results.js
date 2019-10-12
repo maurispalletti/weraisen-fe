@@ -5,7 +5,7 @@ import avatar_woman_1 from './avatars/avatar_1.svg';
 import GuideCard from './GuideCard';
 import { Redirect } from 'react-router'
 
-import loginServices from './services/userServices'
+import userServices from './services/userServices'
 
 class Results extends Component {
   state = {
@@ -19,7 +19,7 @@ class Results extends Component {
       console.log(`!!!!!!!!!!!!!!!!`)
       console.log(filters)
 
-      const response = await loginServices.getGuides(filters);
+      const response = await userServices.getGuides(filters);
 
       if (response && response.data && response.data.length > 0) {
         this.setState({ guides: response.data })

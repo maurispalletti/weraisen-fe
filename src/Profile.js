@@ -1,51 +1,192 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Profile.css';
-import Buttom from './Boton';
 
+import avatar_1 from './avatars/avatar_1.svg';
+import home from './icons/home.svg';
 
-const Profile = () => (
-  <div className="Profile">
-    {/* <form onSubmit={this.handleSignIn.bind(this)}> */}
-    <div className="profileTitle">
-      ¡Hola Irina!
-      </div>
-    <div className="profileData">
-      <form>
-        {/* Datos a modo de consulta: no debería poder modificarlos */}
-        <input className="profile-input" type="text" placeholder="Nombre" />
-        <input className="profile-input" type="text" placeholder="Apellido" />
-        <input className="profile-input" type="text" placeholder="Fecha de nacimiento" />
-        <input className="profile-input" type="text" placeholder="DNI / Pasaporte / ID" />
-        <input className="profile-input" type="text" placeholder="Género" />
-        <input className="profile-input" type="text" placeholder="Ciudad de residencia" />
+import { Redirect } from 'react-router'
+import { Formik, Form } from 'formik'
+import FieldWithError from './forms/FieldWithError'
+import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
 
-        {/* Datos que puede modificar */}
-        <input className="profile-input" type="text" placeholder="Email" />
-       
-        <div className="buttonsSectionGuia">
+import { ProfileSchema } from './helpers/validators'
+import userServices from './services/userServices'
 
-        <Buttom link={'/guide'} className={"buttonGuia"} name={"QUIERO SER GUÍA"} />
-          
+import DropdownGender from './forms/DropdownGender'
+import { set } from 'date-fns';
+
+const genders = [
+  {
+    value: "Femenino",
+    description: 'Femenino'
+  },
+  {
+    value: "Masculino",
+    description: 'Masculino'
+  },
+  {
+    value: "Otro",
+    description: 'Otro'
+  },
+]
+
+class Profile extends Component {
+
+  state = {
+    goToHome: false,
+    // updateFailed: false,
+    notLoggedInUser: false,
+    editable: false,
+    goToGuideProfile: false,
+    initialValues: null,
+  }
+
+  // AGREGAR BOTON DE EDIT PARA PODER EDITAR INFO 
+  toggleEditInfo = () => {
+    this.setState({ editable: !this.state.editable });
+  }
+
+  getProfile = async () => {
+    try {
+      const userId = localStorage.getItem("userId");
+      if (userId) {
+        const response = await userServices.getProfile(userId)
+
+        return response.data;
+
+        // this.setState({ goToHome: true, updateFailed: false, notLoggedInUser: false })
+      } else {
+        this.setState({ notLoggedInUser: true })
+      }
+    } catch (error) {
+      // this.setState({ updateFailed: true })
+      console.error(`There was an error trying to get the profile`)
+    }
+  }
+
+  updateProfile = async ({
+    firstName,
+    lastName,
+    identification,
+    age,
+    city,
+    gender,
+  }) => {
+    try {
+      const userId = localStorage.getItem("userId");
+      if (userId) {
+        const response = await userServices.updateProfile({
+          userId,
+          firstName,
+          lastName,
+          identification,
+          age,
+          city,
+          gender,
+        })
+        console.log(response);
+        const { data: { id } } = response
+        console.log(id);
+        this.setState({ editable: false })
+      } else {
+        this.setState({ notLoggedInUser: true })
+      }
+    } catch (error) {
+      this.setState({ updateFailed: true })
+      console.error(`There was an error trying to update the profile`)
+    }
+  }
+
+  async componentDidMount() {
+    const profile = await this.getProfile()
+
+    const initialValues = {
+      firstName: profile.firstName,
+      lastName: profile.lastName,
+      age: profile.age,
+      identification: profile.identification,
+      gender: profile.gender,
+      city: profile.city,
+      email: profile.email,
+    }
+
+    this.setState({ initialValues })
+  }
+
+  render() {
+    if (this.state.goToHome) {
+      return <Redirect to="/home" />
+    }
+    if (this.state.goToGuideProfile) {
+      return <Redirect to="/guide" />
+    }
+
+    if (this.state.initialValues) {
+      return (
+        <div className="Profile">
+          <div className="Header">
+            <a href={"/home"} className="HomeIcon">
+              <img src={home} alt={"Home"} />
+            </a>
+            <div className="HeaderImage">
+              <img src={avatar_1} alt={"User"} />
+            </div>
           </div>
 
-          <div className="guideSection">
-          <div className="be-guide">
-            Mostrarme activo:
-            <label class="switch">
-              <input type="checkbox" />
-              <span class="slider round"></span>
-            </label>
+          <div className="Body">
+            <Formik
+              // setear initial values con el did mount o will mount llamando al get
+              initialValues={this.state.initialValues}
+              validationSchema={ProfileSchema}
+              onSubmit={(values) => this.updateProfile(values)}>
+              <Form>
+                <div className="profileData">
+                  <h2>Hola {this.state.initialValues.firstName}!</h2>
+                  <FieldWithError disabled={!this.state.editable} name="firstName" placeholder="Nombre" aria-label="name" className="profile-input" />
+                  <FieldWithError disabled={!this.state.editable} name="lastName" placeholder="Apellido" aria-label="lastName" className="profile-input" />
+                  <FieldWithError disabled={!this.state.editable} name="age" placeholder="Edad" aria-label="age" className="profile-input" />
+                  <FieldWithError disabled={!this.state.editable} name="identification" placeholder="DNI / Pasaporte / ID" aria-label="identification" className="profile-input" />
+                  <DropdownGender disabled={!this.state.editable} name="gender" styleName={"Dropdown-g"} options={genders} />
+                  <FieldWithError disabled={!this.state.editable} name="city" placeholder="Ciudad de residencia" aria-label="city" className="profile-input" />
+                  <FieldWithError disabled={!this.state.editable} name="email" placeholder="Email" aria-label="email" className="profile-input" />
+                </div>
+
+                <div className="guideSection">
+                  <div className="be-guide">
+                    Mostrarme activo:
+          <label class="switch">
+                      <input type="checkbox" disabled={!this.state.editable} />
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div className="buttonsSectionGuia">
+                  <input type="button" className="button" value="Quiero ser guía"
+                    onClick={() => this.setState({ goToGuideProfile: true })} />
+                </div>
+
+                <div className="buttonsSection">
+                  <input type="button" className="button" value={this.state.editable ? "Cancelar" : "Editar"}
+                    onClick={() => this.toggleEditInfo()} />
+                  <input type="submit" className="button" value="Guardar" disabled={!this.state.editable} />
+                </div>
+
+                {this.state.notLoggedInUser && (
+                  <p className="form-error">Usuario no logueado.</p>
+                )}
+                {this.state.updateFailed && (
+                  <p className="form-error">Actualización de datos de guía falló. Intanta de nuevo.</p>
+                )}
+              </Form>
+            </Formik>
           </div>
-        
-          <div className="buttonsSection">
-          <Buttom link={'/home'} className={"cancel-button"} name={"CANCELAR"} />
-          <Buttom link={'/home'} className={"button"} name={"GUARDAR CAMBIOS"} />
-          
         </div>
-        </div>
-      </form>
-    </div>
-  </div>
-);
+      );
+    } else {
+      return null
+    }
+  }
+};
 
 export default Profile;

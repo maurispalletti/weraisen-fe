@@ -53,6 +53,7 @@ class Home extends Component {
     searchFailed: false,
     ageValidationFailed: false,
     notLoggedInUser: false,
+    goToProfile: false,
   }
 
   searchGuides = async ({ fromAge, toAge, gender }) => {
@@ -87,13 +88,16 @@ class Home extends Component {
     if (this.state.goToResults) {
       return <Redirect to="/results" />
     }
+    if (this.state.goToProfile) {
+      return <Redirect to="/profile" />
+    }
 
     return (
       <div className="Home">
         <div className="Header">
-          <a href={"/home"} className="HomeIcon">
+          <button className="HomeIcon" onClick={() => this.setState({ goToProfile: true })}>
             <img src={home} alt={"Home"} />
-          </a>
+          </button>
           <div className="HeaderImage">
             <a href={"/profile"}>
               <img src={avatar_1} alt={"User"} />
