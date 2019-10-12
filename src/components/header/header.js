@@ -2,24 +2,14 @@ import React from 'react'
 import './header.css';
 
 
-// import PropTypes from 'prop-types'
-import Logo from 'C:/Users/Irina/Desktop/FE - WR/weraisen-fe/src/icons/logo.png'
-// import { Link } from 'react-router-dom'
-// import CloseableModal from './commons/ClosableModal'
-// import Menu from './commons/menu'
-// import LoginForm from './forms/LoginForm'
 
-// import { routes as ROUTES, users as USERS } from '../helpers/constants'
-
-class Header extends React.Component {
+class Header extends React.Component (props){
     
-
     render() {
       return (
-          
-                
-        <div href={"/home"} className="HeaderImagen">
-        <img src={Logo} width="130" height="80" align="Left" />
+                          
+        <div href={props.href} className="HeaderImagen">
+        <img src ={props.imgsrc} width="130" height="80" align="Left" />
         </div> 
               
        

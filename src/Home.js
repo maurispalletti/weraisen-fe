@@ -17,8 +17,7 @@ import shopping from './icons/SHOPPING.png'
 import nature from './icons/NATURE.png'
 import Cabecera from './components/header/header.js'
 import Footer from "./components/footer/footer"
- 
-
+import logo from '../src/icons/logo.svg'
 
 
 const Home = () => (
@@ -27,7 +26,7 @@ const Home = () => (
   <div className="Home">
 
    <div>
-    <Cabecera></Cabecera>
+    <Cabecera imgsrc={logo} ></Cabecera>
     </div> 
     
     <div className="Body">
