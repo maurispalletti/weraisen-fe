@@ -2,20 +2,15 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router'
 
 import avatar_1 from './avatars/avatar_1.svg';
-// import basketball from './icons/basketball.svg';
-// import camera from './icons/camera.svg';
-// import cinema from './icons/cinema.svg';
-// import climbing from './icons/climbing.svg';
-// import cocktail from './icons/cocktail.svg';
-// import coffee from './icons/coffee.svg';
 import home from './icons/home.svg';
+
 import './GuideProfile.css';
 
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
 import { GuideProfileSchema } from './helpers/validators'
-import loginServices from './services/userServices'
+import userServices from './services/userServices'
 
 const languages = [
   { description: 'Español', value: 'Español' },
@@ -64,7 +59,7 @@ class GuideProfile extends Component {
       const userId = localStorage.getItem("userId");
 
       if (userId) {
-        const response = await loginServices.updateGuide({
+        const response = await userServices.updateGuide({
           userId,
           description,
           languages,

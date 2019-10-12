@@ -68,6 +68,34 @@ class userServices {
 		}
 		return axios.post(url, body, { headers })
 	}
+
+	static async getProfile(userId) {
+		const url = `${customUrl}/api/v1/users/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async updateProfile({
+		userId,
+		firstName,
+		lastName,
+		identification,
+		age,
+		city,
+		gender,
+	}) {
+		const url = `${customUrl}/api/v1/tourists/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			firstName,
+			lastName,
+			identification,
+			age,
+			city,
+			gender,
+		}
+		return axios.put(url, body, { headers })
+	}
 }
 
 export default userServices

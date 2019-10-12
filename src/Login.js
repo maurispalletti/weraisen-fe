@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Login.css'
 import logo from './icons/logo.png'
-import loginServices from './services/userServices'
+import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 
 import { Formik, Form } from 'formik'
@@ -22,7 +22,7 @@ class Login extends Component {
 
   loginUser = async ({ email, password }) => {
     try {
-      const response = await loginServices.login({ email, password })
+      const response = await userServices.login({ email, password })
       const { data: { id } } = response
 
       // save Id in local storage

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './SignUp.css';
-import loginServices from './services/userServices'
+import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 
 import { Formik, Form } from 'formik'
@@ -57,7 +57,7 @@ class SignUp extends Component {
   }) => {
     try {
       if (password === passwordRepeated) {
-        const response = await loginServices.createUser({
+        const response = await userServices.createUser({
           firstName,
           lastName,
           identification,
