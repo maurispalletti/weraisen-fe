@@ -34,7 +34,7 @@ class Profile extends Component {
 
   state = {
     goToHome: false,
-    // updateFailed: false,
+    updateFailed: false,
     notLoggedInUser: false,
     editable: false,
     goToGuideProfile: false,
@@ -54,12 +54,10 @@ class Profile extends Component {
 
         return response.data;
 
-        // this.setState({ goToHome: true, updateFailed: false, notLoggedInUser: false })
       } else {
         this.setState({ notLoggedInUser: true })
       }
     } catch (error) {
-      // this.setState({ updateFailed: true })
       console.error(`There was an error trying to get the profile`)
     }
   }
@@ -98,16 +96,24 @@ class Profile extends Component {
   }
 
   async componentDidMount() {
-    const profile = await this.getProfile()
+    const {
+      firstName,
+      lastName,
+      age,
+      identification,
+      gender,
+      city,
+      email
+    } = await this.getProfile()
 
     const initialValues = {
-      firstName: profile.firstName,
-      lastName: profile.lastName,
-      age: profile.age,
-      identification: profile.identification,
-      gender: profile.gender,
-      city: profile.city,
-      email: profile.email,
+      firstName,
+      lastName,
+      age,
+      identification,
+      gender,
+      city,
+      email
     }
 
     this.setState({ initialValues })
