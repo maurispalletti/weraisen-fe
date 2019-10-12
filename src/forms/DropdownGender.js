@@ -3,16 +3,18 @@ import PropTypes from 'prop-types'
 import { Field, ErrorMessage } from 'formik'
 
 export default function DropdownGender(props) {
+
+  console.log(props.options)
   return (
     <div>
       <label className="dopdown-label">{props.title}</label>
-      <Field className={props.styleName} name={props.name} component="select" placeholder="Select...">
-        <option value="">Género...</option>
+      <Field className={props.styleName} name={props.name} component="select">
+        <option value="">{props.placeholder}</option>
         {props.options && props.options.length > 0
-          ? props.options.map(opt => {
+          ? props.options.map(option => {
             return (
-              <option key={opt.value} value={opt.value}>
-                {opt.description}
+              <option key={option.name} value={option.name}>
+                {option.name}
               </option>
             )
           })

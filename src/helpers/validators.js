@@ -20,6 +20,11 @@ export function SignUpSchema () {
     passwordRepeated: Yup.string().required('Repite la contraseña')
   })
 }
+export function LanguageSchema () {
+  return Yup.object().shape({
+    name: Yup.string().required('Ingresa el idioma')
+})
+}
 
 export function GuideProfileSchema () {
   return Yup.object().shape({

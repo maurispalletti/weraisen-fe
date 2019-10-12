@@ -23,16 +23,13 @@ const INITIAL_VALUES = {
 
 const genders = [
   {
-    value: "Femenino",
-    description: 'Femenino'
+    name: "Femenino",
   },
   {
-    value: "Masculino",
-    description: 'Masculino'
+    name: "Masculino",
   },
   {
-    value: "Otro",
-    description: 'Otro'
+    name: "Otro",
   },
 ]
 
@@ -102,7 +99,7 @@ class SignUp extends Component {
             <FieldWithError name="lastName" placeholder="Apellido" aria-label="lastName" className="input" />
             <FieldWithError name="age" placeholder="Edad" aria-label="age" className="input" />
             <FieldWithError name="identification" placeholder="ID / DNI / PASAPORTE" aria-label="identification" className="input" />
-            <DropdownGender name="gender" styleName={"Dropdown-g"} options={genders} />
+            <DropdownGender name="gender" styleName={"Dropdown-g"} options={genders} placeholder={"Género..."} />
             <FieldWithError name="city" placeholder="Ciudad de residencia" aria-label="city" className="input" />
             <FieldWithError name="email" placeholder="Email" aria-label="email" className="input" />
             <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" className="input" />

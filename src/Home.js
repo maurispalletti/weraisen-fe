@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Home.css';
 import avatar_1 from './avatars/avatar_1.svg';
 import home from './icons/home.svg'
+import { LanguageSchema } from './helpers/validators'
+import languageService from './services/languageService'
 // import bar from './icons/BAR.png'
 // import culture from './icons/CULTURE.png'
 // import walking from './icons/WALKING.png'
@@ -33,27 +35,20 @@ const edad = [
 
 const genders = [
   {
-    value: "Cualquiera",
-    description: 'Cualquiera'
+        name: "Cualquiera",
   },
   {
-    value: "Femenino",
-    description: 'Femenino'
+    name: "Femenino",
   },
   {
-    value: "Masculino",
-    description: 'Masculino'
+    name: "Masculino",
   },
   {
-    value: "Otro",
-    description: 'Otro'
+    name: "Otro",
   },
 ]
 
-const languages = ['Español', 'Inglés', 'Alemán', 'Italiano', 'Francés', 'Portugués', 'Japonés', 'Chino', 'Ruso', 'Turco', 'Neerlandés', 'Polaco']
-
 const knowledge = ['Bares', 'Restaurantes', 'Museos', 'Espectáculos', 'Deportes', 'Montaña', 'Fotografía', 'Naturaleza', 'Arte', 'Fiesta']
-
 const cities = ['Cordoba', 'Buenos Aires', 'Rosario', 'Villa Carlos Paz', 'Mendoza', 'Hernando', 'Bariloche', 'La Pampa', 'Salta', 'Neuquen', 'Posadas', 'La Plata', 'Villa General Belgrano', 'Miramar', 'Puerto Madryn', 'Madrid', 'Barcelona', 'Roma', 'Bruselas','Amsterdam', 'Galicia','Florencia','Valencia','Turin','Milan','Londres','Ginebra','Paris','Praga','Berlin','Viena','Lisboa','Venecia','Budapest','Estambul','Estocolmo','Munich','Dublin','Granada','Moscú','Varsovia','Napoles','Nueva Delhi','Sidney','Nueva Zelanda','New York','Florida','Miami','Seattle','Portland','Chicago','Los Angeles','Hollywood','San Francisco', 'Utah','Washintong','Las Vegas','Medellín','Cartagena','San Salvador de Bahía', 'Florianopolis','Río de Janeiro', 'Natal', 'La Havana', 'Cusco']
 
 const countries = ["Argentina", "España", "Australia", "Brasil", "Italia", "Suecia", "Suiza", "Chile", "Perú"," Estados Unidos", "Mexico", "Colombia", "Cuba", "Holanda", "Francia", "Reino Unido", "India", "Indonesia", "Nueva Zelanda", "Canadá", "Uruguay", "Bélgica"]
@@ -70,21 +65,27 @@ class Home extends Component {
     notLoggedInUser: false,
   }
 
-  searchGuides = async ({ fromAge, toAge, gender }) => {
+  getLanguages = async () => {
+    try {
+        const response = await languageService.getLanguages()
+        return response.data
+      } catch (error) {
+      console.error(`UPS! There was an error`)
+    } 
+}
 
+  searchGuides = async ({ fromAge, toAge, gender }) => {
     const filters = { fromAge, toAge, gender, edad }
 
-    
     if (parseFloat(fromAge) > parseFloat(toAge)) {
       this.setState({ ageValidationFailed: true })
     } else {
 
       const city = localStorage.getItem("filter_city");
-      const language = localStorage.getItem("filter_language");
+      ;
       const knowledge = localStorage.getItem("filter_knowledge");
 
       filters[`city`] = city;
-      filters[`language`] = language;
       filters[`knowledge`] = knowledge;
 
       const filtersString = JSON.stringify(filters);
@@ -92,26 +93,19 @@ class Home extends Component {
       localStorage.setItem(`filters`, filtersString);
 
       localStorage.removeItem("filter_city");
-      localStorage.removeItem("filter_language");
       localStorage.removeItem("filter_knowledge");
 
       this.setState({ goToResults: true })
-    }
+    } 
   }
-
-
-  
 
   render() {
     if (this.state.goToResults) {
       return <Redirect to="/results" />
-    
     }
 
-    
 
-    
-    
+
 
     return (
       <div className="Home">
@@ -129,6 +123,7 @@ class Home extends Component {
           <Formik
             initialValues={INITIAL_VALUES}
             onSubmit={(filters) => this.searchGuides(filters)}>
+            
             <Form>
               <h2>¡Planifica tu recorrido!</h2>
               <div className="Section">
@@ -142,8 +137,7 @@ class Home extends Component {
               <div className="Section">
                 <h4>Elegí el idioma de tu guía:</h4>
                 <h5>Ingresá las primeras letras del idioma...</h5>
-                <Autocomplete name={'language'} items={languages}></Autocomplete>
-                
+                <DropdownGender name='language' styleName={"Dropdown-home"} options={this.getLanguages()} placeholder={"Elegí tu idioma"} />
                 
               </div>
               <div className="Section">
@@ -152,7 +146,7 @@ class Home extends Component {
               </div>
               <div className="Section">
                 <h4>Género de tu guía</h4>
-                <DropdownGender name="gender" styleName={"Dropdown-home"} options={genders} />
+                <DropdownGender name="gender" styleName={"Dropdown-home"} options={genders} placeholder={"Genero"} />
               </div>
               <div className="Section">
 

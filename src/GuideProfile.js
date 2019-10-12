@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
-
 import avatar_1 from './avatars/avatar_1.svg';
 // import basketball from './icons/basketball.svg';
 // import camera from './icons/camera.svg';
@@ -18,6 +17,7 @@ import { GuideProfileSchema } from './helpers/validators'
 import loginServices from './services/userServices'
 
 const languages = [
+  
   { description: 'Español', value: 'Español' },
   { description: 'Inglés', value: 'Inglés' },
   { description: "Alemán", value: 'Alemán' },
@@ -58,6 +58,15 @@ class GuideProfile extends Component {
     updateFailed: false,
     notLoggedInUser: false,
   }
+  createLanguage = async ({
+    name
+    }) => {
+    try {
+    } catch (error) {
+      
+      console.error(`There was an error trying to create the user`)
+    }
+  }
 
   updateGuide = async ({ description, languages, knowledge }) => {
     try {
@@ -87,7 +96,10 @@ class GuideProfile extends Component {
     }
   }
 
+
+
   render() {
+    const {nameLanguage} = this.state
     if (this.state.goToHome) {
       return <Redirect to="/home" />
     }
@@ -119,6 +131,8 @@ class GuideProfile extends Component {
                 <div className="IdiomsSection">
                   <h4>Idiomas que manejas:</h4>
                   <CheckboxGroupWithError name="languages" values={languages} />
+                  <input type="text" className="TextBox-input" value={name} placeholder="Ingrese idioma" />
+                  
                 </div>
                 <div className="LastSection">
                   <h4>Conocimientos que posees:</h4>
