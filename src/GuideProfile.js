@@ -119,6 +119,13 @@ class GuideProfile extends Component {
                   <h4>Conocimientos que posees:</h4>
                   <CheckboxGroupWithError name="knowledge" values={knowledge} />
                 </div>
+                <div className="be-guide">
+                    Ser guía de grupos:
+          <label class="switch">
+                      <input type="checkbox" disabled={!this.state.editable} />
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
               </div>
 
               <div className="buttonsSection">
