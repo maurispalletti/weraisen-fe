@@ -19,10 +19,6 @@ import DropdownGender from './forms/DropdownGender'
 
 const genders = [
   {
-    value: "Cualquiera",
-    description: 'Cualquiera'
-  },
-  {
     value: "Femenino",
     description: 'Femenino'
   },
@@ -53,7 +49,9 @@ class Home extends Component {
     searchFailed: false,
     ageValidationFailed: false,
     notLoggedInUser: false,
+    anyAge: false,
   }
+  
 
   searchGuides = async ({ fromAge, toAge, gender }) => {
 
@@ -124,14 +122,24 @@ class Home extends Component {
                 <h4>Género de tu guía</h4>
                 <DropdownGender name="gender" styleName={"Dropdown-home"} options={genders} />
               </div>
+
               <div className="Section">
-                <h4>Rango de edad</h4>
-                <FieldWithError name="fromAge" placeholder="Desde" aria-label="description" className="TextBox-input" />
-                <FieldWithError name="toAge" placeholder="Hasta" aria-label="description" className="TextBox-input" />
+                <h4>Rango de edad</h4>                
+                <FieldWithError name="fromAge" placeholder="Desde" aria-label="description" className="TextBox-input" />                
+                <FieldWithError name="toAge" placeholder="Hasta" aria-label="description" className="TextBox-input"  disabled={this.state.anyAge} />
                 {this.state.ageValidationFailed && (
                   <p className="form-error">La edad en el campo 'Desde' debe ser menor a la edad en el campo 'Hasta'.</p>
                 )}
+
+                <div className="be-guide">
+            Indistinto:
+            <label class="switch">            
+              <input onClick={() => this.setState({ anyAge: !this.state.anyAge })} type="checkbox" />
+              <span class="slider round"></span>
+            </label>
+          </div>
               </div>
+
               <div className="LastSection">
                 <h4>Por último, elegí la categoría que desees:</h4>
                 <h5>Ingresá las primeras letras de la categoría...</h5>

@@ -53,7 +53,16 @@
   margin: 5px 2px;
   border-radius: 12px;
 }
-
+.label2
+{
+align-self: left;
+text-align:right;
+}
+.label3
+{
+align-self: left;
+text-align:left;
+}
 .Dropdown-g {
   padding-left: 50%;
   margin: 5px 2px;

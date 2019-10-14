@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import './SignUp.css';
 import loginServices from './services/userServices'
 import { Redirect } from 'react-router'
-
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import { SignUpSchema } from './helpers/validators'
 import DropdownGender from './forms/DropdownGender'
+import CalendarioCompleto from './Component/CalendarioCompleto'
+import Calendar from "./Component/CalendarioPiola";
+
+
 
 
 const INITIAL_VALUES = {
@@ -97,10 +100,11 @@ class SignUp extends Component {
           onSubmit={(values) => this.createUser(values)}>
           <Form>
             <div className="signUpTitle">CREA TU CUENTA</div>
-
-            <FieldWithError name="firstName" placeholder="Nombre" aria-label="firstName" className="input" />
+            <FieldWithError name="firstName" placeholder="Nombres" aria-label="firstName" className="input" />
             <FieldWithError name="lastName" placeholder="Apellido" aria-label="lastName" className="input" />
-            <FieldWithError name="age" placeholder="Edad" aria-label="age" className="input" />
+            
+            <CalendarioCompleto />
+            
             <FieldWithError name="identification" placeholder="ID / DNI / PASAPORTE" aria-label="identification" className="input" />
             <DropdownGender name="gender" styleName={"Dropdown-g"} options={genders} />
             <FieldWithError name="city" placeholder="Ciudad de residencia" aria-label="city" className="input" />
