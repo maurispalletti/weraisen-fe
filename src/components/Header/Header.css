@@ -1,0 +1,41 @@
+.Header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    overflow: hidden;
+    float: left;
+    background-color: #f7913c;
+    height: 10vh;
+    width: 100vw;
+    z-index: 1000;
+    align-items: center;
+    justify-content: left;
+    font-size: calc(10px + 2vmin);
+    color: white;
+   
+  }
+  
+   
+  .HeaderImage {
+    width: 60px; 
+    height: 57px;
+    position: relative;
+    left: 30px;
+    
+    
+  }
+  .HeaderImage2 {
+    width: 60px; 
+    height: 57px;
+    position: relative;
+    left: 1400px;
+    
+  }
+  .HeaderText {
+    position: relative;
+    left: 100px;
+  }
+  
+  

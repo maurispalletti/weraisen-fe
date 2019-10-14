@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './Profile.css';
 
-import avatar_1 from './avatars/avatar_1.svg';
-import home from './icons/home.svg';
+import Header from './components/Header/Header';
+import niña from './icons/niña.svg';
 
 import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
@@ -95,7 +95,7 @@ class Profile extends Component {
     }
   }
 
-  async componentDidMount() {
+  async componentDidMount()  {
     const {
       firstName,
       lastName,
@@ -130,14 +130,8 @@ class Profile extends Component {
     if (this.state.initialValues) {
       return (
         <div className="Profile">
-          <div className="Header">
-            <a href={"/home"} className="HomeIcon">
-              <img src={home} alt={"Home"} />
-            </a>
-            <div className="HeaderImage">
-              <img src={avatar_1} alt={"User"} />
-            </div>
-          </div>
+          <Header imagen={niña} referencia={'/profile'} />
+        
 
           <div className="Body">
             <Formik
@@ -188,7 +182,8 @@ class Profile extends Component {
             </Formik>
           </div>
         </div>
-      );
+        
+        );
     } else {
       return null
     }

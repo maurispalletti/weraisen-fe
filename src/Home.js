@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './Home.css';
 import avatar_1 from './avatars/avatar_1.svg';
-import home from './icons/home.svg'
+import niña from './icons/niña.svg'
 import Autocomplete from './components/Autocomplete.js'
 import Desplegable from './components/Desplegable.js'
-
+import Header from './components/Header/Header'
 import Categorias from './components/Categorias.js'
 // import ciudadesCba from './Component/CiudadesCba.js'
 
@@ -90,16 +90,7 @@ class Home extends Component {
 
     return (
       <div className="Home">
-        <div className="Header">
-          <button className="HomeIcon" onClick={() => this.setState({ goToProfile: true })}>
-            <img src={home} alt={"Home"} />
-          </button>
-          <div className="HeaderImage">
-            <a href={"/profile"}>
-              <img src={avatar_1} alt={"User"} />
-            </a>
-          </div>
-        </div>
+       <Header imagen={niña} referencia={'/profile'} />
         <div className="Body">
           <Formik
             initialValues={INITIAL_VALUES}
@@ -159,6 +150,4 @@ class Home extends Component {
 }
 
 export default Home;
-
-
 

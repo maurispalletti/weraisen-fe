@@ -17,6 +17,9 @@
     text-align: center;
     background-color: #7dca96;
     color: white;
+    overflow-x:hidden;
+    overflow-y: hidden;
+    
   }
   
 
@@ -34,11 +37,13 @@
 }
 
   .Body {
-    padding-top: 15vh;
+
+    padding-top: 9vh;
     color: white;
     background-color: #7dca96;
     width: 100%;
     height: 100%;
+    overflow-x:hidden;
   }
 
 .checkboxIdioma {

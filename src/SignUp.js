@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import './SignUp.css';
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
-
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import { SignUpSchema } from './helpers/validators'
 import DropdownGender from './forms/DropdownGender'
+import Header from './components/Header/Header'
+import niña from './icons/niña.svg'
 
 
 const INITIAL_VALUES = {
@@ -90,7 +91,9 @@ class SignUp extends Component {
     }
 
     return (
+     
       <div className="SignUp">
+        <Header imagen={niña} referencia={'/profile'}></Header>
         <Formik
           initialValues={INITIAL_VALUES}
           validationSchema={SignUpSchema}
@@ -123,7 +126,9 @@ class SignUp extends Component {
             </div>
           </Form>
         </Formik>
-      </div>
+        </div>
+      
+      
     );
   }
 };

@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
-
-import avatar_1 from './avatars/avatar_1.svg';
-import home from './icons/home.svg';
-
+import niña from './icons/niña.svg';
 import './GuideProfile.css';
-
+import Header from './components/Header/Header';
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
@@ -89,18 +86,8 @@ class GuideProfile extends Component {
 
     return (
       <div className="GuideProfile">
-        <div className="Header">
-          <a href={"/home"} className="HomeIcon">
-            <img src={home} alt={"Home"} />
-          </a>
-          <div className="HeaderImage">
-            <a href={"/profile"}>
-              <img src={avatar_1} alt={"User"} />
-            </a>
-          </div>
-        </div>
-
-        <div className="Body">
+        <Header imagen={niña} referencia={'/profile'} />
+         <div className="Body">
 
           <Formik
             initialValues={INITIAL_VALUES}

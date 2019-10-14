@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import './Login.css'
-import logo from './icons/logo.png'
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
-
+import Header from './components/Header/Header'
 import { Formik, Form } from 'formik'
 import { LoginSchema } from './helpers/validators'
 import FieldWithError from './forms/FieldWithError'
+import Footer from './components/Footer/Footer'
 
 const INITIAL_VALUES = {
   email: '',
@@ -47,10 +47,8 @@ class Login extends Component {
 
     return (
       <div className="Login">
-        <div className="Header">
-          <img src={logo} alt={"WeRaisen"} width="100" />
-          <h3 align="right">WERAISEN</h3>
-        </div>
+          <Header texto ={"WERAISEN"}/>
+         
         <Formik
           initialValues={INITIAL_VALUES}
           validationSchema={LoginSchema}
@@ -69,13 +67,17 @@ class Login extends Component {
                 </p>
               )}
 
-              <div className="signup">
+              <div className="signup1">
                 <h5>¿Primera vez en WERAISEN? <a className="forgotPass" href={'/signup'}>Registrate ya.</a></h5>
               </div>
+             
             </div>
           </Form>
         </Formik>
       </div>
+    
+        
+    
     )
   }
 };

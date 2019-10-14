@@ -3,7 +3,9 @@ import './Results.css';
 import home from './icons/home.svg';
 import avatar_woman_1 from './avatars/avatar_1.svg';
 import GuideCard from './components/GuideCard';
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
+import Header from './components/Header/Header';
+import dire from './icons/direccion.png'
 
 import userServices from './services/userServices'
 
@@ -66,16 +68,7 @@ class Results extends Component {
 
     return (
       <div className="Home">
-        <div className="Header">
-          <a href={"/home"} className="HomeIcon">
-            <img src={home} alt={"Home"} />
-          </a>
-          <div className="HeaderImage">
-            <a href={"/profile"}>
-              <img src={avatar_woman_1} alt={"User"} />
-            </a>
-          </div>
-        </div>
+      <Header imagen={dire} referencia={'/home'} />
 
         <div className="Body">
 
