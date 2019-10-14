@@ -117,6 +117,7 @@ class Home extends Component {
               <div className="Section">
                 <h4>¿Cuándo?</h4>
                 <Desplegable />
+                
               </div>
               <div className="Section">
                 <h4>Género de tu guía</h4>
