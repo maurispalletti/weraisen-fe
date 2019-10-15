@@ -6,6 +6,8 @@ import Results from './Results';
 import Signup from './SignUp';
 import Profile from './Profile';
 import GuideProfile from './GuideProfile';
+import Valoration from './Valoration';
+import Rating from './components/rating/Rating'
 
 import { createBrowserHistory } from 'history';
 
@@ -20,6 +22,8 @@ function App() {
       <Route exact path={'/signup'} component={Signup} />
       <Route exact path={'/profile'} component={Profile} />
       <Route exact path={'/guide'} component={GuideProfile} />
+      <Route exact path={'/valoration'} component={Valoration} />
+      <Route exact path={'/rating'}component={Rating}/>
     </Router>
   );
 }

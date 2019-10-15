@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
-
+import Buttom from './components/Boton';
 import avatar_1 from './avatars/avatar_1.svg';
-// import basketball from './icons/basketball.svg';
-// import camera from './icons/camera.svg';
-// import cinema from './icons/cinema.svg';
-// import climbing from './icons/climbing.svg';
-// import cocktail from './icons/cocktail.svg';
-// import coffee from './icons/coffee.svg';
+import Categorias from './components/Categorias'
 import home from './icons/home.svg';
 import './GuideProfile.css';
 
@@ -122,13 +117,16 @@ class GuideProfile extends Component {
                 </div>
                 <div className="LastSection">
                   <h4>Conocimientos que posees:</h4>
-                  <CheckboxGroupWithError name="knowledge" values={knowledge} />
+                  <Categorias></Categorias>
                 </div>
               </div>
 
               <div className="buttonsSection">
-                <input type="button" className="button" value="Cancelar" onClick={() => this.setState({ goToHome: true })} />
-                <input type="submit" className="button" value="Guardar" />
+                {/* <input type="button" className="button" value="Cancelar" onClick={() => this.setState({ goToHome: true })} />
+                <input type="submit" className="button" value="Guardar" /> */}
+
+                <Buttom link={'/home'} className={"cancel-button"} name={"CANCELAR"} onClick={() => this.setState({ goToHome: true })} />
+          <Buttom link={'/home'} className={"button"} name={"GUARDAR"} />
               </div>
               {this.state.notLoggedInUser && (
                 <p className="form-error">Usuario no logueado.</p>

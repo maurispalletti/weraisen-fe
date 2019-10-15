@@ -18,19 +18,20 @@
     background: #f7913c; 
      width:130px;
      padding:5px;
+     height: 130px;
      margin:10px;
 
   }
 
   .ItemNoSeleccionado {
-    grid-column-start: 2;
-    grid-column-end: five;
-    grid-row-start: row1-start;
-    grid-row-end: 3;
     cursor:pointer;
     background: #7dca96;
-     width:130px;
-   
+  width:130px;
+     padding:5px;
+     height: 130px;
+     margin:10px;
     
   }
+
+  
 

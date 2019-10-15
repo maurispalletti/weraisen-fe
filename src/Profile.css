@@ -19,19 +19,41 @@
   color: white;
 }
 
-.button {
+.buttonGuia{
   color: white;
   background-color: #f7913c;
   border: none;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
   font-size: 16px;
   margin: 0px 5px;
   border-radius: 12px;
   width: 30vw;
   height: 40px;
+  line-height: 40px;  
+}
+
+.button {
+
+  color: white;
+  background-color: #f7913c;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  margin: 0px 5px;
+  border-radius: 12px;
+  width: 30vw;
+  height: 40px;
+  line-height: 40px;
 }
 
 .buttonGuia {
@@ -45,7 +67,7 @@
   font-size: 16px;
   margin: 0px 5px;
   border-radius: 12px;
-  width: 30vw;
+  width: 50%;
   height: 40px;
 }
 

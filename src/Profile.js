@@ -39,7 +39,7 @@ const Profile = () => (
         
           <div className="buttonsSection">
           <Buttom link={'/home'} className={"cancel-button"} name={"CANCELAR"} />
-          <Buttom link={'/home'} className={"button"} name={"GUARDAR CAMBIOS"} />
+          <Buttom link={'/home'} className={"button"} name={"GUARDAR"} />
           
         </div>
         </div>
