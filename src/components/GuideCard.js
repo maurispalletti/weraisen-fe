@@ -1,5 +1,6 @@
 import React from 'react';
-
+import star from './rating/star.png'
+import starEmpty from './rating/star-empty.png'
 import avatar_woman_1 from '../avatars/avatar_1.svg';
 // import avatar_woman_2 from './avatars/avatar_2.svg';
 // import avatar_woman_3 from './avatars/avatar_3.svg';
@@ -31,6 +32,7 @@ export default class GuideCard extends React.Component {
         </div>
         <div className="ImageCard">
           <img src={avatar} alt={`${firstName} ${lastName}`} />
+        
         </div>
       </div>
     )

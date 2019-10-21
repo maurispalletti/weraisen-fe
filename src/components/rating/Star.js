@@ -1,22 +1,45 @@
-// import * as React from 'react';
+import React from 'react';
+import './Star.css';
+class Star extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: this.props.selected,
+            showTooltip: false
+        }
+    }
 
-// export default class Star extends React.Component {
-//     constructor(props) {
-//         super(props);
+    componentDidUpdate(PrevProps) {
+        const { selected } = this.props;
+        if (selected !== PrevProps.selected) {
+            this.setState({
+                selected: selected
+            })
+        }
+    }
+    onHover = () => {
+        this.props.onHover(this.props.index);
+        this.setState({
+            showTooltip: true
+        })
+    }
+    onMouseLeave = () => {
+        this.props.onMouseLeave();
+        this.setState({
+            showTooltip: false
+        })
+    }
+    selectStar = () => {
+        this.props.selectStar(this.props.index)
+    }
+    render() {
+        return (
+            <div onClick={this.selectStar} onMouseOver={this.onHover} onMouseOut={this.onMouseLeave} className="tp-container">
+                {this.state.selected ? this.props.ActiveComponent : this.props.InActiveComponent}
+                {this.state.showTooltip && this.props.tpText && <span className="tooltiptext" style={this.props.tooltipStyle}>{this.props.tpText}</span>}
+            </div>
+        );
+    }
+}
 
-//         this.state = {
-//            full:Boolean
-
-//         };
-//     }
-
-// Star = () =>
-//     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-//         viewBox="0 0 512 512" height="1.5em" className="star">
-
-//         <g transform="translate(15,15) scale(0.95)"
-//             stroke="rgba(0,0,0,.85)" stroke-width="30" gill={this.state.full ? 'gold' : 'transparent'}>
-//         </g>
-//     </svg>
-
-// }
+export default Star;

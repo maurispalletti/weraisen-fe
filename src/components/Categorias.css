@@ -16,9 +16,9 @@
   .ItemSeleccionado {
     cursor:pointer;
     background: #f7913c; 
-     width:130px;
+     width:160px;
      padding:5px;
-     height: 130px;
+     height: 160px;
      margin:10px;
 
   }
@@ -26,10 +26,10 @@
   .ItemNoSeleccionado {
     cursor:pointer;
     background: #7dca96;
-  width:130px;
-     padding:5px;
-     height: 130px;
-     margin:10px;
+    width:160px;
+    padding:5px;
+    height: 160px;
+    margin:10px;
     
   }
 

@@ -1,24 +1,29 @@
-// import React from 'react';
-// import Star from './Star.js'
+import React from 'react'
+import Rating from 'react-rating'
+import star from './star.png'
+import starEmpty from './star-empty.png'
 
-// export default class Rating extends React.Component {
-//   constructor(props){
-//     super(props);
+export default class ResetRating extends React.Component {
+ constructor(props) {
+   super(props);
+   this.state = {value: 0};
 
-//     this.state = {
-//       rating: null,
-//     };
-//   }
+   this.handleClick = this.handleClick.bind(this);
+ }
 
-//   handleRating = (rating) => {
-//     this.setState({rating});
-//   }
+ handleClick(event) {
+   this.setState({value: undefined});
+ }
 
-//   render() {
-//     return (
-//       <div>
-//       <Star full= {true}/>
-//       <Star full= {false}/>
-//       </div>  )
-//   }
-// }
+ render() {
+   return (
+     
+       <div>
+         <Rating {...this.props} initialRating={this.state.value} emptySymbol={<img alt={"Activity"} src={starEmpty}  />}
+ fullSymbol={<img alt={"Activity"} src={star}  />}  onClick={(value ) => console.log(value)}/>
+        
+       </div>
+     );
+ 
+ }
+}
