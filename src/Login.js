@@ -56,7 +56,7 @@ class Login extends Component {
           validationSchema={LoginSchema}
           onSubmit={(values) => this.loginUser(values)}>
           <Form>
-            <h3>Iniciar sesión </h3>
+            <h3>Iniciá sesión </h3>
             <FieldWithError name="email" placeholder="Email" aria-label="username" className="login-input" />
             <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" className="login-input" />
 
@@ -65,7 +65,7 @@ class Login extends Component {
 
               {this.state.loginFailed && (
                 <p className="form-error">
-                  Login falló. Tu email y contraseña no coinciden. Intanta de nuevo.
+                  Login falló. Tu email y contraseña no coinciden. Intentá de nuevo.
                 </p>
               )}
 

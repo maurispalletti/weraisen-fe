@@ -105,7 +105,7 @@ class Home extends Component {
             initialValues={INITIAL_VALUES}
             onSubmit={(filters) => this.searchGuides(filters)}>
             <Form>
-              <h2>¡Planifica tu recorrido!</h2>
+              <h2>¡Planificá tu recorrido!</h2>
               <div className="Section">
                 <h4>¿A dónde querés ir?</h4>
                 <h5>Ingresá las primeras letras de la ciudad...</h5>
