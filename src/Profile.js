@@ -13,7 +13,6 @@ import { ProfileSchema } from './helpers/validators'
 import userServices from './services/userServices'
 
 import DropdownGender from './forms/DropdownGender'
-import { set } from 'date-fns';
 
 const genders = [
   {
