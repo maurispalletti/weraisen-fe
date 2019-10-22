@@ -6,6 +6,9 @@ import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 import { Formik, Form, Field } from 'formik'
 
+import Buttom from './components/Boton.js'
+
+
 const touristId = "5da12937326a149dfa699f19"
 const guideId = "5da194007cb0d8dda8604ed9"
 
@@ -135,14 +138,19 @@ class Chat extends Component {
                       aria-label="inputChat"
                       className="inputChat"
                       type="text"
-                      placeholder="Enter your message..."
+                      placeholder="Ingresa tu mensaje"
                     />
                   </div>
                   <input type="submit" className="send-button" value="Enviar" />
                 </Form>
               </Formik>
+
             </div>
           </div>
+
+          <Buttom link={'/valoration'} className={"botons"} name={"Finalizar visita"} />
+
+
         </div>
       </div>
     );

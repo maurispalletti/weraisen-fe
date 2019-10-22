@@ -157,8 +157,8 @@ body {
 .chatWindow {
   background: rgb(233, 229, 229);
   border-radius: 12px;
-  width: 70vw;
-  margin: 0 15vw;
+  width: 90vw;
+  margin: 0 5vw;
 }
 .chatInputWrapper {
   display: flex;

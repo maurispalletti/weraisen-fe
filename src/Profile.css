@@ -26,18 +26,16 @@
   text-align: center;
   text-decoration: none;
   text-align: center;
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   font-size: 16px;
   margin: 0px 5px;
   border-radius: 12px;
-  width: 30vw;
-  height: 40px;
   line-height: 40px;  
 }
 
-.button {
 
+.button {
   color: white;
   background-color: #f7913c;
   border: none;
@@ -55,20 +53,48 @@
   line-height: 40px;
 }
 
-.buttonGuia {
+.buttonLeft {
   color: white;
   background-color: #f7913c;
   border: none;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   font-size: 16px;
-  margin: 0px 5px;
+  margin: 0px 5px 30px;
   border-radius: 12px;
-  width: 50%;
-  height: 40px;
+  width: 30vw;
+  line-height: 40px;
+  position: absolute;
+  left: 10vw;
 }
+
+.cerrarSesion {
+  font-size: 15px;
+}
+
+.buttonRight {
+  color: white;
+  background-color: #f7913c;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  margin: 0px 5px 30px;
+  border-radius: 12px;
+  width: 30vw;
+  line-height: 40px;
+  position: absolute;
+  right: 10vw;
+}
+
 
 .cancel-button {
   color: white;
@@ -109,11 +135,12 @@
 }
 
 .buttonsSection {
-  margin: 30px 10%;
+  position: relative;
   display: flex;
   flex-direction: row;
   align-content: center;
   text-align: center;
+  margin-top: 20px;
 }
 
 .buttonsSectionGuia {

@@ -113,10 +113,27 @@
   text-decoration: none;
   align-items: center;
   font-size: 16px;
+  /* width: 80vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-bottom: 10px; */
+}
+
+.GuideCard2 {
+  background-color: white;
+  border-radius: 12px;
+  border: none;
+  color: white;
+  align-items: center;
+  font-size: 16px;
   width: 80vw;
   margin-left: 10vw;
   margin-right: 10vw;
   margin-bottom: 10px;
+}
+
+.buttonCardGuia {
+  padding-bottom: 20px;
 }
 
 .ImageCard {

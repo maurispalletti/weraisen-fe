@@ -122,11 +122,11 @@ class GuideProfile extends Component {
                 </div>
               </div>
 
-              <div className="buttonsSection">
+              <div className="buttonsSectionGuide">
                 {/* <input type="button" className="button" value="Cancelar" onClick={() => this.setState({ goToHome: true })} />
                 <input type="submit" className="button" value="Guardar" /> */}
 
-                <Buttom link={'/home'} className={"cancel-button"} name={"CANCELAR"} onClick={() => this.setState({ goToHome: true })} />
+          <Buttom link={'/home'} className={"cancel-button"} name={"CANCELAR"} onClick={() => this.setState({ goToHome: true })} />
           <Buttom link={'/home'} className={"button"} name={"GUARDAR"} />
               </div>
               {this.state.notLoggedInUser && (

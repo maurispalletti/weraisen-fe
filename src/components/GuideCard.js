@@ -7,6 +7,9 @@ import avatar_woman_1 from '../avatars/avatar_1.svg';
 import avatar_man_1 from '../avatars/avatar_4.svg';
 // import avatar_man_2 from './avatars/avatar_5.svg';
 
+import Buttom from './Boton.js'
+
+
 export default class GuideCard extends React.Component {
   state = {
     show: false
@@ -21,18 +24,22 @@ export default class GuideCard extends React.Component {
     const knowledgeString = knowledge.join(', ')
 
     return (
-      <div onClick={() => this.setState({ show: !this.state.show })} className="GuideCard">
-        <div className="GuideCardText">
-          <div className="GuideNameText">{firstName} {lastName}</div>
-          <div className="GuideText">Ciudad: {city}</div>
-          <div className="GuideText">Edad: {age}</div>
-          <div className="GuideText">Idiomas: {languagesString}</div>
-          {this.state.show && <div className="GuideText">Descripción: {description}</div>}
-          {this.state.show && <div className="GuideText">Conocimientos: {knowledgeString}</div>}
+      <div className="GuideCard2">
+        <div onClick={() => this.setState({ show: !this.state.show })} className="GuideCard">
+          <div className="GuideCardText">
+            <div className="GuideNameText">{firstName} {lastName}</div>
+            <div className="GuideText">Ciudad: {city}</div>
+            <div className="GuideText">Edad: {age}</div>
+            <div className="GuideText">Idiomas: {languagesString}</div>
+            {this.state.show && <div className="GuideText">Descripción: {description}</div>}
+            {this.state.show && <div className="GuideText">Conocimientos: {knowledgeString}</div>}
+          </div>
+          <div className="ImageCard">
+            <img src={avatar} alt={`${firstName} ${lastName}`} />
+          </div>
         </div>
-        <div className="ImageCard">
-          <img src={avatar} alt={`${firstName} ${lastName}`} />
-        
+        <div className="buttonCardGuia">
+        <Buttom link={'/chat'} className={"botons"} name={"Iniciar chat"} />
         </div>
       </div>
     )

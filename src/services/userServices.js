@@ -1,5 +1,6 @@
 import axios from 'axios'
-const customUrl = `http://localhost:3001`;
+// const customUrl = `http://localhost:3001`;
+const customUrl = `https://fd7585b9.ngrok.io`;
 
 class userServices {
 	static async login({ email, password }) {

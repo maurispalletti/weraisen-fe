@@ -47,8 +47,9 @@
     border: none;
     padding: 10px 20px;
     border-radius: 12px;
-    margin: 30px 0 30px;
-  font-weight: bold;
+    margin: 50px 0 30px;
+    text-decoration: none;
+    font-weight: bold;
     
   }
   .ratingSection {

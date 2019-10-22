@@ -12,6 +12,9 @@ import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
 import { ProfileSchema } from './helpers/validators'
 import userServices from './services/userServices'
 
+import Buttom from './components/Boton.js'
+
+
 import DropdownGender from './forms/DropdownGender'
 
 const genders = [
@@ -172,9 +175,9 @@ class Profile extends Component {
                 </div>
 
                 <div className="buttonsSection">
-                  <input type="button" className="button" value={this.state.editable ? "Cancelar" : "Editar"}
+                  <input type="button" className="buttonLeft" value={this.state.editable ? "Cancelar" : "Editar"}
                     onClick={() => this.toggleEditInfo()} />
-                  <input type="submit" className="button" value="Guardar" disabled={!this.state.editable} />
+                  <input type="submit" className="buttonRight" value="Guardar" disabled={!this.state.editable} />
                 </div>
 
                 {this.state.notLoggedInUser && (
@@ -187,11 +190,11 @@ class Profile extends Component {
             </Formik>
           </div>
 
-          <div className="buttonsSection">
-            <Buttom link={'/home'} className={"cancel-button"} name={"CANCELAR"} />
-            <Buttom link={'/home'} className={"button"} name={"GUARDAR"} />
+          <div className="cerrarSesion">
+          <Buttom link={'/login'} className={"botons"} name={"Cerrar sesión"} />
 
-          </div>
+
+        </div>
         </div>
       );
     } else {
