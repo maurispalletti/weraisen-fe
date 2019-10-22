@@ -177,7 +177,7 @@ body {
   padding: 0 0 50px 0;
   margin-top: 60px;
   margin-bottom: 10px;
-  max-height: 400px;
+  height: 400px;
   overflow: scroll;
   scroll-behavior: smooth;
   transform:rotateX(180deg);

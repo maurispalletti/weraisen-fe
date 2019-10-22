@@ -96,6 +96,18 @@ class userServices {
 		}
 		return axios.put(url, body, { headers })
 	}
+
+
+	static async getConversation({ touristId, guideId }) {
+		const url = `${customUrl}/api/v1/chat/conversation`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = { touristId, guideId }
+		return axios.post(url, body, { headers })
+	}
+
+
+
+
 }
 
 export default userServices

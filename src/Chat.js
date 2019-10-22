@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import './Chat.css';
 import avatar_1 from './avatars/avatar_1.svg';
 import home from './icons/home.svg'
-
-
+import userServices from './services/userServices'
 
 import { Redirect } from 'react-router'
 
+const touristId = "5da12937326a149dfa699f19"
+const guideId = "5da194007cb0d8dda8604ed9"
+
+const touristName = "Yo"
+const guideName = "Guía"
 
 class Chat extends Component {
   state = {
@@ -15,6 +19,57 @@ class Chat extends Component {
     ageValidationFailed: false,
     notLoggedInUser: false,
     goToProfile: false,
+    messages: null
+  }
+
+  getConversation = async () => {
+    try {
+      // const userId = localStorage.getItem("userId");
+
+      const response = await userServices.getConversation({ touristId, guideId })
+
+      console.log(response.data);
+
+      return response.data;
+
+
+      // setTimeout(yourFunction, 5000);
+      // const { messages } = await this.getConversation();
+      // this.setState({ messages })
+
+
+    } catch (error) {
+      console.error(`There was an error trying to get the chat`)
+    }
+  }
+
+  renderMessages = (messages) => (
+    messages.map(message => (
+      <div key={message.id}>
+        {message.emisor === touristId ? (
+          <li className="self">
+            <div className="msg">
+              <div className="msgNameRight">{touristName}</div>
+              <div className="message">{message.text}</div>
+            </div>
+          </li>
+        ) : (
+            <li className="other">
+              <div className="msg">
+                <div className="msgNameLeft">{guideName}</div>
+                <div className="message">{message.text}</div>
+              </div>
+            </li>
+          )}
+      </div>
+    ))
+  )
+
+  async componentDidMount() {
+
+    const { messages } = await this.getConversation();
+    this.setState({ messages })
+    // await this.getConversation();
   }
 
   render() {
@@ -38,100 +93,11 @@ class Chat extends Component {
           </div>
         </div>
         <div className="BodyChat">
-
-
-
-
-
           <div className="chatWindow">
             <ul className="chat" id="chatList">
-              {/* {this.state.groupMessage.map(data => (
-            <div key={data.id}>
-              {this.state.user.uid === data.sender.uid ? (
-                <li className="self">
-                  <div className="msg">
-                    <p>{data.sender.uid}</p>
-                    <div className="message"> {data.data.text}</div>
-                  </div>
-                </li>
-              ) : (
-                <li className="other">
-                  <div className="msg">
-                    <p>{data.sender.uid}</p>
-                   <div className="message"> {data.data.text} </div>
-                  </div>
-                </li>
-              )}
-            </div>
-          ))} */}
-
               <div className="messagesWrapper" key={123}>
-
-                {/* <li className="self">
-                  <div className="msg">
-                    <p>dmixof</p>
-                    <div className="message"> ESTE ES OTRO MENSAJEEEEE </div>
-                  </div>
-                </li> */}
-
-                <li className="self">
-                  <div className="msg">
-                    <div className="msgNameRight">Yo</div>
-                    <div className="message"> ESTE ES OTRO MENSAJEEEEE </div>
-                  </div>
-                </li>
-
-                <li className="other">
-                  <div className="msg">
-                  <div className="msgNameLeft">Otra persona</div>
-                    <div className="message"> ESTE ES EL MENSfsdfdsm sdfdsfsdjkf sfl jdsfkls dfj sdj sdjlf sdkAJE del receptor </div>
-                  </div>
-                </li>
-
-
-
-
-                <li className="other">
-                  <div className="msg">
-                  <div className="msgNameLeft">Otra persona</div>
-                    <div className="message"> ESTE ES EL MENSfsdfdsm sdfdsfsdjkf sfl jdsfkls dfj sdj sdjlf sdkAJE del receptor </div>
-                  </div>
-                </li>
-                <li className="other">
-                  <div className="msg">
-                  <div className="msgNameLeft">Otra persona</div>
-                    <div className="message"> ESTE ES EL MENSfsdfdsm sdfdsfsdjkf sfl jdsfkls dfj sdj sdjlf sdkAJE del receptor </div>
-                  </div>
-                </li>
-
-                <li className="self">
-                  <div className="msg">
-                    <div className="msgNameRight">Yo</div>
-                    <div className="message"> ESTE ES OTRO MENSAJEEEEE </div>
-                  </div>
-                </li>
-
-                <li className="self">
-                  <div className="msg">
-                    <div className="msgNameRight">Yo</div>
-                    <div className="message"> ESTE ES OTRO MENSAJEEEEE </div>
-                  </div>
-                </li>
-                <li className="other">
-                  <div className="msg">
-                  <div className="msgNameLeft">Otra persona</div>
-                    <div className="message"> ESTE ES EL MENSfsdfdsm sdfdsfsdjkf sfl jdsfkls dfj sdj sdjlf sdkAJE del receptor </div>
-                  </div>
-                </li>
-                <li className="other">
-                  <div className="msg">
-                  <div className="msgNameLeft">Otra persona</div>
-                    <div className="message"> ESTE ES EL MENSfsdfdsm sdfdsfsdjkf sfl jdsfkls dfj sdj sdjlf sdkAJE del receptor </div>
-                  </div>
-                </li>
-
+                {this.state.messages && this.renderMessages(this.state.messages)}
               </div>
-
             </ul>
             <div className="chatInputWrapper">
               <form className="formInputChat">
