@@ -68,6 +68,52 @@ class userServices {
 		}
 		return axios.post(url, body, { headers })
 	}
+
+	static async getProfile(userId) {
+		const url = `${customUrl}/api/v1/users/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async updateProfile({
+		userId,
+		firstName,
+		lastName,
+		identification,
+		age,
+		city,
+		gender,
+	}) {
+		const url = `${customUrl}/api/v1/tourists/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			firstName,
+			lastName,
+			identification,
+			age,
+			city,
+			gender,
+		}
+		return axios.put(url, body, { headers })
+	}
+
+
+	static async getConversation({ touristId, guideId }) {
+		const url = `${customUrl}/api/v1/chat/conversation`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = { touristId, guideId }
+		return axios.post(url, body, { headers })
+	}
+
+
+	static async sendMessage(chatId, messages) {
+		const url = `${customUrl}/api/v1/chat/${chatId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = { messages }
+		return axios.put(url, body, { headers })
+	}
+
+	
 }
 
 export default userServices

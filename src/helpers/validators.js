@@ -28,3 +28,14 @@ export function GuideProfileSchema () {
     knowledge: Yup.string().required('Selecciona un conocimiento'),
   })
 }
+
+export function ProfileSchema () {
+  return Yup.object().shape({
+    firstName: Yup.string().required('Ingresa tu nombre'),
+    lastName: Yup.string().required('Ingresa tu apellido'),
+    age: Yup.number().required('Ingresa tu edad'),
+    identification: Yup.string().required('Ingresa tu identificación'),
+    gender: Yup.string().required('Ingresa tu género'),
+    city: Yup.string().required('Ingresa tu ciudad de residencia'),
+  })
+}
