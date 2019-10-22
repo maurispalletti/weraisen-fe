@@ -3,14 +3,16 @@ import './Chat.css';
 import avatar_1 from './avatars/avatar_1.svg';
 import home from './icons/home.svg'
 import userServices from './services/userServices'
-
 import { Redirect } from 'react-router'
+import { Formik, Form, Field } from 'formik'
 
 const touristId = "5da12937326a149dfa699f19"
 const guideId = "5da194007cb0d8dda8604ed9"
 
 const touristName = "Yo"
 const guideName = "Guía"
+
+const chatId = "5daf572ef05f869fd8d53760"
 
 class Chat extends Component {
   state = {
@@ -19,7 +21,11 @@ class Chat extends Component {
     ageValidationFailed: false,
     notLoggedInUser: false,
     goToProfile: false,
-    messages: null
+    messages: [],
+  }
+
+  componentDidMount() {
+    this.getConversation();
   }
 
   getConversation = async () => {
@@ -28,16 +34,19 @@ class Chat extends Component {
 
       const response = await userServices.getConversation({ touristId, guideId })
 
-      console.log(response.data);
+      if (response.data && response.data.messages) {
+        const { data: { messages } } = response;
 
-      return response.data;
+        console.log(`messages.length ${messages.length} `)
+        console.log(`messages.length state ${this.state.messages.length} `)
 
+        this.setState({ messages })
 
-      // setTimeout(yourFunction, 5000);
-      // const { messages } = await this.getConversation();
-      // this.setState({ messages })
+        // if (messages.length > this.state.messages.length) {
+        // }
 
-
+        setTimeout(() => this.getConversation(), 3000);
+      }
     } catch (error) {
       console.error(`There was an error trying to get the chat`)
     }
@@ -65,11 +74,29 @@ class Chat extends Component {
     ))
   )
 
-  async componentDidMount() {
+  sendMessage = async (values) => {
+    console.log(values);
 
-    const { messages } = await this.getConversation();
-    this.setState({ messages })
-    // await this.getConversation();
+    const newMessage = {
+      emisor: touristId,
+      receptor: guideId,
+      text: values.message
+    }
+
+    if (this.state.messages) {
+      try {
+        const messagesArray = this.state.messages;
+        messagesArray.push(newMessage)
+
+        const newChat = await userServices.sendMessage(chatId, messagesArray)
+        console.log(newChat);
+
+      } catch (error) {
+        console.error(`There was an error trying to send message`)
+      }
+    }
+
+
   }
 
   render() {
@@ -100,22 +127,22 @@ class Chat extends Component {
               </div>
             </ul>
             <div className="chatInputWrapper">
-              <form className="formInputChat">
-                {/* <form onSubmit={this.handleSubmit}> */}
-                <input
-                  className="inputChat"
-                  type="text"
-                  placeholder="Enter your message..."
-                // onChange={this.handleChange}
-                />
-              </form>
-              <input type="submit" className="send-button" value="Enviar" />
+              <Formik onSubmit={(values) => this.sendMessage(values)}>
+                <Form>
+                  <div className="formInputChat">
+                    <Field
+                      name="message"
+                      aria-label="inputChat"
+                      className="inputChat"
+                      type="text"
+                      placeholder="Enter your message..."
+                    />
+                  </div>
+                  <input type="submit" className="send-button" value="Enviar" />
+                </Form>
+              </Formik>
             </div>
           </div>
-
-
-
-
         </div>
       </div>
     );
@@ -123,41 +150,3 @@ class Chat extends Component {
 }
 
 export default Chat;
-
-
-
-
-
-// <div className="chatWindow">
-// <ul className="chat" id="chatList">
-//   {this.state.groupMessage.map(data => (
-//     <div key={data.id}>
-//       {this.state.user.uid === data.sender.uid ? (
-//         <li className="self">
-//           <div className="msg">
-//             <p>{data.sender.uid}</p>
-//             <div className="message"> {data.data.text}</div>
-//           </div>
-//         </li>
-//       ) : (
-//         <li className="other">
-//           <div className="msg">
-//             <p>{data.sender.uid}</p>
-//            <div className="message"> {data.data.text} </div>
-//           </div>
-//         </li>
-//       )}
-//     </div>
-//   ))}
-// </ul>
-// <div className="chatInputWrapper">
-//   <form onSubmit={this.handleSubmit}>
-//     <input
-//       className="textarea input"
-//       type="text"
-//       placeholder="Enter your message..."
-//       onChange={this.handleChange}
-//     />
-//   </form>
-// </div>
-// </div>

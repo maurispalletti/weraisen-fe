@@ -106,8 +106,14 @@ class userServices {
 	}
 
 
+	static async sendMessage(chatId, messages) {
+		const url = `${customUrl}/api/v1/chat/${chatId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = { messages }
+		return axios.put(url, body, { headers })
+	}
 
-
+	
 }
 
 export default userServices
