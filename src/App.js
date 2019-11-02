@@ -7,6 +7,7 @@ import Signup from './SignUp';
 import Profile from './Profile';
 import GuideProfile from './GuideProfile';
 import Chat from './Chat';
+import Informe from './Informes';
 
 import { createBrowserHistory } from 'history';
 
@@ -22,6 +23,7 @@ function App() {
       <Route exact path={'/profile'} component={Profile} />
       <Route exact path={'/guide'} component={GuideProfile} />
       <Route exact path={'/chat'} component={Chat} />
+      <Route exact path={'/informe'} component={Informe} />
     </Router>
   );
 }

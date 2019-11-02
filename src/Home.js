@@ -12,6 +12,8 @@ import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import DropdownGender from './forms/DropdownGender'
+//grafico
+import Grafico from './components/Grafico2barras'
 
 const genders = [
   {
@@ -119,6 +121,10 @@ class Home extends Component {
               <div className="Section">
                 <h4>¿Cuándo?</h4>
                 <Desplegable />
+              </div>
+              <div>
+<Grafico/>
+                
               </div>
               <div className="Section">
                 <h4>Género de tu guía</h4>
