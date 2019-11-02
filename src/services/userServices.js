@@ -113,7 +113,13 @@ class userServices {
 		return axios.put(url, body, { headers })
 	}
 
+	static async getMatches(userId) {
+		const url = `${customUrl}/api/v1/matches/user/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
 	
+
 }
 
 export default userServices

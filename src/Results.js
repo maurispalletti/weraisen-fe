@@ -89,7 +89,7 @@ class Results extends Component {
             <input type="button" className="ResultsButton" value="Volver al menú principal" onClick={() => this.setState({ goToHome: true })} />
           </div>
           {this.state.searchFailed && (
-            <p className="form-error">La búsqueda de guías falló. Intantá de nuevo.</p>
+            <p className="form-error">La búsqueda de guías falló. Intentá de nuevo por favor.</p>
           )}
         </div>
       </div>

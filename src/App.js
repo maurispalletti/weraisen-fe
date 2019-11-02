@@ -8,6 +8,7 @@ import Profile from './Profile';
 import GuideProfile from './GuideProfile';
 import Valoration from './Valoration';
 import Chat from './Chat';
+import Matches from './Matches';
 
 import { createBrowserHistory } from 'history';
 
@@ -24,6 +25,7 @@ function App() {
       <Route exact path={'/guide'} component={GuideProfile} />
       <Route exact path={'/valoration'} component={Valoration} />
       <Route exact path={'/chat'} component={Chat} />
+      <Route exact path={'/matches'} component={Matches} />
     </Router>
   );
 }

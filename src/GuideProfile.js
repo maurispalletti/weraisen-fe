@@ -28,19 +28,19 @@ const languages = [
   { description: "Polaco", value: 'Polaco' },
 ];
 
-const knowledge = [
-  { description: 'Bares', value: 'Bares' },
-  { description: 'Restaurantes', value: 'Restaurantes' },
-  { description: "Montaña", value: 'Montaña' },
-  { description: "Museos", value: 'Museos' },
-  { description: "Historia", value: 'Historia' },
-  { description: "Deportes", value: 'Deportes' },
-  { description: "Espectáculos", value: 'Espectáculos' },
-  { description: "Fotografía", value: 'Fotografía' },
-  { description: "Naturaleza", value: 'Naturaleza' },
-  { description: "Arte", value: 'Arte' },
-  { description: "Fiesta", value: 'Fiesta' },
-];
+// const knowledge = [
+//   { description: 'Bares', value: 'Bares' },
+//   { description: 'Restaurantes', value: 'Restaurantes' },
+//   { description: "Montaña", value: 'Montaña' },
+//   { description: "Museos", value: 'Museos' },
+//   { description: "Historia", value: 'Historia' },
+//   { description: "Deportes", value: 'Deportes' },
+//   { description: "Espectáculos", value: 'Espectáculos' },
+//   { description: "Fotografía", value: 'Fotografía' },
+//   { description: "Naturaleza", value: 'Naturaleza' },
+//   { description: "Arte", value: 'Arte' },
+//   { description: "Fiesta", value: 'Fiesta' },
+// ];
 
 const INITIAL_VALUES = {
   description: '',

@@ -48,7 +48,7 @@ export default class GuideCard extends React.Component {
           </div>
         </div>
         <div className="buttonCardGuia">
-        <input type="button" className={"botons"} value={"Iniciar chat"} onClick={() => this.goToChat()} />
+        <input type="button" className={"botonsGuideCard"} value={"Iniciar chat"} onClick={() => this.goToChat()} />
         </div>
       </div>
     )
