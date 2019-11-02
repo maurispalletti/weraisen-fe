@@ -6,16 +6,25 @@ import avatar_woman_1 from '../avatars/avatar_1.svg';
 // import avatar_woman_3 from './avatars/avatar_3.svg';
 import avatar_man_1 from '../avatars/avatar_4.svg';
 // import avatar_man_2 from './avatars/avatar_5.svg';
-
-import Buttom from './Boton.js'
-
+import { Redirect } from 'react-router'
 
 export default class GuideCard extends React.Component {
   state = {
-    show: false
+    show: false,
+    goToChat: false,
+  }
+
+  goToChat() {
+    // aca actualizar los dos cosos del local storage uqe van a usar en el chat
+    // redireccionar con chat
+    this.setState({ goToChat: true })
   }
 
   render() {
+
+    if (this.state.goToChat) {
+      return <Redirect to={`/${this.props.firstName}`} />
+    }
 
     const { firstName, lastName, city, age, gender, languages, knowledge, description } = this.props;
     const avatar = gender === 'Femenino' ? avatar_woman_1 : avatar_man_1;
@@ -39,7 +48,7 @@ export default class GuideCard extends React.Component {
           </div>
         </div>
         <div className="buttonCardGuia">
-        <Buttom link={'/chat'} className={"botons"} name={"Iniciar chat"} />
+        <input type="button" className={"botons"} value={"Iniciar chat"} onClick={() => this.goToChat()} />
         </div>
       </div>
     )

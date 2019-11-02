@@ -8,9 +8,11 @@ import { Formik, Form, Field } from 'formik'
 
 import Buttom from './components/Boton.js'
 
+const guideId = "5da12937326a149dfa699f19"
+const touristId = "5da194007cb0d8dda8604ed9"
 
-const touristId = "5da12937326a149dfa699f19"
-const guideId = "5da194007cb0d8dda8604ed9"
+// const touristId = "5da12937326a149dfa699f19"
+// const guideId = "5da194007cb0d8dda8604ed9"
 
 const touristName = "Yo"
 const guideName = "Guía"
