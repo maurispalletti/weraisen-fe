@@ -30,7 +30,7 @@ export default class MatchCard extends React.Component {
           </div>
         </div>
         <div className="buttonCardGuia">
-          <input type="button" className={"botonsGuideCard"} value={"Iniciar chat"} onClick={() => this.goToChat(chatId)} />
+          <input type="button" className={"botonsGuideCard"} value={"Ir al chat"} onClick={() => this.goToChat(chatId)} />
         </div>
       </div>
     )

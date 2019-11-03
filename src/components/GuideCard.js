@@ -1,12 +1,8 @@
 import React from 'react';
-import star from './rating/star.png'
-import starEmpty from './rating/star-empty.png'
 import avatar_woman_1 from '../avatars/avatar_1.svg';
-// import avatar_woman_2 from './avatars/avatar_2.svg';
-// import avatar_woman_3 from './avatars/avatar_3.svg';
 import avatar_man_1 from '../avatars/avatar_4.svg';
-// import avatar_man_2 from './avatars/avatar_5.svg';
 import { Redirect } from 'react-router'
+import userServices from '../services/userServices';
 
 export default class GuideCard extends React.Component {
   state = {
@@ -15,8 +11,14 @@ export default class GuideCard extends React.Component {
   }
 
   goToChat() {
-    // aca actualizar los dos cosos del local storage uqe van a usar en el chat
-    // redireccionar con chat
+
+    const tourist = localStorage.getItem("userId");
+    const guide = this.props.guideId;
+
+    const { data: { chatId } } = await userServices.createMatch({ tourist, guide })
+
+    localStorage.setItem("chatId", chatId);
+
     this.setState({ goToChat: true })
   }
 
@@ -48,7 +50,7 @@ export default class GuideCard extends React.Component {
           </div>
         </div>
         <div className="buttonCardGuia">
-        <input type="button" className={"botonsGuideCard"} value={"Iniciar chat"} onClick={() => this.goToChat()} />
+          <input type="button" className={"botonsGuideCard"} value={"Iniciar chat"} onClick={() => this.goToChat()} />
         </div>
       </div>
     )

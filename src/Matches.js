@@ -9,7 +9,6 @@ import userServices from './services/userServices'
 
 class Matches extends Component {
 
-  // TODO: REVISAR ESTADOSSSSSSSSSSSS
   state = {
     goToHome: false,
     searchFailed: false,

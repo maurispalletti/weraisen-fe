@@ -41,10 +41,11 @@ class Results extends Component {
     const { guides } = this.state
     if (guides.length > 0) {
       return guides.map(guide => {
-        const { firstName, lastName, age, city, languages, knowledge, description, gender } = guide
+        const { id, firstName, lastName, age, city, languages, knowledge, description, gender } = guide
         return (
           <GuideCard
-            key={`lastName_${lastName}`}
+            key={id}
+            guideId={id}
             firstName={firstName}
             lastName={lastName}
             city={city}
@@ -82,7 +83,6 @@ class Results extends Component {
           <div className="Section">
             <h4>Guías que coinciden con tu búsqueda:</h4>
             {this.renderGuides()}
-            {/* {this.state.guides} */}
           </div>
 
           <div className="Section">
