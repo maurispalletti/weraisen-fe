@@ -6,7 +6,7 @@ import Checkbox from './Checkbox'
 export default function CheckboxGroupWithError (props) {
   const { name, label, values } = props
   return (
-    <div>
+    <div className="contenedor">
       {label && <label>{label}</label>}
       {values.map(value => (
         <div className="checkbox-container" key={value.value}>

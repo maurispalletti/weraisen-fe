@@ -46,6 +46,33 @@
   float: left;
   display: flex;
   margin-left: 24vw;
+  align-content: center
+}
+
+.checkbox-container{
+  width: 20%;
+  
+  align-self: left;
+  align-items: initial;
+
+  cursor:pointer;
+  
+   width:130px;
+   padding:5px;
+ 
+   margin:10px;
+   align-content: initial
+}
+
+.contenedor {
+  align-content: left;
+}
+
+.checkbox-container label{
+  align-self: left;
+  align-items: flex-start;
+  cursor:pointer;
+
 }
 
 .ActivityGuia {
@@ -56,15 +83,28 @@
   padding: 10px;
 }
 
+.buttonsSectionGuide {
+  width: 100%;
+  margin: 30px 10%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  text-align: center;
+}
+
+
   .Section {
     padding-bottom: 15px;
     justify-content: center;
   }
+
+
   .IdiomsSection {
     padding-bottom: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 
   .Dropdown {

@@ -145,11 +145,22 @@
   margin-bottom: 10px;
 }
 
-.botonsGuideCard{
+.buttonMatchCard{
   align-content: center;
   left: 40;
   color: white;
   background-color: #f7913c;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.disabledButtonMatchCard{
+  align-content: center;
+  left: 40;
+  color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 12px;

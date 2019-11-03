@@ -97,14 +97,12 @@ class userServices {
 		return axios.put(url, body, { headers })
 	}
 
-
 	static async getConversation({ touristId, guideId }) {
 		const url = `${customUrl}/api/v1/chat/conversation`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = { touristId, guideId }
 		return axios.post(url, body, { headers })
 	}
-
 
 	static async sendMessage(chatId, messages) {
 		const url = `${customUrl}/api/v1/chat/${chatId}`
@@ -113,7 +111,32 @@ class userServices {
 		return axios.put(url, body, { headers })
 	}
 
-	
+	static async getMatches(userId) {
+		const url = `${customUrl}/api/v1/matches/user/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async createMatch({
+		tourist,
+		guide
+		}) {
+		const url = `${customUrl}/api/v1/matches`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			tourist,
+			guide
+		}
+		return axios.post(url, body, { headers })
+	}
+
+	static async getChat(chatId) {
+		const url = `${customUrl}/api/v1/chat/${chatId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+
 }
 
 export default userServices

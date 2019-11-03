@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
-
+import Buttom from './components/Boton';
 import avatar_1 from './avatars/avatar_1.svg';
+import Categorias from './components/Categorias'
 import home from './icons/home.svg';
 
 import './GuideProfile.css';
@@ -27,19 +28,19 @@ const languages = [
   { description: "Polaco", value: 'Polaco' },
 ];
 
-const knowledge = [
-  { description: 'Bares', value: 'Bares' },
-  { description: 'Restaurantes', value: 'Restaurantes' },
-  { description: "Montaña", value: 'Montaña' },
-  { description: "Museos", value: 'Museos' },
-  { description: "Historia", value: 'Historia' },
-  { description: "Deportes", value: 'Deportes' },
-  { description: "Espectáculos", value: 'Espectáculos' },
-  { description: "Fotografía", value: 'Fotografía' },
-  { description: "Naturaleza", value: 'Naturaleza' },
-  { description: "Arte", value: 'Arte' },
-  { description: "Fiesta", value: 'Fiesta' },
-];
+// const knowledge = [
+//   { description: 'Bares', value: 'Bares' },
+//   { description: 'Restaurantes', value: 'Restaurantes' },
+//   { description: "Montaña", value: 'Montaña' },
+//   { description: "Museos", value: 'Museos' },
+//   { description: "Historia", value: 'Historia' },
+//   { description: "Deportes", value: 'Deportes' },
+//   { description: "Espectáculos", value: 'Espectáculos' },
+//   { description: "Fotografía", value: 'Fotografía' },
+//   { description: "Naturaleza", value: 'Naturaleza' },
+//   { description: "Arte", value: 'Arte' },
+//   { description: "Fiesta", value: 'Fiesta' },
+// ];
 
 const INITIAL_VALUES = {
   description: '',
@@ -117,13 +118,16 @@ class GuideProfile extends Component {
                 </div>
                 <div className="LastSection">
                   <h4>Conocimientos que posees:</h4>
-                  <CheckboxGroupWithError name="knowledge" values={knowledge} />
+                  <Categorias></Categorias>
                 </div>
               </div>
 
-              <div className="buttonsSection">
-                <input type="button" className="button" value="Cancelar" onClick={() => this.setState({ goToHome: true })} />
-                <input type="submit" className="button" value="Guardar" />
+              <div className="buttonsSectionGuide">
+                {/* <input type="button" className="button" value="Cancelar" onClick={() => this.setState({ goToHome: true })} />
+                <input type="submit" className="button" value="Guardar" /> */}
+
+          <Buttom link={'/home'} className={"cancel-button"} name={"CANCELAR"} onClick={() => this.setState({ goToHome: true })} />
+          <Buttom link={'/home'} className={"button"} name={"GUARDAR"} />
               </div>
               {this.state.notLoggedInUser && (
                 <p className="form-error">Usuario no logueado.</p>

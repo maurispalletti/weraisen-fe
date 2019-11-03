@@ -41,10 +41,11 @@ class Results extends Component {
     const { guides } = this.state
     if (guides.length > 0) {
       return guides.map(guide => {
-        const { firstName, lastName, age, city, languages, knowledge, description, gender } = guide
+        const { id, firstName, lastName, age, city, languages, knowledge, description, gender } = guide
         return (
           <GuideCard
-            key={`lastName_${lastName}`}
+            key={id}
+            guideId={id}
             firstName={firstName}
             lastName={lastName}
             city={city}
@@ -82,14 +83,13 @@ class Results extends Component {
           <div className="Section">
             <h4>Guías que coinciden con tu búsqueda:</h4>
             {this.renderGuides()}
-            {/* {this.state.guides} */}
           </div>
 
           <div className="Section">
             <input type="button" className="ResultsButton" value="Volver al menú principal" onClick={() => this.setState({ goToHome: true })} />
           </div>
           {this.state.searchFailed && (
-            <p className="form-error">La búsqueda de guías falló. Intantá de nuevo.</p>
+            <p className="form-error">La búsqueda de guías falló. Intentá de nuevo por favor.</p>
           )}
         </div>
       </div>

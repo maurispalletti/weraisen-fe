@@ -6,13 +6,22 @@ import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 import { Formik, Form, Field } from 'formik'
 
-const touristId = "5da12937326a149dfa699f19"
-const guideId = "5da194007cb0d8dda8604ed9"
+import Buttom from './components/Boton.js'
 
-const touristName = "Yo"
-const guideName = "Guía"
+// const guideId = "5da12937326a149dfa699f19"
+// const touristId = "5da194007cb0d8dda8604ed9"
 
-const chatId = "5daf572ef05f869fd8d53760"
+// const touristId = "5da12937326a149dfa699f19"
+// const guideId = "5da194007cb0d8dda8604ed9"
+
+// const chatId = "5daf572ef05f869fd8d53760"
+
+const selfName = "Yo"
+let otherName;
+
+let userId;
+let chatId;
+let otherUser;
 
 class Chat extends Component {
   state = {
@@ -25,25 +34,28 @@ class Chat extends Component {
   }
 
   componentDidMount() {
+    userId = localStorage.getItem("userId");
+    chatId = localStorage.getItem("chatId");
+
     this.getConversation();
   }
 
   getConversation = async () => {
     try {
-      // const userId = localStorage.getItem("userId");
-
-      const response = await userServices.getConversation({ touristId, guideId })
+      const response = await userServices.getChat(chatId)
 
       if (response.data && response.data.messages) {
-        const { data: { messages } } = response;
+        const { data: { messages, guide, tourist } } = response;
 
-        console.log(`messages.length ${messages.length} `)
-        console.log(`messages.length state ${this.state.messages.length} `)
+        if (!otherName) {
+          otherUser = (userId === tourist) ? guide : tourist;
+          
+          const { data: { firstName, lastName } } = await userServices.getProfile(otherUser)
+          
+          otherName = `${firstName} ${lastName}`
+        }  
 
         this.setState({ messages })
-
-        // if (messages.length > this.state.messages.length) {
-        // }
 
         setTimeout(() => this.getConversation(), 3000);
       }
@@ -55,17 +67,17 @@ class Chat extends Component {
   renderMessages = (messages) => (
     messages.map(message => (
       <div key={message.id}>
-        {message.emisor === touristId ? (
+        {message.emisor === userId ? (
           <li className="self">
             <div className="msg">
-              <div className="msgNameRight">{touristName}</div>
+              <div className="msgNameRight">{selfName}</div>
               <div className="message">{message.text}</div>
             </div>
           </li>
         ) : (
             <li className="other">
               <div className="msg">
-                <div className="msgNameLeft">{guideName}</div>
+                <div className="msgNameLeft">{otherName}</div>
                 <div className="message">{message.text}</div>
               </div>
             </li>
@@ -78,8 +90,8 @@ class Chat extends Component {
     console.log(values);
 
     const newMessage = {
-      emisor: touristId,
-      receptor: guideId,
+      emisor: userId,
+      receptor: otherUser,
       text: values.message
     }
 
@@ -135,14 +147,19 @@ class Chat extends Component {
                       aria-label="inputChat"
                       className="inputChat"
                       type="text"
-                      placeholder="Enter your message..."
+                      placeholder="Ingresa tu mensaje"
                     />
                   </div>
                   <input type="submit" className="send-button" value="Enviar" />
                 </Form>
               </Formik>
+
             </div>
           </div>
+
+          <Buttom link={'/valoration'} className={"botons"} name={"Finalizar visita"} />
+
+
         </div>
       </div>
     );
