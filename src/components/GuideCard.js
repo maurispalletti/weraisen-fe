@@ -10,9 +10,10 @@ export default class GuideCard extends React.Component {
     goToChat: false,
   }
 
-  goToChat() {
+  async goToChat() {
 
     const tourist = localStorage.getItem("userId");
+
     const guide = this.props.guideId;
 
     const { data: { chatId } } = await userServices.createMatch({ tourist, guide })
@@ -25,7 +26,7 @@ export default class GuideCard extends React.Component {
   render() {
 
     if (this.state.goToChat) {
-      return <Redirect to={`/${this.props.firstName}`} />
+      return <Redirect to={`/chat`} />
     }
 
     const { firstName, lastName, city, age, gender, languages, knowledge, description } = this.props;

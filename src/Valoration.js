@@ -4,7 +4,7 @@ import home from './icons/home.svg'
 import Buttom from './components/Boton.js'
 import './Valoration.css'
 
-import { Field } from 'formik'
+// import { Field } from 'formik'
 
 const Valoration = () => (
     <div className="Valoration">

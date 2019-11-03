@@ -21,6 +21,7 @@ let otherName;
 
 let userId;
 let chatId;
+let otherUser;
 
 class Chat extends Component {
   state = {
@@ -47,9 +48,9 @@ class Chat extends Component {
         const { data: { messages, guide, tourist } } = response;
 
         if (!otherName) {
-          const userToSearch = (userId === tourist) ? guide : tourist;
+          otherUser = (userId === tourist) ? guide : tourist;
           
-          const { data: { firstName, lastName } } = await userServices.getProfile(userToSearch)
+          const { data: { firstName, lastName } } = await userServices.getProfile(otherUser)
           
           otherName = `${firstName} ${lastName}`
         }  
@@ -89,8 +90,8 @@ class Chat extends Component {
     console.log(values);
 
     const newMessage = {
-      emisor: touristId,
-      receptor: guideId,
+      emisor: userId,
+      receptor: otherUser,
       text: values.message
     }
 

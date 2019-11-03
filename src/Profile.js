@@ -7,7 +7,7 @@ import home from './icons/home.svg';
 import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
-import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
+// import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
 
 import { ProfileSchema } from './helpers/validators'
 import userServices from './services/userServices'

@@ -7,6 +7,8 @@ import { Redirect } from 'react-router'
 
 import userServices from './services/userServices'
 
+let fullInfoMatches = [];
+
 class Matches extends Component {
 
   state = {
@@ -16,7 +18,6 @@ class Matches extends Component {
   }
 
   getMatches = async () => {
-    let fullInfoMatches = [];
 
     try {
       const userId = localStorage.getItem("userId");
@@ -25,7 +26,12 @@ class Matches extends Component {
 
       if (response && response.data && response.data.length > 0) {
 
-        response.data.forEach( async match => {
+        const matches = response.data;
+
+        for (let index = 0; index < matches.length; index++) {
+
+          const match = matches[index];
+          
           let userToFind;
           let partnerRole;
 
@@ -37,12 +43,38 @@ class Matches extends Component {
             partnerRole = 'GUIDE';
           }
 
-          const { firstName, lastName } = await userServices.getProfile(userToFind);
+          const { data: { firstName, lastName } } = await userServices.getProfile(userToFind);
 
           const partnerName = `${firstName} ${lastName}`;
+          
 
           fullInfoMatches.push({ ...match, partnerRole, partnerName });
-        });
+
+
+
+
+        }
+
+        // response.data.forEach( async match => {
+        //   let userToFind;
+        //   let partnerRole;
+
+        //   if (userId === match.guide) {
+        //     userToFind = match.tourist;
+        //     partnerRole = 'TOURIST';
+        //   } else {
+        //     userToFind = match.guide;
+        //     partnerRole = 'GUIDE';
+        //   }
+
+        //   // const { data: { firstName, lastName } } = await userServices.getProfile(userToFind);
+
+        //   // const partnerName = `${firstName} ${lastName}`;
+          
+        //   const partnerName = `xx`;
+
+        //   fullInfoMatches.push({ ...match, partnerRole, partnerName });
+        // });
 
         this.setState({ matches: fullInfoMatches })
       }
@@ -59,8 +91,17 @@ class Matches extends Component {
 
   renderMatches = () => {
     const { matches } = this.state
+    
+    console.log(matches);
+
+
+    
     if (matches.length > 0) {
+
+
+
       return matches.map(match => {
+
         const { id, partnerRole, partnerName, chatId, status } = match
         return (
           <MatchCard
