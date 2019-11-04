@@ -6,22 +6,13 @@ import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 import { Formik, Form, Field } from 'formik'
 
-import Buttom from './components/Boton.js'
-
-// const guideId = "5da12937326a149dfa699f19"
-// const touristId = "5da194007cb0d8dda8604ed9"
-
-// const touristId = "5da12937326a149dfa699f19"
-// const guideId = "5da194007cb0d8dda8604ed9"
-
-// const chatId = "5daf572ef05f869fd8d53760"
-
 const selfName = "Yo"
 let otherName;
 
 let userId;
 let chatId;
 let otherUser;
+let matchStatus;
 
 class Chat extends Component {
   state = {
@@ -30,6 +21,8 @@ class Chat extends Component {
     ageValidationFailed: false,
     notLoggedInUser: false,
     goToProfile: false,
+    iniciated: false,
+    valorate: false,
     messages: [],
   }
 
@@ -49,13 +42,16 @@ class Chat extends Component {
 
         if (!otherName) {
           otherUser = (userId === tourist) ? guide : tourist;
-          
           const { data: { firstName, lastName } } = await userServices.getProfile(otherUser)
-          
           otherName = `${firstName} ${lastName}`
-        }  
+        }
 
-        this.setState({ messages })
+        if (!matchStatus) {
+          const { data: { status } } = await userServices.getMatchByChatId(chatId)
+          matchStatus = status
+        }
+
+        this.setState({ messages, iniciated: matchStatus === 'Iniciado' })
 
         setTimeout(() => this.getConversation(), 3000);
       }
@@ -107,8 +103,38 @@ class Chat extends Component {
         console.error(`There was an error trying to send message`)
       }
     }
+  }
 
+  async goToValoration() {
+    try {
+      if (this.state.iniciated) {
+        const status = 'Finalizado'
+        await userServices.updateMatch(chatId, status)
+        this.setState({ valorate: true })
+      } else {
+        const status = 'Iniciado'
+        await userServices.updateMatch(chatId, status)
+        this.setState({ iniciated: true })
+      }
+    } catch (error) {
+      console.error(`There was an error updating status`)
+    }
+  }
 
+  async cancelMatch() {
+    try {
+      if (this.state.iniciated) {
+        const status = 'Anulado'
+        await userServices.updateMatch(chatId, status)
+        this.setState({ valorate: true })
+      } else {
+        const status = 'Cancelado'
+        await userServices.updateMatch(chatId, status)
+        this.setState({ goToResults: true })
+      }
+    } catch (error) {
+      console.error(`There was an error updating status`)
+    }
   }
 
   render() {
@@ -117,6 +143,9 @@ class Chat extends Component {
     }
     if (this.state.goToProfile) {
       return <Redirect to="/profile" />
+    }
+    if (this.state.valorate) {
+      return <Redirect to="/valoration" />
     }
 
     return (
@@ -150,16 +179,19 @@ class Chat extends Component {
                       placeholder="Ingresa tu mensaje"
                     />
                   </div>
-                  <input type="submit" className="send-button" value="Enviar" />
+                  <input type="submit" className="send-button" value="➡" />
                 </Form>
               </Formik>
-
             </div>
           </div>
-
-          <Buttom link={'/valoration'} className={"botons"} name={"Finalizar visita"} />
-
-
+          <div className="buttonsSectionChat">
+            <input type="button" className="buttonLeftChat"
+              value={this.state.iniciated ? "Finalizar" : "Iniciar"}
+              onClick={() => { this.goToValoration() }} />
+            <input type="submit" className="buttonRightChat" value="Guardar"
+              value={this.state.iniciated ? "Anular" : "Cancelar"}
+              onClick={() => { this.cancelMatch() }} />
+          </div>
         </div>
       </div>
     );
