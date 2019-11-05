@@ -6,11 +6,7 @@ import userServices from './services/userServices'
 
 import { Redirect } from 'react-router'
 
-
 import GraficoMatchesPorMes from './components/Grafico2barrasMatchesPorMes'
-
-// PASAR DATOS VIA PROP
-
 
 class Informes extends Component {
 
@@ -39,18 +35,18 @@ class Informes extends Component {
     }
   }
 
-
   render() {
-
     return (
       <div className="Home">
         <div className="Header">
-          <button className="HomeIcon" onClick={() => this.setState({ goToProfile: true })}>
+          <a href={"/home"} className="HomeIconNew">
             <img src={home} alt={"Home"} />
-          </button>
-          <div className="HeaderImage">
-            <a href={"/profile"}>
-              <img src={avatar_1} alt={"User"} />
+          </a>
+          <div className="HeaderText">
+            <div className={"HeaderTextLink"}>Admin</div>
+
+            <a href={"/login"} className={"HeaderTextLink"}>
+              <div>Log Out</div>
             </a>
           </div>
         </div>
@@ -58,8 +54,6 @@ class Informes extends Component {
           <h3>Informes de uso de la plataforma</h3>
           <div className="GraphicWrapper">
             {this.state.matchesPerMonth && <GraficoMatchesPorMes matchesPerMonth={this.state.matchesPerMonth} />}
-
-
           </div>
         </div>
       </div>

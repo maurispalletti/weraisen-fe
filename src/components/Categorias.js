@@ -18,11 +18,11 @@ export default class Categorias extends Component {
         let nueva = []
         let vieja = this.state.elegidas
 
-        if (this.state.elegidas.includes(categoria)) {
-            var i = this.state.elegidas.indexOf(categoria);
+        if (vieja.includes(categoria)) {
+            const i = vieja.indexOf(categoria);
 
             if (i !== -1) {
-                this.state.elegidas.splice(i, 1);
+                vieja.splice(i, 1);
             }
             nueva = vieja.slice(categoria)
 
@@ -30,7 +30,8 @@ export default class Categorias extends Component {
         else {
             nueva = [...vieja, categoria]
         }
-        console.log(this.nueva)
+
+        this.props.onCategoryChange(nueva);            
         this.setState(() => ({ elegidas: nueva }));
 
     }
@@ -46,7 +47,7 @@ export default class Categorias extends Component {
                             <h6 className="letra">DEPORTES</h6>
                         </div>
 
-                        <div className={this.state.elegidas.length > 0 && this.state.elegidas.includes('aventura y aire libre') ? "ItemSeleccionado" : "ItemNoSeleccionado"} onClick={() => this.agregarCategoria("aventura y aire libre")}>
+                        <div className={this.state.elegidas.length > 0 && this.state.elegidas.includes('aventura') ? "ItemSeleccionado" : "ItemNoSeleccionado"} onClick={() => this.agregarCategoria("aventura")}>
                             <img alt={"Activity"} src={montañana}  />
                             <h6 className="letra">AVENTURA Y AIRE LIBRE</h6>
                         </div>
@@ -67,7 +68,7 @@ export default class Categorias extends Component {
                             <h6 className="letra">SHOPPING</h6>
                         </div>
 
-                        <div className={this.state.elegidas.length > 0 && this.state.elegidas.includes('vida nocturna') ? "ItemSeleccionado" : "ItemNoSeleccionado"} onClick={() => this.agregarCategoria("vida nocturna")}>
+                        <div className={this.state.elegidas.length > 0 && this.state.elegidas.includes('noche') ? "ItemSeleccionado" : "ItemNoSeleccionado"} onClick={() => this.agregarCategoria("noche")}>
                             <img alt={"Activity"} src={cafe}  />
                             <h6 className="letra">
                               VIDA NOCTURNA</h6>
@@ -78,6 +79,3 @@ export default class Categorias extends Component {
         )
     }
 }
-
-
-

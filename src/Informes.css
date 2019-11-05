@@ -38,13 +38,6 @@
   color: white;
 }
 
-.HeaderButton {
-  color: white;
-  left: 0;
-  margin: 0 10px 0 30px;
-  text-decoration: none;
-}
-
 .HeaderImage {
   position: fixed;
   width: 8vh;
@@ -147,3 +140,61 @@
 .GraphicWrapper {
   /* padding: 50px 0; */
 } 
+
+.HeaderTextLinkWorking {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  margin-right: 2vh;
+}
+
+.HeaderTextLinkWorking {
+  position: fixed;
+  margin-top: 3vh;
+  margin-right: 1vh;
+  text-align: center;
+  right: 0;
+  top: 0;
+  background-color: #f7913c;
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+
+
+
+.HeaderText {
+  position: fixed;
+  text-align: center;
+  right: 0;
+  top: 0;
+  background-color: #f7913c;
+  display: flex;
+  flex-direction: row;
+}
+
+.HeaderTextLink {
+  text-decoration: none;
+  color: #f7913c;
+  font-weight: bold;
+  padding: 5px;
+  margin-top: 3vh;
+  margin-right: 1vh;
+  background-color: white;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+.HomeIconNew {
+  position: fixed;
+  width: 8vh;
+  height: 8vh;
+  margin-top: 1vh;
+  border: none;
+  margin-left: 1vh;
+  left: 0;
+  top: 0;
+  background-color: #f7913c;
+}

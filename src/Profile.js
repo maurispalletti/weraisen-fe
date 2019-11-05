@@ -41,6 +41,8 @@ class Profile extends Component {
     editable: false,
     goToGuideProfile: false,
     initialValues: null,
+    isActiveGuide: false,
+    knowledge: [],
   }
 
   // AGREGAR BOTON DE EDIT PARA PODER EDITAR INFO 
@@ -105,8 +107,16 @@ class Profile extends Component {
       identification,
       gender,
       city,
-      email
+      email,
+      isActiveGuide,
+      knowledge,
     } = await this.getProfile()
+
+    console.log(`isActiveGuide`)
+    console.log(isActiveGuide)
+
+    console.log(`knowledge`)
+    console.log(knowledge)
 
     const initialValues = {
       firstName,
@@ -118,7 +128,7 @@ class Profile extends Component {
       email
     }
 
-    this.setState({ initialValues })
+    this.setState({ initialValues, isActiveGuide, knowledge })
   }
 
   render() {
@@ -132,12 +142,26 @@ class Profile extends Component {
     if (this.state.initialValues) {
       return (
         <div className="Profile">
-          <div className="Header">
+          {/* <div className="Header">
             <a href={"/home"} className="HomeIcon">
               <img src={home} alt={"Home"} />
             </a>
             <div className="HeaderImage">
               <img src={avatar_1} alt={"User"} />
+            </div>
+          </div> */}
+
+          <div className="Header">
+            <a href={"/home"} className="HomeIconNew">
+              <img src={home} alt={"Home"} />
+            </a>
+            <div className="HeaderText">
+              <a href={"/matches"} className={"HeaderTextLink"}>
+                <div>Mis Encuentros</div>
+              </a>
+              <a href={"/profile"} className={"HeaderTextLink"}>
+                <div>Mi perfil</div>
+              </a>
             </div>
           </div>
 
@@ -160,17 +184,18 @@ class Profile extends Component {
                 </div>
 
                 <div className="guideSection">
-                  <div className="be-guide">
+                  {this.state.knowledge && this.state.knowledge.length > 0 && <div className="be-guide">
                     Mostrarme activo:
-          <label class="switch">
-                      <input type="checkbox" disabled={!this.state.editable} />
+                      <label class="switch">
+                      <input type="checkbox" checked={this.state.isActiveGuide} disabled={!this.state.editable} />
                       <span class="slider round"></span>
                     </label>
-                  </div>
+                  </div>}
                 </div>
 
                 <div className="buttonsSectionGuia">
-                  <input type="button" className="buttonGuia" value="Quiero ser guía"
+                  <input type="button" className="buttonGuia" 
+                  value={this.state.isActiveGuide ? "Actualizar mis datos de guía" : "Quiero ser guía"}
                     onClick={() => this.setState({ goToGuideProfile: true })} />
                 </div>
 
@@ -178,6 +203,17 @@ class Profile extends Component {
                   <input type="button" className="buttonLeft" value={this.state.editable ? "Cancelar" : "Editar"}
                     onClick={() => this.toggleEditInfo()} />
                   <input type="submit" className="buttonRight" value="Guardar" disabled={!this.state.editable} />
+                </div>
+
+                <div className="cerrarSesionSection">
+
+                  {/* <input type="button" className="cerrarSesion" value="Cerrar sesión"
+                    onClick={() => this.setState({ goToGuideProfile: true })} /> */}
+
+                  <div className="cerrarSesion">
+                    <Buttom link={'/login'} className={"botons"} name={"Cerrar sesión"} />
+                  </div>
+
                 </div>
 
                 {this.state.notLoggedInUser && (
@@ -190,11 +226,6 @@ class Profile extends Component {
             </Formik>
           </div>
 
-          <div className="cerrarSesion">
-          <Buttom link={'/login'} className={"botons"} name={"Cerrar sesión"} />
-
-
-        </div>
         </div>
       );
     } else {

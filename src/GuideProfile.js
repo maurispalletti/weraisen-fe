@@ -28,24 +28,9 @@ const languages = [
   { description: "Polaco", value: 'Polaco' },
 ];
 
-// const knowledge = [
-//   { description: 'Bares', value: 'Bares' },
-//   { description: 'Restaurantes', value: 'Restaurantes' },
-//   { description: "Montaña", value: 'Montaña' },
-//   { description: "Museos", value: 'Museos' },
-//   { description: "Historia", value: 'Historia' },
-//   { description: "Deportes", value: 'Deportes' },
-//   { description: "Espectáculos", value: 'Espectáculos' },
-//   { description: "Fotografía", value: 'Fotografía' },
-//   { description: "Naturaleza", value: 'Naturaleza' },
-//   { description: "Arte", value: 'Arte' },
-//   { description: "Fiesta", value: 'Fiesta' },
-// ];
-
 const INITIAL_VALUES = {
   description: '',
   languages: [],
-  knowledge: [],
 }
 
 class GuideProfile extends Component {
@@ -53,11 +38,17 @@ class GuideProfile extends Component {
     goToHome: false,
     updateFailed: false,
     notLoggedInUser: false,
+    knowledge: [],
   }
 
-  updateGuide = async ({ description, languages, knowledge }) => {
+  updateGuide = async ({ description, languages }) => {
+
     try {
       const userId = localStorage.getItem("userId");
+
+      const knowledge = this.state.knowledge
+
+      console.log(knowledge)
 
       if (userId) {
         const response = await userServices.updateGuide({
@@ -83,6 +74,11 @@ class GuideProfile extends Component {
     }
   }
 
+  handleCategory = (values) => {
+    console.log(values)
+    this.setState({ knowledge: values })
+  }
+
   render() {
     if (this.state.goToHome) {
       return <Redirect to="/home" />
@@ -90,13 +86,27 @@ class GuideProfile extends Component {
 
     return (
       <div className="GuideProfile">
-        <div className="Header">
+        {/* <div className="Header">
           <a href={"/home"} className="HomeIcon">
             <img src={home} alt={"Home"} />
           </a>
           <div className="HeaderImage">
             <a href={"/profile"}>
               <img src={avatar_1} alt={"User"} />
+            </a>
+          </div>
+        </div> */}
+
+        <div className="Header">
+          <a href={"/home"} className="HomeIconNew">
+            <img src={home} alt={"Home"} />
+          </a>
+          <div className="HeaderText">
+            <a href={"/matches"} className={"HeaderTextLink"}>
+              <div>Mis Encuentros</div>
+            </a>
+            <a href={"/profile"} className={"HeaderTextLink"}>
+              <div>Mi perfil</div>
             </a>
           </div>
         </div>
@@ -118,17 +128,19 @@ class GuideProfile extends Component {
                 </div>
                 <div className="LastSection">
                   <h4>Conocimientos que posees:</h4>
-                  <Categorias></Categorias>
+
+                  <Categorias onCategoryChange={this.handleCategory} />
+
                 </div>
               </div>
 
               <div className="buttonsSectionGuide">
-                {/* <input type="button" className="button" value="Cancelar" onClick={() => this.setState({ goToHome: true })} />
-                <input type="submit" className="button" value="Guardar" /> */}
 
-          <Buttom link={'/home'} className={"cancel-button"} name={"CANCELAR"} onClick={() => this.setState({ goToHome: true })} />
-          <Buttom link={'/home'} className={"button"} name={"GUARDAR"} />
+                <input type="button" className="buttonGuid" value="Cancelar" onClick={() => this.setState({ goToHome: true })} />
+                <input type="submit" className="buttonGuid" value="Guardar" />
+
               </div>
+
               {this.state.notLoggedInUser && (
                 <p className="form-error">Usuario no logueado.</p>
               )}

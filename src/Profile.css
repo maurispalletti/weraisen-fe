@@ -149,6 +149,12 @@
   text-align: center;
 }
 
+.cerrarSesionSection {
+  margin: 15vh 0 5vh;
+  align-content: center;
+  text-align: center;
+}
+
 .profile-input {
   border: none;
   height: 1px;

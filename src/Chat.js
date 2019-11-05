@@ -157,7 +157,7 @@ class Chat extends Component {
 
     return (
       <div className="Chat">
-        <div className="Header">
+        {/* <div className="Header">
           <button className="HomeIcon" onClick={() => this.setState({ goToProfile: true })}>
             <img src={home} alt={"Home"} />
           </button>
@@ -166,7 +166,22 @@ class Chat extends Component {
               <img src={avatar_1} alt={"User"} />
             </a>
           </div>
+        </div> */}
+
+        <div className="Header">
+          <a href={"/home"} className="HomeIconNew">
+            <img src={home} alt={"Home"} />
+          </a>
+          <div className="HeaderText">
+            <a href={"/matches"} className={"HeaderTextLink"}>
+              <div>Mis Encuentros</div>
+            </a>
+            <a href={"/profile"} className={"HeaderTextLink"}>
+              <div>Mi perfil</div>
+            </a>
+          </div>
         </div>
+
         <div className="BodyChat">
           <div className="chatWindow">
             <ul className="chat" id="chatList">

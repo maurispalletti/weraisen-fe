@@ -67,13 +67,27 @@ class Results extends Component {
 
     return (
       <div className="Home">
-        <div className="Header">
+        {/* <div className="Header">
           <a href={"/home"} className="HomeIcon">
             <img src={home} alt={"Home"} />
           </a>
           <div className="HeaderImage">
             <a href={"/profile"}>
               <img src={avatar_woman_1} alt={"User"} />
+            </a>
+          </div>
+        </div> */}
+
+        <div className="Header">
+          <a href={"/home"} className="HomeIconNew">
+            <img src={home} alt={"Home"} />
+          </a>
+          <div className="HeaderText">
+            <a href={"/matches"} className={"HeaderTextLink"}>
+              <div>Mis Encuentros</div>
+            </a>
+            <a href={"/profile"} className={"HeaderTextLink"}>
+              <div>Mi perfil</div>
             </a>
           </div>
         </div>
