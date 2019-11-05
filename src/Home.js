@@ -45,6 +45,7 @@ class Home extends Component {
     ageValidationFailed: false,
     notLoggedInUser: false,
     goToProfile: false,
+    categories: [],
   }
 
   searchGuides = async ({ fromAge, toAge, gender }) => {
@@ -57,7 +58,7 @@ class Home extends Component {
 
       const city = localStorage.getItem("filter_city");
       const language = localStorage.getItem("filter_language");
-      const knowledge = localStorage.getItem("filter_knowledge");
+      const knowledge = this.state.categories;
 
       filters[`city`] = city;
       filters[`language`] = language;
@@ -73,6 +74,11 @@ class Home extends Component {
 
       this.setState({ goToResults: true })
     }
+  }
+
+  handleCategory = (values) => {
+    console.log(values)
+    this.setState({ categories: values })
   }
 
   render() {
@@ -145,10 +151,8 @@ class Home extends Component {
               <div className="LastSection">
                 <h4>Por último, seleccioná las categorías que desees:</h4>
 
-                <Categorias></Categorias>
-                {/* <h4>Por último, elegí la categoría que desees:</h4>
-                <h5>Ingresá las primeras letras de la categoría...</h5>
-                <Autocomplete name={'knowledge'} items={knowledge} ></Autocomplete> */}
+                <Categorias onCategoryChange={this.handleCategory} />
+
               </div>
               <div className="Section">
                 <input type="submit" className="SearchButton" value="Buscar guías" />

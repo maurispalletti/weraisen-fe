@@ -35,9 +35,7 @@ class Informes extends Component {
     }
   }
 
-
   render() {
-
     return (
       <div className="Home">
         <div className="Header">
@@ -56,8 +54,6 @@ class Informes extends Component {
           <h3>Informes de uso de la plataforma</h3>
           <div className="GraphicWrapper">
             {this.state.matchesPerMonth && <GraficoMatchesPorMes matchesPerMonth={this.state.matchesPerMonth} />}
-
-
           </div>
         </div>
       </div>
