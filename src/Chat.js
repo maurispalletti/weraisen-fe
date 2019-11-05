@@ -42,13 +42,15 @@ class Chat extends Component {
 
         if (!otherName) {
           otherUser = (userId === tourist) ? guide : tourist;
-          const { data: { firstName, lastName } } = await userServices.getProfile(otherUser)
+          const { data: { id, firstName, lastName } } = await userServices.getProfile(otherUser)
           otherName = `${firstName} ${lastName}`
+          localStorage.setItem("ownerId", id);
         }
 
         if (!matchStatus) {
-          const { data: { status } } = await userServices.getMatchByChatId(chatId)
+          const { data: { status, id } } = await userServices.getMatchByChatId(chatId)
           matchStatus = status
+          localStorage.setItem("matchId", id);
         }
 
         this.setState({ messages, iniciated: matchStatus === 'Iniciado' })
@@ -188,7 +190,7 @@ class Chat extends Component {
             <input type="button" className="buttonLeftChat"
               value={this.state.iniciated ? "Finalizar" : "Iniciar"}
               onClick={() => { this.goToValoration() }} />
-            <input type="submit" className="buttonRightChat" value="Guardar"
+            <input type="submit" className="buttonRightChat"
               value={this.state.iniciated ? "Anular" : "Cancelar"}
               onClick={() => { this.cancelMatch() }} />
           </div>

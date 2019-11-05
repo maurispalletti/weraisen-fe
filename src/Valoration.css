@@ -53,26 +53,16 @@
   }
   
   .ratingSection {
-    width: 100%;
+    margin: 0 10vw;
     align-content: center;
     text-align: center;
   }
   
   .p {
-
     color: white;
     background-color: #f7913c;
-   /*  border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    text-align: center;
-    align-items: center;
-    align-self: center;
-    display: flex;
-    flex-direction: column; */
-  
   }
+
   .Header {
     top: 0;
     display: flex;
@@ -92,7 +82,6 @@
   }
 
   .boton {
-
     color: white;
     background-color: #f7913c;
     border: none;
@@ -112,3 +101,80 @@
     line-height: 40px;
   }
     
+  .descripcion-input-valoration {
+    border: none;
+    height: 80px;
+    width: 70vw;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px 2px;
+    border-radius: 12px;
+  }
+
+  .buttonLeftValoration {
+    color: white;
+    background-color: #f7913c;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin: 0px 5px 30px;
+    border-radius: 12px;
+    width: 30vw;
+    line-height: 40px;
+    position: absolute;
+    left: 0vw;
+  }
+  
+  .buttonRightValoration {
+    color: white;
+    background-color: #F3705B;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin: 0px 5px 30px;
+    border-radius: 12px;
+    width: 30vw;
+    line-height: 40px;
+    position: absolute;
+    right: 0vw;
+  }
+  
+  
+  .buttonsSectionValoration {
+    position: relative;
+    display: inline-block;
+    align-content: center;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+
+  .buttonValoration {
+    color: white;
+    background-color: #f7913c;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin: 0px 5px 30px;
+    border-radius: 12px;
+    width: 200px;
+    line-height: 40px;
+  }
