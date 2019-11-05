@@ -1,24 +1,46 @@
 import React, { Component } from 'react';
 import avatar_1 from './avatars/avatar_1.svg';
 import './Informes.css';
-
 import home from './icons/home.svg'
-import Autocomplete from './components/Autocomplete.js'
-import Desplegable from './components/Desplegable.js'
-
-import Categorias from './components/Categorias.js'
-// import ciudadesCba from './Component/CiudadesCba.js'
+import userServices from './services/userServices'
 
 import { Redirect } from 'react-router'
-import { Formik, Form } from 'formik'
-import FieldWithError from './forms/FieldWithError'
-import DropdownGender from './forms/DropdownGender'
-//grafico
-import Grafico from './components/Grafico2barras'
+
+
+import GraficoMatchesPorMes from './components/Grafico2barrasMatchesPorMes'
+
+// PASAR DATOS VIA PROP
 
 
 class Informes extends Component {
-  render() {  
+
+  state = {
+    goToHome: false,
+    matchesPerMonth: null,
+  }
+
+  componentDidMount() {
+    this.getMatchesPerMonth();
+  }
+
+  getMatchesPerMonth = async () => {
+    try {
+      const response = await userServices.getMatchesPerMonth()
+
+      if (response.data) {
+        const { data } = response;
+
+        this.setState({
+          matchesPerMonth: data
+        });
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get the matchesPerMonth data`)
+    }
+  }
+
+
+  render() {
 
     return (
       <div className="Home">
@@ -33,7 +55,12 @@ class Informes extends Component {
           </div>
         </div>
         <div className="Body">
-          <Grafico/>
+          <h3>Informes de uso de la plataforma</h3>
+          <div className="GraphicWrapper">
+            {this.state.matchesPerMonth && <GraficoMatchesPorMes matchesPerMonth={this.state.matchesPerMonth} />}
+
+
+          </div>
         </div>
       </div>
     );

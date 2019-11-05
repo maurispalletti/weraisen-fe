@@ -1,0 +1,181 @@
+.Valoration {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    text-align: center;
+    overflow: scroll;
+    height: 100vh;
+    align-items: center;
+    align-content: center;
+    justify-content: top;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    background-color: #7dca96;
+  }
+  
+  .Body {
+    padding-top: 15vh;
+    color: white;
+    background-color: #7dca96;
+  
+    height: 100%;
+    overflow: scroll;
+    align-content: center;
+    align-items: center;
+  }
+
+   .p {
+     
+    margin: 30px 10%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+  } 
+
+  .botons{
+    align-content: center;
+    left: 40;
+    color: white;
+    background-color: #f7913c;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    margin: 50px 0 30px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .ratingSection {
+    margin: 0 10vw;
+    align-content: center;
+    text-align: center;
+  }
+  
+  .p {
+    color: white;
+    background-color: #f7913c;
+  }
+
+  .Header {
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    text-align: left;
+    overflow: hidden;
+    float: left;
+    background-color: #f7913c;
+    height: 10vh;
+    width: 100vw;
+    z-index: 1000;
+    align-items: center;
+    justify-content: left;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+
+  .boton {
+    color: white;
+    background-color: #f7913c;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    text-align: center;
+    align-self: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin: 0px 5px;
+    border-radius: 12px;
+    width: 30vw;
+    height: 40px;
+    line-height: 40px;
+  }
+    
+  .descripcion-input-valoration {
+    border: none;
+    height: 80px;
+    width: 70vw;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px 2px;
+    border-radius: 12px;
+    font-family: inherit;
+  }
+
+  .buttonLeftValoration {
+    color: white;
+    background-color: #f7913c;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin: 0px 5px 30px;
+    border-radius: 12px;
+    width: 30vw;
+    line-height: 40px;
+    position: absolute;
+    left: 0vw;
+  }
+  
+  .buttonRightValoration {
+    color: white;
+    background-color: #F3705B;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin: 0px 5px 30px;
+    border-radius: 12px;
+    width: 30vw;
+    line-height: 40px;
+    position: absolute;
+    right: 0vw;
+  }
+  
+  
+  .buttonsSectionValoration {
+    position: relative;
+    display: inline-block;
+    align-content: center;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+
+  .buttonValoration {
+    color: white;
+    background-color: #f7913c;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin: 0px 5px 30px;
+    border-radius: 12px;
+    width: 200px;
+    line-height: 40px;
+  }

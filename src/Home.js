@@ -4,16 +4,11 @@ import avatar_1 from './avatars/avatar_1.svg';
 import home from './icons/home.svg'
 import Autocomplete from './components/Autocomplete.js'
 import Desplegable from './components/Desplegable.js'
-
 import Categorias from './components/Categorias.js'
-// import ciudadesCba from './Component/CiudadesCba.js'
-
 import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import DropdownGender from './forms/DropdownGender'
-//grafico
-import Grafico from './components/Grafico2barras'
 
 const genders = [
   {
@@ -35,8 +30,6 @@ const genders = [
 ]
 
 const languages = ['Castellano', 'Inglés', 'Alemán', 'Italiano', 'Francés', 'Portugués', 'Japonés', 'Chino', 'Ruso', 'Turco', 'Neerlandés', 'Polaco']
-
-// const knowledge = ['Bares', 'Restaurantes', 'Museos', 'Espectáculos', 'Deportes', 'Montaña', 'Fotografía', 'Naturaleza', 'Arte', 'Fiesta']
 
 const cities = ['Cordoba', 'Buenos Aires', 'Rosario', 'Villa Carlos Paz', 'Mendoza', 'Hernando', 'Bariloche', 'General Pico', 'Salta', 'Neuquen', 'Posadas', 'La Plata', 'Villa General Belgrano', 'Miramar', 'Puerto Madryn']
 
@@ -122,10 +115,6 @@ class Home extends Component {
                 <h4>¿Cuándo?</h4>
                 <Desplegable />
               </div>
-              <div>
-<Grafico/>
-                
-              </div>
               <div className="Section">
                 <h4>Género de tu guía</h4>
                 <DropdownGender name="gender" styleName={"Dropdown-home"} options={genders} />
@@ -140,9 +129,9 @@ class Home extends Component {
               </div>
 
               <div className="LastSection">
-              <h4>Por último, seleccioná la categoría que desees:</h4>
-        
-              <Categorias></Categorias>
+                <h4>Por último, seleccioná las categorías que desees:</h4>
+
+                <Categorias></Categorias>
                 {/* <h4>Por último, elegí la categoría que desees:</h4>
                 <h5>Ingresá las primeras letras de la categoría...</h5>
                 <Autocomplete name={'knowledge'} items={knowledge} ></Autocomplete> */}

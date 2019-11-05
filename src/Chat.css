@@ -157,8 +157,8 @@ body {
 .chatWindow {
   background: rgb(233, 229, 229);
   border-radius: 12px;
-  width: 70vw;
-  margin: 0 15vw;
+  width: 90vw;
+  margin: 0 5vw;
 }
 .chatInputWrapper {
   display: flex;
@@ -177,7 +177,7 @@ body {
   padding: 0 0 50px 0;
   margin-top: 60px;
   margin-bottom: 10px;
-  height: 400px;
+  height: 40vh;
   overflow: scroll;
   scroll-behavior: smooth;
   transform:rotateX(180deg);
@@ -400,12 +400,12 @@ body {
   color: white;
   background-color: #f7913c;
   border: none;
-  padding: 20px 0;
+  padding: 8px 0;
   text-align: center;
   text-decoration: none;
   font-weight: 600;
   display: inline-block;
-  font-size: 16px;
+  font-size: 36px;
   margin: 4px 2px;
   border-radius: 12px;
   position: absolute;
@@ -428,4 +428,91 @@ body {
   -webkit-transform:rotateX(180deg); /* Safari and Chrome */
   -ms-transform:rotateX(180deg); /* IE 9+ */
   -o-transform:rotateX(180deg); /* Opera */
+}
+
+
+.buttonLeftChat {
+  color: white;
+  background-color: #f7913c;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  margin: 0px 5px 30px;
+  border-radius: 12px;
+  width: 30vw;
+  line-height: 40px;
+  position: absolute;
+  left: 10vw;
+}
+
+.buttonLeftChatDisabled {
+  color: white;
+  background-color: grey;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  margin: 0px 5px 30px;
+  border-radius: 12px;
+  width: 30vw;
+  line-height: 40px;
+  position: absolute;
+  left: 10vw;
+}
+
+.buttonRightChat {
+  color: white;
+  background-color: #F3705B;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  margin: 0px 5px 30px;
+  border-radius: 12px;
+  width: 30vw;
+  line-height: 40px;
+  position: absolute;
+  right: 10vw;
+}
+
+.buttonRightChatDisabled {
+  color: white;
+  background-color: grey;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  margin: 0px 5px 30px;
+  border-radius: 12px;
+  width: 30vw;
+  line-height: 40px;
+  position: absolute;
+  right: 10vw;
+}
+
+
+.buttonsSectionChat {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  text-align: center;
+  margin-top: 20px;
 }

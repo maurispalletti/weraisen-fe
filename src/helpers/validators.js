@@ -7,6 +7,12 @@ export function LoginSchema () {
   })
 }
 
+export function ReviewSchema () {
+  return Yup.object().shape({
+    description: Yup.string().required('Ingresa una descripción de tu acompañante')
+  })
+}
+
 export function SignUpSchema () {
   return Yup.object().shape({
     firstName: Yup.string().required('Ingresa tu nombre'),

@@ -6,44 +6,59 @@ import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 import { Formik, Form, Field } from 'formik'
 
-const touristId = "5da12937326a149dfa699f19"
-const guideId = "5da194007cb0d8dda8604ed9"
+const selfName = "Yo"
+let otherName;
 
-const touristName = "Yo"
-const guideName = "Guía"
-
-const chatId = "5daf572ef05f869fd8d53760"
+let userId;
+let chatId;
+let otherUser;
+let matchStatus;
 
 class Chat extends Component {
   state = {
-    goToResults: false,
+    goToHome: false,
     searchFailed: false,
     ageValidationFailed: false,
     notLoggedInUser: false,
     goToProfile: false,
+    iniciated: false,
+    valorate: false,
     messages: [],
+    currentStatus: "",
   }
 
   componentDidMount() {
+    userId = localStorage.getItem("userId");
+    chatId = localStorage.getItem("chatId");
+
     this.getConversation();
   }
 
   getConversation = async () => {
     try {
-      // const userId = localStorage.getItem("userId");
-
-      const response = await userServices.getConversation({ touristId, guideId })
+      const response = await userServices.getChat(chatId)
 
       if (response.data && response.data.messages) {
-        const { data: { messages } } = response;
+        const { data: { messages, guide, tourist } } = response;
 
-        console.log(`messages.length ${messages.length} `)
-        console.log(`messages.length state ${this.state.messages.length} `)
+        if (!otherName) {
+          otherUser = (userId === tourist) ? guide : tourist;
+          const { data: { id, firstName, lastName } } = await userServices.getProfile(otherUser)
+          otherName = `${firstName} ${lastName}`
+          localStorage.setItem("ownerId", id);
+        }
 
-        this.setState({ messages })
+        if (!matchStatus) {
+          const { data: { status, id } } = await userServices.getMatchByChatId(chatId)
+          matchStatus = status
+          localStorage.setItem("matchId", id);
+        }
 
-        // if (messages.length > this.state.messages.length) {
-        // }
+        this.setState({
+          messages,
+          iniciated: matchStatus === 'Iniciado',
+          currentStatus: matchStatus,
+        })
 
         setTimeout(() => this.getConversation(), 3000);
       }
@@ -55,17 +70,17 @@ class Chat extends Component {
   renderMessages = (messages) => (
     messages.map(message => (
       <div key={message.id}>
-        {message.emisor === touristId ? (
+        {message.emisor === userId ? (
           <li className="self">
             <div className="msg">
-              <div className="msgNameRight">{touristName}</div>
+              <div className="msgNameRight">{selfName}</div>
               <div className="message">{message.text}</div>
             </div>
           </li>
         ) : (
             <li className="other">
               <div className="msg">
-                <div className="msgNameLeft">{guideName}</div>
+                <div className="msgNameLeft">{otherName}</div>
                 <div className="message">{message.text}</div>
               </div>
             </li>
@@ -78,8 +93,8 @@ class Chat extends Component {
     console.log(values);
 
     const newMessage = {
-      emisor: touristId,
-      receptor: guideId,
+      emisor: userId,
+      receptor: otherUser,
       text: values.message
     }
 
@@ -95,16 +110,49 @@ class Chat extends Component {
         console.error(`There was an error trying to send message`)
       }
     }
+  }
 
+  async goToValoration() {
+    try {
+      if (this.state.iniciated) {
+        const status = 'Finalizado'
+        await userServices.updateMatch(chatId, status)
+        this.setState({ valorate: true })
+      } else {
+        const status = 'Iniciado'
+        await userServices.updateMatch(chatId, status)
+        this.setState({ iniciated: true })
+      }
+    } catch (error) {
+      console.error(`There was an error updating status`)
+    }
+  }
 
+  async cancelMatch() {
+    try {
+      if (this.state.iniciated) {
+        const status = 'Anulado'
+        await userServices.updateMatch(chatId, status)
+        this.setState({ valorate: true })
+      } else {
+        const status = 'Cancelado'
+        await userServices.updateMatch(chatId, status)
+        this.setState({ goToHome: true })
+      }
+    } catch (error) {
+      console.error(`There was an error updating status`)
+    }
   }
 
   render() {
-    if (this.state.goToResults) {
-      return <Redirect to="/results" />
+    if (this.state.goToHome) {
+      return <Redirect to="/home" />
     }
     if (this.state.goToProfile) {
       return <Redirect to="/profile" />
+    }
+    if (this.state.valorate) {
+      return <Redirect to="/valoration" />
     }
 
     return (
@@ -135,13 +183,34 @@ class Chat extends Component {
                       aria-label="inputChat"
                       className="inputChat"
                       type="text"
-                      placeholder="Enter your message..."
+                      placeholder="Ingresa tu mensaje"
                     />
                   </div>
-                  <input type="submit" className="send-button" value="Enviar" />
+                  <input type="submit" className="send-button" value="➡" />
                 </Form>
               </Formik>
             </div>
+          </div>
+          <div className="buttonsSectionChat">
+            <input type="button"
+              value={this.state.currentStatus === "Finalizado" ? "Ir a review" :
+                this.state.iniciated ? "Finalizar" : "Iniciar"}
+              onClick={() => { this.goToValoration() }}
+              disabled={this.state.currentStatus === "Anulado" || this.state.currentStatus === "Cancelado"}
+              className={this.state.currentStatus === "Anulado" || this.state.currentStatus === "Cancelado" ?
+                "buttonLeftChatDisabled" : "buttonLeftChat"}
+            />
+            <input type="button" className="buttonRightChat"
+              value={this.state.currentStatus === "Finalizado"
+                || this.state.currentStatus === "Cancelado"
+                || this.state.currentStatus === "Anulado"
+                ? "Volver" : this.state.iniciated ? "Anular" : "Cancelar"}
+              onClick={() => {
+                this.state.currentStatus === "Finalizado"
+                  || this.state.currentStatus === "Cancelado"
+                  || this.state.currentStatus === "Anulado"
+                  ? this.setState({ goToHome: true }) : this.cancelMatch()
+              }} />
           </div>
         </div>
       </div>

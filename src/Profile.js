@@ -7,10 +7,13 @@ import home from './icons/home.svg';
 import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
-import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
+// import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
 
 import { ProfileSchema } from './helpers/validators'
 import userServices from './services/userServices'
+
+import Buttom from './components/Boton.js'
+
 
 import DropdownGender from './forms/DropdownGender'
 
@@ -172,9 +175,9 @@ class Profile extends Component {
                 </div>
 
                 <div className="buttonsSection">
-                  <input type="button" className="button" value={this.state.editable ? "Cancelar" : "Editar"}
+                  <input type="button" className="buttonLeft" value={this.state.editable ? "Cancelar" : "Editar"}
                     onClick={() => this.toggleEditInfo()} />
-                  <input type="submit" className="button" value="Guardar" disabled={!this.state.editable} />
+                  <input type="submit" className="buttonRight" value="Guardar" disabled={!this.state.editable} />
                 </div>
 
                 {this.state.notLoggedInUser && (
@@ -186,6 +189,12 @@ class Profile extends Component {
               </Form>
             </Formik>
           </div>
+
+          <div className="cerrarSesion">
+          <Buttom link={'/login'} className={"botons"} name={"Cerrar sesión"} />
+
+
+        </div>
         </div>
       );
     } else {
