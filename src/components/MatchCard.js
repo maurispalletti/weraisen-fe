@@ -30,8 +30,9 @@ export default class MatchCard extends React.Component {
           </div>
         </div>
         <div className="buttonCardGuia" >
-          <input type="button" className={disabled ? "disabledButtonMatchCard" : "buttonMatchCard"} value={"Ir al chat"} 
-            disabled={disabled} onClick={() => this.goToChat(chatId)} />
+          <input type="button" className={"buttonMatchCard"} value={"Ir al chat"}
+            // disabled={disabled}
+            onClick={() => this.goToChat(chatId)} />
         </div>
       </div>
     )

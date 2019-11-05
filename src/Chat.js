@@ -16,7 +16,7 @@ let matchStatus;
 
 class Chat extends Component {
   state = {
-    goToResults: false,
+    goToHome: false,
     searchFailed: false,
     ageValidationFailed: false,
     notLoggedInUser: false,
@@ -24,6 +24,7 @@ class Chat extends Component {
     iniciated: false,
     valorate: false,
     messages: [],
+    currentStatus: "",
   }
 
   componentDidMount() {
@@ -53,7 +54,11 @@ class Chat extends Component {
           localStorage.setItem("matchId", id);
         }
 
-        this.setState({ messages, iniciated: matchStatus === 'Iniciado' })
+        this.setState({
+          messages,
+          iniciated: matchStatus === 'Iniciado',
+          currentStatus: matchStatus,
+        })
 
         setTimeout(() => this.getConversation(), 3000);
       }
@@ -132,7 +137,7 @@ class Chat extends Component {
       } else {
         const status = 'Cancelado'
         await userServices.updateMatch(chatId, status)
-        this.setState({ goToResults: true })
+        this.setState({ goToHome: true })
       }
     } catch (error) {
       console.error(`There was an error updating status`)
@@ -140,8 +145,8 @@ class Chat extends Component {
   }
 
   render() {
-    if (this.state.goToResults) {
-      return <Redirect to="/results" />
+    if (this.state.goToHome) {
+      return <Redirect to="/home" />
     }
     if (this.state.goToProfile) {
       return <Redirect to="/profile" />
@@ -187,12 +192,25 @@ class Chat extends Component {
             </div>
           </div>
           <div className="buttonsSectionChat">
-            <input type="button" className="buttonLeftChat"
-              value={this.state.iniciated ? "Finalizar" : "Iniciar"}
-              onClick={() => { this.goToValoration() }} />
-            <input type="submit" className="buttonRightChat"
-              value={this.state.iniciated ? "Anular" : "Cancelar"}
-              onClick={() => { this.cancelMatch() }} />
+            <input type="button"
+              value={this.state.currentStatus === "Finalizado" ? "Ir a review" :
+                this.state.iniciated ? "Finalizar" : "Iniciar"}
+              onClick={() => { this.goToValoration() }}
+              disabled={this.state.currentStatus === "Anulado" || this.state.currentStatus === "Cancelado"}
+              className={this.state.currentStatus === "Anulado" || this.state.currentStatus === "Cancelado" ?
+                "buttonLeftChatDisabled" : "buttonLeftChat"}
+            />
+            <input type="button" className="buttonRightChat"
+              value={this.state.currentStatus === "Finalizado"
+                || this.state.currentStatus === "Cancelado"
+                || this.state.currentStatus === "Anulado"
+                ? "Volver" : this.state.iniciated ? "Anular" : "Cancelar"}
+              onClick={() => {
+                this.state.currentStatus === "Finalizado"
+                  || this.state.currentStatus === "Cancelado"
+                  || this.state.currentStatus === "Anulado"
+                  ? this.setState({ goToHome: true }) : this.cancelMatch()
+              }} />
           </div>
         </div>
       </div>

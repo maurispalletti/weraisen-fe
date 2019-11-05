@@ -24,8 +24,8 @@ const INITIAL_VALUES = {
 
 class Valoration extends Component {
   state = {
-    goToHome: false,
-    loginFailed: false,
+    goToMatches: false,
+    reviewFailed: false,
     points: 0,
     missingPoints: false,
   }
@@ -48,11 +48,11 @@ class Valoration extends Component {
         const response = await userServices.postReview({ giver, owner, matchId, points, description })
 
         if (response && response.data) {
-          this.setState({ goToHome: true })
+          this.setState({ goToMatches: true })
         }
 
       } catch (error) {
-        this.setState({ loginFailed: true })
+        this.setState({ reviewFailed: true })
         console.error(`There was an error trying to post review`)
       }
     }
@@ -63,8 +63,8 @@ class Valoration extends Component {
   }
 
   render() {
-    if (this.state.goToHome) {
-      return <Redirect to="/home" />
+    if (this.state.goToMatches) {
+      return <Redirect to="/matches" />
     }
 
     return (
@@ -104,6 +104,11 @@ class Valoration extends Component {
                 </Form>
               </Formik>
             </div>
+            {this.state.reviewFailed && (
+              <p className="form-error">
+                Ocurrió un error al tratar de guardar la valoración. Por favor intentá otra vez
+                </p>
+            )}
           </div>
         </div>
       </div>
