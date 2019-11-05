@@ -120,7 +120,7 @@ class userServices {
 	static async createMatch({
 		tourist,
 		guide
-		}) {
+	}) {
 		const url = `${customUrl}/api/v1/matches`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
@@ -136,6 +136,43 @@ class userServices {
 		return axios.get(url, { headers })
 	}
 
+	static async getMatchByChatId(chatId) {
+		const url = `${customUrl}/api/v1/matches/chat/${chatId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async updateMatch(chatId, status) {
+		const url = `${customUrl}/api/v1/matches/chat/${chatId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = { status }
+		return axios.put(url, body, { headers })
+	}
+
+	static async postReview({
+		giver,
+		owner,
+		matchId,
+		points,
+		description
+	}) {
+		const url = `${customUrl}/api/v1/reviews`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			giver,
+			owner,
+			matchId,
+			points,
+			description
+		}
+		return axios.post(url, body, { headers })
+	}
+
+	static async getReviews(userId) {
+		const url = `${customUrl}/api/v1/reviews/user/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
 
 }
 

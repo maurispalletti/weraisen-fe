@@ -30,9 +30,8 @@ class Matches extends Component {
         const matches = response.data;
 
         for (let index = 0; index < matches.length; index++) {
-
           const match = matches[index];
-          
+
           let userToFind;
           let partnerRole;
 
@@ -43,40 +42,10 @@ class Matches extends Component {
             userToFind = match.guide;
             partnerRole = 'GUIDE';
           }
-
           const { data: { firstName, lastName } } = await userServices.getProfile(userToFind);
-
           const partnerName = `${firstName} ${lastName}`;
-          
-
           fullInfoMatches.push({ ...match, partnerRole, partnerName });
-
-
-
-
         }
-
-        // response.data.forEach( async match => {
-        //   let userToFind;
-        //   let partnerRole;
-
-        //   if (userId === match.guide) {
-        //     userToFind = match.tourist;
-        //     partnerRole = 'TOURIST';
-        //   } else {
-        //     userToFind = match.guide;
-        //     partnerRole = 'GUIDE';
-        //   }
-
-        //   // const { data: { firstName, lastName } } = await userServices.getProfile(userToFind);
-
-        //   // const partnerName = `${firstName} ${lastName}`;
-          
-        //   const partnerName = `xx`;
-
-        //   fullInfoMatches.push({ ...match, partnerRole, partnerName });
-        // });
-
         this.setState({ matches: fullInfoMatches })
       }
     } catch (error) {
@@ -92,11 +61,11 @@ class Matches extends Component {
 
   renderMatches = () => {
     const { matches } = this.state
-    
+
     console.log(matches);
 
 
-    
+
     if (matches.length > 0) {
 
 
