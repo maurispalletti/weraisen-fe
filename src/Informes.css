@@ -1,0 +1,149 @@
+.Home {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  text-align: center;
+  overflow: scroll;
+  height: 100vh;
+  align-items: center;
+  justify-content: top;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  background-color: #7dca96;
+}
+.letra {
+  color:black;
+}
+
+.Header {
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  text-align: left;
+  overflow: hidden;
+  float: left;
+  background-color: #f7913c;
+  height: 10vh;
+  width: 100vw;
+  z-index: 1000;
+  align-items: center;
+  justify-content: left;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.HeaderButton {
+  color: white;
+  left: 0;
+  margin: 0 10px 0 30px;
+  text-decoration: none;
+}
+
+.HeaderImage {
+  position: fixed;
+  width: 8vh;
+  height: 8vh;
+  margin-top: 1vh;
+  margin-right: 1vh;
+  right: 0;
+  top: 0;
+  background-color: #f7913c;
+}
+
+
+.HomeIcon {
+  position: fixed;
+  width: 8vh;
+  height: 8vh;
+  margin-top: 1vh;
+  margin-left: 1vh;
+  left: 0;
+  top: 0;
+  background-color: #f7913c;
+}
+
+.Body {
+  padding-top: 15vh;
+  color: white;
+  background-color: #7dca96;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+
+.Section {
+  padding-bottom: 1px;
+  justify-content: center;
+}
+
+.LastSection {
+  padding-bottom: 5px;
+  justify-content: center;
+}
+
+.ActivitiesSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Activity {
+  margin: 10px 10px;  
+  border-radius: 12px;
+  padding: 2px;
+}
+
+.SearchButton {
+  text-decoration: none;
+  background-color: #f7913c;
+  border-radius: 12px;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 30px 0 30px;
+  font-weight: bold;
+}
+
+.Dropdown-home {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  background-color: #f7913c;
+  font-size: 17px;
+  height: 40px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 12px;
+  padding: 2px;
+}
+
+.TextBox-input {
+  color: white;
+  margin: 5px 10px;
+  text-decoration: none;
+  background-color: #f7913c;
+  font-size: 17px;
+  width: 15vw;
+  height: 40px;
+  text-align: center;  
+  border-radius: 12px;
+  padding: 2px;
+  border: none;  
+  display: inline-block; 
+  font-weight: bold;
+  -webkit-text-fill-color: white;
+}
+
+.GraphicWrapper {
+  /* padding: 50px 0; */
+} 

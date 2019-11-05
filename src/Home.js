@@ -129,9 +129,9 @@ class Home extends Component {
               </div>
 
               <div className="LastSection">
-              <h4>Por último, seleccioná las categorías que desees:</h4>
-        
-              <Categorias></Categorias>
+                <h4>Por último, seleccioná las categorías que desees:</h4>
+
+                <Categorias></Categorias>
                 {/* <h4>Por último, elegí la categoría que desees:</h4>
                 <h5>Ingresá las primeras letras de la categoría...</h5>
                 <Autocomplete name={'knowledge'} items={knowledge} ></Autocomplete> */}

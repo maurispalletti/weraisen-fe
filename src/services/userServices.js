@@ -174,6 +174,12 @@ class userServices {
 		return axios.get(url, { headers })
 	}
 
+	static async getMatchesPerMonth() {
+		const url = `${customUrl}/api/v1/charts/matchesPerMonth`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
 }
 
 export default userServices
