@@ -90,13 +90,27 @@ class GuideProfile extends Component {
 
     return (
       <div className="GuideProfile">
-        <div className="Header">
+        {/* <div className="Header">
           <a href={"/home"} className="HomeIcon">
             <img src={home} alt={"Home"} />
           </a>
           <div className="HeaderImage">
             <a href={"/profile"}>
               <img src={avatar_1} alt={"User"} />
+            </a>
+          </div>
+        </div> */}
+
+        <div className="Header">
+          <a href={"/home"} className="HomeIconNew">
+            <img src={home} alt={"Home"} />
+          </a>
+          <div className="HeaderText">
+            <a href={"/matches"} className={"HeaderTextLink"}>
+              <div>Mis Encuentros</div>
+            </a>
+            <a href={"/profile"} className={"HeaderTextLink"}>
+              <div>Mi perfil</div>
             </a>
           </div>
         </div>
@@ -126,8 +140,8 @@ class GuideProfile extends Component {
                 {/* <input type="button" className="button" value="Cancelar" onClick={() => this.setState({ goToHome: true })} />
                 <input type="submit" className="button" value="Guardar" /> */}
 
-          <Buttom link={'/home'} className={"cancel-button"} name={"CANCELAR"} onClick={() => this.setState({ goToHome: true })} />
-          <Buttom link={'/home'} className={"button"} name={"GUARDAR"} />
+                <Buttom link={'/home'} className={"cancel-button"} name={"CANCELAR"} onClick={() => this.setState({ goToHome: true })} />
+                <Buttom link={'/home'} className={"button"} name={"GUARDAR"} />
               </div>
               {this.state.notLoggedInUser && (
                 <p className="form-error">Usuario no logueado.</p>

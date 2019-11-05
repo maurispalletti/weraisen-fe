@@ -132,12 +132,26 @@ class Profile extends Component {
     if (this.state.initialValues) {
       return (
         <div className="Profile">
-          <div className="Header">
+          {/* <div className="Header">
             <a href={"/home"} className="HomeIcon">
               <img src={home} alt={"Home"} />
             </a>
             <div className="HeaderImage">
               <img src={avatar_1} alt={"User"} />
+            </div>
+          </div> */}
+
+          <div className="Header">
+            <a href={"/home"} className="HomeIconNew">
+              <img src={home} alt={"Home"} />
+            </a>
+            <div className="HeaderText">
+              <a href={"/matches"} className={"HeaderTextLink"}>
+                <div>Mis Encuentros</div>
+              </a>
+              <a href={"/profile"} className={"HeaderTextLink"}>
+                <div>Mi perfil</div>
+              </a>
             </div>
           </div>
 
@@ -191,10 +205,10 @@ class Profile extends Component {
           </div>
 
           <div className="cerrarSesion">
-          <Buttom link={'/login'} className={"botons"} name={"Cerrar sesión"} />
+            <Buttom link={'/login'} className={"botons"} name={"Cerrar sesión"} />
 
 
-        </div>
+          </div>
         </div>
       );
     } else {

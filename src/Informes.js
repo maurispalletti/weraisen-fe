@@ -6,11 +6,7 @@ import userServices from './services/userServices'
 
 import { Redirect } from 'react-router'
 
-
 import GraficoMatchesPorMes from './components/Grafico2barrasMatchesPorMes'
-
-// PASAR DATOS VIA PROP
-
 
 class Informes extends Component {
 
@@ -45,12 +41,15 @@ class Informes extends Component {
     return (
       <div className="Home">
         <div className="Header">
-          <button className="HomeIcon" onClick={() => this.setState({ goToProfile: true })}>
+          <a href={"/home"} className="HomeIconNew">
             <img src={home} alt={"Home"} />
-          </button>
-          <div className="HeaderImage">
-            <a href={"/profile"}>
-              <img src={avatar_1} alt={"User"} />
+          </a>
+          <div className="HeaderText">
+            <a href={"/matches"} className={"HeaderTextLink"}>
+              <div>Mis Encuentros</div>
+            </a>
+            <a href={"/profile"} className={"HeaderTextLink"}>
+              <div>Mi perfil</div>
             </a>
           </div>
         </div>

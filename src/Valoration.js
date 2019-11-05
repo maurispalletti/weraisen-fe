@@ -69,11 +69,26 @@ class Valoration extends Component {
 
     return (
       <div className="Valoration">
-        <div className="Header">
+        {/* <div className="Header">
           <a href={"/home"} className="HomeIcon">
             <img src={home} alt={"Home"} />
           </a>
+        </div> */}
+
+        <div className="Header">
+          <a href={"/home"} className="HomeIconNew">
+            <img src={home} alt={"Home"} />
+          </a>
+          <div className="HeaderText">
+            <a href={"/matches"} className={"HeaderTextLink"}>
+              <div>Mis Encuentros</div>
+            </a>
+            <a href={"/profile"} className={"HeaderTextLink"}>
+              <div>Mi perfil</div>
+            </a>
+          </div>
         </div>
+
         <div className="Body">
           <div className="ratingSection">
             <h3>Puntuá a la persona que te acompañó en tu recorrido</h3>
