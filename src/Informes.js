@@ -45,11 +45,10 @@ class Informes extends Component {
             <img src={home} alt={"Home"} />
           </a>
           <div className="HeaderText">
-            <a href={"/matches"} className={"HeaderTextLink"}>
-              <div>Mis Encuentros</div>
-            </a>
-            <a href={"/profile"} className={"HeaderTextLink"}>
-              <div>Mi perfil</div>
+            <div className={"HeaderTextLink"}>Admin</div>
+
+            <a href={"/login"} className={"HeaderTextLink"}>
+              <div>Log Out</div>
             </a>
           </div>
         </div>

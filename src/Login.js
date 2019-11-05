@@ -17,7 +17,8 @@ class Login extends Component {
 
   state = {
     goToHome: false,
-    loginFailed: false
+    loginFailed: false,
+    isAdmin: false,
   }
 
   loginUser = async ({ email, password }) => {
@@ -31,8 +32,11 @@ class Login extends Component {
       // console.log(`GET ID`)
       // localStorage.getItem("userId");
       // console.log(`!!!!!!!!!!!` + id)
-
-      this.setState({ goToHome: true })
+      if (email === 'admin@weraisen.com') {
+        this.setState({ isAdmin: true })
+      } else {
+        this.setState({ goToHome: true })
+      }
 
     } catch (error) {
       this.setState({ loginFailed: true })
@@ -43,6 +47,9 @@ class Login extends Component {
   render() {
     if (this.state.goToHome) {
       return <Redirect to="/home" />
+    }
+    if (this.state.isAdmin) {
+      return <Redirect to="/inform" />
     }
 
     return (
