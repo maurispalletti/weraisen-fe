@@ -1,24 +1,23 @@
-.Home {
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
+.Matches {
   text-align: center;
-  overflow: hidden;
-  background-color: white;
-  height: 100vh;
-  align-items: center;
-  justify-content: top;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: #2f313d;
+ height: 100vh;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ font-size: calc(10px + 2vmin);
+ color: #696970;
+ font-family: sans-serif;
+ overflow: scroll;
+}
+.BodyMatches {
+  padding-top: 15vh;
+  overflow: scroll; 
 }
 
 .Header {
-  top: 0;
+  /* top: 0;
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -32,10 +31,10 @@
   align-items: center;
   justify-content: left;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: white; */
 }
 
-.HeaderButton {
+/* .HeaderButton {
   color: white;
   left: 0;
   margin: 0 10px 0 30px;
@@ -62,19 +61,16 @@
   left: 0;
   top: 0;
   background-color: #f7913c;
-}
+} */
 
-.Body {
-  padding-top: 10vh;
-  color: white;
-}
+
 
 .Section {
   padding-bottom: 15px;
   justify-content: center;
 }
 
-.ResultsButton {
+/* .ResultsButton {
   text-decoration: none;
   background-color: #f7913c;
   border-radius: 12px;
@@ -87,7 +83,7 @@
   font-size: 16px;
   margin: 20px;
   font-weight: bold;
-}
+} */
 
 .GuideCard {
   display: flex;

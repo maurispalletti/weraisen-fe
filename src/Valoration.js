@@ -75,7 +75,7 @@ class Valoration extends Component {
           </a>
         </div> */}
 
-        <div className="Header">
+        {/* <div className="Header">
           <a href={"/home"} className="HomeIconNew">
             <img src={home} alt={"Home"} />
           </a>
@@ -87,11 +87,11 @@ class Valoration extends Component {
               <div>Mi perfil</div>
             </a>
           </div>
-        </div>
+        </div> */}
 
-        <div className="Body">
+        <div className="HomeValoration">
           <div className="ratingSection">
-            <h3>Puntuá a la persona que te acompañó en tu recorrido</h3>
+            <h2>Puntuá a la persona que te acompañó en tu recorrido</h2>
             <div>
               <Rating {...this.props} initialRating={this.state.points}
                 emptySymbol={<img alt={"Activity"} src={starEmpty} />}
@@ -104,7 +104,8 @@ class Valoration extends Component {
                 </p>
             )}
             <div className="descriptionSection">
-              <h3>Añadí un comentario describiendo tu experiencia:</h3>
+              <h2>Añadí un comentario describiendo tu experiencia:</h2>
+              <h3></h3>
               <Formik
                 initialValues={INITIAL_VALUES}
                 validationSchema={ReviewSchema}
@@ -112,9 +113,9 @@ class Valoration extends Component {
                 <Form>
                   <FieldWithError name="description"
                     placeholder="Juan es excelente! Visitamos el museo Caraffa y supo explicarme todo! Muy agradecida."
-                    aria-label="description" component="textarea" className="descripcion-input-valoration" />
+                    aria-label="description" component="textarea" className="descripcion-input" />
                   <div className="buttonsSectionValoration">
-                    <input type="submit" className="buttonValoration" value={"Enviar valoración"} />
+                    <input type="submit" className="ValorationButton" value={"Enviar"} />
                   </div>
                 </Form>
               </Formik>

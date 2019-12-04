@@ -1,22 +1,16 @@
 .GuideProfile {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    text-align: center;
-    overflow: scroll;
-    height: 100vh;
-    align-items: center;
-    justify-content: top;
-    font-size: calc(10px + 2vmin);
-    color: green;
-    text-align: center;
-    background-color: #7dca96;
-    color: white;
+  text-align: center;
+  background: #2f313d;
+ height: 100vh;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ font-size: calc(10px + 2vmin);
+ color: #696970;
+ font-family: sans-serif;
+ overflow: scroll;
+    
   }
   
 
@@ -33,12 +27,9 @@
   border-radius: 12px;
 }
 
-  .Body {
+  .BodyGuide {
     padding-top: 15vh;
-    color: white;
-    background-color: #7dca96;
-    width: 100%;
-    height: 100%;
+  overflow: scroll; 
   }
 
 .checkboxIdioma {
@@ -53,12 +44,9 @@
   width: 20%;
   text-align: left;
   align-items: initial;
-
   cursor:pointer;
-  
    width:130px;
    padding:5px;
- 
    margin:10px;
    align-content: initial
 }
@@ -92,27 +80,37 @@
 }
 
 
-.buttonGuid {
-  margin: 0px 20px 10vh;
-  color: white;
-  background-color: #f7913c;
-  border: none;
-  padding: 10px 30px;
-  text-decoration: none;
-  text-align: center;
-  display: flex;
-  font-size: 16px;
-  border-radius: 12px;
-  width: 30vw;
+.buttonGuideSave {
+ background: #cda760;
+  border: 0;
+  width: 250px;
   height: 40px;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
 }
 
+.buttonGuideCancel {
+  background: #cd7660;
+   border: 0;
+   width: 250px;
+   height: 40px;
+   border-radius: 3px;
+   color: white;
+   cursor: pointer;
+   transition: background 0.3s ease-in-out;
+ }
 
-  .Section {
-    padding-bottom: 15px;
-    justify-content: center;
-  }
+h2 {
+  color: #d48e4b;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
 
+  
 
   .IdiomsSection {
     padding-bottom: 15px;

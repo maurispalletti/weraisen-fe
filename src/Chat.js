@@ -168,7 +168,7 @@ class Chat extends Component {
           </div>
         </div> */}
 
-        <div className="Header">
+        {/* <div className="Header">
           <a href={"/home"} className="HomeIconNew">
             <img src={home} alt={"Home"} />
           </a>
@@ -180,7 +180,7 @@ class Chat extends Component {
               <div>Mi perfil</div>
             </a>
           </div>
-        </div>
+        </div> */}
 
         <div className="BodyChat">
           <div className="chatWindow">

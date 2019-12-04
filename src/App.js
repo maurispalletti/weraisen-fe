@@ -18,7 +18,7 @@ const history = createBrowserHistory();
 function App() {
   return (
     <Router history={history}>
-      <Route path={'/'} component={Login} />
+      <Route exact path={'/'} component={Login} />
       <Route exact path={'/home'} component={Home} />
       <Route exact path={'/results'} component={Results} />
       <Route exact path={'/signup'} component={Signup} />

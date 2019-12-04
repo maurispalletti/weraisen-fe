@@ -96,7 +96,7 @@ class SignUp extends Component {
           validationSchema={SignUpSchema}
           onSubmit={(values) => this.createUser(values)}>
           <Form>
-            <div className="signUpTitle">CREA TU CUENTA</div>
+            <h2>Crea tu cuenta</h2>
 
             <FieldWithError name="firstName" placeholder="Nombre" aria-label="firstName" className="input" />
             <FieldWithError name="lastName" placeholder="Apellido" aria-label="lastName" className="input" />
@@ -105,8 +105,8 @@ class SignUp extends Component {
             <DropdownGender name="gender" styleName={"Dropdown-g"} options={genders} />
             <FieldWithError name="city" placeholder="Ciudad de residencia" aria-label="city" className="input" />
             <FieldWithError name="email" placeholder="Email" aria-label="email" className="input" />
-            <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" className="input" />
-            <FieldWithError name="passwordRepeated" placeholder="Repite tu password" type="password" aria-label="passwordRepeated" className="input" />
+            <FieldWithError name="password" placeholder="Contraseña" type="password" aria-label="password" className="input" />
+            <FieldWithError name="passwordRepeated" placeholder="Repetí tu contraseña" type="password" aria-label="passwordRepeated" className="input" />
 
             <div className="right-container">
               <input type="submit" className="login-button" value="Crear cuenta" />
