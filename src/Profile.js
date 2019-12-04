@@ -182,6 +182,7 @@ class Profile extends Component {
                   <FieldWithError disabled={!this.state.editable} name="city" placeholder="Ciudad de residencia" aria-label="city" className="profile-input" />
                   <FieldWithError disabled={!this.state.editable} name="email" placeholder="Email" aria-label="email" className="profile-input" />
                 </div>
+                
 
                 <div className="guideSection">
                   {this.state.knowledge && this.state.knowledge.length > 0 && <div className="be-guide">
