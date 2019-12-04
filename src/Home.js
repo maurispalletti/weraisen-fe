@@ -29,7 +29,7 @@ const genders = [
   },
 ]
 
-const languages = ['Castellano', 'Inglés', 'Alemán', 'Italiano', 'Francés', 'Portugués', 'Japonés', 'Chino', 'Ruso', 'Turco', 'Neerlandés', 'Polaco']
+const languages = ['Español', 'Inglés', 'Alemán', 'Italiano', 'Francés', 'Portugués', 'Japonés', 'Chino', 'Ruso', 'Turco', 'Neerlandés', 'Polaco']
 
 const cities = ['Cordoba', 'Buenos Aires', 'Rosario', 'Villa Carlos Paz', 'Mendoza', 'Hernando', 'Bariloche', 'General Pico', 'Salta', 'Neuquen', 'Posadas', 'La Plata', 'Villa General Belgrano', 'Miramar', 'Puerto Madryn']
 
@@ -101,7 +101,7 @@ class Home extends Component {
             </a>
           </div>
         </div> */}
-        <div className="Header">
+        {/* <div className="HeaderHome">
           <a href={"/home"} className="HomeIconNew">
             <img src={home} alt={"Home"} />
           </a>
@@ -113,49 +113,50 @@ class Home extends Component {
               <div>Mi perfil</div>
             </a>
           </div>
-        </div>
+        </div> */}
 
-        <div className="Body">
+        <div className="BodyHome">
           <Formik
             initialValues={INITIAL_VALUES}
             onSubmit={(filters) => this.searchGuides(filters)}>
             <Form>
-              <h2>¡Planifica tu recorrido!</h2>
+              <h2>¡PLANIFICÁ TU RECORRIDO!</h2>
               <div className="Section">
-                <h4>¿A dónde querés ir?</h4>
-                <h5>Ingresá las primeras letras de la ciudad...</h5>
-                <Autocomplete name={'city'} items={cities}></Autocomplete>
+                <h2>¿A dónde querés ir?</h2>
+                <Autocomplete placeholder={'Ingresa las primeras letras de la ciudad'}  name={'city'} items={cities}></Autocomplete>
               </div>
               <div className="Section">
-                <h4>Elegí el idioma de tu guía:</h4>
-                <h5>Ingresá las primeras letras del idioma...</h5>
-                <Autocomplete name={'language'} items={languages}></Autocomplete>
+                <h2>Elegí el idioma de tu guía:</h2>
+                {/* <h5>Ingresá las primeras letras del idioma...</h5> */}
+                <Autocomplete placeholder={'Ingresa las primeras letras del idioma'} name={'language'} items={languages}></Autocomplete>
               </div>
               <div className="Section">
-                <h4>¿Cuándo?</h4>
+                <h2>¿Cuándo?</h2>
                 <Desplegable />
               </div>
               <div className="Section">
-                <h4>Género de tu guía</h4>
+                <h2>Género de tu guía</h2>
                 <DropdownGender name="gender" styleName={"Dropdown-home"} options={genders} />
               </div>
               <div className="Section">
-                <h4>Rango de edad</h4>
-                <FieldWithError name="fromAge" placeholder="Desde" aria-label="description" className="TextBox-input" />
-                <FieldWithError name="toAge" placeholder="Hasta" aria-label="description" className="TextBox-input" />
+                <h2>Rango de edad</h2>
+                
+
+                <FieldWithError name="fromAge" placeholder="Desde" aria-label="description" className="input" />
+                <FieldWithError name="toAge" placeholder="Hasta" aria-label="description" className="input" />
                 {this.state.ageValidationFailed && (
                   <p className="form-error">La edad en el campo 'Desde' debe ser menor a la edad en el campo 'Hasta'.</p>
                 )}
               </div>
 
               <div className="LastSection">
-                <h4>Por último, seleccioná las categorías que desees:</h4>
+                <h2>Por último, seleccioná las categorías que desees:</h2>
 
                 <Categorias onCategoryChange={this.handleCategory} />
 
               </div>
               <div className="Section">
-                <input type="submit" className="SearchButton" value="Buscar guías" />
+                <input type="submit" className="search-button" value="Buscar guías" />
               </div>
               {this.state.notLoggedInUser && (
                 <p className="form-error">Usuario no logueado.</p>

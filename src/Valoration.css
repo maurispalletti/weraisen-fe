@@ -1,34 +1,35 @@
 .Valoration {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
+
     text-align: center;
-    overflow: scroll;
-    height: 100vh;
-    align-items: center;
-    align-content: center;
-    justify-content: top;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    background-color: #7dca96;
-  }
-  
-  .Body {
-    padding-top: 15vh;
-    color: white;
-    background-color: #7dca96;
-  
-    height: 100%;
-    overflow: scroll;
-    align-content: center;
-    align-items: center;
+    background: #2f313d;
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   font-size: calc(10px + 2vmin);
+   color: #9999a1;
+   font-family: sans-serif;
+   overflow: scroll;
   }
 
+  .HomeValoration{
+    
+  padding-top: 15vh;
+  overflow: scroll; 
+  }
+  .descripcion-input{
+    width: 325px;
+    margin: 5px 2px;
+    height:30px;
+    padding: 20px 0px;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    outline: none;
+    color: #e4e4e4;
+    font-size: 13px;
+  }
    .p {
      
     margin: 30px 10%;
@@ -39,18 +40,7 @@
     align-items: center;
   } 
 
-  .botons{
-    align-content: center;
-    left: 40;
-    color: white;
-    background-color: #f7913c;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 12px;
-    margin: 50px 0 30px;
-    text-decoration: none;
-    font-weight: bold;
-  }
+  
   
   .ratingSection {
     margin: 0 10vw;
@@ -58,13 +48,10 @@
     text-align: center;
   }
   
-  .p {
-    color: white;
-    background-color: #f7913c;
-  }
+
 
   .Header {
-    top: 0;
+    /* top: 0;
     display: flex;
     flex-direction: row;
     position: absolute;
@@ -78,10 +65,16 @@
     align-items: center;
     justify-content: left;
     font-size: calc(10px + 2vmin);
-    color: white;
+    color: white; */
   }
-
-  .boton {
+  h2 {
+    color: #d48e4b;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  /* .boton {
     color: white;
     background-color: #f7913c;
     border: none;
@@ -100,8 +93,8 @@
     height: 40px;
     line-height: 40px;
   }
-    
-  .descripcion-input-valoration {
+     */
+  /* .descripcion-input-valoration {
     border: none;
     height: 80px;
     width: 70vw;
@@ -113,9 +106,9 @@
     margin: 5px 2px;
     border-radius: 12px;
     font-family: inherit;
-  }
+  } */
 
-  .buttonLeftValoration {
+  /* .buttonLeftValoration {
     color: white;
     background-color: #f7913c;
     border: none;
@@ -160,22 +153,16 @@
     align-content: center;
     text-align: center;
     margin-top: 20px;
-  }
+  } */
 
 
-  .buttonValoration {
+  .ValorationButton {
+    background: #d48e4b;
+    border: 0;
+    width: 250px;
+    height: 40px;
+    border-radius: 3px;
     color: white;
-    background-color: #f7913c;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    font-size: 16px;
-    margin: 0px 5px 30px;
-    border-radius: 12px;
-    width: 200px;
-    line-height: 40px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
   }

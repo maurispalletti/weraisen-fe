@@ -1,27 +1,7 @@
-.Home {
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  text-align: center;
-  overflow: scroll;
-  height: 100vh;
-  align-items: center;
-  justify-content: top;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  background-color: #7dca96;
-}
-.letra {
-  color:black;
-}
+
 
 .Header {
-  top: 0;
+  /* top: 0;
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -35,7 +15,7 @@
   align-items: center;
   justify-content: left;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: white; */
 }
 
 .HeaderImage {
@@ -107,19 +87,6 @@
   font-weight: bold;
 }
 
-.Dropdown-home {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-  background-color: #f7913c;
-  font-size: 17px;
-  height: 40px;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 12px;
-  padding: 2px;
-}
-
 .TextBox-input {
   color: white;
   margin: 5px 10px;
@@ -136,10 +103,6 @@
   font-weight: bold;
   -webkit-text-fill-color: white;
 }
-
-.GraphicWrapper {
-  /* padding: 50px 0; */
-} 
 
 .HeaderTextLinkWorking {
   text-decoration: none;
@@ -159,11 +122,6 @@
   display: flex;
   flex-direction: row;
 }
-
-
-
-
-
 
 .HeaderText {
   position: fixed;

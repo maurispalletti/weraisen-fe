@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './Results.css';
 import './Matches.css';
 import home from './icons/home.svg';
-import avatar_woman_1 from './avatars/avatar_1.svg';
 import MatchCard from './components/MatchCard';
 import { Redirect } from 'react-router'
 
@@ -61,15 +60,7 @@ class Matches extends Component {
 
   renderMatches = () => {
     const { matches } = this.state
-
-    console.log(matches);
-
-
-
     if (matches.length > 0) {
-
-
-
       return matches.map(match => {
 
         const { id, partnerRole, partnerName, chatId, status } = match
@@ -92,7 +83,7 @@ class Matches extends Component {
     }
 
     return (
-      <div className="Home">
+      <div className="Matches">
         {/* <div className="Header">
           <a href={"/home"} className="HomeIcon">
             <img src={home} alt={"Home"} />
@@ -104,7 +95,7 @@ class Matches extends Component {
           </div>
         </div> */}
 
-        <div className="Header">
+        {/* <div className="Header">
           <a href={"/home"} className="HomeIconNew">
             <img src={home} alt={"Home"} />
           </a>
@@ -116,12 +107,12 @@ class Matches extends Component {
               <div>Mi perfil</div>
             </a>
           </div>
-        </div>
+        </div> */}
 
-        <div className="Body">
+        <div className="BodyMatches">
 
           <div className="Section">
-            <h4>Tus encuentros:</h4>
+            <h2>Tus encuentros:</h2>
             {this.renderMatches()}
           </div>
 

@@ -97,7 +97,7 @@ class GuideProfile extends Component {
           </div>
         </div> */}
 
-        <div className="Header">
+        {/* <div className="Header">
           <a href={"/home"} className="HomeIconNew">
             <img src={home} alt={"Home"} />
           </a>
@@ -109,25 +109,25 @@ class GuideProfile extends Component {
               <div>Mi perfil</div>
             </a>
           </div>
-        </div>
+        </div> */}
 
-        <div className="Body">
+        <div className="BodyGuide">
 
           <Formik
             initialValues={INITIAL_VALUES}
             validationSchema={GuideProfileSchema}
             onSubmit={(values) => this.updateGuide(values)}>
             <Form>
-              <h2>Quiero ser guía</h2>
+              <h2>QUIERO SER GUÍA</h2>
               <div className="Section">
-                <h4>Describite brevemente para que otros te conozcan: </h4>
+                <h2>Describite brevemente para que otros te conozcan: </h2>
                 <FieldWithError component={'textarea'} name="description" placeholder="Ingresa tu descripción" aria-label="description" className="descripcion-input" />
                 <div className="IdiomsSection">
-                  <h4>Idiomas que manejas:</h4>
+                  <h2>Idiomas que manejas:</h2>
                   <CheckboxGroupWithError name="languages" values={languages} />
                 </div>
                 <div className="LastSection">
-                  <h4>Conocimientos que posees:</h4>
+                  <h2>Conocimientos que posees:</h2>
 
                   <Categorias onCategoryChange={this.handleCategory} />
 
@@ -136,8 +136,9 @@ class GuideProfile extends Component {
 
               <div className="buttonsSectionGuide">
 
-                <input type="button" className="buttonGuid" value="Cancelar" onClick={() => this.setState({ goToHome: true })} />
-                <input type="submit" className="buttonGuid" value="Guardar" />
+                <input type="button" className="buttonGuideCancel" value="Cancelar" onClick={() => this.setState({ goToHome: true })} />
+                
+                <input type="submit" className="buttonGuideSave" value="Guardar" />
 
               </div>
 

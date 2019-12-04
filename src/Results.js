@@ -66,7 +66,7 @@ class Results extends Component {
     }
 
     return (
-      <div className="Home">
+      <div className="Results">
         {/* <div className="Header">
           <a href={"/home"} className="HomeIcon">
             <img src={home} alt={"Home"} />
@@ -78,7 +78,7 @@ class Results extends Component {
           </div>
         </div> */}
 
-        <div className="Header">
+        {/* <div className="Header">
           <a href={"/home"} className="HomeIconNew">
             <img src={home} alt={"Home"} />
           </a>
@@ -90,12 +90,12 @@ class Results extends Component {
               <div>Mi perfil</div>
             </a>
           </div>
-        </div>
+        </div> */}
 
-        <div className="Body">
+        <div className="BodyResults">
 
           <div className="Section">
-            <h4>Guías que coinciden con tu búsqueda:</h4>
+            <h2>Guías que coinciden con tu búsqueda:</h2>
             {this.renderGuides()}
           </div>
 

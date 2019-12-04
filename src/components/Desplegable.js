@@ -15,15 +15,22 @@ export default class Desplegable extends React.Component {
 
   componentDidMount() {
     let hoy = new Date();
+  
     const dia = hoy.getDate();
     let mes = (hoy.getMonth() + 1);
     mes = mes.toString()
-
+  
     mes = mes.length === 1 ? "0" + mes : mes
 
     const año = hoy.getFullYear();
+
+
     hoy = año + "-" + mes + "-" + dia;
-    this.setState({ value: hoy, min: hoy })
+ 
+
+    this.setState(() => ({ value: hoy, min: hoy }));
+ 
+
   }
 
   render() {
