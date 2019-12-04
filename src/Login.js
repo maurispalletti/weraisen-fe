@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import './Login.css'
-import logo from './icons/logo.png'
-import loginServices from './services/userServices'
+import logo from './icons/logo4.png'
+import userServices from './services/userServices'
 import { Redirect } from 'react-router'
-
 import { Formik, Form } from 'formik'
 import { LoginSchema } from './helpers/validators'
 import FieldWithError from './forms/FieldWithError'
@@ -17,12 +16,13 @@ class Login extends Component {
 
   state = {
     goToHome: false,
-    loginFailed: false
+    loginFailed: false,
+    isAdmin: false,
   }
 
   loginUser = async ({ email, password }) => {
     try {
-      const response = await loginServices.login({ email, password })
+      const response = await userServices.login({ email, password })
       const { data: { id } } = response
 
       // save Id in local storage
@@ -31,8 +31,11 @@ class Login extends Component {
       // console.log(`GET ID`)
       // localStorage.getItem("userId");
       // console.log(`!!!!!!!!!!!` + id)
-
-      this.setState({ goToHome: true })
+      if (email === 'admin@weraisen.com') {
+        this.setState({ isAdmin: true })
+      } else {
+        this.setState({ goToHome: true })
+      }
 
     } catch (error) {
       this.setState({ loginFailed: true })
@@ -44,33 +47,36 @@ class Login extends Component {
     if (this.state.goToHome) {
       return <Redirect to="/home" />
     }
+    if (this.state.isAdmin) {
+      return <Redirect to="/inform" />
+    }
 
     return (
       <div className="Login">
         <div className="Header">
-          <img src={logo} alt={"WeRaisen"} width="100" />
-          <h3 align="right">WERAISEN</h3>
+          <img src={logo} alt={"WeRaisen"} width="300" />
+          {/* <h3 align="right">WERAISEN</h3> */}
         </div>
         <Formik
           initialValues={INITIAL_VALUES}
           validationSchema={LoginSchema}
           onSubmit={(values) => this.loginUser(values)}>
           <Form>
-            <h3>Iniciar sesión </h3>
-            <FieldWithError name="email" placeholder="Email" aria-label="username" className="login-input" />
-            <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" className="login-input" />
-
-            <div className="right-container">
+            <div><h2>Iniciar sesión </h2>
+            <FieldWithError name="username" placeholder="Correo electrónico" aria-label="username" type="text" className="login-input" />
+            <FieldWithError name="password" placeholder="Contraseña" type="password" aria-label="password" className="login-input" />
+            <h3></h3>
               <input type="submit" className="login-button" value="Ingresar" />
 
               {this.state.loginFailed && (
                 <p className="form-error">
-                  Login falló. Tu email y contraseña no coinciden. Intanta de nuevo.
+                  Tu email y contraseña no coinciden. Intanta de nuevo.
                 </p>
               )}
 
               <div className="signup">
-                <h5>¿Primera vez en WERAISEN? <a className="forgotPass" href={'/signup'}>Registrate ya.</a></h5>
+              <p>¿Primera vez en WERAISEN? <a href={'/signup'}>Registrate ahora.</a></p>
+                {/* <h5>¿Primera vez en WERAISEN? <a className="forgotPass" href=></a></h5> */}
               </div>
             </div>
           </Form>

@@ -1,23 +1,19 @@
 .Home {
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0;
+  text-align: center;
+   background: #2f313d;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  position: absolute;
-  text-align: center;
-  overflow: scroll;
-  height: 100vh;
   align-items: center;
-  justify-content: top;
+  justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-  background-color: #7dca96;
-}
+  color: #696970;
+  font-family: sans-serif;
+  overflow: hidden;
+  position:relative ;
 
-.Header {
+}
+/* .HeaderHome {
   top: 0;
   display: flex;
   flex-direction: row;
@@ -25,24 +21,32 @@
   text-align: left;
   overflow: hidden;
   float: left;
-  background-color: #f7913c;
+  background-color: #cda760;
   height: 10vh;
   width: 100vw;
   z-index: 1000;
   align-items: center;
   justify-content: left;
-  font-size: calc(10px + 2vmin);
+ 
   color: white;
+  /* overflow: scroll;  */
+
+h2 {
+  color: #d48e4b;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.HeaderButton {
+/* .HeaderButton {
   color: white;
   left: 0;
   margin: 0 10px 0 30px;
   text-decoration: none;
-}
+} */
 
-.HeaderImage {
+/* .HeaderImage {
   position: fixed;
   width: 8vh;
   height: 8vh;
@@ -50,11 +54,11 @@
   margin-right: 1vh;
   right: 0;
   top: 0;
-  background-color: #f7913c;
-}
+
+} */
 
 
-.HomeIcon {
+/* .HomeIcon {
   position: fixed;
   width: 8vh;
   height: 8vh;
@@ -62,106 +66,74 @@
   margin-left: 1vh;
   left: 0;
   top: 0;
-  background-color: #f7913c;
-}
 
-.Body {
-  padding-top: 15vh;
-  color: white;
-  background-color: #7dca96;
-  width: 100%;
-  height: 100%;
-  overflow: scroll;
-}
+} */
 
-.Section {
-  padding-bottom: 1px;
-  justify-content: center;
+.BodyHome {
+   padding-top: 15vh;
+  overflow: scroll; 
+ 
 }
-
-.LastSection {
-  padding-bottom: 5px;
-  justify-content: center;
-}
-
-.ActivitiesSection {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.Activity {
-  margin: 10px 10px;  
-  border-radius: 12px;
-  padding: 2px;
-}
-
-.SearchButton {
-  text-decoration: none;
-  background-color: #f7913c;
-  border-radius: 12px;
-  border: none;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 30px 0 30px;
-  font-weight: bold;
-}
-
 .Dropdown-home {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-  background-color: #f7913c;
-  font-size: 17px;
+
+  width: 250px;
+  padding: 25px 0px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  outline: none;
+  color: #696970;
+  font-size: 15px;
+
+}
+
+.search-button {
+  background: #d48e4b;
+  border: 0;
+  width: 250px;
   height: 40px;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+
+}
+
+h2 {
+  color: #d48e4b;
+  font-size: 15px;
+  font-weight: 600;
   text-align: center;
-  font-weight: bold;
-  border-radius: 12px;
-  padding: 2px;
+  margin-bottom: 10px;
 }
 
-.TextBox-input {
-  color: white;
-  margin: 5px 10px;
-  text-decoration: none;
-  background-color: #f7913c;
-  font-size: 17px;
-  width: 15vw;
-  height: 40px;
-  text-align: center;  
-  border-radius: 12px;
-  padding: 2px;
-  border: none;  
-  display: inline-block; 
-  font-weight: bold;
-  -webkit-text-fill-color: white;
+.input {
+  padding: 20px 0px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  outline: none;
+  color: #696970;
+  font-size: 15px;
 }
 
-/* .mi-input::placeholder {
-   color: white;
-   font-weight: bold;
-  } */
-/* 
-  #formGroupExampleInput {
-    color: white;
-  margin: 0 10px;
-  text-decoration: none;
-  background-color: #f7913c;
-  font-size: 17px;
-  width: 35vw;
-  height: 40px;
-  text-align: center;  
-  border-radius: 12px;
-  padding: 2px;
-  border: none;  
-  display: inline-block; 
-  }
-  #formGroupExampleInput::-webkit-input-placeholder {
-    color: white;
-    font-weight: bold
-  } */
+.form-error {
   
+  color: #e26a6a;
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.BodyHome::-webkit-scrollbar{
+  width: 7px;
+  
+}
+
+.BodyHome::-webkit-scrollbar-thumb{
+  background: #d48e4b;
+  border-radius: 5px;
+
+}

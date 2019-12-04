@@ -1,18 +1,38 @@
-
-
-.Results {
+.Matches {
   text-align: center;
-   background: #2f313d;
-  height: 100vh;
+  background: #2f313d;
+ height: 100vh;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ font-size: calc(10px + 2vmin);
+ color: #696970;
+ font-family: sans-serif;
+ overflow: scroll;
+}
+.BodyMatches {
+  padding-top: 15vh;
+  overflow: scroll; 
+}
+
+.Header {
+  /* top: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  position: absolute;
+  text-align: left;
+  overflow: hidden;
+  float: left;
+  background-color: #f7913c;
+  height: 10vh;
+  width: 100vw;
+  z-index: 1000;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   font-size: calc(10px + 2vmin);
-  color: #696970;
-  font-family: sans-serif;
-  overflow: scroll;
-} 
+  color: white; */
+}
 
 /* .HeaderButton {
   color: white;
@@ -43,28 +63,27 @@
   background-color: #f7913c;
 } */
 
-.BodyResults {
- 
 
-  padding-top: 15vh;
-  overflow: scroll; 
-}
 
-/* .Section {
+.Section {
   padding-bottom: 15px;
   justify-content: center;
-} */
-
-.ResultsButton {
-  background: #d48e4b;
-  border: 0;
-  width: 250px;
-  height: 40px;
-  border-radius: 3px;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
 }
+
+/* .ResultsButton {
+  text-decoration: none;
+  background-color: #f7913c;
+  border-radius: 12px;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px;
+  font-weight: bold;
+} */
 
 .GuideCard {
   display: flex;
@@ -122,11 +141,22 @@
   margin-bottom: 10px;
 }
 
-.botonsGuideCard{
+.buttonMatchCard{
   align-content: center;
   left: 40;
   color: white;
   background-color: #f7913c;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.disabledButtonMatchCard{
+  align-content: center;
+  left: 40;
+  color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 12px;

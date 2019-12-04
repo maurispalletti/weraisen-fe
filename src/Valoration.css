@@ -1,0 +1,168 @@
+.Valoration {
+
+    text-align: center;
+    background: #2f313d;
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   font-size: calc(10px + 2vmin);
+   color: #9999a1;
+   font-family: sans-serif;
+   overflow: scroll;
+  }
+
+  .HomeValoration{
+    
+  padding-top: 15vh;
+  overflow: scroll; 
+  }
+  .descripcion-input{
+    width: 325px;
+    margin: 5px 2px;
+    height:30px;
+    padding: 20px 0px;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    outline: none;
+    color: #e4e4e4;
+    font-size: 13px;
+  }
+   .p {
+     
+    margin: 30px 10%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+  } 
+
+  
+  
+  .ratingSection {
+    margin: 0 10vw;
+    align-content: center;
+    text-align: center;
+  }
+  
+
+
+  .Header {
+    /* top: 0;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    text-align: left;
+    overflow: hidden;
+    float: left;
+    background-color: #f7913c;
+    height: 10vh;
+    width: 100vw;
+    z-index: 1000;
+    align-items: center;
+    justify-content: left;
+    font-size: calc(10px + 2vmin);
+    color: white; */
+  }
+  h2 {
+    color: #d48e4b;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  /* .boton {
+    color: white;
+    background-color: #f7913c;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    text-align: center;
+    align-self: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin: 0px 5px;
+    border-radius: 12px;
+    width: 30vw;
+    height: 40px;
+    line-height: 40px;
+  }
+     */
+  /* .descripcion-input-valoration {
+    border: none;
+    height: 80px;
+    width: 70vw;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px 2px;
+    border-radius: 12px;
+    font-family: inherit;
+  } */
+
+  /* .buttonLeftValoration {
+    color: white;
+    background-color: #f7913c;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin: 0px 5px 30px;
+    border-radius: 12px;
+    width: 30vw;
+    line-height: 40px;
+    position: absolute;
+    left: 0vw;
+  }
+  
+  .buttonRightValoration {
+    color: white;
+    background-color: #F3705B;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin: 0px 5px 30px;
+    border-radius: 12px;
+    width: 30vw;
+    line-height: 40px;
+    position: absolute;
+    right: 0vw;
+  }
+  
+  
+  .buttonsSectionValoration {
+    position: relative;
+    display: inline-block;
+    align-content: center;
+    text-align: center;
+    margin-top: 20px;
+  } */
+
+
+  .ValorationButton {
+    background: #d48e4b;
+    border: 0;
+    width: 250px;
+    height: 40px;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }

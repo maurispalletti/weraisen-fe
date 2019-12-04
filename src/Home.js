@@ -2,16 +2,9 @@ import React, { Component } from 'react';
 import './Home.css';
 import avatar_1 from './avatars/avatar_1.svg';
 import home from './icons/home.svg'
-// import bar from './icons/BAR.png'
-// import culture from './icons/CULTURE.png'
-// import walking from './icons/WALKING.png'
-// import food from './icons/FOOD.png'
-// import nature from './icons/NATURE.png'
-// import shopping from './icons/SHOPPING.png'
-import Autocomplete from './Component/Autocomplete.js'
-import Desplegable from './Component/Desplegable.js'
-// import ciudadesCba from './Component/CiudadesCba.js'
-
+import Autocomplete from './components/Autocomplete.js'
+import Desplegable from './components/Desplegable.js'
+import Categorias from './components/Categorias.js'
 import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
@@ -38,9 +31,7 @@ const genders = [
 
 const languages = ['Español', 'Inglés', 'Alemán', 'Italiano', 'Francés', 'Portugués', 'Japonés', 'Chino', 'Ruso', 'Turco', 'Neerlandés', 'Polaco']
 
-const knowledge = ['Bares', 'Restaurantes', 'Museos', 'Espectáculos', 'Deportes', 'Montaña', 'Fotografía', 'Naturaleza', 'Arte', 'Fiesta']
-
-const cities = ['Cordoba', 'Buenos Aires', 'Rosario', 'Villa Carlos Paz', 'Mendoza', 'Hernando', 'Bariloche', 'La Pampa', 'Salta', 'Neuquen', 'Posadas', 'La Plata', 'Villa General Belgrano', 'Miramar', 'Puerto Madryn']
+const cities = ['Cordoba', 'Buenos Aires', 'Rosario', 'Villa Carlos Paz', 'Mendoza', 'Hernando', 'Bariloche', 'General Pico', 'Salta', 'Neuquen', 'Posadas', 'La Plata', 'Villa General Belgrano', 'Miramar', 'Puerto Madryn']
 
 const INITIAL_VALUES = {
   fromAge: '',
@@ -53,6 +44,8 @@ class Home extends Component {
     searchFailed: false,
     ageValidationFailed: false,
     notLoggedInUser: false,
+    goToProfile: false,
+    categories: [],
   }
 
   searchGuides = async ({ fromAge, toAge, gender }) => {
@@ -65,7 +58,7 @@ class Home extends Component {
 
       const city = localStorage.getItem("filter_city");
       const language = localStorage.getItem("filter_language");
-      const knowledge = localStorage.getItem("filter_knowledge");
+      const knowledge = this.state.categories;
 
       filters[`city`] = city;
       filters[`language`] = language;
@@ -83,62 +76,87 @@ class Home extends Component {
     }
   }
 
+  handleCategory = (values) => {
+    console.log(values)
+    this.setState({ categories: values })
+  }
+
   render() {
     if (this.state.goToResults) {
       return <Redirect to="/results" />
     }
+    if (this.state.goToProfile) {
+      return <Redirect to="/profile" />
+    }
 
     return (
       <div className="Home">
-        <div className="Header">
-          <a href={"/home"} className="HomeIcon">
+        {/* <div className="Header">
+          <button className="HomeIcon" onClick={() => this.setState({ goToProfile: true })}>
             <img src={home} alt={"Home"} />
-          </a>
+          </button>
           <div className="HeaderImage">
             <a href={"/profile"}>
               <img src={avatar_1} alt={"User"} />
             </a>
           </div>
-        </div>
-        <div className="Body">
+        </div> */}
+        {/* <div className="HeaderHome">
+          <a href={"/home"} className="HomeIconNew">
+            <img src={home} alt={"Home"} />
+          </a>
+          <div className="HeaderText">
+            <a href={"/matches"} className={"HeaderTextLink"}>
+              <div>Mis Encuentros</div>
+            </a>
+            <a href={"/profile"} className={"HeaderTextLink"}>
+              <div>Mi perfil</div>
+            </a>
+          </div>
+        </div> */}
+
+        <div className="BodyHome">
           <Formik
             initialValues={INITIAL_VALUES}
             onSubmit={(filters) => this.searchGuides(filters)}>
             <Form>
-              <h2>¡Planifica tu recorrido!</h2>
+              <h2>¡PLANIFICÁ TU RECORRIDO!</h2>
               <div className="Section">
-                <h4>¿A dónde querés ir?</h4>
-                <h5>Ingresá las primeras letras de la ciudad...</h5>
-                <Autocomplete name={'city'} items={cities}></Autocomplete>
+                <h2>¿A dónde querés ir?</h2>
+                <Autocomplete placeholder={'Ingresa las primeras letras de la ciudad'}  name={'city'} items={cities}></Autocomplete>
               </div>
               <div className="Section">
-                <h4>Elegí el idioma de tu guía:</h4>
-                <h5>Ingresá las primeras letras del idioma...</h5>
-                <Autocomplete name={'language'} items={languages}></Autocomplete>
+                <h2>Elegí el idioma de tu guía:</h2>
+                {/* <h5>Ingresá las primeras letras del idioma...</h5> */}
+                <Autocomplete placeholder={'Ingresa las primeras letras del idioma'} name={'language'} items={languages}></Autocomplete>
               </div>
               <div className="Section">
-                <h4>¿Cuándo?</h4>
+                <h2>¿Cuándo?</h2>
                 <Desplegable />
               </div>
               <div className="Section">
-                <h4>Género de tu guía</h4>
+                <h2>Género de tu guía</h2>
                 <DropdownGender name="gender" styleName={"Dropdown-home"} options={genders} />
               </div>
               <div className="Section">
-                <h4>Rango de edad</h4>
-                <FieldWithError name="fromAge" placeholder="Desde" aria-label="description" className="TextBox-input" />
-                <FieldWithError name="toAge" placeholder="Hasta" aria-label="description" className="TextBox-input" />
+                <h2>Rango de edad</h2>
+                
+
+                <FieldWithError name="fromAge" placeholder="Desde" aria-label="description" className="input" />
+                <FieldWithError name="toAge" placeholder="Hasta" aria-label="description" className="input" />
                 {this.state.ageValidationFailed && (
                   <p className="form-error">La edad en el campo 'Desde' debe ser menor a la edad en el campo 'Hasta'.</p>
                 )}
               </div>
+
               <div className="LastSection">
-                <h4>Por último, elegí la categoría que desees:</h4>
-                <h5>Ingresá las primeras letras de la categoría...</h5>
-                <Autocomplete name={'knowledge'} items={knowledge} ></Autocomplete>
+                <h2>Por último, seleccioná las categorías que desees:</h2>
+
+                <Categorias onCategoryChange={this.handleCategory} />
+
               </div>
               <div className="Section">
-                <input type="submit" className="SearchButton" value="Buscar guías" />
+                <input type="submit" className="search-button" value="Buscar guías" />
               </div>
               {this.state.notLoggedInUser && (
                 <p className="form-error">Usuario no logueado.</p>
@@ -158,25 +176,3 @@ export default Home;
 
 
 
-/* <div className="ActivitiesSection">
-<div className="Activity">
-  <img alt={"Activity"} src={culture} />
-</div>
-<div className="Activity">
-  <img alt={"Activity"} src={food} />
-</div>
-<div className="Activity">
-  <img alt={"Activity"} src={walking} />
-</div>
-</div>
-<div className="ActivitiesSection">
-<div className="Activity">
-  <img alt={"Activity"} src={nature} />
-</div>
-<div className="Activity">
-  <img alt={"Activity"} src={shopping} />
-</div >
-<div className="Activity">
-  <img alt={"Activity"} src={bar} />
-</div>
-</div> */

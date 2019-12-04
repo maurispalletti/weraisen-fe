@@ -1,0 +1,37 @@
+.Container {
+    align-content: center;
+    grid-template-columns: 100px 50px 100px;
+    grid-template-rows: 80px auto 80px; 
+  }
+
+.fila {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+  .ItemSeleccionado {
+    cursor:pointer;
+
+    background: #d48e4b; 
+     width:100px;
+     padding:5px;
+     height: 120px;
+     font-family: sans-serif;
+     font-size: 13px;
+     margin:10px;
+  }
+
+  .ItemNoSeleccionado {
+    cursor:pointer;
+    background: #2f313d;
+    width:100px;
+    font-family: sans-serif;
+    font-size: 13px;
+    padding:5px;
+    height: 120px;
+    margin:10px;
+  }
+
+  
+

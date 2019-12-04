@@ -1,59 +1,76 @@
 import React, { Component } from 'react';
 import './Results.css';
+import './Matches.css';
 import home from './icons/home.svg';
-import avatar_woman_1 from './avatars/avatar_1.svg';
-import GuideCard from './components/GuideCard';
+import MatchCard from './components/MatchCard';
 import { Redirect } from 'react-router'
 
 import userServices from './services/userServices'
 
-class Results extends Component {
+let fullInfoMatches = [];
+
+class Matches extends Component {
+
   state = {
     goToHome: false,
     searchFailed: false,
-    guides: [],
+    matches: [],
   }
 
-  getGuides = async (filters) => {
-    try {
-      console.log(`!!!!!!!!!!!!!!!!`)
-      console.log(filters)
+  getMatches = async () => {
 
-      const response = await userServices.getGuides(filters);
+    try {
+      const userId = localStorage.getItem("userId");
+
+      const response = await userServices.getMatches(userId);
 
       if (response && response.data && response.data.length > 0) {
-        this.setState({ guides: response.data })
+
+        const matches = response.data;
+
+        for (let index = 0; index < matches.length; index++) {
+          const match = matches[index];
+
+          let userToFind;
+          let partnerRole;
+
+          if (userId === match.guide) {
+            userToFind = match.tourist;
+            partnerRole = 'TOURIST';
+          } else {
+            userToFind = match.guide;
+            partnerRole = 'GUIDE';
+          }
+          const { data: { firstName, lastName } } = await userServices.getProfile(userToFind);
+          const partnerName = `${firstName} ${lastName}`;
+          fullInfoMatches.push({ ...match, partnerRole, partnerName });
+        }
+        this.setState({ matches: fullInfoMatches })
       }
     } catch (error) {
-      console.error(`There was an error trying to get guides: ${error}`)
+      console.error(`There was an error trying to get matches: ${error}`)
       this.setState({ searchFailed: true })
       return null
     }
   }
 
   async componentWillMount() {
-    let filters = localStorage.getItem("filters");
-    filters = JSON.parse(filters)
-    await this.getGuides(filters)
+    await this.getMatches()
   }
 
-  renderGuides = () => {
-    const { guides } = this.state
-    if (guides.length > 0) {
-      return guides.map(guide => {
-        const { id, firstName, lastName, age, city, languages, knowledge, description, gender } = guide
+  renderMatches = () => {
+    const { matches } = this.state
+    if (matches.length > 0) {
+      return matches.map(match => {
+
+        const { id, partnerRole, partnerName, chatId, status } = match
         return (
-          <GuideCard
+          <MatchCard
             key={id}
-            guideId={id}
-            firstName={firstName}
-            lastName={lastName}
-            city={city}
-            age={age}
-            languages={languages}
-            gender={gender}
-            knowledge={knowledge}
-            description={description}
+            partnerRole={partnerRole}
+            partnerName={partnerName}
+            chatId={chatId}
+            status={status}
           />
         )
       });
@@ -66,7 +83,7 @@ class Results extends Component {
     }
 
     return (
-      <div className="Results">
+      <div className="Matches">
         {/* <div className="Header">
           <a href={"/home"} className="HomeIcon">
             <img src={home} alt={"Home"} />
@@ -92,22 +109,22 @@ class Results extends Component {
           </div>
         </div> */}
 
-        <div className="BodyResults">
+        <div className="BodyMatches">
 
           <div className="Section">
-            <h2>Guías que coinciden con tu búsqueda:</h2>
-            {this.renderGuides()}
+            <h2>Tus encuentros:</h2>
+            {this.renderMatches()}
           </div>
 
           <div className="Section">
             <input type="button" className="ResultsButton" value="Volver al menú principal" onClick={() => this.setState({ goToHome: true })} />
           </div>
           {this.state.searchFailed && (
-            <p className="form-error">La búsqueda de guías falló. Intentá de nuevo por favor.</p>
+            <p className="form-error">La búsqueda de encuentros falló. Intentá de nuevo por favor.</p>
           )}
         </div>
       </div>
     );
   }
 }
-export default Results;
+export default Matches;
