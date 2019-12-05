@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Login.css'
-import logo from './icons/logo.png'
+import logo from './icons/logo4.png'
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 
@@ -48,8 +48,8 @@ class Login extends Component {
     return (
       <div className="Login">
         <div className="Header">
-          <img src={logo} alt={"WeRaisen"} width="100" />
-          <h3 align="right">WERAISEN</h3>
+          <img src={logo} alt={"WeRaisen"} width="300" />
+          {/* <h3 align="right">WERAISEN</h3> */}
         </div>
         <Formik
           initialValues={INITIAL_VALUES}
