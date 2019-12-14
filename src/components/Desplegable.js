@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Home.css'
+
 import './Desplegable.css'
 
 export default class Desplegable extends React.Component {

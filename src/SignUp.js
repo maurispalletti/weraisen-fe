@@ -91,6 +91,7 @@ class SignUp extends Component {
 
     return (
       <div className="SignUp">
+  
         <Formik
           initialValues={INITIAL_VALUES}
           validationSchema={SignUpSchema}

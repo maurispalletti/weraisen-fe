@@ -56,10 +56,10 @@ class Login extends Component {
           validationSchema={LoginSchema}
           onSubmit={(values) => this.loginUser(values)}>
           <Form>
-            <h3>Iniciar sesión </h3>
+            <h2>Iniciar sesión </h2>
             <FieldWithError name="email" placeholder="Email" aria-label="username" className="login-input" />
             <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" className="login-input" />
-
+            <h3></h3>
             <div className="right-container">
               <input type="submit" className="login-button" value="Ingresar" />
 
@@ -70,7 +70,7 @@ class Login extends Component {
               )}
 
               <div className="signup">
-                <h5>¿Primera vez en WERAISEN? <a className="forgotPass" href={'/signup'}>Registrate ya.</a></h5>
+                <p>¿Primera vez en WERAISEN? <a className="forgotPass" href={'/signup'}>Registrate ahora.</a></p>
               </div>
             </div>
           </Form>
