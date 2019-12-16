@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import './Login.css'
-import logo from './icons/logo.png'
+
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 import { ReviewSchema } from './helpers/validators'
 
+import Toolbar from './components/navbar/toolbar'
+import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
+import Backdrop from './components/navbar/backdrop/backdrop'
 
 // import Rating from './components/rating/Rating.js'
-import home from './icons/home.svg'
-import Buttom from './components/Boton.js'
+
 import './Valoration.css'
 
 import { Formik, Form } from 'formik'
@@ -61,14 +63,33 @@ class Valoration extends Component {
   updatePoints(value) {
     this.setState({ points: value })
   }
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+           return {sideDrawerOpen: !prevState.sideDrawerOpen};
+      });
+  };
+
+  backdropClickHandler = () => {
+    this.setState({sideDrawerOpen: false});
+  }
 
   render() {
     if (this.state.goToMatches) {
       return <Redirect to="/matches" />
     }
+    let sideDrawer;
+    let backdrop;
+   
+    if (this.state.sideDrawerOpen) {
+      sideDrawer =<SideDrawer/>;
+      backdrop = <Backdrop click={this.backdropClickHandler}/>
 
+    }
     return (
       <div className="Valoration">
+        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
+        {sideDrawer}
+        {backdrop}
         {/* <div className="Header">
           <a href={"/home"} className="HomeIcon">
             <img src={home} alt={"Home"} />
@@ -89,7 +110,7 @@ class Valoration extends Component {
           </div>
         </div> */}
 
-        <div className="HomeValoration">
+        <div className="BodyValoration">
           <div className="ratingSection">
             <h2>Puntuá a la persona que te acompañó en tu recorrido</h2>
             <div>
@@ -105,7 +126,7 @@ class Valoration extends Component {
             )}
             <div className="descriptionSection">
               <h2>Añadí un comentario describiendo tu experiencia:</h2>
-              <h3></h3>
+        
               <Formik
                 initialValues={INITIAL_VALUES}
                 validationSchema={ReviewSchema}

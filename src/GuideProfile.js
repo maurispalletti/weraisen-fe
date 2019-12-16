@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
-import Buttom from './components/Boton';
-import avatar_1 from './avatars/avatar_1.svg';
+
 import Categorias from './components/Categorias'
-import home from './icons/home.svg';
+
+import Toolbar from './components/navbar/toolbar'
+import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
+import Backdrop from './components/navbar/backdrop/backdrop'
 
 import './GuideProfile.css';
 
@@ -79,69 +81,58 @@ class GuideProfile extends Component {
     this.setState({ knowledge: values })
   }
 
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+           return {sideDrawerOpen: !prevState.sideDrawerOpen};
+      });
+  };
+
+  backdropClickHandler = () => {
+    this.setState({sideDrawerOpen: false});
+  }
   render() {
     if (this.state.goToHome) {
-      return <Redirect to="/home" />
+      return <Redirect to="/search" />
+    }
+
+    let sideDrawer;
+    let backdrop;
+       if (this.state.sideDrawerOpen) {
+      sideDrawer =<SideDrawer/>;
+      backdrop = <Backdrop click={this.backdropClickHandler}/>
     }
 
     return (
       <div className="GuideProfile">
-        {/* <div className="Header">
-          <a href={"/home"} className="HomeIcon">
-            <img src={home} alt={"Home"} />
-          </a>
-          <div className="HeaderImage">
-            <a href={"/profile"}>
-              <img src={avatar_1} alt={"User"} />
-            </a>
-          </div>
-        </div> */}
-
-        {/* <div className="Header">
-          <a href={"/home"} className="HomeIconNew">
-            <img src={home} alt={"Home"} />
-          </a>
-          <div className="HeaderText">
-            <a href={"/matches"} className={"HeaderTextLink"}>
-              <div>Mis Encuentros</div>
-            </a>
-            <a href={"/profile"} className={"HeaderTextLink"}>
-              <div>Mi perfil</div>
-            </a>
-          </div>
-        </div> */}
-
-        <div className="BodyGuide">
-
+         <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
+        {sideDrawer}
+        {backdrop}
+      
+      <div className="BodyGuide">
           <Formik
             initialValues={INITIAL_VALUES}
             validationSchema={GuideProfileSchema}
             onSubmit={(values) => this.updateGuide(values)}>
             <Form>
-              <h2>QUIERO SER GUÍA</h2>
+    
               <div className="Section">
-                <h2>Describite brevemente para que otros te conozcan: </h2>
-                <FieldWithError component={'textarea'} name="description" placeholder="Ingresa tu descripción" aria-label="description" className="descripcion-input" />
+                <h2>¡Describite para que otros te conozcan! </h2>
+                <FieldWithError component={'textarea'} name="description" placeholder="Ingresa una breve descripción sobre vos" aria-label="description" className="descripcion-input" />
                 <div className="IdiomsSection">
                   <h2>Idiomas que manejas:</h2>
                   <CheckboxGroupWithError name="languages" values={languages} />
                 </div>
-                <div className="LastSection">
-                  <h2>Conocimientos que posees:</h2>
+                  <div className="LastSection">
+        <h4>Conocimientos que posees:</h4>
+        {/* <CheckboxGroupWithError name="knowledge" values={knowledge} /> */}
+      </div>
+    </div>
+    <div className="buttonsSection">
+      <input type="button" className="button" value="Cancelar" onClick={() => this.setState({ goToHome: true })} />
+      <input type="submit" className="button" value="Guardar" />
+    </div>
 
-                  <Categorias onCategoryChange={this.handleCategory} />
-
-                </div>
-              </div>
-
-              <div className="buttonsSectionGuide">
-
-                <input type="button" className="buttonGuideCancel" value="Cancelar" onClick={() => this.setState({ goToHome: true })} />
-                
-                <input type="submit" className="buttonGuideSave" value="Guardar" />
-
-              </div>
-
+          
               {this.state.notLoggedInUser && (
                 <p className="form-error">Usuario no logueado.</p>
               )}
@@ -150,7 +141,13 @@ class GuideProfile extends Component {
               )}
             </Form>
           </Formik>
-        </div>
+        </div> 
+      
+
+
+     
+
+
       </div>
     );
   }

@@ -19,6 +19,7 @@ function App() {
   return (
     <Router history={history}>
       <Route exact path={'/'} component={Login} />
+      <Route exact path={'/login'} component={Login} />
       <Route exact path={'/search'} component={Search} />
       <Route exact path={'/results'} component={Results} />
       <Route exact path={'/signup'} component={Signup} />

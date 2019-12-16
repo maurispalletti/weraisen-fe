@@ -9,8 +9,8 @@ const sideDrawer = props =>(
        
         <img src={logo} alt={"Home"} width="100%" />
         <ul>
-            <li><a href="/">Mi perfil</a></li>
-            <li><a href="/">Mis encuentros</a></li>
+            <li><a href="/profile">Mi perfil</a></li>
+            <li><a href="/matches">Mis encuentros</a></li>
 
 
 

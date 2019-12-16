@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './Chat.css';
-import avatar_1 from './avatars/avatar_1.svg';
-import home from './icons/home.svg'
+import Toolbar from './components/navbar/toolbar'
+import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
+import Backdrop from './components/navbar/backdrop/backdrop'
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 import { Formik, Form, Field } from 'formik'
@@ -144,6 +145,16 @@ class Chat extends Component {
     }
   }
 
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+           return {sideDrawerOpen: !prevState.sideDrawerOpen};
+      });
+  };
+
+  backdropClickHandler = () => {
+    this.setState({sideDrawerOpen: false});
+  }
+
   render() {
     if (this.state.goToHome) {
       return <Redirect to="/home" />
@@ -155,8 +166,20 @@ class Chat extends Component {
       return <Redirect to="/valoration" />
     }
 
+    let sideDrawer;
+    let backdrop;
+   
+    if (this.state.sideDrawerOpen) {
+      sideDrawer =<SideDrawer/>;
+      backdrop = <Backdrop click={this.backdropClickHandler}/>
+
+    }
+
     return (
       <div className="Chat">
+         <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
+        {sideDrawer}
+        {backdrop}
         {/* <div className="Header">
           <button className="HomeIcon" onClick={() => this.setState({ goToProfile: true })}>
             <img src={home} alt={"Home"} />

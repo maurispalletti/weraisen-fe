@@ -1,59 +1,24 @@
-
-
 .Results {
-  text-align: center;
+  
    background: #2f313d;
   height: 100vh;
-  display: flex;
+  
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #696970;
   font-family: sans-serif;
-  overflow: scroll;
+  overflow: hidden;
+  position:relative ; 
+  text-align: center;
 } 
 
-/* .HeaderButton {
-  color: white;
-  left: 0;
-  margin: 0 10px 0 30px;
-  text-decoration: none;
-}
-
-.HeaderImage {
-  position: fixed;
-  width: 8vh;
-  height: 8vh;
-  margin-top: 1vh;
-  margin-right: 1vh;
-  right: 0;
-  top: 0;
-  background-color: #f7913c;
-}
-
-.HomeIcon {
-  position: fixed;
-  width: 8vh;
-  height: 8vh;
-  margin-top: 1vh;
-  margin-left: 1vh;
-  left: 0;
-  top: 0;
-  background-color: #f7913c;
-} */
-
 .BodyResults {
- 
-
-  padding-top: 15vh;
+   padding-top: 5vh;
   overflow: scroll; 
+  align-items: center;
 }
-
-/* .Section {
-  padding-bottom: 15px;
-  justify-content: center;
-} */
 
 .ResultsButton {
   background: #d48e4b;
@@ -65,7 +30,9 @@
   cursor: pointer;
   transition: background 0.3s ease-in-out;
 }
-
+.ResultsButton:hover {
+  background: #7dca96;
+}
 .GuideCard {
   display: flex;
   flex-direction: row;

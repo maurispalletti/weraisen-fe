@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './Results.css';
 import './Matches.css';
-import home from './icons/home.svg';
+
+import Toolbar from './components/navbar/toolbar'
+import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
+import Backdrop from './components/navbar/backdrop/backdrop'
 import MatchCard from './components/MatchCard';
 import { Redirect } from 'react-router'
 
@@ -77,13 +80,32 @@ class Matches extends Component {
     }
   }
 
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+           return {sideDrawerOpen: !prevState.sideDrawerOpen};
+      });
+  };
+
+  backdropClickHandler = () => {
+    this.setState({sideDrawerOpen: false});
+  }
+
   render() {
     if (this.state.goToHome) {
-      return <Redirect to="/home" />
+      return <Redirect to="/search" />
     }
 
+    let sideDrawer;
+    let backdrop;
+    if (this.state.sideDrawerOpen) {
+      sideDrawer =<SideDrawer/>;
+      backdrop = <Backdrop click={this.backdropClickHandler}/>
+    }
     return (
       <div className="Matches">
+        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
+        {sideDrawer}
+        {backdrop}
         {/* <div className="Header">
           <a href={"/home"} className="HomeIcon">
             <img src={home} alt={"Home"} />
@@ -117,7 +139,7 @@ class Matches extends Component {
           </div>
 
           <div className="Section">
-            <input type="button" className="ResultsButton" value="Volver al menú principal" onClick={() => this.setState({ goToHome: true })} />
+            <input type="button" className="MatchesButton" value="Volver al menú principal" onClick={() => this.setState({ goToHome: true })} />
           </div>
           {this.state.searchFailed && (
             <p className="form-error">La búsqueda de encuentros falló. Intentá de nuevo por favor.</p>

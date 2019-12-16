@@ -2,7 +2,7 @@
   text-align: center;
   background: #2f313d;
  height: 100vh;
- display: flex;
+
  flex-direction: column;
  align-items: center;
  justify-content: center;
@@ -12,78 +12,15 @@
  overflow: scroll;
 }
 .BodyMatches {
-  padding-top: 15vh;
+  padding-top: 5vh;
   overflow: scroll; 
 }
-
-.Header {
-  /* top: 0;
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  text-align: left;
-  overflow: hidden;
-  float: left;
-  background-color: #f7913c;
-  height: 10vh;
-  width: 100vw;
-  z-index: 1000;
-  align-items: center;
-  justify-content: left;
-  font-size: calc(10px + 2vmin);
-  color: white; */
-}
-
-/* .HeaderButton {
-  color: white;
-  left: 0;
-  margin: 0 10px 0 30px;
-  text-decoration: none;
-}
-
-.HeaderImage {
-  position: fixed;
-  width: 8vh;
-  height: 8vh;
-  margin-top: 1vh;
-  margin-right: 1vh;
-  right: 0;
-  top: 0;
-  background-color: #f7913c;
-}
-
-.HomeIcon {
-  position: fixed;
-  width: 8vh;
-  height: 8vh;
-  margin-top: 1vh;
-  margin-left: 1vh;
-  left: 0;
-  top: 0;
-  background-color: #f7913c;
-} */
-
-
 
 .Section {
   padding-bottom: 15px;
   justify-content: center;
 }
 
-/* .ResultsButton {
-  text-decoration: none;
-  background-color: #f7913c;
-  border-radius: 12px;
-  border: none;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 20px;
-  font-weight: bold;
-} */
 
 .GuideCard {
   display: flex;
@@ -114,6 +51,20 @@
 
 .buttonCardGuia {
   padding-bottom: 20px;
+}
+.MatchesButton:hover {
+  background: #7dca96;
+}
+
+.MatchesButton{
+  background: #d48e4b;
+  border: 0;
+  width: 250px;
+  height: 40px;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
 }
 
 .ImageCard {
