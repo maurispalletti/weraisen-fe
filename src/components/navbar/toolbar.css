@@ -3,20 +3,20 @@
     background: #d48e4b; 
     /* background: #94a0af; */
     width: 100%;
-    height:56px;
+    height:65px;
 
 }
 .aa{
     font-size: 17px;
 }
 .toolbar__logo{
-    margin-left: 1rem;
+    margin-left: 15rem; 
 }
 
 .toolbar__logo a{
  color:white;
  text-decoration: none;
- font-size: 1.5rem;
+ font-size: 0rem;
  
 }
 
@@ -31,6 +31,7 @@
     height: 100%;
     align-items: center;
     padding: 0 1rem;
+    
 }
 
 .toolbar_navigation-items ul{
@@ -38,6 +39,7 @@
     margin:o;
     padding: 0;
     display: flex;
+    
 }
 
 .toolbar_navigation-items li {
