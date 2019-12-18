@@ -1,22 +1,5 @@
 .SignUp {
-  /* top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  text-align: center;
-  overflow: scroll;
-  height: 100vh;
-  align-items: center;
-  justify-content: top;
-  font-size: calc(10px + 2vmin);
-  color: green;
-  text-align: center;
-  background-color: #7dca96;
-  color: white; */
+  padding-top: 10vh;
   text-align: center;
   background: #2f313d;
  height: 100vh;
@@ -27,23 +10,12 @@
  font-size: calc(10px + 2vmin);
  color: #46485c;
  font-family: sans-serif;
- padding-top: 15vh;
+padding-block-end: 10vh;
  overflow: scroll; 
 }
 
 .create-account-button {
-  /* color: white;
-  background-color: #f7913c;
-  border: none;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 20px 2px;
-  border-radius: 12px;
-  width: 60vw;
-  font-weight: bold; */
+
   background: #d48e4b;
   border: 0;
   width: 250px;
@@ -62,16 +34,7 @@
 }
 
 .input {
-  /* border: none;
-  height: 5px;
-  width: 60vw;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 5px 2px;
-  border-radius: 12px; */
+
   width: 250px;
   padding: 25px 0px;
   background: transparent;
@@ -82,19 +45,6 @@
   font-size: 13px;
   overflow: scroll;
 }
-
-/* .Dropdown-g {
-  padding-left: 50%;
-  margin: 5px 2px;
-  color: grey;
-  display: inline-block;
-  background-color: white;
-  font-size: 16px;
-  width: 66vw;
-  height: 50px;
-  text-align: center;
-  border-radius: 12px;
-} */
 
 .Dropdown-g {
 

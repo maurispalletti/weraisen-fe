@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import './Home.css';
-import avatar_1 from './avatars/avatar_1.svg';
-import home from './icons/home.svg'
+import './Search.css';
+import Toolbar from './components/navbar/toolbar'
+import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
+import Backdrop from './components/navbar/backdrop/backdrop'
+
 import Autocomplete from './components/Autocomplete.js'
 import Desplegable from './components/Desplegable.js'
 import Categorias from './components/Categorias.js'
@@ -46,6 +48,7 @@ class Home extends Component {
     notLoggedInUser: false,
     goToProfile: false,
     categories: [],
+    sideDrawerOpen: false
   }
 
   searchGuides = async ({ fromAge, toAge, gender }) => {
@@ -77,11 +80,29 @@ class Home extends Component {
   }
 
   handleCategory = (values) => {
-    console.log(values)
+  
     this.setState({ categories: values })
   }
 
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+           return {sideDrawerOpen: !prevState.sideDrawerOpen};
+      });
+  };
+
+  backdropClickHandler = () => {
+    this.setState({sideDrawerOpen: false});
+  }
+
   render() {
+    let sideDrawer;
+    let backdrop;
+   
+    if (this.state.sideDrawerOpen) {
+      sideDrawer =<SideDrawer/>;
+      backdrop = <Backdrop click={this.backdropClickHandler}/>
+
+    }
     if (this.state.goToResults) {
       return <Redirect to="/results" />
     }
@@ -90,7 +111,12 @@ class Home extends Component {
     }
 
     return (
-      <div className="Home">
+      <div className="Search">
+        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
+        {sideDrawer}
+        {backdrop}
+
+
         {/* <div className="Header">
           <button className="HomeIcon" onClick={() => this.setState({ goToProfile: true })}>
             <img src={home} alt={"Home"} />
@@ -115,7 +141,7 @@ class Home extends Component {
           </div>
         </div> */}
 
-        <div className="BodyHome">
+        <div className="BodySearch">
           <Formik
             initialValues={INITIAL_VALUES}
             onSubmit={(filters) => this.searchGuides(filters)}>
@@ -136,7 +162,7 @@ class Home extends Component {
               </div>
               <div className="Section">
                 <h2>Género de tu guía</h2>
-                <DropdownGender name="gender" styleName={"Dropdown-home"} options={genders} />
+                <DropdownGender name="gender" styleName={"Dropdown-search"} options={genders} />
               </div>
               <div className="Section">
                 <h2>Rango de edad</h2>
@@ -162,7 +188,7 @@ class Home extends Component {
                 <p className="form-error">Usuario no logueado.</p>
               )}
               {this.state.searchFailed && (
-                <p className="form-error">La búsqueda de guías falló. Intantá de nuevo.</p>
+                <p className="form-error">La búsqueda de guías falló. Intentá de nuevo.</p>
               )}
             </Form>
           </Formik>

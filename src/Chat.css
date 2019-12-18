@@ -1,20 +1,5 @@
 .Chat {
-  /* top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  text-align: center;
-  overflow: scroll;
-  height: 100vh;
-  align-items: center;
-  justify-content: top;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  background-color: #7dca96; */
+
   text-align: center;
   background: #2f313d;
  height: 100vh;
@@ -32,23 +17,6 @@
   color:black;
 }
 
-.Header {
-  /* top: 0;
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  text-align: left;
-  overflow: hidden;
-  float: left;
-  background-color: #f7913c;
-  height: 10vh;
-  width: 100vw;
-  z-index: 1000;
-  align-items: center;
-  justify-content: left;
-  font-size: calc(10px + 2vmin);
-  color: white; */
-}
 
 .HeaderButton {
   color: white;

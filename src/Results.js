@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './Results.css';
-import home from './icons/home.svg';
-import avatar_woman_1 from './avatars/avatar_1.svg';
+
 import GuideCard from './components/GuideCard';
 import { Redirect } from 'react-router'
-
+import Toolbar from './components/navbar/toolbar'
+import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
+import Backdrop from './components/navbar/backdrop/backdrop'
 import userServices from './services/userServices'
 
 class Results extends Component {
@@ -60,13 +61,34 @@ class Results extends Component {
     }
   }
 
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+           return {sideDrawerOpen: !prevState.sideDrawerOpen};
+      });
+  };
+
+  backdropClickHandler = () => {
+    this.setState({sideDrawerOpen: false});
+  }
+
   render() {
     if (this.state.goToHome) {
-      return <Redirect to="/home" />
+      return <Redirect to="/search" />
+    }
+    let sideDrawer;
+    let backdrop;
+   
+    if (this.state.sideDrawerOpen) {
+      sideDrawer =<SideDrawer/>;
+      backdrop = <Backdrop click={this.backdropClickHandler}/>
+
     }
 
     return (
       <div className="Results">
+        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
+        {sideDrawer}
+        {backdrop}
         {/* <div className="Header">
           <a href={"/home"} className="HomeIcon">
             <img src={home} alt={"Home"} />

@@ -1,0 +1,96 @@
+.Search {
+  
+  background: #2f313d;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #696970;
+  font-family: sans-serif;
+  overflow: hidden;
+  position:relative ; 
+  text-align: center;
+
+}
+
+
+h2 {
+ color: #d48e4b;
+ font-size: 15px;
+ font-weight: 600;
+ text-align: center;
+ margin-bottom: 10px;
+}
+
+
+
+.BodySearch {
+  padding-top: 5vh;
+ overflow: scroll; 
+ align-items: center;
+
+}
+.Dropdown-search {
+
+ width: 250px;
+ padding: 25px 0px;
+ background: transparent;
+ border: 0;
+ border-bottom: 1px solid rgba(255,255,255,0.04);
+ outline: none;
+ color: #696970;
+ font-size: 15px;
+
+}
+
+.search-button {
+ background: #d48e4b;
+ border: 0;
+ width: 250px;
+ height: 40px;
+ border-radius: 3px;
+ color: white;
+ cursor: pointer;
+ transition: background 0.3s ease-in-out;
+
+}
+
+h2 {
+ color: #d48e4b;
+ font-size: 15px;
+ font-weight: 600;
+ text-align: center;
+ margin-bottom: 10px;
+}
+
+.input {
+ padding: 20px 0px;
+ background: transparent;
+ border: 0;
+ border-bottom: 1px solid rgba(255,255,255,0.04);
+ outline: none;
+ color: #696970;
+ font-size: 15px;
+}
+
+.form-error {
+ 
+ color: #e26a6a;
+ font-family: sans-serif;
+ font-size: 12px;
+ font-weight: 600;
+ text-align: center;
+ margin-bottom: 10px;
+}
+
+.BodySearch::-webkit-scrollbar{
+ width: 7px;
+ 
+}
+
+.BodySearch::-webkit-scrollbar-thumb{
+ background: #d48e4b;
+ border-radius: 5px;
+
+}
