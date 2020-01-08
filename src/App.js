@@ -12,6 +12,7 @@ import Informe from './Informes';
 import Matches from './Matches';
 
 import { createBrowserHistory } from 'history';
+import Home from './Home';
 
 const history = createBrowserHistory();
 
@@ -29,6 +30,7 @@ function App() {
       <Route exact path={'/chat'} component={Chat} />
       <Route exact path={'/inform'} component={Informe} />
       <Route exact path={'/matches'} component={Matches} />
+      <Route exact path={'/home'} component={Home} />
     </Router>
   );
 }

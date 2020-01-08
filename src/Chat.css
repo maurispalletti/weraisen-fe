@@ -126,10 +126,15 @@ body {
   color: #696970;
 }
 .container {
+  /*
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(1, 50px);
+
   grid-gap: 3px;
+  */
+  min-height:100%;
+  position:relative;
   margin-top: 15px;
 }
 .group {
