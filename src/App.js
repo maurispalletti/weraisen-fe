@@ -12,6 +12,10 @@ import Informe from './Informes';
 import Matches from './Matches';
 
 import { createBrowserHistory } from 'history';
+import Home from './Home';
+import Admin from './AdminProfile';
+import Prueba from '../src/components/DenunciaPopUp';
+
 
 const history = createBrowserHistory();
 
@@ -29,6 +33,9 @@ function App() {
       <Route exact path={'/chat'} component={Chat} />
       <Route exact path={'/inform'} component={Informe} />
       <Route exact path={'/matches'} component={Matches} />
+      <Route exact path={'/home'} component={Home} />
+      <Route exact path={'/admin'} component={Admin} />
+      <Route exact path={'/prueba'} component={Prueba} />
     </Router>
   );
 }
