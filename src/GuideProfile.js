@@ -18,16 +18,12 @@ import userServices from './services/userServices'
 const languages = [
   { description: 'Español', value: 'Español' },
   { description: 'Inglés', value: 'Inglés' },
-  { description: "Alemán", value: 'Alemán' },
   { description: "Italiano", value: 'Italiano' },
   { description: "Portugués", value: 'Portugués' },
   { description: "Francés", value: 'Francés' },
   { description: "Japonés", value: 'Japonés' },
   { description: "Chino", value: 'Chino' },
-  { description: "Ruso", value: 'Ruso' },
-  { description: "Turco", value: 'Turco' },
-  { description: "Neerlandés", value: 'Neerlandés' },
-  { description: "Polaco", value: 'Polaco' },
+
 ];
 
 const INITIAL_VALUES = {
@@ -120,11 +116,13 @@ class GuideProfile extends Component {
                 <FieldWithError component={'textarea'} name="description" placeholder="Ingresa una breve descripción sobre vos" aria-label="description" className="descripcion-input" />
                 <div className="IdiomsSection">
                   <h2>Idiomas que manejas:</h2>
+                 
                   <CheckboxGroupWithError name="languages" values={languages} />
+                  <FieldWithError component={'textarea'} name="idioma" placeholder="Otro" aria-label="idioma" className="idioma-input" />
                 </div>
                   <div className="LastSection">
-        <h4>Conocimientos que posees:</h4>
-        {/* <CheckboxGroupWithError name="knowledge" values={knowledge} /> */}
+        <h2>Conocimientos que posees:</h2>
+        <Categorias onCategoryChange={this.knowledge} />
       </div>
     </div>
     <div className="buttonsSection">
