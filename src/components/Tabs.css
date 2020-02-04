@@ -1,0 +1,27 @@
+.Tabs {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 3em;
+    background:#696970;
+    width: 97%;
+    border-radius: 12px;
+
+    
+}
+
+
+.Tabs__Tab {
+    display: inline-block;
+    padding: 1em;
+    background: #696970;
+    color: #7dca96;
+    cursor: pointer;
+    
+   
+ 
+}
+
+.Tabs__Tab:hover, .Tabs__Tab--active {
+background: #f7913c;
+color: white;
+}
