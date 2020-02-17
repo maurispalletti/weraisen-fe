@@ -8,6 +8,7 @@ import SideDrawer from './components/navbar/sideDrawer/sideDrawer';
 import Backdrop from './components/navbar/backdrop/backdrop';
 import './GuideReviews.css';
 import userServices from './services/userServices'
+import Axios from 'axios';
 
 const userId = localStorage.getItem("userId")
 
@@ -22,10 +23,9 @@ class GuideReviews extends Component {
   }
   getNameGuide = async () => {
     
-    const name = await userServices.getProfile('5dc1e0b52136dd0d1db6e3cf') //aca esta el id en duro
-    name= JSON.parse(firstName)
+    const name = await (await userServices.getProfile('5dc1e0b52136dd0d1db6e3cf'))
     this.setState({guideName: name})
-  }
+     }
   getReviews = async () => {
     try {
       const userId = localStorage.getItem("userId"); /* aca va el id del guia de la card seleccionada*/
