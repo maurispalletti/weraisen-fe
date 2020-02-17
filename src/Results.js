@@ -56,7 +56,7 @@ class Results extends Component {
             knowledge={knowledge}
             description={description}
           />
-        )
+        ) 
       });
     }
   }

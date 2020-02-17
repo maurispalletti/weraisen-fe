@@ -15,6 +15,8 @@ import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
 import { GuideProfileSchema } from './helpers/validators'
 import userServices from './services/userServices'
 
+
+
 const languages = [
   { description: 'Español', value: 'Español' },
   { description: 'Inglés', value: 'Inglés' },
@@ -30,12 +32,32 @@ const languages = [
   { description: "Polaco", value: 'Polaco' },
 ];
 
+const disponibilidad =[
+{description:'Lunes', value: 'Lunes'},
+{description:'Martes', value: 'Martes'},
+{description:'Miercoles', value: 'Miercoles'},
+{description:'Jueves', value: 'Jueves'},
+{description:'Viernes', value: 'Viernes'},
+{description:'Sabado', value: 'Sabado'},
+{description:'Domingo', value: 'Domingo'},
+{description:'Todos', value: 'Todos'},
+];
+
+
 const INITIAL_VALUES = {
   description: '',
   languages: [],
+  disponibilidad:[],
 }
 
 class GuideProfile extends Component {
+
+constructor (props ){
+
+  
+  super(props);
+  this.state={selectedOption: "Option1"};
+}
   state = {
     goToHome: false,
     updateFailed: false,
@@ -79,7 +101,16 @@ class GuideProfile extends Component {
   handleCategory = (values) => {
     console.log(values)
     this.setState({ knowledge: values })
-  }
+  };
+
+  getInitialState=()=>{
+    return {selectedOption: 'option1'};
+  };
+
+  handleOptionChange=(changeEvent)=>{
+this.setState({selectedOption: changeEvent.target.value});
+
+  };
 
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
@@ -120,10 +151,23 @@ class GuideProfile extends Component {
                 <FieldWithError component={'textarea'} name="description" placeholder="Ingresa una breve descripción sobre vos" aria-label="description" className="descripcion-input" />
                 <div className="IdiomsSection">
                   <h2>Idiomas que manejas:</h2>
-                  <CheckboxGroupWithError name="languages" values={languages} />
+                  <h3><CheckboxGroupWithError name="languages" values={languages} /></h3>
+                  {/* seccion de disponibilidad ponele */}
+                  <h2>Disponibilidad por semana:</h2>
+                <h3><CheckboxGroupWithError name="disponibilidad" values={disponibilidad} /></h3>
+                <div className="radio">
+                <h2><label>
+                <input type="radio" value="option1" checked={this.state.selectedOption==='option1'}
+                                                    onChange={this.handleOptionChange}/>
+                  Permitir encuentros grupales
+                </label>
+                </h2>
                 </div>
+              
+                </div>
+               
                   <div className="LastSection">
-        <h4>Conocimientos que posees:</h4>
+        <h2>Conocimientos que posees:</h2>
         {/* <CheckboxGroupWithError name="knowledge" values={knowledge} /> */}
       </div>
     </div>

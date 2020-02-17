@@ -78,7 +78,14 @@ class Home extends Component {
       this.setState({ goToResults: true })
     }
   }
+  getInitialState=()=>{
+    return {selectedOption: 'option1'};
+  };
 
+  handleOptionChange=(changeEvent)=>{
+this.setState({selectedOption: changeEvent.target.value});
+console.log('You have selected:', this.state.selectedOption);
+  };
   handleCategory = (values) => {
   
     this.setState({ categories: values })
@@ -174,7 +181,14 @@ class Home extends Component {
                   <p className="form-error">La edad en el campo 'Desde' debe ser menor a la edad en el campo 'Hasta'.</p>
                 )}
               </div>
-
+              <div className="radio">
+                <h2><label>
+                <input type="radio" value="option1" checked={this.state.selectedOption==='option1'}
+                  onChange={this.handleOptionChange}/>
+                  Permitir encuentros grupales
+                </label>
+                </h2>
+                </div>
               <div className="LastSection">
                 <h2>Por último, seleccioná las categorías que desees:</h2>
 

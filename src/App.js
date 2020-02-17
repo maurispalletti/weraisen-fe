@@ -10,6 +10,8 @@ import Valoration from './Valoration';
 import Chat from './Chat';
 import Informe from './Informes';
 import Matches from './Matches';
+import GuideReviews from './GuideReviews';
+
 
 import { createBrowserHistory } from 'history';
 
@@ -29,7 +31,9 @@ function App() {
       <Route exact path={'/chat'} component={Chat} />
       <Route exact path={'/inform'} component={Informe} />
       <Route exact path={'/matches'} component={Matches} />
-    </Router>
+      <Route exact path={'/guideReviews'} component={GuideReviews}/>
+      
+          </Router>
   );
 }
 

@@ -17,7 +17,7 @@
     "react-rating": "^2.0.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.0.1",
+    "react-scripts": "^3.3.0",
     "semantic-ui-react": "^0.88.1",
     "yup": "^0.27.0"
   },
@@ -41,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "typescript": "^3.7.4"
   }
 }

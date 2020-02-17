@@ -75,6 +75,12 @@ class userServices {
 		return axios.get(url, { headers })
 	}
 
+	static async getReviews(guideUserId) {
+		const url = `${customUrl}/api/v1/reviews/user/${guideUserId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
 	static async updateProfile({
 		userId,
 		firstName,

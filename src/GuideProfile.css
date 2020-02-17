@@ -38,6 +38,13 @@
   margin-left: 24vw;
   align-content: center
 }
+.checkboxDisponibilidad {
+  padding: 2px 10px;
+  float: left;
+  display: flex;
+  margin-left: 24vw;
+  align-content: center
+}
 
 .checkbox-container{
   width: 20%;
@@ -104,6 +111,15 @@
 h2 {
   color: #d48e4b;
   font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+h3{
+
+  color: #9b9a99;
+  font-size: 14px;
   font-weight: 600;
   text-align: center;
   margin-bottom: 10px;
@@ -198,3 +214,7 @@ h2 {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+  
+
+  
