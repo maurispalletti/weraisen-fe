@@ -2,8 +2,8 @@ import React from 'react'
 import Logo from './navbar/logo4.png'
 
  const Header = () => (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a className="navbar-brand ml-5" href="#"><img src={Logo} alt="Logo" style={{width:'50px'}}/>WeRaisen</a>
+    <nav className="navbar navbar-expand-lg navbar-dark " style={{ backgroundColor: '#d48e4b' }}>
+    <a className="navbar-brand ml-5" href="#"><img src={Logo} alt="Logo" style={{width:'50px', paddingBottom: '5px'}}/>WeRaisen</a>
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
