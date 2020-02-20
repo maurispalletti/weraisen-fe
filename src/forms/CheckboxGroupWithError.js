@@ -2,11 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { ErrorMessage } from 'formik'
 import Checkbox from './Checkbox'
+import './Checkbox.css'
 
 export default function CheckboxGroupWithError (props) {
   const { name, label, values } = props
   return (
-    <div className="contenedor">
+    <div>
       {label && <label>{label}</label>}
       {values.map(value => (
         <div className="checkbox-container" key={value.value}>
