@@ -1,64 +1,20 @@
 .Chat {
-
-  text-align: center;
-  background: #2f313d;
- height: 100vh;
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
  font-size: calc(10px + 2vmin);
- color: #696970;
  font-family: sans-serif;
- overflow: scroll;
  
 }
 .letra {
   color:black;
 }
 
-
-.HeaderButton {
-  color: white;
-  left: 0;
-  margin: 0 10px 0 30px;
-  text-decoration: none;
-}
-
-.HeaderImage {
-  position: fixed;
-  width: 8vh;
-  height: 8vh;
-  margin-top: 1vh;
-  margin-right: 1vh;
-  right: 0;
-  top: 0;
-  background-color: #f7913c;
-}
-
-
-.HomeIcon {
-  position: fixed;
-  width: 8vh;
-  height: 8vh;
-  margin-top: 1vh;
-  margin-left: 1vh;
-  left: 0;
-  top: 0;
-  background-color: #f7913c;
-}
-
 .BodyChat {
   text-align: center;
-  background: #2f313d;
  height: 100vh;
  display: flex;
  flex-direction: column;
  align-items: center;
  justify-content: center;
  font-size: calc(10px + 2vmin);
- color: #696970;
- font-family: sans-serif;
  overflow: scroll;
  
 }
@@ -119,24 +75,8 @@
   font-size: 15px !important;
   color: black;
 }
-body {
-  background-color: #f5f5f5;
-  font: 600 18px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Lato,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  color: #696970;
-}
-.container {
-  /*
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(1, 50px);
 
-  grid-gap: 3px;
-  */
-  min-height:100%;
-  position:relative;
-  margin-top: 15px;
-}
+
 .group {
   background: #4eb5e5;
   grid-column-start: 1;
@@ -146,9 +86,8 @@ body {
   border-radius: 5px;
 }
 .chatWindow {
-  background: rgb(233, 229, 229);
-  border-radius: 12px;
-  width: 90vw;
+
+  width: 100%;
   margin: 0 5vw;
 }
 .chatInputWrapper {
@@ -377,31 +316,31 @@ body {
   position: absolute;
   left: 0;
   bottom: 0;
-  padding: 20px 0;
+  padding: 14.5px 0;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 5px 2px;
-  border-radius: 12px;
+  border-radius: 3px;
 }                   
 
 .send-button {
   color: white;
-  background: #cda760;
+  background: #d48e4b;
   border: none;
-  padding: 8px 0;
+  padding: 0px 0;
   text-align: center;
   text-decoration: none;
   font-weight: 600;
   display: inline-block;
   font-size: 36px;
   margin: 4px 2px;
-  border-radius: 12px;
+  border-radius: 3px;
   position: absolute;
   right: 3px;
   bottom: 0;
-  width: 15%;
+  width: 17%;
 }
 
 .formInputChat {
