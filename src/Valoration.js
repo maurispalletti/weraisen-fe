@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Login.css'
+import './Valoration.css'
 
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
