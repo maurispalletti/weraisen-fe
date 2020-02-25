@@ -12,12 +12,10 @@ class Card extends React.Component {
 
         this.setState({
             cosas: [
-                { Nombre: 'Gato 1', Descripcion: 'algo gato para la joda', Puntuacion: -5 },
-                { Nombre: 'Gato 2', Descripcion: 'algo gato para la comer', Puntuacion: 12 },
-                { Nombre: 'Gato 3', Descripcion: 'algo gato para la deporte', Puntuacion: 2 },
-                { Nombre: 'Gato 4', Descripcion: 'algo gato para la vago', Puntuacion: 10 },
-                
-                
+                { Nombre: 'Juan', Descripcion: 'Se especializa en turismo natural', Puntuacion: 7},
+                { Nombre: 'José', Descripcion: ' Activo, y dispuesto a recorrer lugar emblemáticos', Puntuacion: 6},
+                { Nombre: 'Franca', Descripcion: ' Me gusta el arte y recorrer las galerías es mi pasión', Puntuacion: 9},
+                { Nombre: 'Sol', Descripcion: ' Apasionada por el intercambio cultural y mostrar mi ciudad', Puntuacion: 9},
             ]
         });
 

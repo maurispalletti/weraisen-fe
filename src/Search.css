@@ -11,10 +11,13 @@
   overflow: hidden;
   position:relative ; 
   text-align: center;
+  font-size: 17px;
 
 }
 
-
+.input-switch{
+ border-radius: 50px;
+}
 h2 {
  color: #d48e4b;
  font-size: 15px;

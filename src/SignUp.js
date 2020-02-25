@@ -108,6 +108,12 @@ class SignUp extends Component {
             <FieldWithError name="email" placeholder="Email" aria-label="email" className="input" />
             <FieldWithError name="password" placeholder="Contraseña" type="password" aria-label="password" className="input" />
             <FieldWithError name="passwordRepeated" placeholder="Repetí tu contraseña" type="password" aria-label="passwordRepeated" className="input" />
+            <div class='remember'>
+             <p>Al crear cuenta estoy aceptando los 
+             <a className="forgotPass" href={'/terminos'}> términos y condiciones</a></p>
+            </div>
+
+           
 
             <div className="right-container">
               <input type="submit" className="login-button" value="Crear cuenta" />

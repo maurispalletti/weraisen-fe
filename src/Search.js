@@ -48,7 +48,8 @@ class Home extends Component {
     notLoggedInUser: false,
     goToProfile: false,
     categories: [],
-    sideDrawerOpen: false
+    sideDrawerOpen: false,
+    editable: true
   }
 
   searchGuides = async ({ fromAge, toAge, gender }) => {
@@ -79,6 +80,10 @@ class Home extends Component {
     }
   }
 
+  toggleEditInfo = () => {
+    this.setState({ editable: !this.state.editable });
+  }
+
   handleCategory = (values) => {
   
     this.setState({ categories: values })
@@ -89,7 +94,9 @@ class Home extends Component {
            return {sideDrawerOpen: !prevState.sideDrawerOpen};
       });
   };
-
+visibilty = () => {
+  
+}
   backdropClickHandler = () => {
     this.setState({sideDrawerOpen: false});
   }
@@ -116,31 +123,6 @@ class Home extends Component {
         {sideDrawer}
         {backdrop}
 
-
-        {/* <div className="Header">
-          <button className="HomeIcon" onClick={() => this.setState({ goToProfile: true })}>
-            <img src={home} alt={"Home"} />
-          </button>
-          <div className="HeaderImage">
-            <a href={"/profile"}>
-              <img src={avatar_1} alt={"User"} />
-            </a>
-          </div>
-        </div> */}
-        {/* <div className="HeaderHome">
-          <a href={"/home"} className="HomeIconNew">
-            <img src={home} alt={"Home"} />
-          </a>
-          <div className="HeaderText">
-            <a href={"/matches"} className={"HeaderTextLink"}>
-              <div>Mis Encuentros</div>
-            </a>
-            <a href={"/profile"} className={"HeaderTextLink"}>
-              <div>Mi perfil</div>
-            </a>
-          </div>
-        </div> */}
-
         <div className="BodySearch">
           <Formik
             initialValues={INITIAL_VALUES}
@@ -166,10 +148,15 @@ class Home extends Component {
               </div>
               <div className="Section">
                 <h2>Rango de edad</h2>
+                Indistinto
+                      <label class="switch">
                 
-
-                <FieldWithError name="fromAge" placeholder="Desde" aria-label="description" className="input" />
-                <FieldWithError name="toAge" placeholder="Hasta" aria-label="description" className="input" />
+                      <input type="checkbox" value={this.state.editable ? "Cancelar" : "Editar"} onClick={() => this.toggleEditInfo()} />
+                      <span class="slider round"></span>
+                    </label>
+               
+                <FieldWithError disabled={this.visibilty} name="fromAge" placeholder="Desde" aria-label="description" className="input" />
+                <FieldWithError disabled={!this.state.editable} name="toAge" placeholder="Hasta" aria-label="description" className="input" />
                 {this.state.ageValidationFailed && (
                   <p className="form-error">La edad en el campo 'Desde' debe ser menor a la edad en el campo 'Hasta'.</p>
                 )}
