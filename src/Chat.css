@@ -9,11 +9,8 @@
 
 .BodyChat {
   text-align: center;
- height: 100vh;
+ height: 100%;
  display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
  font-size: calc(10px + 2vmin);
  overflow: scroll;
  
@@ -86,9 +83,11 @@
   border-radius: 5px;
 }
 .chatWindow {
-
+  /* background: white; */
   width: 100%;
-  margin: 0 5vw;
+  margin: 0;
+
+  height: 100%;
 }
 .chatInputWrapper {
   display: flex;
@@ -104,10 +103,10 @@
   list-style: none;
   background: none;
   margin: 0;
-  padding: 0 0 50px 0;
-  margin-top: 60px;
+  padding: 0 0 10px 0;
+  margin-top: 1px;
   margin-bottom: 10px;
-  height: 40vh;
+  height:80vh;
   overflow: scroll;
   scroll-behavior: smooth;
   transform:rotateX(180deg);
@@ -227,14 +226,14 @@
   text-align: right;
   font-size: 0.8rem;
   margin: 0 0 0.2rem 0;
-  color: orange;
+  color: #d48e4b;
 }
 
 .msgNameLeft {
   text-align: left;
   font-size: 0.8rem;
   margin: 0 0 0.2rem 0;
-  color: orange;
+  color:#d48e4b;
 }
 
 .msg img {

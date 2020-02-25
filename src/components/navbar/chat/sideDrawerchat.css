@@ -13,7 +13,6 @@
 
 .side-drawerchat ul{
     width: 0px;
-
     list-style:none;
     display: flex;
     flex-direction: column;
