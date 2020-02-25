@@ -14,7 +14,7 @@ import Matches from './Matches';
 import { createBrowserHistory } from 'history';
 import Home from './Home';
 import Admin from './AdminProfile';
-import Prueba from '../src/components/DenunciaPopUp';
+import Prueba from '../src/components/CancelarPopUp';
 
 
 const history = createBrowserHistory();
