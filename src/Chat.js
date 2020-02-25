@@ -68,121 +68,28 @@ class Chat extends Component {
     }
   }
 
-  // renderMessages = (messages) => (
-  //   messages.map(message => (
-  //     <div key={message.id}>
-  //       {message.emisor === userId ? (
-  //         <li className="self">
-  //           <div className="msg">
-  //             <div className="msgNameRight">{selfName}</div>
-  //             <div className="message">{message.text}</div>
-  //           </div>
-  //         </li>
-  //       ) : (
-  //           <li className="other">
-  //             <div className="msg">
-  //               <div className="msgNameLeft">{otherName}</div>
-  //               <div className="message">{message.text}</div>
-  //             </div>
-  //           </li>
-  //         )}
-  //     </div>
-  //   ))
-  // )
-  renderMessages = () => {
-    return (
-      <>
-        <div key={1111}>
+  renderMessages = (messages) => (
+    messages.map(message => (
+      <div key={message.id}>
+        {message.emisor === userId ? (
           <li className="self">
             <div className="msg">
-              <div className="msgNameRight">Iri</div>
-              <div className="message">Hola como estas?</div>
+              <div className="msgNameRight">{selfName}</div>
+              <div className="message">{message.text}</div>
             </div>
           </li>
-        </div>
-        <div key={2222}>
-          <li className="other">
-            <div className="msg">
-              <div className="msgNameLeft">Vicki</div>
-              <div className="message">Bien y vos?</div>
-            </div>
-          </li>
-        </div>
-        <div key={3333}>
-          <li className="self">
-            <div className="msg">
-              <div className="msgNameRight">Iri</div>
-              <div className="message">Todo en orden</div>
-            </div>
-          </li>
-        </div>
-        <div key={3333}>
-          <li className="other">
-            <div className="msg">
-              <div className="msgNameLeft">Vicki</div>
-              <div className="message">Bueno vamos de paseo</div>
-            </div>
-          </li>
-        </div>
-        <div key={3333}>
-          <li className="other">
-            <div className="msg">
-              <div className="msgNameLeft">Vicki</div>
-              <div className="message">Bueno vamos de paseo</div>
-            </div>
-          </li>
-        </div>
-        <div key={3333}>
-          <li className="other">
-            <div className="msg">
-              <div className="msgNameLeft">Vicki</div>
-              <div className="message">Bueno vamos de paseo</div>
-            </div>
-          </li>
-        </div>
-        <div key={3333}>
-          <li className="other">
-            <div className="msg">
-              <div className="msgNameLeft">Vicki</div>
-              <div className="message">Bueno vamos de paseo</div>
-            </div>
-          </li>
-        </div>
-        <div key={3333}>
-          <li className="other">
-            <div className="msg">
-              <div className="msgNameLeft">Vicki</div>
-              <div className="message">Bueno vamos de paseo</div>
-            </div>
-          </li>
-        </div>
-        <div key={3333}>
-          <li className="other">
-            <div className="msg">
-              <div className="msgNameLeft">Vicki</div>
-              <div className="message">Bueno vamos de paseo</div>
-            </div>
-          </li>
-        </div>
-        <div key={3333}>
-          <li className="other">
-            <div className="msg">
-              <div className="msgNameLeft">Vicki</div>
-              <div className="message">Bueno vamos de paseo</div>
-            </div>
-          </li>
-        </div>
-        <div key={3333}>
-          <li className="self">
-            <div className="msg">
-              <div className="msgNameRight">Iri</div>
-              <div className="message">Pi pi pi</div>
-            </div>
-          </li>
-        </div>
-      </>
-    )
-  }
+        ) : (
+            <li className="other">
+              <div className="msg">
+                <div className="msgNameLeft">{otherName}</div>
+                <div className="message">{message.text}</div>
+              </div>
+            </li>
+          )}
+      </div>
+    ))
+  )
+  
 
   sendMessage = async (values) => {
     console.log(values);
