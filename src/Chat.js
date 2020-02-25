@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './Chat.css';
-import Toolbar from './components/navbar/toolbar'
-import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
+import Toolbar from './components/navbar/chat/toolbarchat'
+import SideDrawer from './components/navbar/chat/sideDrawerchat'
 import Backdrop from './components/navbar/backdrop/backdrop'
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 import { Formik, Form, Field } from 'formik'
-
+import enviar from './avatars/enviar.png'
 const selfName = "Yo"
 let otherName;
 
@@ -89,6 +89,7 @@ class Chat extends Component {
       </div>
     ))
   )
+  
 
   sendMessage = async (values) => {
     console.log(values);
@@ -177,34 +178,9 @@ class Chat extends Component {
 
     return (
       <div className="Chat">
-         <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
+        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
         {sideDrawer}
         {backdrop}
-        {/* <div className="Header">
-          <button className="HomeIcon" onClick={() => this.setState({ goToProfile: true })}>
-            <img src={home} alt={"Home"} />
-          </button>
-          <div className="HeaderImage">
-            <a href={"/profile"}>
-              <img src={avatar_1} alt={"User"} />
-            </a>
-          </div>
-        </div> */}
-
-        {/* <div className="Header">
-          <a href={"/home"} className="HomeIconNew">
-            <img src={home} alt={"Home"} />
-          </a>
-          <div className="HeaderText">
-            <a href={"/matches"} className={"HeaderTextLink"}>
-              <div>Mis Encuentros</div>
-            </a>
-            <a href={"/profile"} className={"HeaderTextLink"}>
-              <div>Mi perfil</div>
-            </a>
-          </div>
-        </div> */}
-
         <div className="BodyChat">
           <div className="chatWindow">
             <ul className="chat" id="chatList">
@@ -221,15 +197,16 @@ class Chat extends Component {
                       aria-label="inputChat"
                       className="inputChat"
                       type="text"
-                      placeholder="Ingresa tu mensaje"
+                      placeholder="Enviar mensaje..."
                     />
                   </div>
                   <input type="submit" className="send-button" value="➡" />
+                  <div className="send-button"><a href="/search"><img src={enviar} alt={"Home"} width="35" /></a></div>
                 </Form>
               </Formik>
             </div>
           </div>
-          <div className="buttonsSectionChat">
+          {/* <div className="buttonsSectionChat">
             <input type="button"
               value={this.state.currentStatus === "Finalizado" ? "Ir a review" :
                 this.state.iniciated ? "Finalizar" : "Iniciar"}
@@ -249,7 +226,7 @@ class Chat extends Component {
                   || this.state.currentStatus === "Anulado"
                   ? this.setState({ goToHome: true }) : this.cancelMatch()
               }} />
-          </div>
+          </div> */}
         </div>
       </div>
     );

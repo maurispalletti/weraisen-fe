@@ -1,0 +1,39 @@
+.side-drawerchat{
+    height: 22%;
+    background: rgb(223, 220, 213);
+    box-shadow: 2px 0px 5px rgba(0,0,0,0.5);
+    position: fixed;
+    top:15px;
+    right: 0;
+    width:40%;
+    max-width: 400px;
+    z-index: 200;
+   
+}
+
+.side-drawerchat ul{
+    width: 0px;
+    list-style:none;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+}
+
+.side-drawerchat li{
+    margin:0.5rem 0;
+    margin-left: 0;
+}
+
+.side-drawerchat a{
+    color: #94a0af;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.side-drawerchat a:hover, .side-drawerchat a:active {
+    color:#696970;
+}
+
+
+
+
