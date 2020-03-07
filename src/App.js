@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route } from 'react-router';
 import Login from './Login';
-import Search from './Search';
+import Search from './Search1';
 import Results from './Results';
 import Signup from './SignUp';
 import Profile from './Profile';
@@ -11,6 +11,7 @@ import Chat from './Chat';
 import Informe from './Informes';
 import Matches from './Matches';
 import Terminos from './termycond'
+import Filtros from './Search'
 
 import { createBrowserHistory } from 'history';
 import Home from './Home';
@@ -38,6 +39,7 @@ function App() {
       <Route exact path={'/home'} component={Home} />
       <Route exact path={'/admin'} component={Admin} />
       <Route exact path={'/prueba'} component={Prueba} />
+      <Route exact path={'/filters'} component={Filtros} />
     </Router>
   );
 }
