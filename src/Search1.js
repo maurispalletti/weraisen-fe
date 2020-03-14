@@ -12,16 +12,16 @@ import cordoba from './avatars/ciudades/cordoba.png'
 import laplata from './avatars/ciudades/laplata.png'
 import mardel from './avatars/ciudades/mardel.png'
 import rosario from './avatars/ciudades/rosario.png'
+import Filtros from './Search.js'
 
-
-class Home extends Component {
+class Search1 extends React.Component {
   state = {
     goToResults: false,
     searchFailed: false,
     notLoggedInUser: false,
     goToProfile: false,
     sideDrawerOpen: false,
-    city:''
+ 
   }
 
   
@@ -69,13 +69,13 @@ class Home extends Component {
           
               <div className="Section1">
 
-              <div><a href="/filters"><img src={bsas} alt={"bsas"} width="100%" onClick={() => this.SetCity('Buenos Aires')}/></a></div>
-              <div><a href="/filters"><img src={cordoba} alt={"cordoba"} width="100%" onClick={() => this.state.city = 'Buenos Aires'}/></a></div>
-              <div><a href="/filters"><img src={laplata} alt={"laplata"} width="100%" onClick={() => this.state.city = 'La Plata'}/></a></div>
-              <div><a href="/filters"><img src={mardel} alt={"mardel"} width="100%" onClick={() => this.state.city = 'Mar del Plata'}/></a></div>
-              <div><a href="/filters"><img src={neuquen} alt={"Neuquen"} width="100%" onClick={() => this.state.city = 'Neuquen'}/></a></div>
-              <div><a href="/filters"><img src={mendoza} alt={"Mendoza"} width="100%" onClick={() => this.state.city = 'Mendoza'}/></a></div>
-              <div><a href="/filters"><img src={rosario} alt={"Rosario"} width="100%" onClick={() => this.state.city = 'Rosario'}/></a></div>
+              <div><a href="/filters"><img src={bsas} alt={"bsas"} width="100%" onClick={() => <Filtros city={'Buenos Aires'}/>}/></a></div>
+              <div><a href="/filters"><img src={cordoba} alt={"cordoba"} width="100%" onClick={() => <Filtros city={'Cordoba'}/>}/></a></div>
+              <div><a href="/filters"><img src={laplata} alt={"laplata"} width="100%" onClick={() => <Filtros city={'La Plata'}/>}/></a></div>
+              <div><a href="/filters"><img src={mardel} alt={"mardel"} width="100%" onClick={() => <Filtros city={'Mar del Plata'}/>}/></a></div>
+              <div><a href="/filters"><img src={neuquen} alt={"Neuquen"} width="100%" onClick={() => <Filtros city={'Neuquen'}/>}/></a></div>
+              <div><a href="/filters"><img src={mendoza} alt={"Mendoza"} width="100%" onClick={() => <Filtros city={'Mendoza'}/>}/></a></div>
+              <div><a href="/filters"><img src={rosario} alt={"Rosario"} width="100%" onClick={() => <Filtros city={'Rosario'}/>}/></a></div>
               </div>
         
               {this.state.notLoggedInUser && (
@@ -91,7 +91,7 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Search1;
 
 
 

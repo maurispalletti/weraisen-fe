@@ -12,8 +12,6 @@ import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import DropdownGender from './forms/DropdownGender'
 
-
-
 const genders = [
   {
     value: "Cualquiera",
@@ -33,27 +31,31 @@ const genders = [
   },
 ]
 
-const languages = ['Español', 'Inglés', 'Alemán', 'Italiano', 'Francés', 'Portugués', 'Japonés', 'Chino', 'Ruso', 'Turco', 'Neerlandés', 'Polaco']
-
-const cities = ['Cordoba', 'Buenos Aires', 'Rosario', 'Villa Carlos Paz', 'Mendoza', 'Hernando', 'Bariloche', 'General Pico', 'Salta', 'Neuquen', 'Posadas', 'La Plata', 'Villa General Belgrano', 'Miramar', 'Puerto Madryn']
+const languages = ['Español', 'Inglés', 'Italiano', 'Francés', 'Portugués', 'Japonés', 'Chino']
 
 const INITIAL_VALUES = {
   fromAge: '',
   toAge: ''
 }
 
-class Home extends Component {
-  state = {
-    goToResults: false,
-    searchFailed: false,
-    ageValidationFailed: false,
-    notLoggedInUser: false,
-    goToProfile: false,
-    categories: [],
-    sideDrawerOpen: false,
-    editable: true,
-    filtros:false,
+class Search extends Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      goToResults: false,
+      searchFailed: false,
+      ageValidationFailed: false,
+      notLoggedInUser: false,
+      goToProfile: false,
+      categories: [],
+      sideDrawerOpen: false,
+      editable: true,
+      filtros:false,
+      
+    
+  }
+ 
   }
 
   searchGuides = async ({ fromAge, toAge, gender }) => {
@@ -64,19 +66,21 @@ class Home extends Component {
       this.setState({ ageValidationFailed: true })
     } else {
 
-      const city = localStorage.getItem("filter_city");
+      // const city = localStorage.getItem("filter_lenguage");
+      const ciudad =  this.props.city;
       const language = localStorage.getItem("filter_language");
       const knowledge = this.state.categories;
-
-      filters[`city`] = city;
+  
+      filters[`city`] = ciudad;
       filters[`language`] = language;
       filters[`knowledge`] = knowledge;
 
       const filtersString = JSON.stringify(filters);
+      console.log('holis')
       console.log(filtersString);
       localStorage.setItem(`filters`, filtersString);
 
-      localStorage.removeItem("filter_city");
+      localStorage.removeItem(ciudad);
       localStorage.removeItem("filter_language");
       localStorage.removeItem("filter_knowledge");
 
@@ -90,6 +94,7 @@ class Home extends Component {
 
   mostrarFiltros = () => {
     this.setState({ filtros: !this.state.filtros });
+   
   }
 
 
@@ -136,13 +141,7 @@ visibilty = () => {
             initialValues={INITIAL_VALUES}
             onSubmit={(filters) => this.searchGuides(filters)}>
             <Form>
-          {/* <div>
-          <h5>Seleccionar cuidad</h5>
-          </div>
-              <div className="Section1">
-               <Autocomplete placeholder={'Ingresa las primeras letras de la ciudad'}  name={'city'} items={cities}></Autocomplete>
-              </div> */}
-              
+            
               <div className="Fecha">
                 <h5>¿Cuándo?</h5>
                 <Desplegable />
@@ -169,7 +168,7 @@ visibilty = () => {
                 <FieldWithError disabled={!this.state.editable} name="toAge" placeholder="Hasta" aria-label="description" className="input" />
              
                 <h2>Elegí el idioma de tu guía:</h2>
-                {/* <h5>Ingresá las primeras letras del idioma...</h5> */}
+             
                 <Autocomplete placeholder={'Ingresa las primeras letras del idioma'} name={'language'} items={languages}></Autocomplete>
           
                 {this.state.ageValidationFailed && (
@@ -181,7 +180,6 @@ visibilty = () => {
                   <div>
                 <a className="verMas" onClick={() => this.mostrarFiltros()} >{this.state.filtros ? "Ver menos" : "Ver más"}</a>
                   </div>
-                  {/* <input type="submit" className="filters-button" value="Ver más filtros" /> */}
                   <input type="submit" className="search-button" value="Buscar guías" />
 
                 </div>              
@@ -200,7 +198,7 @@ visibilty = () => {
   }
 }
 
-export default Home;
+export default Search;
 
 
 
