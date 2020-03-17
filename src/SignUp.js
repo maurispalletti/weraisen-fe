@@ -91,7 +91,7 @@ class SignUp extends Component {
 
     return (
       <div className="SignUp">
-  
+
         <Formik
           initialValues={INITIAL_VALUES}
           validationSchema={SignUpSchema}
@@ -108,12 +108,30 @@ class SignUp extends Component {
             <FieldWithError name="email" placeholder="Email" aria-label="email" className="input" />
             <FieldWithError name="password" placeholder="Contraseña" type="password" aria-label="password" className="input" />
             <FieldWithError name="passwordRepeated" placeholder="Repetí tu contraseña" type="password" aria-label="passwordRepeated" className="input" />
-            <div class='remember'>
-             <p>Al crear cuenta estoy aceptando los 
+
+            <br/>
+
+            
+            {/* botones para subir la foto */}
+            
+            <div>
+            <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler}
+              ref={fileImput => this.fileImput = fileImput}
+            />
+            <button type="button" className="btn btn-primary" onClick={() => this.fileImput.click()}>Seleccionar Archivo</button>
+            <button type="button" className="btn btn-primary" onClick={this.fileUploadHandler}>Upload</button>  
+
+            </div>
+            
+
+
+
+            <div className='remember'>
+              <p>Al crear cuenta estoy aceptando los
              <a className="forgotPass" href={'/terminos'}> términos y condiciones</a></p>
             </div>
 
-           
+
 
             <div className="right-container">
               <input type="submit" className="login-button" value="Crear cuenta" />
