@@ -31,25 +31,31 @@ const genders = [
   },
 ]
 
-const languages = ['Español', 'Inglés', 'Alemán', 'Italiano', 'Francés', 'Portugués', 'Japonés', 'Chino', 'Ruso', 'Turco', 'Neerlandés', 'Polaco']
-
-const cities = ['Cordoba', 'Buenos Aires', 'Rosario', 'Villa Carlos Paz', 'Mendoza', 'Hernando', 'Bariloche', 'General Pico', 'Salta', 'Neuquen', 'Posadas', 'La Plata', 'Villa General Belgrano', 'Miramar', 'Puerto Madryn']
+const languages = ['Español', 'Inglés', 'Italiano', 'Francés', 'Portugués', 'Japonés', 'Chino']
 
 const INITIAL_VALUES = {
   fromAge: '',
   toAge: ''
 }
 
-class Home extends Component {
-  state = {
-    goToResults: false,
-    searchFailed: false,
-    ageValidationFailed: false,
-    notLoggedInUser: false,
-    goToProfile: false,
-    categories: [],
-    sideDrawerOpen: false,
-    editable: true
+class Search extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      goToResults: false,
+      searchFailed: false,
+      ageValidationFailed: false,
+      notLoggedInUser: false,
+      goToProfile: false,
+      categories: [],
+      sideDrawerOpen: false,
+      editable: true,
+      filtros:false,
+      
+    
+  }
+ 
   }
 
   searchGuides = async ({ fromAge, toAge, gender }) => {
@@ -60,19 +66,21 @@ class Home extends Component {
       this.setState({ ageValidationFailed: true })
     } else {
 
-      const city = localStorage.getItem("filter_city");
+      // const city = localStorage.getItem("filter_lenguage");
+      const ciudad =  this.props.city;
       const language = localStorage.getItem("filter_language");
       const knowledge = this.state.categories;
-
-      filters[`city`] = city;
+  
+      filters[`city`] = ciudad;
       filters[`language`] = language;
       filters[`knowledge`] = knowledge;
 
       const filtersString = JSON.stringify(filters);
+      console.log('holis')
       console.log(filtersString);
       localStorage.setItem(`filters`, filtersString);
 
-      localStorage.removeItem("filter_city");
+      localStorage.removeItem(ciudad);
       localStorage.removeItem("filter_language");
       localStorage.removeItem("filter_knowledge");
 
@@ -84,8 +92,13 @@ class Home extends Component {
     this.setState({ editable: !this.state.editable });
   }
 
+  mostrarFiltros = () => {
+    this.setState({ filtros: !this.state.filtros });
+   
+  }
+
+
   handleCategory = (values) => {
-  
     this.setState({ categories: values })
   }
 
@@ -128,25 +141,21 @@ visibilty = () => {
             initialValues={INITIAL_VALUES}
             onSubmit={(filters) => this.searchGuides(filters)}>
             <Form>
-              <h2>¡PLANIFICÁ TU RECORRIDO!</h2>
-              <div className="Section">
-                <h2>¿A dónde querés ir?</h2>
-                <Autocomplete placeholder={'Ingresa las primeras letras de la ciudad'}  name={'city'} items={cities}></Autocomplete>
-              </div>
-              <div className="Section">
-                <h2>Elegí el idioma de tu guía:</h2>
-                {/* <h5>Ingresá las primeras letras del idioma...</h5> */}
-                <Autocomplete placeholder={'Ingresa las primeras letras del idioma'} name={'language'} items={languages}></Autocomplete>
-              </div>
-              <div className="Section">
-                <h2>¿Cuándo?</h2>
+            
+              <div className="Fecha">
+                <h5>¿Cuándo?</h5>
                 <Desplegable />
               </div>
-              <div className="Section">
+
+              <div className="Categoria">
+                <h5>Seleccioná la categoría </h5>
+                <Categorias onCategoryChange={this.handleCategory} />
+              </div>  
+
+              <div className="Filters" style={{display: this.state.filtros ? 'block' : 'none' }}>
                 <h2>Género de tu guía</h2>
                 <DropdownGender name="gender" styleName={"Dropdown-search"} options={genders} />
-              </div>
-              <div className="Section">
+             
                 <h2>Rango de edad</h2>
                 Indistinto
                       <label class="switch">
@@ -154,23 +163,27 @@ visibilty = () => {
                       <input type="checkbox" value={this.state.editable ? "Cancelar" : "Editar"} onClick={() => this.toggleEditInfo()} />
                       <span class="slider round"></span>
                     </label>
-               
+             
                 <FieldWithError disabled={this.visibilty} name="fromAge" placeholder="Desde" aria-label="description" className="input" />
                 <FieldWithError disabled={!this.state.editable} name="toAge" placeholder="Hasta" aria-label="description" className="input" />
+             
+                <h2>Elegí el idioma de tu guía:</h2>
+             
+                <Autocomplete placeholder={'Ingresa las primeras letras del idioma'} name={'language'} items={languages}></Autocomplete>
+          
                 {this.state.ageValidationFailed && (
                   <p className="form-error">La edad en el campo 'Desde' debe ser menor a la edad en el campo 'Hasta'.</p>
                 )}
               </div>
 
-              <div className="LastSection">
-                <h2>Por último, seleccioná las categorías que desees:</h2>
+              <div className="ButtonSection">
+                  <div>
+                <a className="verMas" onClick={() => this.mostrarFiltros()} >{this.state.filtros ? "Ver menos" : "Ver más"}</a>
+                  </div>
+                  <input type="submit" className="search-button" value="Buscar guías" />
 
-                <Categorias onCategoryChange={this.handleCategory} />
-
-              </div>
-              <div className="Section">
-                <input type="submit" className="search-button" value="Buscar guías" />
-              </div>
+                </div>              
+            
               {this.state.notLoggedInUser && (
                 <p className="form-error">Usuario no logueado.</p>
               )}
@@ -185,7 +198,7 @@ visibilty = () => {
   }
 }
 
-export default Home;
+export default Search;
 
 
 
