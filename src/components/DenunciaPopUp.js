@@ -67,6 +67,10 @@ class AddDepModal extends Component {
                                       o la seguridad física.
                                  </label>
                              </div>
+                             <div className="myinput">
+                                <textarea name="comentarios" rows="6" cols="60" placeholder="Contanos tu experiencia"></textarea> 
+                                
+                            </div>
                              
 
 
