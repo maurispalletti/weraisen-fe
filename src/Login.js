@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Login.css'
+import './Estilos.css';
 import logo from './icons/logo4.png'
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
@@ -56,12 +57,12 @@ class Login extends Component {
           validationSchema={LoginSchema}
           onSubmit={(values) => this.loginUser(values)}>
           <Form>
-            <h2>Iniciar sesión </h2>
-            <FieldWithError name="email" placeholder="Email" aria-label="username" className="login-input" />
-            <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" className="login-input" />
+          <h2>Iniciar sesión</h2>
+            <FieldWithError name="email" placeholder="Email" aria-label="username" className="input" />
+            <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" className="input" />
             <h3></h3>
             <div className="right-container">
-              <input type="submit" className="login-button" value="Ingresar" />
+              <input type="submit" className="btn-primero" value="Ingresar" />
 
               {this.state.loginFailed && (
                 <p className="form-error">

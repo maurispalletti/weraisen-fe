@@ -1,0 +1,39 @@
+h2 {
+    color: #d48e4b;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Lato', sans-serif !important;
+  }
+  .btn-primero {
+    background: #d48e4b !important;
+    border: 0;
+    font-family: 'Lato', sans-serif !important;
+    width: 250px;
+    height: 40px;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+
+  p {
+    cursor: pointer;
+    font-family: 'Lato', sans-serif !important;
+    
+    }
+    .input {
+
+      width: 250px;
+      padding: 25px 0px;
+      background: transparent;
+      font-family: 'Lato',sans-serif !important;
+      border: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      outline: none;
+      color: #696970;
+      font-size: 16px;
+      overflow: scroll;
+      
+    }

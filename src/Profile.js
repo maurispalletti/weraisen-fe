@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './Profile.css';
-
+import './Estilos.css';
 import avatar_1 from './avatars/avatar_1.svg';
 import home from './icons/home.svg';
-
 import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
@@ -11,11 +10,11 @@ import FieldWithError from './forms/FieldWithError'
 
 import { ProfileSchema } from './helpers/validators'
 import userServices from './services/userServices'
-
 import Buttom from './components/Boton.js'
-
-
 import DropdownGender from './forms/DropdownGender'
+import Toolbar from './components/navbar/toolbar'
+import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
+import Backdrop from './components/navbar/backdrop/backdrop'
 
 const genders = [
   {
@@ -100,7 +99,7 @@ class Profile extends Component {
   }
 
   async componentDidMount() {
-    const {
+    const  {
       firstName,
       lastName,
       age,
@@ -130,7 +129,15 @@ class Profile extends Component {
 
     this.setState({ initialValues, isActiveGuide, knowledge })
   }
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+           return {sideDrawerOpen: !prevState.sideDrawerOpen};
+      });
+  };
 
+  backdropClickHandler = () => {
+    this.setState({sideDrawerOpen: false});
+  }
   render() {
     if (this.state.goToHome) {
       return <Redirect to="/home" />
@@ -138,43 +145,32 @@ class Profile extends Component {
     if (this.state.goToGuideProfile) {
       return <Redirect to="/guide" />
     }
+    let sideDrawer;
+    let backdrop;
+   
+    if (this.state.sideDrawerOpen) {
+      sideDrawer =<SideDrawer/>;
+      backdrop = <Backdrop click={this.backdropClickHandler}/>
+
+    }
 
     if (this.state.initialValues) {
       return (
         <div className="Profile">
-          {/* <div className="Header">
-            <a href={"/home"} className="HomeIcon">
-              <img src={home} alt={"Home"} />
-            </a>
-            <div className="HeaderImage">
-              <img src={avatar_1} alt={"User"} />
-            </div>
-          </div> */}
-
-          <div className="Header">
-            <a href={"/home"} className="HomeIconNew">
-              <img src={home} alt={"Home"} />
-            </a>
-            <div className="HeaderText">
-              <a href={"/matches"} className={"HeaderTextLink"}>
-                <div>Mis Encuentros</div>
-              </a>
-              <a href={"/profile"} className={"HeaderTextLink"}>
-                <div>Mi perfil</div>
-              </a>
-            </div>
-          </div>
-
+        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
+        {sideDrawer}
+        {backdrop}
           <div className="BodyProfile">
             <Formik
               // setear initial values con el did mount o will mount llamando al get
               initialValues={this.state.initialValues}
               validationSchema={ProfileSchema}
               onSubmit={(values) => this.updateProfile(values)}>
+              
               <Form>
                 <div className="profileData">
-                  <h2>Hola {this.state.initialValues.firstName}!</h2>
-                  <FieldWithError disabled={!this.state.editable} name="firstName" placeholder="Nombre" aria-label="name" className="profile-input" />
+                <h2>Hola {this.state.initialValues.firstName}!</h2>
+                  <FieldWithError disabled={!this.state.editable} name="firstName" placeholder="Nombre" aria-label="name" className="input" />
                   <FieldWithError disabled={!this.state.editable} name="lastName" placeholder="Apellido" aria-label="lastName" className="profile-input" />
                   <FieldWithError disabled={!this.state.editable} name="age" placeholder="Edad" aria-label="age" className="profile-input" />
                   <FieldWithError disabled={!this.state.editable} name="identification" placeholder="DNI / Pasaporte / ID" aria-label="identification" className="profile-input" />
@@ -200,9 +196,9 @@ class Profile extends Component {
                 </div>
 
                 <div className="buttonsSection">
-                  <input type="button" className="buttonLeft" value={this.state.editable ? "Cancelar" : "Editar"}
+                  <input type="btn-primero" className="buttonLeft" value={this.state.editable ? "Cancelar" : "Editar"}
                     onClick={() => this.toggleEditInfo()} />
-                  <input type="submit" className="buttonRight" value="Guardar" disabled={!this.state.editable} />
+                  <input type="btn-primero" className="buttonRight" value="Guardar" disabled={!this.state.editable} />
                 </div>
 
                 <div className="cerrarSesionSection">

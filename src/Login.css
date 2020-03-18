@@ -9,14 +9,14 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #696970;
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif !important;
   overflow: scroll;
   
 
 }
-
-.login-button {
-  background: #d48e4b;
+/*
+.btn-login {
+  background: #d48e4b !important;
   border: 0;
   width: 250px;
   height: 40px;
@@ -24,7 +24,9 @@
   color: white;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
-}
+}*/
+
+
 
 /* .forgotPass {
   text-decoration: none;
@@ -35,11 +37,13 @@ a {
   color: #a7a8b4;
   text-decoration: none;
   cursor: pointer;
+  font-family: 'Lato', sans-serif !important;
 }
-
+/*
 p {
   cursor: pointer;
-}
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}*/
 
 
 .login-input {
@@ -58,13 +62,7 @@ p {
   background: #7dca96;
 }
 
-h2 {
-  color: #d48e4b;
-  font-size: 15px;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 10px;
-}
+
 .signup {
   margin-top: 30px;
   display: block;
