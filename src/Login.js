@@ -74,6 +74,24 @@ class Login extends Component {
                 <p>¿Primera vez en WERAISEN? <a className="forgotPass" href={'/signup'}>Registrate ahora.</a></p>
               </div>
             </div>
+
+            <div className="container texto-presentacion">
+                <div className="row index__row">
+                    <div className="col s12 xl8 offset-xl2">
+                        <h2 className="index__section-title">
+                            ¿<strong>que es</strong> WeRasen?
+                        </h2>
+                        <p>
+                            <strong>WeRasen es una APP  de turismo</strong> que usa la tecnología para conectar personas, <strong> conecta usuarios a expertos locales</strong>
+                        </p>
+                        <p>
+                            El conocimiento local intercambiado de personas a personas en tiempo real, para ayudar a buscar a donde ir...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
           </Form>
         </Formik>
       </div>

@@ -3,10 +3,12 @@ import Tabs from './components/Tabs';
 import { buildMatchMemberExpression } from '@babel/types';
 import '../src/components/Tabs.css';
 import Informe from '../src/Informes';
-import Aprobar from '../src/components/AprobarUser';
+
 import '../src/AdminProfile.css';
 import Header from '../src/components/Header'
 import { Fragment } from 'react';
+import CardDenunciaAll from './components/CardDenunciaAll';
+import CardAceptar from './components/CardAceptarRechazarAll';
 const styles = {
   fontFamily: 'sans-serif',
 };
@@ -20,8 +22,8 @@ render() {
   
   const content = {
     aTAB: <Informe></Informe>,
-    bTAB: "Tab B",
-    cTAB: <Aprobar></Aprobar>,
+    bTAB: <CardDenunciaAll></CardDenunciaAll>,
+    cTAB: <CardAceptar></CardAceptar>,
   };
   return (
      
@@ -37,7 +39,7 @@ render() {
 
       
       <div key="aTAB"> Informes estadísticos </div> 
-      <div key="bTAB"> Reporte de denuncias </div> 
+      <div key="bTAB"> Denuncias </div> 
       <div key="cTAB"> Aprobar o desaprobar usuarios </div> 
      
 
