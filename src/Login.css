@@ -11,7 +11,7 @@
   color: #696970;
   font-family: sans-serif;
   overflow: scroll;
-  
+
 
 }
 
@@ -91,4 +91,71 @@ h2 {
   font-weight: 600;
   text-align: center;
   margin-bottom: 10px;
+}
+
+
+.Container {
+  height: 100vh;
+  width: 100%;
+  overflow: scroll;
+  scroll-behavior: smooth;
+ 
+  text-align: center;
+ align-items: center;
+ justify-content: center;
+ font-size: calc(10px + 2vmin);
+ color: #696970;
+ font-family: sans-serif;
+
+
+}
+
+
+#scrollhere {
+  background: #2f313d;
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+  background-image: url("./icons/puente.jpg")
+}
+
+#scrollhere1 {
+  background: #2f313d;
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#scrollhere2 {
+  background: #2f313d;
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.continuar{
+  padding-top:200px;
+}
+
+.continuar2{
+  padding-top:100px;
+}
+.logo{
+  margin-top: 0px;
+}
+.web{
+  margin-top: 50px;
+  margin-bottom: 0px;
+}
+.scrollButton {
+  color: black;
+  text-decoration: none;
+  padding: 5px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  box-shadow:2px 2px 2px lightgrey;
+  cursor: pointer;
 }
