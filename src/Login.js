@@ -74,13 +74,13 @@ class Login extends Component {
         </div>
 
         <div id="scrollhere2">
-        <h2 className="index__section-title">¿<strong>Cómo funciona</strong>?</h2>
+        <h2 className="index__section-title2" color="#9CD6AE">¿<strong>Cómo funciona</strong>?</h2>
                 <p>
-                  Elegí tu guía favorito y empeza un chat privado. Recibí recomendaciones personales de tu guía desde su experiencia por ser local y acordá un encuentro
+                  Elegí tu guía favorito y empeza un chat privado. Recibí recomendaciones personales de tu guía desde su experiencia por ser local y <strong>acordá un encuentro.</strong>
                 </p>
                 <p>
-                   Al finalizar el encuentro, simplemente calificá y escribí una breve reseña sobre tu guía según la calidad de la experiencia. Tu guía también te calificará.
-                   Así, podremos mantener la seguridad de nuestra plataforma.                
+                   Al finalizar el encuentro, simplemente <strong>calificá </strong>y escribí una <strong>breve reseña</strong> sobre tu guía según la calidad de la experiencia. Tu guía también te calificará.
+                   De esta forma, podras ayudar a <strong>futuros turistas</strong> a elegir la mejor opción.                
                 </p>
                 <p>
                   
@@ -123,24 +123,6 @@ class Login extends Component {
                   <p>¿Primera vez en WERAISEN? <a className="forgotPass" href={'/signup'}>Registrate ahora.</a></p>
                 </div>
               </div>
-
-              {/* <div className="container texto-presentacion">
-                <div className="row index__row">
-                    <div className="col s12 xl8 offset-xl2">
-                        <h2 className="index__section-title">
-                            ¿<strong>que es</strong> WeRasen?
-                        </h2>
-                        <p>
-                            <strong>WeRasen es una APP  de turismo</strong> que usa la tecnología para conectar personas, <strong> conecta usuarios a expertos locales</strong>
-                        </p>
-                        <p>
-                            El conocimiento local intercambiado de personas a personas en tiempo real, para ayudar a buscar a donde ir...
-                        </p>
-                    </div>
-                </div>
-            </div> */}
-
-
             </Form>
           </Formik>
         </div>
