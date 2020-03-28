@@ -9,8 +9,6 @@ import { LoginSchema } from './helpers/validators'
 import FieldWithError from './forms/FieldWithError'
 
 import scroll from './icons/scroll.png'
-import scrollgreen from './icons/scroll-green.png'
-import scrollorange from './icons/scroll-orange.png'
 import use from './icons/useweb.png'
 
 const INITIAL_VALUES = {
@@ -53,10 +51,10 @@ class Login extends Component {
     return (
       <div className="Container">
         <div id="scrollhere" backgroud={logo}>
-        <div className="logo"><img src={logo} alt={"WeRaisen"} width="300" />
+        <div className="logo"><img src={logo} alt={"WeRaisen"} width="200" />
         </div>
         <div className="web"><a href="#Login" className="use"><img src={use} alt={"WER"} width="150"/> </a></div>
-        <div className="continuar"><a href="#scrollhere1" className=""><img src={scrollorange} alt={"WER"} width="70"/> </a></div>
+        <div className="continuar1"><a href="#scrollhere1" className=""><img src={scroll} alt={"WER"} width="70"/> </a></div>
         </div>
         <div id="scrollhere1">
           <h2 className="index__section-title"><strong>WERAISEN</strong></h2>
@@ -72,7 +70,7 @@ class Login extends Component {
                   <p>Únicamente tenes que especificar a dónde queres ir, cuándo, qué queres hacer allí y <strong>enviar una solicitud</strong> al guía que más te guste</p>
 
       
-            <div className="continuar"><a href="#scrollhere2" className=""><img src={scrollgreen} alt={"WER"} width="70"/> </a></div>
+            <div className="continuar"><a href="#scrollhere2" className=""><img src={scroll} alt={"WER"} width="70"/> </a></div>
         </div>
 
         <div id="scrollhere2">
@@ -87,7 +85,7 @@ class Login extends Component {
                 <p>
                   
                 </p>
-               <div className="continuar2"><a href="#Login" className=""><img src={scrollorange} alt={"WER"} width="70"/> </a></div>
+               <div className="continuar2"><a href="#Login" className=""><img src={scroll} alt={"WER"} width="70"/> </a></div>
           
                </div>
 
