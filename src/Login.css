@@ -112,36 +112,54 @@ h2 {
 
 
 #scrollhere {
-  background: #2f313d;
+  /* background: #2f313d; */
+  background: #F9AA68;
   width: 100%;
   height: 100%;
   padding-top: 100px;
-  background-image: url("./icons/puente.jpg")
+  /* background-image: url("./icons/puente.jpg") */
 }
+.p{
+  font-size:22px;
+  font-family: inherit;
+}
+
 
 #scrollhere1 {
-  background: #2f313d;
-  width: 100%;
-  height: 100%;
-  padding-top: 100px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-#scrollhere2 {
-  background: #2f313d;
+  /* background: #2f313d; */
+  background: #9CD6AE;
   width: 100%;
   height: 100%;
   padding-top: 50px;
   padding-left: 20px;
   padding-right: 20px;
+  color: #4f4f53;
+  word-spacing: 1pt;
+  line-height: 24pt; /*separacion entre lineas */
+  text-indent: 20pt;
+}
+
+
+#scrollhere2 {
+  /* background: #2f313d; */
+  background:#F9AA68;
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  color: #4f4f53;
+  word-spacing: 1pt;
+  line-height: 24pt; /*separacion entre lineas */
+  text-indent: 20pt;
 }
 .continuar{
-  padding-top:200px;
+  padding-top:50px;
 }
 
 .continuar2{
-  padding-top:100px;
+  padding-top:50px;
 }
 .logo{
   margin-top: 0px;

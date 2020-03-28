@@ -8,7 +8,9 @@ import { Formik, Form } from 'formik'
 import { LoginSchema } from './helpers/validators'
 import FieldWithError from './forms/FieldWithError'
 
-import icono from './icons/scroll.png'
+import scroll from './icons/scroll.png'
+import scrollgreen from './icons/scroll-green.png'
+import scrollorange from './icons/scroll-orange.png'
 import use from './icons/useweb.png'
 
 const INITIAL_VALUES = {
@@ -54,35 +56,38 @@ class Login extends Component {
         <div className="logo"><img src={logo} alt={"WeRaisen"} width="300" />
         </div>
         <div className="web"><a href="#Login" className="use"><img src={use} alt={"WER"} width="150"/> </a></div>
-        <div className="continuar"><a href="#scrollhere1" className=""><img src={icono} alt={"WER"} width="70"/> </a></div>
+        <div className="continuar"><a href="#scrollhere1" className=""><img src={scrollorange} alt={"WER"} width="70"/> </a></div>
         </div>
         <div id="scrollhere1">
           <h2 className="index__section-title"><strong>WERAISEN</strong></h2>
+          {/* <div className="logo"><img src={logo} alt={"WeRaisen"} width="300" /></div> */}
 
-          <p>
+          <p className="index__section-title"><strong>
             
-                ¿Alguna vez has estado en una ciudad por primera vez y deseaste tener un amigo allí?
-                </p>
+                ¿Alguna vez has estado en una ciudad por primera vez y deseaste tener un guía amigo allí?
+                </strong></p>
                 <p>
-                <strong>WeRaisen es una plataforma</strong> que utiliza la tecnología para conectarte con expertos locales.
+                <strong>WeRaisen</strong> es una plataforma que utiliza la tecnología para conectarte con <strong>expertos locales.</strong></p>
 
-                  Solamente envia tu petición de a dónde quieres ir, cuándo y qué quieres hacer allí...</p>
+                  <p>Únicamente tenes que especificar a dónde queres ir, cuándo, qué queres hacer allí y <strong>enviar una solicitud</strong> al guía que más te guste</p>
 
       
-            <div className="continuar"><a href="#scrollhere2" className=""><img src={icono} alt={"WER"} width="70"/> </a></div>
+            <div className="continuar"><a href="#scrollhere2" className=""><img src={scrollgreen} alt={"WER"} width="70"/> </a></div>
         </div>
 
         <div id="scrollhere2">
         <h2 className="index__section-title">¿<strong>Cómo funciona</strong>?</h2>
-
-
                 <p>
-                  Escoge tu guía favorito y empieza un chat privado. Recibe recomendaciones personales de tu guía y acordá un encuentro
-
-                  
-                  Luego, simplemente califica y según la calidad de la experiencia con tu guía.
+                  Elegí tu guía favorito y empeza un chat privado. Recibí recomendaciones personales de tu guía desde su experiencia por ser local y acordá un encuentro
                 </p>
-               <div className="continuar2"><a href="#Login" className=""><img src={icono} alt={"WER"} width="70"/> </a></div>
+                <p>
+                   Al finalizar el encuentro, simplemente calificá y escribí una breve reseña sobre tu guía según la calidad de la experiencia. Tu guía también te calificará.
+                   Así, podremos mantener la seguridad de nuestra plataforma.                
+                </p>
+                <p>
+                  
+                </p>
+               <div className="continuar2"><a href="#Login" className=""><img src={scrollorange} alt={"WER"} width="70"/> </a></div>
           
                </div>
 
