@@ -43,7 +43,7 @@ padding-block-end: 10vh;
   border-bottom: 1px solid rgba(255,255,255,0.04);
   outline: none;
   color: #696970;
-  font-size: 16px;
+  font-size: 18px;
   overflow: scroll;
   
 }
@@ -109,4 +109,9 @@ h2 {
   transition: all 0.2s linear;
   transform: translate(10px, 0);
   opacity: 0;
+}
+.right-container{
+align-items: center;
+text-align: center;
+
 }

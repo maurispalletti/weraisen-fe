@@ -8,6 +8,8 @@ import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import { SignUpSchema } from './helpers/validators'
 import DropdownGender from './forms/DropdownGender'
+import nube from './icons/subir.png'
+import foto from './icons/foto.png'
 
 
 
@@ -101,7 +103,7 @@ class SignUp extends Component {
           <Form>
             <h2>Creá tu cuenta</h2>
             
-            <FieldWithError name="firstName" placeholder="Nombre" aria-label="firstName" className="input" />
+            <FieldWithError name="firstName" placeholder="Nombre" aria-label="firstName" className="input" /> 
             <FieldWithError name="lastName" placeholder="Apellido" aria-label="lastName" className="input" />
             <FieldWithError name="age" placeholder="Edad" aria-label="age" className="input" />
             <FieldWithError name="identification" placeholder="ID / DNI / PASAPORTE" aria-label="identification" className="input" />
@@ -110,19 +112,21 @@ class SignUp extends Component {
             <FieldWithError name="email" placeholder="Email" aria-label="email" className="input" />
             <FieldWithError name="password" placeholder="Contraseña" type="password" aria-label="password" className="input" />
             <FieldWithError name="passwordRepeated" placeholder="Repetí tu contraseña" type="password" aria-label="passwordRepeated" className="input" />
-
+           
             <br/>
 
             
             {/* botones para subir la foto */}
             
-            <div>
-            <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler}
-              ref={fileImput => this.fileImput = fileImput}
-            />
-            <button type="button" className="btn btn-primary" onClick={() => this.fileImput.click()}>Seleccionar Archivo</button>
-            <button type="button" className="btn btn-primary" onClick={this.fileUploadHandler}>Upload</button>  
-
+            <label for="right-container">Subí foto de tu DNI</label>
+            <div className="right-container">
+            
+            <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler} ref={fileImput => this.fileImput = fileImput}/>
+            <button type="button" className="btn btn-segundo" onClick={() => this.fileImput.click()}>seleccionar</button>
+            <button type="button" className="btn btn-link" onClick={this.fileUploadHandler} >subir</button>  
+            <br></br>
+            <img src={nube} alt="subir" width="10%" />
+            <img src={foto} alt="subir" width="10%" />
             </div>
             
 
@@ -150,8 +154,8 @@ class SignUp extends Component {
               )}
 
             </div>
+
             <div className="Section">
-            
             </div>
             <div className="right-container">
             <input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToLogin: true })} />

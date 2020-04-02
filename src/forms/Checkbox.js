@@ -8,9 +8,7 @@ export default function Checkbox (props) {
     <Field name={props.name}>
       {({ field, form }) => (
         <div className="contenedor">
-        <label className="label" >
-          <input className="form-check"
-            type="checkbox"
+        <label className="label" > <input className="form-check" type="checkbox"
             {...props}
             checked={field.value.includes(props.value.value)}
             onChange={() => {

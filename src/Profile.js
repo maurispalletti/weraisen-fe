@@ -171,12 +171,19 @@ class Profile extends Component {
                 <div className="profileData">
                 <h2>Hola {this.state.initialValues.firstName}!</h2>
                   <FieldWithError disabled={!this.state.editable} name="firstName" placeholder="Nombre" aria-label="name" className="input" />
-                  <FieldWithError disabled={!this.state.editable} name="lastName" placeholder="Apellido" aria-label="lastName" className="profile-input" />
-                  <FieldWithError disabled={!this.state.editable} name="age" placeholder="Edad" aria-label="age" className="profile-input" />
-                  <FieldWithError disabled={!this.state.editable} name="identification" placeholder="DNI / Pasaporte / ID" aria-label="identification" className="profile-input" />
+                  <FieldWithError disabled={!this.state.editable} name="lastName" placeholder="Apellido" aria-label="lastName" className="input" />
+                  <FieldWithError disabled={!this.state.editable} name="age" placeholder="Edad" aria-label="age" className="input" />
+                  <FieldWithError disabled={!this.state.editable} name="identification" placeholder="DNI / Pasaporte / ID" aria-label="identification" className="input" />
                   <DropdownGender disabled={!this.state.editable} name="gender" styleName={"Dropdown-g"} options={genders} />
-                  <FieldWithError disabled={!this.state.editable} name="city" placeholder="Ciudad de residencia" aria-label="city" className="profile-input" />
-                  <FieldWithError disabled={!this.state.editable} name="email" placeholder="Email" aria-label="email" className="profile-input" />
+                  <FieldWithError disabled={!this.state.editable} name="city" placeholder="Ciudad de residencia" aria-label="city" className="input" />
+                  <FieldWithError disabled={!this.state.editable} name="email" placeholder="Email" aria-label="email" className="input" />
+                  
+                </div>
+                <br></br>
+                
+                <div class="custom-control custom-checkbox">
+                   <input type="checkbox" class="custom-control-input" id="salidaGrupal" />
+                   <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
                 </div>
 
                 <div className="guideSection">
@@ -190,16 +197,17 @@ class Profile extends Component {
                 </div>
 
                 <div className="buttonsSectionGuia">
-                  <input type="button" className="buttonGuia" 
+                  <input type="button" className="btn-primero" 
                   value={this.state.isActiveGuide ? "Actualizar mis datos de guía" : "Quiero ser guía"}
                     onClick={() => this.setState({ goToGuideProfile: true })} />
                 </div>
-
-                <div className="buttonsSection">
-                  <input type="btn-primero" className="buttonLeft" value={this.state.editable ? "Cancelar" : "Editar"}
+<br></br>
+                <div class="btn-group" role="group">
+                  <input type="button" className="btn-tercero" value={this.state.editable ? "Cancelar" : "Editar"}
                     onClick={() => this.toggleEditInfo()} />
-                  <input type="btn-primero" className="buttonRight" value="Guardar" disabled={!this.state.editable} />
+                  <input type="button" className="btn-tercero" value="Guardar" disabled={!this.state.editable} />
                 </div>
+
 
                 <div className="cerrarSesionSection">
 

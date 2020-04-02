@@ -10,6 +10,7 @@
     overflow:hidden;
     width:12px;
     height:12px;
+    
  
 }
 
@@ -24,12 +25,13 @@
 }
 
 .checkbox-container{
-   
+   flex-direction: row;
  }
  
 .contenedor {
     margin: 1px;
     float:left;
+    flex-direction: row;
     }
     
    

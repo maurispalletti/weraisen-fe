@@ -1,5 +1,6 @@
+
 h2 {
-    color: #d48e4b;
+    color: #f9aa68;
     font-size: 15px;
     font-weight: 600;
     text-align: center;
@@ -7,17 +8,36 @@ h2 {
     font-family: 'Lato', sans-serif !important;
   }
   .btn-primero {
-    background: #d48e4b !important;
+    background: #d48e4b!important;
     border: 0;
     font-family: 'Lato', sans-serif !important;
     width: 250px;
     height: 40px;
-    border-radius: 3px;
+    border-radius: 6px;
     color: white;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
   }
-
+  .btn-segundo {
+    /*background: rgb(78, 108, 96);+*/
+    
+    font-family: 'Lato', sans-serif !important;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    outline-color: rgba(255,255,255,0.04);
+      }
+      .btn-tercero {
+        background: #d37d37!important;
+        border: 0;
+        font-family: 'Lato', sans-serif !important;
+        width: 125px;
+        height: 40px; ;
+        border-radius: 6px;
+        color: white;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+      }
   p {
     cursor: pointer;
     font-family: 'Lato', sans-serif !important;
@@ -36,4 +56,11 @@ h2 {
       font-size: 16px;
       overflow: scroll;
       
+    }
+
+    @media screen and (min-width:800px) {
+      .login {
+        font-size:100%;
+        /* ampliamos los textos si mide más de 800px */
+      }
     }
