@@ -1,8 +1,6 @@
-/*.Container {
-    align-content: center;
-    grid-template-columns: 100px 50px 100px;
-    grid-template-rows: 80px auto 80px; 
-  }*/
+.Container {
+    height: min-content;
+  }
 
 .fila {
   display: flex;
@@ -24,7 +22,7 @@
 
   .ItemNoSeleccionado {
     cursor:pointer;
-    background: #2f313d;
+    background: #272B30;
     width:100px;
     font-family: sans-serif;
     font-size: 13px;

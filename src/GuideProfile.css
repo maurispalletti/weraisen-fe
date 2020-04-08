@@ -1,6 +1,6 @@
 .GuideProfile {
   text-align: center;
-  background: #2f313d;
+  background: #272B30;
  height: 100vh;
  flex-direction: column;
  align-items: center;
@@ -11,6 +11,12 @@
  overflow: scroll;
  font-size: 13px;
     
+  }
+  .descripcion-input{
+font-size: 13px;
+color:#696970 ;
+justify-items: center;
+
   }
   
 .idioma-input{

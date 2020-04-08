@@ -26,6 +26,7 @@ h2 {
     cursor: pointer;
     transition: background 0.3s ease-in-out;
     outline-color: rgba(255,255,255,0.04);
+    
       }
       .btn-tercero {
         background: #d37d37!important;

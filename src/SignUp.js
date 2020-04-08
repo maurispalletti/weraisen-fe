@@ -8,8 +8,7 @@ import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import { SignUpSchema } from './helpers/validators'
 import DropdownGender from './forms/DropdownGender'
-import nube from './icons/subir.png'
-import foto from './icons/foto.png'
+import dni from './icons/dni.png'
 
 
 
@@ -118,15 +117,16 @@ class SignUp extends Component {
             
             {/* botones para subir la foto */}
             
-            <label for="right-container">Subí foto de tu DNI</label>
+            <b><label for="right-container" className="input2">Subí foto de tu DNI</label></b>
+            
             <div className="right-container">
             
             <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler} ref={fileImput => this.fileImput = fileImput}/>
-            <button type="button" className="btn btn-segundo" onClick={() => this.fileImput.click()}>seleccionar</button>
-            <button type="button" className="btn btn-link" onClick={this.fileUploadHandler} >subir</button>  
-            <br></br>
-            <img src={nube} alt="subir" width="10%" />
-            <img src={foto} alt="subir" width="10%" />
+           {/* <button type="button" className="btn btn-segundo" onClick={() => this.fileImput.click()}>seleccionar</button>*/}
+            <div className="dni"><img src={dni} alt={"WER"} width="70" onClick={() => this.fileImput.click()}/></div>
+
+            {/*<button type="button" className="btn btn-segundo" onClick={this.fileUploadHandler} >subir</button> */} 
+            
             </div>
             
 

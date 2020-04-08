@@ -126,7 +126,7 @@ class GuideProfile extends Component {
                 <FieldWithError component={'textarea'} name="idioma" placeholder="Otro" aria-label="idioma" className="idioma-input" />
                 
                 <div className="LastSection">
-                  <h2>Conocimientos que poseés:</h2>
+                  <h2>Conocimientos que posees:</h2>
                       <Categorias onCategoryChange={this.knowledge} />
                 </div>
                 <div class="custom-control custom-checkbox">
