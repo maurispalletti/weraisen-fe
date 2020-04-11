@@ -1,31 +1,44 @@
 .side-drawer{
     height: 100%;
-    background: rgb(223, 220, 213);
+    background:#272B30;
     box-shadow: 2px 0px 5px rgba(0,0,0,0.5);
     position: fixed;
     top:0;
     left:0;
-    width:250px;
-    max-width: 400px;
+    width:200px;
+    max-width: 300px;
     z-index: 200;
+    align-items: center;
 }
+.container-items{
 
+    align-items: center;
+    
+}
+.container-logo{
+    padding: 10% ;
+    
+    }
 .side-drawer ul{
     height: 100%;
     list-style:none;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
+    align-items: center;
+    padding:10%;
+    padding-top: 0%;
 }
 
 .side-drawer li{
     margin:0.5rem 0;
 }
-
+/*letra barra lateral*/
 .side-drawer a{
-    color: #94a0af;
+    color: #696970;
     text-decoration: none;
     font-size: 1.2rem;
+    font-family: 'Lato', sans-serif !important;
 }
 
 .side-drawer a:hover, .side-drawer a:active {

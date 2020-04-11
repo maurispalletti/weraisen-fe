@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './Login.css'
-import logo from './icons/logo4.png'
+//import './Estilos.css';
+import logo from './icons/WER-VERDE.png'
+import logon from './icons/WER-NARANJA.png'
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 
@@ -59,6 +61,7 @@ class Login extends Component {
         <div id="scrollhere1">
           <h2 className="index__section-title"><strong>WERAISEN</strong></h2>
           {/* <div className="logo"><img src={logo} alt={"WeRaisen"} width="300" /></div> */}
+          
 
           <p className="index__section-title"><strong>
             
@@ -97,25 +100,23 @@ class Login extends Component {
           <div className="Header">
             <img src={logo} alt={"WeRaisen"} width="300" />
             
-           
-
-            {/* <h3 align="right">WERAISEN</h3> */}
           </div>
+          <br></br>
           <Formik
             initialValues={INITIAL_VALUES}
             validationSchema={LoginSchema}
             onSubmit={(values) => this.loginUser(values)}>
             <Form>
-              <h2>Iniciar sesión </h2>
-              <FieldWithError name="email" placeholder="Email" aria-label="username" className="login-input" />
-              <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" className="login-input" />
+              
+              <FieldWithError name="email" placeholder="Email" aria-label="username" className="input" />
+              <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" className="input" />
               <h3></h3>
               <div className="right-container">
-                <input type="submit" className="login-button" value="Ingresar" />
+                <input type="submit" className="btn-login" value="Ingresar" />
 
                 {this.state.loginFailed && (
                   <p className="form-error">
-                    Login falló. Tu email y contraseña no coinciden. Intanta de nuevo.
+                    Login falló. Tu email y password no coinciden. Intenta de nuevo.
                   </p>
                 )}
 
@@ -131,8 +132,11 @@ class Login extends Component {
 
 
       </div>
+    
     )
   }
-};
+};  
+  
+
 
 export default Login;
