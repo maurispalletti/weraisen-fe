@@ -67,8 +67,13 @@ class Home extends Component {
         return (
             <Fragment>
                 <Header />
+
                 <div className="container-fluid">
                     <h1>Mejores Guias</h1>
+
+                <div className="container">
+                    <h1>Mejores Guías</h1>
+
                     <hr/>
                     <div className="bs-docs-section">                      
                             
@@ -77,7 +82,7 @@ class Home extends Component {
                            
                     </div>
                     <hr/>
-                    <h1>Lugares mas visitados</h1>
+                    <h1>Lugares más visitados</h1>
                     <hr/>
                     <div className ="container-fluid">
                     < Card_GuiaResultados />

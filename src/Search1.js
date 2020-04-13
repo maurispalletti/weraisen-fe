@@ -65,7 +65,7 @@ class Search1 extends React.Component {
             <Form> */}
         
             
-          <h5>Seleccionar cuidad</h5>
+          <h2>Seleccionar cuidad</h2>
           
               <div className="Section1">
 

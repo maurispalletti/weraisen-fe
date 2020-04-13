@@ -1,6 +1,6 @@
 .Results {
   
-   background: #2f313d;
+   background: #272B30;
   height: 100vh;
   
   flex-direction: column;
@@ -9,7 +9,7 @@
   font-size: calc(10px + 2vmin);
   color: #696970;
   font-family: sans-serif;
-  overflow: hidden;
+  overflow: scroll;
   position:relative ; 
   text-align: center;
 } 

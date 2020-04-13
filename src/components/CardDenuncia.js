@@ -4,6 +4,7 @@ import '../components/CardDenuncia.css';
 const CardDenuncia = props => {
 
   return(
+  <div style={{border: 'black 2px solid'}}>
     <div className="card-text-center">
       <div className="overflow">
         <img src= {props.imgsrc} alt='imag1' className="card-img"/>
@@ -19,6 +20,7 @@ const CardDenuncia = props => {
         <a href="#" className= "btn btn-outline-success">Bloquear</a>
       </div>
     </div>
+  </div>
 
   )
 }

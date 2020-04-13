@@ -1,6 +1,6 @@
 .GuideProfile {
   text-align: center;
-  background: #2f313d;
+  background: #272B30;
  height: 100vh;
  flex-direction: column;
  align-items: center;
@@ -11,6 +11,12 @@
  overflow: scroll;
  font-size: 13px;
     
+  }
+  .descripcion-input{
+font-size: 13px;
+color:#696970 ;
+justify-items: center;
+
   }
   
 .idioma-input{
@@ -32,7 +38,7 @@
 
 
 .contenedor {
-  align-content: left;
+  display: inline;
 }
 
 .checkbox-container label{
@@ -89,13 +95,20 @@ h2 {
   text-align: center;
   margin-bottom: 10px;
 }
+h3 {
+  color: #d48e4b;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
 
   
 
   .IdiomsSection {
     padding-bottom: 15px;
     display: flex;
-    flex-direction: column;
+    
     justify-content: center;
     align-items: center;
   }
@@ -155,6 +168,7 @@ h2 {
     background-color: #2196F3;
   }
   
+  
   /* Create the checkmark/indicator (hidden when not checked) */
   .checkmark:after {
     content: "";
@@ -179,3 +193,11 @@ h2 {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+  .form-group{
+width: fit-content;
+padding-left: 60pt;
+
+  }
+
+  
