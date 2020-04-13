@@ -16,7 +16,9 @@ import Filtros from './Search'
 import { createBrowserHistory } from 'history';
 import Home from './Home';
 import Admin from './AdminProfile';
-import Prueba from '../src/components/CancelarPopUp';
+import Prueba from '../src/components/DenunciaPopUp';
+import Notificaciones from '../src/PerfilNotificaciones';
+import Chats from '../src/PerfilChats';
 
 
 const history = createBrowserHistory();
@@ -40,6 +42,8 @@ function App() {
       <Route exact path={'/admin'} component={Admin} />
       <Route exact path={'/prueba'} component={Prueba} />
       <Route exact path={'/filters'} component={Filtros} />
+      <Route exact path={'/notificaciones'} component={Notificaciones} />
+      <Route exact path={'/chats'} component={Chats} />
     </Router>
   );
 }

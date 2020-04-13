@@ -1,6 +1,7 @@
 import React from 'react'
 import Logo from './navbar/logo4.png'
 
+
  const Header = () => (
     <nav className="navbar navbar-expand-lg navbar-dark " style={{ backgroundColor: '#d48e4b' }}>
     <a className="navbar-brand ml-5" href="#"><img src={Logo} alt="Logo" style={{width:'50px', paddingBottom: '5px'}}/>WeRaisen</a>
@@ -14,19 +15,19 @@ import Logo from './navbar/logo4.png'
           <a className="nav-link ml-3" href="#">Home&nbsp;<i className="fas fa-home"></i> <span className="sr-only">(current)</span></a>
         </li>
         <li className="nav-item">
-          <a className="nav-link ml-3" href="#">Search</a>
+          <a className="nav-link ml-3" href="/search">Search</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link ml-3" href="#">Perfil</a>
+          <a className="nav-link ml-3" href="Profile">Perfil</a>
         </li>
         <li className="nav-item">
           <a className="nav-link ml-3" href="#">Mis Chats</a>
         </li>
       </ul>
-      <form className="form-inline my-2 my-lg-0">
+      {/*<form className="form-inline my-2 my-lg-0">
         <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
         <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
+ </form>*/}
     </div>
   </nav>
     );
