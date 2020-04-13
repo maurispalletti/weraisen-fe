@@ -68,11 +68,8 @@ class Home extends Component {
                 <div className="container">
                     <h1>Mejores Guías</h1>
                     <hr/>
-                    <div className="bs-docs-section">                      
-                            
-
+                    <div className="bs-docs-section"> 
                            {this.mostrarGuias()}
-                        
                     </div>
                     <hr/>
                     <h1>Lugares más visitados</h1>
