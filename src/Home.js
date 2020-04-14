@@ -68,12 +68,22 @@ class Home extends Component {
             <Fragment>
                 <Header />
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div className="container-fluid">
                     <h1>Mejores Guias</h1>
 =======
                 <div className="container">
                     <h1>Mejores Guías</h1>
 >>>>>>> 9a308851e44fb9a07f8e485a7c8a0a2ba85522ff
+=======
+
+                <div className="container-fluid">
+                    <h1>Mejores Guias</h1>
+
+                <div className="container">
+                    <h1>Mejores Guías</h1>
+
+>>>>>>> 7a402f3bbdc4372b25eb302bcd99938696a30ec9
                     <hr/>
                     <div className="bs-docs-section">                      
                             
