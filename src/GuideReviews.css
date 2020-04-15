@@ -1,0 +1,71 @@
+.GuideReviews {
+
+   
+    background: #2f313d;
+   height: 100vh;
+ 
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   font-size: calc(10px + 2vmin);
+   color: #9999a1;
+   font-family: sans-serif;
+   overflow: hidden;
+   position:relative ; 
+   text-align: center;
+  }
+
+  .form-error {
+  
+    color: #e26a6a;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .BodyValorations{
+    
+    padding-top: 5vh;
+  overflow: scroll; 
+  align-items: center;
+  }
+
+ 
+  
+   .p {
+     
+    margin: 30px 10%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+  } 
+
+  
+  
+  h2 {
+    color: #d48e4b;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+ 
+  .ValorationButton {
+    background: #d48e4b;
+    border: 0;
+    width: 250px;
+    height: 40px;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+
+  .ValorationButton:hover {
+    background: #7dca96;
+  }
+  

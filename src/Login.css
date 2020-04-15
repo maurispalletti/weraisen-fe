@@ -161,13 +161,14 @@ p {
 }
 
 
+
 #scrollhere {
   /* background: #2f313d; */
   background: #F9AA68;
   width: 100%;
   height: 100vh;
   padding-top: 100px;
-  background-image: url("./icons/background-image.jpg");
+  background-image: url("./icons/imagen-fondo.jpg");
   display: flex;
   flex-direction: column;
 }
