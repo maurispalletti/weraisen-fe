@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './termycond.css'
 import logo from './icons/logo4.png'
+import Header from '../src/components/Header'
 
 class Terminos extends Component {
   state = {
@@ -14,7 +15,11 @@ class Terminos extends Component {
   render() {
        
     return (
+    <div>
+      <Header></Header>
+    
       <div className="TyC">
+        
          
             <div align="justify">
             <h1>TÉRMINOS DE USO </h1>
@@ -90,6 +95,7 @@ La Compañía puede investigar y tomar las acciones legales disponibles en respu
 
 
 
+      </div>
       </div>
       </div>
     )

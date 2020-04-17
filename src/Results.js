@@ -7,7 +7,7 @@ import Toolbar from './components/navbar/toolbar'
 import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
 import Backdrop from './components/navbar/backdrop/backdrop'
 import userServices from './services/userServices'
-
+import Header from '../src/components/Header'
 class Results extends Component {
   state = {
     goToHome: false,
@@ -86,33 +86,7 @@ class Results extends Component {
 
     return (
       <div className="Results">
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
-        {sideDrawer}
-        {backdrop}
-        {/* <div className="Header">
-          <a href={"/home"} className="HomeIcon">
-            <img src={home} alt={"Home"} />
-          </a>
-          <div className="HeaderImage">
-            <a href={"/profile"}>
-              <img src={avatar_woman_1} alt={"User"} />
-            </a>
-          </div>
-        </div> */}
-
-        {/* <div className="Header">
-          <a href={"/home"} className="HomeIconNew">
-            <img src={home} alt={"Home"} />
-          </a>
-          <div className="HeaderText">
-            <a href={"/matches"} className={"HeaderTextLink"}>
-              <div>Mis Encuentros</div>
-            </a>
-            <a href={"/profile"} className={"HeaderTextLink"}>
-              <div>Mi perfil</div>
-            </a>
-          </div>
-        </div> */}
+        <Header></Header>
 
         <div className="BodyResults">
 
