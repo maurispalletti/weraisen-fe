@@ -1,20 +1,21 @@
 import React from 'react';
 import './sideDrawer.css'
 
-import logo from './logo.png'
+import logo from './WER-NARANJA.png'
 
 const sideDrawer = props =>(
     <nav className="side-drawer">
                 
-       
-        <img src={logo} alt={"Home"} width="100%" />
+       <div className="container-logo">
+        <img src={logo} alt={"Home"} width="85%"/>
+        </div>
+        <div className="container-items">
         <ul>
             <li><a href="/profile">Mi perfil</a></li>
             <li><a href="/matches">Mis encuentros</a></li>
 
-
-
         </ul>
+        </div>
        
 
     

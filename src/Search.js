@@ -140,12 +140,12 @@ visibilty = () => {
             <Form>
             
               <div className="Fecha">
-                <h5>¿Cuándo?</h5>
+                <h2>¿Cuándo?</h2>
                 <Desplegable />
               </div>
 
               <div className="Categoria">
-                <h5>Seleccioná la categoría </h5>
+                <h2>Seleccioná la categoría </h2>
                 <Categorias onCategoryChange={this.handleCategory} />
               </div>  
 
