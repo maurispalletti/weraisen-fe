@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './termycond.css'
 
 import logo from './icons/logo4.png'
+import Header from '../src/components/Header'
 import { Redirect } from 'react-router'
 
 class Terminos extends Component {
@@ -17,7 +18,11 @@ class Terminos extends Component {
     if (this.state.goToSignUp) {
       return <Redirect to="/SignUp" />}
     return (
+    <div>
+      <Header></Header>
+    
       <div className="TyC">
+        
          
             <div align="justify">
             <h1>Términos de uso </h1>
@@ -146,6 +151,7 @@ La Compañía puede investigar y tomar las acciones legales disponibles en respu
       </div>
       <div className="right-container">
             <input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToSignUp: true })} />
+      </div>
       </div>
     </div>
     )
