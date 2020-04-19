@@ -1,6 +1,6 @@
 .Profile {
   text-align: center;
-   background: #2f313d;
+  background: #272B30;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #696970;
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif !important;
   overflow: hidden;
   position:relative ;
 
@@ -26,7 +26,7 @@
 }
 
 .BodyProfile {
-  padding-top: 15vh;
+  padding-top: 5vh;
   overflow: scroll; 
 }
 .button {
@@ -40,9 +40,9 @@
   transition: background 0.3s ease-in-out;
 }
 
-.buttonLeft {
+/*.buttonLeft {
   color: white;
-  background-color: #f7913c;
+  background-color: #d48e4b;
   border: none;
   padding: 10px 20px;
   text-align: center;
@@ -57,15 +57,15 @@
   line-height: 40px;
   position: absolute;
   left: 10vw;
-}
+}*/
 
 .cerrarSesion {
   font-size: 15px;
 }
 
-.buttonRight {
+/*.buttonRight {
   color: white;
-  background-color: #f7913c;
+  background-color: #d48e4b;
   border: none;
   padding: 10px 20px;
   text-align: center;
@@ -80,7 +80,7 @@
   line-height: 40px;
   position: absolute;
   right: 10vw;
-}
+}*/
 
 
 .cancel-button {
@@ -121,17 +121,18 @@
   margin-top: 30px;
 }
 
-.buttonsSection {
+/*.buttonsSection {
   position: relative;
   display: flex;
   flex-direction: row;
   align-content: center;
   text-align: center;
   margin-top: 20px;
-}
+  padding: 25px;
+}*/
 
 .buttonsSectionGuia {
-  margin: 30px 10%;
+ /* margin: 30px 10%;*/
   align-content: center;
   text-align: center;
 }
@@ -153,6 +154,7 @@
   font-size: 16px;
   margin: 5px 2px;
   border-radius: 12px;
+  
 }
 
 .be-guide {
@@ -222,3 +224,8 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 /* ////////////////// Round Slider ///////////////// */
+
+.custom-control-label{
+  font-size: 16px;
+
+}

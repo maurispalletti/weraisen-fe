@@ -14,16 +14,19 @@ import FieldWithError from './forms/FieldWithError'
 import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
 import { GuideProfileSchema } from './helpers/validators'
 import userServices from './services/userServices'
+import { FormCheckbox } from 'semantic-ui-react';
 
 const languages = [
   { description: 'Español', value: 'Español' },
   { description: 'Inglés', value: 'Inglés' },
   { description: "Italiano", value: 'Italiano' },
-  { description: "Portugués", value: 'Portugués' },
+  { description: "Portugués", value: 'Portugués' }
+  ];
+const languages2 = [
   { description: "Francés", value: 'Francés' },
   { description: "Japonés", value: 'Japonés' },
   { description: "Chino", value: 'Chino' },
-
+  {description: "Alemán", value: 'Alemán'}
 ];
 
 const INITIAL_VALUES = {
@@ -33,7 +36,7 @@ const INITIAL_VALUES = {
 
 class GuideProfile extends Component {
   state = {
-    goToHome: false,
+    goToProfile: false,
     updateFailed: false,
     notLoggedInUser: false,
     knowledge: [],
@@ -62,7 +65,7 @@ class GuideProfile extends Component {
 
         console.log(id);
 
-        this.setState({ goToHome: true, updateFailed: false, notLoggedInUser: false })
+        this.setState({ goToProfile: true, updateFailed: false, notLoggedInUser: false })
       } else {
         this.setState({ notLoggedInUser: true })
       }
@@ -87,8 +90,8 @@ class GuideProfile extends Component {
     this.setState({sideDrawerOpen: false});
   }
   render() {
-    if (this.state.goToHome) {
-      return <Redirect to="/search" />
+    if (this.state.goToProfile) {
+      return <Redirect to="/Profile" />
     }
 
     let sideDrawer;
@@ -112,28 +115,35 @@ class GuideProfile extends Component {
               <div className="Section">
                 <h2>¡Describite para que otros te conozcan! </h2>
                 <FieldWithError component={'textarea'} name="description" placeholder="Ingresa una breve descripción sobre vos" aria-label="description" className="descripcion-input" />
+                <h2>Idiomas que manejás:</h2>
                 <div className="IdiomsSection">
-                  <h2>Idiomas que manejas:</h2>
-                 
-                  <CheckboxGroupWithError name="languages" values={languages} />
-                  <FieldWithError component={'textarea'} name="idioma" placeholder="Otro" aria-label="idioma" className="idioma-input" />
+                
+                  <CheckboxGroupWithError name="languages" values={languages}/>
+                  <CheckboxGroupWithError name="languages" values={languages2}/>
                 </div>
-                  <div className="LastSection">
-        <h2>Conocimientos que posees:</h2>
-        <Categorias onCategoryChange={this.knowledge} />
-      </div>
-    </div>
-    <div className="buttonsSection">
-      <input type="button" className="button" value="Cancelar" onClick={() => this.setState({ goToHome: true })} />
-      <input type="submit" className="button" value="Guardar" />
-    </div>
+                <FieldWithError component={'textarea'} name="idioma" placeholder="Otro" aria-label="idioma" className="idioma-input" />
+                
+                <div className="LastSection">
+                  <h2>Conocimientos que posees:</h2>
+                      <Categorias onCategoryChange={this.knowledge} />
+                </div>
+                <div class="custom-control custom-checkbox">
+                   <input type="checkbox" class="custom-control-input" id="salidaGrupal" />
+                   <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
+                </div>
+             </div>
+            <div className="buttonsSection">
+             <input type="button" className="button" value="Cancelar" onClick={() => this.setState({ goToProfile: true })} />
+             <br></br><br></br>
+             <input type="submit" className="button" value="Guardar" />
+            </div>
 
           
               {this.state.notLoggedInUser && (
                 <p className="form-error">Usuario no logueado.</p>
               )}
               {this.state.updateFailed && (
-                <p className="form-error">Actualización de datos de guía falló. Intanta de nuevo.</p>
+                <p className="form-error">Actualización de datos de guía falló. Intenta nuevamente.</p>
               )}
             </Form>
           </Formik>

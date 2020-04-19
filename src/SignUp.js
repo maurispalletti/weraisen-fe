@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './SignUp.css';
+import './Estilos.css';
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 import Header from '../src/components/Header'
@@ -7,6 +8,8 @@ import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import { SignUpSchema } from './helpers/validators'
 import DropdownGender from './forms/DropdownGender'
+import dni from './icons/dni.png'
+
 
 
 const INITIAL_VALUES = {
@@ -39,7 +42,7 @@ const genders = [
 class SignUp extends Component {
 
   state = {
-    goToHome: false,
+    goToLogin: false,
     signUpFailed: false,
     passwordsMissmatch: false,
   }
@@ -85,8 +88,8 @@ class SignUp extends Component {
   }
 
   render() {
-    if (this.state.goToHome) {
-      return <Redirect to="/home" />
+    if (this.state.goToLogin) {
+      return <Redirect to="/login" />
     }
 
     return (
@@ -101,9 +104,9 @@ class SignUp extends Component {
           validationSchema={SignUpSchema}
           onSubmit={(values) => this.createUser(values)}>
           <Form>
-            <h2>Crea tu cuenta</h2>
-
-            <FieldWithError name="firstName" placeholder="Nombre" aria-label="firstName" className="input" />
+            <h2>Creá tu cuenta</h2>
+            
+            <FieldWithError name="firstName" placeholder="Nombre" aria-label="firstName" className="input" /> 
             <FieldWithError name="lastName" placeholder="Apellido" aria-label="lastName" className="input" />
             <FieldWithError name="age" placeholder="Edad" aria-label="age" className="input" />
             <FieldWithError name="identification" placeholder="ID / DNI / PASAPORTE" aria-label="identification" className="input" />
@@ -112,19 +115,22 @@ class SignUp extends Component {
             <FieldWithError name="email" placeholder="Email" aria-label="email" className="input" />
             <FieldWithError name="password" placeholder="Contraseña" type="password" aria-label="password" className="input" />
             <FieldWithError name="passwordRepeated" placeholder="Repetí tu contraseña" type="password" aria-label="passwordRepeated" className="input" />
-
+           
             <br/>
 
             
             {/* botones para subir la foto */}
             
-            <div>
-            <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler}
-              ref={fileImput => this.fileImput = fileImput}
-            />
-            <button type="button" className="btn btn-primary" onClick={() => this.fileImput.click()}>Seleccionar Archivo</button>
-            <button type="button" className="btn btn-primary" onClick={this.fileUploadHandler}>Upload</button>  
+            <b><label for="right-container" className="input2">Subí foto de tu DNI</label></b>
+            
+            <div className="right-container">
+            
+            <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler} ref={fileImput => this.fileImput = fileImput}/>
+           {/* <button type="button" className="btn btn-segundo" onClick={() => this.fileImput.click()}>seleccionar</button>*/}
+            <div className="dni"><img src={dni} alt={"WER"} width="70" onClick={() => this.fileImput.click()}/></div>
 
+            {/*<button type="button" className="btn btn-segundo" onClick={this.fileUploadHandler} >subir</button> */} 
+            
             </div>
             
 
@@ -138,18 +144,26 @@ class SignUp extends Component {
 
 
             <div className="right-container">
-              <input type="submit" className="login-button" value="Crear cuenta" />
+              <input type="submit" className="btn-primero" value="Crear cuenta" />
+             
               {this.state.passwordsMissmatch && (
                 <p className="form-error">
-                  Las contreseñas no coinciden. Intanta de nuevo.
+                  Las contreseñas no coinciden. Intenta de nuevo.
                 </p>
               )}
               {this.state.signUpFailed && (
                 <p className="form-error">
-                  Creación de usuario falló. Intanta de nuevo.
+                  Creación de usuario falló. Intenta de nuevo.
                 </p>
               )}
+
             </div>
+
+            <div className="Section">
+            </div>
+            <div className="right-container">
+            <input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToLogin: true })} />
+          </div>
           </Form>
         </Formik>
       </div>

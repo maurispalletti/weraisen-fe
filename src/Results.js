@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Results.css';
-
+import './Estilos.css';
 import GuideCard from './components/GuideCard';
 import { Redirect } from 'react-router'
 import Toolbar from './components/navbar/toolbar'
@@ -96,7 +96,7 @@ class Results extends Component {
           </div>
 
           <div className="Section">
-            <input type="button" className="ResultsButton" value="Volver al menú principal" onClick={() => this.setState({ goToHome: true })} />
+            <input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToHome: true })} />
           </div>
           {this.state.searchFailed && (
             <p className="form-error">La búsqueda de guías falló. Intentá de nuevo por favor.</p>
