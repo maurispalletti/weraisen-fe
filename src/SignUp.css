@@ -52,7 +52,16 @@ padding-block-end: 10vh;
   
   font-family: 'Lato',sans-serif !important;
   color: #696970;
-  font-size: 18px;
+  font-size: 16px;
+  
+  
+}
+.input3 {
+
+  
+  font-family: 'Lato',sans-serif !important;
+  color: #696970;
+  font-size: 13px;
   
   
 }
@@ -124,5 +133,14 @@ h2 {
 align-items: center;
 text-align: center;
 font-size: 16px;
+display: inline-flex;
 
+}
+.dni1 {
+  
+  padding: 10px;
+}
+.dni2 {
+
+  padding: 10px;
 }

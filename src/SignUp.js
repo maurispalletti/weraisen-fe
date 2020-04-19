@@ -8,8 +8,8 @@ import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import { SignUpSchema } from './helpers/validators'
 import DropdownGender from './forms/DropdownGender'
-import dni from './icons/dni.png'
-
+import dni1 from './icons/dni.png'
+import dni2 from './icons/dni-atras.png'
 
 
 const INITIAL_VALUES = {
@@ -117,15 +117,20 @@ class SignUp extends Component {
             
             {/* botones para subir la foto */}
             
-            <b><label for="right-container" className="input2">Subí foto de tu DNI</label></b>
-            
+           <label className="input2">Subí foto de tu DNI</label><br></br>
+           
             <div className="right-container">
             
             <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler} ref={fileImput => this.fileImput = fileImput}/>
-           {/* <button type="button" className="btn btn-segundo" onClick={() => this.fileImput.click()}>seleccionar</button>*/}
-            <div className="dni"><img src={dni} alt={"WER"} width="70" onClick={() => this.fileImput.click()}/></div>
-
-            {/*<button type="button" className="btn btn-segundo" onClick={this.fileUploadHandler} >subir</button> */} 
+           
+            <div className="dni1"> 
+            <label className="input3">Frente</label><br></br>
+              <img src={dni1} alt={"dni frente"} width="70" onClick={() => this.fileImput.click()}/>
+              </div>
+            <div className="dni2">
+            <label className="input3">Detrás</label><br></br>
+            <img src={dni1} alt={"dni detras"} width="70" onClick={() => this.fileImput.click()}/></div>
+            {/*<button type="button" className="btn btn-segundo" onClick={this.fileUploadHandler} >subir</button> este metodo hay que agregarlo al boton crear cuenta creo*/} 
             
             </div>
             
@@ -133,7 +138,7 @@ class SignUp extends Component {
 
 
             <div className='remember'>
-              <p>Al crear cuenta estoy aceptando los
+              <p>Al crear la cuenta estoy aceptando los
              <a className="forgotPass" href={'/terminos'}> términos y condiciones</a></p>
             </div>
 
