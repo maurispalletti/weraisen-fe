@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import './Login.css'
 //import './Estilos.css';
-import logo from './icons/WER-VERDE.png'
-import logon from './icons/WER-NARANJA.png'
+// import logo from './icons/WER-VERDE.png'
+import logo from './icons/WER-NARANJA.png'
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 
@@ -13,7 +13,7 @@ import FieldWithError from './forms/FieldWithError'
 import scroll from './icons/scroll.png'
 import scroll1 from './icons/scrollverde.png'
 import scroll2 from './icons/scrollnaranja.png'
-import use from './icons/useweb.png'
+
 
 const INITIAL_VALUES = {
   email: '',
@@ -59,7 +59,7 @@ class Login extends Component {
         </div> 
         <div>
         <strong><span className="colorfondo">
-           
+           <h3></h3>
            <h7> Viajá. Conocé. Viví una experiencia única.</h7>
             </span> </strong>
         </div>
@@ -68,7 +68,7 @@ class Login extends Component {
             {/* <p><a href="#Login" className="colorinvertido">Comenza ahora</a></p> */}
        </div>
 
-        <div className="continuar1"><a href="#WeRaisen" className=""><img src={scroll} alt={"WER"} width="70"/> </a></div>
+        <div className="continuar1"><a href="#WeRaisen" className=""><img src={scroll1} alt={"WER"} width="70"/> </a></div>
         </div>
         <div id="WeRaisen">
           <h2 className="index__section-title"><strong>WERAISEN</strong></h2>
@@ -132,12 +132,12 @@ class Login extends Component {
 
                 {this.state.loginFailed && (
                   <p className="form-error">
-                    Login falló. Tu email y password no coinciden. Intenta de nuevo.
+                   Tu email y password no coinciden. Intenta de nuevo.
                   </p>
                 )}
 
                 <div className="signup">
-                  <h7>¿Primera vez en WERAISEN? <a className="forgotPass" href={'/signup'}>Registrate ahora.</a></h7>
+                  <p>¿Primera vez en WERAISEN? <a className="forgotPass" href={'/signup'}>Registrate ahora.</a></p>
                 </div>
               </div>
             </Form>

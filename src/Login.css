@@ -116,27 +116,29 @@ a {
 #Inicio {
   /* background: #2f313d; */
   height: 100vh;
-  padding-top: 100px;
+  padding-top: 80px;
   background: url("./icons/background-image.jpg") center ;
 /* 
   background-size: repeat; */
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
-color:#F9AA68;
+  color: #F9AA68
+  
 }
 
 .colorfondo{
-  color: #9CD6AE;
-  background-color:rgb(136, 139, 137);
-  opacity: 0.8;
+ 
+  background-color: rgb(235, 81, 54);
+ 
+  opacity: 0.9;
   font-size:18px;
 }
 .colorinvertido {
   /* color: rgb(151, 170, 157);
 
   background-color: white; */
-  color: #9CD6AE;
+  color: rgb(214, 182, 144);
   background-color:rgb(136, 139, 137);
   opacity: 0.9;
 }

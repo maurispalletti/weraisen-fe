@@ -1,5 +1,7 @@
-.Container {
-    height: min-content;
+.Container ul{
+    margin:0;
+    padding:0;
+    list-style: none;
   }
 
 .fila {
@@ -31,5 +33,12 @@
     margin:10px;
   }
 
-  
+  .ItemNoSeleccionado:hover{
+    transform: scale(1.4,1.4);
+    -moz-transform: scale(1.4,1.4);
+    -o-transform: scale(1.4,1.4);
+    -ms-transform: scale(1.4,1.4);
+    -webkit-transform: scale(1.4,1.4);
+
+  }
 
