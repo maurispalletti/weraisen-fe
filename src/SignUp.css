@@ -45,7 +45,7 @@ padding-block-end: 10vh;
   color: #696970;
   font-size: 18px;
   overflow: scroll;
-  
+
 }
 .input2 {
 
@@ -125,4 +125,9 @@ align-items: center;
 text-align: center;
 font-size: 16px;
 
+}
+
+.title{
+  font-size:12px;
+  text-align: center;
 }

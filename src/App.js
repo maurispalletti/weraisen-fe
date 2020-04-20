@@ -19,6 +19,7 @@ import Admin from './AdminProfile';
 import Prueba from '../src/components/DenunciaPopUp';
 import Notificaciones from '../src/PerfilNotificaciones';
 import Chats from '../src/PerfilChats';
+import Error from '../src/error404'
 
 
 const history = createBrowserHistory();
@@ -44,6 +45,8 @@ function App() {
       <Route exact path={'/filters'} component={Filtros} />
       <Route exact path={'/notificaciones'} component={Notificaciones} />
       <Route exact path={'/chats'} component={Chats} />
+      <Route component={Error}/>
+
     </Router>
   );
 }

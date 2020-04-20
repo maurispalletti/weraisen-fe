@@ -13,10 +13,6 @@ import DropdownGender from './forms/DropdownGender'
 import Header from '../src/components/Header'
 const genders = [
   {
-    value: "Cualquiera",
-    description: 'Cualquiera'
-  },
-  {
     value: "Femenino",
     description: 'Femenino'
   },
@@ -154,15 +150,9 @@ visibilty = () => {
                 <DropdownGender name="gender" styleName={"Dropdown-search"} options={genders} />
              
                 <h2>Rango de edad</h2>
-                Indistinto
-                      <label class="switch">
-                
-                      <input type="checkbox" value={this.state.editable ? "Cancelar" : "Editar"} onClick={() => this.toggleEditInfo()} />
-                      <span class="slider round"></span>
-                    </label>
-             
-                <FieldWithError disabled={this.visibilty} name="fromAge" placeholder="Desde" aria-label="description" className="input" />
-                <FieldWithError disabled={!this.state.editable} name="toAge" placeholder="Hasta" aria-label="description" className="input" />
+               
+                <FieldWithError disabled={this.visibilty} name="fromAge" placeholder="Desde" aria-label="description" type="number" className="input" min="18" max="99" pattern="[1,9]{1,15}"/>
+                <FieldWithError disabled={!this.state.editable} name="toAge" placeholder="Hasta" aria-label="description"  type="number" className="input" max="99" pattern="[1,9]{1,15}" />
              
                 <h2>Elegí el idioma de tu guía:</h2>
              
@@ -175,7 +165,7 @@ visibilty = () => {
 
               <div className="ButtonSection">
                   <div>
-                <a className="verMas" onClick={() => this.mostrarFiltros()} >{this.state.filtros ? "Ver menos" : "Ver más"}</a>
+                <a className="verMas" onClick={() => this.mostrarFiltros()} >{this.state.filtros ? "Ver menos filtros" : "Ver más filtros"}</a>
                   </div>
                   <input type="submit" className="search-button" value="Buscar guías" />
 

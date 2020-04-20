@@ -3,7 +3,6 @@ import './SignUp.css';
 import './Estilos.css';
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
-import Header from '../src/components/Header'
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import { SignUpSchema } from './helpers/validators'
@@ -45,6 +44,8 @@ class SignUp extends Component {
     goToLogin: false,
     signUpFailed: false,
     passwordsMissmatch: false,
+    value: '',
+    min: ''
   }
 
   createUser = async ({
@@ -87,6 +88,31 @@ class SignUp extends Component {
     }
   }
 
+  handleChange = (event) => {
+    this.setState({ value: event.target.value });
+  }
+
+  componentDidMount() {
+    let hoy = new Date();
+  
+    const dia = hoy.getDate();
+    let mes = (hoy.getMonth() + 1);
+    mes = mes.toString()
+  
+    mes = mes.length === 1 ? "0" + mes : mes
+
+    const año = hoy.getFullYear();
+    const añomin = año - 18
+
+
+    const fechamin = añomin + "-" + mes + "-" + dia;
+    hoy = año + "-" + mes + "-" + dia;
+
+    this.setState(() => ({ value: hoy, min: fechamin }));
+ 
+
+  }
+
   render() {
     if (this.state.goToLogin) {
       return <Redirect to="/login" />
@@ -94,8 +120,6 @@ class SignUp extends Component {
 
     return (
     <div>
-      <Header></Header>
-    
       <div className="SignUp">
        
 
@@ -105,15 +129,17 @@ class SignUp extends Component {
           onSubmit={(values) => this.createUser(values)}>
           <Form>
             <h2>Creá tu cuenta</h2>
-            
-            <FieldWithError name="firstName" placeholder="Nombre" aria-label="firstName" className="input" /> 
-            <FieldWithError name="lastName" placeholder="Apellido" aria-label="lastName" className="input" />
-            <FieldWithError name="age" placeholder="Edad" aria-label="age" className="input" />
-            <FieldWithError name="identification" placeholder="ID / DNI / PASAPORTE" aria-label="identification" className="input" />
+            <div className="title"> 
+            <h4>Nombre</h4>
+            <FieldWithError name="firstName" placeholder="Ingresa tu nombre" aria-label="firstName" className="input" /> 
+            </div>
+            <FieldWithError name="lastName" placeholder="Ingresa tu apellido" aria-label="lastName" className="input" />
+            <FieldWithError name="age" placeholder="Ingresa tu fecha de nacimiento" className="input" max={this.state.min} value={this.state.value} onChange={this.handleChange} required type="date"/>
+            <FieldWithError name="identification" placeholder="Ingresa tu ID / DNI / PASAPORTE" aria-label="identification" type="number" className="input" />
             <DropdownGender name="gender" styleName={"Dropdown-g"} options={genders} />
-            <FieldWithError name="city" placeholder="Ciudad de residencia" aria-label="city" className="input" />
-            <FieldWithError name="email" placeholder="Email" aria-label="email" className="input" />
-            <FieldWithError name="password" placeholder="Contraseña" type="password" aria-label="password" className="input" />
+            <FieldWithError name="city" placeholder="Ingresa tu ciudad de residencia" aria-label="city" className="input" />
+            <FieldWithError name="email" placeholder="Ingresa tu email" aria-label="email" className="input" />
+            <FieldWithError name="password" placeholder="Ingresa tu contraseña" type="password" aria-label="password" className="input" />
             <FieldWithError name="passwordRepeated" placeholder="Repetí tu contraseña" type="password" aria-label="passwordRepeated" className="input" />
            
             <br/>

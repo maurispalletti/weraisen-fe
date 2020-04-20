@@ -63,7 +63,7 @@ class Search1 extends React.Component {
             <Form> */}
         
             
-          <h2>Seleccionar cuidad</h2>
+          <h2>Seleccioná la ciudad que vas a visitar</h2>
           
               <div className="Section1">
 
