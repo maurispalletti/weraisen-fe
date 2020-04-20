@@ -8,8 +8,8 @@ import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import { SignUpSchema } from './helpers/validators'
 import DropdownGender from './forms/DropdownGender'
-import dni1 from './icons/dni.png'
-import dni2 from './icons/dni-atras.png'
+import dni1 from './icons/FRENTE-NARANJA-DNI.png'
+import dni2 from './icons/DORSO-NARANJA-DNI.png'
 
 
 const INITIAL_VALUES = {
@@ -129,7 +129,7 @@ class SignUp extends Component {
               </div>
             <div className="dni2">
             <label className="input3">Detrás</label><br></br>
-            <img src={dni1} alt={"dni detras"} width="70" onClick={() => this.fileImput.click()}/></div>
+            <img src={dni2} alt={"dni detras"} width="70" onClick={() => this.fileImput.click()}/></div>
             {/*<button type="button" className="btn btn-segundo" onClick={this.fileUploadHandler} >subir</button> este metodo hay que agregarlo al boton crear cuenta creo*/} 
             
             </div>
