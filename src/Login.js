@@ -11,6 +11,8 @@ import { LoginSchema } from './helpers/validators'
 import FieldWithError from './forms/FieldWithError'
 
 import scroll from './icons/scroll.png'
+import scroll1 from './icons/scrollverde.png'
+import scroll2 from './icons/scrollnaranja.png'
 import use from './icons/useweb.png'
 
 const INITIAL_VALUES = {
@@ -52,43 +54,57 @@ class Login extends Component {
 
     return (
       <div className="Container">
-        <div id="scrollhere" backgroud={logo}>
+        <div id="Inicio" backgroud={logo}>
         <div className="logo"><img src={logo} alt={"WeRaisen"} width="200" />
+        </div> 
+        <div>
+        <strong><span className="colorfondo">
+           
+           <h7> Viajá. Conocé. Viví una experiencia única.</h7>
+            </span> </strong>
         </div>
-        <div className="web"><a href="#Login" className="use"><img src={use} alt={"WER"} width="150"/> </a></div>
-        <div className="continuar1"><a href="#scrollhere1" className=""><img src={scroll} alt={"WER"} width="70"/> </a></div>
+        <div className="texto">
+        
+            {/* <p><a href="#Login" className="colorinvertido">Comenza ahora</a></p> */}
+       </div>
+
+        <div className="continuar1"><a href="#WeRaisen" className=""><img src={scroll} alt={"WER"} width="70"/> </a></div>
         </div>
-        <div id="scrollhere1">
+        <div id="WeRaisen">
           <h2 className="index__section-title"><strong>WERAISEN</strong></h2>
-          {/* <div className="logo"><img src={logo} alt={"WeRaisen"} width="300" /></div> */}
           
 
-          <p className="index__section-title"><strong>
+          <div className="text"><p ><strong>
             
-                ¿Alguna vez has estado en una ciudad por primera vez y deseaste tener un guía amigo allí?
+                ¿Alguna vez has estado en una ciudad por primera vez y deseaste tener un guía amigo?
                 </strong></p>
+                <h3></h3>
                 <p>
                 <strong>WeRaisen</strong> es una plataforma que utiliza la tecnología para conectarte con <strong>expertos locales.</strong></p>
 
-                  <p>Únicamente tenes que especificar a dónde queres ir, cuándo, qué queres hacer allí y <strong>enviar una solicitud</strong> al guía que más te guste</p>
+                  <p>Únicamente tenes que especificar a dónde queres ir, cuándo, qué queres hacer allí... </p>
+                  <p>Y <strong>enviar una solicitud</strong> al guía que más te guste</p>
 
-      
-            <div className="continuar"><a href="#scrollhere2" className=""><img src={scroll} alt={"WER"} width="70"/> </a></div>
+                  </div>
+            <div className="continuar"><a href="#Funcionamiento" className=""><img src={scroll1} alt={"WER"} width="70"/> </a></div>
         </div>
 
-        <div id="scrollhere2">
+        <div id="Funcionamiento">
         <h2 className="index__section-title2" color="#9CD6AE">¿<strong>Cómo funciona</strong>?</h2>
-                <p>
-                  Elegí tu guía favorito y empeza un chat privado. Recibí recomendaciones personales de tu guía desde su experiencia por ser local y <strong>acordá un encuentro.</strong>
+               <div className="text"> <p>
+                  Elegí tu guía favorito y empeza un <strong>chat privado</strong>. </p>
+                  <p>Recibí recomendaciones personales de tu guía desde su experiencia por ser local y <strong>acordá un encuentro.</strong>
                 </p>
                 <p>
-                   Al finalizar el encuentro, simplemente <strong>calificá </strong>y escribí una <strong>breve reseña</strong> sobre tu guía según la calidad de la experiencia. Tu guía también te calificará.
+                   Al finalizar el encuentro, simplemente <strong>calificá </strong>y escribí una <strong>breve reseña</strong> sobre tu guía según la calidad de la experiencia. </p>
+                   <p>Tu guía también te calificará.</p><p>
                    De esta forma, podras ayudar a <strong>futuros turistas</strong> a elegir la mejor opción.                
                 </p>
                 <p>
                   
                 </p>
-               <div className="continuar2"><a href="#Login" className=""><img src={scroll} alt={"WER"} width="70"/> </a></div>
+                </div>
+               <div className="continuar2"><a href="#Login" className=""><img src={scroll2} alt={"WER"} width="70"/> </a></div>
           
                </div>
 
@@ -121,7 +137,7 @@ class Login extends Component {
                 )}
 
                 <div className="signup">
-                  <p>¿Primera vez en WERAISEN? <a className="forgotPass" href={'/signup'}>Registrate ahora.</a></p>
+                  <h7>¿Primera vez en WERAISEN? <a className="forgotPass" href={'/signup'}>Registrate ahora.</a></h7>
                 </div>
               </div>
             </Form>
