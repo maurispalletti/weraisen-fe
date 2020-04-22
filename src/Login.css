@@ -122,12 +122,9 @@ a {
   
 }
 #Inicio {
-  /* background: #2f313d; */
   height: 100vh;
   padding-top: 80px;
   background: url("./icons/background-image.jpg") center ;
-/* 
-  background-size: repeat; */
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
@@ -135,34 +132,16 @@ a {
   
 }
 
-.colorfondo{
- 
-  background-color: rgb(235, 81, 54);
- 
-  opacity: 0.9;
-  font-size:18px;
-}
-.colorinvertido {
-  /* color: rgb(151, 170, 157);
 
-  background-color: white; */
-  color: rgb(214, 182, 144);
-  background-color:rgb(136, 139, 137);
-  opacity: 0.9;
+.eslogan{
+  padding-top: 10px;
 }
 .texto{
   position: relative;
   top:190px;
 }
 
-.h7{
-  font-size:8px;
-  font-family: inherit;
-}
-.h7{
-  font-size:8px;
-  font-family: inherit;
-}
+
 .index__section-title2{
   color: #9CD6AE;
 }
@@ -172,7 +151,7 @@ a {
 }
 
 #WeRaisen {
-  /* background: #2f313d; */
+
   background: #9CD6AE;
   width: 100%;
   height: 100vh;
@@ -186,27 +165,32 @@ a {
 }
 
 #Funcionamiento {
-  /* background: #2f313d; */
   background:#F9AA68;
-
   height: 100vh;
   padding-top: 50px;
   color: #4f4f53;
   word-spacing: 1pt;
-
-
 }
 .continuar{
   position:center;
   padding-top:10%;
 }
+
 .continuar1{
   position:center;
   padding-top: 300px;
 }
+
 .continuar2{
   position:center;
   padding-top:10%;
+}
+.imag:hover{
+  transform: scale(1.2,1.2);
+  -moz-transform: scale(1.4,1.4);
+  -o-transform: scale(1.4,1.4);
+  -ms-transform: scale(1.4,1.4);
+  -webkit-transform: scale(1.2,1.2);
 }
 .logo{
   margin-top: 0px;

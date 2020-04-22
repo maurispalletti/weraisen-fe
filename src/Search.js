@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Search.css';
-import Toolbar from './components/navbar/toolbar'
+
 import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
 import Backdrop from './components/navbar/backdrop/backdrop'
 import Autocomplete from './components/Autocomplete.js'
@@ -11,6 +11,9 @@ import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import DropdownGender from './forms/DropdownGender'
 import Header from '../src/components/Header'
+
+import ubicacion from './icons/ubicacion.png'
+
 const genders = [
   {
     value: "Femenino",
@@ -134,7 +137,10 @@ visibilty = () => {
             initialValues={INITIAL_VALUES}
             onSubmit={(filters) => this.searchGuides(filters)}>
             <Form>
-            
+              <div className="ciudad">
+              <img src={ubicacion} alt={"Ubicacion"} width="20" />
+              Buenos Aires
+              </div>
               <div className="Fecha">
                 <h2>¿Cuándo?</h2>
                 <Desplegable />
@@ -152,7 +158,7 @@ visibilty = () => {
                 <h2>Rango de edad</h2>
                
                 <FieldWithError disabled={this.visibilty} name="fromAge" placeholder="Desde" aria-label="description" type="number" className="input" min="18" max="99" pattern="[1,9]{1,15}"/>
-                <FieldWithError disabled={!this.state.editable} name="toAge" placeholder="Hasta" aria-label="description"  type="number" className="input" max="99" pattern="[1,9]{1,15}" />
+                <FieldWithError disabled={!this.state.editable} name="toAge" placeholder="Hasta" aria-label="description"  type="number" className="input" min="18" max="99" pattern="[1,9]{1,15}" />
              
                 <h2>Elegí el idioma de tu guía:</h2>
              
@@ -167,8 +173,11 @@ visibilty = () => {
                   <div>
                 <a className="verMas" onClick={() => this.mostrarFiltros()} >{this.state.filtros ? "Ver menos filtros" : "Ver más filtros"}</a>
                   </div>
+                  <div className="buttonsSection">
                   <input type="submit" className="search-button" value="Buscar guías" />
-
+                  <br></br>
+                  <a href="/search"><input type="button" className="search-button" value="Elegir otra ciudad"/></a>
+                  </div>
                 </div>              
             
               {this.state.notLoggedInUser && (

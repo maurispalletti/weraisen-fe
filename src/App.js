@@ -45,7 +45,7 @@ function App() {
       <Route exact path={'/filters'} component={Filtros} />
       <Route exact path={'/notificaciones'} component={Notificaciones} />
       <Route exact path={'/chats'} component={Chats} />
-      <Route component={Error}/>
+      {/* <Route component={Error}/> */}
 
     </Router>
   );

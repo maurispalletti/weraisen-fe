@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './Login.css'
-//import './Estilos.css';
-// import logo from './icons/WER-VERDE.png'
+
 import logo from './icons/WER-NARANJA.png'
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
@@ -10,7 +9,6 @@ import { Formik, Form } from 'formik'
 import { LoginSchema } from './helpers/validators'
 import FieldWithError from './forms/FieldWithError'
 
-import scroll from './icons/scroll.png'
 import scroll1 from './icons/scrollverde.png'
 import scroll2 from './icons/scrollnaranja.png'
 
@@ -57,9 +55,10 @@ class Login extends Component {
         <div id="Inicio" backgroud={logo}>
         <div className="logo"><img src={logo} alt={"WeRaisen"} width="200" />
         </div> 
-        <div>
+        <div className="eslogan">
         <strong><span className="colorfondo">
            <h3></h3>
+           <h4></h4>
            <h7> Viajá. Conocé. Viví una experiencia única.</h7>
             </span> </strong>
         </div>
@@ -68,7 +67,7 @@ class Login extends Component {
             {/* <p><a href="#Login" className="colorinvertido">Comenza ahora</a></p> */}
        </div>
 
-        <div className="continuar1"><a href="#WeRaisen" className=""><img src={scroll1} alt={"WER"} width="70"/> </a></div>
+        <div className="continuar1"><a href="#WeRaisen" className=""><img className="imag" src={scroll1} alt={"WER"} width="70"/> </a></div>
         </div>
         <div id="WeRaisen">
           <h2 className="index__section-title"><strong>WERAISEN</strong></h2>
@@ -86,7 +85,7 @@ class Login extends Component {
                   <p>Y <strong>enviar una solicitud</strong> al guía que más te guste</p>
 
                   </div>
-            <div className="continuar"><a href="#Funcionamiento" className=""><img src={scroll1} alt={"WER"} width="70"/> </a></div>
+            <div className="continuar"><a href="#Funcionamiento" className=""><img  className="imag" src={scroll1} alt={"WER"} width="70"/> </a></div>
         </div>
 
         <div id="Funcionamiento">
@@ -104,7 +103,7 @@ class Login extends Component {
                   
                 </p>
                 </div>
-               <div className="continuar2"><a href="#Login" className=""><img src={scroll2} alt={"WER"} width="70"/> </a></div>
+               <div className="continuar2"><a href="#Login" className=""><img className="imag" src={scroll2} alt={"WER"} width="70"/> </a></div>
           
                </div>
 
