@@ -12,7 +12,7 @@ import Axios from 'axios';
 
 const userId = localStorage.getItem("userId")
 
-/*const userId= userServices.getGuides('5dc1e0b52136dd0d1db6e3cf')*/
+const userId2= userServices.getGuides('5dc1e0b52136dd0d1db6e3cf')
 
 class GuideReviews extends Component {
   state = {
@@ -23,15 +23,15 @@ class GuideReviews extends Component {
   }
   getNameGuide = async () => {
     
-    const name = await (await userServices.getProfile('5dc1e0b52136dd0d1db6e3cf'))
+    const name = await (await userServices.getProfile(userId))
     this.setState({guideName: name})
      }
   getReviews = async () => {
     try {
-      const userId = localStorage.getItem("userId"); /* aca va el id del guia de la card seleccionada*/
+      const userId = localStorage.getItem(userId); /* aca va el id del guia de la card seleccionada*/
        
 
-      const response = await userServices.getReviews('5dc1e0b52136dd0d1db6e3cf')
+      const response = await userServices.getReviews(userId)
       if (response && response.data && response.data.length > 0) {
 
         this.setState({ reviews: response.data })
@@ -42,7 +42,7 @@ class GuideReviews extends Component {
       this.setState({ searchFailed: true })
     }
   }
-  async componentWillMount() {
+  async componentWillMount() { /* usar el did mount*/
     await this.getNameGuide()
      await this.getReviews()
   }
@@ -80,7 +80,7 @@ class GuideReviews extends Component {
 
   render() {
     if (this.state.goToResults) {
-      return <Redirect to="/results" />
+      return <Redirect to="/results" /> /*aca hacer que se guarden los resultados */
     }
 
     let sideDrawer;
