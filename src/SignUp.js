@@ -3,7 +3,7 @@ import './SignUp.css';
 import './Estilos.css';
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
-
+import Header from '../src/components/Header'
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import { SignUpSchema } from './helpers/validators'
@@ -93,7 +93,11 @@ class SignUp extends Component {
     }
 
     return (
+    <div>
+      <Header></Header>
+    
       <div className="SignUp">
+       
 
         <Formik
           initialValues={INITIAL_VALUES}
@@ -168,6 +172,7 @@ class SignUp extends Component {
           </Form>
         </Formik>
       </div>
+     </div>
     );
   }
 };

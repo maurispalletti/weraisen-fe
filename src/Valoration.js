@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import './Valoration.css'
-
+import Header from '../src/components/Header'
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 import { ReviewSchema } from './helpers/validators'
-
-import Toolbar from './components/navbar/toolbar'
 import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
 import Backdrop from './components/navbar/backdrop/backdrop'
 
@@ -87,28 +85,7 @@ class Valoration extends Component {
     }
     return (
       <div className="Valoration">
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
-        {sideDrawer}
-        {backdrop}
-        {/* <div className="Header">
-          <a href={"/home"} className="HomeIcon">
-            <img src={home} alt={"Home"} />
-          </a>
-        </div> */}
-
-        {/* <div className="Header">
-          <a href={"/home"} className="HomeIconNew">
-            <img src={home} alt={"Home"} />
-          </a>
-          <div className="HeaderText">
-            <a href={"/matches"} className={"HeaderTextLink"}>
-              <div>Mis Encuentros</div>
-            </a>
-            <a href={"/profile"} className={"HeaderTextLink"}>
-              <div>Mi perfil</div>
-            </a>
-          </div>
-        </div> */}
+        <Header></Header>
 
         <div className="BodyValoration">
           <div className="ratingSection">

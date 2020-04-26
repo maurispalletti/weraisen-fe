@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import './Results.css';
 import './Matches.css';
-
-import Toolbar from './components/navbar/toolbar'
-import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
-import Backdrop from './components/navbar/backdrop/backdrop'
+import Header from '../src/components/Header'
 import MatchCard from './components/MatchCard';
 import { Redirect } from 'react-router'
 
@@ -95,41 +92,10 @@ class Matches extends Component {
       return <Redirect to="/search" />
     }
 
-    let sideDrawer;
-    let backdrop;
-    if (this.state.sideDrawerOpen) {
-      sideDrawer =<SideDrawer/>;
-      backdrop = <Backdrop click={this.backdropClickHandler}/>
-    }
+    
     return (
       <div className="Matches">
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
-        {sideDrawer}
-        {backdrop}
-        {/* <div className="Header">
-          <a href={"/home"} className="HomeIcon">
-            <img src={home} alt={"Home"} />
-          </a>
-          <div className="HeaderImage">
-            <a href={"/profile"}>
-              <img src={avatar_woman_1} alt={"User"} />
-            </a>
-          </div>
-        </div> */}
-
-        {/* <div className="Header">
-          <a href={"/home"} className="HomeIconNew">
-            <img src={home} alt={"Home"} />
-          </a>
-          <div className="HeaderText">
-            <a href={"/matches"} className={"HeaderTextLink"}>
-              <div>Mis Encuentros</div>
-            </a>
-            <a href={"/profile"} className={"HeaderTextLink"}>
-              <div>Mi perfil</div>
-            </a>
-          </div>
-        </div> */}
+        <Header></Header>
 
         <div className="BodyMatches">
 
