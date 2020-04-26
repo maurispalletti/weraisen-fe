@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import './Search.css';
-
-import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
-import Backdrop from './components/navbar/backdrop/backdrop'
 import Autocomplete from './components/Autocomplete.js'
 import Desplegable from './components/Desplegable.js'
 import Categorias from './components/Categorias.js'
@@ -12,7 +9,7 @@ import FieldWithError from './forms/FieldWithError'
 import DropdownGender from './forms/DropdownGender'
 import Header from '../src/components/Header'
 
-import ubicacion from './icons/ubicacion.png'
+import ubicacion from './icons/ubicacion.svg'
 
 const genders = [
   {
@@ -36,6 +33,8 @@ const INITIAL_VALUES = {
   toAge: ''
 }
 
+let ciudad  
+
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -47,26 +46,28 @@ class Search extends Component {
       notLoggedInUser: false,
       goToProfile: false,
       categories: [],
-      sideDrawerOpen: false,
       editable: true,
       filtros:false,
-      
-    
+      city:""
   }
  
   }
 
+ 
+  componentDidMount() {
+    ciudad = localStorage.getItem("filtrociudad")
+    this.setState({city:ciudad}) 
+  }
   searchGuides = async ({ fromAge, toAge, gender }) => {
 
     const filters = { fromAge, toAge, gender }
-
+   
     if (parseFloat(fromAge) > parseFloat(toAge)) {
       this.setState({ ageValidationFailed: true })
     } else {
 
-      // const city = localStorage.getItem("filter_lenguage");
-      const ciudad =  this.props.city;
       const language = localStorage.getItem("filter_language");
+  
       const knowledge = this.state.categories;
   
       filters[`city`] = ciudad;
@@ -74,11 +75,11 @@ class Search extends Component {
       filters[`knowledge`] = knowledge;
 
       const filtersString = JSON.stringify(filters);
-      console.log('holis')
+    
       console.log(filtersString);
       localStorage.setItem(`filters`, filtersString);
 
-      localStorage.removeItem(ciudad);
+      localStorage.removeItem("filtrociudad");
       localStorage.removeItem("filter_language");
       localStorage.removeItem("filter_knowledge");
 
@@ -92,7 +93,7 @@ class Search extends Component {
 
   mostrarFiltros = () => {
     this.setState({ filtros: !this.state.filtros });
-   
+
   }
 
 
@@ -100,27 +101,8 @@ class Search extends Component {
     this.setState({ categories: values })
   }
 
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-           return {sideDrawerOpen: !prevState.sideDrawerOpen};
-      });
-  };
-visibilty = () => {
-  
-}
-  backdropClickHandler = () => {
-    this.setState({sideDrawerOpen: false});
-  }
-
   render() {
-    let sideDrawer;
-    let backdrop;
-   
-    if (this.state.sideDrawerOpen) {
-      sideDrawer =<SideDrawer/>;
-      backdrop = <Backdrop click={this.backdropClickHandler}/>
-
-    }
+ 
     if (this.state.goToResults) {
       return <Redirect to="/results" />
     }
@@ -138,8 +120,10 @@ visibilty = () => {
             onSubmit={(filters) => this.searchGuides(filters)}>
             <Form>
               <div className="ciudad">
-              <img src={ubicacion} alt={"Ubicacion"} width="20" />
-              Buenos Aires
+              <img src={ubicacion} alt={"Ubicacion"} width="25" />
+              {this.state.city}
+    <h3></h3>
+          
               </div>
               <div className="Fecha">
                 <h2>¿Cuándo?</h2>

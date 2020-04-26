@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route } from 'react-router';
+import { Router, Route, Switch } from 'react-router';
 import Login from './Login';
 import Search from './Search1';
 import Results from './Results';
@@ -27,6 +27,7 @@ const history = createBrowserHistory();
 function App() {
   return (
     <Router history={history}>
+      <Switch>
       <Route exact path={'/'} component={Login} />
       <Route exact path={'/login'} component={Login} />
       <Route exact path={'/search'} component={Search} />
@@ -45,8 +46,8 @@ function App() {
       <Route exact path={'/filters'} component={Filtros} />
       <Route exact path={'/notificaciones'} component={Notificaciones} />
       <Route exact path={'/chats'} component={Chats} />
-      {/* <Route component={Error}/> */}
-
+      <Route component={Error} />
+      </Switch>
     </Router>
   );
 }

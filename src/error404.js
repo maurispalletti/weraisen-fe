@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './error404.css'
 
-import logo from './icons/WER-NARANJA.png'
+import logo from './icons/WER-VERDE.png'
 
 class Error extends Component {
     

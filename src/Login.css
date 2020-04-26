@@ -1,20 +1,22 @@
 
 .Login {
-
   box-sizing: content-box;
-  width: 100%;
+
   text-align: center;
-  height: 100vh;
+  height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #696970;
+
   font-family: sans-serif;
   overflow: scroll;
-
-
+  background-color: rgb(44, 43, 43);
+  opacity: 0.9;
+  width: 300px;
+  border-radius: 6px;
+padding-top:0px;
 }
  
 
@@ -24,10 +26,7 @@ a {
   cursor: pointer;
   font-family: 'Lato', sans-serif !important;
 }
-.header{
 
-  align-items: center;
-}
 .btn-login {
   background: #d48e4b !important;
   border: 0;
@@ -38,8 +37,6 @@ a {
   cursor: pointer;
   transition: background 0.3s ease-in-out;}
  
-
-
 .login-input {
 
   width: 50%;
@@ -51,20 +48,7 @@ a {
   color: #696970;
   font-size: 13px;
 }
-.input {
 
-  width: 250px;
-  padding: 25px 0px;
-  background: transparent;
-  font-family: 'Lato',sans-serif !important;
-  border: 0;
-  border-bottom: 1px solid #ffffff0a;
-  outline: none;
-  color: #696970;
-  font-size: 16px;
-  overflow: scroll;
-  
-}
 .login-button:hover {
   background: #7dca96;
 }
@@ -100,9 +84,6 @@ a {
 
 
 .Container {
-
-
-
  height: 100vh;
   width: 100%;
   overflow: scroll;
@@ -121,6 +102,10 @@ a {
   top:150px;
   
 }
+.Inicio{
+  text-align: center;
+  align-items: center;
+}
 #Inicio {
   height: 100vh;
   padding-top: 80px;
@@ -128,8 +113,9 @@ a {
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
-  color: #F9AA68
-  
+  color: #F9AA68;
+  text-align: center;
+  align-items: center; 
 }
 
 
@@ -173,18 +159,19 @@ a {
 }
 .continuar{
   position:center;
-  padding-top:10%;
+  padding-top:100px;
 }
 
 .continuar1{
   position:center;
-  padding-top: 300px;
+  padding-top: 60px;
 }
 
 .continuar2{
   position:center;
-  padding-top:10%;
+  padding-top: 10%;
 }
+
 .imag:hover{
   transform: scale(1.2,1.2);
   -moz-transform: scale(1.4,1.4);
