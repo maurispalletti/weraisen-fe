@@ -65,7 +65,7 @@ class Home extends Component {
         return (
             <Fragment>
                 <Header />
-                <div className="container">
+                <div className="container-fluid">
                     <h1>Mejores Guías</h1>
                     <hr/>
                     <div className="bs-docs-section">                      

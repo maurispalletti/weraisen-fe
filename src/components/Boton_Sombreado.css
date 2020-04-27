@@ -1,0 +1,28 @@
+.Container {
+    height: min-content;
+  }
+
+.fila {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+  .ItemSeleccionadoA {
+    
+
+    background: #d48e4b; 
+     
+     
+     
+  }
+
+  .ItemNoSeleccionadoA {
+    
+    background: #3A3F44;
+    border-color: #3A3F44
+    
+  }
+
+  
+
