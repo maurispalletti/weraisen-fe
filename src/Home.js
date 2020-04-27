@@ -12,6 +12,8 @@ import b from './Imagenes_Alvo/335.png'
 import c from './Imagenes_Alvo/405.png'
 import d from './Imagenes_Alvo/697.png'
 import e from './Imagenes_Alvo/212.png'
+import GuideCard from './components/GuideCard';
+import Card_GuiaResultados from './components/Card_GuiaResultados';
 
 class Home extends Component {
 
@@ -45,7 +47,7 @@ class Home extends Component {
 
         return (
             <React.Fragment>
-                <div className="row">
+                <div className="container-fluid">
                     <div className="card-columns">
                     {guias.map(guia => (
                         <Card_Guia              
@@ -65,18 +67,27 @@ class Home extends Component {
         return (
             <Fragment>
                 <Header />
+
                 <div className="container-fluid">
                     <h1>Mejores Guías</h1>
+
+
+
                     <hr/>
                     <div className="bs-docs-section">                      
                             
-
+                   
                            {this.mostrarGuias()}
-                        
+                           
                     </div>
                     <hr/>
                     <h1>Lugares más visitados</h1>
                     <hr/>
+                    <div className ="container-fluid">
+                    < Card_GuiaResultados />
+                    </div>
+                    
+                    
                 </div>
                 {/* <Footer /> */}
             </Fragment>

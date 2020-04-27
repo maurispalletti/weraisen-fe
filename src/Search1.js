@@ -13,6 +13,7 @@ import laplata from './avatars/ciudades/laplata.png'
 import mardel from './avatars/ciudades/mardel.png'
 import rosario from './avatars/ciudades/rosario.png'
 import Filtros from './Search.js'
+import Header from '../src/components/Header'
 
 class Search1 extends React.Component {
   state = {
@@ -53,11 +54,8 @@ class Search1 extends React.Component {
     return (
   
       <div className="Search">
-        
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
-        {sideDrawer}
-        {backdrop}
-
+        <Header> </Header>
+     
         <div className="BodySearch">
           {/* <Formik
            
