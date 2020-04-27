@@ -178,6 +178,7 @@ class Chat extends Component {
 
     return (
       <div className="Chat">
+        <button type="button" class="btn btn-primary" href="/cancel" >Cancelar</button>
         <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
         {sideDrawer}
         {backdrop}

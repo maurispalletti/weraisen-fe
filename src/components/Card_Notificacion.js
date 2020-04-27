@@ -10,18 +10,18 @@ const Card_Notificacion = props => {
 
         <React.Fragment>
             {/* <div className="card mb-12 col-sm-12 pt-5" style= {{ maxWidth: '150px'}}> */}
-            <div className="card  col-sm-12 col-xs-12 ">
+            <div className="card  col-sm-12 col-xs-12" style={{left: "-5.5%", width:"22rem", height: "127px", padding: "1px 1px 1px 1px" }}>
 
                 <div className="row no-gutters ">
 
-                    <div className="col-sm-4 col-4" style={{ maxWidth: '100px' }}>
-                        <img src={props.imgsrc} className="card-img img-fluid" alt="..." />
+                    <div className="col-sm-4 col-4" style={{ maxWidth: '100px', padding: '10px 1px 1px 1px' }}>
+                        <img src={props.imgsrc} className="card-img img-fluid" style={{padding: '1px 1px 3px 21px', align:"left" }} alt="..." />
                     </div>
                     <div className="col-sm-8 col-8">
-                        <div className="card-body" style={{padding: '1px 1px 1px 15px', width: '198px'}}>                        
+                        <div className="card-body" style={{padding: '15px 5px 1px 17px'}}>                        
                         
                             <h5 className="card-title" style={{marginBottom: "0px"}}>{props.name}</h5>
-                            <p className="card-text" style={{textAlign:"left"}}>{props.description}.</p>
+                            <p className="card-text" style={{textAlign:"left", width:"13rem"}}>{props.description}.</p>
                             <div className="row mb-2">
                                 <div className="col text-right">                   
                                 <Button variant="primary" size="sm" style={{width:"47%"}}>{props.btn1}</Button>
