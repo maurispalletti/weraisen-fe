@@ -7,6 +7,8 @@ import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 import { Formik, Form, Field } from 'formik'
 import enviar from './avatars/enviar.png'
+import usuario from '../src/Imagenes_Alvo/006.png'
+
 const selfName = "Yo"
 let otherName;
 
@@ -178,7 +180,8 @@ class Chat extends Component {
 
     return (
       <div className="Chat">
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
+        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}nombre={this.otherName} img ={usuario}  />
+        
         {sideDrawer}
         {backdrop}
         <div className="BodyChat">
