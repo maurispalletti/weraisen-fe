@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route } from 'react-router';
+import { Router, Route, Switch } from 'react-router';
 import Login from './Login';
 import Search from './Search1';
 import Results from './Results';
@@ -19,6 +19,7 @@ import Admin from './AdminProfile';
 import Prueba from '../src/components/DenunciaPopUp';
 import Notificaciones from '../src/PerfilNotificaciones';
 import Chats from '../src/PerfilChats';
+import Error from '../src/error404'
 
 
 const history = createBrowserHistory();
@@ -26,6 +27,7 @@ const history = createBrowserHistory();
 function App() {
   return (
     <Router history={history}>
+      <Switch>
       <Route exact path={'/'} component={Login} />
       <Route exact path={'/login'} component={Login} />
       <Route exact path={'/search'} component={Search} />
@@ -44,6 +46,8 @@ function App() {
       <Route exact path={'/filters'} component={Filtros} />
       <Route exact path={'/notificaciones'} component={Notificaciones} />
       <Route exact path={'/chats'} component={Chats} />
+      <Route component={Error} />
+      </Switch>
     </Router>
   );
 }

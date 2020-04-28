@@ -16,8 +16,12 @@
 }
 
 .Section1{
-  margin-top: 20px;
+  padding-top: 40px;
   display: block;
+  width: 400px;
+  margin:0px auto;
+  
+
 }
 
 .input-switch{
@@ -38,6 +42,8 @@ h2 {
   padding-top: 5vh;
  overflow: scroll; 
  align-items: center;
+ position: center;
+ text-align:center;
 
 }
 .Dropdown-search {
@@ -103,4 +109,8 @@ h2 {
 .BodySearch::-webkit-scrollbar-thumb{
  background: #d48e4b;
  border-radius: 5px;
+}
+
+.Fecha{
+  padding-top: 20px;
 }

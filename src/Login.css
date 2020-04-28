@@ -1,62 +1,24 @@
 
 .Login {
-
   box-sizing: content-box;
-  width: 100%;
+
   text-align: center;
-  height: 100vh;
+  height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #696970;
+
   font-family: sans-serif;
   overflow: scroll;
-
-
+  background-color: rgb(44, 43, 43);
+  opacity: 0.9;
+  width: 300px;
+  border-radius: 6px;
+padding-top:0px;
 }
-  /*box-sizing: content-box;
-  width: 100%;
-  text-align: center;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: #696970;
-  font-family: sans-serif;
-  overflow: scroll;
-
-
-}
-  .body{
-  background: #2f313d;
-  font-family: 'Lato', sans-serif !important;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  }
-/*
-.btn-login {
-  background: #d48e4b !important;
-  border: 0;
-  width: 250px;
-  height: 40px;
-  border-radius: 3px;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-}*/
-
-
-
-/* .forgotPass {
-  text-decoration: none;
-    color: white;
-    font-size: larger;
-} */
+ 
 
 a {
   color: #a7a8b4;
@@ -64,10 +26,7 @@ a {
   cursor: pointer;
   font-family: 'Lato', sans-serif !important;
 }
-.header{
 
-  align-items: center;
-}
 .btn-login {
   background: #d48e4b !important;
   border: 0;
@@ -78,13 +37,6 @@ a {
   cursor: pointer;
   transition: background 0.3s ease-in-out;}
  
-/*
-p {
-  cursor: pointer;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}*/
-
-
 .login-input {
 
   width: 50%;
@@ -96,20 +48,7 @@ p {
   color: #696970;
   font-size: 13px;
 }
-.input {
 
-  width: 250px;
-  padding: 25px 0px;
-  background: transparent;
-  font-family: 'Lato',sans-serif !important;
-  border: 0;
-  border-bottom: 1px solid #ffffff0a;
-  outline: none;
-  color: #696970;
-  font-size: 16px;
-  overflow: scroll;
-  
-}
 .login-button:hover {
   background: #7dca96;
 }
@@ -145,7 +84,7 @@ p {
 
 
 .Container {
-  height: 100vh;
+ height: 100vh;
   width: 100%;
   overflow: scroll;
   scroll-behavior: smooth;
@@ -156,67 +95,89 @@ p {
  font-size: calc(10px + 2vmin);
  color: #696970;
  font-family: sans-serif;
-
-
 }
 
-
-#scrollhere {
-  /* background: #2f313d; */
-  background: #F9AA68;
-  width: 100%;
+.comenzar {
+  position: relative;
+  top:150px;
+  
+}
+.Inicio{
+  text-align: center;
+  align-items: center;
+}
+#Inicio {
   height: 100vh;
-  padding-top: 100px;
-  background-image: url("./icons/background-image.jpg");
+  padding-top: 80px;
+  background: url("./icons/background-image.jpg") center ;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
+  color: #F9AA68;
+  text-align: center;
+  align-items: center; 
 }
-.p{
-  font-size:22px;
-  font-family: inherit;
+
+
+.eslogan{
+  padding-top: 10px;
 }
+.texto{
+  position: relative;
+  top:190px;
+}
+
 
 .index__section-title2{
   color: #9CD6AE;
 }
 
-#scrollhere1 {
-  /* background: #2f313d; */
+.index__section-title{
+  color: #F9AA68
+}
+
+#WeRaisen {
+
   background: #9CD6AE;
   width: 100%;
   height: 100vh;
   padding-top: 50px;
-  padding-left: 20px;
-  padding-right: 20px;
   color: #4f4f53;
   word-spacing: 1pt;
-  line-height: 24pt; /*separacion entre lineas */
-  text-indent: 20pt;
+
+}
+.text{
+  padding-top: 50px;
 }
 
-
-#scrollhere2 {
-  /* background: #2f313d; */
+#Funcionamiento {
   background:#F9AA68;
-  width: 100%;
   height: 100vh;
   padding-top: 50px;
-  padding-left: 20px;
-  padding-right: 20px;
-
   color: #4f4f53;
   word-spacing: 1pt;
-  line-height: 24pt; /*separacion entre lineas */
-  text-indent: 20pt;
 }
 .continuar{
-  padding-top:50px;
+  position:center;
+  padding-top:100px;
 }
+
 .continuar1{
-  padding-top:180px;
+  position:center;
+  padding-top: 60px;
 }
+
 .continuar2{
-  padding-top:50px;
+  position:center;
+  padding-top: 10%;
+}
+
+.imag:hover{
+  transform: scale(1.2,1.2);
+  -moz-transform: scale(1.4,1.4);
+  -o-transform: scale(1.4,1.4);
+  -ms-transform: scale(1.4,1.4);
+  -webkit-transform: scale(1.2,1.2);
 }
 .logo{
   margin-top: 0px;

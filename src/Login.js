@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import './Login.css'
-//import './Estilos.css';
-import logo from './icons/WER-VERDE.png'
-import logon from './icons/WER-NARANJA.png'
+
+import logo from './icons/WER-NARANJA.png'
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 
@@ -10,8 +9,9 @@ import { Formik, Form } from 'formik'
 import { LoginSchema } from './helpers/validators'
 import FieldWithError from './forms/FieldWithError'
 
-import scroll from './icons/scroll.png'
-import use from './icons/useweb.png'
+import scroll1 from './icons/scrollverde.png'
+import scroll2 from './icons/scrollnaranja.png'
+
 
 const INITIAL_VALUES = {
   email: '',
@@ -52,91 +52,88 @@ class Login extends Component {
 
     return (
       <div className="Container">
-        <div id="scrollhere" backgroud={logo}>
-        <div className="logo"><img src={logo} alt={"WeRaisen"} width="200" />
-        </div>
-        <div className="web"><a href="#Login" className="use"><img src={use} alt={"WER"} width="150"/> </a></div>
-        <div className="continuar1"><a href="#scrollhere1" className=""><img src={scroll} alt={"WER"} width="70"/> </a></div>
-        </div>
-        <div id="scrollhere1">
-          <h2 className="index__section-title"><strong>WERAISEN</strong></h2>
-          {/* <div className="logo"><img src={logo} alt={"WeRaisen"} width="300" /></div> */}
-          
-
-          <p className="index__section-title"><strong>
-            
-                ¿Alguna vez has estado en una ciudad por primera vez y deseaste tener un guía amigo allí?
-                </strong></p>
-                <p>
-                <strong>WeRaisen</strong> es una plataforma que utiliza la tecnología para conectarte con <strong>expertos locales.</strong></p>
-
-                  <p>Únicamente tenes que especificar a dónde queres ir, cuándo, qué queres hacer allí y <strong>enviar una solicitud</strong> al guía que más te guste</p>
-
-      
-            <div className="continuar"><a href="#scrollhere2" className=""><img src={scroll} alt={"WER"} width="70"/> </a></div>
-        </div>
-
-        <div id="scrollhere2">
-        <h2 className="index__section-title2" color="#9CD6AE">¿<strong>Cómo funciona</strong>?</h2>
-                <p>
-                  Elegí tu guía favorito y empeza un chat privado. Recibí recomendaciones personales de tu guía desde su experiencia por ser local y <strong>acordá un encuentro.</strong>
-                </p>
-                <p>
-                   Al finalizar el encuentro, simplemente <strong>calificá </strong>y escribí una <strong>breve reseña</strong> sobre tu guía según la calidad de la experiencia. Tu guía también te calificará.
-                   De esta forma, podras ayudar a <strong>futuros turistas</strong> a elegir la mejor opción.                
-                </p>
-                <p>
-                  
-                </p>
-               <div className="continuar2"><a href="#Login" className=""><img src={scroll} alt={"WER"} width="70"/> </a></div>
-          
-               </div>
-
-
-
-
-
-        <div id="Login" className="Login">
-          <div className="Header">
-            <img src={logo} alt={"WeRaisen"} width="300" />
-            
-          </div>
-          <br></br>
-          <Formik
-            initialValues={INITIAL_VALUES}
-            validationSchema={LoginSchema}
-            onSubmit={(values) => this.loginUser(values)}>
-            <Form>
-              
-              <FieldWithError name="email" placeholder="Email" aria-label="username" className="input" />
-              <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" className="input" />
+        <div id="Inicio" backgroud={logo}>
+          <div className="logo"><img src={logo} alt={"WeRaisen"} width="200" /></div>
+          <div className="eslogan">
+            <strong><span className="colorfondo">
               <h3></h3>
-              <div className="right-container">
-                <input type="submit" className="btn-login" value="Ingresar" />
+              <h4></h4>
+              <h7> Viajá. Conocé. Viví una experiencia única.</h7>
+            </span> </strong>
+          </div>
+  <br></br>
+          <div className="Login">
+            <Formik
+              initialValues={INITIAL_VALUES}
+              validationSchema={LoginSchema}
+              onSubmit={(values) => this.loginUser(values)}>
+              <Form>
 
-                {this.state.loginFailed && (
-                  <p className="form-error">
-                    Login falló. Tu email y password no coinciden. Intenta de nuevo.
-                  </p>
-                )}
+                <FieldWithError name="email" placeholder="Email" aria-label="username" className="input" autocomplete="off" />
+                <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" autocomplete="off" className="input" />
+                <h3></h3>
+                <div className="right-container">
+                  <input type="submit" className="btn-login" value="Ingresar" />
 
-                <div className="signup">
-                  <p>¿Primera vez en WERAISEN? <a className="forgotPass" href={'/signup'}>Registrate ahora.</a></p>
+                  {this.state.loginFailed && (
+                    <p className="form-error">
+                      Tu email y password no coinciden. Intenta de nuevo.
+                    </p>
+                  )}
+
+                  <div className="signup">
+                    <p>¿Primera vez en WERAISEN? <a className="forgotPass" href={'/signup'}>Registrate ahora.</a></p>
+                  </div>
                 </div>
-              </div>
-            </Form>
-          </Formik>
+              </Form>
+            </Formik>
+          </div>
+
+          <div className="continuar1"><a href="#WeRaisen" className=""><img className="imag" src={scroll1} alt={"WER"} width="60" /> </a></div>
+          </div>
+        <div id="WeRaisen">
+          <h2 className="index__section-title"><strong>WERAISEN</strong></h2>
+
+
+          <div className="text"><p ><strong>
+
+            ¿Alguna vez has estado en una ciudad por primera vez y deseaste tener un guía amigo?
+                </strong></p>
+            <h3></h3>
+            <p>
+              <strong>WeRaisen</strong> es una plataforma que utiliza la tecnología para conectarte con <strong>expertos locales.</strong></p>
+
+            <p>Únicamente tenes que especificar a dónde queres ir, cuándo, qué queres hacer allí... </p>
+            <p>Y <strong>enviar una solicitud</strong> al guía que más te guste</p>
+
+          </div>
+          <div className="continuar"><a href="#Funcionamiento" className=""><img className="imag" src={scroll1} alt={"WER"} width="50" /> </a></div>
         </div>
 
+        <div id="Funcionamiento">
+          <h2 className="index__section-title2" color="#9CD6AE">¿<strong>Cómo funciona</strong>?</h2>
+          <div className="text"> <p>
+            Elegí tu guía favorito y empeza un <strong>chat privado</strong>. </p>
+            <p>Recibí recomendaciones personales de tu guía desde su experiencia por ser local y <strong>acordá un encuentro.</strong>
+            </p>
+            <p>
+              Al finalizar el encuentro, simplemente <strong>calificá </strong>y escribí una <strong>breve reseña</strong> sobre tu guía según la calidad de la experiencia. </p>
+            <p>Tu guía también te calificará.</p><p>
+              De esta forma, podras ayudar a <strong>futuros turistas</strong> a elegir la mejor opción.
+                </p>
+            <p>
+            <div className="continuar2"><a href="#Inicio" className=""><img className="imag" src={scroll2} alt={"WER"} width="50" /> </a></div>
 
-
+            </p>
+          </div>
+        </div>
 
       </div>
-    
+
     )
   }
-};  
-  
+};
+
 
 
 export default Login;
