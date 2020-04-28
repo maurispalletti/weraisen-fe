@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
 import './Search.css';
-import Toolbar from './components/navbar/toolbar'
-import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
-import Backdrop from './components/navbar/backdrop/backdrop'
 import Autocomplete from './components/Autocomplete.js'
 import Desplegable from './components/Desplegable.js'
 import Categorias from './components/Categorias.js'
+import ButtonAlvo from './components/AlvoBoronSombreado.js'
 import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import DropdownGender from './forms/DropdownGender'
 import Header from '../src/components/Header'
+
+import ubicacion from './icons/ubicacion.svg'
+
 const genders = [
-  {
-    value: "Cualquiera",
-    description: 'Cualquiera'
-  },
   {
     value: "Femenino",
     description: 'Femenino'
@@ -37,6 +34,8 @@ const INITIAL_VALUES = {
   toAge: ''
 }
 
+let ciudad  
+
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -48,26 +47,28 @@ class Search extends Component {
       notLoggedInUser: false,
       goToProfile: false,
       categories: [],
-      sideDrawerOpen: false,
       editable: true,
       filtros:false,
-      
-    
+      city:""
   }
  
   }
 
+ 
+  componentDidMount() {
+    ciudad = localStorage.getItem("filtrociudad")
+    this.setState({city:ciudad}) 
+  }
   searchGuides = async ({ fromAge, toAge, gender }) => {
 
     const filters = { fromAge, toAge, gender }
-
+   
     if (parseFloat(fromAge) > parseFloat(toAge)) {
       this.setState({ ageValidationFailed: true })
     } else {
 
-      // const city = localStorage.getItem("filter_lenguage");
-      const ciudad =  this.props.city;
       const language = localStorage.getItem("filter_language");
+  
       const knowledge = this.state.categories;
   
       filters[`city`] = ciudad;
@@ -75,11 +76,11 @@ class Search extends Component {
       filters[`knowledge`] = knowledge;
 
       const filtersString = JSON.stringify(filters);
-      console.log('holis')
+    
       console.log(filtersString);
       localStorage.setItem(`filters`, filtersString);
 
-      localStorage.removeItem(ciudad);
+      localStorage.removeItem("filtrociudad");
       localStorage.removeItem("filter_language");
       localStorage.removeItem("filter_knowledge");
 
@@ -93,7 +94,7 @@ class Search extends Component {
 
   mostrarFiltros = () => {
     this.setState({ filtros: !this.state.filtros });
-   
+
   }
 
 
@@ -101,27 +102,8 @@ class Search extends Component {
     this.setState({ categories: values })
   }
 
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-           return {sideDrawerOpen: !prevState.sideDrawerOpen};
-      });
-  };
-visibilty = () => {
-  
-}
-  backdropClickHandler = () => {
-    this.setState({sideDrawerOpen: false});
-  }
-
   render() {
-    let sideDrawer;
-    let backdrop;
-   
-    if (this.state.sideDrawerOpen) {
-      sideDrawer =<SideDrawer/>;
-      backdrop = <Backdrop click={this.backdropClickHandler}/>
-
-    }
+ 
     if (this.state.goToResults) {
       return <Redirect to="/results" />
     }
@@ -138,7 +120,12 @@ visibilty = () => {
             initialValues={INITIAL_VALUES}
             onSubmit={(filters) => this.searchGuides(filters)}>
             <Form>
-            
+              <div className="ciudad">
+              <img src={ubicacion} alt={"Ubicacion"} width="25" />
+              {this.state.city}
+    <h3></h3>
+          
+              </div>
               <div className="Fecha">
                 <h2>¿Cuándo?</h2>
                 <Desplegable />
@@ -147,6 +134,9 @@ visibilty = () => {
               <div className="Categoria">
                 <h2>Seleccioná la categoría </h2>
                 <Categorias onCategoryChange={this.handleCategory} />
+                
+
+                
               </div>  
 
               <div className="Filters" style={{display: this.state.filtros ? 'block' : 'none' }}>
@@ -154,15 +144,9 @@ visibilty = () => {
                 <DropdownGender name="gender" styleName={"Dropdown-search"} options={genders} />
              
                 <h2>Rango de edad</h2>
-                Indistinto
-                      <label class="switch">
-                
-                      <input type="checkbox" value={this.state.editable ? "Cancelar" : "Editar"} onClick={() => this.toggleEditInfo()} />
-                      <span class="slider round"></span>
-                    </label>
-             
-                <FieldWithError disabled={this.visibilty} name="fromAge" placeholder="Desde" aria-label="description" className="input" />
-                <FieldWithError disabled={!this.state.editable} name="toAge" placeholder="Hasta" aria-label="description" className="input" />
+               
+                <FieldWithError disabled={this.visibilty} name="fromAge" placeholder="Desde" aria-label="description" type="number" className="input" min="18" max="99" pattern="[1,9]{1,15}"/>
+                <FieldWithError disabled={!this.state.editable} name="toAge" placeholder="Hasta" aria-label="description"  type="number" className="input" min="18" max="99" pattern="[1,9]{1,15}" />
              
                 <h2>Elegí el idioma de tu guía:</h2>
              
@@ -175,10 +159,13 @@ visibilty = () => {
 
               <div className="ButtonSection">
                   <div>
-                <a className="verMas" onClick={() => this.mostrarFiltros()} >{this.state.filtros ? "Ver menos" : "Ver más"}</a>
+                <a className="verMas" onClick={() => this.mostrarFiltros()} >{this.state.filtros ? "Ver menos filtros" : "Ver más filtros"}</a>
                   </div>
+                  <div className="buttonsSection">
                   <input type="submit" className="search-button" value="Buscar guías" />
-
+                  <br></br>
+                  <a href="/search"><input type="button" className="search-button" value="Elegir otra ciudad"/></a>
+                  </div>
                 </div>              
             
               {this.state.notLoggedInUser && (

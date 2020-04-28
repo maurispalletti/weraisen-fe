@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Results.css';
 import './Estilos.css';
-import GuideCard from './components/GuideCard';
+import Card_Guia from '../src/components/Card_Guia';
 import { Redirect } from 'react-router'
 import Toolbar from './components/navbar/toolbar'
 import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
@@ -44,7 +44,7 @@ class Results extends Component {
       return guides.map(guide => {
         const { id, firstName, lastName, age, city, languages, knowledge, description, gender } = guide
         return (
-          <GuideCard
+          <Card_Guia
             key={id}
             guideId={id}
             firstName={firstName}
@@ -91,7 +91,7 @@ class Results extends Component {
         <div className="BodyResults">
 
           <div className="Section">
-            <h2>Guías que coinciden con tu búsqueda:</h2>
+            <h2 style={{paddingBottom:"15px"}}>Seleccioná tu guía ideal</h2>
             {this.renderGuides()}
           </div>
 

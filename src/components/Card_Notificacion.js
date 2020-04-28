@@ -20,7 +20,7 @@ const Card_Notificacion = props => {
                         <div className="card-body" style={{padding: '7px 5px 5px 15px', width: '230px'}}>                        
                         
                             <h5 className="card-title" style={{marginBottom: "0px"}}>{props.name}</h5>
-                            <p className="card-text" style={{textAlign:"left"}}>{props.description}.</p>
+                            <p className="card-text" style={{textAlign:"left", width:"13rem"}}>{props.description}.</p>
                             <div className="row mb-2">
                                 <div className="col text-right">                   
                                 <Button variant="primary" size="sm" style={{width:"47%"}}>{props.btn1}</Button>

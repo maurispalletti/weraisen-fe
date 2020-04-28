@@ -10,7 +10,7 @@ class AddDepModal extends Component {
         
        
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-               Prueba
+               Denuncia
             </button>
          
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style={{overflow:"scroll"}} >   
