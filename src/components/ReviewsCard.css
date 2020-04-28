@@ -1,71 +1,12 @@
-.ReviewsCards{
-    background: #2f313d;
-    height: 100vh;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: #9999a1;
-    font-family: sans-serif;
-    overflow: hidden;
-    position:relative ; 
-    text-align: center;
-}
-
-.ReviewsCardText{
-    background: #2f313d;
-    height: 100vh;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: #9999a1;
-    font-family: sans-serif;
-    overflow: hidden;
-    position:relative ; 
-    text-align: center;
-
-}
-.Date{
-    background: #2f313d;
-    height: 100vh;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: #9999a1;
-    font-family: sans-serif;
-    overflow: hidden;
-    position:relative ; 
-    text-align: center;
-
-}
-.Point{
-    background: #2f313d;
-    height: 100vh;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: #9999a1;
-    font-family: sans-serif;
-    overflow: hidden;
-    position:relative ; 
-    text-align: center;
+.card{
+margin: 5% !important;
+padding: 5px;
+align-items: center;
+border-bottom: 1 px solid #535151 !important;
 
 }
 
-.giver{
-    background: #2f313d;
-    height: 100vh;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: #9999a1;
-    font-family: sans-serif;
-    overflow: hidden;
-    position:relative ; 
-    text-align: center;
+.card-body{
+position: relative;
 
 }

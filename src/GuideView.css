@@ -1,0 +1,56 @@
+.BodyGuide{
+padding:5%;
+align-items: center;
+width: 100%;
+
+}
+
+.containerAbajo{
+padding: 2%;
+
+width: 100%;
+margin: 10px;
+}
+
+.containerArriba{
+display: inline-flex;
+width: 100%;
+margin: 10px;
+padding: 2%;
+
+}
+
+
+.Section1{
+
+width: 50%;
+}
+
+.Section2{
+
+width: 50%;
+background-color: indigo;
+}
+
+.containerCentro{
+border-top: 1px solid rgb(97, 93, 92);
+border-bottom: 1px solid rgb(97, 93, 92);
+margin: 10px;
+width: 100%;
+padding: 2%;
+}
+
+.buttonSection{
+position: relative;
+
+}
+
+@media screen and (min-width:700px){
+.container-fluid{
+    align-content: center;
+    max-width: 800px;
+    
+    
+}
+
+}
