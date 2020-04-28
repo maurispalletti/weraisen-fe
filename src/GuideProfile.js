@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router'
 import Header from '../src/components/Header'
 import Categorias from './components/Categorias'
+import Boton_Sombreado from './components/Boton_Sombreado'
+import Dias_Disponible from './components/Dias_Disponible'
+
+import Alvoboton from './components/AlvoBoronSombreado'
 
 import Toolbar from './components/navbar/toolbar'
 import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
@@ -11,6 +15,7 @@ import './GuideProfile.css';
 
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
+import DropdownGender from './forms/DropdownGender'
 import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
 import { GuideProfileSchema } from './helpers/validators'
 import userServices from './services/userServices'
@@ -21,12 +26,20 @@ const languages = [
   { description: 'Inglés', value: 'Inglés' },
   { description: "Italiano", value: 'Italiano' },
   { description: "Portugués", value: 'Portugués' }
-  ];
+];
 const languages2 = [
   { description: "Francés", value: 'Francés' },
   { description: "Japonés", value: 'Japonés' },
   { description: "Chino", value: 'Chino' },
-  {description: "Alemán", value: 'Alemán'}
+  { description: "Alemán", value: 'Alemán' }
+];
+const cities = [
+  { value: "BuenosAires", description: 'Buenos Aires' },
+  { value: "Córdoba", description: 'Córdoba' },
+  { value: "LaPlata", description: 'La Plata' },
+  { value: "Neuquén", description: 'Neuquén' },
+  { value: "Mendoza", description: 'Mendoza' },
+  { value: "Rosario", description: 'Rosario' }
 ];
 
 const INITIAL_VALUES = {
@@ -82,12 +95,12 @@ class GuideProfile extends Component {
 
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
-           return {sideDrawerOpen: !prevState.sideDrawerOpen};
-      });
+      return { sideDrawerOpen: !prevState.sideDrawerOpen };
+    });
   };
 
   backdropClickHandler = () => {
-    this.setState({sideDrawerOpen: false});
+    this.setState({ sideDrawerOpen: false });
   }
   render() {
     if (this.state.goToProfile) {
@@ -96,49 +109,70 @@ class GuideProfile extends Component {
 
     let sideDrawer;
     let backdrop;
-       if (this.state.sideDrawerOpen) {
-      sideDrawer =<SideDrawer/>;
-      backdrop = <Backdrop click={this.backdropClickHandler}/>
+    if (this.state.sideDrawerOpen) {
+      sideDrawer = <SideDrawer />;
+      backdrop = <Backdrop click={this.backdropClickHandler} />
     }
 
     return (
       <div className="GuideProfile">
+
         <Header></Header>
       
       <div className="BodyGuide">
+
           <Formik
             initialValues={INITIAL_VALUES}
             validationSchema={GuideProfileSchema}
             onSubmit={(values) => this.updateGuide(values)}>
             <Form>
-    
+
               <div className="Section">
-                <h2>¡Describite para que otros te conozcan! </h2>
-                <FieldWithError component={'textarea'} name="description" placeholder="Ingresa una breve descripción sobre vos" aria-label="description" className="descripcion-input" />
-                <h2>Idiomas que manejás:</h2>
-                <div className="IdiomsSection">
-                
-                  <CheckboxGroupWithError name="languages" values={languages}/>
-                  <CheckboxGroupWithError name="languages" values={languages2}/>
+                <div className="Seccion">
+                  <h2>¡Describite para que otros te conozcan! </h2>
+                  <FieldWithError component={'textarea'} name="description" placeholder="Ingresa una breve descripción sobre vos" aria-label="description" className="descripcion-input" />
                 </div>
-                <FieldWithError component={'textarea'} name="idioma" placeholder="Otro" aria-label="idioma" className="idioma-input" />
-                
+                <div className="Seccion">
+                  <h2>Cuidad de residencia:</h2>
+                  <DropdownGender name="city" styleName={"Dropdown-g"} options={cities} />
+                </div>
+                <div className="Seccion">
+                  <h2>Idiomas que manejás:</h2>
+
+                  <div className="container-fluid">
+
+                    <Boton_Sombreado onCategoryChange={this.handleCategory} />
+
+                  </div>
+                  <FieldWithError component={'textarea'} name="idioma" placeholder="Otro" aria-label="idioma" className="idioma-input" />
+                </div>
+
+
+
+                <div className="Seccion">
+                <h2>Días Disponibles:</h2>
+                <div className="container-fluid">
+
+                  <Dias_Disponible onCategoryChange={this.handleCategory} />
+
+                </div>
+                </div>
                 <div className="LastSection">
                   <h2>Conocimientos que posees:</h2>
-                      <Categorias onCategoryChange={this.knowledge} />
+                  <Categorias onCategoryChange={this.handleCategory} />
                 </div>
                 <div class="custom-control custom-checkbox">
-                   <input type="checkbox" class="custom-control-input" id="salidaGrupal" />
-                   <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
+                  <input type="checkbox" class="custom-control-input" id="salidaGrupal" />
+                  <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
                 </div>
-             </div>
-            <div className="buttonsSection">
-             <input type="button" className="button" value="Cancelar" onClick={() => this.setState({ goToProfile: true })} />
-             <br></br><br></br>
-             <input type="submit" className="button" value="Guardar" />
-            </div>
+              </div>
+              <div className="buttonsSection">
+                <input type="button" className="button" value="Cancelar" onClick={() => this.setState({ goToProfile: true })} />
+                <br></br><br></br>
+                <input type="submit" className="button" value="Guardar" />
+              </div>
 
-          
+
               {this.state.notLoggedInUser && (
                 <p className="form-error">Usuario no logueado.</p>
               )}
@@ -147,11 +181,11 @@ class GuideProfile extends Component {
               )}
             </Form>
           </Formik>
-        </div> 
-      
+        </div>
 
 
-     
+
+
 
 
       </div>

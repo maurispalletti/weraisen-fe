@@ -3,6 +3,7 @@ import './Search.css';
 import Autocomplete from './components/Autocomplete.js'
 import Desplegable from './components/Desplegable.js'
 import Categorias from './components/Categorias.js'
+import ButtonAlvo from './components/AlvoBoronSombreado.js'
 import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
@@ -133,6 +134,9 @@ class Search extends Component {
               <div className="Categoria">
                 <h2>Seleccioná la categoría </h2>
                 <Categorias onCategoryChange={this.handleCategory} />
+                
+
+                
               </div>  
 
               <div className="Filters" style={{display: this.state.filtros ? 'block' : 'none' }}>

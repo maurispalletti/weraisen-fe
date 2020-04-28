@@ -69,7 +69,9 @@ class Home extends Component {
                 <Header />
 
                 <div className="container-fluid">
-                    <h1>Mejores Guias</h1>
+                    <h1>Mejores Guías</h1>
+
+
 
                     <hr/>
                     <div className="bs-docs-section">                      
