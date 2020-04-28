@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route } from 'react-router';
+import { Router, Route, Switch } from 'react-router';
 import Login from './Login';
 import Search from './Search1';
 import Results from './Results';
@@ -20,6 +20,7 @@ import Prueba from '../src/components/DenunciaPopUp';
 import Notificaciones from '../src/PerfilNotificaciones';
 import Chats from '../src/PerfilChats';
 import GuideView from './GuideView';
+import Error from '../src/error404'
 
 
 const history = createBrowserHistory();
@@ -27,6 +28,7 @@ const history = createBrowserHistory();
 function App() {
   return (
     <Router history={history}>
+      <Switch>
       <Route exact path={'/'} component={Login} />
       <Route exact path={'/login'} component={Login} />
       <Route exact path={'/search'} component={Search} />
@@ -47,6 +49,8 @@ function App() {
       <Route exact path={'/chats'} component={Chats} />
       <Route exact path={'/guideView'} component={GuideView}/>
       
+      <Route component={Error} />
+      </Switch>
     </Router>
   );
 }
