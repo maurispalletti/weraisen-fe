@@ -22,41 +22,41 @@ class AddDepModal extends Component {
                                 <span aria-hidden="true">&times;</span>
                              </button>
                        </div>
-                        <div class="modal-body">
-                            <h5 align="center"> ¿Cancelarás?, cuéntanos el motivo:</h5>                            
-                            <br></br>
-                             <div className="radio">
-                                 <label>
-                                     <input type="radio" value="option" />
-                                     Mensajes Inapropiados
-                                 </label>
+                        <div class="modal-body" style= {{padding: "2px 5px 0px 4px"}}>
+                            <h5 align="center"> ¿Cancelarás?, cuéntanos el motivo:</h5>                          
+                            
+                             <div className="container" style= {{ paddingLeft: "9px"}}>
+                                 
+                                 <input type="checkbox"/> 
+                                 <label style= {{padding: "0px 0px 7px 5px"}}> Mensajes Inapropiados </label>
+                                 
                              </div>
-                             <div className="radio">
-                                 <label>
-                                     <input type="radio" value="option" />
-                                      Fotos Inapropiadas.
-                                 </label>
+                             <div className="container"style= {{ paddingLeft: "9px"}}>
+                                 
+                                 <input type="checkbox"/> 
+                                 <label style= {{padding: "0px 0px 7px 5px"}}> Fotos Inapropiados. </label>
+                                 
                              </div>
-                             <div className="radio">
-                                 <label>
-                                     <input type="radio" value="option" />
-                                      Parece Spam
-                                 </label>
+                             <div className="container"style= {{ paddingLeft: "9px"}}>
+                                 
+                                 <input type="checkbox"/> 
+                                 <label style= {{padding: "0px 0px 7px 5px"}}> La cuenta parece Spam. </label>
+                                 
                              </div>
-                             <div className="radio">
-                                 <label>
-                                     <input type="radio" value="option" />
-                                      No hemos concordado en algunas cosas.
-                                 </label>
+                             <div className="container"style= {{ paddingLeft: "9px"}}>
+                                 
+                                 <input type="checkbox"/> 
+                                 <label style= {{padding: "0px 0px 7px 5px"}}> No hemos llegado a un acuerdo. </label>
+                                 
                              </div>
-                             <div className="radio">
-                                 <label>
-                                     <input type="radio" value="option" />
-                                      Otros.
-                                 </label>
+                             <div className="container"style= {{ paddingLeft: "9px"}}>
+                                 
+                                 <input type="checkbox"/> 
+                                 <label style= {{padding: "2px 5px 0px 5px"}}> Otros. </label>
+                                 
                              </div>
-                            <div className="myinput">
-                                <textarea name="comentarios" rows="6" cols="60" placeholder="Contanos tu experiencia"></textarea> 
+                            <div className="myinput" style= {{ paddingLeft: "9px"}}>
+                                <textarea name="comentarios" style ={{left: "auto", right:"auto"}} rows="4" cols="43" placeholder="Contanos tu experiencia"></textarea> 
                                 
                             </div>
                              
