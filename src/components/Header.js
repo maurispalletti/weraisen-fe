@@ -10,7 +10,7 @@ import Logo from './navbar/logo4.png'
     </button>
   
     <div className="collapse navbar-collapse" id="navbarColor01">
-      <ul className="navbar-nav m-auto">
+      <ul className="navbar-nav ml-auto">
         <li className="nav-item active">
           <a className="nav-link ml-3" href="#">Home&nbsp;<i className="fas fa-home"></i> <span className="sr-only">(current)</span></a>
         </li>
@@ -22,6 +22,9 @@ import Logo from './navbar/logo4.png'
         </li>
         <li className="nav-item">
           <a className="nav-link ml-3" href="#">Mis Chats</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link ml-3" href="#">Notificaciones</a>
         </li>
       </ul>
       {/*<form className="form-inline my-2 my-lg-0">

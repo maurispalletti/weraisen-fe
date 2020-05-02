@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { Fragment } from 'react';
+import userServices from './services/userServices'
 import Card from './components/Card';
 import Card_Guia from './components/Card_Guia';
 import charizard from './Imagenes_Alvo/006.png'
@@ -16,11 +17,40 @@ import e from './Imagenes_Alvo/212.png'
 class Home extends Component {
 
     state = {
-        guias: []
+        guias: [],
+        initialValues: null
     }
 
     //apenas se carga el componente se ejecuta este metodo
-    componentDidMount() {
+    async componentDidMount() {
+
+        const  {
+            firstName,
+            lastName,
+            age,
+            identification,
+            gender,
+            city,
+            email,
+            isActiveGuide,
+            knowledge,
+          } = await this.getProfile()
+      
+          console.log(`isActiveGuide`)
+          console.log(isActiveGuide)
+      
+          console.log(`knowledge`)
+          console.log(knowledge)
+      
+          const initialValues = {
+            firstName,
+            lastName,
+            age,
+            identification,
+            gender,
+            city,
+            email
+          }
 
         this.setState({
             guias: [
@@ -32,20 +62,40 @@ class Home extends Component {
                 { imagen: "/static/media/405.614366ae.png", nombre: 'Luxray', edad: 22, detalle: 'Cuando sus ojos brillan como el oro, puede ver presas escondidas, incluso detrás de un muro.' },
                 { imagen: "/static/media/697.b2979631.png", nombre: 'Tyrantrum', edad: 22, detalle: 'En el mundo antiguo en el que habitaba no tenía rivales gracias a sus mandíbulas, con las que podría despedazar con facilidad gruesas placas de acero.' },
                 { imagen: "/static/media/212.505afb8e.png", nombre: 'Scizor', edad: 22, detalle: 'Scizor tiene un cuerpo duro como el acero que no es fácil de alterar con ningún ataque común. Este Pokémon bate las alas para regular la temperatura corporal.' }
+                
 
 
-            ]
+            ],initialValues, isActiveGuide, knowledge
+
         });
 
     }
 
+    getProfile = async () => {
+        try {
+          const userId = localStorage.getItem("userId");
+          if (userId) {
+            const response = await userServices.getProfile(userId)
+    
+            return response.data;
+    
+          } else {
+            this.setState({ notLoggedInUser: true })
+          }
+        } catch (error) {
+          console.error(`There was an error trying to get the profile`)
+        }
+      }
+
+  
     mostrarGuias = () => {
         const guias = this.state.guias;
         if (guias.length === 0) return null;
 
         return (
             <React.Fragment>
-                <div className="row">
+                <div className="container-fluid">
+                
                     <div className="card-columns">
                     {guias.map(guia => (
                         <Card_Guia              
@@ -56,17 +106,24 @@ class Home extends Component {
 
                     </div>                    
 
+                
                 </div>
             </React.Fragment>
         )
     }
 
     render() {
+        if (this.state.initialValues) {
         return (
             <Fragment>
                 <Header />
-                <div className="container-fluid">
-                    <h1>Mejores Guías</h1>
+                <div className="container-fluid" style={{marginTop:'15px', marginBottom: '15px'}}>
+
+                {/* <h2>Hola {this.state.initialValues.firstName}!</h2> */}
+                <h2>Hola {this.state.initialValues.firstName}!</h2>
+                <h4>Comenzá tu experiencia buscando al guía ideal haciendo <a href="#" className="stretched-link">clic acá</a></h4>
+                <hr/>
+                    <h4>Guías con mejor Reputación</h4>
                     <hr/>
                     <div className="bs-docs-section">                      
                             
@@ -75,12 +132,16 @@ class Home extends Component {
                         
                     </div>
                     <hr/>
-                    <h1>Lugares más visitados</h1>
+                    <h4>Lugares más visitados</h4>
                     <hr/>
                 </div>
                 {/* <Footer /> */}
             </Fragment>
         );
+    }
+    else {
+        return null
+      }
     }
 }
 export default Home;
