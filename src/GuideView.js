@@ -3,6 +3,7 @@ import { Redirect } from 'react-router';
 import ReviewsCard from './components/ReviewsCard';
 import Header from './components/Header';
 import './GuideView.css';
+import img2 from './icons/estrella2.png';
 
 import userServices from './services/userServices'
 import Axios from 'axios';
@@ -20,7 +21,7 @@ class GuideView extends Component {
       guideName: " ",
       initialValues:"",
       knowledge:[],
-      languajes:[],
+      languages:[],
       reviews: [],
 
     }
@@ -60,15 +61,15 @@ class GuideView extends Component {
           email,
           knowledge,
           description,
-          languajes
+          languages
     } = await this.getProfile()
 
     
 
     console.log(`knowledge`)
     console.log(knowledge)
-    console.log(`languajes`)
-    console.log(languajes)
+    console.log(`languages`)
+    console.log(languages)
 
     const initialValues = {
       firstName,
@@ -79,9 +80,9 @@ class GuideView extends Component {
       description,
     }
 
-    this.setState({ initialValues, knowledge, languajes })
+    this.setState({ initialValues, knowledge, languages })
     console.log("!!!!"+ knowledge);
-    console.log("!!!!"+ languajes);
+    console.log("!!!!"+ languages);
   }
 
     getReviews = async () => {
@@ -117,7 +118,7 @@ class GuideView extends Component {
         
         //para convertir fecha en año y mes
         const fecha= new Date(createdAt);
-        console.log("!!!!!"+fecha);
+        
         const year= fecha.getFullYear();
         const month= fecha.getMonth();
         const fechaReview=year+"/"+month;
@@ -148,6 +149,7 @@ class GuideView extends Component {
       const nombre=this.state.initialValues.firstName;
       const apellido=this.state.initialValues.lastName;
       const conocimientos= this.state.knowledge.toString();
+      const languages= this.state.languages.toString();
       //const idiomas= this.state.languajes.toString();
         return (
 
@@ -159,8 +161,8 @@ class GuideView extends Component {
                 <div className="container-fluid">
                       <div className="containerArriba">  
                           <div className="Section1">                     
-                            <label for="name" class="col--2 col-form-label">{mail}</label><br></br>
-                            <label for="age" class="col--2 col-form-label">Edad: {edad}</label><br></br>
+                            <b><label for="name" class="col--2 col-form-label">5</label></b>  <img src={img2} width={15}></img><br></br>
+                            <label for="age" class="col--2 col-form-label">Edad: {edad}</label>
                             
                                                                            
                           </div>
@@ -173,7 +175,7 @@ class GuideView extends Component {
                         <div className="containerCentro">
 
                             <label for="description" class="col--2 col-form-label">Sobre mi: {descripcion}</label><br></br>
-                            <label for="languajes" class="col--2 col-form-label">Idiomas que conozco:</label><br></br>
+        <label for="languajes" class="col--2 col-form-label">Idiomas que conozco: {languages}</label><br></br>
                             <label for="knowledges" class="col--2 col-form-label">Conocimientos: {conocimientos}</label>
 
                         </div>
