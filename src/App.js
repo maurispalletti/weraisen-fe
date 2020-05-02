@@ -16,7 +16,7 @@ import Filtros from './Search'
 import { createBrowserHistory } from 'history';
 import Home from './Home';
 import Admin from './AdminProfile';
-import Prueba from '../src/components/DenunciaPopUp';
+import Prueba from '../src/components/CancelarPopUp';
 import Notificaciones from '../src/PerfilNotificaciones';
 import Chats from '../src/PerfilChats';
 import Error from '../src/error404'
