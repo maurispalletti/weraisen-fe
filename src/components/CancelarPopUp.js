@@ -22,56 +22,56 @@ class AddDepModal extends Component {
                                 <span aria-hidden="true">&times;</span>
                              </button>
                        </div>
-                        <div class="modal-body" style= {{padding: "2px 5px 0px 4px"}}>
-                            <h5 align="center"> ¿Cancelarás?, cuéntanos el motivo:</h5>                          
+                        <div class="modal-body">
+                            <h5 align="center"> ¿Cancelarás?, cuéntanos el motivo:</h5>                            
+                            <br></br>
+                             <div className="checkbox">
+                                 <label>
+                                     <input type="checkbox" value="option" />
+                                     Mensajes Inapropiados
+                                 </label>
+                             </div>
+                             <div className="checkbox">
+                                 <label>
+                                     <input type="checkbox" value="option" />
+                                      Fotos Inapropiadas.
+                                 </label>
+                             </div>
+                             <div className="checkbox">
+                                 <label>
+                                     <input type="checkbox" value="option" />
+                                      Parece Spam
+                                 </label>
+                             </div>
+                             <div className="checkbox">
+                                 <label>
+                                     <input type="checkbox" value="option" />
+                                      No hemos concordado en algunas cosas.
+                                 </label>
+                             </div>
                             
-                             <div className="container" style= {{ paddingLeft: "9px"}}>
-                                 
-                                 <input type="checkbox"/> 
-                                 <label style= {{padding: "0px 0px 7px 5px"}}> Mensajes Inapropiados </label>
-                                 
-                             </div>
-                             <div className="container"style= {{ paddingLeft: "9px"}}>
-                                 
-                                 <input type="checkbox"/> 
-                                 <label style= {{padding: "0px 0px 7px 5px"}}> Fotos Inapropiados. </label>
-                                 
-                             </div>
-                             <div className="container"style= {{ paddingLeft: "9px"}}>
-                                 
-                                 <input type="checkbox"/> 
-                                 <label style= {{padding: "0px 0px 7px 5px"}}> La cuenta parece Spam. </label>
-                                 
-                             </div>
-                             <div className="container"style= {{ paddingLeft: "9px"}}>
-                                 
-                                 <input type="checkbox"/> 
-                                 <label style= {{padding: "0px 0px 7px 5px"}}> No hemos llegado a un acuerdo. </label>
-                                 
-                             </div>
-                             <div className="container"style= {{ paddingLeft: "9px"}}>
-                                 
-                                 <input type="checkbox"/> 
-                                 <label style= {{padding: "2px 5px 0px 5px"}}> Otros. </label>
-                                 
-                             </div>
-                            <div className="myinput" style= {{ paddingLeft: "9px"}}>
-                                <textarea name="comentarios" style ={{left: "auto", right:"auto"}} rows="4" cols="43" placeholder="Contanos tu experiencia"></textarea> 
-                                
-                            </div>
+                             <h5>Otro motivo</h5>
+                            <div style={{maxWidth:'200px',margin:'0px auto'}}></div>
+                                <input
+                                      placeholder="Escribí aca tu motivo."
+                                      component="textarea" className="input" />
+                              {/* <div className="myinput" style={{paddingLeft:"10px", margin:'0px auto'}} >
+                                <textarea style={{ margin:'0px auto'}} name="comentarios" rows="6" cols="40" placeholder="Contanos tu experiencia"></textarea> 
+                              </div> */}
+                           
                              
 
 
 
-                        </div>
-                        <div class="modal-footer">
-                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                             <button type="button" class="btn btn-primary">Guardar Cambios</button>
-                        </div>
+                             </div>
+                                <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                 <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                            </div>
                     </div>
                 </div>
             </div>
-           </div>
+          </div>
         
         
         );

@@ -6,7 +6,7 @@ const sideDrawerchat = props =>(
     <nav className="side-drawerchat">
         <ul>
             <li><a href="/chat">Cancelar encuentro</a></li>
-            <li><a href="/chat">Denunciar</a></li>
+            <li><a href="/DenunciaPopUp">Denunciar</a></li>
            
             
         </ul>
