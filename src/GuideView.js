@@ -3,43 +3,79 @@ import { Redirect } from 'react-router';
 import ReviewsCard from './components/ReviewsCard';
 import Header from './components/Header';
 import './GuideView.css';
-import img2 from './icons/estrella2.png';
+import img2 from './icons/estrella.png';
 
 import userServices from './services/userServices'
 import Axios from 'axios';
 
 //const GuiaId = localStorage.getItem("DetalleGuia") /*este el el id del guia que selecciono en results */
-let GuideId
-const guide2= "5dc1df1b2136dd0d1db6e3cc";
-
+let userIdGuia
 
 
 class GuideView extends Component {
     state = {
       goToResults: false,
       reviews: [],
-      guideName: " ",
+      guiaIdState:"",
+      nombreGuia: " ",
       initialValues:"",
       knowledge:[],
       languages:[],
-      reviews: [],
-
+      ReviewsFailed: false
     }
 
-   /* getNameGuide = async () => {
-    
-        const firstName = await (await userServices.getProfile(guide2))
-        this.setState({guideName: firstName})
-        console.log(guideName)
-    }*/
+   
 
     /*componentDidMount () {
-        GuideId=localStorage.getItem(GuideId)
+        userIdGuia=localStorage.getItem("detalleGuia");
+        this.setState({guiaIdState:userIdGuia})
 
+        console.log("+++"+userIdGuia)
     }*/
+   async componentDidMount() {
+
+      userIdGuia=localStorage.getItem("detalleGuia");
+         //this.setState({guiaIdState:userIdGuia})
+         console.log("+++"+userIdGuia)
+ 
+ 
+         const  {
+           firstName,
+           lastName,
+           age,
+           gender,
+           email,
+           knowledge,
+           description,
+           languages
+     } =  await this.getProfile()
+ 
+     
+ 
+     console.log(`knowledge`)
+     console.log(knowledge)
+     console.log(`languages`)
+     console.log(languages)
+ 
+     const initialValues = {
+       firstName,
+       lastName,
+       age,
+       gender,
+       email,
+       description,
+     }
+ 
+     this.setState({ initialValues, knowledge, languages, guiaIdState:userIdGuia })
+     console.log("!!!!"+ knowledge);
+     console.log("!!!!"+ languages);
+   }
+
+
     getProfile = async () => {
         try {
-          const userId = guide2;
+          //const userId = this.state.guiaIdState;
+          const userId = localStorage.getItem("detalleGuia");
           if (userId) {
             const response = await userServices.getProfile(userId)
     
@@ -52,53 +88,23 @@ class GuideView extends Component {
           console.error(`There was an error trying to get the profile`)
         }
     }
-    async componentDidMount() {
-        const  {
-          firstName,
-          lastName,
-          age,
-          gender,
-          email,
-          knowledge,
-          description,
-          languages
-    } = await this.getProfile()
-
     
-
-    console.log(`knowledge`)
-    console.log(knowledge)
-    console.log(`languages`)
-    console.log(languages)
-
-    const initialValues = {
-      firstName,
-      lastName,
-      age,
-      gender,
-      email,
-      description,
-    }
-
-    this.setState({ initialValues, knowledge, languages })
-    console.log("!!!!"+ knowledge);
-    console.log("!!!!"+ languages);
-  }
 
     getReviews = async () => {
     try {
-      //const userId = localStorage.getItem(userId); /* aca va el id del guia de la card seleccionada*/
-      const userId = guide2;
+      const userId= userIdGuia;
+      //const userId = localStorage.getItem("DetalleGuia"); /* aca va el id del guia de la card seleccionada*/
+      //const userId = this.state.guiaIdState;
 
       const response = await userServices.getReviews(userId)
       if (response && response.data && response.data.length > 0) {
 
         this.setState({ reviews: response.data })
-        console.log(response.data)
+        console.log("*+*+"+response.data)
       }
     } catch (error) {
       console.error(`There was an error trying to get reviews: ${error}`)
-      this.setState({ searchFailed: true })
+      this.setState({ ReviewsFailed: true })
     }
   }
   async componentWillMount() { /* usar el did mount*/
@@ -118,11 +124,9 @@ class GuideView extends Component {
         
         //para convertir fecha en año y mes
         const fecha= new Date(createdAt);
-        
         const year= fecha.getFullYear();
         const month= fecha.getMonth();
         const fechaReview=year+"/"+month;
-        
         
         return (
           
@@ -137,19 +141,26 @@ class GuideView extends Component {
         )
       });
     }
+    else {
+
+      return(
+              <p>Todavía no se han publicado opiniones.</p>
+
+      )
+    }
   }
     render() {
         if (this.state.goToResults) {
           return <Redirect to="/results" /> /*aca ver que se guarden los resultados */
         }  
 
-      const mail= this.state.initialValues.email;  
+      
       const edad= this.state.initialValues.age;
       const descripcion=this.state.initialValues.description;
       const nombre=this.state.initialValues.firstName;
       const apellido=this.state.initialValues.lastName;
-      const conocimientos= this.state.knowledge.toString();
-      const languages= this.state.languages.toString();
+      const conocimientos= this.state.knowledge.join(', ');
+      const languages= this.state.languages.join(', ')
       //const idiomas= this.state.languajes.toString();
         return (
 
@@ -157,32 +168,39 @@ class GuideView extends Component {
           <div className="GuideView">
                 <Header></Header>
                 <br></br>
-                <h2>{nombre} {apellido}</h2> 
+                {/*<h2>{nombre} {apellido}</h2> */}
                 <div className="container-fluid">
                       <div className="containerArriba">  
-                          <div className="Section1">                     
-                            <b><label for="name" class="col--2 col-form-label">5</label></b>  <img src={img2} width={15}></img><br></br>
-                            <label for="age" class="col--2 col-form-label">Edad: {edad}</label>
+                          <div className="Section1"> 
+
+                           <b> <label for="nombre" id="nombreApellido" class="col--2 col-form-label">{nombre} {apellido}</label> <br></br>  </b>              
+                            <div className="PromedioEstrella">
+                              <label for="promedio" id="promedio" class="col--2 col-form-label">5</label>
+                              <label for="promedio" id="promedio" class="col--2 col-form-label">5</label>
+
+                              <img src={img2} width={13}></img>
+                              </div> 
+                            <label for="edad" id="edad" class="col--2 col-form-label">Edad: {edad}</label>
                             
                                                                            
                           </div>
                           <hr></hr>
                           <div className="Section2">
-
+                            <div className="FotoPerfil"> </div>
 
                           </div>
                         </div>
                         <div className="containerCentro">
 
                             <label for="description" class="col--2 col-form-label">Sobre mi: {descripcion}</label><br></br>
-        <label for="languajes" class="col--2 col-form-label">Idiomas que conozco: {languages}</label><br></br>
+                            <label for="languajes" class="col--2 col-form-label">Idiomas que conozco: {languages}</label><br></br>
                             <label for="knowledges" class="col--2 col-form-label">Conocimientos: {conocimientos}</label>
 
                         </div>
                       
                      <div className="containerAbajo"> <b>Opiniones de sus encuentros </b>
 
-                            {this.renderReviews()}
+                           {this.renderReviews()}
 
                       </div>
                 </div> 

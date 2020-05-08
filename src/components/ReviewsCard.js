@@ -16,33 +16,26 @@ export default class ReviewsCard extends React.Component {
     
     
   }
-
-  
- 
    render() {
 
-    
-    const { giver, points, description, createdAt} = this.props;
-    
-    
-    
+    const {points, description, createdAt} = this.props;
+        
     return (
       <div className="container">
         
           <div className="card-body">
-            <b><div className="card-title">{createdAt}</div></b>
-            <div className="card-text">{description}</div>
-            {/*<div className="card-text" >{points}</div> */}
-            
-            {/*<img src={img3} width={60}></img> */}
-            {/*<div className="giver">De parte de: {giver} </div> */}
-           
+                      
+          <div className="Estrellas">
            {points== 1 && <img src={e1} width={60}></img>}
            {points== 2 && <img src={e2} width={60}></img>}
            {points== 3 && <img src={e3} width={60}></img>}
            {points== 4 && <img src={e4} width={60}></img>}
            {points== 5 && <img src={e5} width={60}></img>}
+           </div>
+
+           <div className="card-text">{description}</div>
            
+           <b><div className="card-title">{createdAt}</div></b>
         </div>
      </div>
     )
