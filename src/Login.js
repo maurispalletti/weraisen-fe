@@ -94,7 +94,7 @@ class Login extends Component {
          <div className="continuar1"><a href="#WeRaisen" className=""><img className="imag" src={scroll1} alt={"WER"} width="50" /> </a></div>
          </div>
        <div id="WeRaisen">
-         <h2 className="index__section-title"><strong>WERAISEN</strong></h2>
+         <h1 className="index__section-title"><strong>WERAISEN</strong></h1>
 
 
 
@@ -114,7 +114,7 @@ class Login extends Component {
         </div>
 
         <div id="Funcionamiento">
-          <h2 className="index__section-title2" color="#9CD6AE">¿<strong>Cómo funciona</strong>?</h2>
+          <h1 className="index__section-title2" color="#9CD6AE">¿<strong>Cómo funciona</strong>?</h1>
           <div className="text"> <p>
             Elegí tu guía favorito y empeza un <strong>chat privado</strong>. </p>
             <p>Recibí recomendaciones personales de tu guía desde su experiencia por ser local y <strong>acordá un encuentro.</strong>
