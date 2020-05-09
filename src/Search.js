@@ -122,8 +122,8 @@ class Search extends Component {
             <Form>
               <div className="ciudad">
               <img src={ubicacion} alt={"Ubicacion"} width="25" />
-              {this.state.city}
-    <h3></h3>
+              <h4>  {this.state.city}
+   </h4>
           
               </div>
               <div className="Fecha">
@@ -132,6 +132,7 @@ class Search extends Component {
               </div>
 
               <div className="Categoria">
+              <br/>
                 <h2>Seleccioná la categoría </h2>
                 <Categorias onCategoryChange={this.handleCategory} />
                 
@@ -141,16 +142,16 @@ class Search extends Component {
 
               <div className="Filters" style={{display: this.state.filtros ? 'block' : 'none' }}>
                 <h2>Género de tu guía</h2>
-                <DropdownGender name="gender" styleName={"Dropdown-search"} options={genders} />
-             
+                <DropdownGender name="gender" styleName={"input"} options={genders} />
+                <br/>
                 <h2>Rango de edad</h2>
                
                 <FieldWithError disabled={this.visibilty} name="fromAge" placeholder="Desde" aria-label="description" type="number" className="input" min="18" max="99" pattern="[1,9]{1,15}"/>
                 <FieldWithError disabled={!this.state.editable} name="toAge" placeholder="Hasta" aria-label="description"  type="number" className="input" min="18" max="99" pattern="[1,9]{1,15}" />
+                <br/>
+                <h2>Elegí el idioma de tu guía</h2>
              
-                <h2>Elegí el idioma de tu guía:</h2>
-             
-                <Autocomplete placeholder={'Ingresa las primeras letras del idioma'} name={'language'} items={languages}></Autocomplete>
+                <Autocomplete placeholder={'Ingresa las primeras letras'} name={'language'} items={languages}></Autocomplete>
           
                 {this.state.ageValidationFailed && (
                   <p className="form-error">La edad en el campo 'Desde' debe ser menor a la edad en el campo 'Hasta'.</p>
@@ -159,8 +160,9 @@ class Search extends Component {
 
               <div className="ButtonSection">
                   <div>
-                <a className="verMas" onClick={() => this.mostrarFiltros()} >{this.state.filtros ? "Ver menos filtros" : "Ver más filtros"}</a>
-                  </div>
+                <a className="verMas" onClick={() => this.mostrarFiltros()} > <p>{this.state.filtros ? "Ver menos filtros" : "Ver más filtros"}
+                </p> </a>
+                </div>
                   <div className="buttonsSection">
                   <input type="submit" className="search-button" value="Buscar guías" />
                   <br></br>

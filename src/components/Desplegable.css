@@ -5,15 +5,3 @@
    
 }
 
-
-.calendario input {
-  
-    width: 250px;
-    padding: 25px 0px;
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    outline: none;
-    color: #696970;
-    font-size: 15px;
-}
