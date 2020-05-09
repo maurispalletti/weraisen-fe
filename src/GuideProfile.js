@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
-
+import Header from '../src/components/Header'
 import Categorias from './components/Categorias'
 import Boton_Sombreado from './components/Boton_Sombreado'
 import Dias_Disponible from './components/Dias_Disponible'
@@ -116,11 +116,11 @@ class GuideProfile extends Component {
 
     return (
       <div className="GuideProfile">
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
-        {sideDrawer}
-        {backdrop}
 
-        <div className="BodyGuide">
+        <Header></Header>
+      
+      <div className="BodyGuide">
+
           <Formik
             initialValues={INITIAL_VALUES}
             validationSchema={GuideProfileSchema}

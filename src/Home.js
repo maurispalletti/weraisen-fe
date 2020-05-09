@@ -13,6 +13,8 @@ import b from './Imagenes_Alvo/335.png'
 import c from './Imagenes_Alvo/405.png'
 import d from './Imagenes_Alvo/697.png'
 import e from './Imagenes_Alvo/212.png'
+import GuideCard from './components/GuideCard';
+import Card_GuiaResultados from './components/Card_GuiaResultados';
 
 class Home extends Component {
 
@@ -95,7 +97,6 @@ class Home extends Component {
         return (
             <React.Fragment>
                 <div className="container-fluid">
-
                     <div className="card-columns">
                         {guias.map(guia => (
                             <Card_Guia

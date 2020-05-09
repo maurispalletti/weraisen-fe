@@ -3,7 +3,6 @@ import './Search.css';
 import Toolbar from './components/navbar/toolbar'
 import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
 import Backdrop from './components/navbar/backdrop/backdrop'
-
 import Autocomplete from './components/Autocomplete.js'
 import Desplegable from './components/Desplegable.js'
 import Categorias from './components/Categorias.js'
@@ -12,7 +11,7 @@ import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import DropdownGender from './forms/DropdownGender'
-
+import Header from '../src/components/Header'
 const genders = [
   {
     value: "Cualquiera",
@@ -133,9 +132,7 @@ visibilty = () => {
 
     return (
       <div className="Search">
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
-        {sideDrawer}
-        {backdrop}
+       <Header></Header>
 
         <div className="BodySearch">
           <Formik
