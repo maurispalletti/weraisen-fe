@@ -4,14 +4,14 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #696970;
   font-family: 'Lato', sans-serif !important;
   overflow: hidden;
   position:relative ;
-
+  
 }
 
 .buttonGuia{
@@ -26,7 +26,7 @@
 }
 
 .BodyProfile {
-  padding-top: 5vh;
+  /* padding-top: 5vh; */
   overflow: scroll; 
 }
 .button {

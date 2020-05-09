@@ -156,11 +156,11 @@ class Profile extends Component {
 
     if (this.state.initialValues) {
       return (
-        <div className="Profile">
+        <div className="Profile" >
         <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
         {sideDrawer}
         {backdrop}
-          <div className="BodyProfile">
+          <div className="BodyProfile"style={{ marginTop: '15px', marginBottom: '15px' }}>
             <Formik
               // setear initial values con el did mount o will mount llamando al get
               initialValues={this.state.initialValues}
@@ -168,7 +168,7 @@ class Profile extends Component {
               onSubmit={(values) => this.updateProfile(values)}>
               
               <Form>
-                <div className="profileData">
+                <div className="profileData container-fluid">
                 <h2>Hola {this.state.initialValues.firstName}!</h2>
                   <FieldWithError disabled={!this.state.editable} name="firstName" placeholder="Nombre" aria-label="name" className="input" />
                   <FieldWithError disabled={!this.state.editable} name="lastName" placeholder="Apellido" aria-label="lastName" className="input" />
