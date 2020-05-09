@@ -47,7 +47,7 @@ export default class AutoComplete extends React.Component {
         const { text } = this.state;
         return (
             <div className="AutoComplete" >
-                <input placeholder={this.props.placeholder} value={text} onChange={this.onTextChanged} type="text" required />
+                <input placeholder={this.props.placeholder} value={text} onChange={this.onTextChanged} type="text"/>
                 {this.renderSuggestions()}
             </div>
         )

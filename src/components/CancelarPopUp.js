@@ -25,53 +25,53 @@ class AddDepModal extends Component {
                         <div class="modal-body">
                             <h5 align="center"> ¿Cancelarás?, cuéntanos el motivo:</h5>                            
                             <br></br>
-                             <div className="radio">
+                             <div className="checkbox">
                                  <label>
-                                     <input type="radio" value="option" />
+                                     <input type="checkbox" value="option" />
                                      Mensajes Inapropiados
                                  </label>
                              </div>
-                             <div className="radio">
+                             <div className="checkbox">
                                  <label>
-                                     <input type="radio" value="option" />
+                                     <input type="checkbox" value="option" />
                                       Fotos Inapropiadas.
                                  </label>
                              </div>
-                             <div className="radio">
+                             <div className="checkbox">
                                  <label>
-                                     <input type="radio" value="option" />
+                                     <input type="checkbox" value="option" />
                                       Parece Spam
                                  </label>
                              </div>
-                             <div className="radio">
+                             <div className="checkbox">
                                  <label>
-                                     <input type="radio" value="option" />
+                                     <input type="checkbox" value="option" />
                                       No hemos concordado en algunas cosas.
                                  </label>
                              </div>
-                             <div className="radio">
-                                 <label>
-                                     <input type="radio" value="option" />
-                                      Otros.
-                                 </label>
-                             </div>
-                            <div className="myinput">
-                                <textarea name="comentarios" rows="6" cols="60" placeholder="Contanos tu experiencia"></textarea> 
-                                
-                            </div>
+                            
+                             <h5>Otro motivo</h5>
+                            <div style={{maxWidth:'200px',margin:'0px auto'}}></div>
+                                <input
+                                      placeholder="Escribí aca tu motivo."
+                                      component="textarea" className="input" />
+                              {/* <div className="myinput" style={{paddingLeft:"10px", margin:'0px auto'}} >
+                                <textarea style={{ margin:'0px auto'}} name="comentarios" rows="6" cols="40" placeholder="Contanos tu experiencia"></textarea> 
+                              </div> */}
+                           
                              
 
 
 
-                        </div>
-                        <div class="modal-footer">
-                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                             <button type="button" class="btn btn-primary">Guardar Cambios</button>
-                        </div>
+                             </div>
+                                <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                 <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                            </div>
                     </div>
                 </div>
             </div>
-           </div>
+          </div>
         
         
         );

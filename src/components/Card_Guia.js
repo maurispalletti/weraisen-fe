@@ -1,27 +1,79 @@
 import React from 'react';
+import avatar_woman_1 from '../avatars/avatar_1.svg';
+import avatar_man_1 from '../avatars/avatar_4.svg';
+import { Redirect } from 'react-router'
+import userServices from '../services/userServices';
+import { Button } from 'react-bootstrap';
 
+export default class Card_Guia extends React.Component {
+  state = {
+    show: false,
+    goToChat: false,
+  }
 
-const Card_Guia = (props) => {
+  
+  async goToChat() {
 
-    const { imagen, nombre, edad, detalle } = props.guia;
+    const tourist = localStorage.getItem("userId");
 
+    const guide = this.props.guideId;
+
+    const { data: { chatId } } = await userServices.createMatch({ tourist, guide })
+
+    localStorage.setItem("chatId", chatId);
+
+    this.setState({ goToChat: true })
+  }
+
+  render() {
+
+    if (this.state.goToChat) {
+      return <Redirect to={`/chat`} />
+    }
+
+    const { firstName, lastName, city, age, gender, languages, knowledge, description } = this.props;
+    const avatar = gender === 'Femenino' ? avatar_woman_1 : avatar_man_1;
+
+    const languagesString = languages.join(', ')
+    const knowledgeString = knowledge.join(', ')
     return (
-        // <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-        <div className="container-fluid">
-            <div className="card" style={{ maxWidth: '18rem' }}>
-                
-                <img src={imagen} className="card-img-top img-fluid" alt="Card image cap" />
-                <div className="card-body">
-                    <h5 className="card-title">{nombre}</h5>
-                    <h6 className="card-subtitle mb-2 ">Edad: {edad}</h6>
-                    <p className="card-text">{detalle}</p>                    
-                </div>
-            </div>
-         </div>
-        
+        <div className="card col-sm-12 col-xs-12" style={{ maxWidth:'400px',margin:'0px auto'}}>
+         
+         <div style={{ margin:'0px auto'}}> 
+
+             <div style={{textAlign:"center"}}>
+              
+                <h4 style={{textAlign:"center", paddingTop:"10px"}}>{firstName} {lastName}</h4>
+                        
+                <img src={avatar} alt={`${firstName} ${lastName}`} style={{ float:"left", maxWidth:'100px', padding: "10px 0px 0px 20px"}}/>
+             </div>
+
+                                      
+                 
+              
+              <div>
+                   <div className="card-body" style={{padding: '10px 10px 10px 10px', right:"auto",left: "auto", Width:'300px'}}>  
+                                        
+                        <p className="card-text" style={{textAlign:"left", Width:'100px'}}>Edad: {age} </p>
+                        <p className="card-text" style={{textAlign:"left", Width:'100px'}}>Ciudad: {city}</p>
+                        <p className="card-text" style={{textAlign:"left", Width:'100px'}}>Descripción: {description}</p>
+                        <p className="card-text" style={{textAlign:"left", Width:'100px'}}>Idiomas: {languagesString}</p>
+                        {this.state.show && <div className="GuideText">Descripción: {description}</div>}
+                        {this.state.show && <div className="GuideText">Conocimientos: {knowledgeString}</div>}
+                        
+                   </div>
+               </div>
+
+               <div className="row mb-2">
+                           <div className="center">
+                              <Button variant="primary" value={"Iniciar chat"} size="sm" style={{textAlign:"left"}}  onClick={() => this.goToChat()}> Iniciar Chat </Button>
+                           </div> 
+               </div>
+            </div>   
+        </div>
+               
+      )
+    }
+  }
 
 
-    )
-}
-
-export default Card_Guia;

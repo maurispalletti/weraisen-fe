@@ -1,0 +1,28 @@
+.page{
+    background: url("./icons/404.png") center ;
+
+  padding-top: 200px;
+ 
+/* 
+  background-size: repeat; */
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  color: #F9AA68;
+
+  box-sizing: content-box;
+  width: 100%;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #696970;
+  font-family: sans-serif;
+  overflow: scroll;
+}
+.princ{
+    padding-top: 40px;
+}

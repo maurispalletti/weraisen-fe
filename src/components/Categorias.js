@@ -39,7 +39,7 @@ export default class Categorias extends Component {
     render() {
         return (
             <div>
-                <div className="Container">
+                
 
                     <div className="fila">
                         <div className={this.state.elegidas.length > 0 && this.state.elegidas.includes('deportes') ? "ItemSeleccionado" : "ItemNoSeleccionado"} onClick={() => this.agregarCategoria("deportes")}>
@@ -74,7 +74,7 @@ export default class Categorias extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+         
         )
     }
 }
