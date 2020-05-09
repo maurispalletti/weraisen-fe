@@ -85,7 +85,6 @@ export default class Card_Guia extends React.Component {
                         <p className="card-text" style={{textAlign:"left", Width:'100px'}}>Ciudad: {city}</p>
                         <p className="card-text" style={{textAlign:"left", Width:'100px'}}>Descripción: {description}</p>
                         <p className="card-text" style={{textAlign:"left", Width:'100px'}}>Idiomas: {languagesString}</p>
-                        <p className="card-text" style={{textAlign:"left", Width:'100px'}}>Id: {guiaSelec}</p>
                         {this.state.show && <div className="GuideText">Descripción: {description}</div>}
                         {this.state.show && <div className="GuideText">Conocimientos: {knowledgeString}</div>}
                         
@@ -96,7 +95,7 @@ export default class Card_Guia extends React.Component {
                            <div className="center">
                               <Button variant="primary" value={"Iniciar chat"} size="sm" style={{textAlign:"left"}}  onClick={() => this.goToChat()}> Iniciar Chat </Button>
                               
-                              <div> <a href="/guideView" className="lead"  onClick={() => this.guardarGuia(guiaSelec)}>Ver más</a> </div> 
+                              <div> <p><a href="/guideView" className="lead"  onClick={() => this.guardarGuia(guiaSelec)}>Ver más</a></p> </div> 
                             </div> 
                </div>
             </div>   
