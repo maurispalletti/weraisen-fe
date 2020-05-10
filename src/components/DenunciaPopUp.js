@@ -30,37 +30,37 @@ class AddDepModal extends Component {
                              <div className="checkbox">
                                  <label>
                                      <input type="checkbox" />
-                                        Acoso sexual y/o verbal.
+                                       <a style={{paddingLeft:"3px"}}> Acoso sexual y/o verbal. </a>
                                  </label>
                              </div>
                              <div className="checkbox">
                                  <label>
                                      <input type="checkbox" value="option" style={{paddingLeft:"3px"}}/>
-                                      Discriminación contra individuos o grupos 
+                                     <a style={{paddingLeft:"3px"}}> Discriminación contra individuos o grupos 
                                        basados en: 
                                                Raza, etnia, religión,
                                                discapacidad, 
                                                orientación sexual e 
-                                               Identidad de género.
+                                               Identidad de género. </a>
                                  </label>
                              </div>
                            
                              <div className="checkbox">
                                  <label>
                                      <input type="checkbox" value="option" style={{paddingLeft:"3px"}} />
-                                      Perfil falsos, suplantación de identidad o
-                                      mensajes sospechosos.
+                                      <a>Perfil falsos, suplantación de identidad o
+                                      mensajes sospechosos. </a>
                                  </label>
                              </div>
                              <div className="checkbox">
                                  <label>
                                      <input type="checkbox" value="option" style={{paddingLeft:"3px"}} />
-                                      Amenazas violentas específicas relacionadas
+                                       <a>Amenazas violentas específicas relacionadas
                                       con el 
-                                      bienestar o la seguridad física.
+                                      bienestar o la seguridad física. </a>
                                  </label>
                              </div>
-
+                            <br></br>
                             <h5>Otro motivo</h5>
                             <div style={{maxWidth:'200px',margin:'0px auto'}}></div>
                                 <input

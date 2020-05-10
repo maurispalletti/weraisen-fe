@@ -46,6 +46,15 @@ padding-top:0px;
  color: #e0e0e4;
 }
 
+
+
+#scrollhere {
+  /* background: #2f313d; */
+  background: #F9AA68;
+  width: 100%;
+  height: 100vh;
+  padding-top: 100px;
+  background-image: url("./icons/imagen-fondo.jpg");}
 .comenzar {
   position: relative;
   top:150px;

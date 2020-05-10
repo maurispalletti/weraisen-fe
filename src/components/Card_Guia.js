@@ -5,10 +5,13 @@ import { Redirect } from 'react-router'
 import userServices from '../services/userServices';
 import { Button } from 'react-bootstrap';
 
+
+
 export default class Card_Guia extends React.Component {
   state = {
     show: false,
     goToChat: false,
+    
   }
 
   
@@ -25,17 +28,41 @@ export default class Card_Guia extends React.Component {
     this.setState({ goToChat: true })
   }
 
+  /*async goToGuideView(){
+
+    const guia= this.props.guideId; //guia es el guia de la card que yo selecciono
+    localStorage.setItem("DetalleGuia", guia);
+
+    this.setState({goToGuideView: true})
+
+
+  }*/
+  
+  guardarGuia=(guiaIdcard)=>{
+  
+
+  localStorage.setItem("detalleGuia",guiaIdcard); //aca detalleGuia es lo que paso de una pantalla a otra, guiaId es la key
+  console.log("!!****"+guiaIdcard)                    //detalleGuia=this.props.guideId -> lo hago abajo en el guardar guia.
+
+  }
+
   render() {
 
     if (this.state.goToChat) {
       return <Redirect to={`/chat`} />
     }
+    /*if(this.state.goToGuideView){
+      return <Redirect to={`/guideView`}/>
+    }*/
 
-    const { firstName, lastName, city, age, gender, languages, knowledge, description } = this.props;
+    const { firstName, lastName, city, age, gender, languages, knowledge, description} = this.props;
     const avatar = gender === 'Femenino' ? avatar_woman_1 : avatar_man_1;
 
     const languagesString = languages.join(', ')
     const knowledgeString = knowledge.join(', ')
+
+    const guiaSelec = this.props.guideId;
+
     return (
         <div className="card col-sm-12 col-xs-12" style={{ maxWidth:'400px',margin:'0px auto'}}>
          
@@ -67,7 +94,9 @@ export default class Card_Guia extends React.Component {
                <div className="row mb-2">
                            <div className="center">
                               <Button variant="primary" value={"Iniciar chat"} size="sm" style={{textAlign:"left"}}  onClick={() => this.goToChat()}> Iniciar Chat </Button>
-                           </div> 
+                              
+                              <div> <p><a href="/guideView" className="lead"  onClick={() => this.guardarGuia(guiaSelec)}>Ver más</a></p> </div> 
+                            </div> 
                </div>
             </div>   
         </div>
