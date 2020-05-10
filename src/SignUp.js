@@ -7,8 +7,8 @@ import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import { SignUpSchema } from './helpers/validators'
 import DropdownGender from './forms/DropdownGender'
-import dni1 from './icons/dni1.png'
-import dni2 from './icons/dni2.png'
+import dni1 from './icons/FRENTE-NARANJA-DNI.png'
+import dni2 from './icons/DORSO-NARANJA-DNI.png'
 
 
 const INITIAL_VALUES = {
@@ -190,7 +190,7 @@ class SignUp extends Component {
 
 
             <div className='remember'>
-              <p>Al crear cuenta estoy aceptando los
+              <p>Al crear la cuenta estoy aceptando los
              <a className="forgotPass" href={'/terminos'}> términos y condiciones</a></p>
             </div>
 
