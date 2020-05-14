@@ -14,7 +14,7 @@ import Logo from './navbar/logo4.png'
     <div className="collapse navbar-collapse" id="navbarColor01">
       <ul className="navbar-nav ml-auto">
         <li className="nav-item active">
-          <a className="nav-link ml-3" style={{color: 'white'}} href="#">Home&nbsp;<i className="fas fa-home"></i> <span className="sr-only">(current)</span></a>
+          <a className="nav-link ml-3" style={{color: 'white'}} href="/home">Home&nbsp;<i className="fas fa-home"></i> <span className="sr-only">(current)</span></a>
         </li>
         <li className="nav-item" >
           <a className="nav-link ml-3"  style={{color: 'white'}} href="/search">Search</a>
@@ -23,10 +23,10 @@ import Logo from './navbar/logo4.png'
           <a className="nav-link ml-3" style={{color: 'white'}} href="Profile">Perfil</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link ml-3"style={{color: 'white'}} href="#">Mis Chats</a>
+          <a className="nav-link ml-3"style={{color: 'white'}} href="/chats">Mis Chats</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link ml-3" style={{color: 'white'}} href="#">Notificaciones</a>
+          <a className="nav-link ml-3" style={{color: 'white'}} href="/notificaciones">Notificaciones</a>
         </li>
       </ul>
       {/*<form className="form-inline my-2 my-lg-0">
