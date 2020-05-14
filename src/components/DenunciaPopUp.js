@@ -21,6 +21,7 @@ class DenunciaModal extends Component {
                                 <h5 align="Left"> Desde WR lamentamos que tengas que llegar a este punto,
                                 cuentanos el motivo:
                             </h5>
+
                                 <br></br>
                                 <div className="checkbox">
                                     <label>
@@ -58,6 +59,7 @@ class DenunciaModal extends Component {
 
                                 <h5>Otro motivo</h5>
                                 <div style={{ maxWidth: '200px', margin: '0px auto' }}></div>
+
                                 <input
                                     placeholder="Escribí aca tu motivo."
                                     component="textarea" className="input" />
