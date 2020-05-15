@@ -168,9 +168,10 @@ class SignUp extends Component {
             <br/>
 
             
-           <label className="title">Subí foto de tu DNI para validar tu identidad</label><br></br>
+       
            
           <div className="right-container">
+          <label className="title">Subí foto de tu DNI para validar tu identidad</label><br></br>
                 <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler} ref={fileImput => this.fileImput = fileImput}/>
           
                 <div className="dni1"> 
@@ -192,7 +193,7 @@ class SignUp extends Component {
 
      
           </div>
-          <div className="right-container">
+          <div className="righ-container">
               <input type="submit" className="btn-primero" value="Crear cuenta" />
              
                    {this.state.passwordsMissmatch && (

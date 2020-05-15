@@ -1,6 +1,5 @@
 import React from 'react';
 import '../components/CardAceptarRechaza.css';
-import backdrop from './navbar/backdrop/backdrop';
 
 const CardAceptarRechazar = props => {
 

@@ -1,17 +1,11 @@
 import React from 'react';
 import Tabs from './components/Tabs';
-import { buildMatchMemberExpression } from '@babel/types';
 import '../src/components/Tabs.css';
 import Informe from '../src/Informes';
-
 import '../src/AdminProfile.css';
 import Header from '../src/components/Header'
-import { Fragment } from 'react';
 import CardDenunciaAll from './components/CardDenunciaAll';
 import CardAceptar from './components/CardAceptarRechazarAll';
-const styles = {
-  fontFamily: 'sans-serif',
-};
 
 class Tabulador extends React.Component {
 constructor(props) {
@@ -26,11 +20,11 @@ render() {
     cTAB: <CardAceptar></CardAceptar>,
   };
   return (
-     
+ <div>   <Header> </Header>
   <div align="center" className="bodyProfile">
-    <Header> </Header>
+   
       
-    <h1> Perfil Administrador</h1>
+    <h2> Perfil Administrador</h2>
     
     <Tabs 
     active = {this.state.active} 
@@ -39,14 +33,15 @@ render() {
 
       
       <div key="aTAB"> Informes estadísticos </div> 
-      <div key="bTAB"> Denuncias </div> 
-      <div key="cTAB"> Aprobar o desaprobar usuarios </div> 
+      <div key="bTAB"> Gestión de denuncias </div> 
+      <div key="cTAB"> Gestión de usuarios </div> 
      
 
     </Tabs>
    
   
     <p>{content[this.state.active]}</p>
+  </div>
   </div>
   );
  }; 

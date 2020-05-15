@@ -4,11 +4,6 @@ import Header from '../src/components/Header'
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 import { ReviewSchema } from './helpers/validators'
-import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
-import Backdrop from './components/navbar/backdrop/backdrop'
-
-// import Rating from './components/rating/Rating.js'
-
 import './Valoration.css'
 
 import { Formik, Form } from 'formik'
@@ -61,28 +56,12 @@ class Valoration extends Component {
   updatePoints(value) {
     this.setState({ points: value })
   }
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-           return {sideDrawerOpen: !prevState.sideDrawerOpen};
-      });
-  };
-
-  backdropClickHandler = () => {
-    this.setState({sideDrawerOpen: false});
-  }
 
   render() {
     if (this.state.goToMatches) {
       return <Redirect to="/matches" />
     }
-    let sideDrawer;
-    let backdrop;
    
-    if (this.state.sideDrawerOpen) {
-      sideDrawer =<SideDrawer/>;
-      backdrop = <Backdrop click={this.backdropClickHandler}/>
-
-    }
     return (
       <div className="Valoration">
         <Header></Header>

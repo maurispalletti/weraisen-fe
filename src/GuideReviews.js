@@ -8,7 +8,6 @@ import SideDrawer from './components/navbar/sideDrawer/sideDrawer';
 import Backdrop from './components/navbar/backdrop/backdrop';
 import './GuideReviews.css';
 import userServices from './services/userServices'
-import Axios from 'axios';
 
 const userId = localStorage.getItem("userId")
 

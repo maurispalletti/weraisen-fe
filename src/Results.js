@@ -3,7 +3,6 @@ import './Results.css';
 import './Estilos.css';
 import Card_Guia from '../src/components/Card_Guia';
 import { Redirect } from 'react-router'
-import Toolbar from './components/navbar/toolbar'
 import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
 import Backdrop from './components/navbar/backdrop/backdrop'
 import userServices from './services/userServices'
@@ -65,27 +64,11 @@ class Results extends Component {
     }
   }
 
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-           return {sideDrawerOpen: !prevState.sideDrawerOpen};
-      });
-  };
 
-  backdropClickHandler = () => {
-    this.setState({sideDrawerOpen: false});
-  }
 
   render() {
     if (this.state.goToHome) {
       return <Redirect to="/search" />
-    }
-    let sideDrawer;
-    let backdrop;
-   
-    if (this.state.sideDrawerOpen) {
-      sideDrawer =<SideDrawer/>;
-      backdrop = <Backdrop click={this.backdropClickHandler}/>
-
     }
 
     return (
