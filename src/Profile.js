@@ -99,7 +99,7 @@ class Profile extends Component {
   }
 
   async componentDidMount() {
-    const  {
+    const {
       firstName,
       lastName,
       age,
@@ -131,12 +131,12 @@ class Profile extends Component {
   }
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
-           return {sideDrawerOpen: !prevState.sideDrawerOpen};
-      });
+      return { sideDrawerOpen: !prevState.sideDrawerOpen };
+    });
   };
 
   backdropClickHandler = () => {
-    this.setState({sideDrawerOpen: false});
+    this.setState({ sideDrawerOpen: false });
   }
   render() {
     if (this.state.goToHome) {
@@ -147,43 +147,65 @@ class Profile extends Component {
     }
     let sideDrawer;
     let backdrop;
-   
+
     if (this.state.sideDrawerOpen) {
-      sideDrawer =<SideDrawer/>;
-      backdrop = <Backdrop click={this.backdropClickHandler}/>
+      sideDrawer = <SideDrawer />;
+      backdrop = <Backdrop click={this.backdropClickHandler} />
 
     }
 
     if (this.state.initialValues) {
       return (
-        <div className="Profile">
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
-        {sideDrawer}
-        {backdrop}
-          <div className="BodyProfile">
+        <div className="Profile" >
+          <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
+          {sideDrawer}
+          {backdrop}
+          <div className="BodyProfile" style={{ marginTop: '15px', marginBottom: '15px' }}>
             <Formik
               // setear initial values con el did mount o will mount llamando al get
               initialValues={this.state.initialValues}
               validationSchema={ProfileSchema}
               onSubmit={(values) => this.updateProfile(values)}>
-              
+
               <Form>
-                <div className="profileData">
-                <h2>Hola {this.state.initialValues.firstName}!</h2>
-                  <FieldWithError disabled={!this.state.editable} name="firstName" placeholder="Nombre" aria-label="name" className="input" />
-                  <FieldWithError disabled={!this.state.editable} name="lastName" placeholder="Apellido" aria-label="lastName" className="input" />
-                  <FieldWithError disabled={!this.state.editable} name="age" placeholder="Edad" aria-label="age" className="input" />
-                  <FieldWithError disabled={!this.state.editable} name="identification" placeholder="DNI / Pasaporte / ID" aria-label="identification" className="input" />
+                <div className="profileData container-fluid">
+                  <h2>Hola {this.state.initialValues.firstName}!</h2>
+
+                  <div className="title">
+                    <FieldWithError disabled={!this.state.editable} name="firstName" placeholder="Nombre" aria-label="name" className="input" />
+                  Nombre
+                  </div>
+                  <div className="title">
+                    <FieldWithError disabled={!this.state.editable} name="lastName" placeholder="Apellido" aria-label="lastName" className="input" />
+                    Apellido
+                  </div>
+                  <div className="title">
+                    <FieldWithError disabled={!this.state.editable} name="age" placeholder="Edad" aria-label="age" className="input" />
+                    Edad
+                  </div>
+                  <div className="title">
+                    <FieldWithError disabled={!this.state.editable} name="identification" placeholder="DNI / Pasaporte / ID" aria-label="identification" className="input" />
+                  DNI / Pasaporte / ID
+                  </div>
+                  <div className="title">
                   <DropdownGender disabled={!this.state.editable} name="gender" styleName={"Dropdown-g"} options={genders} />
-                  <FieldWithError disabled={!this.state.editable} name="city" placeholder="Ciudad de residencia" aria-label="city" className="input" />
-                  <FieldWithError disabled={!this.state.editable} name="email" placeholder="Email" aria-label="email" className="input" />
-                  
+                  Sexo
+                  </div>
+                  <div className="title">
+                    <FieldWithError disabled={!this.state.editable} name="city" placeholder="Ciudad de residencia" aria-label="city" className="input" />
+                  Ciudad de residencia
+                  </div>
+                  <div className="title">
+                    <FieldWithError disabled={!this.state.editable} name="email" placeholder="Email" aria-label="email" className="input" />
+                  Email
+                  </div>
+
                 </div>
                 <br></br>
-                
+
                 <div class="custom-control custom-checkbox">
-                   <input type="checkbox" class="custom-control-input" id="salidaGrupal" />
-                   <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
+                  <input type="checkbox" class="custom-control-input" id="salidaGrupal" />
+                  <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
                 </div>
 
                 <div className="guideSection">
@@ -197,11 +219,11 @@ class Profile extends Component {
                 </div>
 
                 <div className="buttonsSectionGuia">
-                  <input type="button" className="btn-primero" 
-                  value={this.state.isActiveGuide ? "Actualizar mis datos de guía" : "Quiero ser guía"}
+                  <input type="button" className="btn-primero"
+                    value={this.state.isActiveGuide ? "Actualizar mis datos de guía" : "Quiero ser guía"}
                     onClick={() => this.setState({ goToGuideProfile: true })} />
                 </div>
-<br></br>
+                <br></br>
                 <div class="btn-group" role="group">
                   <input type="button" className="btn-tercero" value={this.state.editable ? "Cancelar" : "Editar"}
                     onClick={() => this.toggleEditInfo()} />

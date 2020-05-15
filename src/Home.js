@@ -3,14 +3,58 @@ import Header from './components/Header';
 import { Fragment } from 'react';
 import Card_Guia_Home from './components/Card_Guia_Home';
 import Card_GuiaResultados from './components/Card_GuiaResultados';
+import userServices from './services/userServices';
 
 class Home extends Component {
 	state = {
-		guias: []
+		guias: [],
+		initialValues: null
 	}
 
+	getProfile = async () => {
+		try {
+		  const userId = localStorage.getItem("userId");
+		  if (userId) {
+			const response = await userServices.getProfile(userId)
+	console.log(response.data);
+			return response.data;
+	
+		  } else {
+			this.setState({ notLoggedInUser: true })
+		  }
+		} catch (error) {
+		  console.error(`There was an error trying to get the profile`)
+		}
+	  }
+
 	//apenas se carga el componente se ejecuta este metodo
-	componentDidMount() {
+	async componentDidMount() {
+
+		const  {
+			firstName,
+			lastName,
+			age,
+			identification,
+			gender,
+			city,
+			email,
+			isActiveGuide,
+			knowledge,
+		  } = await this.getProfile()
+
+		const initialValues = {
+			firstName,
+			lastName,
+			age,
+			identification,
+			gender,
+			city,
+			email
+		  }
+
+console.log(initialValues);
+
+
 		this.setState({
 			guias: [
 				{ imagen: "/static/media/006.6ec096f6.png", nombre: 'Charizard', edad: 22, detalle: 'Charizard se dedica a volar por los cielos en busca de oponentes fuertes. Echa fuego por la boca y es capaz de derretir cualquier cosa. No obstante, si su rival es más débil que él, no usará este ataque.' },
@@ -21,7 +65,7 @@ class Home extends Component {
 				{ imagen: "/static/media/405.614366ae.png", nombre: 'Luxray', edad: 22, detalle: 'Cuando sus ojos brillan como el oro, puede ver presas escondidas, incluso detrás de un muro.' },
 				{ imagen: "/static/media/697.b2979631.png", nombre: 'Tyrantrum', edad: 22, detalle: 'En el mundo antiguo en el que habitaba no tenía rivales gracias a sus mandíbulas, con las que podría despedazar con facilidad gruesas placas de acero.' },
 				{ imagen: "/static/media/212.505afb8e.png", nombre: 'Scizor', edad: 22, detalle: 'Scizor tiene un cuerpo duro como el acero que no es fácil de alterar con ningún ataque común. Este Pokémon bate las alas para regular la temperatura corporal.' }
-			]
+			],initialValues
 		});
 	}
 
@@ -45,17 +89,30 @@ class Home extends Component {
 	}
 
 	render() {
+		if (this.state.initialValues) {
 		return (
 			<Fragment>
 				<Header />
 				<div className="container-fluid">
-					<h1>Mejores Guías</h1>
+
+
+				<h2 style={{marginTop: '20px'}}>Hola {this.state.initialValues.firstName}!</h2>
+				<div className='m-auto'>
+				<h4>Comenzá tu experiencia buscando al guía ideal haciendo<a href="/search"> clic acá</a></h4>
+				</div>
+				<hr />
+					<div className='ml-auto'>
+						<h3 style={{marginTop: '20px'}}>Guías con mejor reputación</h3>
+					</div>
 					<hr />
 					<div className="bs-docs-section">
 						{this.mostrarGuias()}
 					</div>
 					<hr />
-					<h1>Lugares más visitados</h1>
+					<div className='ml-auto'>
+						<h3 >Lugares más visitados</h3>
+					</div>
+					
 					<hr />
 					<div className="container-fluid">
 						< Card_GuiaResultados />
@@ -64,6 +121,10 @@ class Home extends Component {
 				{/* <Footer /> */}
 			</Fragment>
 		);
+		
+	} else {
+		return null
+	  }
 	}
 }
 export default Home;

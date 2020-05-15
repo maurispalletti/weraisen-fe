@@ -4,7 +4,8 @@ const Card_Guia_Home = (props) => {
   const { imagen, nombre, edad, detalle } = props.guia;
   return (
     // <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-    <div className="card" >
+    // <div className="card" >
+      <div className="card container-fluid" style={{ maxWidth: '18rem' }}>
       <img src={imagen} className="card-img-top img-fluid" alt="Card image cap" />
       <div className="card-body">
         <h5 className="card-title">{nombre}</h5>

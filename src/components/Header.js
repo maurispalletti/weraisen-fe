@@ -2,6 +2,8 @@ import React from 'react'
 import Logo from './navbar/logo4.png'
 
 
+
+
  const Header = () => (
     <nav className="navbar navbar-expand-lg navbar-dark " style={{ backgroundColor: '#d48e4b' }}>
     <a className="navbar-brand ml-5" href="#"><img src={Logo} alt="Logo" style={{width:'50px', paddingBottom: '5px'}}/>WeRaisen</a>
@@ -10,18 +12,21 @@ import Logo from './navbar/logo4.png'
     </button>
   
     <div className="collapse navbar-collapse" id="navbarColor01">
-      <ul className="navbar-nav m-auto">
+      <ul className="navbar-nav ml-auto">
         <li className="nav-item active">
-          <a className="nav-link ml-3" href="#">Home&nbsp;<i className="fas fa-home"></i> <span className="sr-only">(current)</span></a>
+          <a className="nav-link ml-3" style={{color: 'white'}} href="/home">Home&nbsp;<i className="fas fa-home"></i> <span className="sr-only">(current)</span></a>
+        </li>
+        <li className="nav-item" >
+          <a className="nav-link ml-3"  style={{color: 'white'}} href="/search">Search</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link ml-3" href="/search">Search</a>
+          <a className="nav-link ml-3" style={{color: 'white'}} href="Profile">Perfil</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link ml-3" href="Profile">Perfil</a>
+          <a className="nav-link ml-3"style={{color: 'white'}} href="/chats">Mis Chats</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link ml-3" href="#">Mis Chats</a>
+          <a className="nav-link ml-3" style={{color: 'white'}} href="/notificaciones">Notificaciones</a>
         </li>
       </ul>
       {/*<form className="form-inline my-2 my-lg-0">
