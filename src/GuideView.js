@@ -171,7 +171,7 @@ class GuideView extends Component {
                 {/*<h2>{nombre} {apellido}</h2> */}
                 <div className="container-fluid">
                       <div className="containerArriba">  
-                          <div className="Section1"> 
+                          <div className="SectionGuide"> 
 
                            <b> <label for="nombre" id="nombreApellido" class="col--2 col-form-label">{nombre} {apellido}</label> <br></br>  </b>              
                             <div className="PromedioEstrella">
