@@ -34,6 +34,8 @@ justify-items: center;
   .BodyGuide {
     padding-top: 5vh;
   overflow: scroll; 
+  margin-bottom: 20px;
+
   }
 
 

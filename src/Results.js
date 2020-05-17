@@ -12,8 +12,9 @@ class Results extends Component {
     goToHome: false,
     searchFailed: false,
     guides: [],
+    
   }
-
+  
   getGuides = async (filters) => {
     try {
       console.log(`FILTERS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`)
@@ -32,6 +33,9 @@ class Results extends Component {
       return null
     }
   }
+
+  
+
 
   async componentWillMount() {
     // let filters = localStorage.getItem("filters");

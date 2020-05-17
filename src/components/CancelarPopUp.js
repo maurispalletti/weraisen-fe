@@ -28,25 +28,25 @@ class AddDepModal extends Component {
                              <div className="checkbox">
                                  <label>
                                      <input type="checkbox" value="option" />
-                                     Mensajes Inapropiados
+                                     <a style={{paddingLeft:"3px"}}>Mensajes Inapropiados </a>
                                  </label>
                              </div>
                              <div className="checkbox">
                                  <label>
                                      <input type="checkbox" value="option" />
-                                      Fotos Inapropiadas.
+                                     <a style={{paddingLeft:"3px"}}> Fotos Inapropiadas.</a>
                                  </label>
                              </div>
                              <div className="checkbox">
                                  <label>
                                      <input type="checkbox" value="option" />
-                                      Parece Spam
+                                     <a style={{paddingLeft:"3px"}}> Parece Spam </a>
                                  </label>
                              </div>
                              <div className="checkbox">
                                  <label>
                                      <input type="checkbox" value="option" />
-                                      No hemos concordado en algunas cosas.
+                                     <a style={{paddingLeft:"3px"}}> No hemos concordado en algunas cosas. </a>
                                  </label>
                              </div>
                             
