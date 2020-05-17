@@ -15,9 +15,9 @@ const CardDenuncia = props => {
           {props.text}
         </p>
         <p className= "card-text text-secondary"> Denunciante: {props.signature} </p>
-        <a href="#" className= "btn btn-outline-success">Notificar</a>
+        <div className= "btn btn-outline-success">Notificar</div>
       
-        <a href="#" className= "btn btn-outline-success">Bloquear</a>
+        <div className= "btn btn-outline-success">Bloquear</div>
       </div>
     </div>
   </div>

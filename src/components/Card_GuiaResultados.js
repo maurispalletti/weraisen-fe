@@ -19,7 +19,7 @@ export default class Card_GuiaResultados extends React.Component {
         return (
 
             <div className="card" >
-                <img src={d} className="card-img-top img-fluid" alt="Card image cap" />
+                <img src={d} className="card-img-top img-fluid" alt="Card cap" />
                 <div className="card-body">
                     {/* Nombre y aprellido */}
                     <h5 className="card-title">Mewtwo</h5>
@@ -36,7 +36,7 @@ export default class Card_GuiaResultados extends React.Component {
                     </div>
 
                     <div className=" mb-3">
-                        <a className="verMas " onClick={() => this.mostrarVerMas()} >{this.state.verMas ? "Ver menos" : "Ver más"}</a>
+                        <div className="verMas" onClick={() => this.mostrarVerMas()} >{this.state.verMas ? "Ver menos" : "Ver más"}</div>
                     </div>
 
                     <div className="container-flwid col text-center">

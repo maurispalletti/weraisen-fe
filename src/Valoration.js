@@ -4,8 +4,8 @@ import Header from '../src/components/Header'
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 import { ReviewSchema } from './helpers/validators'
-import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
-import Backdrop from './components/navbar/backdrop/backdrop'
+// import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
+// import Backdrop from './components/navbar/backdrop/backdrop'
 
 // import Rating from './components/rating/Rating.js'
 
@@ -75,14 +75,15 @@ class Valoration extends Component {
     if (this.state.goToMatches) {
       return <Redirect to="/matches" />
     }
-    let sideDrawer;
-    let backdrop;
-   
-    if (this.state.sideDrawerOpen) {
-      sideDrawer =<SideDrawer/>;
-      backdrop = <Backdrop click={this.backdropClickHandler}/>
 
-    }
+    // let sideDrawer;
+    // let backdrop;
+   
+    // if (this.state.sideDrawerOpen) {
+    //   sideDrawer = <SideDrawer/>;
+    //   backdrop = <Backdrop click={this.backdropClickHandler}/>
+    // }
+
     return (
       <div className="Valoration">
         <Header></Header>

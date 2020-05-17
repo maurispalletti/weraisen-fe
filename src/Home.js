@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import { Fragment } from 'react';
-import Card_Guia_Home from './components/Card_Guia_Home';
-import Card_GuiaResultados from './components/Card_GuiaResultados';
+import CardGuiaHome from './components/Card_Guia_Home';
+import CardGuiaResultados from './components/Card_GuiaResultados';
 
 class Home extends Component {
 	state = {
@@ -33,8 +33,9 @@ class Home extends Component {
 			<React.Fragment>
 				<div className="container-fluid">
 					<div className="card-columns">
-						{guias.map(guia => (
-							<Card_Guia_Home
+						{guias.map((guia, index) => (
+							<CardGuiaHome
+								key={index}
 								guia={guia}
 							/>
 						))}
@@ -58,7 +59,7 @@ class Home extends Component {
 					<h1>Lugares más visitados</h1>
 					<hr />
 					<div className="container-fluid">
-						< Card_GuiaResultados />
+						< CardGuiaResultados />
 					</div>
 				</div>
 				{/* <Footer /> */}

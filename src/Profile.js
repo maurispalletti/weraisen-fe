@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './Profile.css';
 import './Estilos.css';
-import avatar_1 from './avatars/avatar_1.svg';
-import home from './icons/home.svg';
+// import avatar_1 from './avatars/avatar_1.svg';
+// import home from './icons/home.svg';
 import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../components/CardAceptarRechaza.css';
-import backdrop from './navbar/backdrop/backdrop';
+// import backdrop from './navbar/backdrop/backdrop';
 
 const CardAceptarRechazar = props => {
 
@@ -17,9 +17,9 @@ const CardAceptarRechazar = props => {
         <p className="card-text text-secondary">
           {props.text}
         </p>
-        <a href="#" className= "btn btn-outline-success">Aceptar</a>
+        <div className= "btn btn-outline-success">Aceptar</div>
       
-        <a href="#" className= "btn btn-outline-success">Rechazar</a>
+        <div className= "btn btn-outline-success">Rechazar</div>
       </div>
       </div>
 
