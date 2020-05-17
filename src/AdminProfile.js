@@ -1,17 +1,17 @@
 import React from 'react';
 import Tabs from './components/Tabs';
-import { buildMatchMemberExpression } from '@babel/types';
+// import { buildMatchMemberExpression } from '@babel/types';
 import '../src/components/Tabs.css';
 import Informe from '../src/Informes';
 
 import '../src/AdminProfile.css';
 import Header from '../src/components/Header'
-import { Fragment } from 'react';
+// import { Fragment } from 'react';
 import CardDenunciaAll from './components/CardDenunciaAll';
 import CardAceptar from './components/CardAceptarRechazarAll';
-const styles = {
-  fontFamily: 'sans-serif',
-};
+// const styles = {
+//   fontFamily: 'sans-serif',
+// };
 
 class Tabulador extends React.Component {
 constructor(props) {

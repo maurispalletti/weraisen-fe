@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import avatar_1 from './avatars/avatar_1.svg';
 import './Informes.css';
-import home from './icons/home.svg'
+// import avatar_1 from './avatars/avatar_1.svg';
+// import home from './icons/home.svg'
 import userServices from './services/userServices'
 
-import { Redirect } from 'react-router'
+// import { Redirect } from 'react-router'
 
 import GraficoMatchesPorMes from './components/Grafico2barrasMatchesPorMes'
 

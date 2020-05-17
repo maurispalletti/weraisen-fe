@@ -1,10 +1,10 @@
 import React from 'react';
 
 import './Tabs.css';
-import { Fragment } from 'react';
+// import { Fragment } from 'react';
 
-const transitionTime = 200;
-const transitionStyle = `left ${transitionTime}ms, right ${transitionTime}ms`
+// const transitionTime = 200;
+// const transitionStyle = `left ${transitionTime}ms, right ${transitionTime}ms`
 
 class Tabs extends React.Component {
     constructor (props) {
@@ -76,12 +76,12 @@ class Tabs extends React.Component {
             </div>
         );
 
-    const size = this.state.sizes[this.props.active];
-    return {
-        left: `${size.left}px`,
-        right: `${size.right}px`,
-        transition: transitionStyle
-    }
+    // const size = this.state.sizes[this.props.active];
+    // return {
+    //     left: `${size.left}px`,
+    //     right: `${size.right}px`,
+    //     transition: transitionStyle
+    // }
 }
 }
                 

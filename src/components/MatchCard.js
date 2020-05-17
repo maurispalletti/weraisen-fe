@@ -13,7 +13,7 @@ export default class MatchCard extends React.Component {
 
   render() {
     const { partnerRole, partnerName, chatId, status } = this.props;
-    const disabled = status !== 'Activo' && status !== 'Iniciado';
+    // const disabled = status !== 'Activo' && status !== 'Iniciado';
 
     if (this.state.goToChat) {
       return <Redirect to={`/chat`} />

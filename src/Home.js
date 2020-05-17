@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import { Fragment } from 'react';
-import Card_Guia_Home from './components/Card_Guia_Home';
-import Card_GuiaResultados from './components/Card_GuiaResultados';
+import CardGuiaHome from './components/Card_Guia_Home';
+import CardGuiaResultados from './components/Card_GuiaResultados';
 import userServices from './services/userServices';
 
 class Home extends Component {
@@ -77,8 +77,9 @@ console.log(initialValues);
 			<React.Fragment>
 				<div className="container-fluid">
 					<div className="card-columns">
-						{guias.map(guia => (
-							<Card_Guia_Home
+						{guias.map((guia, index) => (
+							<CardGuiaHome
+								key={index}
 								guia={guia}
 							/>
 						))}
@@ -115,7 +116,7 @@ console.log(initialValues);
 					
 					<hr />
 					<div className="container-fluid">
-						< Card_GuiaResultados />
+						< CardGuiaResultados />
 					</div>
 				</div>
 				{/* <Footer /> */}

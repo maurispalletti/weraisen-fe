@@ -56,22 +56,18 @@ class Login extends Component {
           <div className="logo"><img src={logo} alt={"WeRaisen"} width="200" /></div>
           <div className="eslogan">
             <strong><span className="colorfondo">
-              <h3></h3>
-              <h4></h4>
-              <h7> Viajá. Conocé. Viví una experiencia única.</h7>
+              Viajá. Conocé. Viví una experiencia única.
             </span> </strong>
           </div>
-  <br></br>
+          <br></br>
           <div className="Login">
             <Formik
               initialValues={INITIAL_VALUES}
               validationSchema={LoginSchema}
               onSubmit={(values) => this.loginUser(values)}>
               <Form>
-
-                <FieldWithError name="email" placeholder="Email" aria-label="username" className="input" autocomplete="off" />
-                <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" autocomplete="off" className="input" />
-                <h3></h3>
+                <FieldWithError name="email" placeholder="Email" aria-label="username" className="input" autoComplete="off" />
+                <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" autoComplete="off" className="input" />
                 <div className="right-container">
                   <input type="submit" className="btn-login" value="Ingresar" />
 
@@ -90,7 +86,7 @@ class Login extends Component {
           </div>
 
           <div className="continuar1"><a href="#WeRaisen" className=""><img className="imag" src={scroll1} alt={"WER"} width="60" /> </a></div>
-          </div>
+        </div>
         <div id="WeRaisen">
           <h2 className="index__section-title"><strong>WERAISEN</strong></h2>
 
@@ -99,7 +95,6 @@ class Login extends Component {
 
             ¿Alguna vez has estado en una ciudad por primera vez y deseaste tener un guía amigo?
                 </strong></p>
-            <h3></h3>
             <p>
               <strong>WeRaisen</strong> es una plataforma que utiliza la tecnología para conectarte con <strong>expertos locales.</strong></p>
 
@@ -121,10 +116,7 @@ class Login extends Component {
             <p>Tu guía también te calificará.</p><p>
               De esta forma, podras ayudar a <strong>futuros turistas</strong> a elegir la mejor opción.
                 </p>
-            <p>
             <div className="continuar2"><a href="#Inicio" className=""><img className="imag" src={scroll2} alt={"WER"} width="50" /> </a></div>
-
-            </p>
           </div>
         </div>
 

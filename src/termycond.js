@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './termycond.css'
 
-import logo from './icons/logo4.png'
+// import logo from './icons/logo4.png'
 import Header from '../src/components/Header'
 import { Redirect } from 'react-router'
 

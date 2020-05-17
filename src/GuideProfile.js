@@ -2,37 +2,32 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router'
 import Header from '../src/components/Header'
 import Categorias from './components/Categorias'
-import Boton_Sombreado from './components/Boton_Sombreado'
-import Dias_Disponible from './components/Dias_Disponible'
-
-import Alvoboton from './components/AlvoBoronSombreado'
-
-import Toolbar from './components/navbar/toolbar'
-import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
-import Backdrop from './components/navbar/backdrop/backdrop'
+import BotonSombreado from './components/Boton_Sombreado'
+import DiasDisponible from './components/Dias_Disponible'
 
 import './GuideProfile.css';
 
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import DropdownGender from './forms/DropdownGender'
-import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
+// import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
 import { GuideProfileSchema } from './helpers/validators'
 import userServices from './services/userServices'
-import { FormCheckbox } from 'semantic-ui-react';
+// import { FormCheckbox } from 'semantic-ui-react';
 
-const languages = [
-  { description: 'Español', value: 'Español' },
-  { description: 'Inglés', value: 'Inglés' },
-  { description: "Italiano", value: 'Italiano' },
-  { description: "Portugués", value: 'Portugués' }
-];
-const languages2 = [
-  { description: "Francés", value: 'Francés' },
-  { description: "Japonés", value: 'Japonés' },
-  { description: "Chino", value: 'Chino' },
-  { description: "Alemán", value: 'Alemán' }
-];
+// const languages = [
+//   { description: 'Español', value: 'Español' },
+//   { description: 'Inglés', value: 'Inglés' },
+//   { description: "Italiano", value: 'Italiano' },
+//   { description: "Portugués", value: 'Portugués' }
+// ];
+// const languages2 = [
+//   { description: "Francés", value: 'Francés' },
+//   { description: "Japonés", value: 'Japonés' },
+//   { description: "Chino", value: 'Chino' },
+//   { description: "Alemán", value: 'Alemán' }
+// ];
+
 const cities = [
   { value: "BuenosAires", description: 'Buenos Aires' },
   { value: "Córdoba", description: 'Córdoba' },
@@ -107,13 +102,6 @@ class GuideProfile extends Component {
       return <Redirect to="/Profile" />
     }
 
-    let sideDrawer;
-    let backdrop;
-    if (this.state.sideDrawerOpen) {
-      sideDrawer = <SideDrawer />;
-      backdrop = <Backdrop click={this.backdropClickHandler} />
-    }
-
     return (
       <div className="GuideProfile">
 
@@ -141,7 +129,7 @@ class GuideProfile extends Component {
 
                   <div className="container-fluid">
 
-                    <Boton_Sombreado onCategoryChange={this.handleCategory} />
+                    <BotonSombreado onCategoryChange={this.handleCategory} />
 
                   </div>
                   <FieldWithError component={'textarea'} name="idioma" placeholder="Otro" aria-label="idioma" className="idioma-input" />
@@ -153,7 +141,7 @@ class GuideProfile extends Component {
                 <h2>Días Disponibles:</h2>
                 <div className="container-fluid">
 
-                  <Dias_Disponible onCategoryChange={this.handleCategory} />
+                  <DiasDisponible onCategoryChange={this.handleCategory} />
 
                 </div>
                 </div>

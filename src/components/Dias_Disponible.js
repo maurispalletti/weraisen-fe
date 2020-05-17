@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Boton_Sombreado.css';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 
 export default class Dias_Disponible extends Component {
     state = {
