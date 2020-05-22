@@ -145,25 +145,33 @@ class Search extends Component {
                   <img src={ubicacion} alt={"Ubicacion"} width="25" />
                   {this.state.city}
                 </div>
+                <br></br>
                 <div className="Fecha">
                   <h2>¿Cuándo?</h2>
                   <Desplegable />
                 </div>
+                <br></br>
                 <div className="Categoria">
                   <h2>Seleccioná la categoría </h2>
                   <Categorias onCategoryChange={this.handleCategory} defaultSelected={this.state.knowledge} />
-                </div>
+                </div>   
+                 <br></br>
 
                 <div className="Filters" style={{ display: this.state.showFilters ? 'block' : 'none' }}>
                   <h2>Género de tu guía</h2>
-                  <DropdownGender name="gender" styleName={"Dropdown-search"} options={genders} />
+                  <DropdownGender name="gender" styleName={"input"} options={genders} />
+                  <br></br>
                   <h2>Rango de edad</h2>
                   <FieldWithError name="fromAge" placeholder="Desde" aria-label="description" type="number" className="input" min="18" max="99" pattern="[1,9]{1,15}" />
                   <FieldWithError name="toAge" placeholder="Hasta" aria-label="description" type="number" className="input" min="18" max="99" pattern="[1,9]{1,15}" />
-
+                  <br></br>
                   <h2>Elegí el idioma de tu guía:</h2>
                   <Autocomplete defaultText={this.state.language} placeholder={'Ingresa las primeras letras del idioma'} name={'language'} items={languages}></Autocomplete>
-
+                  <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="salidaGrupal" />
+                  <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
+                </div>
+                <br></br>
                   {this.state.ageValidationFailed && (
                     <p className="form-error">La edad en el campo 'Desde' debe ser menor a la edad en el campo 'Hasta'.</p>
                   )}
@@ -171,10 +179,11 @@ class Search extends Component {
 
                 <div className="ButtonSection">
                   <div>
-                    <div className="verMas" onClick={() => this.mostrarFiltros()} >{this.state.showFilters ? "Ver menos filtros" : "Ver más filtros"}</div>
+                    <p className="verMas" onClick={() => this.mostrarFiltros()} >{this.state.showFilters ? "Ver menos filtros" : "Ver más filtros"}</p>
                   </div>
+                  <br></br>
                   <div className="buttonsSection">
-                    <input type="submit" className="search-button" value="Buscar guías" />
+                    <input type="submit" className="btn-primero" value="Buscar guías" />
                     <br></br>
                     <a href="/search"><input type="button" className="search-button" value="Elegir otra ciudad" /></a>
                   </div>

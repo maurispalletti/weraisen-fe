@@ -169,19 +169,18 @@ class GuideView extends Component {
                 <Header></Header>
                 <br></br>
                 {/*<h2>{nombre} {apellido}</h2> */}
-                <div className="container-fluid">
+                <div className="container-fluid" style={{color:'rgba(255,255,255,0.8)'}}>
                       <div className="containerArriba">  
                           <div className="SectionGuide"> 
 
                            <b> <label for="nombre" id="nombreApellido" class="col--2 col-form-label">{nombre} {apellido}</label> <br></br>  </b>              
-                            <div className="PromedioEstrella">
-                              <label for="promedio" id="promedio" class="col--2 col-form-label">5</label>
-                              <label for="promedio" id="promedio" class="col--2 col-form-label">5</label>
-
-                              <img src={img2} width={13}></img>
-                              </div> 
+          
                             <label for="edad" id="edad" class="col--2 col-form-label">Edad: {edad}</label>
-                            
+                            <div className="PromedioEstrella">
+                              <i><label for="promedio" id="promedio" class="col--2 col-form-label">4.5</label></i>
+
+                              <img style={{verticalAlign: "0", paddingLeft:'2px'}} src={img2} width={13}></img>
+                              </div> 
                                                                            
                           </div>
                           <hr></hr>
@@ -203,16 +202,14 @@ class GuideView extends Component {
                            {this.renderReviews()}
 
                       </div>
-                </div> 
-                     
-                     
-
-                    <div className="buttonsSection">
-                       <input type="button" className="button" value="Volver" onClick={() => this.setState({ goToResults: true })} />
+                      <div className="boton">
+                      <div className="buttonsS">
+                       <input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToResults: true })} />
                     </div>
+                    </div>
+                </div> 
+                
           </div>
-            
-            
         );
     
       }

@@ -7,9 +7,9 @@ import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import { SignUpSchema } from './helpers/validators'
 import DropdownGender from './forms/DropdownGender'
-import dni1 from './icons/FRENTE-NARANJA-DNI.png'
-import dni2 from './icons/DORSO-NARANJA-DNI.png'
-
+import dni1 from './icons/dni1.png'
+import dni2 from './icons/dni2.png'
+import icon from './icons/icon.svg'
 
 const INITIAL_VALUES = {
   firstName: '',
@@ -137,82 +137,76 @@ class SignUp extends Component {
             Nombre
             </div>
             <div className="title"> 
-          
             <FieldWithError name="lastName" placeholder="Ingresa tu apellido" aria-label="lastName" className="input" />
             Apellido
             </div>
+
             <div className="title"> 
-           
             <FieldWithError name="age" placeholder="Ingresa tu fecha de nacimiento" className="input" max={this.state.min} value={this.state.value} onChange={this.handleChange} required type="date"/>
             Fecha de nacimiento
             </div>
+
             <div className="title"> 
-            
-            <FieldWithError name="identification" placeholder="Ingresa tu ID / DNI / PASAPORTE" aria-label="identification" type="number" className="input" />
-            Número de documento
-            </div>
-            <div className="title"> 
-          
-            <DropdownGender name="gender" styleName={"Dropdown-g"} options={genders} />
-            Género
-            </div>
-          
+          <DropdownGender name="gender" styleName={"input"} options={genders} />
+          Género
+          </div>
+
+      
            <div className="title"> 
             <FieldWithError name="email" placeholder="Ingresa tu email" aria-label="email" className="input" />
             Email
             </div>
+
             <div className="title"> 
             <FieldWithError name="password" placeholder="Ingresa tu contraseña" type="password" aria-label="password" className="input" />
             Contraseña
             </div>
+          
             <div className="title"> 
             <FieldWithError name="passwordRepeated" placeholder="Repetí tu contraseña" type="password" aria-label="passwordRepeated" className="input" />
             Repetí la contraseña</div>
             <br/>
 
             
-           <label className="input2">Subí foto de tu DNI</label><br></br>
+       
            
-           <div className="right-container-signup">
+          <div className="right-container">
+          <label className="title">Subí foto de tu DNI para validar tu identidad</label><br></br>
                 <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler} ref={fileImput => this.fileImput = fileImput}/>
           
-           <div className="dni1"> 
-                <label className="input3">Frente</label><br></br>
-               <img src={dni1} alt={"dni frente"} width="150" onClick={() => this.fileImput.click()}/>
+                <div className="dni1"> 
+                     <label className="input3">Frente</label><br></br>
+                    <img src={dni1} alt={"dni frente"} width="150" onClick={() => this.fileImput.click()}/>
+               </div>
+               <div className="dni2">
+                     <label className="input3">Dorso</label><br></br>
+                     <img src={dni2} alt={"dni detras"} width="150" onClick={() => this.fileImput.click()}/>
+              </div>
+               <br/>
+              <label className="title">Subí una foto que se mostrará en tu perfil</label>
+              <div className="profile">
+                   <img src={icon} alt={"Foto de perfil"} width="60" onClick={() => this.fileImput.click()}/></div>
+               </div>
+              <div className='remember'>
+                  <p>Al crear cuenta estoy aceptando los
+                   <a className="forgotPass" href={'/terminos'}> términos y condiciones</a></p>
+
+     
           </div>
-           <div className="dni2">
-                <label className="input3">Dorso</label><br></br>
-                <img src={dni2} alt={"dni detras"} width="150" onClick={() => this.fileImput.click()}/></div>
-           {/*<button type="button" className="btn btn-segundo" onClick={this.fileUploadHandler} >subir</button> este metodo hay que agregarlo al boton crear cuenta creo*/} 
-            </div>
-            
-
-
-
-            <div className='remember'>
-              <p>Al crear la cuenta estoy aceptando los
-             <a className="forgotPass" href={'/terminos'}> términos y condiciones</a></p>
-            </div>
-
-
-
-            <div className="right-container-signup">
+          <div className="righ-container">
               <input type="submit" className="btn-primero" value="Crear cuenta" />
              
-              {this.state.passwordsMissmatch && (
-                <p className="form-error">
-                  Las contreseñas no coinciden. Intenta de nuevo.
-                </p>
-              )}
-              {this.state.signUpFailed && (
-                <p className="form-error">
-                  Creación de usuario falló. Intenta de nuevo.
-                </p>
-              )}
-
-            </div>
-
-           
+                   {this.state.passwordsMissmatch && (
+                    <p className="form-error">
+                     Las contreseñas no coinciden. Intenta de nuevo.
+                    </p>
+                   )}
+                  {this.state.signUpFailed && (
+                    <p className="form-error">
+                      Creación de usuario falló. Intenta de nuevo.
+                      </p>
+                  )}
+              </div>
           </Form>
         </Formik>
       </div>
@@ -222,3 +216,4 @@ class SignUp extends Component {
 };
 
 export default SignUp;
+

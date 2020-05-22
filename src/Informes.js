@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import './Informes.css';
-// import avatar_1 from './avatars/avatar_1.svg';
-// import home from './icons/home.svg'
 import userServices from './services/userServices'
 
 // import { Redirect } from 'react-router'
@@ -41,7 +38,7 @@ class Informes extends Component {
         <div className="Body">
           
           <h3>Informes de uso de la plataforma</h3>
-          
+          <br></br>
           <div className="GraphicWrapper">
             {this.state.matchesPerMonth && <GraficoMatchesPorMes matchesPerMonth={this.state.matchesPerMonth} />}
           </div>

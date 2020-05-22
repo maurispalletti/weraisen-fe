@@ -3,8 +3,6 @@ import './Results.css';
 import './Estilos.css';
 import CardGuia from '../src/components/Card_Guia';
 import { Redirect } from 'react-router'
-// import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
-// import Backdrop from './components/navbar/backdrop/backdrop'
 import userServices from './services/userServices'
 import Header from '../src/components/Header'
 class Results extends Component {
@@ -38,7 +36,6 @@ class Results extends Component {
 
 
   async componentWillMount() {
-    // let filters = localStorage.getItem("filters");
     let filters = sessionStorage.getItem("filters");
     filters = JSON.parse(filters)
     await this.getGuides(filters)
@@ -50,6 +47,7 @@ class Results extends Component {
       return guides.map(guide => {
         const { id, firstName, lastName, age, city, languages, knowledge, description, gender } = guide
         return (
+          <div>
           <CardGuia
             key={id}
             guideId={id}
@@ -62,33 +60,19 @@ class Results extends Component {
             knowledge={knowledge}
             description={description}
           />
+          <br></br>
+            </div>
         )
       });
     }
   }
 
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-           return {sideDrawerOpen: !prevState.sideDrawerOpen};
-      });
-  };
 
-  backdropClickHandler = () => {
-    this.setState({sideDrawerOpen: false});
-  }
 
   render() {
     if (this.state.goToHome) {
       return <Redirect to="/search" />
     }
-
-    // let sideDrawer;
-    // let backdrop;
-   
-    // if (this.state.sideDrawerOpen) {
-    //   sideDrawer =<SideDrawer/>;
-    //   backdrop = <Backdrop click={this.backdropClickHandler}/>
-    // }
 
     return (
       <div className="Results">
@@ -97,12 +81,13 @@ class Results extends Component {
         <div className="BodyResults">
 
           <div className="Section">
-            <h2 style={{paddingBottom:"15px"}}>Seleccioná tu guía ideal</h2>
+            <h2 style={{paddingBottom:"15px"}}>Iniciá una conversación con tu guía preferido</h2>
             {this.renderGuides()}
           </div>
 
           <div className="Section">
-            <input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToHome: true })} />
+            <input type="button" className="btn-primero" value="Modificar algún filtro" onClick={() => this.setState({ goToHome: true })} />
+            <br></br>
           </div>
           {this.state.searchFailed && (
             <p className="form-error">La búsqueda de guías falló. Intentá de nuevo por favor.</p>

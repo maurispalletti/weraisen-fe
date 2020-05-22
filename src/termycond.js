@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import './termycond.css'
 
-// import logo from './icons/logo4.png'
-import Header from '../src/components/Header'
 import { Redirect } from 'react-router'
 
 class Terminos extends Component {
@@ -18,14 +15,13 @@ class Terminos extends Component {
     if (this.state.goToSignUp) {
       return <Redirect to="/SignUp" />}
     return (
-    <div>
-      <Header></Header>
+  
     
-      <div className="TyC">
+      <div style={{paddingTop:'30px', paddingBottom:'30px'}}>
         
          
-            <div align="justify">
-            <h1>Términos de uso </h1>
+            <div style={{paddingTop:'10px'}}align="justify">
+         
             <h2>¡Te damos la bienvenida a <b>WeRaisen </b>!</h2>
             <h3>1. Aceptación de los Términos de Uso.</h3>
             <article>
@@ -153,7 +149,7 @@ La Compañía puede investigar y tomar las acciones legales disponibles en respu
             <input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToSignUp: true })} />
       </div>
       </div>
-    </div>
+   
     )
   }
 };

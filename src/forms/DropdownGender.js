@@ -11,7 +11,7 @@ export default function DropdownGender(props) {
         {props.options && props.options.length > 0
           ? props.options.map(opt => {
             return (
-              <option key={opt.value} value={opt.value}>
+              <option   style={{color:'black'}} key={opt.value} value={opt.value}>
                 {opt.description}
               </option>
             )

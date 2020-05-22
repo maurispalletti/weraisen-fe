@@ -66,29 +66,34 @@ class Login extends Component {
               validationSchema={LoginSchema}
               onSubmit={(values) => this.loginUser(values)}>
               <Form>
-                <FieldWithError name="email" placeholder="Email" aria-label="username" className="input" autoComplete="off" />
-                <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" autoComplete="off" className="input" />
-                <div className="right-container">
-                  <input type="submit" className="btn-login" value="Ingresar" />
+               
+               <FieldWithError name="email"  aria-label="username" className="input" autocomplete="off" />
+               Email
+               <FieldWithError name="password" type="password" aria-label="password" autocomplete="off" className="input" />
+               Contraseña
+               <br></br>
+               <div className="right-container" style={{padding:"30px"}}>
+                 <input type="submit" className="btn-primero" value="Iniciar sesión" />
 
-                  {this.state.loginFailed && (
-                    <p className="form-error">
-                      Tu email y password no coinciden. Intenta de nuevo.
-                    </p>
-                  )}
+                 {this.state.loginFailed && (
+                   <p className="form-error">
+                     Tu email y password no coinciden. Intenta de nuevo.
+                   </p>
+                 )}
 
-                  <div className="signup">
-                    <p>¿Primera vez en WERAISEN? <a className="forgotPass" href={'/signup'}>Registrate ahora.</a></p>
-                  </div>
-                </div>
-              </Form>
-            </Formik>
-          </div>
+                 <div className="signup">
+                   <p>¿Primera vez en WERAISEN?</p> <p><a className="forgotPass" href={'/signup'}>Registrate ahora.</a></p>
+                 </div>
+               </div>
+             </Form>
+           </Formik>
+         </div>
 
-          <div className="continuar1"><a href="#WeRaisen" className=""><img className="imag" src={scroll1} alt={"WER"} width="60" /> </a></div>
-        </div>
-        <div id="WeRaisen">
-          <h2 className="index__section-title"><strong>WERAISEN</strong></h2>
+         <div className="continuar1"><a href="#WeRaisen" className=""><img className="imag" src={scroll1} alt={"WER"} width="50" /> </a></div>
+         </div>
+       <div id="WeRaisen">
+         <h1 className="index__section-title"><strong>WERAISEN</strong></h1>
+
 
 
           <div className="text"><p ><strong>
@@ -98,15 +103,15 @@ class Login extends Component {
             <p>
               <strong>WeRaisen</strong> es una plataforma que utiliza la tecnología para conectarte con <strong>expertos locales.</strong></p>
 
-            <p>Únicamente tenes que especificar a dónde queres ir, cuándo, qué queres hacer allí... </p>
-            <p>Y <strong>enviar una solicitud</strong> al guía que más te guste</p>
+            <p>Únicamente tenes que especificar a dónde queres ir, cuándo y qué queres hacer allí... </p>
+            <p>Luego, sólo deberás <strong>enviar una solicitud</strong> al guía que más te guste</p>
 
           </div>
           <div className="continuar"><a href="#Funcionamiento" className=""><img className="imag" src={scroll1} alt={"WER"} width="50" /> </a></div>
         </div>
 
         <div id="Funcionamiento">
-          <h2 className="index__section-title2" color="#9CD6AE">¿<strong>Cómo funciona</strong>?</h2>
+          <h1 className="index__section-title2" color="#9CD6AE">¿<strong>Cómo funciona</strong>?</h1>
           <div className="text"> <p>
             Elegí tu guía favorito y empeza un <strong>chat privado</strong>. </p>
             <p>Recibí recomendaciones personales de tu guía desde su experiencia por ser local y <strong>acordá un encuentro.</strong>

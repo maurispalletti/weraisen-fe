@@ -44,33 +44,34 @@ export default class Categorias extends Component {
 				<div className="fila">
 					<div className={this.state.elegidas.length > 0 && this.state.elegidas.includes('deportes') ? "ItemSeleccionado" : "ItemNoSeleccionado"} onClick={() => this.agregarCategoria("deportes")}>
 						<img alt={"Activity"} src={deporte} />
-						<h6 className="letra">Deportes</h6>
+						<h6>Deportes</h6>
 					</div>
 					<div className={this.state.elegidas.length > 0 && this.state.elegidas.includes('aventura') ? "ItemSeleccionado" : "ItemNoSeleccionado"} onClick={() => this.agregarCategoria("aventura")}>
 						<img alt={"Activity"} src={montañana} />
-						<h6 className="letra">Aventura y aire libre</h6>
+						<h6>Aventura y aire libre</h6>
 					</div>
 					<div className={this.state.elegidas.length > 0 && this.state.elegidas.includes('gastronomia') ? "ItemSeleccionado" : "ItemNoSeleccionado"} onClick={() => this.agregarCategoria("gastronomia")}>
 						<img alt={"Activity"} src={restaurant} />
-						<h6 className="letra">Gastronomía</h6>
+						<h6>Gastronomía</h6>
 					</div>
 				</div>
 				<div className="fila">
 					<div className={this.state.elegidas.length > 0 && this.state.elegidas.includes('cultura') ? "ItemSeleccionado" : "ItemNoSeleccionado"} onClick={() => this.agregarCategoria("cultura")}>
 						<img alt={"Activity"} src={cultura} />
-						<h6 className="letra">Cultura</h6>
+						<h6>Cultura</h6>
 					</div>
 					<div className={this.state.elegidas.length > 0 && this.state.elegidas.includes('shopping') ? "ItemSeleccionado" : "ItemNoSeleccionado"} onClick={() => this.agregarCategoria("shopping")}>
 						<img alt={"Activity"} src={shopping} />
-						<h6 className="letra">Shopping</h6>
+						<h6>Shopping</h6>
 					</div>
 					<div className={this.state.elegidas.length > 0 && this.state.elegidas.includes('noche') ? "ItemSeleccionado" : "ItemNoSeleccionado"} onClick={() => this.agregarCategoria("noche")}>
 						<img alt={"Activity"} src={cafe} />
-						<h6 className="letra">Vida nocturna</h6>
+						<h6>Vida nocturna</h6>
 					</div>
 				</div>
 			</div>
 
-		)
-	}
+    
+        )
+    }
 }

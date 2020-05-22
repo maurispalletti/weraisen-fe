@@ -62,6 +62,10 @@ width: 50%;
 border: 1px solid lightgoldenrodyellow;
 }
 
+.boton{
+    text-align:center;
+    padding-bottom: 15px;
+}
 
 
 .buttonSection{

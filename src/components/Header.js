@@ -14,19 +14,20 @@ import Logo from './navbar/logo4.png'
     <div className="collapse navbar-collapse" id="navbarColor01">
       <ul className="navbar-nav ml-auto">
         <li className="nav-item active">
-          <a className="nav-link ml-3" style={{color: 'white'}} href="/home">Home&nbsp;<i className="fas fa-home"></i> <span className="sr-only">(current)</span></a>
+          <a className="nav-link ml-3" style={{color: 'white'}} href="/home">Principal&nbsp;<i className="fas fa-home"></i> <span className="sr-only">(current)</span></a>
         </li>
         <li className="nav-item" >
-          <a className="nav-link ml-3"  style={{color: 'white'}} href="/search">Search</a>
+          <a className="nav-link ml-3"  style={{color: 'white'}} href="/search">Buscar guía</a>
         </li>
+       
         <li className="nav-item">
-          <a className="nav-link ml-3" style={{color: 'white'}} href="Profile">Perfil</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link ml-3"style={{color: 'white'}} href="/chats">Mis Chats</a>
+          <a className="nav-link ml-3"style={{color: 'white'}} href="/chats">Mis mensajes</a>
         </li>
         <li className="nav-item">
           <a className="nav-link ml-3" style={{color: 'white'}} href="/notificaciones">Notificaciones</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link ml-3" style={{color: 'white'}} href="/Profile">Mi perfil</a>
         </li>
       </ul>
       {/*<form className="form-inline my-2 my-lg-0">

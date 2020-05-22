@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CardNotificaciones from '../src/components/CardNotificacionesAAl';
-// import home from './icons/home.svg';
 import Header from '../src/components/Header';
 
 class Notificacion extends Component {
@@ -8,16 +7,13 @@ class Notificacion extends Component {
         return (
 
         <div>
+            <Header> </Header>
 
-            <div>
-                 <Header> </Header>
-            </div> 
-
-            <div className="notificacion">
-                <h1>Notificaciones</h1>
+            <div className="notificacion" style={{paddingTop:"30px"}}>
+                <h2>Mis notificaciones</h2>
             </div>
 
-            <div>
+            <div style={{paddingTop:"20px"}}>
               <CardNotificaciones></CardNotificaciones>
             </div>
         </div>
