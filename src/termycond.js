@@ -17,10 +17,10 @@ class Terminos extends Component {
     return (
   
     
-      <div>
+      <div style={{paddingTop:'30px', paddingBottom:'30px'}}>
         
          
-            <div align="justify">
+            <div style={{paddingTop:'10px'}}align="justify">
          
             <h2>¡Te damos la bienvenida a <b>WeRaisen </b>!</h2>
             <h3>1. Aceptación de los Términos de Uso.</h3>

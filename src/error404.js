@@ -13,7 +13,7 @@ class Error extends Component {
 
 <img src={logo} alt={"WeRaisen"} width="300" />
       <div className="princ">
-      <a href="/Home" className=""><input type="submit" className="btn-primero" value="Volver a la página de inicio" /> </a>
+      <a href="/Home" className=""><input type="submit" className="btn-primero" value="Volver al inicio" /> </a>
       </div>
     </div> 
       )

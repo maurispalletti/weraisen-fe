@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import './Informes.css';
 import userServices from './services/userServices'
 
-import { Redirect } from 'react-router'
+// import { Redirect } from 'react-router'
 
 import GraficoMatchesPorMes from './components/Grafico2barrasMatchesPorMes'
 
@@ -39,7 +38,7 @@ class Informes extends Component {
         <div className="Body">
           
           <h3>Informes de uso de la plataforma</h3>
-          
+          <br></br>
           <div className="GraphicWrapper">
             {this.state.matchesPerMonth && <GraficoMatchesPorMes matchesPerMonth={this.state.matchesPerMonth} />}
           </div>

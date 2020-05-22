@@ -64,42 +64,30 @@ export default class Card_Guia extends React.Component {
     const guiaSelec = this.props.guideId;
 
     return (
-        <div className="card col-sm-12 col-xs-12" style={{ maxWidth:'400px',margin:'0px auto'}}>
+        <div className="card col-sm-12 col-xs-12" style={{ maxWidth:'400px',margin:'0px auto', padding: '10px 10px 10px 10px'}}>
          
-         <div style={{ margin:'0px auto'}}> 
+        
 
-             <div style={{textAlign:"center"}}>
-              
-                <h4 style={{textAlign:"center", paddingTop:"10px"}}>{firstName} {lastName}</h4>
-                        
-                <img src={avatar} alt={`${firstName} ${lastName}`} style={{ float:"left", maxWidth:'100px', padding: "10px 0px 0px 20px"}}/>
+             <div>
+                <h3 style={{textAlign:"center", paddingTop:"10px"}}>{firstName} {lastName}, {age} años </h3>       
+                <img src={avatar} alt={`${firstName} ${lastName}`} style={{maxWidth:'100px'}}/>
              </div>
 
-                                      
-                 
-              
-              <div>
-                   <div className="card-body" style={{padding: '10px 10px 10px 10px', right:"auto",left: "auto", Width:'300px'}}>  
-                                        
-                        <p className="card-text" style={{textAlign:"left", Width:'100px'}}>Edad: {age} </p>
-                        <p className="card-text" style={{textAlign:"left", Width:'100px'}}>Ciudad: {city}</p>
-                        <p className="card-text" style={{textAlign:"left", Width:'100px'}}>Descripción: {description}</p>
-                        <p className="card-text" style={{textAlign:"left", Width:'100px'}}>Idiomas: {languagesString}</p>
-                        {this.state.show && <div className="GuideText">Descripción: {description}</div>}
-                        {this.state.show && <div className="GuideText">Conocimientos: {knowledgeString}</div>}
-                        
-                   </div>
-               </div>
+             
+              <div className="card-body" style={{padding: '10px 10px 10px 10px', Width:'300px'}}>  
+                  <h4 style={{textAlign:"center", fontWeight:'lighter'}}>{description}</h4>
+                  <h4 style={{textAlign:"center", fontWeight:'lighter'}}>Idiomas: {languagesString}</h4>
+              </div>
+                   <a href="/guideView" className="lead" style={{cursor:'pointer', fontSize:' 16px'}} onClick={() => this.guardarGuia(guiaSelec)}>Ver perfil</a>
+
 
                <div className="row mb-2">
                            <div className="center">
-                              <Button variant="primary" value={"Iniciar chat"} size="sm" style={{textAlign:"left"}}  onClick={() => this.goToChat()}> Iniciar Chat </Button>
-                              
-                              <div> <p><a href="/guideView" className="lead"  onClick={() => this.guardarGuia(guiaSelec)}>Ver más</a></p> </div> 
+                              <Button variant="primary" size="sm" style={{background:'#d48e4b', paddingTop:'5px'}}  onClick={() => this.goToChat()}> Iniciar Conversación </Button>
                             </div> 
                </div>
             </div>   
-        </div>
+
                
       )
     }

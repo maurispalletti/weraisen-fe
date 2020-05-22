@@ -56,12 +56,10 @@ class Login extends Component {
           <div className="logo"><img src={logo} alt={"WeRaisen"} width="200" /></div>
           <div className="eslogan">
             <strong><span className="colorfondo">
-              <h3></h3>
-              <h4></h4>
-              <h7> Viajá. Conocé. Viví una experiencia única.</h7>
+              Viajá. Conocé. Viví una experiencia única.
             </span> </strong>
           </div>
-  <br></br>
+          <br></br>
           <div className="Login">
             <Formik
               initialValues={INITIAL_VALUES}
@@ -102,7 +100,6 @@ class Login extends Component {
 
             ¿Alguna vez has estado en una ciudad por primera vez y deseaste tener un guía amigo?
                 </strong></p>
-            <h3></h3>
             <p>
               <strong>WeRaisen</strong> es una plataforma que utiliza la tecnología para conectarte con <strong>expertos locales.</strong></p>
 
@@ -124,10 +121,7 @@ class Login extends Component {
             <p>Tu guía también te calificará.</p><p>
               De esta forma, podras ayudar a <strong>futuros turistas</strong> a elegir la mejor opción.
                 </p>
-            <p>
             <div className="continuar2"><a href="#Inicio" className=""><img className="imag" src={scroll2} alt={"WER"} width="50" /> </a></div>
-
-            </p>
           </div>
         </div>
 

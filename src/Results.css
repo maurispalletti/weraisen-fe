@@ -1,8 +1,6 @@
 .Results {
-  
-   background: #272B30;
+  background-color: rgb(44, 43, 43);
   height: 100vh;
-  
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -20,87 +18,8 @@
   align-items: center;
 }
 
-.ResultsButton {
-  background: #d48e4b;
-  border: 0;
-  width: 250px;
-  height: 40px;
-  border-radius: 3px;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-}
-.ResultsButton:hover {
-  background: #7dca96;
-}
-.GuideCard {
-  display: flex;
-  flex-direction: row;
-  background-color: white;
-  border-radius: 12px;
-  border: none;
-  color: white;
-  padding: 15px 0;
-  text-align: center;
-  text-decoration: none;
-  align-items: center;
-  font-size: 16px;
-}
 
-.GuideCard2 {
-  background-color: white;
-  border-radius: 12px;
-  border: none;
-  color: white;
-  align-items: center;
-  font-size: 16px;
-  width: 80vw;
-  margin-left: 10vw;
-  margin-right: 10vw;
-  margin-bottom: 10px;
-}
-
-.buttonCardGuia {
-  padding-bottom: 20px;
-}
-
-.ImageCard {
-  position: relative;
-  top: 20%;
-  right: -3%;
-  width: 8vh;
-  height: 8vh;
-  background-color: white;
-}
-
-.GuideCardText {
-  font-weight: 600;
-  text-align: left;
-  margin: 10px 0 0 20px;
-  width: 70%;
-  color: black;
-}
-
-.GuideNameText {
-  margin-bottom: 5px;
-  font-weight: bolder;
-}
-.GuideText {
-  margin-bottom: 10px;
-}
-
-.botonsGuideCard{
-  align-content: center;
-  left: 40;
-  color: white;
-  background-color: #f7913c;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: bold;
-}
 .Section{
-  text-align: center;
-  
+
+  padding:5px
 }

@@ -1,38 +1,10 @@
-.Valoration {
 
-   
-  background: #2f313d;
- height: 100vh;
-
- flex-direction: column;
- align-items: center;
- justify-content: center;
- font-size: calc(10px + 2vmin);
- color: #9999a1;
- font-family: sans-serif;
- overflow: hidden;
- position:relative ; 
- text-align: center;
-}
 
 
 .BodyValoration{
-  
   padding-top: 5vh;
 overflow: scroll; 
 align-items: center;
-}
-.descripcion-input{
-  width: 325px;
-  margin: 5px 2px;
-  height:30px;
-  padding: 20px 0px;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  outline: none;
-  color: #e4e4e4;
-  font-size: 13px;
 }
 
 
@@ -42,18 +14,28 @@ align-items: center;
   text-align: center;
 }
 
-
-.ValorationButton {
-  background: #d48e4b;
-  border: 0;
-  width: 250px;
-  height: 40px;
-  border-radius: 3px;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
+.descriptionSection{
+  margin: 0 10vw;
+  align-content: center;
+  text-align: center;
 }
 
-.ValorationButton:hover {
-  background: #7dca96;
+.buttonsSectionValoration{
+text-align:center;
+
+left: 4rem;
+display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.hola{
+  position:absolute;
+  bottom:   15px;
+
+}
+
+.descriptionSection{
+  
 }

@@ -6,8 +6,9 @@
  align-items: center;
  justify-content: center;
  font-size: calc(10px + 2vmin);
- color: #696970;
- font-family: sans-serif;
+ color:rgba(255,255,255,0.8);
+
+ 
  overflow: scroll;
  font-size: 13px;
     
@@ -20,20 +21,22 @@ justify-items: center;
   }
   
 .idioma-input{
-  width: 125px;
-   
-
     background: transparent;
     border: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.267);
     outline: none;
-    color: #e4e4e4;
-    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    font-family: 'Lato',sans-serif !important;
 }
 
-  .BodyGuide {
-    padding-top: 5vh;
+  .BodyGuideP {
+
   overflow: scroll; 
+  padding:15px;
+  align-items: center;
+  width: 100%;
+
   }
 
 
@@ -106,7 +109,6 @@ justify-items: center;
     width: 80vw;
     height: 40px;
     text-align: center;
-    font-weight: bold;
     border-radius: 12px;
     padding: 2px;
   }

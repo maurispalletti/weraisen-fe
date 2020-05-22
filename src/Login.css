@@ -17,9 +17,9 @@ padding-top:0px;
 .signup {
 
   display: block;
-  font-size: 15px;
+
  color: #b2b8be;
- padding-top:10px;
+ padding-top:0px;
 }
 
 
@@ -28,7 +28,6 @@ padding-top:0px;
   display: block;
   font-size: 12px;
   text-align: center;
-  font-weight: bold;
   color: #6d7781;
 }
 
@@ -125,7 +124,7 @@ padding-top:0px;
 
 .continuar1{
   position:center;
-  padding-top: 3vmax;
+  padding-top:0px;
 }
 
 .continuar2{

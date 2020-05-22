@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Card_Chats from './Card_Chats.js';
 import img1 from '../Imagenes_Alvo/448.png';
 import img2 from '../Imagenes_Alvo/006.png';
@@ -9,8 +9,8 @@ import img6 from '../Imagenes_Alvo/254.png';
 import '../components/CardChats.css'
 
 class CardsChats extends Component {
-    render() {
-        return (
+	render() {
+		return (
 
             <div>
                   <div className="center">
@@ -38,9 +38,9 @@ class CardsChats extends Component {
                            
                     </div>
 
-            </div>
+			</div>
 
-        );
-    }
-    }
-    export default CardsChats;
+		);
+	}
+}
+export default CardsChats;

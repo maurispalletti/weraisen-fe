@@ -25,18 +25,14 @@ render() {
    
       
     <h2> Perfil Administrador</h2>
-    
+    <br></br>
     <Tabs 
     active = {this.state.active} 
     onChange = {active => this.setState({active})}
     >
-
-      
-      <div key="aTAB"> Informes estadísticos </div> 
+      <div key="aTAB"> Estadísticas </div> 
       <div key="bTAB"> Gestión de denuncias </div> 
       <div key="cTAB"> Gestión de usuarios </div> 
-     
-
     </Tabs>
    
   

@@ -86,7 +86,7 @@
 
 .GuideNameText {
   margin-bottom: 5px;
-  font-weight: bolder;
+
 }
 .GuideText {
   margin-bottom: 10px;
@@ -100,9 +100,7 @@
   border: none;
   padding: 10px 20px;
   border-radius: 12px;
-  text-decoration: none;
-  font-weight: bold;
-}
+  text-decoration: none;}
 
 .disabledButtonMatchCard{
   align-content: center;
@@ -112,5 +110,5 @@
   padding: 10px 20px;
   border-radius: 12px;
   text-decoration: none;
-  font-weight: bold;
+
 }

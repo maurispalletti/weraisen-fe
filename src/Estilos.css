@@ -52,6 +52,7 @@ h6{
   color: white;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
+  font-size: inherit;
 }
 .btn-segundo {
   /*background: rgb(78, 108, 96);+*/
@@ -82,7 +83,7 @@ p {
   .input {
 
     width: 250px;
-    padding: 20px 0px;
+    padding: 10px 0px;
     background: transparent;
     border: 0;
     font-family: 'Lato',sans-serif !important;
