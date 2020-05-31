@@ -55,11 +55,13 @@ export default class Card_Guia extends React.Component {
       return <Redirect to={`/guideView`}/>
     }*/
 
-    const { firstName, lastName, city, age, gender, languages, knowledge, description} = this.props;
+    // const { firstName, lastName, city, age, gender, languages, knowledge, description} = this.props;
+
+    const { firstName, lastName, age, gender, languages, description} = this.props;
     const avatar = gender === 'Femenino' ? avatar_woman_1 : avatar_man_1;
 
     const languagesString = languages.join(', ')
-    const knowledgeString = knowledge.join(', ')
+    // const knowledgeString = knowledge.join(', ')
 
     const guiaSelec = this.props.guideId;
 

@@ -54,7 +54,7 @@ class Matches extends Component {
     }
   }
 
-  async componentWillMount() {
+  async UNSAFE_componentWillMount() {
     await this.getMatches()
   }
 

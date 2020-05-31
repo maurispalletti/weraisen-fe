@@ -21,7 +21,7 @@ import Logo from './navbar/logo4.png'
         </li>
        
         <li className="nav-item">
-          <a className="nav-link ml-3"style={{color: 'white'}} href="/chats">Mis mensajes</a>
+          <a className="nav-link ml-3"style={{color: 'white'}} href="/matches">Mis mensajes</a>
         </li>
         <li className="nav-item">
           <a className="nav-link ml-3" style={{color: 'white'}} href="/notificaciones">Notificaciones</a>
