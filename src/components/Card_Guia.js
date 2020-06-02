@@ -83,7 +83,7 @@ export default class Card_Guia extends React.Component {
 
                <div className="row mb-2">
                            <div className="center">
-                              <Button variant="primary" size="sm" style={{background:'#d48e4b', paddingTop:'5px'}}  onClick={() => this.goToChat()}> Iniciar Conversación </Button>
+                              <Button variant="primary" size="sm" style={{background:'#d48e4b', paddingTop:'5px'}}  onClick={() => this.goToChat()}> Enviar solicitud </Button>
                             </div> 
                </div>
             </div>   

@@ -107,7 +107,7 @@ class Login extends Component {
             <p>Luego, sólo deberás <strong>enviar una solicitud</strong> al guía que más te guste</p>
 
           </div>
-          <div className="continuar"><a href="#Funcionamiento" className=""><img className="imag" src={scroll1} alt={"WER"} width="50" /> </a></div>
+          <div className="continuar"><a href="#Funcionamiento"><img className="imag" src={scroll1} alt={"WER"} width="50" /> </a></div>
         </div>
 
         <div id="Funcionamiento">
@@ -121,7 +121,7 @@ class Login extends Component {
             <p>Tu guía también te calificará.</p><p>
               De esta forma, podras ayudar a <strong>futuros turistas</strong> a elegir la mejor opción.
                 </p>
-            <div className="continuar2"><a href="#Inicio" className=""><img className="imag" src={scroll2} alt={"WER"} width="50" /> </a></div>
+            <div className="continuar2"><a href="#Inicio"><img className="imag" src={scroll2} alt={"WER"} width="50" /> </a></div>
           </div>
         </div>
 

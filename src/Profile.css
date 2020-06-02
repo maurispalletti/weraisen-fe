@@ -10,32 +10,10 @@ padding-block-end: 10vh;
   
 }
 
-.buttonGuia{
-  background: #d48e4b;
-  border: 0;
-  width: 250px;
-  height: 40px;
-  border-radius: 3px;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-}
-
 .BodyProfile {
   /* padding-top: 5vh; */
   overflow: scroll; 
 }
-.button {
-  background: #d48e4b;
-  border: 0;
-  width: 250px;
-  height: 40px;
-  border-radius: 3px;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-}
-
 
 
 .cerrarSesion {
@@ -43,35 +21,6 @@ padding-block-end: 10vh;
 }
 
 
-.cancel-button {
-  color: white;
-  background-color: #f9aa68;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  font-size: 16px;
-  margin: 0px 5px;
-  border-radius: 12px;
-  width: 30vw;
-  height: 40px;
-  line-height: 40px;
-}
-
-.profileTitle {
-  color: white;
-  font-size: 25px;
-  margin: 40px 0 20px;
-}
-
-.profileData {
-  color: white;
-  display: flex;
-  flex-direction: column;
-}
 
 .guideSection {
   color:rgba(255,255,255,0.8);
@@ -132,9 +81,7 @@ padding-block-end: 10vh;
   width: 0;
   height: 0;
 }
-.h6{
 
-}
 .slider:before {
   position: absolute;
   content: "";
@@ -161,6 +108,14 @@ padding-block-end: 10vh;
 
 .slider.round {
   border-radius: 34px;
+}
+.anim:hover{
+  transform: scale(1.4,1.4);
+  -moz-transform: scale(1.4,1.4);
+  -o-transform: scale(1.4,1.4);
+  -ms-transform: scale(1.4,1.4);
+  -webkit-transform: scale(1.4,1.4);
+
 }
 
 .slider.round:before {
