@@ -68,6 +68,7 @@ class userServices {
 		}
 		return axios.post(url, body, { headers })
 	}
+
 	static async getReviews(guideUserId) {
 		const url = `${customUrl}/api/v1/reviews/user/${guideUserId}`
 		const headers = { 'Content-Type': 'application/json' }
@@ -185,6 +186,11 @@ class userServices {
 		return axios.get(url, { headers })
 	}
 
+	static async getNotifications(userId) {
+		const url = `${customUrl}/api/v1/notifications/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
 }
 
 export default userServices
