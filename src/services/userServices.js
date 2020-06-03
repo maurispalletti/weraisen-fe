@@ -68,11 +68,12 @@ class userServices {
 		}
 		return axios.post(url, body, { headers })
 	}
-	static async getReviews(guideUserId) {
-		const url = `${customUrl}/api/v1/reviews/user/${guideUserId}`
-		const headers = { 'Content-Type': 'application/json' }
-		return axios.get(url, { headers })
-	}
+
+	// static async getReviews(guideUserId) {
+	// 	const url = `${customUrl}/api/v1/reviews/user/${guideUserId}`
+	// 	const headers = { 'Content-Type': 'application/json' }
+	// 	return axios.get(url, { headers })
+	// }
 
 	static async getProfile(userId) {
 		const url = `${customUrl}/api/v1/users/${userId}`
@@ -117,7 +118,7 @@ class userServices {
 	}
 
 	static async getMatches(userId) {
-		const url = `${customUrl}/api/v1/matches/user/${userId}`
+		const url = `${customUrl}/api/v1/matches/users/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
