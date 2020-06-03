@@ -6,7 +6,6 @@ import './GuideView.css';
 import img2 from './icons/estrella.png';
 
 import userServices from './services/userServices'
-import Axios from 'axios';
 
 //const GuiaId = localStorage.getItem("DetalleGuia") /*este el el id del guia que selecciono en results */
 let userIdGuia
@@ -179,7 +178,7 @@ class GuideView extends Component {
                             <div className="PromedioEstrella">
                               <i><label for="promedio" id="promedio" class="col--2 col-form-label">4.5</label></i>
 
-                              <img style={{verticalAlign: "0", paddingLeft:'2px'}} src={img2} width={13}></img>
+                              <img alt='img2' style={{verticalAlign: "0", paddingLeft:'2px'}} src={img2} width={13}></img>
                               </div> 
                                                                            
                           </div>
