@@ -186,6 +186,11 @@ class userServices {
 		return axios.get(url, { headers })
 	}
 
+	static async getNotifications(userId) {
+		const url = `${customUrl}/api/v1/notifications/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
 }
 
 export default userServices
