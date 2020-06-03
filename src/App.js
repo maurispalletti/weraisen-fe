@@ -20,7 +20,8 @@ import Prueba from '../src/components/DenunciaPopUp';
 import Notificaciones from '../src/PerfilNotificaciones';
 import Chats from '../src/PerfilChats';
 import GuideView from './GuideView';
-import Error from '../src/error404'
+import Error from '../src/error404';
+import MyReviews from './MyReviews'
 
 
 const history = createBrowserHistory();
@@ -48,7 +49,8 @@ function App() {
       <Route exact path={'/notificaciones'} component={Notificaciones} />
       <Route exact path={'/chats'} component={Chats} />
       <Route exact path={'/guideView'} component={GuideView}/>
-      
+      <Route exact path={'/MyReviews'} component={MyReviews}/>
+
       <Route component={Error} />
       </Switch>
     </Router>
