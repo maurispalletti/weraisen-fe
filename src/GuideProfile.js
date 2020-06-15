@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
 import Header from '../src/components/Header'
-import Categorias from './components/Categorias'
 import BotonSombreado from './components/Boton_Sombreado'
 import DiasDisponible from './components/Dias_Disponible'
 

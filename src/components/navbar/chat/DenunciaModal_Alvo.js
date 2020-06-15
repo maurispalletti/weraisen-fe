@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Modal, Button, Row, Col, Form } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 
 class DenunciaModal_Alvo extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     return (
@@ -68,7 +68,7 @@ class DenunciaModal_Alvo extends Component {
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.onHide}>Guardar Cambios</Button>
-          <Button onClick={this.props.onHide}>Close</Button>          
+          <Button onClick={this.props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
     );

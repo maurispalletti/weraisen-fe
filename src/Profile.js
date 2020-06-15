@@ -36,6 +36,7 @@ class Profile extends Component {
     notLoggedInUser: false,
     editable: false,
     goToGuideProfile: false,
+    goToMyReviews: false,
     initialValues: null,
     isActiveGuide: false,
     knowledge: [],
@@ -129,12 +130,17 @@ class Profile extends Component {
   estadoGuia = () => {
     this.setState({ isActiveGuide: !this.state.isActiveGuide });   
   }
+
+ 
   render() {
     if (this.state.goToHome) {
       return <Redirect to="/home" />
     }
     if (this.state.goToGuideProfile) {
       return <Redirect to="/guide" />
+    }
+    if (this.state.goToMyReviews) {
+      return <Redirect to="/MyReviews" />
     }
 
     if (this.state.initialValues) {
@@ -176,6 +182,10 @@ class Profile extends Component {
                   </div>
 
                 </div>
+                <br></br>
+                <a href="/MyReviews" className="lead" style={{cursor:'pointer', fontSize:' 16px'}} onClick={() => this.setState({ goToMyReviews: true })}>Ver valoraciones</a>
+              
+
                 <div className="guideSection">
                   {this.state.knowledge && this.state.knowledge.length > 0 } 
                   <div className="be-guide">

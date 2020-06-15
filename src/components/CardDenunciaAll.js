@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import CardDenuncia from './CardDenuncia';
-import img1 from '../avatars/Icon.jpg';
-import img2 from '../avatars/Icon2.jpg';
+
 import img3 from '../avatars/icon3.jpg';
 
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import { Fragment } from 'react';
 import CardGuiaHome from './components/Card_Guia_Home';
-import CardGuiaResultados from './components/Card_GuiaResultados';
 import userServices from './services/userServices';
 import principal from './icons/principal.svg'
 
@@ -40,8 +39,8 @@ class Home extends Component {
 			gender,
 			city,
 			email,
-			isActiveGuide,
-			knowledge,
+			// isActiveGuide,
+			// knowledge,
 		  } = await this.getProfile()
 
 		const initialValues = {
