@@ -127,14 +127,8 @@ class Profile extends Component {
 
     this.setState({ initialValues, isActiveGuide, knowledge })
   }
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen };
-    });
-  };
-
-  backdropClickHandler = () => {
-    this.setState({ sideDrawerOpen: false });
+  estadoGuia = () => {
+    this.setState({ isActiveGuide: !this.state.isActiveGuide });   
   }
 
  
@@ -174,20 +168,14 @@ class Profile extends Component {
                   </div>
                   <div className="title">
                     <FieldWithError disabled={!this.state.editable} name="age" placeholder="Edad" aria-label="age" className="input" />
-                    Edad
+                    Fecha de nacimiento
                   </div>
-                  <div className="title">
-                    <FieldWithError disabled={!this.state.editable} name="identification" placeholder="DNI / Pasaporte / ID" aria-label="identification" className="input" />
-                  Número de documento
-                  </div>
+                
                   <div className="title">
                   <DropdownGender disabled={!this.state.editable} name="gender" styleName={"input"} options={genders} />
-                  Sexo
+                  Género
                   </div>
-                  <div className="title">
-                    <FieldWithError disabled={!this.state.editable} name="city" placeholder="Ciudad de residencia" aria-label="city" className="input" />
-                  Ciudad de residencia
-                  </div>
+               
                   <div className="title">
                     <FieldWithError disabled={!this.state.editable} name="email" placeholder="Email" aria-label="email" className="input" />
                   Email
@@ -199,14 +187,17 @@ class Profile extends Component {
               
 
                 <div className="guideSection">
-                  {this.state.knowledge && this.state.knowledge.length > 0 && <div className="be-guide">
+                  {this.state.knowledge && this.state.knowledge.length > 0 } 
+                  <div className="be-guide">
                    Mostrarme activo 
                       <label class="switch">
-                      <input type="checkbox" checked={this.state.isActiveGuide} disabled={!this.state.editable} />
+                      <input type="checkbox" checked={this.state.isActiveGuide} onClick={() => this.estadoGuia()} />
                       <span class="slider round"></span>
                     </label>
-                  </div>}
+                  </div>
                 </div>
+                <br></br>
+              
 
                 <div className="buttonsSectionGuia">
                   <input type="button" className="btn-primero"

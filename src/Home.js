@@ -3,6 +3,7 @@ import Header from './components/Header';
 import { Fragment } from 'react';
 import CardGuiaHome from './components/Card_Guia_Home';
 import userServices from './services/userServices';
+import principal from './icons/principal.svg'
 
 class Home extends Component {
 	state = {
@@ -119,9 +120,12 @@ console.log(initialValues);
 
 
 				<h2 style={{marginTop: '20px'}}>¡Hola, {this.state.initialValues.firstName}!</h2>
-				<div className='m-auto'>
-				<h4>Comenzá tu experiencia buscando <a href="/search"><i style={{color:"#f9aa68"}}>al guía ideal</i> </a></h4>
+				<div className='m-auto' style={{paddingLeft:"10px", peddingRight:"10px"}}>
+				<h4 style={{ lineHeight: 1.5, marginLeft:"10px"}}>Encontrá a tu guía ideal para que te acompañe en tu recorrido y así vivir una experiencia única</h4>
 				</div>
+				<div className="" style={{alignItems:"center", paddingTop:'10px'}}>
+				<a href="/search"><input type="submit" className="btn-primero" value="Comenzá tu experiencia"  style={{display:"block", margin:"auto"}}/>
+				</a></div>
 				<hr />
 					<div className='ml-auto'>
 						<h3 style={{marginTop: '20px'}}>Testimonios de guías</h3>
