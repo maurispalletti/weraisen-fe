@@ -73,19 +73,6 @@ class Matches extends Component {
     }
   }
 
-  componentDidMount() {
-    this.getMatches()
-  }
-
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen };
-    });
-  };
-
-  backdropClickHandler = () => {
-    this.setState({ sideDrawerOpen: false });
-  }
 
   render() {
     if (this.state.goToHome) {

@@ -16,9 +16,7 @@ class Notificacion extends Component {
 	getNotifications = async () => {
 		try {
 			const userId = localStorage.getItem("userId");
-			const response = await userServices.getNotifications(userId);
-
-			if (response && response.data) {
+			const response = await userServices.getNotifications(userId);			if (response && response.data) {
 				this.setState({ notificacions: response.data, loading: false })
 			}
 		} catch (error) {
@@ -48,6 +46,13 @@ class Notificacion extends Component {
 				)
 			});
 		}
+		else {
+			return (
+				<div className="notificacion" style={{ paddingTop: "30px" }}>
+						<h2>Aún no tenes ninguna notificación.</h2>
+					</div>
+			)
+		}
 	}
 
 
@@ -61,7 +66,7 @@ class Notificacion extends Component {
 				<div>
 					<Header />
 					<div className="notificacion" style={{ paddingTop: "30px" }}>
-						<h2>Cargando notificaciones...</h2>
+						<h2>Cargando tus notificaciones...</h2>
 					</div>
 				</div>
 			)
@@ -71,7 +76,10 @@ class Notificacion extends Component {
 					<div>
 						<Header />
 						<div className="notificacion" style={{ paddingTop: "30px" }}>
-							<h2>Ups fallo el servicio de notificaciones</h2>
+						La búsqueda de notificaciones falló. Intentá de nuevo por favor.
+							<p className="form-error">
+                     
+                   </p>
 						</div>
 					</div>
 				)
@@ -80,7 +88,7 @@ class Notificacion extends Component {
 					<div>
 						<Header />
 						<div className="notificacion" style={{ paddingTop: "30px" }}>
-							<h2>Mis notificaciones</h2>
+							<h2>Notificaciones</h2>
 						</div>
 						<div style={{ paddingTop: "20px" }}>
 							{this.renderNotifications()}
