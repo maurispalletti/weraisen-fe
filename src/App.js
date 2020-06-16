@@ -9,7 +9,6 @@ import GuideProfile from './GuideProfile';
 import Valoration from './Valoration';
 import Chat from './Chat';
 import Informe from './Informes';
-import Matches from './Matches';
 import Terminos from './termycond'
 import Filtros from './Search'
 
@@ -18,7 +17,7 @@ import Home from './Home';
 import Admin from './AdminProfile';
 import Prueba from '../src/components/Grafico2barrasSexoCiudad';
 import Notificaciones from '../src/PerfilNotificaciones';
-import Chats from '../src/PerfilChats';
+import Matches from '../src/Matches';
 import GuideView from './GuideView';
 import Error from '../src/error404';
 import MyReviews from './MyReviews'
@@ -47,7 +46,6 @@ function App() {
       <Route exact path={'/prueba'} component={Prueba} />
       <Route exact path={'/filters'} component={Filtros} />
       <Route exact path={'/notificaciones'} component={Notificaciones} />
-      <Route exact path={'/chats'} component={Chats} />
       <Route exact path={'/guideView'} component={GuideView}/>
       <Route exact path={'/MyReviews'} component={MyReviews}/>
 
