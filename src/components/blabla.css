@@ -1,0 +1,29 @@
+.container { 
+    display: flex;
+    justify-content: space-around; 
+}
+
+.contenedor {
+    border: black;
+    border-radius: 12px;
+}
+
+.dni-info {
+    width: 40%;
+}
+
+.frente { 
+    margin:right;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 40%;
+
+}
+.frente-imagen {
+    max-width: 100px;
+    max-height: 100px;
+}
