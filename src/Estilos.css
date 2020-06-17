@@ -1,67 +1,119 @@
-
 h2 {
-    color: #f9aa68;
-    font-size: 15px;
+  color: #f9aa68;
+  font-size: 22px !important; 
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: 'Lato', sans-serif !important;
+}
+
+h3 {
+  color: #f9aa68;
+  font-size: 19px !important; 
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: 'Lato', sans-serif !important;
+}
+
+h4 {
+color:rgba(255,255,255,0.8);
+  font-size: 17px !important; 
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: 'Lato', sans-serif !important;
+}
+
+h5 {
+  color:rgba(255,255,255,0.8);
+  font-size: 15px !important; 
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: 'Lato', sans-serif !important;
+}
+h6{
+ 
+  font-size: 15px !important; 
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: 'Lato', sans-serif !important;
+}
+
+.btn-primero {
+  background: #d48e4b!important;
+  border: 0;
+  font-family: 'Lato', sans-serif !important;
+  width: 250px;
+  height: 40px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  font-size: inherit;
+}
+.btn-segundo {
+  /*background: rgb(78, 108, 96);+*/
+  
+  font-family: 'Lato', sans-serif !important;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  outline-color: rgba(255,255,255,0.04);
+  
+    }
+    .btn-tercero {
+      background: #d37d37!important;
+      border: 0;
+      font-family: 'Lato', sans-serif !important;
+      width: 125px;
+      height: 40px; ;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out;
+    }
+p {
+
+  font-family: 'Lato', sans-serif !important;
+  margin: 10px !important;;
+  }
+  .input {
+
+    width: 250px;
+    padding: 10px 0px;
+    background: transparent;
+    border: 0;
+    font-family: 'Lato',sans-serif !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.267);
+    outline:rgba(255, 255, 255, 0.267); 
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    overflow: scroll;
+
+  }
+  .input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    
+  }
+
+  @media screen and (min-width:800px) {
+    .login {
+      font-size:100%;
+      /* ampliamos los textos si mide más de 800px */
+    }
+  }
+
+
+  .form-error {
+
+    color: #e26a6a;
+    font-family: sans-serif;
+    font-size: 12px;
     font-weight: 600;
     text-align: center;
-    margin-bottom: 10px;
-    font-family: 'Lato', sans-serif !important;
+    margin-bottom: 11px;
   }
-  .btn-primero {
-    background: #d48e4b!important;
-    border: 0;
-    font-family: 'Lato', sans-serif !important;
-    width: 250px;
-    height: 40px;
-    border-radius: 6px;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
-  }
-  .btn-segundo {
-    /*background: rgb(78, 108, 96);+*/
-    
-    font-family: 'Lato', sans-serif !important;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
-    outline-color: rgba(255,255,255,0.04);
-    
-      }
-      .btn-tercero {
-        background: #d37d37!important;
-        border: 0;
-        font-family: 'Lato', sans-serif !important;
-        width: 125px;
-        height: 40px; ;
-        border-radius: 6px;
-        color: white;
-        cursor: pointer;
-        transition: background 0.3s ease-in-out;
-      }
-  p {
   
-    font-family: 'Lato', sans-serif !important;
-    
-    }
-    .input {
-
-      width: 250px;
-      padding: 25px 0px;
-      background: transparent;
-      font-family: 'Lato',sans-serif !important;
-      border: 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      outline: none;
-      color: #696970;
-      font-size: 16px;
-      overflow: scroll;
-      
-    }
-
-    @media screen and (min-width:800px) {
-      .login {
-        font-size:100%;
-        /* ampliamos los textos si mide más de 800px */
-      }
-    }

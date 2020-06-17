@@ -18,6 +18,7 @@
      font-size: 13px;
      margin:10px;
      border-radius: 4px;
+     color: black
   }
 
   .ItemNoSeleccionado {
@@ -29,6 +30,7 @@
     padding:5px;
     height: 120px;
     margin:10px;
+    color: #f9aa68
   }
 
   .ItemNoSeleccionado:hover{

@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import './Profile.css';
 import './Estilos.css';
-import avatar_1 from './avatars/avatar_1.svg';
-import home from './icons/home.svg';
 import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 // import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
+import Header from '../src/components/Header'
 
 import { ProfileSchema } from './helpers/validators'
 import userServices from './services/userServices'
 import Buttom from './components/Boton.js'
 import DropdownGender from './forms/DropdownGender'
-import Toolbar from './components/navbar/toolbar'
-import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
-import Backdrop from './components/navbar/backdrop/backdrop'
+
 
 const genders = [
   {
@@ -39,6 +36,7 @@ class Profile extends Component {
     notLoggedInUser: false,
     editable: false,
     goToGuideProfile: false,
+    goToMyReviews: false,
     initialValues: null,
     isActiveGuide: false,
     knowledge: [],
@@ -99,7 +97,7 @@ class Profile extends Component {
   }
 
   async componentDidMount() {
-    const  {
+    const {
       firstName,
       lastName,
       age,
@@ -129,15 +127,11 @@ class Profile extends Component {
 
     this.setState({ initialValues, isActiveGuide, knowledge })
   }
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-           return {sideDrawerOpen: !prevState.sideDrawerOpen};
-      });
-  };
-
-  backdropClickHandler = () => {
-    this.setState({sideDrawerOpen: false});
+  estadoGuia = () => {
+    this.setState({ isActiveGuide: !this.state.isActiveGuide });   
   }
+
+ 
   render() {
     if (this.state.goToHome) {
       return <Redirect to="/home" />
@@ -145,66 +139,76 @@ class Profile extends Component {
     if (this.state.goToGuideProfile) {
       return <Redirect to="/guide" />
     }
-    let sideDrawer;
-    let backdrop;
-   
-    if (this.state.sideDrawerOpen) {
-      sideDrawer =<SideDrawer/>;
-      backdrop = <Backdrop click={this.backdropClickHandler}/>
-
+    if (this.state.goToMyReviews) {
+      return <Redirect to="/MyReviews" />
     }
 
     if (this.state.initialValues) {
       return (
-        <div className="Profile">
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
-        {sideDrawer}
-        {backdrop}
-          <div className="BodyProfile">
+        <div className="Profile" >
+     <Header></Header>
+          <div className="BodyProfile" style={{ marginTop: '15px', marginBottom: '15px' }}>
             <Formik
               // setear initial values con el did mount o will mount llamando al get
               initialValues={this.state.initialValues}
               validationSchema={ProfileSchema}
               onSubmit={(values) => this.updateProfile(values)}>
-              
+
               <Form>
-                <div className="profileData">
-                <h2>Hola {this.state.initialValues.firstName}!</h2>
-                  <FieldWithError disabled={!this.state.editable} name="firstName" placeholder="Nombre" aria-label="name" className="input" />
-                  <FieldWithError disabled={!this.state.editable} name="lastName" placeholder="Apellido" aria-label="lastName" className="input" />
-                  <FieldWithError disabled={!this.state.editable} name="age" placeholder="Edad" aria-label="age" className="input" />
-                  <FieldWithError disabled={!this.state.editable} name="identification" placeholder="DNI / Pasaporte / ID" aria-label="identification" className="input" />
-                  <DropdownGender disabled={!this.state.editable} name="gender" styleName={"Dropdown-g"} options={genders} />
-                  <FieldWithError disabled={!this.state.editable} name="city" placeholder="Ciudad de residencia" aria-label="city" className="input" />
-                  <FieldWithError disabled={!this.state.editable} name="email" placeholder="Email" aria-label="email" className="input" />
-                  
+                <div className="profileData container-fluid">
+                  <h2>¡Hola, {this.state.initialValues.firstName}!</h2>
+
+                  <div className="title">
+                    <FieldWithError disabled={!this.state.editable} name="firstName" placeholder="Nombre" aria-label="name" className="input" />
+                  Nombre
+                  </div>
+                  <div className="title">
+                    <FieldWithError disabled={!this.state.editable} name="lastName" placeholder="Apellido" aria-label="lastName" className="input" />
+                    Apellido
+                  </div>
+                  <div className="title">
+                    <FieldWithError disabled={!this.state.editable} name="age" placeholder="Edad" aria-label="age" className="input" />
+                    Fecha de nacimiento
+                  </div>
+                
+                  <div className="title">
+                  <DropdownGender disabled={!this.state.editable} name="gender" styleName={"input"} options={genders} />
+                  Género
+                  </div>
+               
+                  <div className="title">
+                    <FieldWithError disabled={!this.state.editable} name="email" placeholder="Email" aria-label="email" className="input" />
+                  Email
+                  </div>
+
                 </div>
                 <br></br>
-                
-                <div class="custom-control custom-checkbox">
-                   <input type="checkbox" class="custom-control-input" id="salidaGrupal" />
-                   <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
-                </div>
+                <a href="/MyReviews" className="lead" style={{cursor:'pointer', fontSize:' 16px'}} onClick={() => this.setState({ goToMyReviews: true })}>Ver valoraciones</a>
+              
 
                 <div className="guideSection">
-                  {this.state.knowledge && this.state.knowledge.length > 0 && <div className="be-guide">
-                    Mostrarme activo:
+                  {this.state.knowledge && this.state.knowledge.length > 0 } 
+                  <div className="be-guide">
+                   Mostrarme activo 
                       <label class="switch">
-                      <input type="checkbox" checked={this.state.isActiveGuide} disabled={!this.state.editable} />
+                      <input type="checkbox" checked={this.state.isActiveGuide} onClick={() => this.estadoGuia()} />
                       <span class="slider round"></span>
                     </label>
-                  </div>}
+                  </div>
                 </div>
+                <br></br>
+              
 
                 <div className="buttonsSectionGuia">
-                  <input type="button" className="btn-primero" 
-                  value={this.state.isActiveGuide ? "Actualizar mis datos de guía" : "Quiero ser guía"}
+                  <input type="button" className="btn-primero"
+                    value={this.state.isActiveGuide ? "Actualizar mis datos de guía" : "Quiero ser guía"}
                     onClick={() => this.setState({ goToGuideProfile: true })} />
                 </div>
-<br></br>
+                <br></br>
                 <div class="btn-group" role="group">
-                  <input type="button" className="btn-tercero" value={this.state.editable ? "Cancelar" : "Editar"}
+                  <input type="button" className="btn-tercero" value={this.state.editable ? "Cancelar" : "Editar mis datos"}
                     onClick={() => this.toggleEditInfo()} />
+                    <br></br>
                   <input type="button" className="btn-tercero" value="Guardar" disabled={!this.state.editable} />
                 </div>
 

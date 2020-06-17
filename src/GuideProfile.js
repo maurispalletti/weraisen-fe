@@ -1,38 +1,17 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
 import Header from '../src/components/Header'
-import Categorias from './components/Categorias'
-import Boton_Sombreado from './components/Boton_Sombreado'
-import Dias_Disponible from './components/Dias_Disponible'
-
-import Alvoboton from './components/AlvoBoronSombreado'
-
-import Toolbar from './components/navbar/toolbar'
-import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
-import Backdrop from './components/navbar/backdrop/backdrop'
+import BotonSombreado from './components/Boton_Sombreado'
+import DiasDisponible from './components/Dias_Disponible'
 
 import './GuideProfile.css';
 
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import DropdownGender from './forms/DropdownGender'
-import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
 import { GuideProfileSchema } from './helpers/validators'
 import userServices from './services/userServices'
-import { FormCheckbox } from 'semantic-ui-react';
 
-const languages = [
-  { description: 'Español', value: 'Español' },
-  { description: 'Inglés', value: 'Inglés' },
-  { description: "Italiano", value: 'Italiano' },
-  { description: "Portugués", value: 'Portugués' }
-];
-const languages2 = [
-  { description: "Francés", value: 'Francés' },
-  { description: "Japonés", value: 'Japonés' },
-  { description: "Chino", value: 'Chino' },
-  { description: "Alemán", value: 'Alemán' }
-];
 const cities = [
   { value: "BuenosAires", description: 'Buenos Aires' },
   { value: "Córdoba", description: 'Córdoba' },
@@ -93,33 +72,18 @@ class GuideProfile extends Component {
     this.setState({ knowledge: values })
   }
 
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen };
-    });
-  };
 
-  backdropClickHandler = () => {
-    this.setState({ sideDrawerOpen: false });
-  }
   render() {
     if (this.state.goToProfile) {
       return <Redirect to="/Profile" />
     }
 
-    let sideDrawer;
-    let backdrop;
-    if (this.state.sideDrawerOpen) {
-      sideDrawer = <SideDrawer />;
-      backdrop = <Backdrop click={this.backdropClickHandler} />
-    }
-
     return (
       <div className="GuideProfile">
 
-        <Header></Header>
+<Header></Header>
       
-      <div className="BodyGuide">
+      <div className="BodyGuideP">
 
           <Formik
             initialValues={INITIAL_VALUES}
@@ -130,36 +94,36 @@ class GuideProfile extends Component {
               <div className="Section">
                 <div className="Seccion">
                   <h2>¡Describite para que otros te conozcan! </h2>
-                  <FieldWithError component={'textarea'} name="description" placeholder="Ingresa una breve descripción sobre vos" aria-label="description" className="descripcion-input" />
+                  <FieldWithError component={'input'} name="description" placeholder="Ingresá una breve descripción..." aria-label="description" className="input" />
                 </div>
                 <div className="Seccion">
-                  <h2>Cuidad de residencia:</h2>
-                  <DropdownGender name="city" styleName={"Dropdown-g"} options={cities} />
+                  <h2>Cuidad de residencia</h2>
+                  <DropdownGender name="city" styleName={"input"} options={cities} />
                 </div>
                 <div className="Seccion">
-                  <h2>Idiomas que manejás:</h2>
+                  <h2>Idiomas que manejás</h2>
 
                   <div className="container-fluid">
 
-                    <Boton_Sombreado onCategoryChange={this.handleCategory} />
+                    <BotonSombreado onCategoryChange={this.handleCategory} />
 
                   </div>
-                  <FieldWithError component={'textarea'} name="idioma" placeholder="Otro" aria-label="idioma" className="idioma-input" />
+                  <FieldWithError component={'input'} name="idioma" placeholder="Otro" aria-label="idioma" className="input" />
                 </div>
 
 
 
                 <div className="Seccion">
-                <h2>Días Disponibles:</h2>
+                <h2>Días disponibles</h2>
                 <div className="container-fluid">
 
-                  <Dias_Disponible onCategoryChange={this.handleCategory} />
+                  <DiasDisponible onCategoryChange={this.handleCategory} />
 
                 </div>
                 </div>
                 <div className="LastSection">
-                  <h2>Conocimientos que posees:</h2>
-                  <Categorias onCategoryChange={this.handleCategory} />
+                  <h2>Conocimientos que posees</h2>
+                  {/* <Categorias onCategoryChange={this.handleCategory} /> */}
                 </div>
                 <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input" id="salidaGrupal" />
@@ -167,9 +131,11 @@ class GuideProfile extends Component {
                 </div>
               </div>
               <div className="buttonsSection">
-                <input type="button" className="button" value="Cancelar" onClick={() => this.setState({ goToProfile: true })} />
+              
+
+                <input type="submit" className="btn-primero" value="Guardar" />
                 <br></br><br></br>
-                <input type="submit" className="button" value="Guardar" />
+                <input type="button" className="btn-primero" value="Cancelar" onClick={() => this.setState({ goToProfile: true })} />
               </div>
 
 

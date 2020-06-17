@@ -4,11 +4,6 @@ import Header from '../src/components/Header'
 import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 import { ReviewSchema } from './helpers/validators'
-import SideDrawer from './components/navbar/sideDrawer/sideDrawer'
-import Backdrop from './components/navbar/backdrop/backdrop'
-
-// import Rating from './components/rating/Rating.js'
-
 import './Valoration.css'
 
 import { Formik, Form } from 'formik'
@@ -61,28 +56,12 @@ class Valoration extends Component {
   updatePoints(value) {
     this.setState({ points: value })
   }
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-           return {sideDrawerOpen: !prevState.sideDrawerOpen};
-      });
-  };
-
-  backdropClickHandler = () => {
-    this.setState({sideDrawerOpen: false});
-  }
 
   render() {
     if (this.state.goToMatches) {
       return <Redirect to="/matches" />
     }
-    let sideDrawer;
-    let backdrop;
    
-    if (this.state.sideDrawerOpen) {
-      sideDrawer =<SideDrawer/>;
-      backdrop = <Backdrop click={this.backdropClickHandler}/>
-
-    }
     return (
       <div className="Valoration">
         <Header></Header>
@@ -90,6 +69,7 @@ class Valoration extends Component {
         <div className="BodyValoration">
           <div className="ratingSection">
             <h2>Puntuá a la persona que te acompañó en tu recorrido</h2>
+            <br></br>
             <div>
               <Rating {...this.props} initialRating={this.state.points}
                 emptySymbol={<img alt={"Activity"} src={starEmpty} />}
@@ -101,6 +81,9 @@ class Valoration extends Component {
                 Por favor selecciona la puntuación de tu acompañante
                 </p>
             )}
+            <br></br>
+            <br></br>
+            </div>
             <div className="descriptionSection">
               <h2>Añadí un comentario describiendo tu experiencia:</h2>
         
@@ -111,13 +94,20 @@ class Valoration extends Component {
                 <Form>
                   <FieldWithError name="description"
                     placeholder="Juan es excelente! Visitamos el museo Caraffa y supo explicarme todo! Muy agradecida."
-                    aria-label="description" component="textarea" className="descripcion-input" />
-                  <div className="buttonsSectionValoration">
-                    <input type="submit" className="ValorationButton" value={"Enviar"} />
-                  </div>
+                    aria-label="description"  className="input" />
+                    <br></br>
+                    <br></br>
+                   
+                    <div className="buttonsSectionValoration">
+              <div className="hola">
+                    <input type="submit" className="btn-primero" value={"Enviar"} />
+                    </div>
+              </div>
                 </Form>
               </Formik>
+             
             </div>
+        
             {this.state.reviewFailed && (
               <p className="form-error">
                 Ocurrió un error al tratar de guardar la valoración. Por favor intentá otra vez
@@ -125,7 +115,7 @@ class Valoration extends Component {
             )}
           </div>
         </div>
-      </div>
+
     )
   }
 };

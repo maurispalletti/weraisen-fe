@@ -1,12 +1,10 @@
 .Tabs {
     position: relative;
     display: inline-block;
-    margin-bottom: 3em;
+    margin-bottom: 20px;
     background:#696970;
     width: 97%;
-    border-radius: 12px;
-
-    
+    border-radius: 12px;   
 }
 
 

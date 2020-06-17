@@ -1,15 +1,25 @@
-import React from "react";
-import backdrop from "./navbar/backdrop/backdrop";
-import { Button } from "react-bootstrap";
-import "../components/blabla.css"
+import React from 'react';
+import '../components/blabla.css';
+import { Button } from 'react-bootstrap';
 
-const CardAceptarRechazar = (props) => {
-  return (
-    <div className="card col-sm-12 col-xs-12 d-flex" style={{ Width: "400px" }}>
-      <div className="info-container">
-      <div className="frente " >
-        Frente DNI
-        <img className='frente-imagen' src={props.imgsrc} />
+const CardAceptarRechazar = props => {
+
+  return(
+
+    <div style={{border: 'black 1px solid', maxWidth:'300px'}}> 
+ 
+      <div className="card-text-center">
+        <div className="overflow">
+          <img src= {props.imgsrc} alt='imag1' className="card-img"/>
+        </div>
+      <div className="card-body text-dark">
+        <h3 className="">{props.title}</h3>
+        <h4 className="">
+          {props.text}
+        </h4>
+        <div className= "btn btn-outline-success">Aceptar</div>
+      
+        <div className= "btn btn-outline-success">Rechazar</div>
       </div>
       <div className="frente">
         {" "}

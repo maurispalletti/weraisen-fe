@@ -35,12 +35,12 @@ export default class Desplegable extends React.Component {
 
   render() {
     return (
-      // <form onSubmit={this.handleSubmit}>
-        <div className="calendario"><label>
-          <input name="trip-start" min={this.state.min} value={this.state.value} onChange={this.handleChange} required type="date" />
+
+        <div><label>
+          <input  className="input" name="trip-start" min={this.state.min} value={this.state.value} onChange={this.handleChange} required type="date" />
         </label>
         </div>
-      // </form>
+
     );
   }
 }

@@ -19,7 +19,7 @@ let matchStatus;
 
 class Chat extends Component {
   state = {
-    goToHome: false,
+    goToMatches: false,
     searchFailed: false,
     ageValidationFailed: false,
     notLoggedInUser: false,
@@ -141,7 +141,7 @@ class Chat extends Component {
       } else {
         const status = 'Cancelado'
         await userServices.updateMatch(chatId, status)
-        this.setState({ goToHome: true })
+        this.setState({ goToMatches: true })
       }
     } catch (error) {
       console.error(`There was an error updating status`)
@@ -159,8 +159,8 @@ class Chat extends Component {
   }
 
   render() {
-    if (this.state.goToHome) {
-      return <Redirect to="/home" />
+    if (this.state.goToMatches) {
+      return <Redirect to="/Matches" />
     }
     if (this.state.goToProfile) {
       return <Redirect to="/profile" />
