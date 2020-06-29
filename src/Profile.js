@@ -167,7 +167,7 @@ class Profile extends Component {
                     Apellido
                   </div>
                   <div className="title">
-                    <FieldWithError disabled={!this.state.editable} name="birthDate" placeholder="Fecha de Nacimiento" aria-label="birthDate" className="input" />
+                    <FieldWithError disabled name="birthDate" placeholder="Fecha de Nacimiento" aria-label="birthDate" className="input" />
                     Fecha de nacimiento
                   </div>
                 

@@ -17,7 +17,8 @@ export function SignUpSchema () {
   return Yup.object().shape({
     firstName: Yup.string().required('Ingresa tu nombre'),
     lastName: Yup.string().required('Ingresa tu apellido'),
-    identification: Yup.string().required('Ingresa tu identificación'),
+    identification: Yup.string().required('Ingresa tu número de documento'),
+    birthDate: Yup.string().required('Ingresa tu fecha de nacimiento'),
     gender: Yup.string().required('Ingresa tu género'),
     email: Yup.string().required('Ingresa un email'),
     password: Yup.string().required('Ingresa una contraseña'),
