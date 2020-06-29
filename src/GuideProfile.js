@@ -3,7 +3,7 @@ import { Redirect } from 'react-router'
 import Header from '../src/components/Header'
 import BotonSombreado from './components/Boton_Sombreado'
 import DiasDisponible from './components/Dias_Disponible'
-
+import Categorias from './components/Categorias.js'
 import './GuideProfile.css';
 
 import { Formik, Form } from 'formik'
