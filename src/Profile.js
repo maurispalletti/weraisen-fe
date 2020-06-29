@@ -63,7 +63,7 @@ class Profile extends Component {
     }
   }
 
-  updateProfile = async ({
+  updateProfile = async ({ //agregar cambios para que se modifique la fecha de nacimiento, tambien en el be.
     firstName,
     lastName,
     identification,
@@ -100,7 +100,7 @@ class Profile extends Component {
     const {
       firstName,
       lastName,
-      age,
+      birthDate,
       identification,
       gender,
       city,
@@ -118,7 +118,7 @@ class Profile extends Component {
     const initialValues = {
       firstName,
       lastName,
-      age,
+      birthDate,
       identification,
       gender,
       city,
@@ -167,7 +167,7 @@ class Profile extends Component {
                     Apellido
                   </div>
                   <div className="title">
-                    <FieldWithError disabled={!this.state.editable} name="age" placeholder="Edad" aria-label="age" className="input" />
+                    <FieldWithError disabled={!this.state.editable} name="birthDate" placeholder="Fecha de Nacimiento" aria-label="birthDate" className="input" />
                     Fecha de nacimiento
                   </div>
                 

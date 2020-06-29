@@ -14,8 +14,7 @@ class userServices {
 		firstName,
 		lastName,
 		identification,
-		age,
-		city,
+		birthDate,
 		gender,
 		email,
 		password }) {
@@ -25,8 +24,7 @@ class userServices {
 			firstName,
 			lastName,
 			identification,
-			age,
-			city,
+			birthDate,
 			gender,
 			email,
 			password
