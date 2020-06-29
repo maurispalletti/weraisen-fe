@@ -123,7 +123,7 @@ class GuideProfile extends Component {
                 </div>
                 <div className="LastSection">
                   <h2>Conocimientos que posees</h2>
-                  <Categorias onCategoryChange={this.handleCategory} defaultSelected={this.state.knowledge}/> 
+                  <Categorias onCategoryChange={this.handleCategory} defaultSelected={this.state.knowledge}></Categorias>
                 </div>
                 <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input" id="salidaGrupal" />
