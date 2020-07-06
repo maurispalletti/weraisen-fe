@@ -23,54 +23,100 @@ const cities = [
 
 const INITIAL_VALUES = {
   description: '',
-  languages: [],
+  city:null,
+  groupwalk: false,
+  
 }
 
 class GuideProfile extends Component {
+  
   state = {
     goToProfile: false,
     updateFailed: false,
     notLoggedInUser: false,
+    initialValues: null,
     knowledge: [],
-  }
-
-  updateGuide = async ({ description, languages }) => {
-
-    try {
-      const userId = localStorage.getItem("userId");
-
-      const knowledge = this.state.knowledge
-
-      console.log(knowledge)
-
-      if (userId) {
-        const response = await userServices.updateGuide({
-          userId,
-          description,
-          languages,
-          knowledge,
-        })
-
-        console.log(response);
-
-        const { data: { id } } = response
-
-        console.log(id);
-
-        this.setState({ goToProfile: true, updateFailed: false, notLoggedInUser: false })
-      } else {
-        this.setState({ notLoggedInUser: true })
-      }
-    } catch (error) {
-      this.setState({ updateFailed: true })
-      console.error(`There was an error trying to update the guide`)
+    availableDays: [],
+    languages: [],
     }
-  }
+  
+    getProfile = async () => {
+      try {
+        const userId = localStorage.getItem("userId");
+        if (userId) {
+          const response = await userServices.getProfile(userId)
+  
+          return response.data;
+  
+        } else {
+          this.setState({ notLoggedInUser: true })
+        }
+      } catch (error) {
+        console.error(`There was an error trying to get the profile`)
+      }
+    }
+  
 
+    updateGuide = async ({ 
+      description,
+      city,
+      languages,
+      availableDays,
+      knowledge,
+      groupwalk,
+    }) => {
+      try {
+        const userId = localStorage.getItem("userId");
+        if (userId) {
+          const response = await userServices.updateGuide({
+            userId,
+            description,
+            city,
+            languages,
+            availableDays,
+            knowledge,
+            groupwalk,
+          })
+          console.log(response);
+          const { data: { id } } = response
+          console.log(id);
+
+         } else {
+          this.setState({ notLoggedInUser: true })
+        }
+      } catch (error) {
+        this.setState({ updateFailed: true })
+        console.error(`There was an error trying to update the guide profile`)
+      }
+    }
+  
+    async componentDidMount() {
+      const {
+        description,
+        city,
+        languages,
+        availableDays,
+        knowledge,
+        groupwalk,
+      } = await this.getProfile()
+  
+      const initialValues = {
+        description,
+        city,
+        groupwalk,
+      }
+  
+      this.setState({ initialValues, languages, availableDays, knowledge })
+  }
+  
   handleCategory = (values) => {
     console.log(values)
     this.setState({ knowledge: values })
+    this.setState({availableDays: values})
+    this.setState({languages: values})
+    
   }
+  
 
 
   render() {
@@ -86,7 +132,7 @@ class GuideProfile extends Component {
       <div className="BodyGuideP">
 
           <Formik
-            initialValues={INITIAL_VALUES}
+            initialValues={this.state.initialValues}
             validationSchema={GuideProfileSchema}
             onSubmit={(values) => this.updateGuide(values)}>
             <Form>
@@ -98,7 +144,7 @@ class GuideProfile extends Component {
                 </div>
                 <div className="Seccion">
                   <h2>Cuidad de residencia</h2>
-                  <DropdownGender name="city" styleName={"input"} options={cities} />
+                  <DropdownGender name="city" styleName={"input"}  options={cities} />
                 </div>
                 <div className="Seccion">
                   <h2>Idiomas que manejás</h2>
@@ -117,7 +163,7 @@ class GuideProfile extends Component {
                 <h2>Días disponibles</h2>
                 <div className="container-fluid">
 
-                  <DiasDisponible onCategoryChange={this.handleCategory} />
+                  <DiasDisponible onCategoryChange={this.handleCategory}/>
 
                 </div>
                 </div>
@@ -126,14 +172,14 @@ class GuideProfile extends Component {
                   <Categorias onCategoryChange={this.handleCategory} defaultSelected={this.state.knowledge}></Categorias>
                 </div>
                 <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="salidaGrupal" />
+                  <input type="checkbox" class="custom-control-input" id="salidaGrupal" onClick={()=> this.setState({groupwalk: true}) } />
                   <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
                 </div>
               </div>
               <div className="buttonsSection">
               
 
-                <input type="submit" className="btn-primero" value="Guardar" />
+                <input type="submit" className="btn-primero" value="Guardar"  onClick={()=> this.updateGuide()}/>
                 <br></br><br></br>
                 <input type="button" className="btn-primero" value="Cancelar" onClick={() => this.setState({ goToProfile: true })} />
               </div>

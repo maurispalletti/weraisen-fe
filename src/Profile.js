@@ -67,8 +67,7 @@ class Profile extends Component {
     firstName,
     lastName,
     identification,
-    age,
-    city,
+    birthDate,
     gender,
   }) => {
     try {
@@ -79,8 +78,7 @@ class Profile extends Component {
           firstName,
           lastName,
           identification,
-          age,
-          city,
+          birthDate,
           gender,
         })
         console.log(response);
@@ -209,7 +207,7 @@ class Profile extends Component {
                   <input type="button" className="btn-tercero" value={this.state.editable ? "Cancelar" : "Editar mis datos"}
                     onClick={() => this.toggleEditInfo()} />
                     <br></br>
-                  <input type="button" className="btn-tercero" value="Guardar" disabled={!this.state.editable} />
+                  <input type="button" className="btn-tercero" value="Guardar" disabled={!this.state.editable}  />
                 </div>
 
 

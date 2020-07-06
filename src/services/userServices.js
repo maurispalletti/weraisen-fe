@@ -36,12 +36,16 @@ class userServices {
 		userId,
 		description,
 		languages,
+		availableDays,
+		groupwalk,
 		knowledge }) {
 		const url = `${customUrl}/api/v1/guides/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			description,
 			languages,
+			availableDays,
+			groupwalk,
 			knowledge
 		}
 		return axios.put(url, body, { headers })
