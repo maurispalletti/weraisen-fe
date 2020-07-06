@@ -24,7 +24,8 @@ class DenunciaModal_Alvo extends Component {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h5 align="Left"> Desde WR lamentamos que tengas que llegar a este punto, cuentanos el motivo:</h5>
+          <h5 align="Left"> Desde WR lamentamos que tengas que llegar a esta instancia,
+								contanos el motivo así nosotros evaluamos lo sucedido.</h5>
           <br></br>
           <div className="checkbox">
             <label>
@@ -34,19 +35,14 @@ class DenunciaModal_Alvo extends Component {
           <div className="checkbox">
             <label>
               <input type="checkbox" value="option" style={{ paddingLeft: "3px" }} />
-                                      Discriminación contra individuos o grupos
-                                       basados en:
-                                               Raza, etnia, religión,
-                                               discapacidad,
-                                               orientación sexual e
-                                               Identidad de género.
+                                       Discriminación.
                                  </label>
           </div>
 
           <div className="checkbox">
             <label>
               <input type="checkbox" value="option" style={{ paddingLeft: "3px" }} />
-                                      Perfil falsos, suplantación de identidad o
+                                      Perfil falso, suplantación de identidad o
                                       mensajes sospechosos.
                                  </label>
           </div>
@@ -58,17 +54,22 @@ class DenunciaModal_Alvo extends Component {
                                       bienestar o la seguridad física.
                                  </label>
           </div>
-
-          <h5>Otro motivo</h5>
+          <div className="checkbox">
+            <label>
+              <input type="checkbox" value="option" style={{ paddingLeft: "3px" }} />
+                                      Otro motivo.
+                                 </label>
+          </div>
+       
           <div style={{ maxWidth: '200px', margin: '0px auto' }}></div>
           <input
-            placeholder="Escribí aca tu motivo."
+            placeholder="Escribí acá el motivo"
             component="textarea" className="input" />
 
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.onHide}>Guardar Cambios</Button>
-          <Button onClick={this.props.onHide}>Close</Button>
+          <Button onClick={this.props.onHide}>Denunciar</Button>
+          <Button onClick={this.props.onHide}>Cancelar</Button>
         </Modal.Footer>
       </Modal>
     );
