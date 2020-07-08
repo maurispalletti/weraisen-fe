@@ -63,12 +63,11 @@ class Profile extends Component {
     }
   }
 
-  updateProfile = async ({
+  updateProfile = async ({ //agregar cambios para que se modifique la fecha de nacimiento, tambien en el be.
     firstName,
     lastName,
     identification,
-    age,
-    city,
+    birthDate,
     gender,
   }) => {
     try {
@@ -79,8 +78,7 @@ class Profile extends Component {
           firstName,
           lastName,
           identification,
-          age,
-          city,
+          birthDate,
           gender,
         })
         console.log(response);
@@ -100,7 +98,7 @@ class Profile extends Component {
     const {
       firstName,
       lastName,
-      age,
+      birthDate,
       identification,
       gender,
       city,
@@ -118,7 +116,7 @@ class Profile extends Component {
     const initialValues = {
       firstName,
       lastName,
-      age,
+      birthDate,
       identification,
       gender,
       city,
@@ -126,6 +124,7 @@ class Profile extends Component {
     }
 
     this.setState({ initialValues, isActiveGuide, knowledge })
+    console.log('initial values' +this.initialValues)
   }
   estadoGuia = () => {
     this.setState({ isActiveGuide: !this.state.isActiveGuide });   
@@ -209,7 +208,7 @@ class Profile extends Component {
                   <input type="button" className="btn-tercero" value={this.state.editable ? "Cancelar" : "Editar mis datos"}
                     onClick={() => this.toggleEditInfo()} />
                     <br></br>
-                  <input type="button" className="btn-tercero" value="Guardar" disabled={!this.state.editable} />
+                  <input type="button" className="btn-tercero" value="Guardar" disabled={!this.state.editable}  />
                 </div>
 
 
