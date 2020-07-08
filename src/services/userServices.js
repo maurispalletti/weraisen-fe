@@ -55,7 +55,7 @@ class userServices {
 		toAge,
 		gender,
 		language,
-		knowledge }) {
+		knowledge, }) {
 		const url = `${customUrl}/api/v1/guides`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
@@ -64,7 +64,7 @@ class userServices {
 			toAge: parseInt(toAge),
 			gender,
 			language,
-			knowledge
+			knowledge,
 		}
 		return axios.post(url, body, { headers })
 	}
