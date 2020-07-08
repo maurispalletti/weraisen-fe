@@ -9,20 +9,22 @@
 }
 
   .ItemSeleccionadoA {
-    
-
-    background: #d48e4b; 
-     
-     
-     
-  }
+     background-color: #d48e4b; 
+    }
 
   .ItemNoSeleccionadoA {
     
     background: #3A3F44;
-    border-color: #3A3F44
+    border-color: #3A3F44;
+    color:black;
+  }
+  .button{
+    border-radius: 6px;
+    color: black;
+    border: none;
     
   }
+  
 
   
 

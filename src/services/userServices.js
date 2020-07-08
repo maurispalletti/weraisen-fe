@@ -14,8 +14,7 @@ class userServices {
 		firstName,
 		lastName,
 		identification,
-		age,
-		city,
+		birthDate,
 		gender,
 		email,
 		password }) {
@@ -25,8 +24,7 @@ class userServices {
 			firstName,
 			lastName,
 			identification,
-			age,
-			city,
+			birthDate,
 			gender,
 			email,
 			password
@@ -37,13 +35,19 @@ class userServices {
 	static async updateGuide({
 		userId,
 		description,
+		city,
 		languages,
+		availableDays,
+		groupwalk,
 		knowledge }) {
 		const url = `${customUrl}/api/v1/guides/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			description,
+			city,
 			languages,
+			availableDays,
+			groupwalk,
 			knowledge
 		}
 		return axios.put(url, body, { headers })
