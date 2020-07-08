@@ -81,7 +81,7 @@ class GuideProfile extends Component {
         console.log(response);
         const { data: { id } } = response
         console.log(id);
-this.setState({goToProfile:true})
+      this.setState({goToProfile:true})
       } else {
         this.setState({ notLoggedInUser: true })
       }

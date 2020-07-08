@@ -141,3 +141,8 @@ input:checked + .slider:before {
   font-size: 16px;
 
 }
+.updateOk{
+  font-size: 16px;
+  color:#9cd6ae;
+  font-weight: 600;
+}
