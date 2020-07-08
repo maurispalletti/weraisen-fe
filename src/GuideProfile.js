@@ -23,13 +23,11 @@ const cities = [
 
 const INITIAL_VALUES = {
   description: '',
-  city:null,
-  groupwalk: false,
-  
+  city: null,
 }
 
 class GuideProfile extends Component {
-  
+
   state = {
     goToProfile: false,
     updateFailed: false,
@@ -38,171 +36,161 @@ class GuideProfile extends Component {
     knowledge: [],
     availableDays: [],
     languages: [],
-    }
-  
-    getProfile = async () => {
-      try {
-        const userId = localStorage.getItem("userId");
-        if (userId) {
-          const response = await userServices.getProfile(userId)
-  
-          return response.data;
-  
-        } else {
-          this.setState({ notLoggedInUser: true })
-        }
-      } catch (error) {
-        console.error(`There was an error trying to get the profile`)
-      }
-    }
-  
+    groupwalk: false,
+  }
 
-    updateGuide = async ({ 
+  getProfile = async () => {
+    try {
+      const userId = localStorage.getItem("userId");
+      console.log('userId' + userId)
+      if (userId) {
+        const response = await userServices.getProfile(userId)
+        console.log(response.data)
+        return response.data;
+
+      } else {
+        this.setState({ notLoggedInUser: true })
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get the profile`)
+    }
+  }
+
+
+  updateGuide = async ({ description, city }) => {
+    console.log('GROUPWALK'+ this.state.groupwalk)
+    try {
+
+      const userId = localStorage.getItem("userId");
+
+      const knowledge = this.state.knowledge
+      const languages = this.state.languages
+      const availableDays = this.state.availableDays
+      const groupwalk = this.state.groupwalk
+
+      if (userId) {
+        const response = await userServices.updateGuide({
+          userId,
+          description,
+          city,
+          languages,
+          availableDays,
+          knowledge,
+          groupwalk,
+        })
+        console.log(response);
+        const { data: { id } } = response
+        console.log(id);
+this.setState({goToProfile:true})
+      } else {
+        this.setState({ notLoggedInUser: true })
+      }
+    } catch (error) {
+      this.setState({ updateFailed: true })
+      console.error(`There was an error trying to update the guide profile`)
+    }
+  }
+
+  async componentDidMount() {
+    const {
       description,
       city,
       languages,
       availableDays,
       knowledge,
       groupwalk,
-    }) => {
-      try {
-        const userId = localStorage.getItem("userId");
-        if (userId) {
-          const response = await userServices.updateGuide({
-            userId,
-            description,
-            city,
-            languages,
-            availableDays,
-            knowledge,
-            groupwalk,
-          })
-          console.log(response);
-          const { data: { id } } = response
-          console.log(id);
+    } = await this.getProfile()
 
-         } else {
-          this.setState({ notLoggedInUser: true })
-        }
-      } catch (error) {
-        this.setState({ updateFailed: true })
-        console.error(`There was an error trying to update the guide profile`)
-      }
+    const initialValues = {
+      description,
+      city,
     }
-  
-    async componentDidMount() {
-      const {
-        description,
-        city,
-        languages,
-        availableDays,
-        knowledge,
-        groupwalk,
-      } = await this.getProfile()
-  
-      const initialValues = {
-        description,
-        city,
-        groupwalk,
-      }
-  
-      this.setState({ initialValues, languages, availableDays, knowledge })
+    console.log('+initial values' + this.initialValues)
+    this.setState({ groupwalk, initialValues, languages, availableDays, knowledge })
+
   }
-  
+
   handleCategory = (values) => {
     console.log(values)
-    this.setState({ knowledge: values })
-    this.setState({availableDays: values})
-    this.setState({languages: values})
-    
+    this.setState({knowledge: values })
   }
-  
+
+  handleLanguages = (values) => {
+    console.log(values)
+    this.setState({ languages: values })
+  }
+
+  handleAvailableDays = (values) => {
+    console.log(values)
+    this.setState({ availableDays: values })
+  }
 
 
   render() {
     if (this.state.goToProfile) {
       return <Redirect to="/Profile" />
     }
+    if (this.state.initialValues) {
+      return (
+        <div className="GuideProfile">
 
-    return (
-      <div className="GuideProfile">
+          <Header></Header>
 
-<Header></Header>
-      
-      <div className="BodyGuideP">
+          <div className="BodyGuideP">
 
-          <Formik
-            initialValues={this.state.initialValues}
-            validationSchema={GuideProfileSchema}
-            onSubmit={(values) => this.updateGuide(values)}>
-            <Form>
-
-              <div className="Section">
-                <div className="Seccion">
-                  <h2>¡Describite para que otros te conozcan! </h2>
-                  <FieldWithError component={'input'} name="description" placeholder="Ingresá una breve descripción..." aria-label="description" className="input" />
-                </div>
-                <div className="Seccion">
-                  <h2>Cuidad de residencia</h2>
-                  <DropdownGender name="city" styleName={"input"}  options={cities} />
-                </div>
-                <div className="Seccion">
-                  <h2>Idiomas que manejás</h2>
-
-                  <div className="container-fluid">
-
-                    <BotonSombreado onCategoryChange={this.handleCategory} />
-
+            <Formik
+              initialValues={this.state.initialValues}
+              validationSchema={GuideProfileSchema}
+              onSubmit={(values) => this.updateGuide(values)}>
+              <Form>
+                <div className="Section">
+                  <div className="Seccion">
+                    <h2>¡Describite para que otros te conozcan! </h2>
+                    <FieldWithError component={'input'} name="description" placeholder={"Ingresá una breve descripción..."} aria-label="description" className="input" />
                   </div>
-                  <FieldWithError component={'input'} name="idioma" placeholder="Otro" aria-label="idioma" className="input" />
+                  <div className="Seccion">
+                    <h2>Cuidad de residencia</h2>
+                    <DropdownGender name="city" styleName={"input"} options={cities} />
+                  </div>
+                  <div className="Seccion">
+                    <h2>Idiomas que manejás</h2>
+                    <div className="container-fluid">
+                      <BotonSombreado onCategoryChange={this.handleLanguages} defaultSelected={this.state.languages}/>
+                    </div>
+                  </div>
+                  <div className="Seccion">
+                    <h2>Días disponibles</h2>
+                    <div className="container-fluid">
+                      <DiasDisponible onCategoryChange={this.handleAvailableDays} defaultSelected={this.state.availableDays}/>
+                    </div>
+                  </div>
+                  <div className="LastSection">
+                    <h2>Conocimientos que posees</h2>
+                    <Categorias onCategoryChange={this.handleCategory} defaultSelected={this.state.knowledge}></Categorias>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="salidaGrupal" checked={this.state.groupwalk} onChange={() => this.setState({ groupwalk: !this.state.groupwalk })} />
+                    <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
+                  </div>
                 </div>
-
-
-
-                <div className="Seccion">
-                <h2>Días disponibles</h2>
-                <div className="container-fluid">
-
-                  <DiasDisponible onCategoryChange={this.handleCategory}/>
-
+                <div className="buttonsSection">
+                  <input type="submit" className="btn-primero" value="Guardar"  />
+                  <br></br><br></br>
+                  <input type="button" className="btn-primero" value="Cancelar" onClick={() => this.setState({ goToProfile: true })} />
                 </div>
-                </div>
-                <div className="LastSection">
-                  <h2>Conocimientos que posees</h2>
-                  <Categorias onCategoryChange={this.handleCategory} defaultSelected={this.state.knowledge}></Categorias>
-                </div>
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="salidaGrupal" onClick={()=> this.setState({groupwalk: true}) } />
-                  <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
-                </div>
-              </div>
-              <div className="buttonsSection">
-              
-
-                <input type="submit" className="btn-primero" value="Guardar"  onClick={()=> this.updateGuide()}/>
-                <br></br><br></br>
-                <input type="button" className="btn-primero" value="Cancelar" onClick={() => this.setState({ goToProfile: true })} />
-              </div>
-
-
-              {this.state.notLoggedInUser && (
-                <p className="form-error">Usuario no logueado.</p>
-              )}
-              {this.state.updateFailed && (
-                <p className="form-error">Actualización de datos de guía falló. Intenta nuevamente.</p>
-              )}
-            </Form>
-          </Formik>
+                {this.state.notLoggedInUser && (
+                  <p className="form-error">Usuario no logueado.</p>
+                )}
+                {this.state.updateFailed && (
+                  <p className="form-error">Actualización de datos de guía falló. Intenta nuevamente.</p>
+                )}
+              </Form>
+            </Formik>
+          </div>
         </div>
-
-
-
-
-
-
-      </div>
-    );
+      );
+    }
+    return null;
   }
 };
-
 export default GuideProfile;

@@ -124,6 +124,7 @@ class Profile extends Component {
     }
 
     this.setState({ initialValues, isActiveGuide, knowledge })
+    console.log('initial values' +this.initialValues)
   }
   estadoGuia = () => {
     this.setState({ isActiveGuide: !this.state.isActiveGuide });   

@@ -29,7 +29,8 @@ export function SignUpSchema () {
 export function GuideProfileSchema () {
   return Yup.object().shape({
     description: Yup.string().required('Ingresa una descripción'),
-    languages: Yup.string().required('Selecciona un lenguaje'),
+    city: Yup.string().required('Selecciona una ciudad'),
+    
   })
 }
 
@@ -37,7 +38,7 @@ export function ProfileSchema () {
   return Yup.object().shape({
     firstName: Yup.string().required('Ingresa tu nombre'),
     lastName: Yup.string().required('Ingresa tu apellido'),
-    age: Yup.number().required('Ingresa tu fecha de nacimiento'),
+    birthDate: Yup.date().required('Ingresa tu fecha de nacimiento'), 
     identification: Yup.string().required('Ingresa tu identificación'),
     gender: Yup.string().required('Ingresa tu género'),
     city: Yup.string().required('Ingresa tu ciudad de residencia'),

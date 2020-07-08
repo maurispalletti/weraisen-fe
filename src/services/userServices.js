@@ -35,6 +35,7 @@ class userServices {
 	static async updateGuide({
 		userId,
 		description,
+		city,
 		languages,
 		availableDays,
 		groupwalk,
@@ -43,6 +44,7 @@ class userServices {
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			description,
+			city,
 			languages,
 			availableDays,
 			groupwalk,
