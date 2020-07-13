@@ -106,7 +106,7 @@ class GuideView extends Component {
       this.setState({ ReviewsFailed: true })
     }
   }
-  async componentWillMount() { /* usar el did mount*/
+  async UNSAFE_componentWillMount() { /* usar el did mount*/
     
      await this.getProfile()
      await this.getReviews()

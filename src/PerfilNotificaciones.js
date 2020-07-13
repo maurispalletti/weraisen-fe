@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CardNotificaciones from '../src/components/CardNotificacionesAAl';
 import Header from '../src/components/Header';
 import userServices from './services/userServices'
 

@@ -10,9 +10,9 @@ class Results extends Component {
     goToHome: false,
     searchFailed: false,
     guides: [],
-    
+
   }
-  
+
   getGuides = async (filters) => {
     try {
       console.log(`FILTERS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`)
@@ -32,10 +32,10 @@ class Results extends Component {
     }
   }
 
-  
 
 
-  async componentWillMount() {
+
+  async UNSAFE_componentWillMount() {
     let filters = sessionStorage.getItem("filters");
     filters = JSON.parse(filters)
     await this.getGuides(filters)
@@ -44,24 +44,24 @@ class Results extends Component {
   renderGuides = () => {
     const { guides } = this.state
     if (guides.length > 0) {
-      return guides.map(guide => {
+      return guides.map((guide, index) => {
         const { id, firstName, lastName, age, city, languages, knowledge, description, gender } = guide
         return (
-          <div>
-          <CardGuia
-            key={id}
-            guideId={id}
-            firstName={firstName}
-            lastName={lastName}
-            city={city}
-            age={age}
-            languages={languages}
-            gender={gender}
-            knowledge={knowledge}
-            description={description}
-          />
-          <br></br>
-            </div>
+          <div key={index}>
+            <CardGuia
+              key={index}
+              guideId={id}
+              firstName={firstName}
+              lastName={lastName}
+              city={city}
+              age={age}
+              languages={languages}
+              gender={gender}
+              knowledge={knowledge}
+              description={description}
+            />
+            <br></br>
+          </div>
         )
       });
     }
@@ -81,7 +81,7 @@ class Results extends Component {
         <div className="BodyResults">
 
           <div className="Section">
-            <h2 style={{paddingBottom:"15px"}}>Iniciá una conversación con tu guía preferido</h2>
+            <h2 style={{ paddingBottom: "15px" }}>Iniciá una conversación con tu guía preferido</h2>
             {this.renderGuides()}
           </div>
 

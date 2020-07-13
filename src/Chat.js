@@ -10,12 +10,6 @@ import enviar from './avatars/enviar.png'
 import usuario from '../src/Imagenes_Alvo/006.png'
 
 const selfName = "Yo"
-let otherName;
-
-let userId;
-let chatId;
-let otherUser;
-let matchStatus;
 
 class Chat extends Component {
   state = {
@@ -23,57 +17,66 @@ class Chat extends Component {
     searchFailed: false,
     ageValidationFailed: false,
     notLoggedInUser: false,
-    goToProfile: false,
-    iniciated: false,
+    goToProfile: false, //para ir al perfil al hacer click en user
     valorate: false,
     messages: [],
-    currentStatus: "",
+    otherName: "",
+    otherUser: "",
+    chatId: "",
+    userId: "",
+    placeholder: "Enviar mensaje..."
   }
 
   componentDidMount() {
-    userId = localStorage.getItem("userId");
-    chatId = localStorage.getItem("chatId");
-
     this.getConversation();
   }
 
   getConversation = async () => {
+    console.log(`Getting conversation...`)
+    let userId = this.state.userId || localStorage.getItem("userId");
+    let chatId = this.state.chatId || localStorage.getItem("chatId");
+    let otherName;
+    let otherUser;
+
     try {
       const response = await userServices.getChat(chatId)
 
       if (response.data && response.data.messages) {
         const { data: { messages, guide, tourist } } = response;
 
-        if (!otherName) {
+        if (!this.state.otherUser) {
           otherUser = (userId === tourist) ? guide : tourist;
-          const { data: { id, firstName, lastName } } = await userServices.getProfile(otherUser)
+
+          const { data: { firstName, lastName, id } } = await userServices.getProfile(otherUser)
           otherName = `${firstName} ${lastName}`
           localStorage.setItem("ownerId", id);
-        }
 
-        if (!matchStatus) {
-          const { data: { status, id } } = await userServices.getMatchByChatId(chatId)
-          matchStatus = status
-          localStorage.setItem("matchId", id);
+          console.log(`Getting match id with chatId ${chatId}`)
+          const { data: { id: matchId } } = await userServices.getMatchByChatId(chatId)
+          localStorage.setItem("matchId", matchId);
         }
 
         this.setState({
           messages,
-          iniciated: matchStatus === 'Iniciado',
-          currentStatus: matchStatus,
+          otherName: otherName || this.state.otherName,
+          otherUser: otherUser || this.state.otherUser,
+          userId,
+          chatId,
         })
 
         setTimeout(() => this.getConversation(), 3000);
       }
     } catch (error) {
       console.error(`There was an error trying to get the chat`)
+      console.error(`Error: ${error}`)
     }
   }
 
-  renderMessages = (messages) => (
-    messages.map(message => (
-      <div key={message.id}>
-        {message.emisor === userId ? (
+  renderMessages = (messages) => {
+    console.log(`Rendering messages`)
+    return messages.map((message) => (
+      <div key={message._id}>
+        {message.emisor === this.state.userId ? (
           <li className="self">
             <div className="msg">
               <div className="msgNameRight">{selfName}</div>
@@ -83,22 +86,22 @@ class Chat extends Component {
         ) : (
             <li className="other">
               <div className="msg">
-                <div className="msgNameLeft">{otherName}</div>
+                <div className="msgNameLeft">{this.state.otherName}</div>
                 <div className="message">{message.text}</div>
               </div>
             </li>
           )}
       </div>
     ))
-  )
-  
+  }
+
 
   sendMessage = async (values) => {
     console.log(values);
 
     const newMessage = {
-      emisor: userId,
-      receptor: otherUser,
+      emisor: this.state.userId,
+      receptor: this.state.otherUser,
       text: values.message
     }
 
@@ -107,60 +110,51 @@ class Chat extends Component {
         const messagesArray = this.state.messages;
         messagesArray.push(newMessage)
 
-        const newChat = await userServices.sendMessage(chatId, messagesArray)
+        const newChat = await userServices.sendMessage(this.state.chatId, messagesArray)
         console.log(newChat);
-
       } catch (error) {
         console.error(`There was an error trying to send message`)
+        console.error(`Error: ${error}`)
       }
     }
   }
 
   async goToValoration() {
     try {
-      if (this.state.iniciated) {
-        const status = 'Finalizado'
-        await userServices.updateMatch(chatId, status)
-        this.setState({ valorate: true })
-      } else {
-        const status = 'Iniciado'
-        await userServices.updateMatch(chatId, status)
-        this.setState({ iniciated: true })
-      }
+      const status = 'Finalizado'
+      await userServices.updateMatch(this.state.chatId, status)
+      this.setState({ valorate: true })
+
     } catch (error) {
-      console.error(`There was an error updating status`)
+      console.error(`There was an error ending match`)
+      console.error(`Error: ${error}`)
     }
   }
 
   async cancelMatch() {
     try {
-      if (this.state.iniciated) {
-        const status = 'Anulado'
-        await userServices.updateMatch(chatId, status)
-        this.setState({ valorate: true })
-      } else {
-        const status = 'Cancelado'
-        await userServices.updateMatch(chatId, status)
-        this.setState({ goToMatches: true })
-      }
+      const status = 'Cancelado'
+      await userServices.updateMatch(this.state.chatId, status)
+      this.setState({ goToMatches: true })
     } catch (error) {
-      console.error(`There was an error updating status`)
+      console.error(`There was an error canceling match`)
+      console.error(`Error: ${error}`)
     }
   }
 
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
-           return {sideDrawerOpen: !prevState.sideDrawerOpen};
-      });
+      return { sideDrawerOpen: !prevState.sideDrawerOpen };
+    });
   };
 
   backdropClickHandler = () => {
-    this.setState({sideDrawerOpen: false});
+    this.setState({ sideDrawerOpen: false });
   }
 
   render() {
     if (this.state.goToMatches) {
-      return <Redirect to="/Matches" />
+      return <Redirect to="/matches" />
     }
     if (this.state.goToProfile) {
       return <Redirect to="/profile" />
@@ -171,17 +165,15 @@ class Chat extends Component {
 
     let sideDrawer;
     let backdrop;
-   
-    if (this.state.sideDrawerOpen) {
-      sideDrawer =<SideDrawer/>;
-      backdrop = <Backdrop click={this.backdropClickHandler}/>
 
+    if (this.state.sideDrawerOpen) {
+      sideDrawer = <SideDrawer />;
+      backdrop = <Backdrop click={this.backdropClickHandler} />
     }
 
     return (
       <div className="Chat">
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler}nombre={this.otherName} img ={usuario}  />
-        
+        <Toolbar drawerClickHandler={this.drawerToggleClickHandler} nombre={this.otherName} img={usuario} />
         {sideDrawer}
         {backdrop}
         <div className="BodyChat">
@@ -192,7 +184,10 @@ class Chat extends Component {
               </div>
             </ul>
             <div className="chatInputWrapper">
-              <Formik onSubmit={(values) => this.sendMessage(values)}>
+              <Formik
+                initialValues={{ message: '' }}
+                onSubmit={(values) => this.sendMessage(values)}
+              >
                 <Form>
                   <div className="formInputChat">
                     <Field
@@ -200,33 +195,33 @@ class Chat extends Component {
                       aria-label="inputChat"
                       className="inputChat"
                       type="text"
-                      placeholder="Enviar mensaje..."
+                      // placeholder="Enviar mensaje..."
+                      placeholder={this.state.placeholder}
                     />
                   </div>
-                  <input type="submit" className="send-button" value="➡" />
-                  <div className="send-button"><a href="/search"><img src={enviar} alt={"Home"} width="35" /></a></div>
+                  <button type="submit" className="send-button"><img src={enviar} alt={"Home"} width="35" /></button>
                 </Form>
               </Formik>
             </div>
           </div>
           {/* <div className="buttonsSectionChat">
             <input type="button"
-              value={this.state.currentStatus === "Finalizado" ? "Ir a review" :
+              value={this.state.matchStatus === "Finalizado" ? "Ir a review" :
                 this.state.iniciated ? "Finalizar" : "Iniciar"}
               onClick={() => { this.goToValoration() }}
-              disabled={this.state.currentStatus === "Anulado" || this.state.currentStatus === "Cancelado"}
-              className={this.state.currentStatus === "Anulado" || this.state.currentStatus === "Cancelado" ?
+              disabled={this.state.matchStatus === "Anulado" || this.state.matchStatus === "Cancelado"}
+              className={this.state.matchStatus === "Anulado" || this.state.matchStatus === "Cancelado" ?
                 "buttonLeftChatDisabled" : "buttonLeftChat"}
             />
             <input type="button" className="buttonRightChat"
-              value={this.state.currentStatus === "Finalizado"
-                || this.state.currentStatus === "Cancelado"
-                || this.state.currentStatus === "Anulado"
+              value={this.state.matchStatus === "Finalizado"
+                || this.state.matchStatus === "Cancelado"
+                || this.state.matchStatus === "Anulado"
                 ? "Volver" : this.state.iniciated ? "Anular" : "Cancelar"}
               onClick={() => {
-                this.state.currentStatus === "Finalizado"
-                  || this.state.currentStatus === "Cancelado"
-                  || this.state.currentStatus === "Anulado"
+                this.state.matchStatus === "Finalizado"
+                  || this.state.matchStatus === "Cancelado"
+                  || this.state.matchStatus === "Anulado"
                   ? this.setState({ goToHome: true }) : this.cancelMatch()
               }} />
           </div> */}
