@@ -89,9 +89,7 @@ class userServices {
 		userId,
 		firstName,
 		lastName,
-		identification,
-		age,
-		city,
+		birthDate,
 		gender,
 	}) {
 		const url = `${customUrl}/api/v1/tourists/${userId}`
@@ -99,9 +97,7 @@ class userServices {
 		const body = {
 			firstName,
 			lastName,
-			identification,
-			age,
-			city,
+			birthDate,
 			gender,
 		}
 		return axios.put(url, body, { headers })
