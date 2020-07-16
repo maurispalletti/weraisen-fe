@@ -14,10 +14,8 @@ import icon from './icons/icon.svg'
 const INITIAL_VALUES = {
   firstName: '',
   lastName: '',
-  age: '',
   identification: '',
   gender: '',
-  city: '',
   email: '',
   password: '',
   passwordRepeated: '',
@@ -47,28 +45,27 @@ class SignUp extends Component {
     signUpFailed: false,
     passwordsMissmatch: false,
     value: '',
-    min: ''
+    min: '',
+    pendingScreen: false,
   }
 
   createUser = async ({
     firstName,
     lastName,
-    age,
     identification,
     gender,
-    city,
     email,
     password,
     passwordRepeated,
   }) => {
     try {
       if (password === passwordRepeated) {
+        const birthDate = this.state.value;
         const response = await userServices.createUser({
           firstName,
           lastName,
           identification,
-          age,
-          city,
+          birthDate,
           gender,
           email,
           password
@@ -79,7 +76,7 @@ class SignUp extends Component {
         // save Id in local storage
         localStorage.setItem("userId", id);
 
-        this.setState({ passwordsMissmatch: false, goToHome: true, signUpFailed: false })
+        this.setState({ passwordsMissmatch: false, pendingScreen: true, signUpFailed: false })
       } else {
         this.setState({ signUpFailed: true, passwordsMissmatch: true })
       }
@@ -119,6 +116,9 @@ class SignUp extends Component {
     if (this.state.goToLogin) {
       return <Redirect to="/login" />
     }
+    if (this.state.pendingScreen){
+      return <div><h3>Estamos validando tu perfil</h3></div>
+    }
 
     return (
     <div>
@@ -139,6 +139,10 @@ class SignUp extends Component {
             <div className="title"> 
             <FieldWithError name="lastName" placeholder="Ingresa tu apellido" aria-label="lastName" className="input" />
             Apellido
+            </div>
+            <div className="title"> 
+            <FieldWithError name="identification" placeholder="Ingresa tu documento" aria-label="identification" className="input" />
+            Documento
             </div>
 
             <div className="title"> 
