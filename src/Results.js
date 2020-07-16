@@ -21,7 +21,7 @@ class Results extends Component {
 
 
       const response = await userServices.getGuides(filters);
-
+      console.log('++++++++'+ response.data)
       if (response && response.data && response.data.length > 0) {
         this.setState({ guides: response.data })
       }
@@ -43,6 +43,7 @@ class Results extends Component {
 
   renderGuides = () => {
     const { guides } = this.state
+    console.log('****'+guides.length)
     if (guides.length > 0) {
       return guides.map(guide => {
         const { id, firstName, lastName, age, city, languages, knowledge, description, gender } = guide

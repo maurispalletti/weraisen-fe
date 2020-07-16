@@ -3,7 +3,7 @@ import { Redirect } from 'react-router'
 import Header from '../src/components/Header'
 import BotonSombreado from './components/Boton_Sombreado'
 import DiasDisponible from './components/Dias_Disponible'
-
+import Categorias from './components/Categorias.js'
 import './GuideProfile.css';
 
 import { Formik, Form } from 'formik'
@@ -123,7 +123,7 @@ class GuideProfile extends Component {
                 </div>
                 <div className="LastSection">
                   <h2>Conocimientos que posees</h2>
-                  {/* <Categorias onCategoryChange={this.handleCategory} /> */}
+                   <Categorias onCategoryChange={this.handleCategory} defaultSelected={this.state.knowledge}/>
                 </div>
                 <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input" id="salidaGrupal" />

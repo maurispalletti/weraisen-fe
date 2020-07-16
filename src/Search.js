@@ -33,6 +33,7 @@ let INITIAL_VALUES = {
   toAge: '',
   gender: '',
   language: '',
+  groupwalk: false,
 }
 
 class Search extends Component {
@@ -54,6 +55,7 @@ class Search extends Component {
       language: '',
       knowledge: [],
       loaded: false,
+      groupwalk: false,
     }
   }
 
@@ -67,16 +69,16 @@ class Search extends Component {
 
     if (oldFilters) {
       oldFilters = JSON.parse(oldFilters);
-      let { fromAge, toAge, gender, city, language, knowledge } = oldFilters;
+      let { fromAge, toAge, gender, city, language, knowledge, groupwalk } = oldFilters;
 
       if (storedCity) city = storedCity;
 
       let showHiddenFiltersApplied = false;
-      if (fromAge || toAge || gender || language) {
+      if (fromAge || toAge || gender || language || groupwalk) {
         showHiddenFiltersApplied = true;
       }
 
-      this.setState({ fromAge, toAge, gender, city, language, knowledge, showFilters: showHiddenFiltersApplied, loaded: true });
+      this.setState({ fromAge, toAge, gender, city, language, knowledge,groupwalk, showFilters: showHiddenFiltersApplied, loaded: true });
     } else {
       this.setState({ city: storedCity, loaded: true });
     }
@@ -89,14 +91,17 @@ class Search extends Component {
       this.setState({ ageValidationFailed: true });
     } else {
       const language = localStorage.getItem("filter_language");
+      const groupwalk = localStorage.getItem("filter_groupwalk")
+      console.log('----'+language)
       const knowledge = this.state.knowledge;
 
       filters[`city`] = this.state.city;
       filters[`language`] = language;
       filters[`knowledge`] = knowledge;
+      filters[`groupwalk`] = groupwalk;
 
       const filtersString = JSON.stringify(filters);
-
+      console.log('---'+filtersString)
       sessionStorage.setItem(`filters`, filtersString);
 
       sessionStorage.removeItem("filtrociudad");
@@ -131,6 +136,7 @@ class Search extends Component {
         toAge: this.state.toAge,
         gender: this.state.gender,
         language: this.state.language,
+        groupwalk: this.state.groupwalk,
       }
 
       return (
