@@ -1,19 +1,46 @@
-.container { 
-    display: flex;
-    justify-content: space-around; 
-}
-
-.contenedor {
-    border: black;
+.contenedor-total {
+    width: 700px;
+    height: 24rem;
+    border: 5px;
+    border-color: black;
     border-radius: 12px;
+    background-color: #d48e4f;
+    scroll-behavior: auto;
+    color: black;
+   
+
+    
+    
 }
 
-.dni-info {
-    width: 40%;
+.contenedor-dni {
+    width: 470px;
+    float:right
+    
+   
 }
 
-.frente { 
-    margin:right;
+.dni-img {
+    max-width: 80%;
+    
+}
+
+.contenedor-perfil
+{
+    float:left;
+}
+
+.foto-perfil {
+    margin-right: 5%;
+    margin-top: 10%;
+    max-width: 60%
+    
+}
+
+.descripcion {
+    width: 100%;
+    margin-top: 7%;
+    margin-left: 20%;
 }
 
 .info-container {
@@ -21,9 +48,37 @@
     flex-direction: column;
     justify-content: space-around;
     width: 40%;
+    margin-bottom: 3%;
+    margin-top: 3%;
 
 }
 .frente-imagen {
     max-width: 100px;
     max-height: 100px;
+}
+
+.botones-total {
+        width: 200px;
+        position: center;
+        margin-bottom: 10%;
+        
+    
+
+}
+.boton-simple1 {
+    background-color: #484e55;
+    display: inline;
+    margin: 3%;
+    color: white;
+    font-family: sans-serif;
+    font-size: 13.25px;
+    margin: 8.32813px;
+    padding: 4px 8px;
+    border-radius: 0.2rem;
+    
+    
+
+}
+.boton-simple1:hover{
+    background-color:#282c2f
 }

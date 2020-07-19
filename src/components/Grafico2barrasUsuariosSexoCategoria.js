@@ -13,26 +13,32 @@ const chartConfigs = {
     dataFormat: 'json', // Data type
     dataSource: {
         "chart": {
-            "caption": "Cantidad de encuentros creados por mes",
+            "caption": "Categorías seleccionadas por género",
             "subCaption": "",
-            "xAxisName": "Mes",
-            "yAxisName": "Número de encuentros",            
-            "theme": "fusion"
+            "xAxisName": "Géneros",
+            "yAxisName": "Cantidad de selecciones",            
+            "theme" : "fusion"
         },
         "categories": [
             {
                 "category": [
                     {
-                        "label": "Gastronomia"
-                    },
-                    {
-                        "label": "Vida Nocturna"
-                    },
-                    {
                         "label": "Deportes"
                     },
                     {
+                        "label": "Aventura y aire libre"
+                    },
+                    {
+                        "label": "Gastronomía"
+                    },
+                    {
                         "label": "Cultura"
+                    },
+                    {
+                        "label": "Shopping"
+                    },
+                    {
+                        "label": "Vida Nocturna"
                     }
                 ]
             }
@@ -48,11 +54,19 @@ const chartConfigs = {
                         "value": "34"
                     },
                     {
-                        "value": "26"
+                        "value": "21"
                     },
                     {
                         "value": "57"
+                    },
+                    {
+                        "value": "7"
+                    },
+                    {
+                        "value": "23"
                     }
+                    
+                    
                 ]
             },
             {
@@ -69,11 +83,46 @@ const chartConfigs = {
                     },
                     {
                         "value": "45"
-                    }
+                    },
+                    {
+                        "value": "71"
+                    },
+                    {
+                        "value": "53"
+                    },
+
+                ]
+            },
+            {  
+                "seriesname": "Otro",
+                        "data": [
+                            {
+                                "value": "1"
+                            },
+                            {
+                                "value": "10"
+                            },
+                            {
+                                "value": "2"
+                            },
+                            {
+                                "value": "5"
+                            },
+                            {
+                                "value": "7"
+                            },
+                            {
+                                "value": "3"
+                            },
+                            
+                            
+                        ]
+                    },
+                    
+                    
                 ]
             }
-        ]
-    }
+        
 };
 
 class Grafico extends React.Component {

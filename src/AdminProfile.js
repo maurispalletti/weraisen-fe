@@ -4,8 +4,9 @@ import '../src/components/Tabs.css';
 import Informe from '../src/Informes';
 import '../src/AdminProfile.css';
 import Header from '../src/components/Header'
-import CardDenunciaAll from './components/CardDenunciaAll';
-import CardAceptar from './components/CardAceptarRechazarAll';
+import CardDenunciaAll from './components/CardDenuncia';
+import CardsAceptarRechazar from './components/CardAceptarRechazar';
+
 
 class Tabulador extends React.Component {
 constructor(props) {
@@ -15,16 +16,16 @@ constructor(props) {
 render() {
   
   const content = {
-    aTAB: <Informe></Informe>,
+    aTAB: <Informe></Informe>, 
     bTAB: <CardDenunciaAll></CardDenunciaAll>,
-    cTAB: <CardAceptar></CardAceptar>,
+    cTAB: <CardsAceptarRechazar> </CardsAceptarRechazar>,
   };
   return (
- <div>   <Header> </Header>
+    
   <div align="center" className="bodyProfile">
    
       
-    <h2> Perfil Administrador</h2>
+    <h1> Perfil Administrador</h1>
     <br></br>
     <Tabs 
     active = {this.state.active} 
@@ -37,7 +38,8 @@ render() {
    
   
     <p>{content[this.state.active]}</p>
-  </div>
+  
+
   </div>
   );
  }; 

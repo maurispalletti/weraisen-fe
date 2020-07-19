@@ -1,108 +1,98 @@
-import React from 'react';
-import '../components/blabla.css';
+import React, {Component} from 'react';
 import { Button } from 'react-bootstrap';
+import userServices from '../services/userServices';
+import CardsAceptar from './CardAceptarRechazarAll.js';
+import img1 from '../avatars/dni.jpg';
+import img2 from '../avatars/dni.jpg';
+import img3 from '../avatars/avatar_3.svg';
 
-const CardAceptarRechazar = props => {
+class AceptarRechazar extends Component {
 
-  return(
+  
 
-    <div style={{border: 'black 1px solid', maxWidth:'300px'}}> 
- 
-      <div className="card-text-center">
-        <div className="overflow">
-          <img src= {props.imgsrc} alt='imag1' className="card-img"/>
-        </div>
-      <div className="card-body text-dark">
-        <h3 className="">{props.title}</h3>
-        <h4 className="">
-          {props.text}
-        </h4>
-        <div className= "btn btn-outline-success">Aceptar</div>
+  state = {
+    newUsers: [],
+    loading: true,
+    newUsersFailed: false,
+    bottonPresionado: false
+  }
+  getaceptNewUser = async () => {
+    if (!this.state.bottonPresionado)
+    {
+    try {
       
-        <div className= "btn btn-outline-success">Rechazar</div>
-      </div>
-      <div className="frente">
-        {" "}
-        Dorso DNI
-        <img className="frente-imagen" src={props.imgsrc2} />
-      </div>
-      </div>
-      <div className='dni-info'>
-        <div
-          className="card-body"
-          style={{
-            padding: "10px 10px 10px 10px",
-            marginLeft: "0px",
-            Width: "300px",
-          }}
-        >
-          <img src={props.imgsrc2} style={{ float: "left", maxWidth: "100px",
-              padding: "10px 0px 0px 20px",
-              marginBottom: "5px",
-            }}
+      const response = await userServices.getaceptNewUser();
+      console.log(response.data);
+      if (response && response.data) {
+        this.setState({ newUsers: response.data, loading: false, bottonPresionado: false })
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get new users: ${error}`)
+      this.setState({ newUsersFailed: true, loading: false, bottonPresionado: false })
+      return null
+    }
+  }
+  }
+
+
+  renderNewUsers = () => {
+    const { newUsers } = this.state
+    if (newUsers.length > 0) {
+      return newUsers.map(newUser => {
+        const { id, profilePicture, dniFirst, dniSecond, firstName, lastName, identification, birthDate} = newUser
+        return (
+          <div>
+          <CardsAceptar
+            userId = {id}
+            profilePicture={profilePicture} //Agregar en Model User (no existe en BE)
+            dniFirst={dniFirst}  //Agregar en Model User (no existe en BE)
+            dniSecond={dniSecond} //Agregar en Model User (no existe en BE)
+            firstName={firstName}
+            lastName= {lastName}
+            identification={identification}
+            birthDate={birthDate}
+            bottonPresionado={() => this.setState({bottonPresionado: false})}
           />
-          <p
-            className="card-text"
-            style={{ textAlign: "left", Width: "100px" }}
-          >
-            {" "}
-            <strong> Nombre:</strong> {props.name}{" "}
-          </p>
-          <p
-            className="card-text"
-            style={{ textAlign: "left", Width: "100px" }}
-          >
-            {" "}
-            <strong> Apellido:</strong> {props.lastname}
-          </p>
-          <p
-            className="card-text"
-            style={{ textAlign: "left", Width: "100px" }}
-          >
-            {" "}
-            <strong> Fecha Nacimiento:</strong> {props.fecha}
-          </p>
-          <p
-            className="card-text"
-            style={{ textAlign: "left", Width: "100px" }}
-          >
-            {" "}
-            <strong> Número DNI:</strong> {props.dni}
-          </p>
-          <p
-            className="card-text"
-            style={{ textAlign: "left", Width: "100px" }}
-          >
-            {" "}
-            <strong> Email:</strong> {props.email}
-          </p>
-        </div>
-      </div>
+          <br></br>
+            </div>
+        )
+      });  
+    }
+  }
 
-      <div className="row mb-2">
-        <div className="center">
-          <Button
-            variant="primary"
-            value={"Aceptar"}
-            size="sm"
-            style={{ textAlign: "left", margin: "3%" }}
-          >
-            {" "}
-            Aceptar{" "}
-          </Button>
-          <Button
-            variant="primary"
-            value={"Aceptar"}
-            size="sm"
-            style={{ textAlign: "right" }}
-          >
-            {" "}
-            Rechazar{" "}
-          </Button>
-        </div>
-      </div>
-    </div>
-  );
-};
 
-export default CardAceptarRechazar;
+    async componentDidMount() {
+      
+      this.getaceptNewUser();
+      
+    }
+ render () {
+   if (this.state.loading){
+     return (
+      <div>
+       <h3 style={{marginBottom:'18px'}}>Cargando usuarios pendientes de aprobación</h3>
+      </div>
+     )
+    }
+     else {
+       if (this.newUsersFailed) {
+        return (
+          <div>
+            <h3 style={{marginBottom:'18px'}}>Ups el servicio ha fallado</h3>
+         </div>
+        )
+        
+       } else {
+      return(
+        <div>
+          <h3 style={{marginBottom:'18px'}}>Usuarios pendientes de aprobación</h3>
+          {this.renderNewUsers()}
+       </div>
+      )
+       }
+     }
+    }
+  }
+
+
+export default AceptarRechazar;

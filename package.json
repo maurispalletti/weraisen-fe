@@ -12,6 +12,8 @@
     "jquery": "^3.4.1",
     "rc-datepicker": "^5.0.14",
     "react": "^16.8.6",
+    "react-alert": "^7.0.2",
+    "react-alert-template-basic": "^1.0.0",
     "react-bootstrap": "^1.0.1",
     "react-calendar": "^2.19.1",
     "react-datepicker": "^2.9.6",
@@ -21,6 +23,7 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.0",
+    "react-subscribe-card": "^2.1.4",
     "resolve-url-loader": "^3.1.1",
     "semantic-ui-react": "^0.88.1",
     "yup": "^0.27.0"

@@ -1,33 +1,91 @@
-import React from 'react';
+import React, {Component} from 'react';
 import '../components/CardDenuncia.css';
 import { Button } from 'react-bootstrap';
+import CardDenuncia from '../components/CardDenunciaAll.js';
+import userServices from '../services/userServices';
+import img1 from '../avatars/dni.jpg';
 
-const CardDenuncia = props => {
+class CardDenunciaAll extends Component {
 
-  return(
-    <div style={{border: 'black 1px solid', maxWidth:'300px'}}> 
- 
-    <div className="card-text-center">
-      <div className="overflow">
-        <img src= {props.imgsrc} alt='imag1' style={{width:'20rem', margin: '3%', borderTopRightRadius:'12px', borderTopLeftRadius:'12px', borderBottomLeftRadius:'12px', borderBottomRightRadius:'12px'}}/>
+  state = {
+    compliants: [],
+    loading: true,
+    compliantFailed: false,
+  }
+  getCompliantsList = async () => {
+    try {
+      
+      const response = await userServices.getCompliantsList();
+
+      if (response && response.data) {
+        console.log("HOLAAAAAAA");
+        console.log(response);
+        this.setState({ complaint: response.data, loading: false })
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get new users: ${error}`)
+      this.setState({compliantFailed: true, loading: false })
+      return null
+    }
+  }
+
+
+  renderComplaints = () => {
+    const { compliants } = this.state
+    if (compliants.length > 0) {
+      return compliants.map(compliant => {
+        const {userId, accusedId, descripction} = compliant
+        return (
+          <div>
+          <CardDenuncia
+            userId = {userId}
+            accusedId = {accusedId}
+            description = {descripction}
+            firstName = {localStorage.getItem(userId)}
+            profilePicture ={localStorage.getItem("")}  /// Ver porque no está en esquema debería traerme foto de acusado
+            
+          />
+          <br></br>
+            </div>
+        )
+      });
+    }
+  }
+
+
+    async componentDidMount() {
+      this.getCompliantsList();
+
+    }
+ render () {
+   if (this.state.loading){
+     return (
+      <div>
+       <h3 style={{marginBottom:'18px'}}>Cargando usuarios con denuncias generadas</h3>
       </div>
-    <div className="card-body text-dark">
-      <h3 className="">{props.title}</h3>
-      <h4 className="">
-        {props.text}
-      </h4>
-      <div className= "btn btn-outline-success">Aceptar</div>
-    
-      <div className= "btn btn-outline-success">Rechazar</div>
-    </div>
-    </div>
+     )
+    }
+     else {
+       if (this.complaintFailed) {
+        return (
+          <div>
+            <h3 style={{marginBottom:'18px'}}>Ups... el servicio ha fallado</h3>
+         </div>
+        )
+        
+       } else {
+      return(
+        <div>
+          <h3 style={{marginBottom:'18px'}}>Usuarios que poseen denuncias</h3>
+          {this.renderComplaints()}
+       </div>
+      )
+       }
+     }
+    }
+  }
 
-  </div>
-  
 
-  )
-}
+export default CardDenunciaAll;
 
 
-
-export default CardDenuncia;
