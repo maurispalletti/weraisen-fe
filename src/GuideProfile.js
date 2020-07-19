@@ -107,7 +107,8 @@ class GuideProfile extends Component {
     }
     console.log('+initial values' + this.initialValues)
     this.setState({ groupwalk, initialValues, languages, availableDays, knowledge })
-
+    console.log(`groupwalk`)
+    console.log(groupwalk)
   }
 
   handleCategory = (values) => {
@@ -172,23 +173,12 @@ class GuideProfile extends Component {
                     <input type="checkbox" class="custom-control-input" id="salidaGrupal" checked={this.state.groupwalk} onChange={() => this.setState({ groupwalk: !this.state.groupwalk })} />
                     <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
                   </div>
-                  <FieldWithError component={'input'} name="idioma" placeholder="Otro" aria-label="idioma" className="input" />
+                  
                 </div>
 
 
 
-                <div className="Seccion">
-                <h2>Días disponibles</h2>
-                <div className="container-fluid">
-
-                  <DiasDisponible onCategoryChange={this.handleCategory} />
-
-                </div>
-                </div>
-                <div className="LastSection">
-                  <h2>Conocimientos que posees</h2>
-                   <Categorias onCategoryChange={this.handleCategory} defaultSelected={this.state.knowledge}/>
-                </div>
+              
                 <div className="buttonsSection">
                   <input type="submit" className="btn-primero" value="Guardar"  />
                   <br></br><br></br>

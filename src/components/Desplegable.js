@@ -11,6 +11,7 @@ export default class Desplegable extends React.Component {
 
   handleChange = (event) => {
     this.setState({ value: event.target.value });
+    
   }
 
   componentDidMount() {
@@ -29,7 +30,7 @@ export default class Desplegable extends React.Component {
  
 
     this.setState(() => ({ value: hoy, min: hoy }));
- 
+    
 
   }
 
@@ -37,7 +38,7 @@ export default class Desplegable extends React.Component {
     return (
 
         <div><label>
-          <input  className="input" name="trip-start" min={this.state.min} value={this.state.value} onChange={this.handleChange} required type="date" />
+          <input  className="input" name="trip-start" min={this.state.min} value={this.state.value} onInput={this.handleChange} required type="date" {...console.log('fecha en deplegable '+ this.state.value)} />
         </label>
         </div>
 

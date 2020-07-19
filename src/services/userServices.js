@@ -60,7 +60,8 @@ class userServices {
 		language,
 		city,
 		knowledge,
-		groupwalk, }) {
+		groupwalk,
+		tourDay, }) {
 		const url = `${customUrl}/api/v1/guides`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
@@ -70,7 +71,8 @@ class userServices {
 			language,
 			city,
 			knowledge,
-			groupwalk
+			groupwalk,
+			tourDay
 		}
 		return axios.post(url, body, { headers })
 	}

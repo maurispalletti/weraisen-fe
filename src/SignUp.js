@@ -53,11 +53,13 @@ class SignUp extends Component {
     firstName,
     lastName,
     identification,
+    birthDate,
     gender,
     email,
     password,
     passwordRepeated,
   }) => {
+    console.log('entrooooooooooo')
     try {
       if (password === passwordRepeated) {
         const birthDate = this.state.value;
@@ -146,7 +148,7 @@ class SignUp extends Component {
             </div>
 
             <div className="title"> 
-            <FieldWithError name="age" placeholder="Ingresa tu fecha de nacimiento" className="input" max={this.state.min} value={this.state.value} onChange={this.handleChange} required type="date"/>
+            <FieldWithError name="birthDate" placeholder="Ingresa tu fecha de nacimiento" className="input" max={this.state.min} value={this.state.value} onChange={this.handleChange} required type="date"/>
             Fecha de nacimiento
             </div>
 

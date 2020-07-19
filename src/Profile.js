@@ -96,6 +96,8 @@ class Profile extends Component {
     }
   }
 
+
+
   async componentDidMount() {
     const {
       firstName,
@@ -114,6 +116,10 @@ class Profile extends Component {
 
     console.log(`knowledge`)
     console.log(knowledge)
+
+    
+      
+
 
     const initialValues = {
       firstName,

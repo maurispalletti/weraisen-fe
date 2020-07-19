@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Autocomplete from './components/Autocomplete.js'
-import Desplegable from './components/Desplegable.js'
+
 import Categorias from './components/Categorias.js'
 import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
@@ -34,6 +34,7 @@ let INITIAL_VALUES = {
   gender: '',
   language: '',
   groupwalk: false,
+  
 }
 
 class Search extends Component {
@@ -56,11 +57,29 @@ class Search extends Component {
       knowledge: [],
       loaded: false,
       groupwalk: false,
+      tourDay:'',
+      min:'',
     }
   }
 
   componentDidMount() {
     this.setInitialValues();
+    let hoy = new Date();
+  
+    const dia = hoy.getDate();
+    let mes = (hoy.getMonth() + 1);
+    mes = mes.toString()
+  
+    mes = mes.length === 1 ? "0" + mes : mes
+
+    const año = hoy.getFullYear();
+    const añomin = año - 18
+
+
+    const fechamin = hoy;
+    hoy = año + "-" + mes + "-" + dia;
+
+    this.setState(() => ({ value: hoy, min: fechamin }));
   }
 
   setInitialValues() {
@@ -69,7 +88,7 @@ class Search extends Component {
 
     if (oldFilters) {
       oldFilters = JSON.parse(oldFilters);
-      let { fromAge, toAge, gender, city, language, knowledge, groupwalk } = oldFilters;
+      let { fromAge, toAge, gender, city, language, knowledge, groupwalk, tourDay } = oldFilters;
 
       if (storedCity) city = storedCity;
 
@@ -78,7 +97,7 @@ class Search extends Component {
         showHiddenFiltersApplied = true;
       }
 
-      this.setState({ fromAge, toAge, gender, city, language, knowledge,groupwalk, showFilters: showHiddenFiltersApplied, loaded: true });
+      this.setState({ fromAge, toAge, gender, city, language, knowledge,groupwalk, tourDay, showFilters: showHiddenFiltersApplied, loaded: true });
     } else {
       this.setState({ city: storedCity, loaded: true });
     }
@@ -91,17 +110,20 @@ class Search extends Component {
       this.setState({ ageValidationFailed: true });
     } else {
       const language = localStorage.getItem("filter_language");
-      const groupwalk = localStorage.getItem("filter_groupwalk")
+      const groupwalk = this.state.groupwalk;
       console.log('----'+language)
       const knowledge = this.state.knowledge;
+      const tourDay = this.state.tourDay;
 
       filters[`city`] = this.state.city;
       filters[`language`] = language;
       filters[`knowledge`] = knowledge;
       filters[`groupwalk`] = groupwalk;
-
+      filters[`tourDay`]= tourDay;
+      console.log('FECHA RECORRIDO: '+this.state.tourDay)
+      console.log('CATEGORIAS: '+this.state.knowledge)
       const filtersString = JSON.stringify(filters);
-      console.log('---'+filtersString)
+      
       sessionStorage.setItem(`filters`, filtersString);
 
       sessionStorage.removeItem("filtrociudad");
@@ -120,6 +142,9 @@ class Search extends Component {
   handleCategory = (values) => {
     this.setState({ knowledge: values })
   }
+  handleChangeTourDay = (event) => {
+    this.setState({ tourDay: event.target.value });
+  }
 
   render() {
 
@@ -137,6 +162,7 @@ class Search extends Component {
         gender: this.state.gender,
         language: this.state.language,
         groupwalk: this.state.groupwalk,
+        
       }
 
       return (
@@ -154,7 +180,11 @@ class Search extends Component {
                 <br></br>
                 <div className="Fecha">
                   <h2>¿Cuándo?</h2>
-                  <Desplegable />
+                 {/* <Desplegable onChange={this.handleTourDay}  />*/}
+                 <div className="title"> 
+            <FieldWithError name="birthDate" placeholder="Ingresa tu fecha de nacimiento" className="input" max={this.state.min} value={this.state.tourDay} onChange={this.handleChangeTourDay} required type="date"/>
+            
+            </div>
                 </div>
                 <br></br>
                 <div className="Categoria">
@@ -174,7 +204,7 @@ class Search extends Component {
                   <h2>Elegí el idioma de tu guía:</h2>
                   <Autocomplete defaultText={this.state.language} placeholder={'Ingresa las primeras letras del idioma'} name={'language'} items={languages}></Autocomplete>
                   <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="salidaGrupal" />
+                  <input type="checkbox" class="custom-control-input" id="salidaGrupal" checked={this.state.groupwalk} onChange={() => this.setState({ groupwalk: !this.state.groupwalk }) }/>
                   <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
                 </div>
                 <br></br>
