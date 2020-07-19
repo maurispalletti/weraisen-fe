@@ -1,3 +1,8 @@
 nav .navbar-nav li a{
     color: white !important;
     }
+
+
+    ul.navbar-nav li.active {
+        background-color: red;
+    }

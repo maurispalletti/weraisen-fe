@@ -25,7 +25,7 @@ class GraficoEncPorCiudad extends React.Component {
                     "caption": "Cantidad de encuentros creados por Ciudad",
                     "subCaption": "",
                     "xAxisName": "Ciudad",
-                    "yAxisName": "Número de encuentros",
+                    "yAxisName": "Número de encuentros 2019 - 2020",
                     "theme": "fusion"
                 },
                 "categories": [

@@ -19,16 +19,21 @@ class Matches extends Component {
     loading: true,
   }
 
-  getMatches = async () => {
+  componentDidMount() {
+    this.getMatches()
+  }
 
+  getMatches = async () => {
     try {
       const userId = localStorage.getItem("userId");
 
       const response = await userServices.getMatches(userId);
 
       if (response && response.data && response.data.length > 0) {
-
         const matches = response.data;
+
+        console.log(`MATCHES:`) 
+        console.log(matches)
 
         for (let index = 0; index < matches.length; index++) {
           const match = matches[index];
@@ -52,7 +57,7 @@ class Matches extends Component {
 
         if (fullInfoMatches.length > 0) {
           newMatches = fullInfoMatches.map(match => {
-            const { id, partnerRole, partnerName, chatId, status } = match
+            const { id, partnerRole, partnerName, chatId, status, createdAt } = match
             return (
               <MatchCard
                 key={id}
@@ -60,6 +65,7 @@ class Matches extends Component {
                 partnerName={partnerName}
                 chatId={chatId}
                 status={status}
+                date={createdAt}
               />
             )
           });
@@ -73,19 +79,6 @@ class Matches extends Component {
     }
   }
 
-  componentDidMount() {
-    this.getMatches()
-  }
-
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen };
-    });
-  };
-
-  backdropClickHandler = () => {
-    this.setState({ sideDrawerOpen: false });
-  }
 
   render() {
     if (this.state.goToHome) {

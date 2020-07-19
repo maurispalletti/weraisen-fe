@@ -51,7 +51,7 @@ class Login extends Component {
     }
 
     return (
-      <div className="Container">
+      <div className="contaainer">
         <div id="Inicio" backgroud={logo}>
           <div className="logo"><img src={logo} alt={"WeRaisen"} width="200" /></div>
           <div className="eslogan">

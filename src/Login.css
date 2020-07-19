@@ -33,7 +33,7 @@ padding-top:0px;
 
 
 
-.Container {
+.contaainer {
  height: 100vh;
   width: 100%;
   overflow: scroll;
@@ -124,7 +124,7 @@ padding-top:0px;
 
 .continuar1{
   position:center;
-  padding-top:0px;
+  padding-top:10px;
 }
 
 .continuar2{

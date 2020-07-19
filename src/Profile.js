@@ -36,9 +36,11 @@ class Profile extends Component {
     notLoggedInUser: false,
     editable: false,
     goToGuideProfile: false,
+    goToMyReviews: false,
     initialValues: null,
     isActiveGuide: false,
     knowledge: [],
+    updateOk: false,
   }
 
   // AGREGAR BOTON DE EDIT PARA PODER EDITAR INFO 
@@ -62,14 +64,14 @@ class Profile extends Component {
     }
   }
 
-  updateProfile = async ({
+  updateProfile = async ({ //agregar cambios para que se modifique la fecha de nacimiento, tambien en el be.
     firstName,
     lastName,
     identification,
-    age,
-    city,
+    birthDate,
     gender,
   }) => {
+    console.log('entroooooooooooooooooooooooooooooo')
     try {
       const userId = localStorage.getItem("userId");
       if (userId) {
@@ -78,14 +80,13 @@ class Profile extends Component {
           firstName,
           lastName,
           identification,
-          age,
-          city,
+          birthDate,
           gender,
         })
         console.log(response);
         const { data: { id } } = response
         console.log(id);
-        this.setState({ editable: false })
+        this.setState({ editable: false, updateOk:true })
       } else {
         this.setState({ notLoggedInUser: true })
       }
@@ -99,7 +100,7 @@ class Profile extends Component {
     const {
       firstName,
       lastName,
-      age,
+      birthDate,
       identification,
       gender,
       city,
@@ -117,7 +118,7 @@ class Profile extends Component {
     const initialValues = {
       firstName,
       lastName,
-      age,
+      birthDate,
       identification,
       gender,
       city,
@@ -125,22 +126,22 @@ class Profile extends Component {
     }
 
     this.setState({ initialValues, isActiveGuide, knowledge })
+    console.log('initial values' +this.initialValues)
   }
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen };
-    });
-  };
+  estadoGuia = () => {
+    this.setState({ isActiveGuide: !this.state.isActiveGuide });   
+  }
 
-  backdropClickHandler = () => {
-    this.setState({ sideDrawerOpen: false });
-  }
+ 
   render() {
     if (this.state.goToHome) {
       return <Redirect to="/home" />
     }
     if (this.state.goToGuideProfile) {
       return <Redirect to="/guide" />
+    }
+    if (this.state.goToMyReviews) {
+      return <Redirect to="/MyReviews" />
     }
 
     if (this.state.initialValues) {
@@ -167,40 +168,37 @@ class Profile extends Component {
                     Apellido
                   </div>
                   <div className="title">
-                    <FieldWithError disabled={!this.state.editable} name="age" placeholder="Edad" aria-label="age" className="input" />
-                    Edad
+                    <FieldWithError disabled={true} name="birthDate" placeholder="Fecha de Nacimiento" aria-label="birthDate" className="input"/>
+                    Fecha de nacimiento
                   </div>
-                  <div className="title">
-                    <FieldWithError disabled={!this.state.editable} name="identification" placeholder="DNI / Pasaporte / ID" aria-label="identification" className="input" />
-                  Número de documento
-                  </div>
+                
                   <div className="title">
                   <DropdownGender disabled={!this.state.editable} name="gender" styleName={"input"} options={genders} />
-                  Sexo
+                  Género
                   </div>
+               
                   <div className="title">
-                    <FieldWithError disabled={!this.state.editable} name="city" placeholder="Ciudad de residencia" aria-label="city" className="input" />
-                  Ciudad de residencia
-                  </div>
-                  <div className="title">
-                    <FieldWithError disabled={!this.state.editable} name="email" placeholder="Email" aria-label="email" className="input" />
+                    <FieldWithError disabled={true} name="email" placeholder="Email" aria-label="email" className="input" />
                   Email
                   </div>
 
                 </div>
                 <br></br>
-
+                <a href="/MyReviews" className="lead" style={{cursor:'pointer', fontSize:' 16px'}} onClick={() => this.setState({ goToMyReviews: true })}>Ver valoraciones</a>
               
 
                 <div className="guideSection">
-                  {this.state.knowledge && this.state.knowledge.length > 0 && <div className="be-guide">
+                  {this.state.knowledge && this.state.knowledge.length > 0 } 
+                  <div className="be-guide">
                    Mostrarme activo 
                       <label class="switch">
-                      <input type="checkbox" checked={this.state.isActiveGuide} disabled={!this.state.editable} />
+                      <input type="checkbox" checked={this.state.isActiveGuide} onClick={() => this.estadoGuia()} />
                       <span class="slider round"></span>
                     </label>
-                  </div>}
+                  </div>
                 </div>
+                <br></br>
+              
 
                 <div className="buttonsSectionGuia">
                   <input type="button" className="btn-primero"
@@ -212,9 +210,14 @@ class Profile extends Component {
                   <input type="button" className="btn-tercero" value={this.state.editable ? "Cancelar" : "Editar mis datos"}
                     onClick={() => this.toggleEditInfo()} />
                     <br></br>
-                  <input type="button" className="btn-tercero" value="Guardar" disabled={!this.state.editable} />
+                  <input type="submit" className="btn-tercero" value="Guardar" disabled={!this.state.editable}  />
+                  
                 </div>
-
+                {this.state.updateOk && (
+                   <p className="updateOk" >
+                     ¡Tus datos se guardaron!
+                   </p>
+                 )}
 
                 <div className="cerrarSesionSection">
 
@@ -231,7 +234,7 @@ class Profile extends Component {
                   <p className="form-error">Usuario no logueado.</p>
                 )}
                 {this.state.updateFailed && (
-                  <p className="form-error">Actualización de datos de guía falló. Intanta de nuevo.</p>
+                  <p className="form-error">Actualización de datos falló. Intanta de nuevo.</p>
                 )}
               </Form>
             </Formik>

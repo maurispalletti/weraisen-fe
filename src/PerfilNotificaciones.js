@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Header from '../src/components/Header';
 import userServices from './services/userServices'
 
-import CardNotificacion from '../src/components/Card_Notificacion.js';
+import CardNotificacion2 from '../src/components/Card_Notificacion.js';
+import CardNotificacion1 from '../src/components/Card_Notificacion1.js';
+import CardNotificacion0 from '../src/components/Card_Notificacion0.js';
 import img1 from '../src/Imagenes_Alvo/448.png';
 
 class Notificacion extends Component {
@@ -15,8 +17,8 @@ class Notificacion extends Component {
 	getNotifications = async () => {
 		try {
 			const userId = localStorage.getItem("userId");
-			const response = await userServices.getNotifications(userId);
-
+			//hacer llamada al getendend.... en matchdelegate
+			const response = await userServices.getNotifications(userId);			
 			if (response && response.data) {
 				this.setState({ notificacions: response.data, loading: false })
 			}
@@ -30,22 +32,87 @@ class Notificacion extends Component {
 	renderNotifications = () => {
 		const { notificacions } = this.state;
 		if (notificacions.length > 0) {
+			
 			return notificacions.map(notification => {
 				const { id, message } = notification
-				return (
-					<div>
-						<CardNotificacion
-							key={id}
-							imgsrc={img1}
-							name={"Paula Rossi"}
-							description={message}
-							btn1={"Chatear"}
-							btn2={"Rechazar"}
-						/>
-						<br />
-					</div>
-				)
+				console.log(notification)
+				if (notification.type === "elected"){
+					return (
+						<div>
+							<CardNotificacion2 //esta notificación es la que recibe el guía
+								key={id}
+								imgsrc={img1} //imagen del turista
+								description={message} 
+								btn1={"Iniciar chat"}
+								btn2={"Rechazar"}
+							/>
+							<br />
+						</div>
+					)					
+				}
+
+				if (notification.type === "review"){
+					return (
+						<div>
+							<CardNotificacion1
+								key={id}
+								imgsrc={img1}
+								description={message}
+								btn1={"Puntuar"}
+							/>
+							<br />
+						</div>
+					)
+				}
+				
+				if (notification.type === "aproved"){
+					return (
+						<div>
+							<CardNotificacion1
+								key={id}
+								imgsrc={img1}
+								description={message}
+								btn1={"Iniciar chat"}
+							/>
+							<br />
+						</div>
+					)
+				}
+				
+				if (notification.type === "rejected"){
+					return (
+						<div>
+							<CardNotificacion1
+								key={id}
+								imgsrc={img1}
+								description={message}
+								btn1={"Buscar otro guía"}
+							/>
+							<br />
+						</div>
+					)
+				}
+				if (notification.type === "advice"){
+						return (
+							<div>
+								<CardNotificacion0
+									key={id}
+									imgsrc={img1}
+									description={message}
+								/>
+								<br />
+							</div>
+						)	
+				}
+				else return null;
 			});
+		}
+		else {
+			return (
+				<div className="notificacion" style={{ paddingTop: "30px" }}>
+						<h2>Aún no tenes ninguna notificación.</h2>
+					</div>
+			)
 		}
 	}
 
@@ -60,7 +127,7 @@ class Notificacion extends Component {
 				<div>
 					<Header />
 					<div className="notificacion" style={{ paddingTop: "30px" }}>
-						<h2>Cargando notificaciones...</h2>
+						<h2>Cargando tus notificaciones...</h2>
 					</div>
 				</div>
 			)
@@ -70,7 +137,10 @@ class Notificacion extends Component {
 					<div>
 						<Header />
 						<div className="notificacion" style={{ paddingTop: "30px" }}>
-							<h2>Ups fallo el servicio de notificaciones</h2>
+						La búsqueda de notificaciones falló. Intentá de nuevo por favor.
+							<p className="form-error">
+                     
+                   </p>
 						</div>
 					</div>
 				)
@@ -79,7 +149,7 @@ class Notificacion extends Component {
 					<div>
 						<Header />
 						<div className="notificacion" style={{ paddingTop: "30px" }}>
-							<h2>Mis notificaciones</h2>
+							<h2>Notificaciones</h2>
 						</div>
 						<div style={{ paddingTop: "20px" }}>
 							{this.renderNotifications()}
