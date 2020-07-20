@@ -24,7 +24,7 @@ class Chat extends Component {
     otherUser: "",
     chatId: "",
     userId: "",
-    placeholder: "Enviar mensaje..."
+    placeholder: "Enviar mensaje...",
   }
 
   componentDidMount() {
@@ -96,7 +96,7 @@ class Chat extends Component {
   }
 
 
-  sendMessage = async (values) => {
+  sendMessage = async (values, resetForm) => {
     console.log(values);
 
     const newMessage = {
@@ -117,6 +117,7 @@ class Chat extends Component {
         console.error(`Error: ${error}`)
       }
     }
+    resetForm();
   }
 
   async goToValoration() {
@@ -186,7 +187,7 @@ class Chat extends Component {
             <div className="chatInputWrapper">
               <Formik
                 initialValues={{ message: '' }}
-                onSubmit={(values) => this.sendMessage(values)}
+                onSubmit={(values, { resetForm }) => this.sendMessage(values, resetForm)}
               >
                 <Form>
                   <div className="formInputChat">
@@ -195,8 +196,9 @@ class Chat extends Component {
                       aria-label="inputChat"
                       className="inputChat"
                       type="text"
-                      // placeholder="Enviar mensaje..."
                       placeholder={this.state.placeholder}
+                      autoComplete="off"
+                      style={{ textAlign: 'left', paddingLeft: 10 }}
                     />
                   </div>
                   <button type="submit" className="send-button"><img src={enviar} alt={"Home"} width="35" /></button>
@@ -204,27 +206,6 @@ class Chat extends Component {
               </Formik>
             </div>
           </div>
-          {/* <div className="buttonsSectionChat">
-            <input type="button"
-              value={this.state.matchStatus === "Finalizado" ? "Ir a review" :
-                this.state.iniciated ? "Finalizar" : "Iniciar"}
-              onClick={() => { this.goToValoration() }}
-              disabled={this.state.matchStatus === "Anulado" || this.state.matchStatus === "Cancelado"}
-              className={this.state.matchStatus === "Anulado" || this.state.matchStatus === "Cancelado" ?
-                "buttonLeftChatDisabled" : "buttonLeftChat"}
-            />
-            <input type="button" className="buttonRightChat"
-              value={this.state.matchStatus === "Finalizado"
-                || this.state.matchStatus === "Cancelado"
-                || this.state.matchStatus === "Anulado"
-                ? "Volver" : this.state.iniciated ? "Anular" : "Cancelar"}
-              onClick={() => {
-                this.state.matchStatus === "Finalizado"
-                  || this.state.matchStatus === "Cancelado"
-                  || this.state.matchStatus === "Anulado"
-                  ? this.setState({ goToHome: true }) : this.cancelMatch()
-              }} />
-          </div> */}
         </div>
       </div>
     );

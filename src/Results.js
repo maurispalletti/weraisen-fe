@@ -32,9 +32,6 @@ class Results extends Component {
     }
   }
 
-
-
-
   async UNSAFE_componentWillMount() {
     let filters = sessionStorage.getItem("filters");
     filters = JSON.parse(filters)

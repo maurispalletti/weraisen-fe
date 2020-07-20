@@ -1,5 +1,6 @@
 import axios from 'axios'
-const customUrl = `http://localhost:3001`;
+// const customUrl = `http://localhost:3001`;
+const customUrl = `http://192.168.10.111:3001`;
 
 class userServices {
 	static async login({ email, password }) {
@@ -150,6 +151,13 @@ class userServices {
 
 	static async updateMatch(chatId, status) {
 		const url = `${customUrl}/api/v1/matches/chats/${chatId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = { status }
+		return axios.put(url, body, { headers })
+	}
+
+	static async updateMatchStatus(matchId, status) {
+		const url = `${customUrl}/api/v1/matches/${matchId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = { status }
 		return axios.put(url, body, { headers })

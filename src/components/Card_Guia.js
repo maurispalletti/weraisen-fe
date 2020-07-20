@@ -8,7 +8,6 @@ import { Button } from 'react-bootstrap';
 export default class Card_Guia extends React.Component {
   state = {
     show: false,
-    goToChat: false,
     goToMatches: false,
   }
 
@@ -20,7 +19,6 @@ export default class Card_Guia extends React.Component {
 
     localStorage.setItem("chatId", chatId);
     this.setState({ goToMatches: true })
-    // this.setState({ goToChat: true })
   }
 
   guardarGuia = (guiaIdcard) => {
@@ -28,9 +26,6 @@ export default class Card_Guia extends React.Component {
   }
 
   render() {
-    if (this.state.goToChat) {
-      return <Redirect to={`/chat`} />
-    }
     if (this.state.goToMatches) {
       return <Redirect to={`/matches`} />
     }
