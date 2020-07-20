@@ -96,9 +96,18 @@ class Profile extends Component {
     }
   }
 
+  getFormattedDate(birthDate) {
+    const date = new Date(birthDate);
+    const day = date.getDate()
+    const month = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
+    var year = date.getFullYear()
 
+    return day + "/" + month + "/" + year;
+  }
 
   async componentDidMount() {
+
+    
     const {
       firstName,
       lastName,
@@ -118,13 +127,10 @@ class Profile extends Component {
     console.log(knowledge)
 
     
-      
-
-
     const initialValues = {
       firstName,
       lastName,
-      birthDate,
+      birthDate: this.getFormattedDate(birthDate),
       identification,
       gender,
       city,
