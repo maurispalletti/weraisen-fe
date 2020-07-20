@@ -7,8 +7,6 @@ import { Redirect } from 'react-router'
 
 import userServices from './services/userServices'
 
-let fullInfoMatches = [];
-
 class Matches extends Component {
 
   state = {
@@ -19,16 +17,23 @@ class Matches extends Component {
     loading: true,
   }
 
-  getMatches = async () => {
+  componentDidMount() {
+    this.getMatches()
+  }
 
+  getMatches = async () => {
     try {
+      let fullInfoMatches = [];
+
       const userId = localStorage.getItem("userId");
 
       const response = await userServices.getMatches(userId);
 
-      if (response && response.data && response.data.length > 0) {
-
+      if (response && response.data) {
         const matches = response.data;
+
+        console.log(`MATCHES:`)
+        console.log(matches)
 
         for (let index = 0; index < matches.length; index++) {
           const match = matches[index];
@@ -52,19 +57,22 @@ class Matches extends Component {
 
         if (fullInfoMatches.length > 0) {
           newMatches = fullInfoMatches.map(match => {
-            const { id, partnerRole, partnerName, chatId, status } = match
+            const { id, partnerRole, partnerName, chatId, status, createdAt } = match
             return (
               <MatchCard
                 key={id}
+                matchId={id}
                 partnerRole={partnerRole}
                 partnerName={partnerName}
                 chatId={chatId}
                 status={status}
+                date={createdAt}
+                refresh={() => this.getMatches()}
               />
             )
           });
-          this.setState({ newMatches, loading: false })
         }
+        this.setState({ newMatches, loading: false })
       }
     } catch (error) {
       console.error(`There was an error trying to get matches: ${error}`)
@@ -82,34 +90,41 @@ class Matches extends Component {
     if (this.state.loading) {
       return (
         <div className="Matches">
-          <Header></Header>
+          <Header />
           <div className="BodyMatches">
             <h2>Cargando resutlados...</h2>
           </div>
         </div>
       )
     } else {
-      return (
-        <div className="Matches">
-          <Header></Header>
-
-          <div className="BodyMatches">
-
-            <div className="Section">
-              <h2>Tus encuentros:</h2>
-              {this.state.newMatches}
+      if (this.state.newMatches.length < 1) {
+        return (
+          <div className="Matches">
+            <Header />
+            <div className="BodyMatches">
+              <h2>Aun no posees ningun encuentro</h2>
             </div>
-
-            <div className="Section">
-              <input type="button" className="MatchesButton" value="Volver al menú principal" onClick={() => this.setState({ goToHome: true })} />
-            </div>
-            {this.state.searchFailed && (
-              <p className="form-error">La búsqueda de encuentros falló. Intentá de nuevo por favor.</p>
-            )}
           </div>
-        </div>
-      );
-
+        )
+      } else {
+        return (
+          <div className="Matches">
+            <Header />
+            <div className="BodyMatches">
+              <div className="Section">
+                <h2 style={{ marginBottom: 40 }}>Tus encuentros:</h2>
+                {this.state.newMatches}
+              </div>
+              <div className="Section">
+                <input type="button" className="MatchesButton" value="Volver al menú principal" onClick={() => this.setState({ goToHome: true })} />
+              </div>
+              {this.state.searchFailed && (
+                <p className="form-error">La búsqueda de encuentros falló. Intentá de nuevo por favor.</p>
+              )}
+            </div>
+          </div>
+        );
+      }
     }
   }
 }

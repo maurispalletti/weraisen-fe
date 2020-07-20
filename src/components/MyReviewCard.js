@@ -38,11 +38,11 @@ export default class  extends React.Component {
 
            <div className="card-text">{description}</div>
            <div className="Estrellas">
-           {points== 1 && <img src={e1} width={60}></img>}
-           {points== 2 && <img src={e2} width={60}></img>}
-           {points== 3 && <img src={e3} width={60}></img>}
-           {points== 4 && <img src={e4} width={60}></img>}
-           {points== 5 && <img src={e5} width={60}></img>}
+           {points=== 1 && <img alt='1' src={e1} width={60}></img>}
+           {points=== 2 && <img alt='2' src={e2} width={60}></img>}
+           {points=== 3 && <img alt='3' src={e3} width={60}></img>}
+           {points=== 4 && <img alt='4' src={e4} width={60}></img>}
+           {points=== 5 && <img alt='5' src={e5} width={60}></img>}
            </div>
            <b><div className="card-title">{giverId}</div></b>
            

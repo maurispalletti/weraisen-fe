@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CardNotificaciones from '../src/components/CardNotificacionesAAl';
 import Header from '../src/components/Header';
 import userServices from './services/userServices'
 
@@ -37,7 +36,7 @@ class Notificacion extends Component {
 			return notificacions.map(notification => {
 				const { id, message } = notification
 				console.log(notification)
-				if (notification.type == "elected"){
+				if (notification.type === "elected"){
 					return (
 						<div>
 							<CardNotificacion2 //esta notificación es la que recibe el guía
@@ -52,7 +51,7 @@ class Notificacion extends Component {
 					)					
 				}
 
-				if (notification.type == "review"){
+				if (notification.type === "review"){
 					return (
 						<div>
 							<CardNotificacion1
@@ -66,7 +65,7 @@ class Notificacion extends Component {
 					)
 				}
 				
-				if (notification.type == "aproved"){
+				if (notification.type === "aproved"){
 					return (
 						<div>
 							<CardNotificacion1
@@ -80,7 +79,7 @@ class Notificacion extends Component {
 					)
 				}
 				
-				if (notification.type == "rejected"){
+				if (notification.type === "rejected"){
 					return (
 						<div>
 							<CardNotificacion1
@@ -93,7 +92,7 @@ class Notificacion extends Component {
 						</div>
 					)
 				}
-				if (notification.type == "advice"){
+				if (notification.type === "advice"){
 						return (
 							<div>
 								<CardNotificacion0
@@ -105,7 +104,7 @@ class Notificacion extends Component {
 							</div>
 						)	
 				}
-			
+				else return null;
 			});
 		}
 		else {
