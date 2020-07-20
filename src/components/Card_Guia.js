@@ -37,10 +37,7 @@ export default class Card_Guia extends React.Component {
 
     const guiaSelec = this.props.guideId;
 
-    
-
-
-      return (
+    return (
       <div className="card col-sm-12 col-xs-12" style={{ maxWidth: '400px', margin: '0px auto', padding: '10px 10px 10px 10px' }}>
 
 
@@ -55,17 +52,18 @@ export default class Card_Guia extends React.Component {
           <h4 style={{ textAlign: "center", fontWeight: 'lighter' }}>{description}</h4>
           <h4 style={{ textAlign: "center", fontWeight: 'lighter' }}>Idiomas: {languagesString}</h4>
         </div>
-        <a href="/guideView" className="lead" style={{ cursor: 'pointer', fontSize: ' 16px' }} onClick={() => this.guardarGuia(guiaSelec)}>Ver perfil</a>
+        <a href="/guideView" className="lead" style={{ cursor: 'pointer', fontSize: ' 16px', marginBottom: 20 }} onClick={() => this.guardarGuia(guiaSelec)}>Ver perfil</a>
 
 
-        <div className="row mb-2">
-          <div className="center" >
-            <Button variant="primary" size="sm" style={{ background: '#d48e4b', paddingTop: '5px' }} onClick={() => this.goToChat()}> Enviar solicitud </Button>
+        <div>
+        {/* <div className="row mb-2"> */}
+          <div className="center">
+            <Button variant="primary" size="sm" style={{ background: '#d48e4b', paddingTop: '5px', margin: 0, marginBottom: 20 }} onClick={() => this.sendMatchRequest()}> Enviar solicitud </Button>
           </div>
         </div>
       </div>
+
+
     )
-
   }
-  }
-
+}
