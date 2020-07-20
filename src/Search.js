@@ -167,9 +167,9 @@ class Search extends Component {
                   <br></br>
                   <h2>Elegí el idioma de tu guía:</h2>
                   <Autocomplete defaultText={this.state.language} placeholder={'Ingresa las primeras letras del idioma'} name={'language'} items={languages}></Autocomplete>
-                  <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="salidaGrupal" />
-                  <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
+                  <div className="custom-control custom-checkbox">
+                  <input type="checkbox" className="custom-control-input" id="salidaGrupal" />
+                  <label className="custom-control-label">Permitir salidas grupales</label>
                 </div>
                 <br></br>
                   {this.state.ageValidationFailed && (

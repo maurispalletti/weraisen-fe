@@ -21,11 +21,6 @@ const cities = [
   { value: "Rosario", description: 'Rosario' }
 ];
 
-const INITIAL_VALUES = {
-  description: '',
-  city: null,
-}
-
 class GuideProfile extends Component {
 
   state = {

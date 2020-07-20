@@ -10,7 +10,7 @@ let chartConfigs;
 
 class GraficoEncPorCiudad extends React.Component {
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         console.log(this.props.matchesPerMonth)
 
         const { matchesPerMonth } = this.props;
