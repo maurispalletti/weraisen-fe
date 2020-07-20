@@ -27,7 +27,7 @@ class CrearCuentaModal_Alvo extends Component {
           <h5 align="Left"> ¡Gracias por unirte a WeRaisen!</h5>
        
           <p>Se envió una solicitud a los administradores para que validen tus datos y así poder 
-            mantener la seguridad de nuestra comunidad. En breve podrás acceder a la plataforma y 
+            mantener la seguridad de nuestra comunidad. En 24 horas podrás acceder a la plataforma y 
             comenzarás a vivir experiencias únicas.</p>
           
         </Modal.Body>

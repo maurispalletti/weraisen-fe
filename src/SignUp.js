@@ -116,13 +116,13 @@ class SignUp extends Component {
 
   onChange(e) {
     let files = e.target.files;
-    console.log(files.data);
+    console.log(files);
     this.setState.imagenDNI1 = files;
   }
 
   render() {
 
-    let denunciaModalClose = () => this.setState({ denunciaModalShow: false });
+    let denunciaModalClose = () => this.setState({ denunciaModalShow: false, goToLogin: true });
     if (this.state.goToLogin) {
       return <Redirect to="/login" />
     }
@@ -150,12 +150,23 @@ class SignUp extends Component {
                 <FieldWithError name="lastName" placeholder="Ingresa tu apellido" aria-label="lastName" className="input" />
             Apellido
             </div>
+            <div className="title"> 
+            <FieldWithError name="identification" placeholder="Ingresa tu documento" aria-label="identification" className="input" />
+            Documento
+            </div>
 
-              {/* <div className="title"> 
-            <FieldWithError name="age" placeholder="Ingresa tu fecha de nacimiento" className="input" max={this.state.min} value={this.state.value} onChange={this.handleChange} required type="date"/>
+              <div className="title">
+                <FieldWithError name="age"
+                  placeholder="Ingresa tu fecha de nacimiento"
+                  className="input"
+                  max={this.state.min}
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                  required 
+                  type="date" 
+                  />
             Fecha de nacimiento
-            </div> */}
-
+            </div>
               <div className="title">
                 <DropdownGender name="gender" styleName={"input"} options={genders} />
               Género
@@ -204,10 +215,10 @@ class SignUp extends Component {
 
                   <input type="submit" className="btn-primero" value="Crear cuenta" />
 
-                  {/* <CrearCuentaModal_Alvo
+                  <CrearCuentaModal_Alvo
                     show={this.state.denunciaModalShow}
                     onHide={denunciaModalClose}
-                  /> */}
+                  />
 
                   {this.state.passwordsMissmatch && (
                     <p className="form-error">
