@@ -15,13 +15,13 @@ class CardsAceptar extends Component {
           userId,
           status: "ACTIVE"
         })
-        this.props.refresh()
       }
     } catch (error) {
       console.log(error)
       this.setState({ updateFailed: true })
       console.error(`There was an error trying to add a new user`)
-    };
+    }
+    this.props.refresh()
   }
 
   async updateUserStatusCancel() {
@@ -39,7 +39,7 @@ class CardsAceptar extends Component {
       this.setState({ updateFailed: true })
       console.error(`There was an error trying to add a new user`)
     };
-
+    this.props.refresh()
   }
 
   render() {
