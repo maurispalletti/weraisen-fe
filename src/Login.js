@@ -33,9 +33,9 @@ class Login extends Component {
       const response = await userServices.login({ email, password })
       console.log(response);
       const { data: { id } } = response
-      
 
-      if (response.data.status === "ACTIVE"){
+
+      if (response.data.status === "ACTIVE") {
         // save Id in local storage
         localStorage.setItem("userId", id);
 
@@ -43,31 +43,29 @@ class Login extends Component {
         // localStorage.getItem("userId");
         // console.log(`!!!!!!!!!!!` + id)
         this.setState({ mensajeError: "" })
-        if(response.data.isAdminAccount){
-          this.setState({esAdmin: true});
-        }else{
+        if (response.data.isAdminAccount) {
+          this.setState({ esAdmin: true });
+        } else {
           this.setState({ goToHome: true })
         }
-        
-      }else{
-        this.setState({ userPENDING: true })
-        this.setState({ mensajeError: "Tu cuenta está en proceso de validación." })
+
+      } else {
+        this.setState({ userPENDING: true, mensajeError: "Tu cuenta está en proceso de validación." })
       }
 
-     
+
     } catch (error) {
-      this.setState({ loginFailed: true })
-      this.setState({ mensajeError: "Tu email y password no coinciden. Intenta de nuevo." })
+      this.setState({ loginFailed: true, mensajeError: "Tu email y password no coinciden. Intenta de nuevo." })
       console.error(`There was an error trying to log in`)
     }
   }
-  
+
 
   render() {
     if (this.state.goToHome) {
       return <Redirect to="/home" />
     }
-    if(this.state.esAdmin){
+    if (this.state.esAdmin) {
       return <Redirect to="/admin" />
     }
 
@@ -99,8 +97,8 @@ class Login extends Component {
 
 
                   <p className="form-error">
-                  {this.state.mensajeError}
-                    </p>
+                    {this.state.mensajeError}
+                  </p>
 
 
                   {/* {this.state.loginFailed && (
