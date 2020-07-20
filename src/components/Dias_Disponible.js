@@ -40,7 +40,7 @@ export default class Dias_Disponible extends Component {
             <div>
                 <div className="row d-flex align-items-center bd-highlight mb-3 text-center justify-content-center">
                     <div >
-                        <button type=" ItemSeleccionadoA"
+                        <button type="button"
                             className={( this.state.elegidas && this.state.elegidas.length > 0) && this.state.elegidas.includes('Lunes') ? " button ItemSeleccionadoA" : "button ItemNoSeleccionadoA"}
                             onClick={() => this.agregarIdioma("Lunes")}
                             style={{ width: '72px', height: '32px', margin: '10px' }}
