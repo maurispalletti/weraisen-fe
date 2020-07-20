@@ -54,21 +54,25 @@ class userServices {
 	}
 
 	static async getGuides({
-		city,
 		fromAge,
 		toAge,
 		gender,
 		language,
-		knowledge }) {
+		city,
+		knowledge,
+		groupwalk,
+		tourDay, }) {
 		const url = `${customUrl}/api/v1/guides`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
-			city,
 			fromAge: parseInt(fromAge),
 			toAge: parseInt(toAge),
 			gender,
 			language,
-			knowledge
+			city,
+			knowledge,
+			groupwalk,
+			tourDay
 		}
 		return axios.post(url, body, { headers })
 	}
