@@ -10,6 +10,7 @@ import DropdownGender from './forms/DropdownGender'
 import dni1 from './icons/dni1.png'
 import dni2 from './icons/dni2.png'
 import icon from './icons/icon.svg'
+import CrearCuentaModal_Alvo from './components/CrearCuentaModal_Alvo'
 
 const INITIAL_VALUES = {
   firstName: '',
@@ -47,7 +48,9 @@ class SignUp extends Component {
     signUpFailed: false,
     passwordsMissmatch: false,
     value: '',
-    min: ''
+    min: '',
+    denunciaModalShow: false,
+    imagenDNI1: null
   }
 
   createUser = async ({
@@ -79,7 +82,7 @@ class SignUp extends Component {
         // save Id in local storage
         localStorage.setItem("userId", id);
 
-        this.setState({ passwordsMissmatch: false, goToHome: true, signUpFailed: false })
+        this.setState({ passwordsMissmatch: false, denunciaModalShow: true, signUpFailed: false })
       } else {
         this.setState({ signUpFailed: true, passwordsMissmatch: true })
       }
@@ -115,7 +118,15 @@ class SignUp extends Component {
 
   }
 
+onChange(e){
+  let files =e.target.files;
+  console.log(files.data);
+  this.setState.imagenDNI1 = files;
+}
+
   render() {
+
+    let denunciaModalClose = () => this.setState({ denunciaModalShow: false });
     if (this.state.goToLogin) {
       return <Redirect to="/login" />
     }
@@ -141,10 +152,10 @@ class SignUp extends Component {
             Apellido
             </div>
 
-            <div className="title"> 
+            {/* <div className="title"> 
             <FieldWithError name="age" placeholder="Ingresa tu fecha de nacimiento" className="input" max={this.state.min} value={this.state.value} onChange={this.handleChange} required type="date"/>
             Fecha de nacimiento
-            </div>
+            </div> */}
 
             <div className="title"> 
           <DropdownGender name="gender" styleName={"input"} options={genders} />
@@ -172,7 +183,8 @@ class SignUp extends Component {
            
           <div className="right-container">
           <label className="title">Subí foto de tu DNI para validar tu identidad</label><br></br>
-                <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler} ref={fileImput => this.fileImput = fileImput}/>
+                {/* <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler} ref={fileImput => this.fileImput = fileImput}/> */}
+                <input style={{ display: 'none' }} type="file" onChange={(e)=> this.onChange(e)} ref={fileImput => this.fileImput = fileImput}/>
           
                 <div className="dni1"> 
                      <label className="input3">Frente</label><br></br>
@@ -180,7 +192,7 @@ class SignUp extends Component {
                </div>
                <div className="dni2">
                      <label className="input3">Dorso</label><br></br>
-                     <img src={dni2} alt={"dni detras"} width="150" onClick={() => this.fileImput.click()}/>
+                     <img src={this.state.imagenDNI1} alt={"dni detras"} width="150" onClick={() => this.fileImput.click()}/>
               </div>
                <br/>
               <label className="title">Subí una foto que se mostrará en tu perfil</label>
@@ -195,6 +207,11 @@ class SignUp extends Component {
           </div>
           <div className="righ-container">
               <input type="submit" className="btn-primero" value="Crear cuenta" />
+
+              <CrearCuentaModal_Alvo
+                show = {this.state.denunciaModalShow}
+                onHide = {denunciaModalClose}
+                />
              
                    {this.state.passwordsMissmatch && (
                     <p className="form-error">
