@@ -191,7 +191,7 @@ class SignUp extends Component {
                 </div>
                 <div className="dni2">
                   <label className="input3">Dorso</label><br></br>
-                  <img src={this.state.imagenDNI1} alt={"dni detras"} width="150" onClick={() => this.fileImput.click()} />
+                  <img src={dni2} alt={"dni detras"} width="150" onClick={() => this.fileImput.click()} />
                 </div>
                 <div className='remember'>
                   <p>Al crear cuenta estoy aceptando los
@@ -204,10 +204,10 @@ class SignUp extends Component {
 
                   <input type="submit" className="btn-primero" value="Crear cuenta" />
 
-                  <CrearCuentaModal_Alvo
+                  {/* <CrearCuentaModal_Alvo
                     show={this.state.denunciaModalShow}
                     onHide={denunciaModalClose}
-                  />
+                  /> */}
 
                   {this.state.passwordsMissmatch && (
                     <p className="form-error">
