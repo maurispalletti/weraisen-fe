@@ -1,6 +1,5 @@
 import axios from 'axios'
-// const customUrl = `http://localhost:3001`;
-const customUrl = `http://192.168.10.111:3001`;
+const customUrl = `http://localhost:3001`;
 
 class userServices {
 	static async login({ email, password }) {
