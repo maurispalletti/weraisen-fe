@@ -10,6 +10,7 @@
     "formik": "^1.5.8",
     "fusioncharts": "^3.14.1",
     "jquery": "^3.4.1",
+    "moment": "^2.27.0",
     "rc-datepicker": "^5.0.14",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.1",

@@ -14,8 +14,7 @@ class userServices {
 		firstName,
 		lastName,
 		identification,
-		age,
-		city,
+		birthDate,
 		gender,
 		email,
 		password }) {
@@ -25,8 +24,7 @@ class userServices {
 			firstName,
 			lastName,
 			identification,
-			age,
-			city,
+			birthDate,
 			gender,
 			email,
 			password
@@ -37,34 +35,44 @@ class userServices {
 	static async updateGuide({
 		userId,
 		description,
+		city,
 		languages,
+		availableDays,
+		groupwalk,
 		knowledge }) {
 		const url = `${customUrl}/api/v1/guides/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			description,
+			city,
 			languages,
+			availableDays,
+			groupwalk,
 			knowledge
 		}
 		return axios.put(url, body, { headers })
 	}
 
 	static async getGuides({
-		city,
 		fromAge,
 		toAge,
 		gender,
 		language,
-		knowledge }) {
+		city,
+		knowledge,
+		groupwalk,
+		tourDay, }) {
 		const url = `${customUrl}/api/v1/guides`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
-			city,
 			fromAge: parseInt(fromAge),
 			toAge: parseInt(toAge),
 			gender,
 			language,
-			knowledge
+			city,
+			knowledge,
+			groupwalk,
+			tourDay
 		}
 		return axios.post(url, body, { headers })
 	}
@@ -85,9 +93,7 @@ class userServices {
 		userId,
 		firstName,
 		lastName,
-		identification,
-		age,
-		city,
+		birthDate,
 		gender,
 	}) {
 		const url = `${customUrl}/api/v1/tourists/${userId}`
@@ -95,9 +101,7 @@ class userServices {
 		const body = {
 			firstName,
 			lastName,
-			identification,
-			age,
-			city,
+			birthDate,
 			gender,
 		}
 		return axios.put(url, body, { headers })
@@ -143,13 +147,20 @@ class userServices {
 	}
 
 	static async getMatchByChatId(chatId) {
-		const url = `${customUrl}/api/v1/matches/chat/${chatId}`
+		const url = `${customUrl}/api/v1/matches/chats/${chatId}`
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
 	static async updateMatch(chatId, status) {
-		const url = `${customUrl}/api/v1/matches/chat/${chatId}`
+		const url = `${customUrl}/api/v1/matches/chats/${chatId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = { status }
+		return axios.put(url, body, { headers })
+	}
+
+	static async updateMatchStatus(matchId, status) {
+		const url = `${customUrl}/api/v1/matches/${matchId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = { status }
 		return axios.put(url, body, { headers })

@@ -40,6 +40,7 @@ class Profile extends Component {
     initialValues: null,
     isActiveGuide: false,
     knowledge: [],
+    updateOk: false,
   }
 
   // AGREGAR BOTON DE EDIT PARA PODER EDITAR INFO 
@@ -63,14 +64,14 @@ class Profile extends Component {
     }
   }
 
-  updateProfile = async ({
+  updateProfile = async ({ //agregar cambios para que se modifique la fecha de nacimiento, tambien en el be.
     firstName,
     lastName,
     identification,
-    age,
-    city,
+    birthDate,
     gender,
   }) => {
+    console.log('entroooooooooooooooooooooooooooooo')
     try {
       const userId = localStorage.getItem("userId");
       if (userId) {
@@ -79,14 +80,13 @@ class Profile extends Component {
           firstName,
           lastName,
           identification,
-          age,
-          city,
+          birthDate,
           gender,
         })
         console.log(response);
         const { data: { id } } = response
         console.log(id);
-        this.setState({ editable: false })
+        this.setState({ editable: false, updateOk:true })
       } else {
         this.setState({ notLoggedInUser: true })
       }
@@ -96,11 +96,22 @@ class Profile extends Component {
     }
   }
 
+  getFormattedDate(birthDate) {
+    const date = new Date(birthDate);
+    const day = date.getDate()
+    const month = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
+    var year = date.getFullYear()
+
+    return day + "/" + month + "/" + year;
+  }
+
   async componentDidMount() {
+
+    
     const {
       firstName,
       lastName,
-      age,
+      birthDate,
       identification,
       gender,
       city,
@@ -115,10 +126,11 @@ class Profile extends Component {
     console.log(`knowledge`)
     console.log(knowledge)
 
+    
     const initialValues = {
       firstName,
       lastName,
-      age,
+      birthDate: this.getFormattedDate(birthDate),
       identification,
       gender,
       city,
@@ -126,6 +138,7 @@ class Profile extends Component {
     }
 
     this.setState({ initialValues, isActiveGuide, knowledge })
+    console.log('initial values' +this.initialValues)
   }
   estadoGuia = () => {
     this.setState({ isActiveGuide: !this.state.isActiveGuide });   
@@ -167,7 +180,7 @@ class Profile extends Component {
                     Apellido
                   </div>
                   <div className="title">
-                    <FieldWithError disabled={!this.state.editable} name="age" placeholder="Edad" aria-label="age" className="input" />
+                    <FieldWithError disabled={true} name="birthDate" placeholder="Fecha de Nacimiento" aria-label="birthDate" className="input"/>
                     Fecha de nacimiento
                   </div>
                 
@@ -177,7 +190,7 @@ class Profile extends Component {
                   </div>
                
                   <div className="title">
-                    <FieldWithError disabled={!this.state.editable} name="email" placeholder="Email" aria-label="email" className="input" />
+                    <FieldWithError disabled={true} name="email" placeholder="Email" aria-label="email" className="input" />
                   Email
                   </div>
 
@@ -209,9 +222,14 @@ class Profile extends Component {
                   <input type="button" className="btn-tercero" value={this.state.editable ? "Cancelar" : "Editar mis datos"}
                     onClick={() => this.toggleEditInfo()} />
                     <br></br>
-                  <input type="button" className="btn-tercero" value="Guardar" disabled={!this.state.editable} />
+                  <input type="submit" className="btn-tercero" value="Guardar" disabled={!this.state.editable}  />
+                  
                 </div>
-
+                {this.state.updateOk && (
+                   <p className="updateOk" >
+                     ¡Tus datos se guardaron!
+                   </p>
+                 )}
 
                 <div className="cerrarSesionSection">
 
@@ -228,7 +246,7 @@ class Profile extends Component {
                   <p className="form-error">Usuario no logueado.</p>
                 )}
                 {this.state.updateFailed && (
-                  <p className="form-error">Actualización de datos de guía falló. Intanta de nuevo.</p>
+                  <p className="form-error">Actualización de datos falló. Intanta de nuevo.</p>
                 )}
               </Form>
             </Formik>

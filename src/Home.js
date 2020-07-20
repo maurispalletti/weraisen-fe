@@ -3,7 +3,6 @@ import Header from './components/Header';
 import { Fragment } from 'react';
 import CardGuiaHome from './components/Card_Guia_Home';
 import userServices from './services/userServices';
-import principal from './icons/principal.svg'
 
 class Home extends Component {
 	state = {

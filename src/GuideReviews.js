@@ -41,7 +41,7 @@ class GuideReviews extends Component {
       this.setState({ searchFailed: true })
     }
   }
-  async componentWillMount() { /* usar el did mount*/
+  async UNSAFE_componentWillMount() { /* usar el did mount*/
     await this.getNameGuide()
      await this.getReviews()
   }
