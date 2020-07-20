@@ -66,20 +66,16 @@ class Search extends Component {
     this.setInitialValues();
     let hoy = new Date();
   
-    const dia = hoy.getDate();
-    let mes = (hoy.getMonth() + 1);
-    mes = mes.toString()
-  
-    mes = mes.length === 1 ? "0" + mes : mes
+    // const dia = hoy.getDate();
+    // let mes = (hoy.getMonth() + 1);
+    // mes = mes.toString()
+    // mes = mes.length === 1 ? "0" + mes : mes
+    // const año = hoy.getFullYear();
+    // const añomin = año - 18
+    // const fechamin = hoy;
+    // hoy = año + "-" + mes + "-" + dia;
 
-    const año = hoy.getFullYear();
-    const añomin = año - 18
-
-
-    const fechamin = hoy;
-    hoy = año + "-" + mes + "-" + dia;
-
-    this.setState(() => ({ value: hoy, min: fechamin }));
+    this.setState(() => ({ value: hoy, min: hoy }));
   }
 
   setInitialValues() {
@@ -182,7 +178,7 @@ class Search extends Component {
                   <h2>¿Cuándo?</h2>
                  {/* <Desplegable onChange={this.handleTourDay}  />*/}
                  <div className="title"> 
-            <FieldWithError name="birthDate" placeholder="Ingresa tu fecha de nacimiento" className="input" max={this.state.min} value={this.state.tourDay} onChange={this.handleChangeTourDay} required type="date"/>
+            <FieldWithError name="birthDate" placeholder="Ingresa tu fecha de nacimiento" className="input" min={this.state.min} value={this.state.tourDay} onChange={this.handleChangeTourDay} required type="date"/>
             
             </div>
                 </div>
