@@ -51,11 +51,13 @@ class SignUp extends Component {
     firstName,
     lastName,
     identification,
+    birthDate,
     gender,
     email,
     password,
     passwordRepeated,
   }) => {
+    console.log('entrooooooooooo')
     try {
       if (password === passwordRepeated) {
         const birthDate = this.state.value;
