@@ -143,13 +143,20 @@ class userServices {
 	}
 
 	static async getMatchByChatId(chatId) {
-		const url = `${customUrl}/api/v1/matches/chat/${chatId}`
+		const url = `${customUrl}/api/v1/matches/chats/${chatId}`
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
 	static async updateMatch(chatId, status) {
-		const url = `${customUrl}/api/v1/matches/chat/${chatId}`
+		const url = `${customUrl}/api/v1/matches/chats/${chatId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = { status }
+		return axios.put(url, body, { headers })
+	}
+
+	static async updateMatchStatus(matchId, status) {
+		const url = `${customUrl}/api/v1/matches/${matchId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = { status }
 		return axios.put(url, body, { headers })

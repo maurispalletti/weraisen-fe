@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import MyReviewCard from './components/MyReviewCard';
 import Header from '../src/components/Header'
-
-import Toolbar from './components/navbar/toolbar';
-import SideDrawer from './components/navbar/sideDrawer/sideDrawer';
-import Backdrop from './components/navbar/backdrop/backdrop';
 import './MyReviews.css';
 import userServices from './services/userServices'
 
@@ -86,13 +82,6 @@ class MyReviews extends Component {
   render() {
     if (this.state.goToProfile) {
       return <Redirect to="/Profile" /> 
-    }
-
-    let sideDrawer;
-    let backdrop;
-    if (this.state.sideDrawerOpen) {
-      sideDrawer = <SideDrawer />;
-      backdrop = <Backdrop click={this.backdropClickHandler} />
     }
 
     return (
