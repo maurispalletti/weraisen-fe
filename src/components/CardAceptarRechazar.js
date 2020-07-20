@@ -14,7 +14,7 @@ class AceptarRechazar extends Component {
     newUsers: [],
     loading: true,
     newUsersFailed: false,
-    bottonPresionado: false
+    bottonPresionado: false //Cuando se me trae todos los usuarios pendientes, aún no he presionado el botón que acepta los mismos.
   }
   getaceptNewUser = async () => {
     if (!this.state.bottonPresionado)
@@ -24,7 +24,7 @@ class AceptarRechazar extends Component {
       const response = await userServices.getaceptNewUser();
       console.log(response.data);
       if (response && response.data) {
-        this.setState({ newUsers: response.data, loading: false, bottonPresionado: false })
+        this.setState({ newUsers: response.data, loading: false, bottonPresionado: false }) //Me busca los users, botón sigue en false.
       }
     } catch (error) {
       console.error(`There was an error trying to get new users: ${error}`)
@@ -51,7 +51,8 @@ class AceptarRechazar extends Component {
             lastName= {lastName}
             identification={identification}
             birthDate={birthDate}
-            bottonPresionado={() => this.setState({bottonPresionado: false})}
+            bottonPresionado={() => this.setState({bottonPresionado: true})} //En la card le seteo el estado a true ya que si acepta al user, se reenderizará y se eliminará el user
+                                                                              // se lo paso por parámetro a CardAceptarRechazarAll que posee el componente para dibujar la card
           />
           <br></br>
             </div>

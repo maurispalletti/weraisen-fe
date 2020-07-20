@@ -11,7 +11,7 @@ class CardsAceptar extends React.Component {
   
   state = {
      updateFailed: false,
-     bottonPresionado: false
+     
   }
   
   async updateUserStatus() {
@@ -29,8 +29,7 @@ class CardsAceptar extends React.Component {
         console.log(response);
        
          this.setState({ updateFailed: false})
-         this.setState({bottonPresionado: true})
-         console.log("bottonPresionado" + this.state.bottonPresionado)
+        
        } 
        
       
@@ -73,7 +72,7 @@ class CardsAceptar extends React.Component {
   
   render () {
    const {userId, dniFirst, dniSecond, profilePicture, firstName, lastName,birthDate, identification, bottonPresionado} = this.props;
-    
+    // me llega como parámetro el bottonPresionado true, pero no pudimos hacer que se reenderice la tarjeta cuando se presiona aceptar. 
     return (
         
         <div className="contenedor-total">
