@@ -7,32 +7,38 @@ import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
 const chartConfigs = {
-    type: 'mscolumn3d',// The chart type
+    type: 'mscolumn2d',// The chart type
     width: '700', // Width of the chart
     height: '400', // Height of the chart
     dataFormat: 'json', // Data type
     dataSource: {
         "chart": {
-            "caption": "Cantidad de encuentros creados por mes",
+            "caption": "Categorías seleccionadas por género",
             "subCaption": "",
-            "xAxisName": "Mes",
-            "yAxisName": "Número de encuentros",            
-            "theme": "fusion"
+            "xAxisName": "Géneros",
+            "yAxisName": "Cantidad de selecciones",            
+            "theme" : "fusion"
         },
         "categories": [
             {
                 "category": [
                     {
-                        "label": "Gastronomia"
-                    },
-                    {
-                        "label": "Vida Nocturna"
-                    },
-                    {
                         "label": "Deportes"
                     },
                     {
+                        "label": "Aventura y aire libre"
+                    },
+                    {
+                        "label": "Gastronomía"
+                    },
+                    {
                         "label": "Cultura"
+                    },
+                    {
+                        "label": "Shopping"
+                    },
+                    {
+                        "label": "Vida Nocturna"
                     }
                 ]
             }
@@ -40,40 +46,97 @@ const chartConfigs = {
         "dataset": [
             {
                 "seriesname": "Masculino",
+                "color": "#d48e4b",
                 "data": [
                     {
-                        "value": "18"
+                        "value": "18",
+                        "color": "#d48e4b"
                     },
                     {
-                        "value": "34"
+                        "value": "34",
+                        "color": "#d48e4b"
                     },
                     {
-                        "value": "26"
+                        "value": "21",
+                        "color": "#d48e4b"
                     },
                     {
-                        "value": "57"
+                        "value": "57",
+                        "color": "#d48e4b"
+                    },
+                    {
+                        "value": "7",
+                        "color": "#d48e4b"
+                    },
+                    {
+                        "value": "23",
+                        "color": "#d48e4b"
                     }
+                    
+                    
                 ]
             },
             {
                 "seriesname": "Femenino",
+                "color": "#BFD6B1",
                 "data": [
                     {
-                        "value": "36"
+                        "value": "36",
+                        "color": "#BFD6B1"
                     },
                     {
-                        "value": "33"
+                        "value": "33",
+                        "color": "#BFD6B1"
                     },
                     {
-                        "value": "25"
+                        "value": "25",
+                        "color": "#BFD6B1"
                     },
                     {
-                        "value": "45"
-                    }
+                        "value": "45",
+                        "color": "#BFD6B1"
+                    },
+                    {
+                        "value": "71",
+                        "color": "#BFD6B1"
+                    },
+                    {
+                        "value": "53",
+                        "color": "#BFD6B1"
+                    },
+
+                ]
+            },
+            {  
+                "seriesname": "Otro",
+                        "data": [
+                            {
+                                "value": "0"
+                            },
+                            {
+                                "value": "0"
+                            },
+                            {
+                                "value": "0"
+                            },
+                            {
+                                "value": "0"
+                            },
+                            {
+                                "value": "1"
+                            },
+                            {
+                                "value": "0"
+                            },
+                            
+                            
+                        ]
+                    },
+                    
+                    
                 ]
             }
-        ]
-    }
+        
 };
 
 class Grafico extends React.Component {

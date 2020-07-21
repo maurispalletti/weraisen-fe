@@ -1,20 +1,87 @@
-import React, {Component} from 'react';
-import CardAceptarRechazar from './CardAceptarRechazar';
-import img1 from '../avatars/Icon.jpg';
-import '../components/CardAceptarRechaza.css'
-
+import React, { Component } from 'react';
+import userServices from '../services/userServices';
+import '../components/blabla.css';
 
 class CardsAceptar extends Component {
-    render() {
-        return (
+  state = {
+    updateFailed: false,
+  }
 
-            <div className="container-fluid d-flex justify-content-center">
-             
-                        <CardAceptarRechazar imgsrc={img1} title="Maria Sanchez" text= "Amante de los paseos en la naturaleza y girl scout" />
-
-            </div>
-
-        );
+  async updateUserStatus() {
+    const { userId } = this.props
+    try {
+      if (userId) {
+        await userServices.updateUserStatus({
+          userId,
+          status: "ACTIVE"
+        })
+      }
+    } catch (error) {
+      console.log(error)
+      this.setState({ updateFailed: true })
+      console.error(`There was an error trying to add a new user`)
     }
-    }
-    export default CardsAceptar;
+    this.props.refresh()
+  }
+
+  async updateUserStatusCancel() {
+    const { userId } = this.props
+    try {
+      if (userId) {
+        await userServices.updateUserStatus({
+          userId,
+          status: "BLOCKED"
+        })
+        this.setState({ updateFailed: false })
+      }
+    } catch (error) {
+      console.log(error)
+      this.setState({ updateFailed: true })
+      console.error(`There was an error trying to add a new user`)
+    };
+    this.props.refresh()
+  }
+
+  render() {
+    const { dniFirst, dniSecond, profilePicture, firstName, lastName, birthDate, identification } = this.props;
+
+    return (
+
+      <div className="contenedor-total">
+        <div className="contenedor-dni">
+          <div className="info-container">
+            Frente DNI
+                <img className="dni-img" src={dniFirst} />
+          </div>
+          <div className="info-container">
+            Dorso DNI
+                <img className="dni-img" src={dniSecond} />
+          </div>
+        </div>
+
+        <div className='contenedor-perfil'>
+          <div className="foto-perfil">
+            <img src={profilePicture} />
+          </div>
+          <div className="descripcion">
+
+            <p className="" style={{ textAlign: "left", Width: "100px" }}> <strong> Nombre:</strong> {firstName}</p>
+            <p className="" style={{ textAlign: "left", Width: "100px" }}> <strong> Apellido:</strong> {lastName}</p>
+            <p className="" style={{ textAlign: "left", Width: "100px" }}> <strong> Fecha Nacimiento:</strong> {birthDate}</p>
+            <p className="" style={{ textAlign: "left", Width: "100px" }}> <strong> Número DNI:</strong> {identification}</p>
+          </div>
+        </div>
+
+        <div className="botones-total">
+          <button className="boton-simple1" value={"Aceptar"} size="sm" onClick={() => this.updateUserStatus()}> Aceptar </button>
+          <button className="boton-simple1" value={"Aceptar"} size="sm" onClick={() => this.updateUserStatusCancel()}> Rechazar</button>
+        </div>
+
+      </div>
+
+
+    );
+  }
+}
+
+export default CardsAceptar;

@@ -1,31 +1,85 @@
-import React from 'react';
-import '../components/CardAceptarRechaza.css';
+import React, { Component } from 'react';
+// import { Button } from 'react-bootstrap';
+import userServices from '../services/userServices';
+import CardsAceptar from './CardAceptarRechazarAll.js';
 
-const CardAceptarRechazar = props => {
+class AceptarRechazar extends Component {
+  state = {
+    newUsers: [],
+    loading: true,
+    newUsersFailed: false,
+  }
 
-  return(
+  getaceptNewUser = async () => {
+    try {
+      const response = await userServices.getaceptNewUser();
+      console.log(response.data);
+      if (response && response.data) {
+        this.setState({ newUsers: response.data, loading: false, bottonPresionado: false }) //Me busca los users, botón sigue en false.
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get new users: ${error}`)
+      this.setState({ newUsersFailed: true, loading: false, bottonPresionado: false })
+      return null
+    }
+  }
 
-    <div style={{border: 'black 1px solid', maxWidth:'300px'}}> 
- 
-      <div className="card-text-center">
-        <div className="overflow">
-          <img src= {props.imgsrc} alt='imag1' className="card-img"/>
+
+  renderNewUsers = () => {
+    const { newUsers } = this.state
+    if (newUsers.length > 0) {
+      return newUsers.map(newUser => {
+        const { id, profilePicture, dniFirst, dniSecond, firstName, lastName, identification, birthDate } = newUser
+        return (
+          <div>
+            <CardsAceptar
+              userId={id}
+              profilePicture={profilePicture} //Agregar en Model User (no existe en BE)
+              dniFirst={dniFirst}  //Agregar en Model User (no existe en BE)
+              dniSecond={dniSecond} //Agregar en Model User (no existe en BE)
+              firstName={firstName}
+              lastName={lastName}
+              identification={identification}
+              birthDate={birthDate}
+              refresh={() => this.getaceptNewUser()}
+            />
+            <br></br>
+          </div>
+        )
+      });
+    }
+  }
+
+
+  async componentDidMount() {
+    this.getaceptNewUser();
+  }
+
+  render() {
+    if (this.state.loading) {
+      return (
+        <div>
+          <h3 style={{ marginBottom: '18px' }}>Cargando usuarios pendientes de aprobación</h3>
         </div>
-      <div className="card-body text-dark">
-        <h3 className="">{props.title}</h3>
-        <h4 className="">
-          {props.text}
-        </h4>
-        <div className= "btn btn-outline-success">Aceptar</div>
-      
-        <div className= "btn btn-outline-success">Rechazar</div>
-      </div>
-      </div>
-
-    </div>
-    
-
-  )
+      )
+    }
+    else {
+      if (this.newUsersFailed) {
+        return (
+          <div>
+            <h3 style={{ marginBottom: '18px' }}>Ups el servicio ha fallado</h3>
+          </div>
+        )
+      } else {
+        return (
+          <div>
+            <h3 style={{ marginBottom: '18px' }}>Usuarios pendientes de aprobación</h3>
+            {this.renderNewUsers()}
+          </div>
+        )
+      }
+    }
+  }
 }
 
-export default CardAceptarRechazar;
+export default AceptarRechazar;
