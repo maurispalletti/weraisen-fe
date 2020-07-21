@@ -199,7 +199,7 @@ class Search extends Component {
                   <FieldWithError name="toAge" placeholder="Hasta" aria-label="description" type="number" className="input" min="18" max="99" pattern="[1,9]{1,15}" />
                   <br></br>
                   <h2>Elegí el idioma de tu guía:</h2>
-                  <Autocomplete defaultText={this.state.language} placeholder={'Ingresa las primeras letras del idioma'} name={'language'} items={languages}></Autocomplete>
+                  <Autocomplete defaultText={this.state.language} placeholder={'Ingresa las primeras letras del idioma'} name={'language'} items={languages} ></Autocomplete>
                   <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input" id="salidaGrupal" checked={this.state.groupwalk} onChange={() => this.setState({ groupwalk: !this.state.groupwalk }) }/>
                   <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
