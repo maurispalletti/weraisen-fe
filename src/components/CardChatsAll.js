@@ -13,6 +13,7 @@ class CardsChats extends Component {
 		return (
 
 			<div>
+				
 				<div className="center">
 					<div >
 						<CardChats imgsrc={img1} name={"Paula Rossi"} description={"Hola María, como estás?"}></CardChats>

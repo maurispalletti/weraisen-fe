@@ -53,8 +53,9 @@ class Tabs extends React.Component {
             >
                 {React.Children.map(this.props.children, (child, i) => {
                     let className = 'Tabs__Tab';
-                    if (child.key === this.props.actvive) {
-                        className = `${className} Tab__Tab--active`;
+                    
+                    if (child.key === this.props.active) {
+                        className = `${className} Tabs__Tab--active`;
 
                     }
                 return (

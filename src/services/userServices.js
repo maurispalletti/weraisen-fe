@@ -211,6 +211,31 @@ class userServices {
 		return axios.post(url, fd)
 	}
 
+	static async getaceptNewUser() {
+		const url = `${customUrl}/api/v1/admin/pending`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getCompliantsList() {
+		const url = `${customUrl}/api/v1/admin/compliant`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async updateUserStatus({
+		userId,
+		status,
+    }) {
+		const url = `${customUrl}/api/v1/admin/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			status
+		}
+		return axios.put(url, body, { headers })
+	}
+
+
 }
 
 export default userServices
