@@ -46,7 +46,9 @@ class SignUp extends Component {
     value: '',
     min: '',
     denunciaModalShow: false,
-    imagenDNI1: null
+    imagenDNI1: null,
+    imagenDNI2: null,
+    imagenFotoPerfil: null
   }
 
   createUser = async ({
@@ -64,8 +66,10 @@ class SignUp extends Component {
       if (password === passwordRepeated) {
         const birthDate = this.state.value;
         //Llamada para subir la imagen del DNI frente
-        if(this.state.imagenDNI1){
+        if(this.state.imagenDNI1 && this.state.imagenDNI2 && this.state.imagenFotoPerfil){
           const imagenDNI1Url = await userServices.upLoadImg(this.state.imagenDNI1);
+          const imagenDNI2Url = await userServices.upLoadImg(this.state.imagenDNI2);
+          const imagenFotoPerfilUrl = await userServices.upLoadImg(this.state.imagenFotoPerfil);
         }else{
           throw new Error();
         }       
@@ -121,9 +125,19 @@ class SignUp extends Component {
     this.setState(() => ({ value: hoy, min: fechamin }));
   }
 
-  fileSelectedHandler = event => {
+  fileSelectedDNI1 = event => {
     this.setState({
       imagenDNI1: event.target.files[0]
+    })
+  }
+  fileSelectedDNI2 = event => {
+    this.setState({
+      imagenDNI2: event.target.files[0]
+    })
+  }
+  fileSelectedFotoPerfil = event => {
+    this.setState({
+      imagenFotoPerfil: event.target.files[0]
     })
   }
 
@@ -201,16 +215,24 @@ class SignUp extends Component {
             <div className="right-container">
               <label className="title">Subí foto de tu DNI para validar tu identidad</label><br></br>
               {/* <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler} ref={fileImput => this.fileImput = fileImput}/> */}
-              <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler} ref={fileImput => this.fileImput = fileImput} />
+              <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedDNI1} ref={fileImput1 => this.fileImput1 = fileImput1} />
+              <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedDNI2} ref={fileImput2 => this.fileImput2 = fileImput2} />
+              <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedFotoPerfil} ref={fileImput3 => this.fileImput3 = fileImput3} />
 
               <div className="dni1">
                 <label className="input3">Frente</label><br></br>
-                <img src={dni1} alt={"dni frente"} width="150" onClick={() => this.fileImput.click()} />
+                <img src={dni1} alt={"dni frente"} width="150" onClick={() => this.fileImput1.click()} />
               </div>
               <div className="dni2">
                 <label className="input3">Dorso</label><br></br>
-                <img src={dni2} alt={"dni detras"} width="150" onClick={() => this.fileImput.click()} />
+                <img src={dni2} alt={"dni detras"} width="150" onClick={() => this.fileImput2.click()} />
               </div>
+              <br />
+                <label className="title">Subí una foto que se mostrará en tu perfil</label>
+                <div className="profile">
+                  <img src={icon} alt={"Foto de perfil"} width="60" onClick={() => this.fileImput3.click()} />
+                  </div>
+              
               <div className='remember'>
                 <p>Al crear cuenta estoy aceptando los
                    <a className="forgotPass" href={'/terminos'}> términos y condiciones</a></p>
