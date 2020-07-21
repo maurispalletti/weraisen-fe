@@ -66,16 +66,17 @@ class Search extends Component {
     this.setInitialValues();
     let hoy = new Date();
   
-    // const dia = hoy.getDate();
-    // let mes = (hoy.getMonth() + 1);
-    // mes = mes.toString()
-    // mes = mes.length === 1 ? "0" + mes : mes
-    // const año = hoy.getFullYear();
-    // const añomin = año - 18
-    // const fechamin = hoy;
-    // hoy = año + "-" + mes + "-" + dia;
+     const dia = hoy.getDate();
+    let mes = (hoy.getMonth() + 1);
+    mes = mes.toString()
+     mes = mes.length === 1 ? "0" + mes : mes
+     const año = hoy.getFullYear();
+     
+    const fechamin = hoy;
+    hoy = año + "-" + mes + "-" + dia;
 
     this.setState(() => ({ value: hoy, min: hoy }));
+    console.log('fecha min'+this.state.min)
   }
 
   setInitialValues() {
