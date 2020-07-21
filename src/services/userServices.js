@@ -202,6 +202,15 @@ class userServices {
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
+
+	static async upLoadImg(file) {
+		const url = `${customUrl}/api/v1/users/identification`		
+		const fd = new FormData();
+		fd.append('file', file);
+
+		return axios.post(url, fd)
+	}
+
 }
 
 export default userServices
