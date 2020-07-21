@@ -29,7 +29,7 @@ export function SignUpSchema () {
 export function GuideProfileSchema () {
   return Yup.object().shape({
     description: Yup.string().required('Ingresa una descripción'),
-    city: Yup.string().required('Selecciona una ciudad'),
+    city: Yup.string().required('Selecciona una ciudad'),      
     
   })
 }
