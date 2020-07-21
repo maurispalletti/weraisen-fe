@@ -7,7 +7,7 @@ import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
 const chartConfigs = {
-    type: 'mscolumn3d',// The chart type
+    type: 'mscolumn2d',// The chart type
     width: '700', // Width of the chart
     height: '400', // Height of the chart
     dataFormat: 'json', // Data type
@@ -18,7 +18,7 @@ const chartConfigs = {
             "xAxisName": "Categoría",
             "yAxisName": "Edad",            
             "theme" : "fusion",
-            "color": "#d48e4b"
+            
             
         },
         "categories": [
@@ -48,24 +48,31 @@ const chartConfigs = {
         "dataset": [
             {
                 "seriesname": "Distribución",
+                "color": "#d48e4b",
                 "data": [
                     {
-                        "value": "18 - 25"
+                        "value": "25%",
+                        "color": "#d48e4b"
                     },
                     {
-                        "value": "20"
+                        "value": "5%",
+                        "color": "#d48e4b"
                     },
                     {
-                        "value": "35"
+                        "value": "15%",
+                        "color": "#d48e4b"
                     },
                     {
-                        "value": "45"
+                        "value": "45%",
+                        "color": "#d48e4b"
                     },
                     {
-                        "value": "18 - 30"
+                        "value": "3%",
+                        "color": "#d48e4b"
                     },
                     {
-                        "value": "27 - 30"
+                        "value": "2%",
+                        "color": "#d48e4b"
                     }
                     
                     
