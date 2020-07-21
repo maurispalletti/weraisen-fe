@@ -17,7 +17,7 @@ class Notificacion extends Component {
 	getNotifications = async () => {
 		try {
 			const userId = localStorage.getItem("userId");
-			//hacer llamada al getendend.... en matchdelegate
+						//hacer llamada al getendend.... en matchdelegate
 			const response = await userServices.getNotifications(userId);			
 			if (response && response.data) {
 				this.setState({ notificacions: response.data, loading: false })
@@ -31,12 +31,13 @@ class Notificacion extends Component {
 
 	renderNotifications = () => {
 		const { notificacions } = this.state;
+		console.log("cant notif" + notificacions.length)
 		if (notificacions.length > 0) {
 			
 			return notificacions.map(notification => {
 				const { id, message } = notification
 				console.log(notification)
-				if (notification.type === "elected"){
+				if (notification.type === "Elegido"){
 					return (
 						<div>
 							<CardNotificacion2 //esta notificación es la que recibe el guía
@@ -51,7 +52,7 @@ class Notificacion extends Component {
 					)					
 				}
 
-				if (notification.type === "review"){
+				if (notification.type === "Review"){
 					return (
 						<div>
 							<CardNotificacion1
@@ -65,7 +66,7 @@ class Notificacion extends Component {
 					)
 				}
 				
-				if (notification.type === "aproved"){
+				if (notification.type === "Aprobado"){
 					return (
 						<div>
 							<CardNotificacion1
@@ -79,7 +80,7 @@ class Notificacion extends Component {
 					)
 				}
 				
-				if (notification.type === "rejected"){
+				if (notification.type === "Rechazado"){
 					return (
 						<div>
 							<CardNotificacion1
@@ -92,7 +93,7 @@ class Notificacion extends Component {
 						</div>
 					)
 				}
-				if (notification.type === "advice"){
+				if (notification.type === "Aviso"){
 						return (
 							<div>
 								<CardNotificacion0
