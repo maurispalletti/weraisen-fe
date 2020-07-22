@@ -227,6 +227,19 @@ class userServices {
 		return axios.put(url, body, { headers })
 	}
 
+	static async updateCompliantStatus({
+		userId,
+		status,
+    }) {
+		const url = `${customUrl}/api/v1/admin/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			status
+		}
+		return axios.put(url, body, { headers })
+	}
+
+
 
 }
 

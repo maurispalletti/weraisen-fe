@@ -15,9 +15,9 @@ class CardDenunciaAll extends Component {
   getCompliantsList = async () => {
     try {
       const response = await userServices.getCompliantsList();
-
+      console.log(response.data);
       if (response && response.data) {
-        this.setState({ complaint: response.data, loading: false })
+        this.setState({ compliants: response.data, loading: false })
       }
     } catch (error) {
       console.error(`There was an error trying to get new users: ${error}`)
@@ -38,8 +38,8 @@ class CardDenunciaAll extends Component {
             userId = {userId}
             accusedId = {accusedId}
             description = {descripction}
-            firstName = {localStorage.getItem(userId)}
-            profilePicture ={localStorage.getItem("")}  /// Ver porque no está en esquema debería traerme foto de acusado
+            firstName = {localStorage.getItem("firstName")}
+            profilePicture ={localStorage.getItem("profilePicture")}  /// Ver porque no está en esquema debería traerme foto de acusado
             
           />
           <br></br>
