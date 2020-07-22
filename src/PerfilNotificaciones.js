@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import Header from '../src/components/Header';
 import userServices from './services/userServices'
 
-import CardNotificacion2 from '../src/components/Card_Notificacion.js';
+import CardNotificacion from '../src/components/Card_Notificacion.js';
 import CardNotificacion1 from '../src/components/Card_Notificacion1.js';
 import CardNotificacion0 from '../src/components/Card_Notificacion0.js';
+import CardNotificacion2 from '../src/components/Card_Notificacion2.js';
+import CardNotificacion3 from '../src/components/Card_Notificacion3.js';
+
 import img1 from '../src/Imagenes_Alvo/448.png';
 
 class Notificacion extends Component {
@@ -17,7 +20,7 @@ class Notificacion extends Component {
 	getNotifications = async () => {
 		try {
 			const userId = localStorage.getItem("userId");
-						//hacer llamada al getendend.... en matchdelegate
+			//hacer llamada al getendend.... en matchdelegate
 			const response = await userServices.getNotifications(userId);			
 			if (response && response.data) {
 				this.setState({ notificacions: response.data, loading: false })
@@ -30,64 +33,59 @@ class Notificacion extends Component {
 	}
 
 	renderNotifications = () => {
+		console.log(this.state)
 		const { notificacions } = this.state;
-		console.log("cant notif" + notificacions.length)
+		console.log(notificacions.length)
 		if (notificacions.length > 0) {
 			
 			return notificacions.map(notification => {
 				const { id, message } = notification
-				console.log(notification)
-				if (notification.type === "Elegido"){
+
+				if (notification.type === "Elegido"){ //falta enviar usuario para chat, y encuentro para cancelar
 					return (
 						<div>
-							<CardNotificacion2 //esta notificación es la que recibe el guía
+							<CardNotificacion
 								key={id}
-								imgsrc={img1} //imagen del turista
+								imgsrc={img1} 
 								description={message} 
-								btn1={"Iniciar chat"}
-								btn2={"Rechazar"}
 							/>
 							<br />
 						</div>
 					)					
 				}
 
-				if (notification.type === "Review"){
+				if (notification.type === "Review"){ //falta enviar el usuario a la que se le va a hacer la review
 					return (
 						<div>
 							<CardNotificacion1
 								key={id}
 								imgsrc={img1}
 								description={message}
-								btn1={"Puntuar"}
 							/>
 							<br />
 						</div>
 					)
 				}
 				
-				if (notification.type === "Aprobado"){
+				if (notification.type === "Aprobado"){ //falta enviar usuario para chat
 					return (
 						<div>
-							<CardNotificacion1
+							<CardNotificacion2
 								key={id}
 								imgsrc={img1}
-								description={message}
-								btn1={"Iniciar chat"}
+								description={message}	
 							/>
 							<br />
 						</div>
 					)
-				}
-				
+				}				
 				if (notification.type === "Rechazado"){
 					return (
 						<div>
-							<CardNotificacion1
+							<CardNotificacion3
 								key={id}
 								imgsrc={img1}
 								description={message}
-								btn1={"Buscar otro guía"}
 							/>
 							<br />
 						</div>

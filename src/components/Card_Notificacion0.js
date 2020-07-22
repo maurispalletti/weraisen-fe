@@ -17,12 +17,8 @@ const Card_Notificacion0 = props => {
                     </div>
                     <div className="col-sm-8 col-8">
                         <div className="">                        
-                        
                             <h5 className="card-title" style={{marginBottom: "0px"}}>{props.name}</h5>
                             <p className="card-text" style={{textAlign:"center", width:"13rem"}}>{props.description}</p>
-                            
-
-                            
                         </div>
                     </div>
                 </div>
