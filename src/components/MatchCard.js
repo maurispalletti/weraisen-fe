@@ -70,16 +70,18 @@ export default class MatchCard extends Component {
 
     return (
       <div style={{ marginBottom: 10 }}>
-        <div className="card col-sm-12 col-xs-12 " style={{ maxWidth: '400px', margin: '0px auto' }} >
+        <div className="card col-sm-12 col-xs-12 " style={{ maxWidth: '400px', margin: '0px auto'}} >
           <div className="row no-gutters ">
-            <div className="col-sm-4 col-4" style={{ display: 'flex', alignItems: 'center' }}>
+            <div className="col-sm-4 col-4" style={{ display: 'flex', alignItems: 'center', marginTop: 10, marginBottom: 10 }}>
               <img src={imgsrcWithFallback} className="card-img img-fluid" alt="..." />
             </div>
-            <div className="col-sm-8 col-8">
-              <div style={{ paddingLeft: 20 }}>
-                <h3 className="card-title" style={{ marginTop: 10, marginBottom: 10, textAlign: "left" }}>{roleName}: {partnerName}</h3>
-                <div className="card-text" style={{ textAlign: "left", width: 'auto' }}>Estado: {status}</div>
-                <div className="card-text" style={{ textAlign: "left", width: 'auto' }}>Fecha: {this.getFormattedDate()}</div>
+            <div className="col-sm-8 col-8" >
+              <div style={{ paddingLeft: 20  }}>
+                <h2 className="card-title" style={{ marginTop: 18, marginBottom: 10, textAlign: "left" }}>{roleName}: {partnerName}</h2>
+                <br></br>
+                <div> <h4 className="card-text" style={{ textAlign: "left", width: 'auto' }}>Encuentro: {status} </h4> </div>
+                
+                <div> <h4 className="card-text" style={{ textAlign: "left", width: 'auto' }}>Fecha: {this.getFormattedDate()} </h4></div>
                 <div className="row mb-2" style={{ marginTop: 10 }}>
                   {this.renderButtons()}
                 </div>

@@ -8,7 +8,7 @@ const Card_Notificacion = props => {
 
     return (
 
-        <div>
+        <div style={{ paddingLeft: '5%', paddingRight:'5%'}}>
             <div className="card col-sm-12 col-xs-12 " style={{ maxWidth:'400px', margin:'0px auto'}} >
 
                 <div className="row no-gutters ">
@@ -19,7 +19,8 @@ const Card_Notificacion = props => {
                     <div className="col-sm-8 col-8" style={{padding:"0px"}}>
                         <div className="">                        
 
-                            <p className="card-text" style={{textAlign:"center", width:"13rem"}}>{props.description}</p>
+                            <h5 className="card-title" style={{marginBottom: "0px"}}>{props.name}</h5>
+                            <p className="card-text" style={{textAlign:"center", width:"13rem", paddingRight:"12%" }}>{props.description}</p>
                             <div className="row mb-2">
                                 <div className="col text-right">                   
                                 <Button variant="primary" size="sm" style={{width:"47%"}}>{props.btn1}</Button>

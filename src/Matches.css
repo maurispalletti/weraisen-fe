@@ -1,12 +1,12 @@
 .Matches {
   text-align: center;
-  background: #2f313d;
+  background: #272B30;
  height: 100vh;
 
  flex-direction: column;
  align-items: center;
  justify-content: center;
- font-size: calc(10px + 2vmin);
+ /*font-size: calc(10px + 2vmin);*/
  color: #696970;
  font-family: sans-serif;
  overflow: scroll;
@@ -14,6 +14,8 @@
 .BodyMatches {
   padding-top: 5vh;
   overflow: scroll; 
+  padding-left: 5%;  
+  padding-right: 5%; 
 }
 
 .Section {
@@ -34,6 +36,7 @@
   text-decoration: none;
   align-items: center;
   font-size: 16px;
+  
 }
 
 .GuideCard2 {
@@ -47,6 +50,7 @@
   margin-left: 10vw;
   margin-right: 10vw;
   margin-bottom: 10px;
+  
 }
 
 .buttonCardGuia {
@@ -112,3 +116,12 @@
   text-decoration: none;
 
 }
+.ButtonsSection {
+  /* margin: 30px 10%;*/
+   align-content: center;
+   text-align: center;
+   font-size: 15px !important; 
+  font-weight: 600;
+  font-family: 'Lato', sans-serif !important;
+ }
+ 

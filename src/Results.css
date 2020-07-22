@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /*font-size: calc(10px + 2vmin);*/
   color: #696970;
   font-family: sans-serif;
   overflow: scroll;
@@ -16,6 +16,8 @@
    padding-top: 5vh;
   overflow: scroll; 
   align-items: center;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 

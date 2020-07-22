@@ -92,7 +92,7 @@ class Matches extends Component {
         <div className="Matches">
           <Header />
           <div className="BodyMatches">
-            <h2>Cargando resutlados...</h2>
+            <h2>Cargando resultados...</h2>
           </div>
         </div>
       )
@@ -112,11 +112,11 @@ class Matches extends Component {
             <Header />
             <div className="BodyMatches">
               <div className="Section">
-                <h2 style={{ marginBottom: 40 }}>Tus encuentros:</h2>
+                <h2 style={{ marginBottom: 40 }}>Tus encuentros</h2>
                 {this.state.newMatches}
               </div>
-              <div className="Section">
-                <input type="button" className="MatchesButton" value="Volver al menú principal" onClick={() => this.setState({ goToHome: true })} />
+              <div className="ButtonSection">
+                <input type="button" className="btn-primero" value="Volver al menú principal" onClick={() => this.setState({ goToHome: true })} />
               </div>
               {this.state.searchFailed && (
                 <p className="form-error">La búsqueda de encuentros falló. Intentá de nuevo por favor.</p>
