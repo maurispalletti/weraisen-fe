@@ -213,13 +213,13 @@ class Profile extends Component {
               
 
                 <div className="buttonsSectionGuia">
-                  <input type="button" className="btn-primero"
+                  <input type="button" className="btn-primero" style={{width: '257px'}}
                     value={this.state.isActiveGuide ? "Actualizar mis datos de guía" : "Quiero ser guía"}
                     onClick={() => this.setState({ goToGuideProfile: true })} />
                 </div>
                 <br></br>
                 <div class="btn-group" role="group">
-                  <input type="button" className="btn-tercero" value={this.state.editable ? "Cancelar" : "Editar mis datos"}
+                  <input type="button" style={{marginRight: '10px'}} className="btn-tercero" value={this.state.editable ? "Cancelar" : "Editar mis datos"}
                     onClick={() => this.toggleEditInfo()} />
                     <br></br>
                   <input type="submit" className="btn-tercero" value="Guardar" disabled={!this.state.editable}  />
