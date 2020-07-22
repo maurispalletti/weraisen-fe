@@ -102,7 +102,7 @@ class Matches extends Component {
           <div className="Matches">
             <Header />
             <div className="BodyMatches">
-              <h2>Aun no posees ningun encuentro</h2>
+              <h2>Aún no posees ningun encuentro</h2>
             </div>
           </div>
         )
