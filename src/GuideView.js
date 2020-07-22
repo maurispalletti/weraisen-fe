@@ -112,7 +112,7 @@ class GuideView extends Component {
      await this.getReviews()
   }
 
-
+  
 
 
   renderReviews = () => {
@@ -143,7 +143,7 @@ class GuideView extends Component {
     else {
 
       return(
-              <p>Todavía no se han publicado opiniones.</p>
+              <p>Aún no se han publicado opiniones.</p>
 
       )
     }
