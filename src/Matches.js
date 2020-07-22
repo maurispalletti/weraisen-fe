@@ -69,6 +69,7 @@ class Matches extends Component {
                 date={createdAt}
                 refresh={() => this.getMatches()}
               />
+              
             )
           });
         }
