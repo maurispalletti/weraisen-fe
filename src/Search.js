@@ -56,7 +56,7 @@ class Search extends Component {
       language: '',
       knowledge: [],
       loaded: false,
-      groupwalk: false,
+      groupwalk: true,
       tourDay:'',
       min:'',
     }

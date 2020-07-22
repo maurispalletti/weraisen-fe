@@ -14,9 +14,9 @@ import userServices from './services/userServices'
 
 const cities = [
   { value: "BuenosAires", description: 'Buenos Aires' },
-  { value: "Córdoba", description: 'Córdoba' },
+  { value: "Cordoba", description: 'Córdoba' },
   { value: "LaPlata", description: 'La Plata' },
-  { value: "Neuquén", description: 'Neuquén' },
+  { value: "Neuquen", description: 'Neuquén' },
   { value: "Mendoza", description: 'Mendoza' },
   { value: "Rosario", description: 'Rosario' }
 ];
