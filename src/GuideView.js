@@ -20,7 +20,7 @@ class GuideView extends Component {
 		knowledge: [],
 		languages: [],
 		ReviewsFailed: false,
-		arreglo: [],
+		promedioPuntos: 0,
 		profilePicture: "",
 	}
 
@@ -75,6 +75,8 @@ class GuideView extends Component {
 			const response = await userServices.getReviews(userId)
 			if (response && response.data && response.data.length > 0) {
 				this.setState({ reviews: response.data })
+				this.getPromedio();
+
 			}
 		} catch (error) {
 			console.error(`There was an error trying to get reviews: ${error}`)
@@ -82,104 +84,120 @@ class GuideView extends Component {
 		}
 	}
 
-	getAverage = async () => {
-		let { arreglo } = this.state
-		arreglo = this.getReviews();
+	getPromedio = () => {
 
-		return arreglo.map(review => {
-			const puntos = arreglo.slice(1, 1)
+		let reviews = this.state.reviews
+		if (reviews && reviews.length > 0) {
+			let suma = 0
 
-			console.log("puntos" + puntos)
-
-			return puntos;
-		}
-		);
-	}
-
-	renderReviews = () => {
-		const { reviews } = this.state
-		if (reviews.length > 0) {
-			return reviews.map(review => {
-				const { giver, points, description, createdAt, _id } = review
-
-				//para convertir fecha en año y mes
-				const fecha = new Date(createdAt);
-				const year = fecha.getFullYear();
-				const month = fecha.getMonth();
-				const fechaReview = year + "/" + month;
-
-				return (
-					<ReviewsCard
-						key={_id}
-						giverId={giver}
-						description={description}
-						points={points}
-						createdAt={fechaReview}
-					/>
-				)
+			reviews.forEach(review => {
+				console.log(review)
+				suma += review.points
 			});
+			this.setState({ promedioPuntos: (suma / reviews.length) })
 		} else {
-			return <p>Aún no se han publicado opiniones.</p>
+			this.promedioPuntos = 0
 		}
+
 	}
 
-	render() {
-		if (this.state.goToResults) {
-			return <Redirect to="/results" /> /*aca ver que se guarden los resultados */
-		}
 
-		const edad = this.state.initialValues.age;
-		const descripcion = this.state.initialValues.description;
-		const nombre = this.state.initialValues.firstName;
-		const apellido = this.state.initialValues.lastName;
-		const conocimientos = this.state.knowledge.join(', ');
-		const languages = this.state.languages.join(', ')
 
-		return (
-			<div className="GuideView">
-				<Header />
-				<br></br>
-				<div className="container-fluid" style={{ color: 'rgba(255,255,255,0.8)' }}>
-					<div className="containerArriba">
-						<div className="SectionGuide">
-							<b> <label for="nombre" id="nombreApellido" class="col--2 col-form-label">{nombre} {apellido}</label> <br></br>  </b>
-							<label for="edad" id="edad" class="col--2 col-form-label">Edad: {edad}</label>
-							<div className="PromedioEstrella">
-								<i><label for="promedio" id="promedio" class="col--2 col-form-label">4.5</label></i>
-								<img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img>
-							</div>
+
+
+
+
+async UNSAFE_componentWillMount() { /* usar el did mount*/
+
+	await this.getProfile()
+	await this.getReviews()
+}
+
+
+renderReviews = () => {
+	const { reviews } = this.state
+	if (reviews.length > 0) {
+		return reviews.map(review => {
+			const { giver, points, description, createdAt, _id } = review
+
+			//para convertir fecha en año y mes
+			const fecha = new Date(createdAt);
+			const year = fecha.getFullYear();
+			const month = fecha.getMonth();
+			const fechaReview = year + "/" + month;
+
+			return (
+				<ReviewsCard
+					key={_id}
+					giverId={giver}
+					description={description}
+					points={points}
+					createdAt={fechaReview}
+				/>
+			)
+		});
+	} else {
+		return <p>Aún no se han publicado opiniones.</p>
+	}
+}
+
+render() {
+	if (this.state.goToResults) {
+		return <Redirect to="/results" /> /*aca ver que se guarden los resultados */
+	}
+
+	const edad = this.state.initialValues.age;
+	const descripcion = this.state.initialValues.description;
+	const nombre = this.state.initialValues.firstName;
+	const apellido = this.state.initialValues.lastName;
+	const conocimientos = this.state.knowledge.join(', ');
+	const languages = this.state.languages.join(', ')
+
+	return (
+		<div className="GuideView">
+			<Header />
+			<br></br>
+			<div className="container-fluid" style={{ color: 'rgba(255,255,255,0.8)' }}>
+				<div className="containerArriba">
+					<div className="SectionGuide">
+						<b> <label for="nombre" id="nombreApellido" class="col--2 col-form-label">{nombre} {apellido}</label> <br></br>  </b>
+						<label for="edad" id="edad" class="col--2 col-form-label">Edad: {edad}</label>
+						<div className="PromedioEstrella">
+							<i><label for="promedio" id="promedio" class="col--2 col-form-label">{this.state.promedioPuntos}</label></i>
+							<img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img>
 						</div>
-						<hr></hr>
-						<div className="Section2">
-							<div className="FotoPerfil">
-								<img src={this.state.profilePicture} alt="profile" style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
-							</div>
-						</div>
 					</div>
-					<div className="containerCentro">
-
-						<label for="description" class="col--2 col-form-label">Sobre mi: {descripcion}</label><br></br>
-						<label for="languajes" class="col--2 col-form-label">Idiomas que conozco: {languages}</label><br></br>
-						<label for="knowledges" class="col--2 col-form-label">Conocimientos: {conocimientos}</label>
-
-					</div>
-
-					<div className="containerAbajo"> <b>Opiniones de sus encuentros </b>
-
-						{this.renderReviews()}
-
-					</div>
-					<div className="boton">
-						<div className="buttonsS">
-							<input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToResults: true })} />
+					<hr></hr>
+					<div className="Section2">
+						<div className="FotoPerfil">
+							<img src={this.state.profilePicture} alt="profile" style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
 						</div>
 					</div>
 				</div>
+				<div className="containerCentro">
 
+					<label for="description" class="col--2 col-form-label">Sobre mi: {descripcion}</label><br></br>
+					<label for="languajes" class="col--2 col-form-label">Idiomas que conozco: {languages}</label><br></br>
+					<label for="knowledges" class="col--2 col-form-label">Conocimientos: {conocimientos}</label>
+
+				</div>
+
+				<div className="containerAbajo"> <b>Opiniones de sus encuentros </b>
+
+					{this.renderReviews()}
+
+				</div>
+				<div className="boton">
+					<div className="buttonsS">
+						<input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToResults: true })} />
+					</div>
+				</div>
 			</div>
-		);
 
-	}
+		</div>
+	);
+
+}
 }
 
 
