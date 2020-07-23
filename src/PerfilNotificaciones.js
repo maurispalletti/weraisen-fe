@@ -73,7 +73,8 @@ class Notificacion extends Component {
 							<CardNotificacion2
 								key={id}
 								imgsrc={img1}
-								description={message}	
+								description={message}
+								
 							/>
 							<br />
 						</div>

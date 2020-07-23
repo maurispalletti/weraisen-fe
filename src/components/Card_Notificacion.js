@@ -11,7 +11,7 @@ class Card_Notificacion extends Component {
       render(){
         const { name, description, imgsrc }= this.props;
         if (this.state.goToChat) {
-            return <Redirect to="/chat" />
+            return <Redirect to="/matches" />
           }
 
           if (this.state.goToMatches) {
@@ -30,11 +30,12 @@ class Card_Notificacion extends Component {
 
                             <p className="card-text" style={{textAlign:"center", width:"13rem"}}>{description}</p>
                             <div className="row mb-2">
-                                <div className="col text-right">                   
-                                <Button variant="primary" size="sm" style={{width:"47%"}}onClick={() => this.setState({ goToChat: true })}>Iniciar Chat</Button>
-                                <Button variant="primary" size="sm" style={{width:"40%"}} onClick={() => this.setState({ goToMatches: true })}>Rechazar</Button>
+                                <div className="col text-center">                   
+                                <Button variant="primary" size="sm" style={{width:"47%"}} onClick={() => this.setState({ goToChat: true })}>Ver encuentro</Button>
+
                                 </div>  
                             </div>
+
 
                             
                         </div>
