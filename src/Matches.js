@@ -49,16 +49,16 @@ class Matches extends Component {
             userToFind = match.guide;
             partnerRole = 'GUIDE';
           }
-          const { data: { firstName, lastName } } = await userServices.getProfile(userToFind);
+          const { data: { firstName, lastName, profilePicture } } = await userServices.getProfile(userToFind);
           const partnerName = `${firstName} ${lastName}`;
-          fullInfoMatches.push({ ...match, partnerRole, partnerName });
+          fullInfoMatches.push({ ...match, partnerRole, partnerName, profilePicture });
         }
 
         let newMatches = [];
 
         if (fullInfoMatches.length > 0) {
           newMatches = fullInfoMatches.map(match => {
-            const { id, partnerRole, partnerName, chatId, status, createdAt } = match
+            const { id, partnerRole, partnerName, chatId, status, createdAt, profilePicture } = match
             return (
               <MatchCard
                 key={id}
@@ -68,6 +68,8 @@ class Matches extends Component {
                 chatId={chatId}
                 status={status}
                 date={createdAt}
+                profilePicture={profilePicture}
+
                 refresh={() => this.getMatches()}
               />
               
