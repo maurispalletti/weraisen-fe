@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router'
 import { Button } from 'react-bootstrap';
 
 
-const Card_Notificacion1 = props => {
-
-    // const { imagen, nombre, detalle } = props.guia;
-
+class Card_Notificacion1 extends Component {
+    state = {
+      goToReview: false,
+    }
+        render(){
+        const { name, description, imgsrc }= this.props;
+        if (this.state.goToReview) {
+            return <Redirect to="/valoration" />
+          }
+   
     return (
 
         <div style={{ paddingLeft: '5%', paddingRight:'5%'}}>
@@ -13,8 +20,8 @@ const Card_Notificacion1 = props => {
 
                 <div className="row no-gutters " >
 
-                    <div className="col-sm-4 col-4" >
-                        <img src={props.imgsrc} className="card-img img-fluid" alt="..." />
+                    <div className="col-sm-4 col-4">
+                        <img src={imgsrc} className="card-img img-fluid" alt="..." />
                     </div>
                     <div className="col-sm-8 col-8" style={{padding:"0px"}}>
                         <div className="" >                        
@@ -23,7 +30,7 @@ const Card_Notificacion1 = props => {
                             <p className="card-text" style={{textAlign:"center", width:"13rem", paddingRight:"12%"}}>{props.description}</p>
                             <div className="row mb-2">
                                 <div className="col text-center">                   
-                                <Button variant="primary" size="sm" style={{width:"47%"}}>{props.btn1}</Button>
+                                <Button variant="primary" size="sm" style={{width:"47%"}} onClick={() => this.setState({ goToReview: true })}>Puntuar</Button>
 
                                 </div>  
                             </div>
@@ -36,5 +43,5 @@ const Card_Notificacion1 = props => {
         </div>
     )
 }
-
+}
 export default Card_Notificacion1;

@@ -175,7 +175,7 @@ class Chat extends Component {
 
     return (
       <div className="Chat">
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler} nombre={this.otherName} img={usuario} />
+        <Toolbar drawerClickHandler={this.drawerToggleClickHandler} nombre={this.state.otherName} img={usuario} />
         {sideDrawer}
         {backdrop}
         <div className="BodyChat">

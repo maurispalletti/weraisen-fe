@@ -1,38 +1,43 @@
 .side-drawerchat{
-    height: 22%;
-    background: rgb(223, 220, 213);
-    box-shadow: 2px 0px 5px rgba(0,0,0,0.5);
+    /* height: 22%; */
+    background: rgba(255,255,255,0.02);
+    box-shadow: 2px 0px 5px rgba(0,0,0,0.3);
     position: fixed;
     top:15px;
-    right: 0;
-    width:40%;
-    max-width: 400px;
+    right: 10px;
+ 
+    color:rgba(255,255,255,0.04) !important;
     z-index: 200;
-   
+    cursor: pointer;
+    font-family: 'Lato', sans-serif !important;
+      font-size: 1.2rem;
+    
 }
 
 .side-drawerchat ul{
-    width: 0px;
     list-style:none;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-}
+    margin-left: 0;
+    padding-left: 5px;
+    color:white;
 
-.side-drawerchat li{
+} 
+
+ .side-drawerchat li{
     margin:0.5rem 0;
     margin-left: 0;
+    color:white;
 }
 
 .side-drawerchat a{
     color: #94a0af;
     text-decoration: none;
     font-size: 1rem;
+    color:white;
 }
 
 .side-drawerchat a:hover, .side-drawerchat a:active {
     color:#696970;
-}
+} 
 
 
 
