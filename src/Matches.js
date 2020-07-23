@@ -99,7 +99,7 @@ class Matches extends Component {
         <div className="Matches">
           <Header />
           <div className="BodyMatches">
-            <h2>Cargando resutlados...</h2>
+            <h2>Cargando resultados...</h2>
           </div>
         </div>
       )
@@ -109,7 +109,7 @@ class Matches extends Component {
           <div className="Matches">
             <Header />
             <div className="BodyMatches">
-              <h2>Aun no posees ningun encuentro</h2>
+              <h2>Aún no posees ningun encuentro</h2>
             </div>
           </div>
         )
@@ -119,11 +119,11 @@ class Matches extends Component {
             <Header />
             <div className="BodyMatches">
               <div className="Section">
-                <h2 style={{ marginBottom: 40 }}>Tus encuentros:</h2>
+                <h2 style={{ marginBottom: 40 }}>Tus encuentros</h2>
                 {this.state.newMatches}
               </div>
-              <div className="Section">
-                <input type="button" className="MatchesButton" value="Volver al menú principal" onClick={() => this.setState({ goToHome: true })} />
+              <div className="ButtonSection">
+                <input type="button" className="btn-primero" value="Volver al menú principal" onClick={() => this.setState({ goToHome: true })} />
               </div>
               <div className="Section">
                 <input type="button" className="MatchesButton" value="Ir a mi perfil" onClick={() => this.setState({ goToProfile: true })} />

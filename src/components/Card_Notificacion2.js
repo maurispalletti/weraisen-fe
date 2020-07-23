@@ -13,7 +13,7 @@ class Card_Notificacion2 extends Component {
 			return <Redirect to="/chat" />
 		}
 		return (
-			<div>
+			<div style={{ paddingLeft: '5%', paddingRight: '5%' }} >
 				<div className="card col-sm-12 col-xs-12 " style={{ maxWidth: '400px', margin: '0px auto' }} >
 					<div className="row no-gutters ">
 						<div className="col-sm-12 col-12">

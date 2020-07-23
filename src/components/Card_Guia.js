@@ -38,11 +38,11 @@ export default class Card_Guia extends React.Component {
     const guiaSelec = this.props.guideId;
 
     return (
-      <div className="card col-sm-12 col-xs-12" style={{ maxWidth: '400px', margin: '0px auto', padding: '10px 10px 10px 10px' }}>
+      <div className="card col-sm-12 col-xs-12" style={{ maxWidth: '400px'}}>
 
 
 
-        <div>
+        <div >
           <h3 style={{ textAlign: "center", paddingTop: "10px" }}>{firstName} {lastName}, {age} años </h3>
           <img src={profilePicture} alt={`${firstName} ${lastName}`} style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
         </div>

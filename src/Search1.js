@@ -37,7 +37,7 @@ class Search1 extends React.Component {
           <div className="Section1">
 
             <div> <a href="/filters"><img src={bsas} alt={"buenos aires"} width="100%" onClick={() => this.guardarCiudad("Buenos Aires")} /></a> </div>
-            <div><a href="/filters"><img src={cordoba} alt={"cordoba"} width="100%" onClick={() => this.guardarCiudad("Córdoba")} /></a></div>
+            <div><a href="/filters"><img src={cordoba} alt={"cordoba"} width="100%" onClick={() => this.guardarCiudad("Cordoba")} /></a></div>
             <div><a href="/filters"><img src={laplata} alt={"laplata"} width="100%" onClick={() => this.guardarCiudad("La Plata")} /></a></div>
             <div><a href="/filters"><img src={mardel} alt={"mardel"} width="100%" onClick={() => this.guardarCiudad("Mar del Plata")} /></a></div>
             <div><a href="/filters"><img src={neuquen} alt={"Neuquen"} width="100%" onClick={() => this.guardarCiudad("Neuquen")} /></a></div>
