@@ -58,9 +58,9 @@ export default class MatchCard extends Component {
   }
 
   render() {
-    const { imgsrc, partnerRole, partnerName, status } = this.props;
+    const { partnerRole, partnerName, status, profilePicture } = this.props;
 
-    const imgsrcWithFallback = imgsrc ? imgsrc : 'https://www.w3schools.com/howto/img_avatar2.png';
+    const imgsrcWithFallback = profilePicture ? profilePicture : 'https://www.w3schools.com/howto/img_avatar2.png';
 
     if (this.state.goToChat) {
       return <Redirect to={`/chat`} />
@@ -73,7 +73,7 @@ export default class MatchCard extends Component {
         <div className="card col-sm-12 col-xs-12 " style={{ maxWidth: '400px', margin: '0px auto'}} >
           <div className="row no-gutters ">
             <div className="col-sm-4 col-4" style={{ display: 'flex', alignItems: 'center', marginTop: 10, marginBottom: 10 }}>
-              <img src={imgsrcWithFallback} className="card-img img-fluid" alt="..." />
+              <img src={imgsrcWithFallback} style={{ width: '100px', height: '100px', objectFit: 'cover' }} className="card-img img-fluid" alt="..." />
             </div>
             <div className="col-sm-8 col-8" >
               <div style={{ paddingLeft: 20  }}>

@@ -30,7 +30,7 @@ export default class Card_Guia extends React.Component {
       return <Redirect to={`/matches`} />
     }
 
-    const { firstName, lastName, age, gender, languages, description } = this.props;
+    const { firstName, lastName, age, gender, languages, description, profilePicture } = this.props;
     const avatar = gender === 'Femenino' ? avatar_woman_1 : avatar_man_1;
 
     const languagesString = languages.join(', ')
@@ -44,7 +44,7 @@ export default class Card_Guia extends React.Component {
 
         <div >
           <h3 style={{ textAlign: "center", paddingTop: "10px" }}>{firstName} {lastName}, {age} años </h3>
-          <img src={avatar} alt={`${firstName} ${lastName}`} style={{ maxWidth: '100px' }} />
+          <img src={profilePicture} alt={`${firstName} ${lastName}`} style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
         </div>
 
 

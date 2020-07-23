@@ -80,6 +80,12 @@
   background-color: white;
 }
 
+.ProfilePicture {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
 .GuideCardText {
   font-weight: 600;
   text-align: left;
