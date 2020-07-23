@@ -4,23 +4,77 @@ import './sideDrawerchat.css';
 import React, { Component } from 'react';
 //import { DenunciaModal } from '.../Component/DenunciaPopUp';
 import DenunciaModalAlvo from './DenunciaModal_Alvo';
+import userServices from '../../../services/userServices';
 
+
+import { Redirect } from 'react-router'
 class sideDrawerchat extends Component {
+	
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			denunciaModalShow: false
+			denunciaModalShow: false,
+			notifications: false,
+			goToMatches: false
 		}
 	}
-	render() {
-		const denunciaModalClose = () => this.setState({ denunciaModalShow: false });
 
+		
+	async goToNotifications() {
+		try {
+		  const status = 'Finalizado'
+		  await userServices.updateMatchStatus(localStorage.getItem("matchId"), status)
+		  this.setState({ notifications: true })
+	
+		} catch (error) {
+		  console.error(`There was an error ending match`)
+		  console.error(`Error: ${error}`)
+		}
+	}
+
+	async cancelMatch() {
+		 
+		try {
+		  const status = 'Cancelado'
+		 
+		  await userServices.updateMatchStatus(localStorage.getItem("matchId"), status)
+		  this.setState({ goToMatches: true })
+		} catch (error) {
+		  console.error(`There was an error canceling match`)
+		  console.error(`Error: ${error}`)
+		}
+	  }
+
+	  async endMatch() {
+		 
+		try {
+		  const status = 'Finalizado'
+		 
+		  await userServices.updateMatchStatus(localStorage.getItem("matchId"), status)
+		  this.setState({ notifications: true })
+		} catch (error) {
+		  console.error(`There was an error canceling match`)
+		  console.error(`Error: ${error}`)
+		}
+	  }
+	
+	render() {
+
+		const denunciaModalClose = () => this.setState({ denunciaModalShow: false });
+		if (this.state.notifications) {
+			return <Redirect to="/notificaciones" />
+		  }
+		  if (this.state.goToMatches) {
+			return <Redirect to="/matches" />
+		  }
 		return (
 			<nav className="side-drawerchat">
 				<ul>
-					<li><a style={{ color: '#272b30' }} href="/chat">Cancelar encuentro</a></li>
-					<li><a style={{ color: '#272b30' }} onClick={() => this.setState({ denunciaModalShow: true })}>Denunciar</a></li>
+					<li><div  onClick={() => this.cancelMatch()}>Cancelar encuentro</div></li>
+					<li><div  onClick={() => this.endMatch()}>Finalizar encuentro</div></li>
+					<li><div  onClick={() => this.setState({ denunciaModalShow: true })}>Denunciar</div></li>
+					
 				</ul>
 				<DenunciaModalAlvo
 					show={this.state.denunciaModalShow}

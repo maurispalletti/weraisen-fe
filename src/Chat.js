@@ -71,7 +71,7 @@ class Chat extends Component {
       console.error(`Error: ${error}`)
     }
   }
-
+  
   renderMessages = (messages) => {
     console.log(`Rendering messages`)
     return messages.map((message) => (
@@ -168,13 +168,14 @@ class Chat extends Component {
     let backdrop;
 
     if (this.state.sideDrawerOpen) {
-      sideDrawer = <SideDrawer />;
+      sideDrawer = <SideDrawer 
+                   />;
       backdrop = <Backdrop click={this.backdropClickHandler} />
     }
 
     return (
       <div className="Chat">
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler} nombre={this.otherName} img={usuario} />
+        <Toolbar drawerClickHandler={this.drawerToggleClickHandler} nombre={this.state.otherName} img={usuario} />
         {sideDrawer}
         {backdrop}
         <div className="BodyChat">

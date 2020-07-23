@@ -2,32 +2,27 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router'
 import { Button } from 'react-bootstrap';
 
-class Card_Notificacion extends Component {
+class Card_Notificacion2 extends Component {
 	state = {
 		goToChat: false,
-		goToMatches: false
 	}
 
 	render() {
 		const { name, description, imgsrc } = this.props;
 		if (this.state.goToChat) {
-			return <Redirect to="/matches" />
+			return <Redirect to="/chat" />
 		}
-
-		if (this.state.goToMatches) {
-			return <Redirect to="/matches" />
-		}
-
 		return (
 			<div>
 				<div className="card col-sm-12 col-xs-12 " style={{ maxWidth: '400px', margin: '0px auto' }} >
 					<div className="row no-gutters ">
-						<div className="col-sm-12 col-12" style={{ padding: "0px" }}>
+						<div className="col-sm-12 col-12">
 							<div className="">
-								<p className="card-text" style={{ textAlign: "center" }}>{description}</p>
+								<h5 className="card-title" style={{ marginBottom: "0px" }}>{name}</h5>
+								<p className="card-text" style={{ textAlign: "center"}}>{description}</p>
 								<div className="row mb-2">
 									<div className="col text-center">
-										<Button variant="primary" size="sm" style={{ width: "50%" }} onClick={() => this.setState({ goToChat: true })}>Ver encuentro</Button>
+										<Button variant="primary" size="sm" style={{ width: "47%" }} onClick={() => this.setState({ goToChat: true })}>Ir al chat</Button>
 									</div>
 								</div>
 							</div>
@@ -38,4 +33,4 @@ class Card_Notificacion extends Component {
 		)
 	}
 }
-export default Card_Notificacion;
+export default Card_Notificacion2;
