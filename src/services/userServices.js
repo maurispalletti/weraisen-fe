@@ -17,7 +17,11 @@ class userServices {
 		birthDate,
 		gender,
 		email,
-		password }) {
+		password,
+		idFront,
+		idBack,
+		profilePicture,
+	}) {
 		const url = `${customUrl}/api/v1/users/signup`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
@@ -27,7 +31,10 @@ class userServices {
 			birthDate,
 			gender,
 			email,
-			password
+			password,
+			idFront,
+			idBack,
+			profilePicture,
 		}
 		return axios.post(url, body, { headers })
 	}
@@ -204,7 +211,7 @@ class userServices {
 	}
 
 	static async upLoadImg(file) {
-		const url = `${customUrl}/api/v1/users/identification`		
+		const url = `${customUrl}/api/v1/users/identification`
 		const fd = new FormData();
 		fd.append('file', file);
 
@@ -226,7 +233,7 @@ class userServices {
 	static async updateUserStatus({
 		userId,
 		status,
-    }) {
+	}) {
 		const url = `${customUrl}/api/v1/admin/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {

@@ -57,7 +57,8 @@ console.log(initialValues);
 
 		this.setState({
 			guias: [
-				{ imagen: "https://theluxonomist.es/wp-content/uploads/2019/11/autofoto.jpg", nombre: 'Mateo', edad: '22 años', detalle: '"Me encanta compartir mis ratos libres enseñándole mi ciudad a personas que la visitan. Son experiencias muy enriquecedoras."' },
+				{ imagen: "https://s3-sa-east-1.amazonaws.com/weraisen-images/1595461927214-DSADas.jpg", nombre: 'Mateo', edad: '22 años', detalle: '"Me encanta compartir mis ratos libres enseñándole mi ciudad a personas que la visitan. Son experiencias muy enriquecedoras."' },
+				// { imagen: "https://theluxonomist.es/wp-content/uploads/2019/11/autofoto.jpg", nombre: 'Mateo', edad: '22 años', detalle: '"Me encanta compartir mis ratos libres enseñándole mi ciudad a personas que la visitan. Son experiencias muy enriquecedoras."' },
 				{ imagen: "https://media.istockphoto.com/photos/morning-selfie-picture-id935524698?k=6&m=935524698&s=612x612&w=0&h=qgz5rX_Qi9ATtffT0UcnIyCK94145Vi5XA7hY8rAX58=", nombre: 'Camila', edad: '26 años', detalle: '"Comenzar a usar WeRaisen fue la mejor decisión. No sólo conozco gente de otros lugares, sino que tengo la oportunidad de practicar mi inglés."' },
 				{ imagen: "https://www.fujifilm.com.mx/productos/camaras_digitales/serie_x/xa10/features/img/page_02/pic_01.jpg", nombre: 'Anabella', edad: '28 años', detalle: '"Solía aburrirme mucho los domingos. Gracias a una amiga que me recomendó esta plataforma, cada domingo es una aventura distinta."' },
 				

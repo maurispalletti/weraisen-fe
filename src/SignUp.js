@@ -10,7 +10,7 @@ import DropdownGender from './forms/DropdownGender'
 import dni1 from './icons/dni1.png'
 import dni2 from './icons/dni2.png'
 import icon from './icons/icon.svg'
-import CrearCuentaModal_Alvo from './components/CrearCuentaModal_Alvo'
+import CrearCuentaModal from './components/CrearCuentaModal_Alvo'
 
 const INITIAL_VALUES = {
   firstName: '',
@@ -38,10 +38,10 @@ const genders = [
 ]
 
 class SignUp extends Component {
-
   state = {
     goToLogin: false,
     signUpFailed: false,
+    uploadFailed: false,
     passwordsMissmatch: false,
     value: '',
     min: '',
@@ -55,24 +55,31 @@ class SignUp extends Component {
     firstName,
     lastName,
     identification,
-    birthDate,
     gender,
     email,
     password,
     passwordRepeated,
   }) => {
-    console.log('entrooooooooooo')
     try {
       if (password === passwordRepeated) {
         const birthDate = this.state.value;
-        //Llamada para subir la imagen del DNI frente
-        if(this.state.imagenDNI1 && this.state.imagenDNI2 && this.state.imagenFotoPerfil){
-          const imagenDNI1Url = await userServices.upLoadImg(this.state.imagenDNI1);
-          const imagenDNI2Url = await userServices.upLoadImg(this.state.imagenDNI2);
-          const imagenFotoPerfilUrl = await userServices.upLoadImg(this.state.imagenFotoPerfil);
-        }else{
-          throw new Error();
-        }       
+
+        let imagenDNI1Url;
+        let imagenDNI2Url;
+        let imagenFotoPerfilUrl;
+
+        if (this.state.imagenDNI1 && this.state.imagenDNI2 && this.state.imagenFotoPerfil) {
+          imagenDNI1Url = await userServices.upLoadImg(this.state.imagenDNI1);
+          imagenDNI2Url = await userServices.upLoadImg(this.state.imagenDNI2);
+          imagenFotoPerfilUrl = await userServices.upLoadImg(this.state.imagenFotoPerfil);
+
+          console.log(`Imagen 1: ${JSON.stringify(imagenDNI1Url)}`)
+          console.log(`Imagen 2: ${imagenDNI2Url}`)
+          console.log(`Imagen 3: ${imagenFotoPerfilUrl}`)
+
+        } else {
+          this.setState({ signUpFailed: true, uploadFailed: true })
+        }
 
         const response = await userServices.createUser({
           firstName,
@@ -81,7 +88,10 @@ class SignUp extends Component {
           birthDate,
           gender,
           email,
-          password
+          password,
+          idFront: imagenDNI1Url.data,
+          idBack: imagenDNI2Url.data,
+          profilePicture: imagenFotoPerfilUrl.data,
         })
 
         const { data: { id } } = response
@@ -89,11 +99,10 @@ class SignUp extends Component {
         // save Id in local storage
         localStorage.setItem("userId", id);
 
-        this.setState({ passwordsMissmatch: false, denunciaModalShow: true, signUpFailed: false })
+        this.setState({ passwordsMissmatch: false, uploadFailed: false, denunciaModalShow: true, signUpFailed: false })
       } else {
         this.setState({ signUpFailed: true, passwordsMissmatch: true })
       }
-
     } catch (error) {
       this.setState({ signUpFailed: true })
       console.error(`There was an error trying to create the user`)
@@ -101,8 +110,6 @@ class SignUp extends Component {
   }
 
   handleChange = (event) => {
-    console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`)
-    console.log(event.target.value)
     this.setState({ value: event.target.value });
   }
 
@@ -130,11 +137,13 @@ class SignUp extends Component {
       imagenDNI1: event.target.files[0]
     })
   }
+
   fileSelectedDNI2 = event => {
     this.setState({
       imagenDNI2: event.target.files[0]
     })
   }
+
   fileSelectedFotoPerfil = event => {
     this.setState({
       imagenFotoPerfil: event.target.files[0]
@@ -228,11 +237,11 @@ class SignUp extends Component {
                 <img src={dni2} alt={"dni detras"} width="150" onClick={() => this.fileImput2.click()} />
               </div>
               <br />
-                <label className="title">Subí una foto que se mostrará en tu perfil</label>
-                <div className="profile">
-                  <img src={icon} alt={"Foto de perfil"} width="60" onClick={() => this.fileImput3.click()} />
-                  </div>
-              
+              <label className="title">Subí una foto que se mostrará en tu perfil</label>
+              <div className="profile">
+                <img src={icon} alt={"Foto de perfil"} width="60" onClick={() => this.fileImput3.click()} />
+              </div>
+
               <div className='remember'>
                 <p>Al crear cuenta estoy aceptando los
                    <a className="forgotPass" href={'/terminos'}> términos y condiciones</a></p>
@@ -244,14 +253,18 @@ class SignUp extends Component {
 
                 <input type="submit" className="btn-primero" value="Crear cuenta" />
 
-                <CrearCuentaModal_Alvo
+                <CrearCuentaModal
                   show={this.state.denunciaModalShow}
                   onHide={denunciaModalClose}
                 />
-
                 {this.state.passwordsMissmatch && (
                   <p className="form-error">
                     Las contreseñas no coinciden. Intenta de nuevo.
+                  </p>
+                )}
+                {this.state.uploadFailed && (
+                  <p className="form-error">
+                    Sube tus fotos de DNI y de perfil para poder continuar.
                   </p>
                 )}
                 {this.state.signUpFailed && (

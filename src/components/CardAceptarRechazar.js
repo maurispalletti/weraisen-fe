@@ -10,6 +10,16 @@ class AceptarRechazar extends Component {
     newUsersFailed: false,
   }
 
+
+  getFormattedDate(birthDate) {
+    const date = new Date(birthDate);
+    const day = date.getDate()
+    const month = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
+    var year = date.getFullYear()
+
+    return day + "/" + month + "/" + year;
+  }
+
   getaceptNewUser = async () => {
     try {
       const response = await userServices.getaceptNewUser();
@@ -24,23 +34,22 @@ class AceptarRechazar extends Component {
     }
   }
 
-
   renderNewUsers = () => {
     const { newUsers } = this.state
     if (newUsers.length > 0) {
       return newUsers.map(newUser => {
-        const { id, profilePicture, dniFirst, dniSecond, firstName, lastName, identification, birthDate } = newUser
+        const { id, profilePicture, idFront, idBack, firstName, lastName, identification, birthDate } = newUser
         return (
           <div>
             <CardsAceptar
               userId={id}
               profilePicture={profilePicture} //Agregar en Model User (no existe en BE)
-              dniFirst={dniFirst}  //Agregar en Model User (no existe en BE)
-              dniSecond={dniSecond} //Agregar en Model User (no existe en BE)
+              dniFirst={idFront}  //Agregar en Model User (no existe en BE)
+              dniSecond={idBack} //Agregar en Model User (no existe en BE)
               firstName={firstName}
               lastName={lastName}
               identification={identification}
-              birthDate={birthDate}
+              birthDate={this.getFormattedDate(birthDate)}
               refresh={() => this.getaceptNewUser()}
             />
             <br></br>

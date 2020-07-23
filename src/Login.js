@@ -86,9 +86,9 @@ class Login extends Component {
               onSubmit={(values) => this.loginUser(values)}>
               <Form>
 
-                <FieldWithError name="email" aria-label="username" className="input" autocomplete="off" />
+                <FieldWithError name="email" aria-label="username" className="input" autoComplete="off" />
                Email
-               <FieldWithError name="password" type="password" aria-label="password" autocomplete="off" className="input" />
+               <FieldWithError name="password" type="password" aria-label="password" autoComplete="off" className="input" />
                Contraseña
                <br></br>
                 <div className="right-container" style={{ padding: "30px" }}>
@@ -100,8 +100,8 @@ class Login extends Component {
                     {this.state.mensajeError}
                   </p>
 
-
-                  {/* {this.state.loginFailed && (
+{/* 
+                  {this.state.loginFailed && (
                     <p className="form-error">
                       Tu email y password no coinciden. Intenta de nuevo.
                     </p>

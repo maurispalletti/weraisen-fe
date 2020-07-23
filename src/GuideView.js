@@ -20,6 +20,7 @@ class GuideView extends Component {
       initialValues:"",
       knowledge:[],
       languages:[],
+      profilePicture: "",
       ReviewsFailed: false
     }
 
@@ -46,7 +47,8 @@ class GuideView extends Component {
            email,
            knowledge,
            description,
-           languages
+           languages,
+           profilePicture
      } =  await this.getProfile()
  
      
@@ -65,7 +67,7 @@ class GuideView extends Component {
        description,
      }
  
-     this.setState({ initialValues, knowledge, languages, guiaIdState:userIdGuia })
+     this.setState({ initialValues, profilePicture, knowledge, languages, guiaIdState:userIdGuia })
      console.log("!!!!"+ knowledge);
      console.log("!!!!"+ languages);
    }
@@ -106,14 +108,11 @@ class GuideView extends Component {
       this.setState({ ReviewsFailed: true })
     }
   }
-  async UNSAFE_componentWillMount() { /* usar el did mount*/
-    
-     await this.getProfile()
-     await this.getReviews()
-  }
 
-
-
+  // async UNSAFE_componentWillMount() { /* usar el did mount*/
+  //    await this.getProfile()
+  //    await this.getReviews()
+  // }
 
   renderReviews = () => {
     const { reviews } = this.state
@@ -165,7 +164,7 @@ class GuideView extends Component {
 
         
           <div className="GuideView">
-                <Header></Header>
+                <Header />
                 <br></br>
                 {/*<h2>{nombre} {apellido}</h2> */}
                 <div className="container-fluid" style={{color:'rgba(255,255,255,0.8)'}}>
@@ -184,7 +183,9 @@ class GuideView extends Component {
                           </div>
                           <hr></hr>
                           <div className="Section2">
-                            <div className="FotoPerfil"> </div>
+                            <div className="FotoPerfil">
+                              <img src={this.state.profilePicture} alt="profile" style={{width: '200px', height: '200px', objectFit: 'cover'}}/>
+                            </div>
 
                           </div>
                         </div>

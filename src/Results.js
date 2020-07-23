@@ -43,7 +43,7 @@ class Results extends Component {
     console.log('****'+guides.length)
     if (guides.length > 0) {
       return guides.map((guide, index) => {
-        const { id, firstName, lastName, age, city, languages, knowledge, description, gender } = guide
+        const { id, firstName, lastName, age, city, languages, knowledge, description, gender, profilePicture } = guide
         return (
           <div key={index}>
             <CardGuia
@@ -57,6 +57,7 @@ class Results extends Component {
               gender={gender}
               knowledge={knowledge}
               description={description}
+              profilePicture={profilePicture}
             />
             <br></br>
           </div>
