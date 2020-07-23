@@ -20,7 +20,7 @@ class GuideView extends Component {
 		knowledge: [],
 		languages: [],
 		ReviewsFailed: false,
-		arreglo: [],
+		promedioPuntos:0,
 		profilePicture: "",
 	}
 
@@ -75,6 +75,8 @@ class GuideView extends Component {
 			const response = await userServices.getReviews(userId)
 			if (response && response.data && response.data.length > 0) {
 				this.setState({ reviews: response.data })
+				this.getPromedio();
+
 			}
 		} catch (error) {
 			console.error(`There was an error trying to get reviews: ${error}`)
@@ -82,19 +84,29 @@ class GuideView extends Component {
 		}
 	}
 
-	getAverage = async () => {
-		let { arreglo } = this.state
-		arreglo = this.getReviews();
+	getPromedio= ()=>{
 
-		return arreglo.map(review => {
-			const puntos = arreglo.slice(1, 1)
+		let reviews= this.state.reviews
+		let suma=0
+		reviews.forEach(review=> {
+			console.log(review)
+			suma+= review.points
+		});
 
-			console.log("puntos" + puntos)
 
-			return puntos;
-		}
-		);
+
+		
+		this.setState({promedioPuntos: (suma/reviews.length)})
+
 	}
+
+	
+	async UNSAFE_componentWillMount() { /* usar el did mount*/
+    
+		await this.getProfile()
+		await this.getReviews()
+	 }
+   
 
 	renderReviews = () => {
 		const { reviews } = this.state
@@ -145,7 +157,7 @@ class GuideView extends Component {
 							<b> <label for="nombre" id="nombreApellido" class="col--2 col-form-label">{nombre} {apellido}</label> <br></br>  </b>
 							<label for="edad" id="edad" class="col--2 col-form-label">Edad: {edad}</label>
 							<div className="PromedioEstrella">
-								<i><label for="promedio" id="promedio" class="col--2 col-form-label">4.5</label></i>
+		<i><label for="promedio" id="promedio" class="col--2 col-form-label">{this.state.promedioPuntos}</label></i>
 								<img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img>
 							</div>
 						</div>
