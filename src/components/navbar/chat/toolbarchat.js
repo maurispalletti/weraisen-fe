@@ -5,7 +5,9 @@ import atras from './regreso.png'
 
 import Menu from './menuchat';
 
+
 const Toolbarchat = props => (
+   
     <header className="toolbarchat">
         <nav className="toolbar_navigationchat">
             <div className="back"><a href="/matches"><img src={atras} alt={"Back"} width="24" /></a></div>
@@ -14,7 +16,8 @@ const Toolbarchat = props => (
             {/* Aca poner redireccion en la imagen del perfil */}
             {/* <div className="toolbar__logochat" ><a href="/matches"><img className="imagen" src={props.img} alt={"Search"} width="40" /></a></div> */}
             <div className="spacer2"></div>
-            <h5>{props.nombre}</h5>
+        
+            <h3>{props.nombre}</h3>
             
             <div className="spacer"></div>
            
