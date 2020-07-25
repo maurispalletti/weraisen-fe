@@ -73,9 +73,10 @@ class GuideView extends Component {
 			const userId = userIdGuia;
 
 			const response = await userServices.getReviews(userId)
-			if (response && response.data && response.data.length > 0) {
+			if (response && response.data) {
 				this.setState({ reviews: response.data })
-				this.getPromedio();
+			
+				
 
 			}
 		} catch (error) {
@@ -84,28 +85,29 @@ class GuideView extends Component {
 		}
 	}
 
-	getPromedio = () => {
+	renderPromedio = () => {
 
 		let reviews = this.state.reviews
+
 		if (reviews && reviews.length > 0) {
 			let suma = 0
 
 			reviews.forEach(review => {
-				console.log(review)
 				suma += review.points
 			});
-			this.setState({ promedioPuntos: (suma / reviews.length) })
+			let promedio = (suma / reviews.length)
+		
+			// this.setState({ promedioPuntos: (suma / reviews.length) })
+			if (reviews.length === 1){
+				return <p>{promedio} <img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img> Promedio entre una opinión</p>}
+			else{
+				return <p style={{ textAlign: 'left' }}>{promedio} <img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img> Promedio entre {reviews.length} opiniones</p>
+			}
 		} else {
-			this.promedioPuntos = 0
+			 return <p> <img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img>Aún no cuenta con opiniones.</p>
 		}
 
 	}
-
-
-
-
-
-
 
 async UNSAFE_componentWillMount() { /* usar el did mount*/
 
@@ -163,8 +165,7 @@ render() {
 						<b> <label for="nombre" id="nombreApellido" class="col--2 col-form-label">{nombre} {apellido}</label> <br></br>  </b>
 						<label for="edad" id="edad" class="col--2 col-form-label">Edad: {edad}</label>
 						<div className="PromedioEstrella">
-							<i><label for="promedio" id="promedio" class="col--2 col-form-label">{this.state.promedioPuntos}</label></i>
-							<img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img>
+							<i><label for="promedio" id="promedio" class="col--2 col-form-label">{this.renderPromedio()}</label></i>
 						</div>
 					</div>
 					<hr></hr>
