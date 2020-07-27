@@ -9,6 +9,7 @@ export default class Card_Guia extends React.Component {
   state = {
     show: false,
     goToMatches: false,
+    age: "",
   }
 
   async sendMatchRequest() {
@@ -25,12 +26,14 @@ export default class Card_Guia extends React.Component {
     localStorage.setItem("detalleGuia", guiaIdcard);
   }
 
+ 
+
   render() {
     if (this.state.goToMatches) {
       return <Redirect to={`/matches`} />
     }
 
-    const { firstName, lastName, age, gender, languages, description, profilePicture } = this.props;
+    const { firstName, lastName, age2, gender, languages, description, profilePicture } = this.props;
     const avatar = gender === 'Femenino' ? avatar_woman_1 : avatar_man_1;
 
     const languagesString = languages.join(', ')
@@ -43,8 +46,11 @@ export default class Card_Guia extends React.Component {
 
 
         <div >
-          <h3 style={{ textAlign: "center", paddingTop: "10px" }}>{firstName} {lastName}, {age} años </h3>
+          <h3 style={{ textAlign: "center", paddingTop: "10px" }}>{firstName} {lastName}, {age2} años </h3>
+          
           <img src={profilePicture} alt={`${firstName} ${lastName}`} style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
+          
+          <h4 style={{paddingTop:"5px"}}>4.5</h4>
         </div>
 
 

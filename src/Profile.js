@@ -185,7 +185,7 @@ class Profile extends Component {
                   </div>
                 
                   <div className="title">
-                  <DropdownGender disabled={!this.state.editable} name="gender" styleName={"input"} options={genders} />
+                  <DropdownGender disabled={!this.state.editable} name="gender" styleName={"input"} options={genders}  />
                   Género
                   </div>
                

@@ -10,6 +10,7 @@ class Results extends Component {
     goToHome: false,
     searchFailed: false,
     guides: [],
+    
 
   }
 
@@ -38,12 +39,27 @@ class Results extends Component {
     await this.getGuides(filters)
   }
 
+  calcularEdad =(birthDate)=>{
+    const cumple= new Date (birthDate)
+    
+    const hoy = new Date();
+    let age = hoy.getFullYear()-cumple.getFullYear();
+    const m = hoy.getMonth()-cumple.getMonth();
+
+    if (m<0 || (m ===0 && hoy.getDate()< cumple.getDate())){
+      age--;
+    }
+
+    return age;
+  }
+
   renderGuides = () => {
     const { guides } = this.state
     console.log('****'+guides.length)
     if (guides.length > 0) {
       return guides.map((guide, index) => {
-        const { id, firstName, lastName, age, city, languages, knowledge, description, gender, profilePicture } = guide
+        const { id, firstName, lastName, birthDate, city, languages, knowledge, description, gender, profilePicture } = guide
+        let age2 = this.calcularEdad(birthDate);
         return (
           <div key={index}>
             <CardGuia
@@ -52,7 +68,7 @@ class Results extends Component {
               firstName={firstName}
               lastName={lastName}
               city={city}
-              age={age}
+              age2={age2}
               languages={languages}
               gender={gender}
               knowledge={knowledge}

@@ -30,7 +30,7 @@ class GuideView extends Component {
 		const {
 			firstName,
 			lastName,
-			age,
+			birthDate,
 			gender,
 			email,
 			knowledge,
@@ -42,13 +42,12 @@ class GuideView extends Component {
 		const initialValues = {
 			firstName,
 			lastName,
-			age,
 			gender,
 			email,
 			description,
 		}
 
-		this.setState({ initialValues, profilePicture, knowledge, languages, guiaIdState: userIdGuia })
+		this.setState({ initialValues, profilePicture, knowledge, languages, birthDate, guiaIdState: userIdGuia })
 	}
 
 
@@ -67,6 +66,20 @@ class GuideView extends Component {
 			console.error(`There was an error trying to get the profile`)
 		}
 	}
+	calcularEdad =()=>{
+		 let birthDate=this.state.birthDate;
+		const cumple= new Date (birthDate)
+		
+		const hoy = new Date();
+		let age = hoy.getFullYear()-cumple.getFullYear();
+		const m = hoy.getMonth()-cumple.getMonth();
+	
+		if (m<0 || (m ===0 && hoy.getDate()< cumple.getDate())){
+		  age--;
+		}
+	
+		return age;
+	  }
 
 	getReviews = async () => {
 		try {
@@ -111,6 +124,7 @@ async UNSAFE_componentWillMount() { /* usar el did mount*/
 
 	await this.getProfile()
 	await this.getReviews()
+	
 }
 
 
@@ -146,7 +160,7 @@ render() {
 		return <Redirect to="/results" /> /*aca ver que se guarden los resultados */
 	}
 
-	const edad = this.state.initialValues.age;
+	const edad = this.calcularEdad();
 	const descripcion = this.state.initialValues.description;
 	const nombre = this.state.initialValues.firstName;
 	const apellido = this.state.initialValues.lastName;
