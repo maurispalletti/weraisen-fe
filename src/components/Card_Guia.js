@@ -10,8 +10,8 @@ export default class Card_Guia extends React.Component {
   state = {
     show: false,
     goToMatches: false,
-    reviews:[],
-    
+    reviews: [],
+
   }
 
   async sendMatchRequest() {
@@ -28,7 +28,7 @@ export default class Card_Guia extends React.Component {
     localStorage.setItem("detalleGuia", guiaIdcard);
   }
 
- 
+
 
   render() {
     if (this.state.goToMatches) {
@@ -43,33 +43,28 @@ export default class Card_Guia extends React.Component {
     const guiaSelec = this.props.guideId;
 
     return (
-      <div className="card col-sm-12 col-xs-12" style={{ maxWidth: '400px'}}>
-
-
+      <div className="card col-sm-12 col-xs-12" style={{ maxWidth: '400px' }}>
 
         <div >
           <h3 style={{ textAlign: "center", paddingTop: "10px" }}>{firstName} {lastName}, {age2} años </h3>
-          
+
           <img src={profilePicture} alt={`${firstName} ${lastName}`} style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
-      
-          
+
           <div>
-          {average >0 &&
-          <i><label for="promedio" id="promedio" class="col--2 col-form-label">{average}</label></i>&&
-          <img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img>}
+            {average > 0 &&
+              <i><label for="promedio" id="promedio" class="col--2 col-form-label">{average}</label></i> &&
+              <img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img>}
           </div>
-            
-          
-</div>
+
+        </div>
         <div className="card-body" style={{ padding: '10px 10px 10px 10px', Width: '300px' }}>
           <h4 style={{ textAlign: "center", fontWeight: 'lighter' }}>{description}</h4>
           <h4 style={{ textAlign: "center", fontWeight: 'lighter' }}>Idiomas: {languagesString}</h4>
         </div>
         <a href="/guideView" className="lead" style={{ cursor: 'pointer', fontSize: ' 16px', marginBottom: 20 }} onClick={() => this.guardarGuia(guiaSelec)}>Ver perfil</a>
 
-
         <div>
-        {/* <div className="row mb-2"> */}
+          {/* <div className="row mb-2"> */}
           <div className="center">
             <Button variant="primary" size="sm" style={{ background: '#d48e4b', paddingTop: '5px', margin: 0, marginBottom: 20 }} onClick={() => this.sendMatchRequest()}> Enviar solicitud </Button>
           </div>

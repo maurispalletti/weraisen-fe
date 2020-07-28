@@ -57,7 +57,6 @@ class Results extends Component {
 
   getPromedio = async (userId) => {
 
-
     const response = await userServices.getReviews(userId);
     
     let promedioPuntos = 0
@@ -87,7 +86,7 @@ class Results extends Component {
       return guides.map((guide, index) => {
         const { id, firstName, lastName, birthDate, city, languages, knowledge, description, gender, profilePicture } = guide
         let age2 = this.calcularEdad(birthDate);
-        
+        let average = this.getPromedio(id)
         
         return (
           <div key={index}>
@@ -103,7 +102,7 @@ class Results extends Component {
               knowledge={knowledge}
               description={description}
               profilePicture={profilePicture}
-              average={this.getPromedio(id)}
+              average={average}
 
             />
             <br></br>

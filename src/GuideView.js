@@ -160,7 +160,7 @@ class GuideView extends Component {
 		}
 	}
 	render() {
-		const edad = this.state.initialValues.age;
+		const edad = this.calcularEdad();
 		const descripcion = this.state.initialValues.description;
 		const nombre = this.state.initialValues.firstName;
 		const apellido = this.state.initialValues.lastName;
@@ -180,7 +180,9 @@ class GuideView extends Component {
 								<i><label for="promedio" id="promedio" class="col--2 col-form-label">{this.renderPromedio()}</label></i>
 							</div>
 							<hr></hr>
-							<div className="Section2">
+							
+						</div>
+						<div className="Section2">
 								<div className="FotoPerfil">
 									<img src={this.state.profilePicture} alt="profile" style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
 								</div>
@@ -204,7 +206,7 @@ class GuideView extends Component {
 								<input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToResults: true })} />
 							</div>
 						</div>
-					</div>
+					
 
 				</div>
 				</div>
