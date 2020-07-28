@@ -4,12 +4,14 @@ import avatar_man_1 from '../avatars/avatar_4.svg';
 import { Redirect } from 'react-router'
 import userServices from '../services/userServices';
 import { Button } from 'react-bootstrap';
+import img2 from '../icons/estrella.png';
 
 export default class Card_Guia extends React.Component {
   state = {
     show: false,
     goToMatches: false,
-    age: "",
+    reviews:[],
+    promedioPuntos: 0,
   }
 
   async sendMatchRequest() {
@@ -33,7 +35,7 @@ export default class Card_Guia extends React.Component {
       return <Redirect to={`/matches`} />
     }
 
-    const { firstName, lastName, age2, gender, languages, description, profilePicture } = this.props;
+    const { firstName, lastName, age2, gender, languages, description, profilePicture, average } = this.props;
     const avatar = gender === 'Femenino' ? avatar_woman_1 : avatar_man_1;
 
     const languagesString = languages.join(', ')
@@ -49,11 +51,16 @@ export default class Card_Guia extends React.Component {
           <h3 style={{ textAlign: "center", paddingTop: "10px" }}>{firstName} {lastName}, {age2} años </h3>
           
           <img src={profilePicture} alt={`${firstName} ${lastName}`} style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
+      
           
-          <h4 style={{paddingTop:"5px"}}>4.5</h4>
-        </div>
-
-
+          <div>
+          {average>0 &&
+          <i><label for="promedio" id="promedio" class="col--2 col-form-label">{average}</label></i>&&
+          <img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img>}
+          </div>
+            
+          
+</div>
         <div className="card-body" style={{ padding: '10px 10px 10px 10px', Width: '300px' }}>
           <h4 style={{ textAlign: "center", fontWeight: 'lighter' }}>{description}</h4>
           <h4 style={{ textAlign: "center", fontWeight: 'lighter' }}>Idiomas: {languagesString}</h4>

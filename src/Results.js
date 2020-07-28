@@ -22,7 +22,7 @@ class Results extends Component {
 
 
       const response = await userServices.getGuides(filters);
-      console.log('++++++++'+ response.data)
+      console.log('++++++++' + response.data)
       if (response && response.data && response.data.length > 0) {
         this.setState({ guides: response.data })
       }
@@ -39,27 +39,51 @@ class Results extends Component {
     await this.getGuides(filters)
   }
 
-  calcularEdad =(birthDate)=>{
-    const cumple= new Date (birthDate)
-    
-    const hoy = new Date();
-    let age = hoy.getFullYear()-cumple.getFullYear();
-    const m = hoy.getMonth()-cumple.getMonth();
+  calcularEdad = (birthDate) => {
+    const cumple = new Date(birthDate)
 
-    if (m<0 || (m ===0 && hoy.getDate()< cumple.getDate())){
+    const hoy = new Date();
+    let age = hoy.getFullYear() - cumple.getFullYear();
+    const m = hoy.getMonth() - cumple.getMonth();
+
+    if (m < 0 || (m === 0 && hoy.getDate() < cumple.getDate())) {
       age--;
     }
 
     return age;
   }
 
+
+  getPromedio = async (userId) => {
+
+   
+    let reviews=await userServices.getReviews(userId);
+    console.log(reviews.data)
+    let promedioPuntos = 0
+    if (reviews && reviews.length > 0) {
+      console.log(reviews.length)
+      let suma = 0
+
+      reviews.forEach(review => {
+        console.log(review)
+        suma += review.points
+      });
+      promedioPuntos = (suma / reviews.length)
+    } else {
+      promedioPuntos = 0
+    }
+    return promedioPuntos
+    console.log("PROMEDIO"+promedioPuntos)
+  }
+
   renderGuides = () => {
     const { guides } = this.state
-    console.log('****'+guides.length)
+    console.log('****' + guides.length)
     if (guides.length > 0) {
       return guides.map((guide, index) => {
         const { id, firstName, lastName, birthDate, city, languages, knowledge, description, gender, profilePicture } = guide
         let age2 = this.calcularEdad(birthDate);
+        let average = this.getPromedio(id);
         return (
           <div key={index}>
             <CardGuia
@@ -74,6 +98,8 @@ class Results extends Component {
               knowledge={knowledge}
               description={description}
               profilePicture={profilePicture}
+              average={average}
+
             />
             <br></br>
           </div>
