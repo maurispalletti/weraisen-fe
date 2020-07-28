@@ -72,8 +72,8 @@ class GuideView extends Component {
 
 		const hoy = new Date();
 		let age = hoy.getFullYear() - cumple.getFullYear();
-		
-		const m = (hoy.getMonth()+1) - (cumple.getMonth()+1);
+
+		const m = (hoy.getMonth() + 1) - (cumple.getMonth() + 1);
 
 		if (m < 0 || (m === 0 && hoy.getDate() < cumple.getDate())) {
 			age--;
@@ -87,9 +87,10 @@ class GuideView extends Component {
 			const userId = userIdGuia;
 
 			const response = await userServices.getReviews(userId)
-			if (response && response.data && response.data.length > 0) {
+			if (response && response.data) {
 				this.setState({ reviews: response.data })
-				this.getPromedio();
+
+
 
 			}
 		} catch (error) {
@@ -98,35 +99,38 @@ class GuideView extends Component {
 		}
 	}
 
-	getPromedio = () => {
+	renderPromedio = () => {
 
 		let reviews = this.state.reviews
+
 		if (reviews && reviews.length > 0) {
 			let suma = 0
 
 			reviews.forEach(review => {
-				console.log(review)
 				suma += review.points
 			});
-			this.setState({ promedioPuntos: (suma / reviews.length) })
+			let promedio = (suma / reviews.length)
+
+			// this.setState({ promedioPuntos: (suma / reviews.length) })
+			if (reviews.length === 1) {
+				return <p>{promedio} <img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img> Promedio entre una opinión</p>
+			}
+			else {
+				return <p style={{ textAlign: 'left' }}>{promedio} <img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img> Promedio entre {reviews.length} opiniones</p>
+			}
 		} else {
-			this.promedioPuntos = 0
+			return <p> <img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img>Aún no cuenta con opiniones.</p>
 		}
 
 	}
-
-
-
-
-
-
 
 	async UNSAFE_componentWillMount() { /* usar el did mount*/
 
 		await this.getProfile()
 		await this.getReviews()
-
 	}
+
+
 
 
 	renderReviews = () => {
@@ -155,13 +159,8 @@ class GuideView extends Component {
 			return <p>Aún no se han publicado opiniones.</p>
 		}
 	}
-
 	render() {
-		if (this.state.goToResults) {
-			return <Redirect to="/results" /> /*aca ver que se guarden los resultados */
-		}
-
-		const edad = this.calcularEdad();
+		const edad = this.state.initialValues.age;
 		const descripcion = this.state.initialValues.description;
 		const nombre = this.state.initialValues.firstName;
 		const apellido = this.state.initialValues.lastName;
@@ -178,38 +177,37 @@ class GuideView extends Component {
 							<b> <label for="nombre" id="nombreApellido" class="col--2 col-form-label">{nombre} {apellido}</label> <br></br>  </b>
 							<label for="edad" id="edad" class="col--2 col-form-label">Edad: {edad}</label>
 							<div className="PromedioEstrella">
-								<i><label for="promedio" id="promedio" class="col--2 col-form-label">{this.state.promedioPuntos}</label></i>
-								<img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img>
+								<i><label for="promedio" id="promedio" class="col--2 col-form-label">{this.renderPromedio()}</label></i>
+							</div>
+							<hr></hr>
+							<div className="Section2">
+								<div className="FotoPerfil">
+									<img src={this.state.profilePicture} alt="profile" style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
+								</div>
 							</div>
 						</div>
-						<hr></hr>
-						<div className="Section2">
-							<div className="FotoPerfil">
-								<img src={this.state.profilePicture} alt="profile" style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
+						<div className="containerCentro">
+
+							<label for="description" class="col--2 col-form-label">Sobre mi: {descripcion}</label><br></br>
+							<label for="languajes" class="col--2 col-form-label">Idiomas que conozco: {languages}</label><br></br>
+							<label for="knowledges" class="col--2 col-form-label">Conocimientos: {conocimientos}</label>
+
+						</div>
+
+						<div className="containerAbajo"> <b>Opiniones de sus encuentros </b>
+
+							{this.renderReviews()}
+
+						</div>
+						<div className="boton">
+							<div className="buttonsS">
+								<input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToResults: true })} />
 							</div>
 						</div>
 					</div>
-					<div className="containerCentro">
 
-						<label for="description" class="col--2 col-form-label">Sobre mi: {descripcion}</label><br></br>
-						<label for="languajes" class="col--2 col-form-label">Idiomas que conozco: {languages}</label><br></br>
-						<label for="knowledges" class="col--2 col-form-label">Conocimientos: {conocimientos}</label>
-
-					</div>
-
-					<div className="containerAbajo"> <b>Opiniones de sus encuentros </b>
-
-						{this.renderReviews()}
-
-					</div>
-					<div className="boton">
-						<div className="buttonsS">
-							<input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToResults: true })} />
-						</div>
-					</div>
 				</div>
-
-			</div>
+				</div>
 		);
 
 	}

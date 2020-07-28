@@ -126,7 +126,7 @@ class Matches extends Component {
                 <input type="button" className="btn-primero" value="Volver al menú principal" onClick={() => this.setState({ goToHome: true })} />
               </div>
               <div className="Section">
-                <input type="button" className="MatchesButton" value="Ir a mi perfil" onClick={() => this.setState({ goToProfile: true })} />
+                <input type="button" className="btn-primero" value="Ir a mi perfil" onClick={() => this.setState({ goToProfile: true })} />
               </div>
               {this.state.searchFailed && (
                 <p className="form-error">La búsqueda de encuentros falló. Intentá de nuevo por favor.</p>

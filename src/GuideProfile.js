@@ -18,7 +18,8 @@ const cities = [
   { value: "LaPlata", description: 'La Plata' },
   { value: "Neuquen", description: 'Neuquén' },
   { value: "Mendoza", description: 'Mendoza' },
-  { value: "Rosario", description: 'Rosario' }
+  { value: "Rosario", description: 'Rosario' },
+  { value: "Mardel", description: 'Mar del Plata' }
 ];
 
 class GuideProfile extends Component {
@@ -145,7 +146,7 @@ class GuideProfile extends Component {
                     <FieldWithError component={'input'} name="description" placeholder={"Ingresá una breve descripción..."} aria-label="description" className="input" />
                   </div>
                   <div className="Seccion">
-                    <h2>Cuidad de residencia</h2>
+                    <h2>Localidad de residencia</h2>
                     <DropdownGender name="city" styleName={"input"} options={cities} />
                   </div>
                   <div className="Seccion">
