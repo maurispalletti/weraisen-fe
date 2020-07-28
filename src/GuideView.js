@@ -180,36 +180,36 @@ class GuideView extends Component {
 								<i><label for="promedio" id="promedio" class="col--2 col-form-label">{this.renderPromedio()}</label></i>
 							</div>
 							<hr></hr>
-							
+
 						</div>
 						<div className="Section2">
-								<div className="FotoPerfil">
-									<img src={this.state.profilePicture} alt="profile" style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
-								</div>
+							<div className="FotoPerfil">
+								<img src={this.state.profilePicture} alt="profile" style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
 							</div>
 						</div>
-						<div className="containerCentro">
+					</div>
+					<div className="containerCentro">
 
-							<label for="description" class="col--2 col-form-label">Sobre mi: {descripcion}</label><br></br>
-							<label for="languajes" class="col--2 col-form-label">Idiomas que conozco: {languages}</label><br></br>
-							<label for="knowledges" class="col--2 col-form-label">Conocimientos: {conocimientos}</label>
+						<label for="description" class="col--2 col-form-label">Sobre mi: {descripcion}</label><br></br>
+						<label for="languajes" class="col--2 col-form-label">Idiomas que conozco: {languages}</label><br></br>
+						<label for="knowledges" class="col--2 col-form-label">Conocimientos: {conocimientos}</label>
 
+					</div>
+
+					<div className="containerAbajo"> <b>Opiniones de sus encuentros </b>
+
+						{this.renderReviews()}
+
+					</div>
+					<div className="boton">
+						<div className="buttonsS">
+							<input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToResults: true })} />
 						</div>
+					</div>
 
-						<div className="containerAbajo"> <b>Opiniones de sus encuentros </b>
-
-							{this.renderReviews()}
-
-						</div>
-						<div className="boton">
-							<div className="buttonsS">
-								<input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToResults: true })} />
-							</div>
-						</div>
-					
 
 				</div>
-				</div>
+			</div>
 		);
 
 	}
