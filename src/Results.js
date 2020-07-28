@@ -10,7 +10,7 @@ class Results extends Component {
     goToHome: false,
     searchFailed: false,
     guides: [],
-    
+
 
   }
 
@@ -37,6 +37,7 @@ class Results extends Component {
     let filters = sessionStorage.getItem("filters");
     filters = JSON.parse(filters)
     await this.getGuides(filters)
+
   }
 
   calcularEdad = (birthDate) => {
@@ -49,41 +50,45 @@ class Results extends Component {
     if (m < 0 || (m === 0 && hoy.getDate() < cumple.getDate())) {
       age--;
     }
-
+    console.log("EDAD" + age)
     return age;
   }
 
 
   getPromedio = async (userId) => {
 
-   
-    let reviews=await userServices.getReviews(userId);
-    console.log(reviews.data)
+
+    const response = await userServices.getReviews(userId);
+    
     let promedioPuntos = 0
-    if (reviews && reviews.length > 0) {
-      console.log(reviews.length)
+    if (response.data.length > 0) {
+      console.log(response.data.length)
       let suma = 0
 
-      reviews.forEach(review => {
-        console.log(review)
+      response.data.forEach(review => {
+        
         suma += review.points
       });
-      promedioPuntos = (suma / reviews.length)
+      promedioPuntos = (suma / response.data.length)
     } else {
       promedioPuntos = 0
     }
+    console.log("PROMEDIO" + promedioPuntos)
     return promedioPuntos
-    console.log("PROMEDIO"+promedioPuntos)
+
   }
+
 
   renderGuides = () => {
     const { guides } = this.state
     console.log('****' + guides.length)
+    
     if (guides.length > 0) {
       return guides.map((guide, index) => {
         const { id, firstName, lastName, birthDate, city, languages, knowledge, description, gender, profilePicture } = guide
         let age2 = this.calcularEdad(birthDate);
-        let average = this.getPromedio(id);
+        
+        
         return (
           <div key={index}>
             <CardGuia
@@ -98,13 +103,15 @@ class Results extends Component {
               knowledge={knowledge}
               description={description}
               profilePicture={profilePicture}
-              average={average}
+              average={this.getPromedio(id)}
 
             />
             <br></br>
           </div>
+          
         )
       });
+      
     }
   }
 

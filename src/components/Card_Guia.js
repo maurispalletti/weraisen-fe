@@ -11,7 +11,7 @@ export default class Card_Guia extends React.Component {
     show: false,
     goToMatches: false,
     reviews:[],
-    promedioPuntos: 0,
+    
   }
 
   async sendMatchRequest() {
@@ -54,7 +54,7 @@ export default class Card_Guia extends React.Component {
       
           
           <div>
-          {average>0 &&
+          {average >0 &&
           <i><label for="promedio" id="promedio" class="col--2 col-form-label">{average}</label></i>&&
           <img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img>}
           </div>
