@@ -160,6 +160,9 @@ class GuideView extends Component {
 		}
 	}
 	render() {
+		if (this.state.goToResults) {
+			return <Redirect to="/results" />
+		  }
 		const edad = this.calcularEdad();
 		const descripcion = this.state.initialValues.description;
 		const nombre = this.state.initialValues.firstName;
@@ -179,7 +182,7 @@ class GuideView extends Component {
 							<div className="PromedioEstrella">
 								<i><label for="promedio" id="promedio" class="col--2 col-form-label">{this.renderPromedio()}</label></i>
 							</div>
-							<hr></hr>
+							
 
 						</div>
 						<div className="Section2">

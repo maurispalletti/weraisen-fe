@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Results.css';
-import './Estilos.css';
+
 import CardGuia from '../src/components/Card_Guia';
 import { Redirect } from 'react-router'
 import userServices from './services/userServices'
@@ -38,42 +38,6 @@ class Results extends Component {
     filters = JSON.parse(filters)
     await this.getGuides(filters)
 
-  }
-
-  calcularEdad = (birthDate) => {
-    const cumple = new Date(birthDate)
-
-    const hoy = new Date();
-    let age = hoy.getFullYear() - cumple.getFullYear();
-    const m = hoy.getMonth() - cumple.getMonth();
-
-    if (m < 0 || (m === 0 && hoy.getDate() < cumple.getDate())) {
-      age--;
-    }
-    console.log("EDAD" + age)
-    return age;
-  }
-
-
-  getPromedio = async (userId) => {
-
-    const response = await userServices.getReviews(userId);
-    
-    let promedioPuntos = 0
-    if (response.data.length > 0) {
-      console.log(response.data.length)
-      let suma = 0
-
-      response.data.forEach(review => {
-        
-        suma += review.points
-      });
-      promedioPuntos = (suma / response.data.length)
-    } else {
-      promedioPuntos = 0
-    }
-    console.log("PROMEDIO" + promedioPuntos)
-    return promedioPuntos
 
   }
 
@@ -81,13 +45,13 @@ class Results extends Component {
   renderGuides = () => {
     const { guides } = this.state
     console.log('****' + guides.length)
-    
+
     if (guides.length > 0) {
-      return guides.map((guide, index) => {
+      return (guides.map((guide, index) => {
         const { id, firstName, lastName, birthDate, city, languages, knowledge, description, gender, profilePicture } = guide
-        let age2 = this.calcularEdad(birthDate);
-        let average = this.getPromedio(id)
-        
+
+
+
         return (
           <div key={index}>
             <CardGuia
@@ -96,21 +60,22 @@ class Results extends Component {
               firstName={firstName}
               lastName={lastName}
               city={city}
-              age2={age2}
+              birthDate={birthDate}
               languages={languages}
               gender={gender}
               knowledge={knowledge}
               description={description}
               profilePicture={profilePicture}
-              average={average}
+
+
 
             />
             <br></br>
           </div>
-          
+
         )
-      });
-      
+      }));
+
     }
   }
 
@@ -127,7 +92,7 @@ class Results extends Component {
 
         <div className="BodyResults">
 
-          <div className="Section">
+          <div className="container-fluid" >
             <h2 style={{ paddingBottom: "15px" }}>Iniciá una conversación con tu guía preferido</h2>
             {this.renderGuides()}
           </div>
