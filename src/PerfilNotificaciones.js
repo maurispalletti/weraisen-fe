@@ -33,14 +33,24 @@ class Notificacion extends Component {
 	}
 
 	renderNotifications = () => {
+		
 		console.log(this.state)
 		const { notificacions } = this.state;
 		console.log(notificacions.length)
 		if (notificacions.length > 0) {
 			
 			return notificacions.map(notification => {
-				const { id, message } = notification
-
+				const { id, message, createdAt } = notification
+				
+				// para mostrar fecha y hora en la card
+				const fecha = new Date (createdAt)
+				const dia= fecha.getDate()
+				const año= fecha.getFullYear()
+				const mes = fecha.getMonth()+1
+				const fecha2= dia+"/"+mes+"/"+año
+				const hora= fecha.getUTCHours()
+				const minuto= fecha.getUTCMinutes()
+				const fecha3= hora+":"+minuto
 				if (notification.type === "Elegido"){ //falta enviar usuario para chat, y encuentro para cancelar
 					return (
 						<div>
@@ -48,6 +58,8 @@ class Notificacion extends Component {
 								key={id}
 								imgsrc={img1} 
 								description={message} 
+								fecha={fecha2}
+								hora= {fecha3}
 							/>
 							<br />
 						</div>
@@ -61,6 +73,8 @@ class Notificacion extends Component {
 								key={id}
 								imgsrc={img1}
 								description={message}
+								fecha={fecha2}
+								hora= {fecha3}
 							/>
 							<br />
 						</div>
@@ -74,6 +88,8 @@ class Notificacion extends Component {
 								key={id}
 								imgsrc={img1}
 								description={message}
+								fecha={fecha2}
+								hora= {fecha3}
 								
 							/>
 							<br />
@@ -87,6 +103,8 @@ class Notificacion extends Component {
 								key={id}
 								imgsrc={img1}
 								description={message}
+								fecha={fecha2}
+								hora= {fecha3}
 							/>
 							<br />
 						</div>
@@ -99,6 +117,8 @@ class Notificacion extends Component {
 									key={id}
 									imgsrc={img1}
 									description={message}
+									fecha={fecha2}
+									hora= {fecha3}
 								/>
 								<br />
 							</div>
