@@ -54,6 +54,13 @@ h6{
   transition: background 0.3s ease-in-out;
   font-size: inherit;
 }
+
+.btn-primero:disabled,
+.btn-primero[disabled]{
+  border: 1px solid #999999;
+  background-color: #bdbfc1 !important;
+  color: #666666;
+}
 .btn-segundo {
   /*background: rgb(78, 108, 96);+*/
   
