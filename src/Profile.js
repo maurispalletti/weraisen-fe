@@ -196,7 +196,7 @@ class Profile extends Component {
 
                 </div>
                 <br></br>
-                <a href="/MyReviews" className="lead" style={{cursor:'pointer', fontSize:' 16px'}} onClick={() => this.setState({ goToMyReviews: true })}>Ver valoraciones</a>
+                <a href="/MyReviews" className="lead" style={{cursor:'pointer', fontSize:' 16px'}} onClick={() => this.setState({ goToMyReviews: true })}>Ver valoraciones e informes</a>
               
 
                 <div className="guideSection">
