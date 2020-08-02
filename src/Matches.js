@@ -3,9 +3,25 @@ import './Results.css';
 import './Matches.css';
 import Header from '../src/components/Header'
 import MatchCard from './components/MatchCard';
-import { Redirect } from 'react-router'
-
+import { Redirect } from 'react-router';
+import DropdownGender from './forms/DropdownGender';
+import FieldWithError from './forms/FieldWithError';
 import userServices from './services/userServices'
+
+const genders = [
+  {
+    value: "Femenino",
+    description: 'Femenino'
+  },
+  {
+    value: "Masculino",
+    description: 'Masculino'
+  },
+  {
+    value: "Otro",
+    description: 'Otro'
+  },
+]
 
 class Matches extends Component {
 
@@ -16,12 +32,16 @@ class Matches extends Component {
     matches: [],
     newMatches: [],
     loading: true,
+    showFilters:false
   }
 
   componentDidMount() {
     this.getMatches()
   }
+  mostrarFiltros = () => {
+    this.setState({ showFilters: !this.state.showFilters });
 
+  }
   getMatches = async () => {
     try {
       let fullInfoMatches = [];
@@ -120,6 +140,16 @@ class Matches extends Component {
             <div className="BodyMatches">
               <div className="Section">
                 <h2 style={{ marginBottom: 40 }}>Tus encuentros</h2>
+
+                <p className="verMas" onClick={() => this.mostrarFiltros()} >{this.state.showFilters ? "Ocultar filtros" : "Filtrar encuentros"}</p>
+      
+                <div className="Filters" style={{ display: this.state.showFilters ? 'block' : 'none' }}>
+             
+               acá van los filtros
+               {/* <DropdownGender name="gender" styleName={"input"} options={genders} /> */}
+               {/* <FieldWithError name="birthDate" placeholder="Ingresa tu fecha de nacimiento" className="input"  type="date"/> */}
+              </div>
+              <br></br>
                 {this.state.newMatches}
               </div>
               <div className="ButtonSection">
