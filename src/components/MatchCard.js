@@ -77,12 +77,12 @@ export default class MatchCard extends Component {
     }
     if (status === 'Cancelado') {
       return (
-        <h4 className="card-text" style={{ textAlign: "left", width: 'auto' }}>Solicitud rechazada </h4>
+        <h4 className="card-text" style={{ textAlign: "left", width: 'auto' }}> Encuentro cancelado  </h4>
       )
     }
     if (status === 'Anulado') {
       return (
-        <h4 className="card-text" style={{ textAlign: "left", width: 'auto' }}>Encuentro cancelado </h4>
+        <h4 className="card-text" style={{ textAlign: "left", width: 'auto' }}>Solicitud rechazada</h4>
       )
     }
 
