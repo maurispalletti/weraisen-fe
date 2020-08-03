@@ -5,7 +5,7 @@ import { Formik, Form } from 'formik'
 import { PasswordRecoverySchema } from './helpers/validators'
 import FieldWithError from './forms/FieldWithError'
 import React, { Component } from 'react'
-import PasswordRecovery_Alerta from './components/PasswordRecovery_Alerta'
+
 
 
 const INITIAL_VALUES = {
@@ -31,7 +31,7 @@ class PasswordRecovery extends Component {
         if (this.state.goToLogin) {
             return <Redirect to="/login" />
         }
-        let AlertaClose = () => this.setState({ goToLogin: true });
+        
         return (
             <div class="contaainer" style={{backgroundColor: "#282828"}}>
                 <div class="m-5" style={{backgroundColor: "#282828", borderRadius:'6px', alignItems:'center', justifyContent:'center'}}>
@@ -55,10 +55,14 @@ class PasswordRecovery extends Component {
                             </Form>
                         </Formik>
 
-                        <PasswordRecovery_Alerta
-                        show={this.state.enviado}
-                         onHide={AlertaClose}
-                       />
+                       
+                        {this.state.enviado && 
+                        <div class="alert alert-dismissible alert-secondary" style={{ maxWidth: '300px', textAlign: 'center' }} role="alert">
+                        <strong>Se ha enviado el email</strong> Por favor verifica tu casilla de correo
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" onClick={() => this.setState({ goToLogin: true })}>
+                             <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>}
 
                     </div>
                     <div className="right-container" style={{ padding: "30px" }}>

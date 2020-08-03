@@ -11,7 +11,12 @@ export function PasswordRecoverySchema(){
     email: Yup.string().required('Ingresa un email')
   })
 }
-
+export function ChangePasswordSchema(){
+  return Yup.object().shape({
+    password: Yup.string().required('Ingresa una contraseña'),
+    passwordRepeated: Yup.string().required('Repite la contraseña')
+  })
+}
 export function ReviewSchema () {
   return Yup.object().shape({
     description: Yup.string().required('Ingresa una descripción de tu acompañante')
