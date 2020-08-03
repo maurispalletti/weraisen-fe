@@ -6,6 +6,11 @@ export function LoginSchema () {
     password: Yup.string().required('Ingresa una contraseña')
   })
 }
+export function PasswordRecoverySchema(){
+  return Yup.object().shape({
+    email: Yup.string().required('Ingresa un email')
+  })
+}
 
 export function ReviewSchema () {
   return Yup.object().shape({
