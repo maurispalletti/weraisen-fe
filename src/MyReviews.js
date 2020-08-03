@@ -4,7 +4,7 @@ import MyReviewCard from './components/MyReviewCard';
 import Header from '../src/components/Header'
 import './MyReviews.css';
 import userServices from './services/userServices'
-import Grafico from '../src/components/Grafico2barrasEdadCategoria';
+import Grafico from './components/ReporCategoryPerGender';
 
 let userId
 
