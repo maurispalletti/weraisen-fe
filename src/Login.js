@@ -90,7 +90,8 @@ class Login extends Component {
                Email
                <FieldWithError name="password" type="password" aria-label="password" autoComplete="off" className="input" />
                Contraseña
-               <br></br>
+               <p><a className="forgotPass" href={'/PasswordRecovery'}>¿Olvidaste tu contraseña?</a> </p>
+               
                 <div className="right-container" style={{ padding: "30px" }}>
                   <input type="submit" className="btn-primero" value="Iniciar sesión" />
 
