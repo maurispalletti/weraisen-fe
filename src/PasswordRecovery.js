@@ -33,8 +33,8 @@ class PasswordRecovery extends Component {
         }
         
         return (
-            <div class="contaainer" style={{backgroundColor: "#282828"}}>
-                <div class="m-5" style={{backgroundColor: "#282828", borderRadius:'6px', alignItems:'center', justifyContent:'center'}}>
+            <div class="contaainer" style={{backgroundColor: "#2c2b2b"}}>
+                <div class="m-5" style={{backgroundColor: "#2c2b2b", borderRadius:'6px', alignItems:'center', justifyContent:'center'}}>
                     <div class="User">
                         <br></br>
                         <div className="title">
@@ -58,7 +58,7 @@ class PasswordRecovery extends Component {
                        
                         {this.state.enviado && 
                         <div class="alert alert-dismissible alert-secondary" style={{ maxWidth: '300px', textAlign: 'center' }} role="alert">
-                        <strong>Se ha enviado el email</strong> Por favor verifica tu casilla de correo
+                        <strong>Se ha enviado el email.</strong> Por favor verifica tu casilla de correo
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close" onClick={() => this.setState({ goToLogin: true })}>
                              <span aria-hidden="true">&times;</span>
                         </button>

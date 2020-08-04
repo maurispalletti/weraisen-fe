@@ -34,8 +34,8 @@ class ChangePassword extends Component {
         }
 
         return (
-            <div class="contaainer" style={{ backgroundColor: "#282828" }}>
-                <div class="m-5" style={{ backgroundColor: "#282828", borderRadius: '6px', alignItems: 'center', justifyContent: 'center' }}>
+            <div class="contaainer" style={{ backgroundColor: "#2c2b2b" }}>
+                <div class="m-5" style={{ backgroundColor: "#2c2b2b", borderRadius: '6px', alignItems: 'center', justifyContent: 'center' }}>
                     <div class="User">
                         <br></br>
                         <div className="title">
