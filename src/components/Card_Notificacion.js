@@ -9,7 +9,7 @@ class Card_Notificacion extends Component {
 	}
 
 	render() {
-		const { name, description, imgsrc } = this.props;
+		const { name, description, imgsrc, fecha, hora } = this.props;
 		if (this.state.goToChat) {
 			return <Redirect to="/matches" />
 		}
@@ -29,7 +29,13 @@ class Card_Notificacion extends Component {
 								{/* <p className="card-text" style={{ textAlign: "center" }}>{description}</p> */}
 								<div className="row mb-2">
 									<div className="col text-center">
-										<Button variant="primary" size="sm" style={{ width: "50%" }} onClick={() => this.setState({ goToChat: true })}>Ver encuentro</Button>
+										<h5 className="card-title" style={{ marginBottom: "0px" }}>{fecha}</h5>
+										<h5 className="card-title" style={{ marginBottom: "0px" }}>{hora}</h5>
+									</div>
+									
+
+									<div className="col text-center">
+										<Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.setState({ goToChat: true })}>Ver encuentro</Button>
 									</div>
 								</div>
 							</div>

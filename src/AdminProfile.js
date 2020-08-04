@@ -31,7 +31,7 @@ render() {
     active = {this.state.active} 
     onChange = {active => this.setState({active})}
     >
-      <div key="aTAB"> Estadísticas </div> 
+      <div key="aTAB"> Informes </div> 
       <div key="bTAB"> Gestión de denuncias </div> 
       <div key="cTAB"> Gestión de usuarios </div> 
     </Tabs>

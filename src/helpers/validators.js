@@ -48,7 +48,7 @@ export function ProfileSchema () {
   return Yup.object().shape({
     firstName: Yup.string().required('Ingresa tu nombre'),
     lastName: Yup.string().required('Ingresa tu apellido'),
-    birthDate: Yup.date().required('Ingresa tu fecha de nacimiento'), 
+   // birthDate: Yup.date().required('Ingresa tu fecha de nacimiento'), 
     identification: Yup.string().required('Ingresa tu identificación'),
     gender: Yup.string().required('Ingresa tu género'),
     city: Yup.string().required('Ingresa tu ciudad de residencia'),
