@@ -20,7 +20,7 @@ class GuideView extends Component {
 		knowledge: [],
 		languages: [],
 		ReviewsFailed: false,
-		arreglo: [],
+		promedioPuntos: 0,
 		profilePicture: "",
 	}
 
@@ -30,7 +30,7 @@ class GuideView extends Component {
 		const {
 			firstName,
 			lastName,
-			age,
+			birthDate,
 			gender,
 			email,
 			knowledge,
@@ -42,13 +42,12 @@ class GuideView extends Component {
 		const initialValues = {
 			firstName,
 			lastName,
-			age,
 			gender,
 			email,
 			description,
 		}
 
-		this.setState({ initialValues, profilePicture, knowledge, languages, guiaIdState: userIdGuia })
+		this.setState({ initialValues, profilePicture, knowledge, languages, birthDate, guiaIdState: userIdGuia })
 	}
 
 
@@ -67,14 +66,32 @@ class GuideView extends Component {
 			console.error(`There was an error trying to get the profile`)
 		}
 	}
+	calcularEdad = () => {
+		let birthDate = this.state.birthDate;
+		const cumple = new Date(birthDate)
+
+		const hoy = new Date();
+		let age = hoy.getFullYear() - cumple.getFullYear();
+
+		const m = (hoy.getMonth() + 1) - (cumple.getMonth() + 1);
+
+		if (m < 0 || (m === 0 && hoy.getDate() < cumple.getDate())) {
+			age--;
+		}
+
+		return age;
+	}
 
 	getReviews = async () => {
 		try {
 			const userId = userIdGuia;
 
 			const response = await userServices.getReviews(userId)
-			if (response && response.data && response.data.length > 0) {
+			if (response && response.data) {
 				this.setState({ reviews: response.data })
+
+
+
 			}
 		} catch (error) {
 			console.error(`There was an error trying to get reviews: ${error}`)
@@ -82,19 +99,39 @@ class GuideView extends Component {
 		}
 	}
 
-	getAverage = async () => {
-		let { arreglo } = this.state
-		arreglo = this.getReviews();
+	renderPromedio = () => {
 
-		return arreglo.map(review => {
-			const puntos = arreglo.slice(1, 1)
+		let reviews = this.state.reviews
 
-			console.log("puntos" + puntos)
+		if (reviews && reviews.length > 0) {
+			let suma = 0
 
-			return puntos;
+			reviews.forEach(review => {
+				suma += review.points
+			});
+			let promedio = (suma / reviews.length)
+
+			// this.setState({ promedioPuntos: (suma / reviews.length) })
+			if (reviews.length === 1) {
+				return <p>{promedio} <img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img> Promedio entre una opinión</p>
+			}
+			else {
+				return <p style={{ textAlign: 'left' }}>{promedio} <img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img> Promedio entre {reviews.length} opiniones</p>
+			}
+		} else {
+			return <p> <img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img>Aún no cuenta con opiniones.</p>
 		}
-		);
+
 	}
+
+	async UNSAFE_componentWillMount() { /* usar el did mount*/
+
+		await this.getProfile()
+		await this.getReviews()
+	}
+
+
+
 
 	renderReviews = () => {
 		const { reviews } = this.state
@@ -122,13 +159,11 @@ class GuideView extends Component {
 			return <p>Aún no se han publicado opiniones.</p>
 		}
 	}
-
 	render() {
 		if (this.state.goToResults) {
-			return <Redirect to="/results" /> /*aca ver que se guarden los resultados */
-		}
-
-		const edad = this.state.initialValues.age;
+			return <Redirect to="/results" />
+		  }
+		const edad = this.calcularEdad();
 		const descripcion = this.state.initialValues.description;
 		const nombre = this.state.initialValues.firstName;
 		const apellido = this.state.initialValues.lastName;
@@ -145,11 +180,11 @@ class GuideView extends Component {
 							<b> <label for="nombre" id="nombreApellido" class="col--2 col-form-label">{nombre} {apellido}</label> <br></br>  </b>
 							<label for="edad" id="edad" class="col--2 col-form-label">Edad: {edad}</label>
 							<div className="PromedioEstrella">
-								<i><label for="promedio" id="promedio" class="col--2 col-form-label">4.5</label></i>
-								<img alt='img2' style={{ verticalAlign: "0", paddingLeft: '2px' }} src={img2} width={13}></img>
+								<i><label for="promedio" id="promedio" class="col--2 col-form-label">{this.renderPromedio()}</label></i>
 							</div>
+							
+
 						</div>
-						<hr></hr>
 						<div className="Section2">
 							<div className="FotoPerfil">
 								<img src={this.state.profilePicture} alt="profile" style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
@@ -174,8 +209,9 @@ class GuideView extends Component {
 							<input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToResults: true })} />
 						</div>
 					</div>
-				</div>
 
+
+				</div>
 			</div>
 		);
 

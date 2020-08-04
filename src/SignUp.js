@@ -10,6 +10,9 @@ import DropdownGender from './forms/DropdownGender'
 import dni1 from './icons/dni1.png'
 import dni2 from './icons/dni2.png'
 import icon from './icons/icon.svg'
+import icongris from './icons/icon-gris.svg'
+import dni1gris from './icons/frente-gris.png'
+import dni2gris from './icons/dorso-gris.png'
 import CrearCuentaModal from './components/CrearCuentaModal_Alvo'
 
 const INITIAL_VALUES = {
@@ -48,7 +51,11 @@ class SignUp extends Component {
     denunciaModalShow: false,
     imagenDNI1: null,
     imagenDNI2: null,
-    imagenFotoPerfil: null
+    imagenFotoPerfil: null,
+    acepto: false,
+    front: dni1gris,
+    back: dni2gris,
+    profile: icongris
   }
 
   createUser = async ({
@@ -91,7 +98,7 @@ class SignUp extends Component {
           password,
           idFront: imagenDNI1Url.data,
           idBack: imagenDNI2Url.data,
-          profilePicture: imagenFotoPerfilUrl.data,
+          profilePicture: imagenFotoPerfilUrl.data
         })
 
         const { data: { id } } = response
@@ -134,19 +141,20 @@ class SignUp extends Component {
 
   fileSelectedDNI1 = event => {
     this.setState({
-      imagenDNI1: event.target.files[0]
+      imagenDNI1: event.target.files[0], front: dni1
     })
+    
   }
 
   fileSelectedDNI2 = event => {
     this.setState({
-      imagenDNI2: event.target.files[0]
+      imagenDNI2: event.target.files[0], back: dni2
     })
   }
 
   fileSelectedFotoPerfil = event => {
     this.setState({
-      imagenFotoPerfil: event.target.files[0]
+      imagenFotoPerfil: event.target.files[0], profile: icon
     })
   }
 
@@ -230,28 +238,35 @@ class SignUp extends Component {
 
               <div className="dni1">
                 <label className="input3">Frente</label><br></br>
-                <img src={dni1} alt={"dni frente"} width="150" onClick={() => this.fileImput1.click()} />
+                <img src={this.state.front} alt={"dni frente"} width="150" onClick={() => this.fileImput1.click()} />
               </div>
               <div className="dni2">
                 <label className="input3">Dorso</label><br></br>
-                <img src={dni2} alt={"dni detras"} width="150" onClick={() => this.fileImput2.click()} />
+                <img src={this.state.back} alt={"dni detras"} width="150" onClick={() => this.fileImput2.click()} />
               </div>
               <br />
               <label className="title">Subí una foto que se mostrará en tu perfil</label>
               <div className="profile">
-                <img src={icon} alt={"Foto de perfil"} width="60" onClick={() => this.fileImput3.click()} />
+                <img src={this.state.profile} alt={"Foto de perfil"} width="60" onClick={() => this.fileImput3.click()} />
               </div>
 
-              <div className='remember'>
-                <p>Al crear cuenta estoy aceptando los
-                   <a className="forgotPass" href={'/terminos'}> términos y condiciones</a></p>
-
-
+              <br></br>
+              <br></br>
+              <div class="custom-control custom-checkbox" style={{paddingLeft: '50px', paddingRight: '50px', paddingBottom:'15px'}}>
+                  <input type="checkbox" class="custom-control-input" id="salidaGrupal" checked={this.state.acepto} onChange={() => this.setState({ acepto: !this.state.acepto }) }/>
+                  <label class="custom-control-label" for="salidaGrupal" style={{cursor:'pointer'}}>Al crear cuenta estoy aceptando los <a className="forgotPass" href={'/terminos'}> términos y condiciones</a></label>
               </div>
+               <br></br>
+               <br></br>
+
               <div className="righ-container">
 
+                <input type="submit" className="btn-primero" value="Crear cuenta" disabled={!this.state.acepto}/>
+                <br></br>
+                <br></br>
 
-                <input type="submit" className="btn-primero" value="Crear cuenta" />
+                <input type="submit" className="btn-primero" value="Cancelar" onClick={() => this.setState({ goToLogin: true })} />
+  
 
                 <CrearCuentaModal
                   show={this.state.denunciaModalShow}

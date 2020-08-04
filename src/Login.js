@@ -43,7 +43,7 @@ class Login extends Component {
         // localStorage.getItem("userId");
         // console.log(`!!!!!!!!!!!` + id)
         this.setState({ mensajeError: "" })
-        if (response.data.isAdminAccount) {
+        if (response.data.isAdmindAccount) {
           this.setState({ esAdmin: true });
         } else {
           this.setState({ goToHome: true })
@@ -134,8 +134,8 @@ class Login extends Component {
             <p>
               <strong>WeRaisen</strong> es una plataforma que utiliza la tecnología para conectarte con <strong>expertos locales.</strong></p>
 
-            <p>Únicamente tenes que especificar a dónde queres ir, cuándo y qué queres hacer allí... </p>
-            <p>Luego, sólo deberás <strong>enviar una solicitud</strong> al guía que más te guste</p>
+            <p>Únicamente tenes que especificar a dónde queres ir, cuándo y qué querés hacer allí... </p>
+            <p>Luego, sólo deberás <strong>enviar una solicitud</strong> al guía que más te guste.</p>
 
           </div>
           <div className="continuar"><a href="#Funcionamiento" className=""><img className="imag" src={scroll1} alt={"WER"} width="50" /> </a></div>
@@ -144,13 +144,13 @@ class Login extends Component {
         <div id="Funcionamiento">
           <h1 className="index__section-title2" color="#9CD6AE">¿<strong>Cómo funciona</strong>?</h1>
           <div className="text"> <p>
-            Elegí tu guía favorito y empeza un <strong>chat privado</strong>. </p>
-            <p>Recibí recomendaciones personales de tu guía desde su experiencia por ser local y <strong>acordá un encuentro.</strong>
+            Elegí tu guía favorito y empezá un <strong>chat privado</strong>. </p>
+            <p>Recibí recomendaciones personales de tu guía desde su experiencia local y <strong>acordá un encuentro.</strong>
             </p>
             <p>
               Al finalizar el encuentro, simplemente <strong>calificá </strong>y escribí una <strong>breve reseña</strong> sobre tu guía según la calidad de la experiencia. </p>
             <p>Tu guía también te calificará.</p><p>
-              De esta forma, podras ayudar a <strong>futuros turistas</strong> a elegir la mejor opción.
+              De esta forma, podrás ayudar a <strong>futuros turistas</strong> a elegir la mejor opción.
                 </p>
             <div className="continuar2"><a href="#Inicio" className=""><img className="imag" src={scroll2} alt={"WER"} width="50" /> </a></div>
           </div>

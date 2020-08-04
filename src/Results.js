@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Results.css';
-import './Estilos.css';
+
 import CardGuia from '../src/components/Card_Guia';
 import { Redirect } from 'react-router'
 import userServices from './services/userServices'
@@ -10,6 +10,7 @@ class Results extends Component {
     goToHome: false,
     searchFailed: false,
     guides: [],
+
 
   }
 
@@ -21,7 +22,7 @@ class Results extends Component {
 
 
       const response = await userServices.getGuides(filters);
-      console.log('++++++++'+ response.data)
+      console.log('++++++++' + response.data)
       if (response && response.data && response.data.length > 0) {
         this.setState({ guides: response.data })
       }
@@ -36,14 +37,21 @@ class Results extends Component {
     let filters = sessionStorage.getItem("filters");
     filters = JSON.parse(filters)
     await this.getGuides(filters)
+
+
   }
+
 
   renderGuides = () => {
     const { guides } = this.state
-    console.log('****'+guides.length)
+    console.log('****' + guides.length)
+
     if (guides.length > 0) {
-      return guides.map((guide, index) => {
-        const { id, firstName, lastName, age, city, languages, knowledge, description, gender, profilePicture } = guide
+      return (guides.map((guide, index) => {
+        const { id, firstName, lastName, birthDate, city, languages, knowledge, description, gender, profilePicture } = guide
+
+
+
         return (
           <div key={index}>
             <CardGuia
@@ -52,17 +60,22 @@ class Results extends Component {
               firstName={firstName}
               lastName={lastName}
               city={city}
-              age={age}
+              birthDate={birthDate}
               languages={languages}
               gender={gender}
               knowledge={knowledge}
               description={description}
               profilePicture={profilePicture}
+
+
+
             />
             <br></br>
           </div>
+
         )
-      });
+      }));
+
     }
   }
 
@@ -79,7 +92,7 @@ class Results extends Component {
 
         <div className="BodyResults">
 
-          <div className="Section">
+          <div className="container-fluid" >
             <h2 style={{ paddingBottom: "15px" }}>Iniciá una conversación con tu guía preferido</h2>
             {this.renderGuides()}
           </div>
