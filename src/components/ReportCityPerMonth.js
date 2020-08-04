@@ -13,77 +13,74 @@ const chartConfigs = {
     dataFormat: 'json', // Data type
     dataSource: {
         "chart": {
-            "caption": "Distribución de edad por categoría",
+            "caption": "Ciudades más elegidas por mes",
             "subCaption": "",
-            "xAxisName": "Categoría",
-            "yAxisName": "Edad",            
-            "theme" : "fusion",
-            
-            
+            "xAxisName": "Ciudad",
+            "yAxisName": "Cantida de Encuentros en ciudad",            
+            "theme": "fusion"
         },
         "categories": [
             {
                 "category": [
                     {
-                        "label": "Deportes"
+                        "label": "Córdoba"
                     },
                     {
-                        "label": "Aventura y aire libre"
+                        "label": "Buenos Aires"
                     },
                     {
-                        "label": "Gastronomía"
+                        "label": "La Plata"
                     },
                     {
-                        "label": "Cultura"
+                        "label": "Neuquen"
                     },
                     {
-                        "label": "Shopping"
+                        "label": "Rosario"
                     },
                     {
-                        "label": "Vida Nocturna"
-                    }
+                        "label": "Mendoza"
+                    },
+                    
                 ]
             }
         ],
         "dataset": [
             {
-                "seriesname": "Distribución",
-                "color": "#d48e4b",
+               
+                "color": "#BFD6B1",
                 "data": [
                     {
-                        "value": "25%",
-                        "color": "#d48e4b"
+                        "value": "1",
+                        "color": "#BFD6B1"
                     },
                     {
-                        "value": "5%",
-                        "color": "#d48e4b"
+                        "value": "2",
+                        "color": "#BFD6B1"
                     },
                     {
-                        "value": "15%",
-                        "color": "#d48e4b"
+                        "value": "3",
+                        "color": "#BFD6B1"
                     },
                     {
-                        "value": "45%",
-                        "color": "#d48e4b"
+                        "value":"4",
+                        "color": "#BFD6B1"
                     },
                     {
-                        "value": "3%",
-                        "color": "#d48e4b"
+                        "value": "5",
+                        "color": "#BFD6B1"
                     },
                     {
-                        "value": "2%",
-                        "color": "#d48e4b"
-                    }
-                    
-                    
+                        "value": "6",
+                        "color": "#BFD6B1"
+                    },
+                  
                 ]
-            },
-              ]
             }
-        
+        ]
+    }
 };
 
-class Grafico2 extends React.Component {
+class GraficoCityPerMonth extends React.Component {
   render() {
      return (
      <ReactFC
@@ -92,4 +89,4 @@ class Grafico2 extends React.Component {
   }
 }
 
-export default Grafico2
+export default GraficoCityPerMonth
