@@ -24,12 +24,10 @@ class Card_Notificacion1 extends Component {
 								
 								<div className="row mb-2">
 								<div className="col text-center">
-										<h5 className="card-title" style={{ marginBottom: "0px" }}>{fecha}</h5>
-										<h5 className="card-title" style={{ marginBottom: "0px" }}>{hora}</h5>
-									</div>
-									<div className="col text-center">
-		
-										<Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.setState({ goToReview: true })}>Puntuar</Button>
+								<Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.setState({ goToReview: true })}>Puntuar</Button>
+
+								<p className="card-title" style={{ marginBottom: "0px",   fontSize: '12px'  }}>{fecha}  {hora}</p>
+									
 									</div>
 								</div>
 							</div>

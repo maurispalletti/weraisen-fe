@@ -53,7 +53,7 @@ class Results extends Component {
 
 
         return (
-          <div key={index}>
+          <div style={{textAlign: 'center'}} key={index}>
             <CardGuia
               key={index}
               guideId={id}
@@ -92,7 +92,7 @@ class Results extends Component {
 
         <div className="BodyResults">
 
-          <div className="container-fluid" >
+          <div className="container-fluid" style={{paddingTop: '20px'}} >
             <h2 style={{ paddingBottom: "15px" }}>Iniciá una conversación con tu guía preferido</h2>
             {this.renderGuides()}
           </div>

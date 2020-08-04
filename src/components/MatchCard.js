@@ -27,12 +27,13 @@ export default class MatchCard extends Component {
 
   getFormattedDate() {
     const date = new Date(this.props.date);
-    const day = date.getDate()
+    const day = date.getUTCDate() 
     const month = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
     var year = date.getFullYear()
-
     return day + "/" + month + "/" + year;
+
   }
+
 
   renderButtons() {
     const { status, chatId, partnerRole } = this.props
@@ -113,7 +114,7 @@ export default class MatchCard extends Component {
            
                 <div> {this.renderStatus()} </div>
                 <br></br>
-                <div> <h6 className="card-text" style={{ textAlign: "left", width: 'auto' }}>{this.getFormattedDate()} </h6></div>
+                <div> <h6 className="card-text" style={{ textAlign: "left", width: 'auto', color:'white' }}>{this.getFormattedDate()} </h6></div>
                 <div className="row mb-2" style={{ marginTop: 10 }}>
                   {this.renderButtons()}
                 </div>
