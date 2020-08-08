@@ -14,11 +14,17 @@ class Informes extends Component {
   state = {
     goToHome: false,
     matchesPerMonth: null,
+    cateogryPerGender: null,
+    citiesPerMonth: null,
+    usersCreatedPerMonth: null,
+    usersReportedPerReason: null,
 
   }
 
   componentDidMount() {
     this.getMatchesPerMonth();
+    this.getUsersCreatedPerMonth();
+    this.getUsersReportedPerReason();
   }
 
   getMatchesPerMonth = async () => {
@@ -36,6 +42,54 @@ class Informes extends Component {
       console.error(`There was an error trying to get the matchesPerMonth data`)
     }
   }
+  getCitiesPerMonth = async () => {
+    try {
+      const response = await userServices.getCitiesPerMonth()
+
+      if (response.data) {
+        const { data } = response;
+
+        this.setState({
+          citiesPerMonth: data
+        });
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get the citiesPerMonth data`)
+    }
+  }
+
+  getUsersCreatedPerMonth = async () => {
+    try {
+      const response = await userServices.getUsersCreatedPerMonth()
+
+      if (response.data) {
+        const { data } = response;
+
+        this.setState({
+          usersCreatedPerMonth: data
+        });
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get the citiesPerMonth data`)
+    }
+  }
+  getUsersReportedPerReason = async () => {
+    try {
+      const response = await userServices.getUsersReportedByReason()
+
+      if (response.data) {
+        const { data } = response;
+
+        this.setState({
+          usersReportedPerReason: data
+        });
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get the citiesPerMonth data`)
+    }
+  }
+
+
 
   render() {
     return (
@@ -50,7 +104,7 @@ class Informes extends Component {
           </div>
           <br></br>
           <div className= "GraphicWrapper">
-            <GraficoCityPerMonth />
+           <GraficoCityPerMonth />
           </div>
           <br></br>
           <div className="GraphicWrapper">
@@ -59,12 +113,12 @@ class Informes extends Component {
           <br></br>
           <br></br>
           <div className="GraphicWrapper">
-            <GraficoNewUserPerMonth/>
+          {this.state.usersCreatedPerMonth && <GraficoNewUserPerMonth usersCreatedPerMonth={this.state.usersCreatedPerMonth} />}
           </div> 
           <br></br>
           <br></br>
           <div className="GraphicWrapper">
-            <GraficoCompliantsPerReason/>
+            {this.state.usersReportedPerReason && <GraficoCompliantsPerReason usersReportedPerReason={this.state.usersReportedPerReason}/>}
           </div> 
           <br></br>
           <br></br>

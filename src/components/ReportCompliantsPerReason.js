@@ -6,6 +6,17 @@ import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
+let chartConfigs;
+
+class GraficoReportedUsersPerReason extends React.Component{
+
+UNSAFE_componentWillMount(){
+
+    console.log(this.props.usersReportedPerReason)
+    const {usersReportedPerReason} = this.props;
+
+
+
 const chartConfigs = {
     type: 'mscolumn2d',// The chart type
     width: '700', // Width of the chart
@@ -13,7 +24,7 @@ const chartConfigs = {
     dataFormat: 'json', // Data type
     dataSource: {
         "chart": {
-            "caption": "Cantidad de usuarios creados por mes",
+            "caption": "Cantidad de usuarios denunciados por motivo",
             "subCaption": "",
             "xAxisName": "Motivos",
             "yAxisName": "Cantidad de denuncias",            
@@ -23,19 +34,19 @@ const chartConfigs = {
             {
                 "category": [
                     {
-                        "label": "Acoso sexual y/o verbal."
+                        "label": usersReportedPerReason[0].reason
                     },
                     {
-                        "label": "Discriminación"
+                        "label": usersReportedPerReason[1].reason
                     },
                     {
-                        "label": "Perfil falsos / Suplantación identidad"
+                        "label": usersReportedPerReason[2].reason
                     },
                     {
-                        "label": "Amenzas"
+                        "label": usersReportedPerReason[3].reason
                     },
                     {
-                        "label": "Otro"
+                        "label": usersReportedPerReason[4].reason
                     },
                                        
                     
@@ -49,23 +60,23 @@ const chartConfigs = {
                 "color": "#BFD6B1",
                 "data": [
                     {
-                        "value": "1",
+                        "value": usersReportedPerReason[0].value,
                         "color": "#BFD6B1"
                     },
                     {
-                        "value": "2",
+                        "value": usersReportedPerReason[1].value,
                         "color": "#BFD6B1"
                     },
                     {
-                        "value": "3",
+                        "value": usersReportedPerReason[2].value,
                         "color": "#BFD6B1"
                     },
                     {
-                        "value":"4",
+                        "value":usersReportedPerReason[3].value,
                         "color": "#BFD6B1"
                     },
                     {
-                        "value": "5",
+                        "value": usersReportedPerReason[4].value,
                         "color": "#BFD6B1"
                     },
                   
@@ -75,8 +86,9 @@ const chartConfigs = {
         ]
     }
 };
+}
 
-class GraficoComplaintsPerReason extends React.Component {
+
   render() {
      return (
      <ReactFC
@@ -85,4 +97,4 @@ class GraficoComplaintsPerReason extends React.Component {
   }
 }
 
-export default GraficoComplaintsPerReason 
+export default GraficoReportedUsersPerReason 

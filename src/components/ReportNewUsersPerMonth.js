@@ -6,7 +6,17 @@ import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
-const chartConfigs = {
+let chartConfigs;
+
+class GraficoNewUserPerMonth extends React.Component{
+
+UNSAFE_componentWillMount(){
+
+    console.log(this.props.usersCreatedPerMonth)
+    const {usersCreatedPerMonth} = this.props;
+
+
+ chartConfigs = {
     type: 'mscolumn2d',// The chart type
     width: '700', // Width of the chart
     height: '400', // Height of the chart
@@ -23,40 +33,40 @@ const chartConfigs = {
             {
                 "category": [
                     {
-                        "label": "Enero"
+                        "label": usersCreatedPerMonth[0].month
                     },
                     {
-                        "label": "Febrero"
+                        "label": usersCreatedPerMonth[1].month
                     },
                     {
-                        "label": "Marzo"
+                        "label": usersCreatedPerMonth[2].month
                     },
                     {
-                        "label": "Abril"
+                        "label": usersCreatedPerMonth[3].month
                     },
                     {
-                        "label": "Mayo"
+                        "label": usersCreatedPerMonth[4].month
                     },
                     {
-                        "label": "Junio"
+                        "label": usersCreatedPerMonth[5].month
                     },
                     {
-                        "label": "Julio"
+                        "label": usersCreatedPerMonth[6].month
                     },
                     {
-                        "label": "Agosto"
+                        "label": usersCreatedPerMonth[7].month
                     },
                     {
-                        "label": "Septiembre"
+                        "label": usersCreatedPerMonth[8].month
                     },
                     {
-                        "label": "Octubre"
+                        "label": usersCreatedPerMonth[9].month
                     },
                     {
-                        "label": "Noviembre"
+                        "label": usersCreatedPerMonth[10].month
                     },
                     {
-                        "label": "Diciembre"
+                        "label": usersCreatedPerMonth[11].month
                     },
                     
                     
@@ -70,51 +80,51 @@ const chartConfigs = {
                 "color": "#BFD6B1",
                 "data": [
                     {
-                        "value": "1",
+                        "value": usersCreatedPerMonth[0].value,
                         "color": "#BFD6B1"
                     },
                     {
-                        "value": "2",
+                        "value": usersCreatedPerMonth[1].value,
                         "color": "#BFD6B1"
                     },
                     {
-                        "value": "3",
+                        "value": usersCreatedPerMonth[2].value,
                         "color": "#BFD6B1"
                     },
                     {
-                        "value":"4",
+                        "value":usersCreatedPerMonth[3].value,
                         "color": "#BFD6B1"
                     },
                     {
-                        "value": "5",
+                        "value": usersCreatedPerMonth[4].value,
                         "color": "#BFD6B1"
                     },
                     {
-                        "value": "6",
+                        "value": usersCreatedPerMonth[5].value,
                         "color": "#BFD6B1"
                     },
                     {
-                        "value": "6",
+                        "value": usersCreatedPerMonth[6].value,
                         "color": "#BFD6B1"
                     },
                     {
-                        "value": "6",
+                        "value": usersCreatedPerMonth[7].value,
                         "color": "#BFD6B1"
                     },
                     {
-                        "value": "6",
+                        "value": usersCreatedPerMonth[8].value,
                         "color": "#BFD6B1"
                     },
                     {
-                        "value": "6",
+                        "value": usersCreatedPerMonth[9].value,
                         "color": "#BFD6B1"
                     },
                     {
-                        "value": "6",
+                        "value": usersCreatedPerMonth[10].value,
                         "color": "#BFD6B1"
                     },
                     {
-                        "value": "6",
+                        "value": usersCreatedPerMonth[11].value,
                         "color": "#BFD6B1"
                     },
                   
@@ -124,7 +134,8 @@ const chartConfigs = {
     }
 };
 
-class GraficoNewUserPerMonth extends React.Component {
+}
+
   render() {
      return (
      <ReactFC
@@ -133,4 +144,4 @@ class GraficoNewUserPerMonth extends React.Component {
   }
 }
 
-export default GraficoNewUserPerMonth 
+export default GraficoNewUserPerMonth

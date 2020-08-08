@@ -197,12 +197,32 @@ class userServices {
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
-
+//Informes
 	static async getMatchesPerMonth() {
 		const url = `${customUrl}/api/v1/charts/matchesPerMonth`
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
+
+	static async getCitiesPerMonth() {
+		const url = `${customUrl}/api/v1/charts/citiesPerMonth`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+	static async getUsersCreatedPerMonth() {
+		const url = `${customUrl}/api/v1/charts/UsersCreatedPerMonth`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+	static async getUsersReportedPerReason() {
+		const url = `${customUrl}/api/v1/charts/UsersReportedPerReason`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+
+
+
 
 	static async getNotifications(userId) {
 		const url = `${customUrl}/api/v1/notifications/${userId}`
