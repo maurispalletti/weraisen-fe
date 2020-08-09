@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from './navbar/logo4.png'
-import { useHistory, NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import './Header_Alvo.css'
 
 

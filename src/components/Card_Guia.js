@@ -1,6 +1,4 @@
 import React from 'react';
-import avatar_woman_1 from '../avatars/avatar_1.svg';
-import avatar_man_1 from '../avatars/avatar_4.svg';
 import { Redirect } from 'react-router'
 import userServices from '../services/userServices';
 import { Button } from 'react-bootstrap';
@@ -75,7 +73,7 @@ export default class Card_Guia extends React.Component {
     }
     if (!this.state.loading) {
 
-      const { guideId, firstName, lastName, birthDate, gender, languages, description, profilePicture } = this.props;
+      const {  firstName, lastName, birthDate, languages, description, profilePicture } = this.props;
       let average = 0;
 
       const languagesString = languages.join(', ')
@@ -85,7 +83,7 @@ export default class Card_Guia extends React.Component {
       average = this.state.average;
       
       return (
-        <div className="card col-sm-12 col-xs-12" style={{ maxWidth: '400px'  }}>
+        <div className="card col-sm-12 col-xs-12" style={{ maxWidth: '400px', margin:'0px auto'  }}>
 
           <div >
             <h3 style={{ textAlign: "center", paddingTop: "10px" }}>{firstName} {lastName}, {age} años </h3>

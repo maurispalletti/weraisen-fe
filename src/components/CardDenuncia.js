@@ -16,7 +16,9 @@ class CardDenunciaAll extends Component {
 
   getCompliantsList = async () => {
     try {
+      console.log('!!!')
       const response = await userServices.getCompliantsList();
+      console.log(response)
       if (response && response.data) {
         this.setState({ compliants: response.data, loading: false })
       }

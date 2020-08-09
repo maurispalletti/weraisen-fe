@@ -10,23 +10,23 @@ import Header from '../src/components/Header'
 import { ProfileSchema } from './helpers/validators'
 import userServices from './services/userServices'
 import Buttom from './components/Boton.js'
-import DropdownGender from './forms/DropdownGender'
+// import DropdownGender from './forms/DropdownGender'
 
 
-const genders = [
-  {
-    value: "Femenino",
-    description: 'Femenino'
-  },
-  {
-    value: "Masculino",
-    description: 'Masculino'
-  },
-  {
-    value: "Otro",
-    description: 'Otro'
-  },
-]
+// const genders = [
+//   {
+//     value: "Femenino",
+//     description: 'Femenino'
+//   },
+//   {
+//     value: "Masculino",
+//     description: 'Masculino'
+//   },
+//   {
+//     value: "Otro",
+//     description: 'Otro'
+//   },
+// ]
 
 class Profile extends Component {
 
@@ -196,7 +196,7 @@ class Profile extends Component {
 
                 </div>
                 <br></br>
-                <a href="/MyReviews" className="lead" style={{cursor:'pointer', fontSize:' 16px'}} onClick={() => this.setState({ goToMyReviews: true })}>Ver valoraciones</a>
+                <a href="/MyReviews" className="lead" style={{cursor:'pointer', fontSize:' 16px'}} onClick={() => this.setState({ goToMyReviews: true })}>Ver valoraciones e informes</a>
               
 
                 <div className="guideSection">

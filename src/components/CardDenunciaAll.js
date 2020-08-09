@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
 import userServices from '../services/userServices';
-import { ButtonGroup } from 'semantic-ui-react';
 
 
 class CardDenuncia extends Component {
