@@ -73,7 +73,7 @@ export default class Card_Guia extends React.Component {
     }
     if (!this.state.loading) {
 
-      const { guideId, firstName, lastName, birthDate, gender, languages, description, profilePicture } = this.props;
+      const {  firstName, lastName, birthDate, languages, description, profilePicture } = this.props;
       let average = 0;
 
       const languagesString = languages.join(', ')

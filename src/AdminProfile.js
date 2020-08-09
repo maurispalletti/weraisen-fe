@@ -3,7 +3,6 @@ import Tabs from './components/Tabs';
 import '../src/components/Tabs.css';
 import Informe from '../src/Informes';
 import '../src/AdminProfile.css';
-import Header from '../src/components/Header'
 import CardDenunciaAll from './components/CardDenuncia';
 import CardsAceptarRechazar from './components/CardAceptarRechazar';
 

@@ -16,13 +16,8 @@ class Results extends Component {
 
   getGuides = async (filters) => {
     try {
-      console.log(`FILTERS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`)
-      console.log(filters)
-      console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`)
-
 
       const response = await userServices.getGuides(filters);
-      console.log('++++++++' + response.data)
       if (response && response.data && response.data.length > 0) {
         this.setState({ guides: response.data })
       }
@@ -44,7 +39,6 @@ class Results extends Component {
 
   renderGuides = () => {
     const { guides } = this.state
-    console.log('****' + guides.length)
 
     if (guides.length > 0) {
       return (guides.map((guide, index) => {
@@ -93,7 +87,7 @@ class Results extends Component {
         <div className="BodyResults">
 
           <div className="container-fluid" style={{paddingTop: '20px'}} >
-            <h2 style={{ paddingBottom: "15px" }}>Iniciá una conversación con tu guía preferido</h2>
+            <h2 style={{ paddingBottom: "15px" }}>Enviale solicitud a tu guía preferido</h2>
             {this.renderGuides()}
           </div>
 

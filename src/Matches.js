@@ -219,7 +219,7 @@ class Matches extends Component {
 
   render() {
     if (this.state.goToHome) {
-      return <Redirect to="/search" />
+      return <Redirect to="/home" />
     }
     if (this.state.goToProfile) {
       return <Redirect to="/profile" />

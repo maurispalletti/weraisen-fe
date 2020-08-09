@@ -9,7 +9,7 @@ class Card_Notificacion extends Component {
 	}
 
 	render() {
-		const { name, description, imgsrc, fecha, hora } = this.props;
+		const { name, description, fecha, hora } = this.props;
 		if (this.state.goToChat) {
 			return <Redirect to="/matches" />
 		}

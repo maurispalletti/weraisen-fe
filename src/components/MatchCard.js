@@ -91,7 +91,7 @@ export default class MatchCard extends Component {
   }
 
   render() {
-    const { partnerRole, partnerName, status, profilePicture } = this.props;
+    const { partnerRole, partnerName, profilePicture } = this.props;
 
     const imgsrcWithFallback = profilePicture ? profilePicture : 'https://www.w3schools.com/howto/img_avatar2.png';
 

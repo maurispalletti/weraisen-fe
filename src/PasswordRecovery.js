@@ -49,7 +49,7 @@ class PasswordRecovery extends Component {
                                 <p>Ingresa tu email para restablecer tu contraseña</p>
                                 <FieldWithError name="email" aria-label="username" className="input" autoComplete="off" />Email
 
-                            <div className="right-container" style={{ padding: "30px" }}>
+                            <div className="right-container" style={{ paddingTop: "50px" }}>
                                     <input type="submit" className="btn-primero" value="Enviar"  />
                                 </div>
                             </Form>
@@ -65,7 +65,7 @@ class PasswordRecovery extends Component {
                         </div>}
 
                     </div>
-                    <div className="right-container" style={{ padding: "30px" }}>
+                    <div className="right-container" style={{ paddingTop: "10px" }}>
                         <input type="submit" className="btn-primero" value="Volver" onClick={() => this.setState({ goToLogin: true })} />
                     </div>
                     <div class="col-sm-8 align-self-center text-center">
