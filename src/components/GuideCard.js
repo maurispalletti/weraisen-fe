@@ -29,8 +29,8 @@ export default class GuideCard extends React.Component {
       return <Redirect to={`/chat`} />
     }
 
-    const { firstName, lastName, city, age, gender, languages, knowledge, description } = this.props;
-    const avatar = gender === 'Femenino' ? avatar_woman_1 : avatar_man_1;
+    const { firstName, lastName, city, age, gender, languages, knowledge, description, profilePicture } = this.props;
+    // const avatar = gender === 'Femenino' ? avatar_woman_1 : avatar_man_1;
 
     const languagesString = languages.join(', ')
     const knowledgeString = knowledge.join(', ')
@@ -47,7 +47,7 @@ export default class GuideCard extends React.Component {
             {this.state.show && <div className="GuideText">Conocimientos: {knowledgeString}</div>}
           </div>
           <div className="ImageCard">
-            <img src={avatar} alt={`${firstName} ${lastName}`} />
+            <img className="ProfilePicture" src={profilePicture} alt={`${firstName} ${lastName}`} />
           </div>
         </div>
         <div className="buttonCardGuia">

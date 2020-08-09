@@ -17,7 +17,11 @@ class userServices {
 		birthDate,
 		gender,
 		email,
-		password }) {
+		password,
+		idFront,
+		idBack,
+		profilePicture,
+	}) {
 		const url = `${customUrl}/api/v1/users/signup`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
@@ -27,7 +31,10 @@ class userServices {
 			birthDate,
 			gender,
 			email,
-			password
+			password,
+			idFront,
+			idBack,
+			profilePicture,
 		}
 		return axios.post(url, body, { headers })
 	}
@@ -203,6 +210,14 @@ class userServices {
 		return axios.get(url, { headers })
 	}
 
+	static async upLoadImg(file) {
+		const url = `${customUrl}/api/v1/users/identification`
+		const fd = new FormData();
+		fd.append('file', file);
+
+		return axios.post(url, fd)
+	}
+
 	static async getaceptNewUser() {
 		const url = `${customUrl}/api/v1/admin/pending`
 		const headers = { 'Content-Type': 'application/json' }
@@ -215,10 +230,22 @@ class userServices {
 		return axios.get(url, { headers })
 	}
 
+	static async updateCompliantStatus({
+		compliantId,
+		status,
+	}) {
+		const url = `${customUrl}/api/v1/admin/compliant/${compliantId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			status
+		}
+		return axios.put(url, body, { headers })
+	}
+
 	static async updateUserStatus({
 		userId,
 		status,
-    }) {
+	}) {
 		const url = `${customUrl}/api/v1/admin/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {

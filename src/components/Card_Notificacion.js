@@ -1,39 +1,48 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router'
 import { Button } from 'react-bootstrap';
 
+class Card_Notificacion extends Component {
+	state = {
+		goToChat: false,
+		goToMatches: false
+	}
 
-const Card_Notificacion = props => {
+	render() {
+		const { name, description, fecha, hora } = this.props;
+		if (this.state.goToChat) {
+			return <Redirect to="/matches" />
+		}
 
-    // const { imagen, nombre, detalle } = props.guia;
+		if (this.state.goToMatches) {
+			return <Redirect to="/matches" />
+		}
 
-    return (
+		return (
+			<div style={{ paddingLeft: '5%', paddingRight: '5%' }} >
+				<div className="card col-sm-12 col-xs-12 " style={{ maxWidth: '400px', margin: '0px auto' }} >
+					<div className="row no-gutters ">
+						<div className="col-sm-12 col-12" style={{ padding: "0px" }}>
+							<div className="">
+								<h5 className="card-title" style={{ marginBottom: "0px" }}>{name}</h5>
+								<p className="card-text" style={{ textAlign: "center" }}>{description}</p>
+								{/* <p className="card-text" style={{ textAlign: "center" }}>{description}</p> */}
+								<div className="row mb-2">
+									<div className="col text-center">
+									<Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.setState({ goToChat: true })}>Ver encuentro</Button>
 
-        <div>
-            <div className="card col-sm-12 col-xs-12 " style={{ maxWidth:'400px', margin:'0px auto'}} >
+									<p className="card-title" style={{ marginBottom: "0px",   fontSize: '12px'  }}>{fecha}  {hora}</p>
 
-                <div className="row no-gutters ">
-
-                    <div className="col-sm-4 col-4">
-                        <img src={props.imgsrc} className="card-img img-fluid" alt="..." />
-                    </div>
-                    <div className="col-sm-8 col-8" style={{padding:"0px"}}>
-                        <div className="">                        
-
-                            <p className="card-text" style={{textAlign:"center", width:"13rem"}}>{props.description}</p>
-                            <div className="row mb-2">
-                                <div className="col text-right">                   
-                                <Button variant="primary" size="sm" style={{width:"47%"}}>{props.btn1}</Button>
-                                <Button variant="primary" size="sm" style={{width:"40%"}}>{props.btn2}</Button>
-                                </div>  
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		)
+	}
 }
 
 export default Card_Notificacion;

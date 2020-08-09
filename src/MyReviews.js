@@ -4,6 +4,7 @@ import MyReviewCard from './components/MyReviewCard';
 import Header from '../src/components/Header'
 import './MyReviews.css';
 import userServices from './services/userServices'
+import Grafico from './components/ReporCategoryPerGender';
 
 let userId
 
@@ -12,33 +13,34 @@ class MyReviews extends Component {
     goToProfile: false,
     searchFailed: false,
     reviews: [],
-     }
+    loading: true,
+  }
 
-  
- 
-  async componentDidMount() { 
-    userId=localStorage.getItem("userId");
-         //this.setState({guiaIdState:userIdGuia})
-         console.log("+++"+userId)
-     await this.getReviews()
+
+
+  async componentDidMount() {
+    userId = localStorage.getItem("userId");
+    //this.setState({guiaIdState:userIdGuia})
+    console.log("+++" + userId)
+    await this.getReviews()
   }
 
   getReviews = async () => {
     try {
-      
+
       const response = await userServices.getReviews(userId)
       if (response && response.data && response.data.length > 0) {
 
-        this.setState({ reviews: response.data })
+        this.setState({ reviews: response.data, loading: false })
         console.log(response.data)
       }
       return response.data;
     } catch (error) {
       console.error(`There was an error trying to get reviews: ${error}`)
-      this.setState({ searchFailed: true })
+      this.setState({ searchFailed: true, loading: false })
     }
   }
-  
+
 
   /*drawerToggleClickHandler = () => {
     this.setState((prevState) => {
@@ -55,24 +57,24 @@ class MyReviews extends Component {
     if (reviews.length > 0) {
       return reviews.map(review => {
         const { giverId, points, description, createdAt, _id } = review
-        
+
         //para convertir fecha en año y mes
-        const fecha= new Date(createdAt);
-        const year= fecha.getFullYear();
-        const month= fecha.getMonth();
-        const fechaReview=year+"/"+month;
-        
-        
+        const fecha = new Date(createdAt);
+        const year = fecha.getFullYear();
+        const month = fecha.getMonth();
+        const fechaReview = year + "/" + month;
+
+
         return (
-          
+
           <MyReviewCard
             key={_id}
             giverId={giverId}
             description={description}
             points={points}
             createdAt={fechaReview}
-          /> 
-          
+          />
+
         )
       });
     }
@@ -81,26 +83,61 @@ class MyReviews extends Component {
 
   render() {
     if (this.state.goToProfile) {
-      return <Redirect to="/Profile" /> 
+      return <Redirect to="/Profile" />
     }
-
-    return (
-      <div className="MyReviews">
-        <Header></Header>
-
-        <div className="BodyGuide">
-          <div className="Section">
-            <h2>Mis valoraciones</h2> 
-            {this.renderReviews()}
+    if (this.state.loading) {
+      return (
+        <div className="MyReviews">
+          <Header />
+          <div className="BodyGuide">
+            <h2>Cargando valoraciones...</h2>
           </div>
         </div>
-          <div className="buttonsSection">
-            <input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToProfile: true })} />
-          </div>
-        
-      </div>
-    );
 
+      )
+
+
+    } else {
+      if (this.state.reviews.length < 1) {
+        return (
+          <div className="MyReviews">
+            <Header />
+            <div className="BodyGuide">
+              <h2>Aún no posees ninguna valoración</h2>
+            </div>
+          </div>
+        )
+      } else {
+
+        return (
+          <div className="MyReviews">
+            <Header></Header>
+
+            <div className="BodyGuide">
+              <div className="Section">
+                <h2>Mis valoraciones</h2>
+                {this.renderReviews()}
+              </div>
+              <div className="grafico">
+                <h2>Mis Informes</h2>
+                <br></br>
+                <div style ={{alignContent:"center"}}>
+                <h4>Insertar gráficos</h4>
+                </div>
+                
+              </div>
+            </div>
+            <div className="buttonsSection">
+              <input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToProfile: true })} />
+            </div>
+            {this.state.searchFailed && (
+                <p className="form-error">La búsqueda de encuentros falló. Intentá de nuevo por favor.</p>
+              )}
+          </div>
+        );
+
+      }
+    }
   }
 }
 export default MyReviews;

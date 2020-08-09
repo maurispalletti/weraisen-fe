@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /*font-size: calc(10px + 2vmin);*/
   color: #696970;
   font-family: sans-serif;
   overflow: scroll;
@@ -13,9 +13,11 @@
 } 
 
 .BodyResults {
-   padding-top: 5vh;
+  align-content: center;
   overflow: scroll; 
   align-items: center;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 
@@ -23,3 +25,8 @@
 
   padding:5px
 }
+
+@media screen and (min-width:700px){
+  .container-fluid{
+      align-content: center;
+      max-width: 800px;}}

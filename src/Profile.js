@@ -10,23 +10,23 @@ import Header from '../src/components/Header'
 import { ProfileSchema } from './helpers/validators'
 import userServices from './services/userServices'
 import Buttom from './components/Boton.js'
-import DropdownGender from './forms/DropdownGender'
+// import DropdownGender from './forms/DropdownGender'
 
 
-const genders = [
-  {
-    value: "Femenino",
-    description: 'Femenino'
-  },
-  {
-    value: "Masculino",
-    description: 'Masculino'
-  },
-  {
-    value: "Otro",
-    description: 'Otro'
-  },
-]
+// const genders = [
+//   {
+//     value: "Femenino",
+//     description: 'Femenino'
+//   },
+//   {
+//     value: "Masculino",
+//     description: 'Masculino'
+//   },
+//   {
+//     value: "Otro",
+//     description: 'Otro'
+//   },
+// ]
 
 class Profile extends Component {
 
@@ -184,10 +184,10 @@ class Profile extends Component {
                     Fecha de nacimiento
                   </div>
                 
-                  <div className="title">
+                  {/* <div className="title">
                   <DropdownGender disabled={!this.state.editable} name="gender" styleName={"input"} options={genders} />
                   Género
-                  </div>
+                  </div> */}
                
                   <div className="title">
                     <FieldWithError disabled={true} name="email" placeholder="Email" aria-label="email" className="input" />
@@ -196,7 +196,7 @@ class Profile extends Component {
 
                 </div>
                 <br></br>
-                <a href="/MyReviews" className="lead" style={{cursor:'pointer', fontSize:' 16px'}} onClick={() => this.setState({ goToMyReviews: true })}>Ver valoraciones</a>
+                <a href="/MyReviews" className="lead" style={{cursor:'pointer', fontSize:' 16px'}} onClick={() => this.setState({ goToMyReviews: true })}>Ver valoraciones e informes</a>
               
 
                 <div className="guideSection">
@@ -209,7 +209,7 @@ class Profile extends Component {
                     </label>
                   </div>
                 </div>
-                <br></br>
+  
               
 
                 <div className="buttonsSectionGuia">
@@ -217,8 +217,8 @@ class Profile extends Component {
                     value={this.state.isActiveGuide ? "Actualizar mis datos de guía" : "Quiero ser guía"}
                     onClick={() => this.setState({ goToGuideProfile: true })} />
                 </div>
-                <br></br>
-                <div class="btn-group" role="group">
+            
+                {/* <div class="btn-group" role="group">
                   <input type="button" style={{marginRight: '10px'}} className="btn-tercero" value={this.state.editable ? "Cancelar" : "Editar mis datos"}
                     onClick={() => this.toggleEditInfo()} />
                     <br></br>
@@ -229,9 +229,8 @@ class Profile extends Component {
                    <p className="updateOk" >
                      ¡Tus datos se guardaron!
                    </p>
-                 )}
+                 )} */}
 
-                <div className="cerrarSesionSection">
 
                   {/* <input type="button" className="cerrarSesion" value="Cerrar sesión"
                     onClick={() => this.setState({ goToGuideProfile: true })} /> */}
@@ -240,7 +239,6 @@ class Profile extends Component {
                     <Buttom link={'/login'} className={"botons"} name={"Cerrar sesión"} />
                   </div>
 
-                </div>
 
                 {this.state.notLoggedInUser && (
                   <p className="form-error">Usuario no logueado.</p>

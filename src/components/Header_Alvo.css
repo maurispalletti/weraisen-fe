@@ -3,6 +3,26 @@ nav .navbar-nav li a{
     }
 
 
-    ul.navbar-nav li.active {
+    /* ul.navbar-nav li.active {
         background-color: red;
-    }
+    } */
+
+    /* .tab {
+        width: 100%;
+        padding: 20px 0;
+        background: primary-color;
+        color: white;
+        overflow: hidden;
+        text-align: center;
+        flex-grow: 1;
+        cursor: pointer;
+        position: relative;
+        text-decoration: none;
+      }
+      
+      
+      
+      .tab.active {
+        background: tertiary-color;
+        color: red;
+      } */

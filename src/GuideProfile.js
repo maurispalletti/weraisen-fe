@@ -11,14 +11,57 @@ import FieldWithError from './forms/FieldWithError'
 import DropdownGender from './forms/DropdownGender'
 import { GuideProfileSchema } from './helpers/validators'
 import userServices from './services/userServices'
-
 const cities = [
-  { value: "BuenosAires", description: 'Buenos Aires' },
-  { value: "Cordoba", description: 'Córdoba' },
+  { value: "Buenos Aires", description: 'Buenos Aires' },
+  { value: "Bariloche", description: 'Bariloche' },
+  { value: "Comodoro Rivadavia", description: 'Comodoro Rivadavia' },
+  { value: "Córdoba", description: 'Córdoba' },
+  { value: "Corrientes", description: 'Corrientes' },
+  { value: "Cosquín", description: 'Cosquín' },
+  { value: "El Bolsón", description: 'El Bolsón' },
+  { value: "El Chaltén", description: 'El Chaltén' },
+  { value: "Esquel", description: 'Esquel' },
+  { value: "Formosa", description: 'Formosa' },
+  { value: "General Pico", description: 'General Pico' },
+  { value: "Gualeguaychú", description: 'Gualeguaychú' },
+  { value: "Humauaca", description: 'Humauaca' },
+  { value: "La Cumbrecita", description: 'La Cumbrecita' },
   { value: "LaPlata", description: 'La Plata' },
-  { value: "Neuquen", description: 'Neuquén' },
+  { value: "La Rioja", description: 'La Rioja' },
+  { value: "Mardel", description: 'Mar del Plata' },
   { value: "Mendoza", description: 'Mendoza' },
-  { value: "Rosario", description: 'Rosario' }
+  { value: "Merlo", description: 'Merlo' },
+  { value: "Neuquén", description: 'Neuquén' },
+  { value: "Mina Clavero", description: 'Mina Clavero' },
+  { value: "Monte Hermoso", description: 'Monte Hermoso' },
+  { value: "Paraná", description: 'Paraná' },
+  { value: "Perito Moreno", description: 'Perito Moreno' },
+  { value: "Pinamar", description: 'Pinamar' },
+  { value: "Posadas", description: 'Posadas' },
+  { value: "Puerto Iguazú", description: 'Puerto Iguazú' },
+  { value: "Puerto Madryn", description: 'Puerto Madryn' },
+  { value: "Resistencia", description: 'Resistencia' },
+  { value: "Río Gallegos", description: 'Río Gallegos' },
+  { value: "Río Grande", description: 'Río Grande' },
+  { value: "Rosario", description: 'Rosario' },
+  { value: "Salta", description: 'Salta' },
+  { value: "San Fernando del Valle de Catamarca", description: 'San Fernando del Valle de Catamarca' },
+  { value: "San Juan", description: 'San Juan' },
+  { value: "San Luis", description: 'San Luis' },
+  { value: "San Martín de los Andes", description: 'San Martín de los Andes' },
+  { value: "San Miguel de Tucumán", description: 'San Miguel de Tucumán' },
+  { value: "San Rafael", description: 'San Rafael' },
+  { value: "San Salvador de Jujuy", description: 'San Salvador de Jujuy' },
+  { value: "Santa Fe", description: 'Santa Fe' },
+  { value: "Santa Rosa", description: 'Santa Rosa' },
+  { value: "Santiago Del Estero", description: 'Santiago Del Estero' },
+  { value: "Termas de Río Hondo", description: 'Termas de Río Hondo' },
+  { value: "Tilcara", description: 'Tilcara' },
+  { value: "Trelew", description: 'Trelew' },
+  { value: "Ushuaia", description: 'Ushuaia' },
+  { value: "Villa Carlos Paz", description: 'Villa Carlos Paz' },
+  { value: "Villa María", description: 'Villa María' },
+
 ];
 
 class GuideProfile extends Component {
@@ -145,7 +188,7 @@ class GuideProfile extends Component {
                     <FieldWithError component={'input'} name="description" placeholder={"Ingresá una breve descripción..."} aria-label="description" className="input" />
                   </div>
                   <div className="Seccion">
-                    <h2>Cuidad de residencia</h2>
+                    <h2>Localidad de residencia</h2>
                     <DropdownGender name="city" styleName={"input"} options={cities} />
                   </div>
                   <div className="Seccion">

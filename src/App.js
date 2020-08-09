@@ -15,12 +15,13 @@ import Filtros from './Search'
 import { createBrowserHistory } from 'history';
 import Home from './Home';
 import Admin from './AdminProfile';
-import Prueba from '../src/components/Grafico2barrasSexoCiudad';
 import Notificaciones from '../src/PerfilNotificaciones';
 import Matches from '../src/Matches';
 import GuideView from './GuideView';
 import Error from '../src/error404';
-import MyReviews from './MyReviews'
+import MyReviews from './MyReviews';
+import PasswordRecovery from './PasswordRecovery'
+import ChangePassword from './ChangePassword'
 
 
 const history = createBrowserHistory();
@@ -43,11 +44,12 @@ function App() {
       <Route exact path={'/terminos'} component={Terminos} />
       <Route exact path={'/home'} component={Home} />
       <Route exact path={'/admin'} component={Admin} />
-      <Route exact path={'/prueba'} component={Prueba} />
       <Route exact path={'/filters'} component={Filtros} />
       <Route exact path={'/notificaciones'} component={Notificaciones} />
       <Route exact path={'/guideView'} component={GuideView}/>
       <Route exact path={'/MyReviews'} component={MyReviews}/>
+      <Route exact path={'/PasswordRecovery'} component={PasswordRecovery}/>
+      <Route exact path={'/ChangePassword'} component={ChangePassword}/>
 
       <Route component={Error} />
       </Switch>
