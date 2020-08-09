@@ -36,19 +36,6 @@ class CardDenunciaAll extends Component {
       return compliants.map(compliant => {
         const { id, userId, accusedId, description, status, reason } = compliant
         return (
-<<<<<<< HEAD
-          <div>
-          <CardDenuncia
-            userId = {userId}
-            accusedId = {accusedId}
-            description = {descripction}
-            firstName = {localStorage.getItem("firstName")}
-            profilePicture ={localStorage.getItem("profilePicture")}  /// Ver porque no está en esquema debería traerme foto de acusado
-            
-          />
-          <br></br>
-            </div>
-=======
           <>
             <CardDenuncia
               compliantId={id}
@@ -61,7 +48,6 @@ class CardDenunciaAll extends Component {
             />
             <br></br>
           </>
->>>>>>> d9e7c37957d1dadb95b6fc0412b3548393b3916e
         )
       });
     }
