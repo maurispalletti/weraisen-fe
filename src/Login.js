@@ -33,8 +33,9 @@ class Login extends Component {
       const response = await userServices.login({ email, password })
       console.log(response);
       const { data: { id } } = response
-
-
+      let email = "Hola";
+      const response2 = await userServices.sendEmail({ email })
+      console.log(response2);
       if (response.data.status === "ACTIVE") {
         // save Id in local storage
         localStorage.setItem("userId", id);
@@ -50,7 +51,13 @@ class Login extends Component {
         }
 
       } else {
-        this.setState({ userPENDING: true, mensajeError: "Tu cuenta está en proceso de validación." })
+        if(response.data.status === "PENDING"){
+          this.setState({ userPENDING: true, mensajeError: "Tu cuenta está en proceso de validación." })
+        }
+        else{
+          this.setState({ userPENDING: true, mensajeError: "La solicitud de creración de usuario fue denegada." })
+        }
+        
       }
 
 
@@ -100,17 +107,7 @@ class Login extends Component {
                     {this.state.mensajeError}
                   </p>
 
-{/* 
-                  {this.state.loginFailed && (
-                    <p className="form-error">
-                      Tu email y password no coinciden. Intenta de nuevo.
-                    </p>
-                  )}
-                  {this.state.userPENDING && (
-                    <p className="form-error">
-                      Tu cuenta está en proceso de validación.
-                    </p>
-                  )} */}
+                  
 
                   <div className="signup">
                     <p>¿Primera vez en WERAISEN?</p> <p><a className="forgotPass" href={'/signup'}>Registrate ahora.</a></p>
