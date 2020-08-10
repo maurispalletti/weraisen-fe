@@ -194,9 +194,11 @@ class userServices {
 
 	static async getReviews(userId) {
 		const url = `${customUrl}/api/v1/reviews/user/${userId}`
+		console.log(url);
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
+	
 //Informes
 	static async getMatchesPerMonth() {
 		const url = `${customUrl}/api/v1/charts/matchesPerMonth`
@@ -209,13 +211,13 @@ class userServices {
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
-	static async getUsersCreatedPerMonth() {
-		const url = `${customUrl}/api/v1/charts/UsersCreatedPerMonth`
+	static async getUsersCreatedPerMonth(añoUsuariosCreados) {
+		const url = `${customUrl}/api/v1/charts/usersCreatedPerMonth/${añoUsuariosCreados}`
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
-	static async getUsersReportedPerReason() {
-		const url = `${customUrl}/api/v1/charts/UsersReportedPerReason`
+	static async getUsersReportedByReason() {
+		const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
