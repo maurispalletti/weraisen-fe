@@ -9,7 +9,7 @@ class Card_Notificacion3 extends Component {
 
 	// const { imagen, nombre, detalle } = props.guia;
 	render() {
-		const { name, description, imgsrc, fecha, hora } = this.props;
+		const { name, description, fecha, hora } = this.props;
 		if (this.state.goToSearch) {
 			return <Redirect to="/search" />
 		}

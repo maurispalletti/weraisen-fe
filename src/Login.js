@@ -92,7 +92,7 @@ class Login extends Component {
                Contraseña
                <p><a className="forgotPass" href={'/PasswordRecovery'}>¿Olvidaste tu contraseña?</a> </p>
                
-                <div className="right-container" style={{ padding: "30px" }}>
+                <div className="right-container" style={{ padding: "0px" }}>
                   <input type="submit" className="btn-primero" value="Iniciar sesión" />
 
 

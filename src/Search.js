@@ -34,6 +34,7 @@ let INITIAL_VALUES = {
   gender: '',
   language: '',
   groupwalk: false,
+
   
 }
 
@@ -71,12 +72,10 @@ class Search extends Component {
     mes = mes.toString()
      mes = mes.length === 1 ? "0" + mes : mes
      const año = hoy.getFullYear();
-     
-    const fechamin = hoy;
+  
     hoy = año + "-" + mes + "-" + dia;
 
     this.setState(() => ({ value: hoy, min: hoy }));
-    console.log('fecha min'+this.state.min)
   }
 
   setInitialValues() {
