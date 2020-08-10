@@ -4,6 +4,7 @@ import MyReviewCard from './components/MyReviewCard';
 import Header from '../src/components/Header'
 import './MyReviews.css';
 import userServices from './services/userServices'
+import Grafico from './components/ReporCategoryPerGender';
 
 let userId
 
@@ -116,6 +117,14 @@ class MyReviews extends Component {
               <div className="Section">
                 <h2>Mis valoraciones</h2>
                 {this.renderReviews()}
+              </div>
+              <div className="grafico">
+                <h2>Mis Informes</h2>
+                <br></br>
+                <div style ={{alignContent:"center"}}>
+                <h4>Insertar gráficos</h4>
+                </div>
+                
               </div>
             </div>
             <div className="buttonsSection">

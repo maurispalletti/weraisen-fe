@@ -3,7 +3,6 @@ import Tabs from './components/Tabs';
 import '../src/components/Tabs.css';
 import Informe from '../src/Informes';
 import '../src/AdminProfile.css';
-import Header from '../src/components/Header'
 import CardDenunciaAll from './components/CardDenuncia';
 import CardsAceptarRechazar from './components/CardAceptarRechazar';
 
@@ -31,7 +30,7 @@ render() {
     active = {this.state.active} 
     onChange = {active => this.setState({active})}
     >
-      <div key="aTAB"> Estadísticas </div> 
+      <div key="aTAB"> Informes </div> 
       <div key="bTAB"> Gestión de denuncias </div> 
       <div key="cTAB"> Gestión de usuarios </div> 
     </Tabs>

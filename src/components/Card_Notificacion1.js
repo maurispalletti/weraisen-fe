@@ -7,7 +7,7 @@ class Card_Notificacion1 extends Component {
 		goToReview: false,
 	}
 	render() {
-		const { name, description } = this.props;
+		const { name, description, fecha, hora } = this.props;
 
 		if (this.state.goToReview) {
 			return <Redirect to="/valoration" />
@@ -19,11 +19,15 @@ class Card_Notificacion1 extends Component {
 					<div className="row no-gutters ">
 						<div className="col-sm-12 col-12" style={{padding:"0px"}}>
 							<div className="">
-								<h5 className="card-title" style={{ marginBottom: "0px" }}>{name}</h5>
+								<h5 className="card-title" style={{ marginBottom: "0px"  }}>{name}</h5>
 								<p className="card-text" style={{ textAlign: "center" }}>{description}</p>
+								
 								<div className="row mb-2">
-									<div className="col text-center">
-										<Button variant="primary" size="sm" style={{ width: "47%" }} onClick={() => this.setState({ goToReview: true })}>Puntuar</Button>
+								<div className="col text-center">
+								<Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.setState({ goToReview: true })}>Puntuar</Button>
+
+								<p className="card-title" style={{ marginBottom: "0px",   fontSize: '12px'  }}>{fecha}  {hora}</p>
+									
 									</div>
 								</div>
 							</div>

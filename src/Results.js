@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Results.css';
-import './Estilos.css';
+
 import CardGuia from '../src/components/Card_Guia';
 import { Redirect } from 'react-router'
 import userServices from './services/userServices'
@@ -11,17 +11,13 @@ class Results extends Component {
     searchFailed: false,
     guides: [],
 
+
   }
 
   getGuides = async (filters) => {
     try {
-      console.log(`FILTERS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`)
-      console.log(filters)
-      console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`)
-
 
       const response = await userServices.getGuides(filters);
-      console.log('++++++++'+ response.data)
       if (response && response.data && response.data.length > 0) {
         this.setState({ guides: response.data })
       }
@@ -36,33 +32,44 @@ class Results extends Component {
     let filters = sessionStorage.getItem("filters");
     filters = JSON.parse(filters)
     await this.getGuides(filters)
+
+
   }
+
 
   renderGuides = () => {
     const { guides } = this.state
-    console.log('****'+guides.length)
+
     if (guides.length > 0) {
-      return guides.map((guide, index) => {
-        const { id, firstName, lastName, age, city, languages, knowledge, description, gender, profilePicture } = guide
+      return (guides.map((guide, index) => {
+        const { id, firstName, lastName, birthDate, city, languages, knowledge, description, gender, profilePicture } = guide
+
+
+
         return (
-          <div key={index}>
+          <div style={{textAlign: 'center'}} key={index}>
             <CardGuia
               key={index}
               guideId={id}
               firstName={firstName}
               lastName={lastName}
               city={city}
-              age={age}
+              birthDate={birthDate}
               languages={languages}
               gender={gender}
               knowledge={knowledge}
               description={description}
               profilePicture={profilePicture}
+
+
+
             />
             <br></br>
           </div>
+
         )
-      });
+      }));
+
     }
   }
 
@@ -79,8 +86,8 @@ class Results extends Component {
 
         <div className="BodyResults">
 
-          <div className="Section">
-            <h2 style={{ paddingBottom: "15px" }}>Iniciá una conversación con tu guía preferido</h2>
+          <div className="container-fluid" style={{paddingTop: '20px'}} >
+            <h2 style={{ paddingBottom: "15px" }}>Enviale solicitud a tu guía preferido</h2>
             {this.renderGuides()}
           </div>
 

@@ -34,6 +34,7 @@ let INITIAL_VALUES = {
   gender: '',
   language: '',
   groupwalk: false,
+
   
 }
 
@@ -71,12 +72,10 @@ class Search extends Component {
     mes = mes.toString()
      mes = mes.length === 1 ? "0" + mes : mes
      const año = hoy.getFullYear();
-     
-    const fechamin = hoy;
+  
     hoy = año + "-" + mes + "-" + dia;
 
     this.setState(() => ({ value: hoy, min: hoy }));
-    console.log('fecha min'+this.state.min)
   }
 
   setInitialValues() {
@@ -179,7 +178,7 @@ class Search extends Component {
                   <h2>¿Cuándo?</h2>
                  {/* <Desplegable onChange={this.handleTourDay}  />*/}
                  <div className="title"> 
-            <FieldWithError name="birthDate" placeholder="Ingresa tu fecha de nacimiento" className="input" min={this.state.min} value={this.state.tourDay} onChange={this.handleChangeTourDay} required type="date"/>
+            <FieldWithError name="birthDate" placeholder="Fecha recorrido" className="input" min={this.state.min} value={this.state.tourDay} onChange={this.handleChangeTourDay} required type="date"/>
             
             </div>
                 </div>
@@ -198,7 +197,7 @@ class Search extends Component {
                   <FieldWithError name="fromAge" placeholder="Desde" aria-label="description" type="number" className="input" min="18" max="99" pattern="[1,9]{1,15}" />
                   <FieldWithError name="toAge" placeholder="Hasta" aria-label="description" type="number" className="input" min="18" max="99" pattern="[1,9]{1,15}" />
                   <br></br>
-                  <h2>Elegí el idioma de tu guía:</h2>
+                  <h2>Idioma de tu guía</h2>
                   <Autocomplete defaultText={this.state.language} placeholder={'Ingresa las primeras letras del idioma'} name={'language'} items={languages} ></Autocomplete>
                   <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input" id="salidaGrupal" checked={this.state.groupwalk} onChange={() => this.setState({ groupwalk: !this.state.groupwalk }) }/>
