@@ -80,7 +80,7 @@ class CardDenuncia extends Component {
                 <p><strong>Denunciante: </strong> {this.state.informer.firstName} {this.state.informer.lastName} </p>
                 <p><strong>Denunciado: </strong> {this.state.accused.firstName} {this.state.accused.lastName} </p>
                 <p><strong>Motivo: </strong> {this.props.reason} </p>
-                <p><strong>Descripcion:</strong> {this.props.description} </p>
+                <p><strong>Descripción:</strong> {this.props.description} </p>
                 <p><strong>Email Denunciante:</strong> {this.state.informer.email}</p>
                 <p><strong>Email Denunciado:</strong> {this.state.accused.email}</p>
                 <button className= "primary" style={{ backgroundColor: "#484e55",  fontSize: "15px", margin: "20px 20px 0px", padding: "10px 40px", border: "none", borderRadius: "0.2rem", textAlign: "left", margin: "3%",  color: "white" }} value={"Aceptar"} size="sm" onClick={() => this.updateCompliantStatus('Bloqueado')}> Bloquear perfil </button>
