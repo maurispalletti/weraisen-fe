@@ -10,7 +10,7 @@ class Results extends Component {
     goToHome: false,
     searchFailed: false,
     guides: [],
-
+    resultados: false,
 
   }
 
@@ -20,6 +20,9 @@ class Results extends Component {
       const response = await userServices.getGuides(filters);
       if (response && response.data && response.data.length > 0) {
         this.setState({ guides: response.data })
+      }
+      if (response && response.data && response.data.length == 0) {
+        this.setState ({resultados: true})
       }
     } catch (error) {
       console.error(`There was an error trying to get guides: ${error}`)
@@ -35,11 +38,12 @@ class Results extends Component {
 
 
   }
-
+  
 
   renderGuides = () => {
     const { guides } = this.state
 
+     
     if (guides.length > 0) {
       return (guides.map((guide, index) => {
         const { id, firstName, lastName, birthDate, city, languages, knowledge, description, gender, profilePicture } = guide
@@ -47,7 +51,9 @@ class Results extends Component {
 
 
         return (
+        
           <div style={{textAlign: 'center'}} key={index}>
+            
             <CardGuia
               key={index}
               guideId={id}
@@ -66,7 +72,7 @@ class Results extends Component {
             />
             <br></br>
           </div>
-
+       
         )
       }));
 
@@ -80,6 +86,31 @@ class Results extends Component {
       return <Redirect to="/search" />
     }
 
+    if (this.state.resultados) {
+      return (
+      <div className="Results">
+        <Header></Header>
+
+        <div className="BodyResults">
+
+          <div className="container-fluid" style={{paddingTop: '20px'}} >
+          <h2 style={{ paddingBottom: "15px" }}>No encontramos ningun guía que coincida con los filtros ingresados.</h2>
+    
+          </div>
+
+          <div className="Section">
+            <input type="button" className="btn-primero" value="Modificar algún filtro" onClick={() => this.setState({ goToHome: true })} />
+            <br></br>
+          </div>
+          {this.state.searchFailed && (
+            <p className="form-error">La búsqueda de guías falló. Intentá de nuevo por favor.</p>
+          )}
+        </div>
+      </div>
+      );
+     
+    }
+
     return (
       <div className="Results">
         <Header></Header>
@@ -87,7 +118,7 @@ class Results extends Component {
         <div className="BodyResults">
 
           <div className="container-fluid" style={{paddingTop: '20px'}} >
-            <h2 style={{ paddingBottom: "15px" }}>Enviale solicitud a tu guía preferido</h2>
+          <h2 style={{ paddingBottom: "15px" }}>Enviale solicitud a tu guía preferido</h2>
             {this.renderGuides()}
           </div>
 

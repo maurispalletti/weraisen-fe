@@ -5,6 +5,7 @@ import { Formik, Form } from 'formik'
 import FieldWithError from '../../../forms/FieldWithError'
 import { Redirect } from 'react-router'
 
+
 const INITIAL_VALUES = {
  
   description: '',
@@ -18,29 +19,54 @@ class DenunciaModal_Alvo extends Component {
   // constructor(props) {
   //   super(props);
   // }
+
+
   state = {
-    goToHome: false,
+    notificacion: false,
+    violencia: false,
+    sexual: false,
+    discriminacion: false,
+    suplantacion: false,
+    otro: false
   }
   createCompliant = async (values) => {
-          
-    try {      
+      
+    try {  
+  
+  
+      let reason= ''
+       if (this.state.violencia) { 
+          reason = "Violencia"
+       }
+        if (this.state.sexual) { 
+          reason = "Sexual"
+       }
+        if (this.state.discriminacion) { 
+          reason = "Discriminacion"
+       }
+        if (this.state.suplantacion) { 
+        reason = "Suplantacion"
+        }
+      if (this.state.otro) { 
+        reason = "Otro"
+   }
         const userId = localStorage.getItem("userId");
-        const accusedId = localStorage.getItem("accusedId");
+        const accusedId = localStorage.getItem("ownerId");
         const description = values.description;
         const status = "Creado";
-        const reason = values.reason
+        
       console.log ("HOLA");
       console.log(userId, accusedId, description, status, reason);
-      const response = await userServices.createCompliant({
+      userServices.createCompliant({ 
           userId,
 		      accusedId,
 		      description,
 	        status,
 	      	reason
-        })
-       this.setState({ goToHome: true })
-    
-      
+        });
+        console.log("HOLA2")
+        this.setState({ notificacion: true })
+            
     } catch (error) {
       console.log(error)
       console.error(`There was an error trying to update compliant status`)
@@ -48,9 +74,10 @@ class DenunciaModal_Alvo extends Component {
     
   }
 
+  
   render() {
-    if (this.state.goToHome) {
-      return <Redirect to="/Home" />
+    if (this.state.notificacion) {
+      return <Redirect to="/notificaciones" />
     }
 
     return (
@@ -78,34 +105,35 @@ class DenunciaModal_Alvo extends Component {
           <br></br>
           <div className="checkbox">
             <label>
-              <input name= "reason" type="checkbox" /> Acoso sexual y/o verbal.
-            </label>
-          </div>
-          <div className="checkbox">
-            <label>
-              <input name= "reason" type="checkbox" value="option" style={{ paddingLeft: "4px" }} />
-                                       Discriminación.
-                                 </label>
+              <input style={{paddingLeft: "5px"}} checked={this.state.sexual} onChange={() => this.setState({ sexual: true })} name= "reason" type="radio"/> Acoso sexual y/o verbal.
+           </label>
           </div>
 
           <div className="checkbox">
             <label>
-              <input name= "reason" type="checkbox" value="option" style={{ paddingLeft: "3px" }} />
+              <input style={{paddingLeft: "5px"}} checked={this.state.discriminacion} onChange={() => this.setState({ discriminacion: true })}  name= "reason" type="radio" value="option"  />
+                Discriminación.
+            </label>
+          </div>
+
+          <div className="checkbox">
+            <label>
+              <input checked={this.state.suplantacion} onChange={() => this.setState({ suplantacion: true })} name= "reason" type="radio" value="option" style={{ paddingLeft: "5px" }} />
                                       Perfil falso, suplantación de identidad o
                                       mensajes sospechosos.
                                  </label>
           </div>
           <div className="checkbox">
             <label>
-              <input name= "reason" type="checkbox" value="option" style={{ paddingLeft: "3px" }} />
+              <input  checked={this.state.violencia} onChange={() => this.setState({ violencia: true })} name= "reason" type="radio" value="option" style={{ paddingLeft: "5px" }} />
                                       Amenazas violentas específicas relacionadas
                                       con el
                                       bienestar o la seguridad física.
                                  </label>
           </div>
           <div className="checkbox">
-            <label>
-              <input name= "reason" type="checkbox" value="option" style={{ paddingLeft: "3px" }} />
+            <label >
+              <input checked={this.state.otro} onChange={() => this.setState({ otro: true })}  name= "reason" type="radio" value="option" style={{ paddingLeft: "5px" }} />
                                       Otro motivo.
                                  </label>
           </div>
@@ -115,9 +143,7 @@ class DenunciaModal_Alvo extends Component {
               <a style= {{paddingLeft: '120px'}}>Por favor, describí lo sucedido para ayudarnos a tomar una decisión correcta.</a>
                    
           <div align = "center">
-           {/* <input name = "description"
-            placeholder="               Describí acá el motivo"
-            component="textarea" className="input" /> */}
+        
             <FieldWithError name="description"
                     placeholder="               Describí acá el motivo"
                     aria-label="description"  className="input" />
@@ -125,9 +151,9 @@ class DenunciaModal_Alvo extends Component {
         </Modal.Body>
         <Modal.Footer>
           <div>
-            <input type= "submit" className="btn-primero" value="Iniciar sesión" />
+          <Button type="submit" className="primary" value={"Denunciar"}> Denuciar </Button>
           </div>
-          <Button >Cancelar</Button>
+          <Button onClick={this.props.onHide}>Cancelar</Button>
         </Modal.Footer>
         </Form>
           </Formik>

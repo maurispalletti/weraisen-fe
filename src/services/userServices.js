@@ -284,10 +284,6 @@ class userServices {
 		}
 		return axios.post(url, body, { headers })
 	}
-
-	
-
-
 }
 
 export default userServices
