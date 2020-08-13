@@ -72,64 +72,67 @@ class Grafico extends React.Component {
                 ],
                 "dataset": [
                     {
-                        "seriesname": "Encuentros",
-                        "color": "#BFD6B1",
+                        "seriesname": "Cantidad de Encuentros",
+                        "color": "#9CD6AE",
                         "data": [
                             {
                                 "value": matchesPerMonth[0].value,
-                                "color": "#BFD6B1"
+                                "color": "#9CD6AE"
                             },
                             {
                                 "value": matchesPerMonth[1].value,
-                                "color": "#BFD6B1"
+                                "color": "#9CD6AE"
                             },
                             {
                                 "value": matchesPerMonth[2].value,
-                                "color": "#BFD6B1"
+                                "color": "#9CD6AE"
                             },
                             {
                                 "value": matchesPerMonth[3].value,
-                                "color": "#BFD6B1"
+                                "color": "#9CD6AE"
                             },
                             {
                                 "value": matchesPerMonth[4].value,
-                                "color": "#BFD6B1"
+                                "color": "#9CD6AE"
                             },
                             {
                                 "value": matchesPerMonth[5].value,
-                                "color": "#BFD6B1"
+                                "color": "#9CD6AE"
                             },
                             {
                                 "value": matchesPerMonth[6].value,
-                                "color": "#BFD6B1"
+                                "color": "#9CD6AE"
                             },
                             {
                                 "value": matchesPerMonth[7].value,
-                                "color": "#BFD6B1"
+                                "color": "#9CD6AE"
                             },
                             {
                                 "value": matchesPerMonth[8].value,
-                                "color": "#BFD6B1"
+                                "color": "#9CD6AE"
                             },
                             {
                                 "value": matchesPerMonth[9].value,
-                                "color": "#BFD6B1"
+                                "color": "#9CD6AE"
                             },
                             {
                                 "value": matchesPerMonth[10].value,
-                                "color": "#BFD6B1"
+                                "color": "#9CD6AE"
                             },
                             {
                                 "value": matchesPerMonth[11].value,
-                                "color": "#BFD6B1"
+                                "color": "#9CD6AE"
                             },
                         ]
-                    }
+                    },
+
                 ]
             }
         };
 
     }
+
+
 
     render() {
         return (

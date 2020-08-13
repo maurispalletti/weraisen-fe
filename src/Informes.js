@@ -17,17 +17,41 @@ class Informes extends Component {
   state = {
     goToHome: false,
     matchesPerMonth: null,
-    cateogryPerGender: null,
-    citiesPerMonth: null,
+    categoriesPerGender: null,
+    citiesPerMatch: null,
     usersCreatedPerMonth: null,
     usersReportedPerReason: null,
-
+    //estados para cargando graficos
+    loadingMatchesPerMonth: true,
+    loadingReportedUsers: true,
+    loadingCitiesPerMatch: true,
   }
 
   componentDidMount() {
-    this.getMatchesPerMonth();
-    this.getUsersCreatedPerMonth();
-    this.getUsersReportedPerReason();
+  this.getMatchesPerMonth();
+   this.getUsersCreatedPerMonth();
+   this.getUsersReportedPerReason();
+   this.getCategoriesPerGender();
+  this.getCitiesPerMatch();
+
+
+  }
+  getCategoriesPerGender = async () => {
+    try {
+      console.log("entrooooooooooooo")
+      const response = await userServices.getCategoriesPerGender()
+
+      if (response.data) {
+        const { data } = response;
+
+        this.setState({
+          categoriesPerGender: data
+        });
+        console.log(this.state.categoriesPerGender)
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get the category per gender data`)
+    }
   }
 
   getMatchesPerMonth = async () => {
@@ -38,34 +62,20 @@ class Informes extends Component {
         const { data } = response;
 
         this.setState({
-          matchesPerMonth: data
+          matchesPerMonth: data, loadingMatchesPerMonth:false
         });
       }
     } catch (error) {
       console.error(`There was an error trying to get the matchesPerMonth data`)
     }
   }
-  getCitiesPerMonth = async () => {
-    try {
-      const response = await userServices.getCitiesPerMonth()
-
-      if (response.data) {
-        const { data } = response;
-
-        this.setState({
-          citiesPerMonth: data
-        });
-      }
-    } catch (error) {
-      console.error(`There was an error trying to get the citiesPerMonth data`)
-    }
-  }
-
+  
   getUsersCreatedPerMonth = async () => {
-   // const añoUsuariosCreados = document.getElementById("optionsRadiosYear").value
-   const añoUsuariosCreados = 2020;
-    console.log(añoUsuariosCreados)
+    // const añoUsuariosCreados = document.getElementById("optionsRadiosYear").value
+    const añoUsuariosCreados = 2020;
+    
     try {
+      console.log("entro")
       const response = await userServices.getUsersCreatedPerMonth(añoUsuariosCreados)
 
       if (response.data) {
@@ -73,7 +83,9 @@ class Informes extends Component {
 
         this.setState({
           usersCreatedPerMonth: data
+          
         });
+       
       }
     } catch (error) {
       console.error(`There was an error trying to get the citiesPerMonth data`)
@@ -82,16 +94,17 @@ class Informes extends Component {
   getUsersReportedPerReason = async () => {
 
     try {
-      console.log('entro al users reported')
+      
       const response = await userServices.getUsersReportedByReason()
-
+      
       if (response.data) {
         const { data } = response;
-        console.log(response.data)
+        
 
         this.setState({
-          usersReportedPerReason: data
+          usersReportedPerReason: data, loadingReportedUsers: false
         });
+        
       }
     } catch (error) {
       console.error(`There was an error trying to get the Reported users per reason data`)
@@ -99,8 +112,40 @@ class Informes extends Component {
   }
 
 
+ getCitiesPerMatch = async () =>
+ {
+  try {
+    
+    const response = await userServices.getCitiesPerMatch()
+    
+    if (response.data) {
+      const { data } = response;
+      
+      this.setState({
+        citiesPerMatch: data, loadingCitiesPerMatch:false
+       
+      });
+      
+    }
+  } catch (error) {
+    console.error(`There was an error trying to get the cities per match`)
+  }
+
+ }
+
 
   render() {
+
+    if (this.state.loadingMatchesPerMonth &&this.state.loadingReportedUsers  ){
+      return (
+        
+          <div>
+            <h3>Cargando gráficos...</h3>
+          </div>
+          )
+    
+      }
+
     return (
 
       <div>
@@ -108,57 +153,42 @@ class Informes extends Component {
         <h2>Informes de uso de la plataforma</h2>
 
         <br></br>
-
-
-        <div className="GraphicWrapper">
-          <GraficoCategoryPerGender />
-        </div>
-        <br></br>
-        <div className="GraphicWrapper">
-          <GraficoCityPerMonth />
-        </div>
-        <br></br>
-        <div className="GraphicWrapper">
-          {this.state.matchesPerMonth && <GraficoEncuentrosPorMes matchesPerMonth={this.state.matchesPerMonth} />}
-        </div>
-        <br></br>
-        <br></br>
-
-        <div class="container-fluid">
-        <div className="GraphicWrapper" style={{float:"left", paddingRight:"30px"}}>
-        {this.state.usersCreatedPerMonth && <GraficoNewUserPerMonth usersCreatedPerMonth={this.state.usersCreatedPerMonth} />}
-        </div>
         
-
-          <div class="form-check" >
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadiosYear" value="2019" onClick />
-          2019
-        </label>
+        
+          <div className="GraphicWrapper">
+           {this.state.categoriesPerGender && <GraficoCategoryPerGender  categoriesPerGender={this.state.categoriesPerGender}/>}
           </div>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadiosYear" value="2020" defaultChecked="true"  />
-          2020
-          </label>
+          <br></br>
+          <br></br>
+          <div className="GraphicWrapper">
+           {this.state.citiesPerMatch && <GraficoCityPerMonth citiesPerMatches={this.state.citiesPerMatch} />}
+          </div>
+          <br></br>
+          <br></br> 
+          <div className="GraphicWrapper" >
+            {this.state.matchesPerMonth && <GraficoEncuentrosPorMes matchesPerMonth={this.state.matchesPerMonth}/>}
           </div>
           
+
+
+          <br></br>
+          <br></br>
+
+
+          <div className="GraphicWrapper" >
+            {this.state.usersCreatedPerMonth && <GraficoNewUserPerMonth usersCreatedPerMonth={this.state.usersCreatedPerMonth} />}
+          </div>
+          <br></br>
+          <br></br>
+          <div className="GraphicWrapper" >
+            {this.state.usersReportedPerReason && <GraficoCompliantsPerReason usersReportedPerReason={this.state.usersReportedPerReason} />}
+          </div>
+          <br></br>
+          <br></br>
+
         
-        </div>
-
-      
-
-      <br></br>
-      <br></br>
-      <div className="GraphicWrapper">
-        {this.state.usersReportedPerReason && <GraficoCompliantsPerReason usersReportedPerReason={this.state.usersReportedPerReason} />}
-      </div>
-      <br></br>
-      <br></br>
 
       </div>
-
-
     );
   }
 }

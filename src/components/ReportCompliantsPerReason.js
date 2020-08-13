@@ -12,12 +12,13 @@ class GraficoReportedUsersPerReason extends React.Component{
 
 UNSAFE_componentWillMount(){
 
-    console.log(this.props.usersReportedPerReason)
+    console.log("***"+this.props.usersReportedPerReason)
+    
     const {usersReportedPerReason} = this.props;
 
 
 
-const chartConfigs = {
+ chartConfigs = {
     type: 'mscolumn2d',// The chart type
     width: '700', // Width of the chart
     height: '400', // Height of the chart
@@ -34,21 +35,21 @@ const chartConfigs = {
             {
                 "category": [
                     {
-                        "label": usersReportedPerReason[0].reason
+                        "label": usersReportedPerReason[0].category
                     },
                     {
-                        "label": usersReportedPerReason[1].reason
+                        "label": usersReportedPerReason[1].category
                     },
                     {
-                        "label": usersReportedPerReason[2].reason
+                        "label": usersReportedPerReason[2].category
                     },
                     {
-                        "label": usersReportedPerReason[3].reason
+                        "label": usersReportedPerReason[3].category
                     },
+                   
                     {
-                        "label": usersReportedPerReason[4].reason
-                    },
-                                       
+                        "label": usersReportedPerReason[4].category
+                    },                
                     
                     
                 ]
@@ -76,7 +77,7 @@ const chartConfigs = {
                         "color": "#BFD6B1"
                     },
                     {
-                        "value": usersReportedPerReason[4].value,
+                        "value":usersReportedPerReason[4].value,
                         "color": "#BFD6B1"
                     },
                   

@@ -136,13 +136,15 @@ class userServices {
 
 	static async createMatch({
 		tourist,
-		guide
+		guide,
+		city
 	}) {
 		const url = `${customUrl}/api/v1/matches`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			tourist,
-			guide
+			guide,
+			city
 		}
 		return axios.post(url, body, { headers })
 	}
@@ -202,12 +204,12 @@ class userServices {
 //Informes
 	static async getMatchesPerMonth() {
 		const url = `${customUrl}/api/v1/charts/matchesPerMonth`
-		const headers = { 'Content-Type': 'application/json' }
+		const headers = {'Content-Type': 'application/json'}
 		return axios.get(url, { headers })
 	}
 
-	static async getCitiesPerMonth() {
-		const url = `${customUrl}/api/v1/charts/citiesPerMonth`
+	static async getCitiesPerMatch() {
+		const url = `${customUrl}/api/v1/charts/citiesPerMatch`
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
@@ -221,7 +223,17 @@ class userServices {
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
+	static async getUsersReportedByReason() {
+		const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
 
+	static async getCategoriesPerGender() {
+		const url = `${customUrl}/api/v1/charts/categoriesPerGender`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
 
 
 

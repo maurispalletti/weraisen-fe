@@ -33,40 +33,40 @@ UNSAFE_componentWillMount(){
             {
                 "category": [
                     {
-                        "label": usersCreatedPerMonth[0].month
+                        "label": usersCreatedPerMonth[0].category
                     },
                     {
-                        "label": usersCreatedPerMonth[1].month
+                        "label": usersCreatedPerMonth[1].category
                     },
                     {
-                        "label": usersCreatedPerMonth[2].month
+                        "label": usersCreatedPerMonth[2].category
                     },
                     {
-                        "label": usersCreatedPerMonth[3].month
+                        "label": usersCreatedPerMonth[3].category
                     },
                     {
-                        "label": usersCreatedPerMonth[4].month
+                        "label": usersCreatedPerMonth[4].category
                     },
                     {
-                        "label": usersCreatedPerMonth[5].month
+                        "label": usersCreatedPerMonth[5].category
                     },
                     {
-                        "label": usersCreatedPerMonth[6].month
+                        "label": usersCreatedPerMonth[6].category
                     },
                     {
-                        "label": usersCreatedPerMonth[7].month
+                        "label": usersCreatedPerMonth[7].category
                     },
                     {
-                        "label": usersCreatedPerMonth[8].month
+                        "label": usersCreatedPerMonth[8].category
                     },
                     {
-                        "label": usersCreatedPerMonth[9].month
+                        "label": usersCreatedPerMonth[9].category
                     },
                     {
-                        "label": usersCreatedPerMonth[10].month
+                        "label": usersCreatedPerMonth[10].category
                     },
                     {
-                        "label": usersCreatedPerMonth[11].month
+                        "label": usersCreatedPerMonth[11].category
                     },
                     
                     
@@ -76,56 +76,56 @@ UNSAFE_componentWillMount(){
         ],
         "dataset": [
             {
-               
-                "color": "#BFD6B1",
+               "seriesname": "Usuarios creados",
+                "color": "#9CD6AE",
                 "data": [
                     {
                         "value": usersCreatedPerMonth[0].value,
-                        "color": "#BFD6B1"
+                        "color": "#9CD6AE"
                     },
                     {
                         "value": usersCreatedPerMonth[1].value,
-                        "color": "#BFD6B1"
+                        "color": "#9CD6AE"
                     },
                     {
                         "value": usersCreatedPerMonth[2].value,
-                        "color": "#BFD6B1"
+                        "color": "#9CD6AE"
                     },
                     {
                         "value":usersCreatedPerMonth[3].value,
-                        "color": "#BFD6B1"
+                        "color": "#9CD6AE"
                     },
                     {
                         "value": usersCreatedPerMonth[4].value,
-                        "color": "#BFD6B1"
+                        "color": "#9CD6AE"
                     },
                     {
                         "value": usersCreatedPerMonth[5].value,
-                        "color": "#BFD6B1"
+                        "color": "#9CD6AE"
                     },
                     {
                         "value": usersCreatedPerMonth[6].value,
-                        "color": "#BFD6B1"
+                        "color": "#9CD6AE"
                     },
                     {
                         "value": usersCreatedPerMonth[7].value,
-                        "color": "#BFD6B1"
+                        "color": "#9CD6AE"
                     },
                     {
                         "value": usersCreatedPerMonth[8].value,
-                        "color": "#BFD6B1"
+                        "color": "#9CD6AE"
                     },
                     {
                         "value": usersCreatedPerMonth[9].value,
-                        "color": "#BFD6B1"
+                        "color": "#9CD6AE"
                     },
                     {
                         "value": usersCreatedPerMonth[10].value,
-                        "color": "#BFD6B1"
+                        "color": "#9CD6AE"
                     },
                     {
                         "value": usersCreatedPerMonth[11].value,
-                        "color": "#BFD6B1"
+                        "color": "#9CD6AE"
                     },
                   
                 ]
