@@ -288,7 +288,36 @@ class userServices {
 		return axios.put(url, body, { headers })
 	}
 
+	static async updateCompliantStatus({
+		userId,
+		status,
+    }) {
+		const url = `${customUrl}/api/v1/admin/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			status
+		}
+		return axios.put(url, body, { headers })
+	}
 
+	static async createCompliant({
+		userId,
+		accusedId,
+		description,
+		status,
+		reason
+	}) {
+		const url = `${customUrl}/api/v1/users/compliant`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			userId,
+			accusedId,
+			description,
+			status,
+			reason
+		}
+		return axios.post(url, body, { headers })
+	}
 }
 
 export default userServices
