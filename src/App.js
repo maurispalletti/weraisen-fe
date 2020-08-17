@@ -11,7 +11,7 @@ import Chat from './Chat';
 import Informe from './Informes';
 import Terminos from './termycond'
 import Filtros from './Search'
-
+import Help from '../src/components/help';
 import { createBrowserHistory } from 'history';
 import Home from './Home';
 import Admin from './AdminProfile';
@@ -50,6 +50,7 @@ function App() {
       <Route exact path={'/MyReviews'} component={MyReviews}/>
       <Route exact path={'/PasswordRecovery'} component={PasswordRecovery}/>
       <Route exact path={'/ChangePassword'} component={ChangePassword}/>
+      <Route exact path={'/help'} component={Help}/>
 
       <Route component={Error} />
       </Switch>

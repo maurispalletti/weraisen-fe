@@ -94,7 +94,7 @@ class DenunciaModal_Alvo extends Component {
               onSubmit={(values) => this.createCompliant(values)}>
         
           <Form>
-           <Modal.Header closeButton style= {{paddingLeft: '350px'}}>
+           <Modal.Header closeButton style= {{paddingLeft: '150px'}}>
              <Modal.Title id="contained-modal-title-vcenter" >
                <h2>Denuncia</h2>
               </Modal.Title>
@@ -140,7 +140,7 @@ class DenunciaModal_Alvo extends Component {
           <br></br>
                     
               <div style={{ maxWidth: '200px', margin: '0px auto'}}></div>
-              <a style= {{paddingLeft: '120px'}}>Por favor, describí lo sucedido para ayudarnos a tomar una decisión correcta.</a>
+              <a align="left">Por favor, describí lo sucedido para ayudarnos a tomar una decisión correcta.</a>
                    
           <div align = "center">
         
