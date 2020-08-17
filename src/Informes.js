@@ -8,9 +8,11 @@ import GraficoCityPerMonth from './components/ReportCityPerMonth';
 import GraficoEncuentrosPorMes from './components/ReportMatchesPorMes';
 import GraficoNewUserPerMonth from './components/ReportNewUsersPerMonth';
 import GraficoCompliantsPerReason from './components/ReportCompliantsPerReason';
-
-
-
+import GraficoCategoriesMostSetelcted from './components/ReportCategoriesMostSelected';
+import GraficoUsersPerAge from './components/ReportUsersPerAge';
+import GraficoUsersPerLanguages from './components/ReportUsersPerLanguages';
+import GraficoUsersPerGender from './components/ReportUsersPerGender';
+import GraficoMatchesPerCategories from './components/ReportMatchesPerCategories';
 
 class Informes extends Component {
 
@@ -21,39 +23,140 @@ class Informes extends Component {
     citiesPerMatch: null,
     usersCreatedPerMonth: null,
     usersReportedPerReason: null,
-    //estados para cargando graficos
-    loadingMatchesPerMonth: true,
-    loadingReportedUsers: true,
-    loadingCitiesPerMatch: true,
+    categoriesMostSelected: null,
+    usersCreatedPerAge: null,
+    matchesPerCategories: null,
+    usersPerLanguages: null,
+    usersCreatedPerGender: null,
+
+    //estados para mostrar graficos
+    matchesPerMonthSelect: false,
+    matchesPerCategoriesSelect: false,
+    citiesPerMatchSelect: false,
+
+    usersCreatedPerMonthSelect: false,
+    reportedUsersSelect: false,
+    usersCreatedPerGenderSelect: false,
+    usersCreatedPerAgeSelect: false,
+    usersPerLanguagesSelect: false,
+
+    categoriesMostSelectedSelect: false,
+    categoriesPerGenderSelect: false,
+    categoriesPerCitySelect: false
+
+
   }
+
 
   componentDidMount() {
-  this.getMatchesPerMonth();
-   this.getUsersCreatedPerMonth();
-   this.getUsersReportedPerReason();
-   this.getCategoriesPerGender();
-  this.getCitiesPerMatch();
+    //if (this.state.matchesPerMonthSelect) 
+     this.getMatchesPerMonth(); 
+    // if (this.state.usersPerLanguagesSelect)
+     this.getUsersPerLanguages(); 
+    // if (this.state.usersCreatedPerAgeSelect)
+     this.getUsersPerAge(); 
+    //if (this.state.newUsersSelect)
+     this.getUsersCreatedPerMonth(); 
+    //if (this.state.usersCreatedPerGenderSelect)
+     this.getUsersCreatedPerGender(); 
+    // if (this.state.reportedUsersSelect) 
+     this.getUsersReportedPerReason(); 
 
+    this.getCategoriesPerGender();
 
+      this.getCitiesPerMatch(); 
+    //if (this.state.categoriesMostSelectedSelect)
+     this.getCategoriesMostSelected(); 
+    // if (this.state.matchesPerCategoriesSelect)
+     this.getMatchesPerCategories(); 
   }
-  getCategoriesPerGender = async () => {
+
+  getMatchesPerCategories = async () => {
     try {
       console.log("entrooooooooooooo")
+      const response = await userServices.getMatchesPerCategories()
+
+      if (response.data) {
+        const { data } = response;
+
+        this.setState({
+          matchesPerCategories: data,
+        });
+        console.log(this.state.matchesPerCategories)
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get the matches per categories`)
+    }
+  }
+  getUsersPerLanguages = async () => {
+    try {
+
+      const response = await userServices.getUsersPerLanguages()
+
+      if (response.data) {
+        const { data } = response;
+
+        this.setState({
+          usersPerLanguages: data,
+        });
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get the users per languages`)
+    }
+  }
+  getUsersCreatedPerGender = async () => {
+    try {
+
+      const response = await userServices.getUsersPerGender()
+
+      if (response.data) {
+        const { data } = response;
+
+        this.setState({
+          usersCreatedPerGender: data,
+        });
+
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get the users per gender`)
+    }
+  }
+  
+  getCategoriesPerGender = async () => {
+    try {
+
       const response = await userServices.getCategoriesPerGender()
 
       if (response.data) {
         const { data } = response;
 
         this.setState({
-          categoriesPerGender: data
+          categoriesPerGender: data,
         });
-        console.log(this.state.categoriesPerGender)
+
       }
     } catch (error) {
       console.error(`There was an error trying to get the category per gender data`)
     }
   }
+  getCategoriesMostSelected = async () => {
+   
+    try {
+      
+      const response = await userServices.getCategoriesMostSelected()
 
+      if (response.data) {
+        const { data } = response;
+        
+        this.setState({
+          categoriesMostSelected: data,
+        });
+        
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get the categories most selected`)
+    }
+  }
   getMatchesPerMonth = async () => {
     try {
       const response = await userServices.getMatchesPerMonth()
@@ -62,30 +165,28 @@ class Informes extends Component {
         const { data } = response;
 
         this.setState({
-          matchesPerMonth: data, loadingMatchesPerMonth:false
+          matchesPerMonth: data
         });
       }
     } catch (error) {
       console.error(`There was an error trying to get the matchesPerMonth data`)
     }
   }
-  
-  getUsersCreatedPerMonth = async () => {
-    // const añoUsuariosCreados = document.getElementById("optionsRadiosYear").value
-    const añoUsuariosCreados = 2020;
-    
-    try {
-      console.log("entro")
-      const response = await userServices.getUsersCreatedPerMonth(añoUsuariosCreados)
 
+
+  getUsersCreatedPerMonth = async () => {
+
+
+    try {
+
+      const response = await userServices.getUsersCreatedPerMonth()
       if (response.data) {
         const { data } = response;
 
         this.setState({
-          usersCreatedPerMonth: data
-          
+          usersCreatedPerMonth: data,
         });
-       
+
       }
     } catch (error) {
       console.error(`There was an error trying to get the citiesPerMonth data`)
@@ -94,17 +195,16 @@ class Informes extends Component {
   getUsersReportedPerReason = async () => {
 
     try {
-      
+
       const response = await userServices.getUsersReportedByReason()
-      
+
       if (response.data) {
         const { data } = response;
-        
+
 
         this.setState({
-          usersReportedPerReason: data, loadingReportedUsers: false
+          usersReportedPerReason: data
         });
-        
       }
     } catch (error) {
       console.error(`There was an error trying to get the Reported users per reason data`)
@@ -112,84 +212,123 @@ class Informes extends Component {
   }
 
 
- getCitiesPerMatch = async () =>
- {
-  try {
-    
-    const response = await userServices.getCitiesPerMatch()
-    
-    if (response.data) {
-      const { data } = response;
-      
-      this.setState({
-        citiesPerMatch: data, loadingCitiesPerMatch:false
-       
-      });
-      
+  getCitiesPerMatch = async () => {
+    try {
+
+      const response = await userServices.getCitiesPerMatch()
+
+      if (response.data) {
+        const { data } = response;
+
+        this.setState({
+          citiesPerMatch: data
+
+        });
+
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get the cities per match`)
     }
-  } catch (error) {
-    console.error(`There was an error trying to get the cities per match`)
+
   }
+  getUsersPerAge = async () => {
+    try {
 
- }
+      const response = await userServices.getUsersPerAge()
 
+      if (response.data) {
+        const { data } = response;
 
+        this.setState({
+          usersCreatedPerAge: data,
+        });
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get the users per age`)
+    }
+  }
   render() {
 
-    if (this.state.loadingMatchesPerMonth &&this.state.loadingReportedUsers  ){
-      return (
-        
-          <div>
-            <h3>Cargando gráficos...</h3>
-          </div>
-          )
-    
-      }
-
     return (
-
       <div>
+        <div><h2>Informes de uso de la plataforma</h2>
+          <div class="container-fluid" style={{ display: "flex" }}>
 
-        <h2>Informes de uso de la plataforma</h2>
+            <div class="form-group" style={{ padding: "10px" }} >
+              <label for="encuentros" style={{ fontWeight: "bold", color: "#F9AA68", fontSize: "15px" }}>Informes de encuentros</label>
+              <div class="checkbox" id="encuentros" style={{ textAlign: "left" }}>
+                <input checked={this.state.matchesPerMonthSelect} onChange={() => this.setState({ matchesPerMonthSelect: !this.state.matchesPerMonthSelect })} name="matchesPerMonth" type="checkbox" /> Encuentros creados por mes <br></br>
+                <input checked={this.state.citiesPerMatchSelect} onChange={() => this.setState({ citiesPerMatchSelect: !this.state.citiesPerMatchSelect })} name="matchesPerMonth" type="checkbox" /> Encuentros creados por ciudad <br></br>
+                <input checked={this.state.matchesPerCategoriesSelect} onChange={() => this.setState({ matchesPerCategoriesSelect: !this.state.matchesPerCategoriesSelect })} name="matchesPerMonth" type="checkbox" /> Encuentros creados por categoría <br></br>
+              </div>
+            </div>
+            <div class="form-group" style={{ padding: "10px" }}>
+              <label for="usuarios" style={{ fontWeight: "bold", color: "#F9AA68", fontSize: "15px" }}>Informes de usuarios</label>
+              <div class="checkbox" id="usuarios" style={{ textAlign: "left" }}>
+                <input checked={this.state.newUsersSelect} onChange={() => this.setState({ newUsersSelect: !this.state.newUsersSelect })} name="newUsers" type="checkbox" /> Usuarios creados por mes<br></br>
+                <input checked={this.state.reportedUsersSelect} onChange={() => this.setState({ reportedUsersSelect: !this.state.reportedUsersSelect })} name="reportedUsersSelect" type="checkbox" /> Usuarios denunciados por tipo <br></br>
+                <input checked={this.state.usersCreatedPerGenderSelect} onChange={() => this.setState({ usersCreatedPerGenderSelect: !this.state.usersCreatedPerGenderSelect })} name="userCreatedPerMonth" type="checkbox" /> Usuarios creados por género <br></br>
+                <input checked={this.state.usersCreatedPerAgeSelect} onChange={() => this.setState({ usersCreatedPerAgeSelect: !this.state.usersCreatedPerAgeSelect })} name="usersCreatedPerAge" type="checkbox" /> Usuarios creados por  edad <br></br>
+                <input checked={this.state.usersPerLanguagesSelect} onChange={() => this.setState({ usersPerLanguagesSelect: !this.state.usersPerLanguagesSelect })} name="usersPerLanguages" type="checkbox" /> Idiomas más elegidos <br></br>
+              </div>
 
-        <br></br>
-        
-        
-          <div className="GraphicWrapper">
-           {this.state.categoriesPerGender && <GraficoCategoryPerGender  categoriesPerGender={this.state.categoriesPerGender}/>}
-          </div>
-          <br></br>
-          <br></br>
-          <div className="GraphicWrapper">
-           {this.state.citiesPerMatch && <GraficoCityPerMonth citiesPerMatches={this.state.citiesPerMatch} />}
-          </div>
-          <br></br>
-          <br></br> 
-          <div className="GraphicWrapper" >
-            {this.state.matchesPerMonth && <GraficoEncuentrosPorMes matchesPerMonth={this.state.matchesPerMonth}/>}
+
+            </div>
+
+            <div class="form-group" style={{ padding: "10px" }}>
+              <label for="usuarios" style={{ fontWeight: "bold", color: "#F9AA68", fontSize: "15px" }}>Informes de categorías</label>
+              <div class="checkbox" id="categorias" style={{ textAlign: "left" }}>
+                <input checked={this.state.categoriesMostSelectedSelect} onChange={() => this.setState({ categoriesMostSelectedSelect: !this.state.categoriesMostSelectedSelect })} name="categoriesMostSelected" type="checkbox" /> Categorías más elegidas <br></br>
+                <input checked={this.state.categoriesPerGenderSelect} onChange={() => this.setState({ categoriesPerGenderSelect: !this.state.categoriesPerGenderSelect })} name="categoriesPerGender" type="checkbox" /> Categorías elegidas por género <br></br>
+                <input checked={this.state.categoriesPerCitySelect} onChange={() => this.setState({ categoriesPerCitySelect: !this.state.categoriesPerCitySelect })} name="categoriesPerCity" type="checkbox" /> Categorías elegidas por ciudad<br></br>
+              </div>
+            </div>
           </div>
           
+        </div>
 
 
-          <br></br>
-          <br></br>
+        <hr></hr>
 
 
-          <div className="GraphicWrapper" >
-            {this.state.usersCreatedPerMonth && <GraficoNewUserPerMonth usersCreatedPerMonth={this.state.usersCreatedPerMonth} />}
+
+        <div style={{ background: " #272B30" }}>
+
+          <div class="container-fluid" >
+            <div className="GraphicWrapper" style={{ padding: "10px" }}>
+              {this.state.citiesPerMatch && this.state.citiesPerMatchSelect && <GraficoCityPerMonth citiesPerMatches={this.state.citiesPerMatch} />}
+            </div>
+            <div className="GraphicWrapper" style={{ padding: "10px" }} >
+              {this.state.matchesPerMonth && this.state.matchesPerMonthSelect && <GraficoEncuentrosPorMes matchesPerMonth={this.state.matchesPerMonth} />}
+            </div>
+            <div className="GraphicWrapper" style={{ padding: "10px" }}>
+              {this.state.categoriesPerGender && this.state.categoriesPerGenderSelect && <GraficoCategoryPerGender categoriesPerGender={this.state.categoriesPerGender} />}
+            </div>
+            <div className="GraphicWrapper" style={{ padding: "10px" }} >
+              {this.state.usersCreatedPerMonth && this.state.newUsersSelect && <GraficoNewUserPerMonth usersCreatedPerMonth={this.state.usersCreatedPerMonth} />}
+            </div>
+            <div className="GraphicWrapper" style={{ padding: "10px" }} >
+              {this.state.usersReportedPerReason && this.state.reportedUsersSelect && <GraficoCompliantsPerReason usersReportedPerReason={this.state.usersReportedPerReason} />}
+            </div>
+            <div className="GraphicWrapper" style={{ padding: "10px" }} >
+              {this.state.usersCreatedPerAge && this.state.usersCreatedPerAgeSelect && <GraficoUsersPerAge usersPerAge={this.state.usersCreatedPerAge} />}
+            </div>
+            <div className="GraphicWrapper" style={{ padding: "10px" }} >
+              {this.state.categoriesMostSelected &&this.state.categoriesMostSelectedSelect && <GraficoCategoriesMostSetelcted categoriesMostSelected={this.state.categoriesMostSelected} />}
+            </div>
+            <div className="GraphicWrapper" style={{ padding: "10px" }} >
+              {this.state.usersPerLanguagesSelect && this.state.usersPerLanguages && <GraficoUsersPerLanguages usersPerLanguages={this.state.usersPerLanguages} />}
+            </div>
+            <div className="GraphicWrapper" style={{ padding: "10px" }} >
+              {this.state.usersCreatedPerGender && this.state.usersCreatedPerGenderSelect && <GraficoUsersPerGender usersPerGender={this.state.usersCreatedPerGender} />}
+            </div>
+            <div className="GraphicWrapper" style={{ padding: "10px" }} >
+              {this.state.matchesPerCategories && this.state.matchesPerCategoriesSelect && <GraficoMatchesPerCategories matchesPerCategories={this.state.matchesPerCategories} />}
+            </div>
           </div>
-          <br></br>
-          <br></br>
-          <div className="GraphicWrapper" >
-            {this.state.usersReportedPerReason && <GraficoCompliantsPerReason usersReportedPerReason={this.state.usersReportedPerReason} />}
-          </div>
-          <br></br>
-          <br></br>
+        </div>
 
-        
-
-      </div>
-    );
+      </div>);
   }
 }
 

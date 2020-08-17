@@ -162,9 +162,11 @@ class GraficoCategoryPerGender extends React.Component {
     }
     render() {
         return (
-            <ReactFC
+            
+            <ReactFC style={{float:"left"}}
                 {...chartConfigs} />
-        );
+
+                  );
     }
 }
 

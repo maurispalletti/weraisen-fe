@@ -8,26 +8,24 @@ ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
 let chartConfigs;
 
-class GraficoCityPerMatch extends React.Component {
+class Grafico extends React.Component {
 
 	UNSAFE_componentWillMount() {
-		console.log(this.props.citiesPerMatches)
-		const { citiesPerMatches } = this.props;
+		console.log(this.props.matchesPerCategories)
+
+		const { matchesPerCategories } = this.props;
 
 		const arrayCategories= []
 		const arrayLabels=[]
 
-		for (let index = 0; index < citiesPerMatches.length; index++) {
-			const ciudad = citiesPerMatches[index];
+		for (let index = 0; index < matchesPerCategories.length; index++) {
+			const match = matchesPerCategories[index];
 			
 			
-				arrayCategories.push({label: ciudad.category})
-				arrayLabels.push({value: ciudad.value, color: "#9CD6AE"})
+				arrayCategories.push({label: match.category})
+				arrayLabels.push({value: match.value, color: "#9CD6AE"})
 			
 		}
-
-
-		
 		chartConfigs = {
 			type: 'mscolumn2d',// The chart type
 			width: '700', // Width of the chart
@@ -35,42 +33,40 @@ class GraficoCityPerMatch extends React.Component {
 			dataFormat: 'json', // Data type
 			dataSource: {
 				"chart": {
-					"caption": "Cantidad de encuentros por ciudad",
+					"caption": "Cantidad de encuentros por categoría",
 					"subCaption": "",
-					"xAxisName": "Ciudades",
-					"yAxisName": "Cantidad de Encuentros por ciudad",
+					"xAxisName": "Categorías",
+					"yAxisName": "Número de encuentros",
 					"theme": "fusion"
 				},
 				"categories": [
 					{
-						"category":  arrayCategories
-												
-						
+						"category": arrayCategories
 					}
 				],
 				"dataset": [
 					{
-						"seriesname": "Ciudades elegidas",
+						"seriesname": "Cantidad de Encuentros",
 						"color": "#9CD6AE",
 						"data": arrayLabels
-								
-						
-						
 					},
+
 				]
 			}
 		};
+
 	}
+
 
 
 	render() {
 		return (
-			
-            <ReactFC style={{float:"left"}}
-                {...chartConfigs} />
-               
+
+			<ReactFC style={{ float: "left" }}
+				{...chartConfigs} />
+
 		);
 	}
 }
 
-export default GraficoCityPerMatch
+export default Grafico

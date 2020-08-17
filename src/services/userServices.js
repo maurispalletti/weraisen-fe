@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { YearView } from 'react-calendar';
 const customUrl = `http://localhost:3001`;
 
 class userServices {
@@ -200,11 +201,11 @@ class userServices {
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
-	
-//Informes
+
+	//Informes
 	static async getMatchesPerMonth() {
 		const url = `${customUrl}/api/v1/charts/matchesPerMonth`
-		const headers = {'Content-Type': 'application/json'}
+		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
@@ -213,10 +214,12 @@ class userServices {
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
-	static async getUsersCreatedPerMonth(añoUsuariosCreados) {
-		const url = `${customUrl}/api/v1/charts/usersCreatedPerMonth/${añoUsuariosCreados}`
+	static async getUsersCreatedPerMonth(){
+		
+		const url = `${customUrl}/api/v1/charts/usersCreatedPerMonth`
 		const headers = { 'Content-Type': 'application/json' }
-		return axios.get(url, { headers })
+		
+		return axios.get(url,  { headers })
 	}
 	static async getUsersReportedByReason() {
 		const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
@@ -235,8 +238,34 @@ class userServices {
 		return axios.get(url, { headers })
 	}
 
+	static async getCategoriesMostSelected() {
+		const url = `${customUrl}/api/v1/charts/categoriesMostSelected`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+	static async getUsersPerAge() {
+		const url = `${customUrl}/api/v1/charts/usersPerAge`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+static async getMatchesPerCategories(){
+	const url = `${customUrl}/api/v1/charts/matchesPerCategories`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+}
+static async getUsersPerLanguages(){
+	const url = `${customUrl}/api/v1/charts/usersPerLanguages`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+}
 
 
+static async getUsersPerGender(){
+	const url = `${customUrl}/api/v1/charts/usersPerGender`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+}
 
 	static async getNotifications(userId) {
 		const url = `${customUrl}/api/v1/notifications/${userId}`
@@ -291,7 +320,7 @@ class userServices {
 	static async updateCompliantStatus({
 		userId,
 		status,
-    }) {
+	}) {
 		const url = `${customUrl}/api/v1/admin/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
