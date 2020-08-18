@@ -36,7 +36,7 @@ class GraficoUsersPerGender extends React.Component {
 			dataFormat: 'json', // Data type
 			dataSource: {
 				"chart": {
-					"caption": "Cantidad de usuarios por género",
+					"caption": "Porcentaje de usuarios por género",
 					"subCaption": "",
 					"xAxisName": "Género",
 					"yAxisName": "Cantidad de usuarios",

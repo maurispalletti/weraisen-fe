@@ -13,7 +13,7 @@ import GraficoUsersPerAge from './components/ReportUsersPerAge';
 import GraficoUsersPerLanguages from './components/ReportUsersPerLanguages';
 import GraficoUsersPerGender from './components/ReportUsersPerGender';
 import GraficoMatchesPerCategories from './components/ReportMatchesPerCategories';
-
+import GraficoCategoriesPerCities from './components/ReportCategoriesPerCities';
 class Informes extends Component {
 
   state = {
@@ -28,7 +28,7 @@ class Informes extends Component {
     matchesPerCategories: null,
     usersPerLanguages: null,
     usersCreatedPerGender: null,
-
+    categoriesPerCities: null,
     //estados para mostrar graficos
     matchesPerMonthSelect: false,
     matchesPerCategoriesSelect: false,
@@ -49,28 +49,36 @@ class Informes extends Component {
 
 
   componentDidMount() {
-    //if (this.state.matchesPerMonthSelect) 
-     this.getMatchesPerMonth(); 
-    // if (this.state.usersPerLanguagesSelect)
-     this.getUsersPerLanguages(); 
-    // if (this.state.usersCreatedPerAgeSelect)
-     this.getUsersPerAge(); 
-    //if (this.state.newUsersSelect)
-     this.getUsersCreatedPerMonth(); 
-    //if (this.state.usersCreatedPerGenderSelect)
-     this.getUsersCreatedPerGender(); 
-    // if (this.state.reportedUsersSelect) 
-     this.getUsersReportedPerReason(); 
-
+    this.getCategoriesPerCity();
+    this.getMatchesPerMonth();
+    this.getUsersPerLanguages();
+    this.getUsersPerAge();
+    this.getUsersCreatedPerMonth();
+    this.getUsersCreatedPerGender();
+    this.getUsersReportedPerReason();
     this.getCategoriesPerGender();
+    this.getCitiesPerMatch();
+    this.getCategoriesMostSelected();
+    this.getMatchesPerCategories();
 
-      this.getCitiesPerMatch(); 
-    //if (this.state.categoriesMostSelectedSelect)
-     this.getCategoriesMostSelected(); 
-    // if (this.state.matchesPerCategoriesSelect)
-     this.getMatchesPerCategories(); 
   }
+  getCategoriesPerCity = async () => {
+    try {
+      console.log("entrooooooooooooo")
+      const response = await userServices.getCategoriesPerCity()
 
+      if (response.data) {
+        const { data } = response;
+
+        this.setState({
+          categoriesPerCities: data,
+        });
+        console.log(this.state.categoriesPerCities)
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get the matches per categories`)
+    }
+  }
   getMatchesPerCategories = async () => {
     try {
       console.log("entrooooooooooooo")
@@ -121,7 +129,7 @@ class Informes extends Component {
       console.error(`There was an error trying to get the users per gender`)
     }
   }
-  
+
   getCategoriesPerGender = async () => {
     try {
 
@@ -140,18 +148,18 @@ class Informes extends Component {
     }
   }
   getCategoriesMostSelected = async () => {
-   
+
     try {
-      
+
       const response = await userServices.getCategoriesMostSelected()
 
       if (response.data) {
         const { data } = response;
-        
+
         this.setState({
           categoriesMostSelected: data,
         });
-        
+
       }
     } catch (error) {
       console.error(`There was an error trying to get the categories most selected`)
@@ -284,16 +292,12 @@ class Informes extends Component {
               </div>
             </div>
           </div>
-          
+
         </div>
 
 
         <hr></hr>
-
-
-
         <div style={{ background: " #272B30" }}>
-
           <div class="container-fluid" >
             <div className="GraphicWrapper" style={{ padding: "10px" }}>
               {this.state.citiesPerMatch && this.state.citiesPerMatchSelect && <GraficoCityPerMonth citiesPerMatches={this.state.citiesPerMatch} />}
@@ -314,7 +318,7 @@ class Informes extends Component {
               {this.state.usersCreatedPerAge && this.state.usersCreatedPerAgeSelect && <GraficoUsersPerAge usersPerAge={this.state.usersCreatedPerAge} />}
             </div>
             <div className="GraphicWrapper" style={{ padding: "10px" }} >
-              {this.state.categoriesMostSelected &&this.state.categoriesMostSelectedSelect && <GraficoCategoriesMostSetelcted categoriesMostSelected={this.state.categoriesMostSelected} />}
+              {this.state.categoriesMostSelected && this.state.categoriesMostSelectedSelect && <GraficoCategoriesMostSetelcted categoriesMostSelected={this.state.categoriesMostSelected} />}
             </div>
             <div className="GraphicWrapper" style={{ padding: "10px" }} >
               {this.state.usersPerLanguagesSelect && this.state.usersPerLanguages && <GraficoUsersPerLanguages usersPerLanguages={this.state.usersPerLanguages} />}
@@ -324,6 +328,9 @@ class Informes extends Component {
             </div>
             <div className="GraphicWrapper" style={{ padding: "10px" }} >
               {this.state.matchesPerCategories && this.state.matchesPerCategoriesSelect && <GraficoMatchesPerCategories matchesPerCategories={this.state.matchesPerCategories} />}
+            </div>
+            <div className="GraphicWrapper" style={{ padding: "10px" }} >
+              {this.state.categoriesPerCities && <GraficoCategoriesPerCities categoriesPerCities={this.state.categoriesPerCities} />}
             </div>
           </div>
         </div>

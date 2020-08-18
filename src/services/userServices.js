@@ -138,14 +138,16 @@ class userServices {
 	static async createMatch({
 		tourist,
 		guide,
-		city
+		city,
+		knowledge
 	}) {
 		const url = `${customUrl}/api/v1/matches`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			tourist,
 			guide,
-			city
+			city,
+			knowledge
 		}
 		return axios.post(url, body, { headers })
 	}
@@ -266,6 +268,12 @@ static async getUsersPerGender(){
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 }
+static async getCategoriesPerCity(){
+	const url = `${customUrl}/api/v1/charts/categoriesPerCity`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+}
+
 
 	static async getNotifications(userId) {
 		const url = `${customUrl}/api/v1/notifications/${userId}`
