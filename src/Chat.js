@@ -50,7 +50,7 @@ class Chat extends Component {
           const { data: { firstName, lastName, id } } = await userServices.getProfile(otherUser)
           otherName = `${firstName} ${lastName}`
           localStorage.setItem("ownerId", id);
-
+          
           console.log(`Getting match id with chatId ${chatId}`)
           const { data: { id: matchId } } = await userServices.getMatchByChatId(chatId)
           localStorage.setItem("matchId", matchId);

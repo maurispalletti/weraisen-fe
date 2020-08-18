@@ -60,11 +60,17 @@ class AddDepModal extends Component {
                                       bienestar o la seguridad física.</a>
                                  </label>
                              </div>
+                             <div className="checkbox">
+                                 <label>
+                                     <input type="checkbox" value="option" style={{paddingLeft:"3px"}} />
+                                      <a style={{paddingLeft:"5px"}}>Otro</a>
+                                 </label>
+                             </div>
                              <br></br>
-                            <h5>Otro motivo</h5>
+                            <h5>Por favor, ingresá una descripción de lo sucedido para que el equipo de WeRaise analice tu denuncia</h5>
                             <div style={{maxWidth:'200px',margin:'0px auto'}}></div>
                                 <input
-                                      placeholder="Escribí aca tu motivo."
+                                      placeholder="Describí tu motivo."
                                       component="textarea" className="input" />
                               {/* <div className="myinput" style={{paddingLeft:"10px", margin:'0px auto'}} >
                                 <textarea style={{ margin:'0px auto'}} name="comentarios" rows="6" cols="40" placeholder="Contanos tu experiencia"></textarea> 

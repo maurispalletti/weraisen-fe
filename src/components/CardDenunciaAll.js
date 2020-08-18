@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import userServices from '../services/userServices';
 
+
 class CardDenuncia extends Component {
   state = {
     accused: null,
@@ -29,7 +30,6 @@ class CardDenuncia extends Component {
     this.props.refresh()
   }
 
-
   getUsersData = async () => {
     try {
       const informer = await userServices.getProfile(this.props.informer)
@@ -47,7 +47,7 @@ class CardDenuncia extends Component {
     if (this.state.loading) {
       return (
         <div>
-          <div style={{ border: 'black 1px solid', backgroundColor: '#696970', width: '20rem', paddingTop: '20px', borderTopRightRadius: '12px', borderTopLeftRadius: '12px', borderBottomLeftRadius: '12px', borderBottomRightRadius: '12px' }}>
+          <div style={{ border: 'black 1px solid', backgroundColor: '#d48e4f', width: '20rem', paddingTop: '20px', borderTopRightRadius: '12px', borderTopLeftRadius: '12px', borderBottomLeftRadius: '12px', borderBottomRightRadius: '12px' }}>
             <div className="card-text-center">
               <div className="card-body text-dark">
                 <h3>Cargando...</h3>
@@ -59,7 +59,7 @@ class CardDenuncia extends Component {
     } else if (this.state.loadCardFailed) {
       return (
         <div>
-          <div style={{ border: 'black 1px solid', backgroundColor: '#696970', width: '20rem', paddingTop: '20px', borderTopRightRadius: '12px', borderTopLeftRadius: '12px', borderBottomLeftRadius: '12px', borderBottomRightRadius: '12px' }}>
+          <div style={{ border: 'black 1px solid', backgroundColor: '#d48e4f', width: '20rem', paddingTop: '20px', borderTopRightRadius: '12px', borderTopLeftRadius: '12px', borderBottomLeftRadius: '12px', borderBottomRightRadius: '12px' }}>
             <div className="card-text-center">
               <div className="card-body text-dark">
                 <h3>Error obteniendo info de usuarios</h3>
@@ -71,25 +71,27 @@ class CardDenuncia extends Component {
     } else {
       return (
         <div>
-          <div style={{ border: 'black 1px solid', backgroundColor: '#696970', width: '20rem', paddingTop: '20px', borderTopRightRadius: '12px', borderTopLeftRadius: '12px', borderBottomLeftRadius: '12px', borderBottomRightRadius: '12px' }}>
+          <div style={{ border: 'black 1px solid', backgroundColor: '#d48e4f', width: '30rem', paddingTop: '20px', borderTopRightRadius: '12px', borderTopLeftRadius: '12px', borderBottomLeftRadius: '12px', borderBottomRightRadius: '12px' }}>
             <div className="card-text-center">
               <div className="overflow">
-                <img src={this.state.accused.profilePicture} alt='imag1' style={{ width: '250px', height: '150px', margin: '3%', borderTopRightRadius: '12px', borderTopLeftRadius: '12px', borderBottomLeftRadius: '12px', borderBottomRightRadius: '12px' }} />
+                <img src={this.state.accused.profilePicture} alt='imag1' style={{ width: '100%', maxWidth: '300px', height:'100%', maxHeight:'350px', paddingTop: '5px', borderTopRightRadius: '12px', borderTopLeftRadius: '12px', borderBottomLeftRadius: '12px', borderBottomRightRadius: '12px' }} />
               </div>
               <div className="card-body text-dark">
-                <h3>Denunciante: {this.state.informer.firstName} {this.state.informer.lastName}</h3>
-                <h3>Denunciado: {this.state.accused.firstName} {this.state.accused.lastName}</h3>
-                <h4>Descripcion: {this.props.description}</h4>
-                <h4>Estado: {this.props.status}</h4>
-                <h4>Razón: {this.props.reason}</h4>
-                <button variant="primary" value={"Aceptar"} size="sm" style={{ textAlign: "left", margin: "3%" }} onClick={() => this.updateCompliantStatus('Bloqueado')}> Bloquear perfil </button>
-                <button variant="primary" value={"Aceptar"} size="sm" style={{ textAlign: "right" }} onClick={() => this.updateCompliantStatus('Resuelto')}> Desestimar denuncia </button>
+                <p><strong>Denunciante: </strong> {this.state.informer.firstName} {this.state.informer.lastName} </p>
+                <p><strong>Denunciado: </strong> {this.state.accused.firstName} {this.state.accused.lastName} </p>
+                <p><strong>Motivo: </strong> {this.props.reason} </p>
+                <p><strong>Descripción:</strong> {this.props.description} </p>
+                <p><strong>Email Denunciante:</strong> {this.state.informer.email}</p>
+                <p><strong>Email Denunciado:</strong> {this.state.accused.email}</p>
+                <button className= "primary" style={{ backgroundColor: "#484e55",  fontSize: "15px", margin: "20px 20px 0px", padding: "10px 40px", border: "none", borderRadius: "0.2rem", textAlign: "left", margin: "3%",  color: "white" }} value={"Aceptar"} size="sm" onClick={() => this.updateCompliantStatus('Bloqueado')}> Bloquear perfil </button>
+                <button className="primary" style={{ backgroundColor: "#484e55",  fontSize: "15px", margin: "20px 20px 0px", padding: "10px 40px", border: "none", borderRadius: "0.2rem", textAlign: "right", margin: "3%", color: "white" }} value={"Aceptar"} size="sm" onClick={() => this.updateCompliantStatus('Resuelto')}> Ignorar Denuncia </button>
               </div>
             </div>
           </div>
         </div>
       )
     }
+
   }
 }
 
