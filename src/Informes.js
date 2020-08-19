@@ -90,7 +90,7 @@ class Informes extends Component {
         this.setState({
           matchesPerCategories: data,
         });
-        console.log(this.state.matchesPerCategories)
+        
       }
     } catch (error) {
       console.error(`There was an error trying to get the matches per categories`)
@@ -330,7 +330,7 @@ class Informes extends Component {
               {this.state.matchesPerCategories && this.state.matchesPerCategoriesSelect && <GraficoMatchesPerCategories matchesPerCategories={this.state.matchesPerCategories} />}
             </div>
             <div className="GraphicWrapper" style={{ padding: "10px" }} >
-              {this.state.categoriesPerCities && <GraficoCategoriesPerCities categoriesPerCities={this.state.categoriesPerCities} />}
+              {this.state.categoriesPerCities && this.state.categoriesPerCitySelect && <GraficoCategoriesPerCities categoriesPerCities={this.state.categoriesPerCities} />}
             </div>
           </div>
         </div>

@@ -33,7 +33,7 @@ class GraficoUsersPerAge extends React.Component {
             dataFormat: 'json', // Data type
             dataSource: {
                 "chart": {
-                    "caption": "Cantidad de usuarios por edad",
+                    "caption": "Porcentaje de usuarios por edad",
                     "subCaption": "",
                     "xAxisName": "Rango de edad",
                     "yAxisName": "Cantidad de usuarios",
