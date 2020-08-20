@@ -19,10 +19,16 @@ export default class Card_Guia extends React.Component {
   async sendMatchRequest() {
     const tourist = localStorage.getItem("userId");
     const guide = this.props.guideId;
+<<<<<<< HEAD
     const city = this.props.city;
     const knowledge = this.props.knowledge;
 
     const { data: { chatId } } = await userServices.createMatch({ tourist, guide, city, knowledge})
+=======
+    let matchDate = sessionStorage.getItem("matchDate"); 
+
+    const { data: { chatId } } = await userServices.createMatch({ tourist, guide, matchDate })
+>>>>>>> 11bd1e9d0b5711d798c1af306dcdb9a988d0dadb
 
     localStorage.setItem("chatId", chatId);
     this.setState({ goToMatches: true })
@@ -34,7 +40,7 @@ export default class Card_Guia extends React.Component {
 
   calcularEdad = (birthDate) => {
     const cumple = new Date(birthDate)
-
+    
     const hoy = new Date();
     let age = hoy.getFullYear() - cumple.getFullYear();
     const m = hoy.getMonth() - cumple.getMonth();

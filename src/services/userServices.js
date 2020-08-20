@@ -139,7 +139,9 @@ class userServices {
 		tourist,
 		guide,
 		city,
-		knowledge
+		knowledge,
+		guide, 
+		matchDate
 	}) {
 		const url = `${customUrl}/api/v1/matches`
 		const headers = { 'Content-Type': 'application/json' }
@@ -147,7 +149,8 @@ class userServices {
 			tourist,
 			guide,
 			city,
-			knowledge
+			knowledge,
+			matchDate
 		}
 		return axios.post(url, body, { headers })
 	}
@@ -175,6 +178,13 @@ class userServices {
 		const url = `${customUrl}/api/v1/matches/${matchId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = { status }
+		return axios.put(url, body, { headers })
+	}
+
+	static async updateMatchDate(matchId, matchDate) {
+		const url = `${customUrl}/api/v1/matches/updateDate/${matchId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = { matchDate }
 		return axios.put(url, body, { headers })
 	}
 

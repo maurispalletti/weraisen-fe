@@ -97,7 +97,7 @@ class Matches extends Component {
 
         if (fullInfoMatches.length > 0) {
           newMatches = fullInfoMatches.map(match => {
-            const { id, partnerRole, partnerName, chatId, status, createdAt, profilePicture } = match
+            const { id, partnerRole, partnerName, chatId, status, createdAt, profilePicture, matchDate } = match
             return (
               <MatchCard
                 key={id}
@@ -107,6 +107,7 @@ class Matches extends Component {
                 chatId={chatId}
                 status={status}
                 date={createdAt}
+                matchDate={matchDate}
                 profilePicture={profilePicture}
 
                 refresh={() => this.getMatches()}
