@@ -140,7 +140,6 @@ class userServices {
 		guide,
 		city,
 		knowledge,
-		guide, 
 		matchDate
 	}) {
 		const url = `${customUrl}/api/v1/matches`
