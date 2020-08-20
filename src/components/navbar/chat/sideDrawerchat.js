@@ -4,6 +4,7 @@ import './sideDrawerchat.css';
 import React, { Component } from 'react';
 //import { DenunciaModal } from '.../Component/DenunciaPopUp';
 import DenunciaModalAlvo from './DenunciaModal_Alvo';
+import AgendaModal from './AgendaModal';
 import userServices from '../../../services/userServices';
 
 
@@ -16,7 +17,8 @@ class sideDrawerchat extends Component {
 		this.state = {
 			denunciaModalShow: false,
 			notifications: false,
-			goToMatches: false
+			goToMatches: false,
+			agendaModalShow: false
 		}
 	}
 
@@ -60,7 +62,7 @@ class sideDrawerchat extends Component {
 	  }
 	
 	render() {
-
+		const agendaModalClose = () => this.setState({ agendaModalShow: false})
 		const denunciaModalClose = () => this.setState({ denunciaModalShow: false });
 		if (this.state.notifications) {
 			return <Redirect to="/notificaciones" />
@@ -71,6 +73,7 @@ class sideDrawerchat extends Component {
 		return (
 			<nav className="side-drawerchat">
 				<ul>
+					<li><div  onClick={() => this.setState({ agendaModalShow: true })}>Agendar encuentro</div></li>
 					<li><div  onClick={() => this.cancelMatch()}>Cancelar encuentro</div></li>
 					<li><div  onClick={() => this.endMatch()}>Finalizar encuentro</div></li>
 					<li><div  onClick={() => this.setState({ denunciaModalShow: true })}>Denunciar</div></li>
@@ -79,6 +82,10 @@ class sideDrawerchat extends Component {
 				<DenunciaModalAlvo
 					show={this.state.denunciaModalShow}
 					onHide={denunciaModalClose}
+				/>
+				<AgendaModal
+					show={this.state.agendaModalShow}
+					onHide={agendaModalClose}
 				/>
 			</nav>
 		);
