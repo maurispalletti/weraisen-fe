@@ -8,21 +8,21 @@ ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
 let chartConfigs;
 
-class GraficoCityPerMatch extends React.Component {
+class GraficoUsersPerLanguages extends React.Component {
 
 	UNSAFE_componentWillMount() {
-		console.log(this.props.citiesPerMatches)
-		const { citiesPerMatches } = this.props;
+		console.log(this.props.usersPerLanguages)
+		const { usersPerLanguages } = this.props;
 
 		const arrayCategories= []
 		const arrayLabels=[]
 
-		for (let index = 0; index < citiesPerMatches.length; index++) {
-			const ciudad = citiesPerMatches[index];
+		for (let index = 0; index < usersPerLanguages.length; index++) {
+			const language = usersPerLanguages[index];
 			
 			
-				arrayCategories.push({label: ciudad.category})
-				arrayLabels.push({value: ciudad.value, color: "#9CD6AE"})
+				arrayCategories.push({label: language.category})
+				arrayLabels.push({value: language.value, color: "#9CD6AE"})
 			
 		}
 
@@ -35,10 +35,10 @@ class GraficoCityPerMatch extends React.Component {
 			dataFormat: 'json', // Data type
 			dataSource: {
 				"chart": {
-					"caption": "Cantidad de encuentros por ciudad",
+					"caption": "Cantidad de usuarios por idioma",
 					"subCaption": "",
-					"xAxisName": "Ciudades",
-					"yAxisName": "Cantidad de Encuentros por ciudad",
+					"xAxisName": "Idiomas",
+					"yAxisName": "Cantidad de usuarios",
 					"theme": "fusion"
 				},
 				"categories": [
@@ -50,12 +50,9 @@ class GraficoCityPerMatch extends React.Component {
 				],
 				"dataset": [
 					{
-						"seriesname": "Ciudades elegidas",
+						"seriesname": "Cantidad de usuarios por idioma",
 						"color": "#9CD6AE",
 						"data": arrayLabels
-								
-						
-						
 					},
 				]
 			}
@@ -73,4 +70,4 @@ class GraficoCityPerMatch extends React.Component {
 	}
 }
 
-export default GraficoCityPerMatch
+export default GraficoUsersPerLanguages

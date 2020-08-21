@@ -11,47 +11,43 @@ let chartConfigs;
 class Grafico extends React.Component {
 
 	UNSAFE_componentWillMount() {
-		console.log(this.props.matchesPerMonth)
+		console.log(this.props.matchesPerCategories)
 
-		const { matchesPerMonth } = this.props;
+		const { matchesPerCategories } = this.props;
 
-		const arrayCategories= []
+		
 		const arrayLabels=[]
 
-		for (let index = 0; index < matchesPerMonth.length; index++) {
-			const match = matchesPerMonth[index];
+		for (let index = 0; index < matchesPerCategories.length; index++) {
+			const match = matchesPerCategories[index];
 			
 			
-				arrayCategories.push({label: match.category})
-				arrayLabels.push({value: match.value, color: "#9CD6AE"})
+				
+				arrayLabels.push({value: match.value})
 			
 		}
 		chartConfigs = {
-			type: 'mscolumn2d',// The chart type
+			type: 'pie2d',// The chart type
 			width: '700', // Width of the chart
 			height: '400', // Height of the chart
+			showlegend:"1",
+            showpercentvalues:"1",
+            legendposition:"bottom",
+            usedataplotcolorforlabels: "1",
 			dataFormat: 'json', // Data type
 			dataSource: {
 				"chart": {
-					"caption": "Cantidad de encuentros creados por mes",
+					"caption": "Porcentaje de categorias elegidas en las búsquedas",
 					"subCaption": "",
-					"xAxisName": "Meses",
+					"xAxisName": "Categorías",
 					"yAxisName": "Número de encuentros",
-					"theme": "fusion"
+					"theme": "fusion",
+					"plottooltext":"<b>$percentValue</b> de encuentros de $label "
 				},
-				"categories": [
-					{
-						"category": arrayCategories
-					}
-				],
-				"dataset": [
-					{
-						"seriesname": "Cantidad de Encuentros",
-						"color": "#9CD6AE",
-						"data": arrayLabels
-					},
+				
+						"data": matchesPerCategories
 
-				]
+				
 			}
 		};
 

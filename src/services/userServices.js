@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { YearView } from 'react-calendar';
 const customUrl = `http://localhost:3001`;
 
 class userServices {
@@ -136,7 +137,9 @@ class userServices {
 
 	static async createMatch({
 		tourist,
-		guide, 
+		guide,
+		city,
+		knowledge,
 		matchDate
 	}) {
 		const url = `${customUrl}/api/v1/matches`
@@ -144,6 +147,8 @@ class userServices {
 		const body = {
 			tourist,
 			guide,
+			city,
+			knowledge,
 			matchDate
 		}
 		return axios.post(url, body, { headers })
@@ -203,15 +208,81 @@ class userServices {
 
 	static async getReviews(userId) {
 		const url = `${customUrl}/api/v1/reviews/user/${userId}`
+		console.log(url);
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
+	//Informes
 	static async getMatchesPerMonth() {
 		const url = `${customUrl}/api/v1/charts/matchesPerMonth`
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
+
+	static async getCitiesPerMatch() {
+		const url = `${customUrl}/api/v1/charts/citiesPerMatch`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+	static async getUsersCreatedPerMonth(){
+		
+		const url = `${customUrl}/api/v1/charts/usersCreatedPerMonth`
+		const headers = { 'Content-Type': 'application/json' }
+		
+		return axios.get(url,  { headers })
+	}
+	static async getUsersReportedByReason() {
+		const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+	static async getUsersReportedByReason() {
+		const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getCategoriesPerGender() {
+		const url = `${customUrl}/api/v1/charts/categoriesPerGender`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getCategoriesMostSelected() {
+		const url = `${customUrl}/api/v1/charts/categoriesMostSelected`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+	static async getUsersPerAge() {
+		const url = `${customUrl}/api/v1/charts/usersPerAge`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+static async getMatchesPerCategories(){
+	const url = `${customUrl}/api/v1/charts/matchesPerCategories`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+}
+static async getUsersPerLanguages(){
+	const url = `${customUrl}/api/v1/charts/usersPerLanguages`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+}
+
+
+static async getUsersPerGender(){
+	const url = `${customUrl}/api/v1/charts/usersPerGender`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+}
+static async getCategoriesPerCity(){
+	const url = `${customUrl}/api/v1/charts/categoriesPerCity`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+}
+
 
 	static async getNotifications(userId) {
 		const url = `${customUrl}/api/v1/notifications/${userId}`
@@ -281,6 +352,21 @@ class userServices {
 		return axios.put(url, body, { headers })
 	}
 
+<<<<<<< HEAD
+=======
+	static async updateCompliantStatus({
+		userId,
+		status,
+	}) {
+		const url = `${customUrl}/api/v1/admin/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			status
+		}
+		return axios.put(url, body, { headers })
+	}
+
+>>>>>>> c9f5c82cee4561cd6705b786843a100620c5e90e
 	static async createCompliant({
 		userId,
 		accusedId,
