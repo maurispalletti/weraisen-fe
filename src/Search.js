@@ -120,6 +120,7 @@ class Search extends Component {
       console.log('CATEGORIAS: '+this.state.knowledge)
       const filtersString = JSON.stringify(filters);
       
+      sessionStorage.setItem(`matchDate`, tourDay);
       sessionStorage.setItem(`filters`, filtersString);
 
       sessionStorage.removeItem("filtrociudad");

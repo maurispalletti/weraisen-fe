@@ -25,7 +25,8 @@ class Login extends Component {
     loginFailed: false,
     userPENDING: false,
     mensajeError: "",
-    esAdmin: false
+    esAdmin: false,
+    goToHelp: false,
   }
 
   loginUser = async ({ email, password }) => {
@@ -67,6 +68,9 @@ class Login extends Component {
     }
     if (this.state.esAdmin) {
       return <Redirect to="/admin" />
+    }
+    if (this.state.goToHelp) {
+      return <Redirect to="/help" />
     }
 
     return (
@@ -153,6 +157,9 @@ class Login extends Component {
             <p>Tu guía también te calificará.</p><p>
               De esta forma, podrás ayudar a <strong>futuros turistas</strong> a elegir la mejor opción.
                 </p>
+                <br></br>
+                <br></br>
+                <input type="button" className="btn-primero" value="Ayudas We Raisen" onClick={() => this.setState({ goToHelp: true })} />
             <div className="continuar2"><a href="#Inicio" className=""><img className="imag" src={scroll2} alt={"WER"} width="50" /> </a></div>
           </div>
         </div>
