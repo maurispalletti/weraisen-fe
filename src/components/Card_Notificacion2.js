@@ -7,6 +7,12 @@ class Card_Notificacion2 extends Component {
 		goToChat: false,
 	}
 
+	redirectToChat = () => {
+		const { chatId } = this.props;
+		localStorage.setItem("chatId", chatId);
+		this.setState({ goToChat: true });
+	} 
+
 	render() {
 		const { name, description, fecha, hora } = this.props;
 		if (this.state.goToChat) {
@@ -23,7 +29,8 @@ class Card_Notificacion2 extends Component {
 								<div className="row mb-2">
 								<div className="col text-center">
 							
-								<Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.setState({ goToChat: true })}>Ir al chat</Button>
+								<Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.redirectToChat()}>Ir al chat</Button>
+								{/* <Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.setState({ goToChat: true })}>Ir al chat</Button> */}
 
 								<p className="card-title" style={{ marginBottom: "0px",   fontSize: '12px'  }}>{fecha}  {hora}</p>
 						

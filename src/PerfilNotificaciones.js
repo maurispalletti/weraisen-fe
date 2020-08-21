@@ -99,6 +99,7 @@ class Notificacion extends Component {
 								fecha={fecha2}
 								hora={fecha3}
 								status={status}
+								chatId={notification.contentId}
 							/>
 							<br />
 						</div>
