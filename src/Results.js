@@ -21,7 +21,7 @@ class Results extends Component {
       if (response && response.data && response.data.length > 0) {
         this.setState({ guides: response.data })
       }
-      if (response && response.data && response.data.length == 0) {
+      if (response && response.data && response.data.length === 0) {
         this.setState ({resultados: true})
       }
     } catch (error) {

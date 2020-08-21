@@ -20,8 +20,7 @@ class Notificacion extends Component {
 	getNotifications = async () => {
 		try {
 			const userId = localStorage.getItem("userId");
-			//hacer llamada al getendend.... en matchdelegate
-			const response = await userServices.getNotifications(userId);			
+			const response = await userServices.getNotifications(userId);
 			if (response && response.data) {
 				this.setState({ notificacions: response.data, loading: false })
 			}
@@ -33,96 +32,94 @@ class Notificacion extends Component {
 	}
 
 	renderNotifications = () => {
-		
-		console.log(this.state)
 		const { notificacions } = this.state;
 		console.log(notificacions.length)
 		if (notificacions.length > 0) {
-			
+
 			return notificacions.map(notification => {
 				const { id, message, createdAt } = notification
-				
+
 				// para mostrar fecha y hora en la card
-				const fecha = new Date (createdAt)
-				const dia= fecha.getDate()
-				const año= fecha.getFullYear()
-				const mes = fecha.getMonth()+1
-				const fecha2= dia+"/"+mes+"/"+año
-				const hora= fecha.getUTCHours()
-				const minuto= fecha.getUTCMinutes()
-				const fecha3= hora+":"+minuto
-				if (notification.type === "Elegido"){ //falta enviar usuario para chat, y encuentro para cancelar
+				const fecha = new Date(createdAt)
+				const dia = fecha.getDate()
+				const año = fecha.getFullYear()
+				const mes = fecha.getMonth() + 1
+				const fecha2 = dia + "/" + mes + "/" + año
+				const hora = fecha.getUTCHours()
+				const minuto = fecha.getUTCMinutes()
+				const fecha3 = hora + ":" + minuto
+				if (notification.type === "Elegido") { //falta enviar usuario para chat, y encuentro para cancelar
 					return (
-						<div>
+						<div key={id}>
 							<CardNotificacion
 								key={id}
-								imgsrc={img1} 
-								description={message} 
+								imgsrc={img1}
+								description={message}
 								fecha={fecha2}
-								hora= {fecha3}
+								hora={fecha3}
 							/>
 							<br />
 						</div>
-					)					
+					)
 				}
 
-				if (notification.type === "Review"){ //falta enviar el usuario a la que se le va a hacer la review
+				if (notification.type === "Review") { //falta enviar el usuario a la que se le va a hacer la review
 					return (
-						<div>
+						<div key={id}>
 							<CardNotificacion1
 								key={id}
 								imgsrc={img1}
 								description={message}
 								fecha={fecha2}
-								hora= {fecha3}
+								hora={fecha3}
 							/>
 							<br />
 						</div>
 					)
 				}
-				
-				if (notification.type === "Aprobado"){ //falta enviar usuario para chat
+
+				if (notification.type === "Aprobado") { //falta enviar usuario para chat
 					return (
-						<div>
+						<div key={id}>
 							<CardNotificacion2
 								key={id}
 								imgsrc={img1}
 								description={message}
 								fecha={fecha2}
-								hora= {fecha3}
-								
-							/>
-							<br />
-						</div>
-					)
-				}				
-				if (notification.type === "Rechazado"){
-					return (
-						<div>
-							<CardNotificacion3
-								key={id}
-								imgsrc={img1}
-								description={message}
-								fecha={fecha2}
-								hora= {fecha3}
+								hora={fecha3}
+
 							/>
 							<br />
 						</div>
 					)
 				}
-				if (notification.type === "Aviso"){
-						return (
-							<div>
-								<CardNotificacion0
-									key={id}
-									imgsrc={img1}
-									description={message}
-									fecha={fecha2}
-									hora= {fecha3}
-								/>
-								<br />
-							</div>
-						)	
+				if (notification.type === "Rechazado") {
+					return (
+						<div key={id}>
+							<CardNotificacion3
+								key={id}
+								imgsrc={img1}
+								description={message}
+								fecha={fecha2}
+								hora={fecha3}
+							/>
+							<br />
+						</div>
+					)
+				}
+				if (notification.type === "Aviso") {
+					return (
+						<div key={id}>
+							<CardNotificacion0
+								key={id}
+								imgsrc={img1}
+								description={message}
+								fecha={fecha2}
+								hora={fecha3}
+							/>
+							<br />
+						</div>
+					)
 				}
 				else return null;
 			});
@@ -130,8 +127,8 @@ class Notificacion extends Component {
 		else {
 			return (
 				<div className="notificacion" style={{ paddingTop: "30px" }}>
-						<h2>Aún no tenes ninguna notificación.</h2>
-					</div>
+					<h2>Aún no tenes ninguna notificación.</h2>
+				</div>
 			)
 		}
 	}
@@ -157,10 +154,10 @@ class Notificacion extends Component {
 					<div>
 						<Header />
 						<div className="notificacion" style={{ paddingTop: "30px" }}>
-						La búsqueda de notificaciones falló. Intentá de nuevo por favor.
+							La búsqueda de notificaciones falló. Intentá de nuevo por favor.
 							<p className="form-error">
-                     
-                   </p>
+
+							</p>
 						</div>
 					</div>
 				)

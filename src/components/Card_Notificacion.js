@@ -26,15 +26,11 @@ class Card_Notificacion extends Component {
 							<div className="">
 								<h5 className="card-title" style={{ marginBottom: "0px" }}>{name}</h5>
 								<p className="card-text" style={{ textAlign: "center" }}>{description}</p>
-								{/* <p className="card-text" style={{ textAlign: "center" }}>{description}</p> */}
 								<div className="row mb-2">
 									<div className="col text-center">
-									<Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.setState({ goToChat: true })}>Ver encuentro</Button>
-
-									<p className="card-title" style={{ marginBottom: "0px",   fontSize: '12px'  }}>{fecha}  {hora}</p>
-
+										<Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.setState({ goToChat: true })}>Ver encuentro</Button>
+										<p className="card-title" style={{ marginBottom: "0px", fontSize: '12px' }}>{fecha} {hora}</p>
 									</div>
-									
 								</div>
 							</div>
 						</div>
