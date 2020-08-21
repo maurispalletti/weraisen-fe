@@ -219,6 +219,24 @@ class userServices {
 		return axios.get(url, { headers })
 	}
 
+	static async getUnreadNotifications(userId) {
+		const url = `${customUrl}/api/v1/notifications/unread/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async updateNotifications({
+		userId,
+		status,
+	}) {
+		const url = `${customUrl}/api/v1/notifications/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			status
+		}
+		return axios.put(url, body, { headers })
+	}
+
 	static async upLoadImg(file) {
 		const url = `${customUrl}/api/v1/users/identification`
 		const fd = new FormData();
@@ -255,18 +273,6 @@ class userServices {
 		userId,
 		status,
 	}) {
-		const url = `${customUrl}/api/v1/admin/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
-		const body = {
-			status
-		}
-		return axios.put(url, body, { headers })
-	}
-
-	static async updateCompliantStatus({
-		userId,
-		status,
-    }) {
 		const url = `${customUrl}/api/v1/admin/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {

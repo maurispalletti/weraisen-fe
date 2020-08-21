@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import Logo from './navbar/logo4.png'
-// import { useHistory } from "react-router-dom";
+import alarm from './navbar/alarm.svg'
 import userServices from '../services/userServices';
-
 
 import './Header_Alvo.css'
 
@@ -14,21 +13,14 @@ class Header extends Component {
     newNotifications: false,
   }
 
-	getNotifications = async () => {
+  getNotifications = async () => {
     console.log(`Getting notifications...`)
-
     if (!this.state.newNotifications) {
       try {
         const userId = localStorage.getItem("userId");
-        const response = await userServices.getNotifications(userId)
-
-        console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`);
-        console.log(response.data)
-        console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`);
+        const response = await userServices.getUnreadNotifications(userId)
 
         if (response.data && response.data.length > 0) {
-
-          console.log(`NOTIFICATIONS FOUNDDDDDDD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`);
           this.setState({ newNotifications: true })
         }
       } catch (error) {
@@ -38,7 +30,7 @@ class Header extends Component {
     }
     setTimeout(() => this.getNotifications(), 5000);
   }
-  
+
   componentDidMount() {
     this.getNotifications();
   }
@@ -52,6 +44,7 @@ class Header extends Component {
 
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
+          {this.state.newNotifications && <img style={{ height: '24px', width: '24px' }} alt={"Notification"} src={alarm} />}
         </button>
 
         <div className="collapse navbar-collapse" id="navbarColor01">
@@ -66,8 +59,16 @@ class Header extends Component {
             </li>
 
             <li className={currentRoute.includes("/notificaciones") ? "nav-item active" : "nav-item "}>
-              <a className="nav-link ml-3" style={{ color: 'white' }} href="/notificaciones">Notificaciones</a>
-              {this.state.newNotifications && <h2 style={{ color: 'white' }}>xxxxx</h2>}
+              <a className="nav-link ml-3" style={{ color: 'white' }} href="/notificaciones">
+                {!this.state.newNotifications && 'Notificaciones'}
+
+                {this.state.newNotifications &&
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div style={{ marginLeft: 'auto' }}>Notificaciones</div>
+                    <div style={{ marginLeft: '5px', marginRight: 'auto' }}><img style={{ height: '24px', width: '24px' }} alt={"Notification"} src={alarm} /></div>
+                  </div>
+                }
+              </a>
             </li>
 
             <li className={currentRoute.includes("/matches") ? "nav-item active" : "nav-item "}>

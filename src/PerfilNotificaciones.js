@@ -8,8 +8,6 @@ import CardNotificacion0 from '../src/components/Card_Notificacion0.js';
 import CardNotificacion2 from '../src/components/Card_Notificacion2.js';
 import CardNotificacion3 from '../src/components/Card_Notificacion3.js';
 
-import img1 from '../src/Imagenes_Alvo/448.png';
-
 class Notificacion extends Component {
 	state = {
 		notificacions: [],
@@ -31,13 +29,28 @@ class Notificacion extends Component {
 		}
 	}
 
+	markNotificationsAsRead = async () => {
+		try {
+			const userId = localStorage.getItem("userId");
+			const status = 'Leida';
+			await userServices.updateNotifications({ userId, status });
+		} catch (error) {
+			console.error(`There was an error trying to update notifications: ${error}`)
+		}
+	}
+
 	renderNotifications = () => {
 		const { notificacions } = this.state;
-		console.log(notificacions.length)
-		if (notificacions.length > 0) {
 
-			return notificacions.map(notification => {
-				const { id, message, createdAt } = notification
+		if (notificacions.length > 0) {
+			let hasUnreadNotifications = false;
+
+			const notificationsList = notificacions.map(notification => {
+				const { id, message, createdAt, status } = notification;
+
+				if (!hasUnreadNotifications && status === 'Activa') {
+					hasUnreadNotifications = true;
+				}
 
 				// para mostrar fecha y hora en la card
 				const fecha = new Date(createdAt)
@@ -48,46 +61,44 @@ class Notificacion extends Component {
 				const hora = fecha.getUTCHours()
 				const minuto = fecha.getUTCMinutes()
 				const fecha3 = hora + ":" + minuto
+
 				if (notification.type === "Elegido") { //falta enviar usuario para chat, y encuentro para cancelar
 					return (
 						<div key={id}>
 							<CardNotificacion
 								key={id}
-								imgsrc={img1}
 								description={message}
 								fecha={fecha2}
 								hora={fecha3}
+								status={status}
 							/>
 							<br />
 						</div>
 					)
 				}
-
 				if (notification.type === "Review") { //falta enviar el usuario a la que se le va a hacer la review
 					return (
 						<div key={id}>
 							<CardNotificacion1
 								key={id}
-								imgsrc={img1}
 								description={message}
 								fecha={fecha2}
 								hora={fecha3}
+								status={status}
 							/>
 							<br />
 						</div>
 					)
 				}
-
 				if (notification.type === "Aprobado") { //falta enviar usuario para chat
 					return (
 						<div key={id}>
 							<CardNotificacion2
 								key={id}
-								imgsrc={img1}
 								description={message}
 								fecha={fecha2}
 								hora={fecha3}
-
+								status={status}
 							/>
 							<br />
 						</div>
@@ -98,10 +109,10 @@ class Notificacion extends Component {
 						<div key={id}>
 							<CardNotificacion3
 								key={id}
-								imgsrc={img1}
 								description={message}
 								fecha={fecha2}
 								hora={fecha3}
+								status={status}
 							/>
 							<br />
 						</div>
@@ -112,10 +123,10 @@ class Notificacion extends Component {
 						<div key={id}>
 							<CardNotificacion0
 								key={id}
-								imgsrc={img1}
 								description={message}
 								fecha={fecha2}
 								hora={fecha3}
+								status={status}
 							/>
 							<br />
 						</div>
@@ -123,6 +134,13 @@ class Notificacion extends Component {
 				}
 				else return null;
 			});
+
+			if (hasUnreadNotifications) {
+				this.markNotificationsAsRead();
+			}
+
+			return notificationsList;
+
 		}
 		else {
 			return (
