@@ -19,9 +19,10 @@ export default class Card_Guia extends React.Component {
   async sendMatchRequest() {
     const tourist = localStorage.getItem("userId");
     const guide = this.props.guideId;
-    let matchDate = sessionStorage.getItem("matchDate"); 
-
-    const { data: { chatId } } = await userServices.createMatch({ tourist, guide, matchDate })
+    const city = this.props.city;
+    const knowledge = this.props.knowledge;
+    let matchDate = sessionStorage.getItem("matchDate");
+    const { data: { chatId } } = await userServices.createMatch({ tourist, guide, city, knowledge, matchDate})
 
     localStorage.setItem("chatId", chatId);
     this.setState({ goToMatches: true })
