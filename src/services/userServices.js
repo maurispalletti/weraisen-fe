@@ -290,6 +290,24 @@ static async getCategoriesPerCity(){
 		return axios.get(url, { headers })
 	}
 
+	static async getUnreadNotifications(userId) {
+		const url = `${customUrl}/api/v1/notifications/unread/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async updateNotifications({
+		userId,
+		status,
+	}) {
+		const url = `${customUrl}/api/v1/notifications/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			status
+		}
+		return axios.put(url, body, { headers })
+	}
+
 	static async upLoadImg(file) {
 		const url = `${customUrl}/api/v1/users/identification`
 		const fd = new FormData();
@@ -334,6 +352,8 @@ static async getCategoriesPerCity(){
 		return axios.put(url, body, { headers })
 	}
 
+<<<<<<< HEAD
+=======
 	static async updateCompliantStatus({
 		userId,
 		status,
@@ -346,6 +366,7 @@ static async getCategoriesPerCity(){
 		return axios.put(url, body, { headers })
 	}
 
+>>>>>>> c9f5c82cee4561cd6705b786843a100620c5e90e
 	static async createCompliant({
 		userId,
 		accusedId,

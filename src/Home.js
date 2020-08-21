@@ -7,30 +7,29 @@ import userServices from './services/userServices';
 class Home extends Component {
 	state = {
 		guias: [],
-		ciudades:[],
-		initialValues: null
+		ciudades: [],
+		initialValues: null,
 	}
 
 	getProfile = async () => {
 		try {
-		  const userId = localStorage.getItem("userId");
-		  if (userId) {
-			const response = await userServices.getProfile(userId)
-	console.log(response.data);
-			return response.data;
-	
-		  } else {
-			this.setState({ notLoggedInUser: true })
-		  }
+			const userId = localStorage.getItem("userId");
+			if (userId) {
+				const response = await userServices.getProfile(userId)
+				console.log(response.data);
+				return response.data;
+
+			} else {
+				this.setState({ notLoggedInUser: true })
+			}
 		} catch (error) {
-		  console.error(`There was an error trying to get the profile`)
+			console.error(`There was an error trying to get the profile`)
 		}
-	  }
+	}
 
 	//apenas se carga el componente se ejecuta este metodo
 	async componentDidMount() {
-
-		const  {
+		const {
 			firstName,
 			lastName,
 			age,
@@ -38,9 +37,7 @@ class Home extends Component {
 			gender,
 			city,
 			email,
-			// isActiveGuide,
-			// knowledge,
-		  } = await this.getProfile()
+		} = await this.getProfile()
 
 		const initialValues = {
 			firstName,
@@ -50,27 +47,23 @@ class Home extends Component {
 			gender,
 			city,
 			email
-		  }
-
-console.log(initialValues);
-
+		}
 
 		this.setState({
 			guias: [
-				{ imagen: "https://s3-sa-east-1.amazonaws.com/weraisen-images/1595461927214-DSADas.jpg", nombre: 'Mateo', edad: '22 años', detalle: '"Me encanta compartir mis ratos libres enseñándole mi ciudad a personas que la visitan. Son experiencias muy enriquecedoras."' },
-				// { imagen: "https://theluxonomist.es/wp-content/uploads/2019/11/autofoto.jpg", nombre: 'Mateo', edad: '22 años', detalle: '"Me encanta compartir mis ratos libres enseñándole mi ciudad a personas que la visitan. Son experiencias muy enriquecedoras."' },
+				{ imagen: "https://theluxonomist.es/wp-content/uploads/2019/11/autofoto.jpg", nombre: 'Mateo', edad: '22 años', detalle: '"Me encanta compartir mis ratos libres enseñándole mi ciudad a personas que la visitan. Son experiencias muy enriquecedoras."' },
 				{ imagen: "https://media.istockphoto.com/photos/morning-selfie-picture-id935524698?k=6&m=935524698&s=612x612&w=0&h=qgz5rX_Qi9ATtffT0UcnIyCK94145Vi5XA7hY8rAX58=", nombre: 'Camila', edad: '26 años', detalle: '"Comenzar a usar WeRaisen fue la mejor decisión. No sólo conozco gente de otros lugares, sino que tengo la oportunidad de practicar mi inglés."' },
 				{ imagen: "https://www.fujifilm.com.mx/productos/camaras_digitales/serie_x/xa10/features/img/page_02/pic_01.jpg", nombre: 'Anabella', edad: '28 años', detalle: '"Solía aburrirme mucho los domingos. Gracias a una amiga que me recomendó esta plataforma, cada domingo es una aventura distinta."' },
-				
 			],
 			ciudades: [
-				{ imagen: "https://elplanetaurbano.com/wp-content/uploads/2017/06/Puerto-madero-2.jpg", nombre: 'Buenos Aires'},
-				{ imagen: "https://s.libertaddigital.com/2018/03/09/cordoba_argentina01.jpg", nombre: 'Córdoba'},
-				{ imagen: "https://latecla-repos-dgf.aplinews.com/archivos/noticias/fotografias/79032_3.jpg", nombre: 'Mar del Plata'},
-				
-			],initialValues
+				{ imagen: "https://elplanetaurbano.com/wp-content/uploads/2017/06/Puerto-madero-2.jpg", nombre: 'Buenos Aires' },
+				{ imagen: "https://s.libertaddigital.com/2018/03/09/cordoba_argentina01.jpg", nombre: 'Córdoba' },
+				{ imagen: "https://latecla-repos-dgf.aplinews.com/archivos/noticias/fotografias/79032_3.jpg", nombre: 'Mar del Plata' },
+
+			], initialValues
 		});
 	}
+
 	mostrarGuias = () => {
 		const guias = this.state.guias;
 		if (guias.length === 0) return null;
@@ -93,8 +86,6 @@ console.log(initialValues);
 
 	mostrarCiudades = () => {
 		const ciudades = this.state.ciudades;
-		
-
 		return (
 			<React.Fragment>
 				<div className="container-fluid">
@@ -113,44 +104,40 @@ console.log(initialValues);
 
 	render() {
 		if (this.state.initialValues) {
-		return (
-			<Fragment>
-				<Header />
-				<div className="container-fluid">
+			return (
+				<Fragment>
+					<Header />
+					<div className="container-fluid">
+						<h2 style={{ marginTop: '20px' }}>¡Hola, {this.state.initialValues.firstName}!</h2>
+						<div className='m-auto' style={{ paddingLeft: "10px", peddingRight: "10px" }}>
+							<h4 style={{ lineHeight: 1.5, marginLeft: "10px" }}>Encontrá a tu guía ideal para que te acompañe en tu recorrido y así vivir una experiencia única</h4>
+						</div>
+						<div className="" style={{ alignItems: "center", paddingTop: '10px' }}>
+							<a href="/search"><input type="submit" className="btn-primero" value="Comenzá tu experiencia" style={{ display: "block", margin: "auto" }} />
+							</a></div>
+						<hr />
+						<div className='ml-auto'>
+							<h3 style={{ marginTop: '20px' }}>Testimonios de guías</h3>
+						</div>
+						<hr />
+						<div className="bs-docs-section">
+							{this.mostrarGuias()}
+						</div>
+						<hr />
+						<div className='ml-auto'>
+							<h3 >Ciudades más visitadas</h3>
+						</div>
 
-
-				<h2 style={{marginTop: '20px'}}>¡Hola, {this.state.initialValues.firstName}!</h2>
-				<div className='m-auto' style={{paddingLeft:"10px", peddingRight:"10px"}}>
-				<h4 style={{ lineHeight: 1.5, marginLeft:"10px"}}>Encontrá a tu guía ideal para que te acompañe en tu recorrido y así vivir una experiencia única</h4>
-				</div>
-				<div className="" style={{alignItems:"center", paddingTop:'10px'}}>
-				<a href="/search"><input type="submit" className="btn-primero" value="Comenzá tu experiencia"  style={{display:"block", margin:"auto"}}/>
-				</a></div>
-				<hr />
-					<div className='ml-auto'>
-						<h3 style={{marginTop: '20px'}}>Testimonios de guías</h3>
+						<hr />
+						<div className="bs-docs-section">
+							{this.mostrarCiudades()}
+						</div>
 					</div>
-					<hr />
-					<div className="bs-docs-section">
-						{this.mostrarGuias()}
-					</div>
-					<hr />
-					<div className='ml-auto'>
-						<h3 >Ciudades más visitadas</h3>
-					</div>
-					
-					<hr />
-					<div className="bs-docs-section">
-						{this.mostrarCiudades()}
-					</div>
-				</div>
-			
-			</Fragment>
-		);
-		
-	} else {
-		return null
-	  }
+				</Fragment>
+			);
+		} else {
+			return null
+		}
 	}
 }
 export default Home;
