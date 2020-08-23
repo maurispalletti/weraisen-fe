@@ -352,21 +352,7 @@ static async getCategoriesPerCity(){
 		return axios.put(url, body, { headers })
 	}
 
-<<<<<<< HEAD
-=======
-	static async updateCompliantStatus({
-		userId,
-		status,
-	}) {
-		const url = `${customUrl}/api/v1/admin/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
-		const body = {
-			status
-		}
-		return axios.put(url, body, { headers })
-	}
 
->>>>>>> c9f5c82cee4561cd6705b786843a100620c5e90e
 	static async createCompliant({
 		userId,
 		accusedId,
