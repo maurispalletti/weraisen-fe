@@ -27,6 +27,17 @@ width: 20rem;
     padding-top: 6rem;
 
 }
-
+.boton-denuncia1 {
+    background-color: #484e55;
+    display: inline;
+    font-size: 15px;
+      margin: 20px 20px 0px;
+      padding: 10px 40px;
+      border: none;
+    border-radius: 0.2rem;
+  }
+.boton-denuncia:hover {
+    background-color: #282c2f;
+  }
 
 

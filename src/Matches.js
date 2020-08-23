@@ -73,6 +73,8 @@ class Matches extends Component {
 
       const response = await userServices.getMatches(userId);
 
+      console.log(response)
+
       if (response && response.data) {
         const matches = response.data;
         for (let index = 0; index < matches.length; index++) {
@@ -88,16 +90,21 @@ class Matches extends Component {
             userToFind = match.guide;
             partnerRole = 'GUIDE';
           }
-          const { data: { firstName, lastName, profilePicture } } = await userServices.getProfile(userToFind);
+
+          const profileUserToFind = await userServices.getProfile(userToFind);
+
+          if ( profileUserToFind?.data ) {
+          const { data: { firstName, lastName, profilePicture } } = profileUserToFind;
           const partnerName = `${firstName} ${lastName}`;
           fullInfoMatches.push({ ...match, partnerRole, partnerName, profilePicture });
+          }
         }
 
         let newMatches = [];
 
         if (fullInfoMatches.length > 0) {
           newMatches = fullInfoMatches.map(match => {
-            const { id, partnerRole, partnerName, chatId, status, createdAt, profilePicture } = match
+            const { id, partnerRole, partnerName, chatId, status, createdAt, profilePicture, matchDate } = match
             return (
               <MatchCard
                 key={id}
@@ -107,6 +114,7 @@ class Matches extends Component {
                 chatId={chatId}
                 status={status}
                 date={createdAt}
+                matchDate={matchDate}
                 profilePicture={profilePicture}
 
                 refresh={() => this.getMatches()}

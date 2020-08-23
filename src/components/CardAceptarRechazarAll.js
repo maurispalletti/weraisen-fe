@@ -62,7 +62,7 @@ class CardsAceptar extends Component {
         <div className="column-container-profile">
 
           <div className="foto-perfil-container">
-            <img className="foto-perfil" alt={'perfil'} width={200} height={200} src={profilePicture} />
+            <img className="foto-perfil" alt={'perfil'} width={200} height={200} src={profilePicture} style= {{borderTopRightRadius: '12px', borderTopLeftRadius: '12px', borderBottomLeftRadius: '12px', borderBottomRightRadius: '12px' }}/>
           </div>
 
           <div className="descripcion-profile">

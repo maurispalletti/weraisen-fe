@@ -8,13 +8,12 @@ ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
 let chartConfigs;
 
-class GraficoReportedUsersPerReason extends React.Component {
+class GraficoCategoriesMostSetelcted extends React.Component {
 
     UNSAFE_componentWillMount() {
 
-        console.log("***" + this.props.usersReportedPerReason)
-
-        const { usersReportedPerReason } = this.props;
+        console.log("***" + this.props.categoriesMostSelected)
+        const { categoriesMostSelected } = this.props;
 
 
 
@@ -25,78 +24,85 @@ class GraficoReportedUsersPerReason extends React.Component {
             dataFormat: 'json', // Data type
             dataSource: {
                 "chart": {
-                    "caption": "Cantidad de usuarios denunciados por motivo",
+                    "caption": "Cantidad de usuarios por categoría",
                     "subCaption": "",
-                    "xAxisName": "Motivos",
-                    "yAxisName": "Cantidad de denuncias",
-                    "theme": "fusion"
+                    "xAxisName": "Categorías",
+                    "yAxisName": "Cantidad de usuarios",
+                    "theme": "fusion",
+
+
                 },
                 "categories": [
                     {
                         "category": [
                             {
-                                "label": usersReportedPerReason[0].category
+                                "label": categoriesMostSelected[0].category
                             },
                             {
-                                "label": usersReportedPerReason[1].category
+                                "label": categoriesMostSelected[1].category
                             },
                             {
-                                "label": usersReportedPerReason[2].category
+                                "label": categoriesMostSelected[2].category
                             },
                             {
-                                "label": usersReportedPerReason[3].category
+                                "label": categoriesMostSelected[3].category
                             },
-
                             {
-                                "label": usersReportedPerReason[4].category
+                                "label": categoriesMostSelected[4].category
                             },
-
-
+                            {
+                                "label": categoriesMostSelected[5].category
+                            }
                         ]
                     }
                 ],
                 "dataset": [
                     {
-                        "seriesname": "Cantidad de usuarios denunciados por motivo de denuncia",
+                        "seriesname": "Cantidad de usuarios por categoría",
                         "color": "#9CD6AE",
                         "data": [
                             {
-                                "value": usersReportedPerReason[0].value,
+                                "value": categoriesMostSelected[0].value,
                                 "color": "#9CD6AE"
                             },
                             {
-                                "value": usersReportedPerReason[1].value,
+                                "value": categoriesMostSelected[1].value,
                                 "color": "#9CD6AE"
                             },
                             {
-                                "value": usersReportedPerReason[2].value,
+                                "value": categoriesMostSelected[2].value,
                                 "color": "#9CD6AE"
                             },
                             {
-                                "value": usersReportedPerReason[3].value,
+                                "value": categoriesMostSelected[3].value,
                                 "color": "#9CD6AE"
                             },
                             {
-                                "value": usersReportedPerReason[4].value,
+                                "value": categoriesMostSelected[4].value,
                                 "color": "#9CD6AE"
                             },
+                            {
+                                "value": categoriesMostSelected[5].value,
+                                "color": "#9CD6AE"
+                            }
 
 
                         ]
-                    }
+
+                    },
+
                 ]
             }
+
         };
+
     }
-
-
     render() {
         return (
-
             <ReactFC style={{ float: "left" }}
                 {...chartConfigs} />
         );
     }
 }
 
-export default GraficoReportedUsersPerReason 
+export default GraficoCategoriesMostSetelcted

@@ -2,6 +2,10 @@ nav .navbar-nav li a{
     color: white !important;
     }
 
+.nav-link {
+  text-align: center;
+}
+
 
     /* ul.navbar-nav li.active {
         background-color: red;

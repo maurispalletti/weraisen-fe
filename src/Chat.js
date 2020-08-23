@@ -7,7 +7,6 @@ import userServices from './services/userServices'
 import { Redirect } from 'react-router'
 import { Formik, Form, Field } from 'formik'
 import enviar from './avatars/enviar.png'
-import usuario from '../src/Imagenes_Alvo/006.png'
 
 const selfName = "Yo"
 
@@ -50,10 +49,16 @@ class Chat extends Component {
           const { data: { firstName, lastName, id } } = await userServices.getProfile(otherUser)
           otherName = `${firstName} ${lastName}`
           localStorage.setItem("ownerId", id);
-
+          
           console.log(`Getting match id with chatId ${chatId}`)
           const { data: { id: matchId } } = await userServices.getMatchByChatId(chatId)
           localStorage.setItem("matchId", matchId);
+        }
+
+        const { data: { status } } = await userServices.getMatchByChatId(chatId)
+        if (status !== 'Activo') {
+          this.setState({ goToMatches: true })
+          return;
         }
 
         this.setState({
@@ -175,7 +180,7 @@ class Chat extends Component {
 
     return (
       <div className="Chat">
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler} nombre={this.state.otherName} img={usuario} />
+        <Toolbar drawerClickHandler={this.drawerToggleClickHandler} nombre={this.state.otherName} />
         {sideDrawer}
         {backdrop}
         <div className="BodyChat">

@@ -16,8 +16,7 @@ export default class MatchCard extends Component {
   async updateMatchStatus(newStatus) {
     const { matchId } = this.props
     try {
-      const response = await userServices.updateMatchStatus(matchId, newStatus);
-      console.log(response)
+      await userServices.updateMatchStatus(matchId, newStatus);
       this.props.refresh()
     } catch (error) {
       console.error(`There was an error trying to update match: ${error}`)
@@ -25,13 +24,39 @@ export default class MatchCard extends Component {
     }
   }
 
-  getFormattedDate() {
-    const date = new Date(this.props.date);
-    const day = date.getUTCDate() 
-    const month = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
-    var year = date.getFullYear()
-    return day + "/" + month + "/" + year;
+  getFormattedDate(dat) {
+    if (dat !== undefined) {
+      const date = new Date(dat);
+      const day = date.getUTCDate()
+      let hour = ('0' + date.getUTCHours()).slice(-2)
+      let minute = ('0' + date.getMinutes()).slice(-2)
+      const month = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
+      var year = date.getFullYear()
+      if (hour !== "00") {
+        return day + "/" + month + "/" + year + "  " + (hour - 3) + ":" + minute;
+      }
+      else {
+        return day + "/" + month + "/" + year;
 
+      }
+    }
+  }
+  getFormattedDateN(dat) {
+    if (dat !== undefined) {
+      const date = new Date(dat);
+      const day = date.getUTCDate()
+      let hour = ('0' + date.getUTCHours()).slice(-2)
+      let minute = ('0' + date.getMinutes()).slice(-2)
+      const month = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
+      var year = date.getFullYear()
+      if (hour !== "00") {
+        return day + "/" + month + "/" + year + "  " + hour + ":" + minute;
+      }
+      else {
+        return day + "/" + month + "/" + year;
+
+      }
+    }
   }
 
 
@@ -63,27 +88,27 @@ export default class MatchCard extends Component {
 
     if (status === 'Pendiente') {
       return (
-        <h4 className="card-text" style={{ textAlign: "left", width: 'auto' }}>Esperando aprobación </h4>
+        <h3 className="card-text" style={{ textAlign: "center", width: 'auto' }}>Esperando aprobación </h3>
       )
     }
     if (status === 'Activo') {
       return (
-        <h4 className="card-text" style={{ textAlign: "left", width: 'auto' }}>Encuentro activo </h4>
+        <h4 className="card-text" style={{ textAlign: "center", width: 'auto', color: '#3AA02C' }}>Encuentro activo </h4>
       )
     }
     if (status === 'Finalizado') {
       return (
-        <h4 className="card-text" style={{ textAlign: "left", width: 'auto' }}>Encuentro finalizado </h4>
+        <h3 className="card-text" style={{ textAlign: "center", width: 'auto' }}>Encuentro finalizado </h3>
       )
     }
     if (status === 'Cancelado') {
       return (
-        <h4 className="card-text" style={{ textAlign: "left", width: 'auto' }}> Encuentro cancelado  </h4>
+        <h4 className="card-text" style={{ textAlign: "center", width: 'auto', color: '#F03131' }}> Encuentro cancelado  </h4>
       )
     }
     if (status === 'Anulado') {
       return (
-        <h4 className="card-text" style={{ textAlign: "left", width: 'auto' }}>Solicitud rechazada</h4>
+        <h3 className="card-text" style={{ textAlign: "center", width: 'auto' }}>Solicitud rechazada</h3>
       )
     }
 
@@ -103,21 +128,23 @@ export default class MatchCard extends Component {
 
     return (
       <div style={{ marginBottom: 10 }}>
-        <div className="card col-sm-12 col-xs-12 " style={{ maxWidth: '400px', margin: '0px auto'}} >
+        <div className="card col-sm-12 col-xs-12 " style={{ maxWidth: '400px', margin: '0px auto' }} >
           <div className="row no-gutters ">
             <div className="col-sm-4 col-4" style={{ display: 'flex', alignItems: 'center', marginTop: 10, marginBottom: 10 }}>
               <img src={imgsrcWithFallback} style={{ width: '100px', height: '100px', objectFit: 'cover' }} className="card-img img-fluid" alt="..." />
             </div>
             <div className="col-sm-8 col-8"  >
-              <div style={{ paddingLeft: 20, textAlign: 'center'  }}>
-                <h2 className="card-title" style={{ marginTop: 18, marginBottom: 10, textAlign: "left" }}>{roleName}: {partnerName}</h2>
-           
+              <div style={{ paddingLeft: 20, textAlign: 'center' }}>
+                <h3 className="card-title" style={{ marginTop: 18, marginBottom: 10, textAlign: "center" }}>{roleName}: {partnerName}</h3>
+                <br></br>
+                <div><h6 className="card-text" style={{ textAlign: "center", width: 'auto', color: 'white' }}>Fecha del encuentro: {this.getFormattedDateN(this.props.matchDate)} </h6></div>
+                <br></br>
                 <div> {this.renderStatus()} </div>
                 <br></br>
-                <div> <h6 className="card-text" style={{ textAlign: "left", width: 'auto', color:'white' }}>{this.getFormattedDate()} </h6></div>
                 <div className="row mb-2" style={{ marginTop: 10 }}>
                   {this.renderButtons()}
                 </div>
+                <div> <h6 className="card-text" style={{ textAlign: "right", marginBottom: '10px', width: 'auto', color: '#96989A', fontSize: '11px' }}>{this.getFormattedDate(this.props.date)} </h6></div>
               </div>
             </div>
           </div>

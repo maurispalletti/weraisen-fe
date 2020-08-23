@@ -8,8 +8,6 @@ import CardNotificacion0 from '../src/components/Card_Notificacion0.js';
 import CardNotificacion2 from '../src/components/Card_Notificacion2.js';
 import CardNotificacion3 from '../src/components/Card_Notificacion3.js';
 
-import img1 from '../src/Imagenes_Alvo/448.png';
-
 class Notificacion extends Component {
 	state = {
 		notificacions: [],
@@ -20,8 +18,7 @@ class Notificacion extends Component {
 	getNotifications = async () => {
 		try {
 			const userId = localStorage.getItem("userId");
-			//hacer llamada al getendend.... en matchdelegate
-			const response = await userServices.getNotifications(userId);			
+			const response = await userServices.getNotifications(userId);
 			if (response && response.data) {
 				this.setState({ notificacions: response.data, loading: false })
 			}
@@ -32,106 +29,125 @@ class Notificacion extends Component {
 		}
 	}
 
+	markNotificationsAsRead = async () => {
+		try {
+			const userId = localStorage.getItem("userId");
+			const status = 'Leida';
+			await userServices.updateNotifications({ userId, status });
+		} catch (error) {
+			console.error(`There was an error trying to update notifications: ${error}`)
+		}
+	}
+
 	renderNotifications = () => {
-		
-		console.log(this.state)
 		const { notificacions } = this.state;
-		console.log(notificacions.length)
+
 		if (notificacions.length > 0) {
-			
-			return notificacions.map(notification => {
-				const { id, message, createdAt } = notification
-				
-				// para mostrar fecha y hora en la card
-				const fecha = new Date (createdAt)
-				const dia= fecha.getDate()
-				const año= fecha.getFullYear()
-				const mes = fecha.getMonth()+1
-				const fecha2= dia+"/"+mes+"/"+año
-				const hora= fecha.getUTCHours()
-				const minuto= fecha.getUTCMinutes()
-				const fecha3= hora+":"+minuto
-				if (notification.type === "Elegido"){ //falta enviar usuario para chat, y encuentro para cancelar
-					return (
-						<div>
-							<CardNotificacion
-								key={id}
-								imgsrc={img1} 
-								description={message} 
-								fecha={fecha2}
-								hora= {fecha3}
-							/>
-							<br />
-						</div>
-					)					
+			let hasUnreadNotifications = false;
+
+			const notificationsList = notificacions.map(notification => {
+				const { id, message, createdAt, status } = notification;
+
+				if (!hasUnreadNotifications && status === 'Activa') {
+					hasUnreadNotifications = true;
 				}
 
-				if (notification.type === "Review"){ //falta enviar el usuario a la que se le va a hacer la review
+				// para mostrar fecha y hora en la card
+				const fecha = new Date(createdAt)
+				const dia = fecha.getDate()
+				const año = fecha.getFullYear()
+				const mes = fecha.getMonth() + 1
+				const fecha2 = dia + "/" + mes + "/" + año
+				const hora = fecha.getUTCHours()
+				const minuto = fecha.getUTCMinutes()
+				const fecha3 = hora + ":" + minuto
+
+				if (notification.type === "Elegido") { //falta enviar usuario para chat, y encuentro para cancelar
 					return (
-						<div>
+						<div key={id}>
+							<CardNotificacion
+								key={id}
+								description={message}
+								fecha={fecha2}
+								hora={fecha3}
+								status={status}
+							/>
+							<br />
+						</div>
+					)
+				}
+				if (notification.type === "Review") { //falta enviar el usuario a la que se le va a hacer la review
+					return (
+						<div key={id}>
 							<CardNotificacion1
 								key={id}
-								imgsrc={img1}
 								description={message}
 								fecha={fecha2}
-								hora= {fecha3}
+								hora={fecha3}
+								status={status}
 							/>
 							<br />
 						</div>
 					)
 				}
-				
-				if (notification.type === "Aprobado"){ //falta enviar usuario para chat
+				if (notification.type === "Aprobado") { //falta enviar usuario para chat
 					return (
-						<div>
+						<div key={id}>
 							<CardNotificacion2
 								key={id}
-								imgsrc={img1}
 								description={message}
 								fecha={fecha2}
-								hora= {fecha3}
-								
-							/>
-							<br />
-						</div>
-					)
-				}				
-				if (notification.type === "Rechazado"){
-					return (
-						<div>
-							<CardNotificacion3
-								key={id}
-								imgsrc={img1}
-								description={message}
-								fecha={fecha2}
-								hora= {fecha3}
+								hora={fecha3}
+								status={status}
+								chatId={notification.contentId}
 							/>
 							<br />
 						</div>
 					)
 				}
-				if (notification.type === "Aviso"){
-						return (
-							<div>
-								<CardNotificacion0
-									key={id}
-									imgsrc={img1}
-									description={message}
-									fecha={fecha2}
-									hora= {fecha3}
-								/>
-								<br />
-							</div>
-						)	
+				if (notification.type === "Rechazado") {
+					return (
+						<div key={id}>
+							<CardNotificacion3
+								key={id}
+								description={message}
+								fecha={fecha2}
+								hora={fecha3}
+								status={status}
+							/>
+							<br />
+						</div>
+					)
+				}
+				if (notification.type === "Aviso") {
+					return (
+						<div key={id}>
+							<CardNotificacion0
+								key={id}
+								description={message}
+								fecha={fecha2}
+								hora={fecha3}
+								status={status}
+							/>
+							<br />
+						</div>
+					)
 				}
 				else return null;
 			});
+
+			if (hasUnreadNotifications) {
+				this.markNotificationsAsRead();
+			}
+
+			return notificationsList;
+
 		}
 		else {
 			return (
 				<div className="notificacion" style={{ paddingTop: "30px" }}>
-						<h2>Aún no tenes ninguna notificación.</h2>
-					</div>
+					<h2>Aún no tenes ninguna notificación.</h2>
+				</div>
 			)
 		}
 	}
@@ -157,10 +173,10 @@ class Notificacion extends Component {
 					<div>
 						<Header />
 						<div className="notificacion" style={{ paddingTop: "30px" }}>
-						La búsqueda de notificaciones falló. Intentá de nuevo por favor.
+							La búsqueda de notificaciones falló. Intentá de nuevo por favor.
 							<p className="form-error">
-                     
-                   </p>
+
+							</p>
 						</div>
 					</div>
 				)
