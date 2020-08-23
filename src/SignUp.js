@@ -68,6 +68,8 @@ class SignUp extends Component {
     passwordRepeated,
   }) => {
     try {
+     
+
       if (password === passwordRepeated) {
         const birthDate = this.state.value;
 
@@ -143,7 +145,7 @@ class SignUp extends Component {
     this.setState({
       imagenDNI1: event.target.files[0], front: dni1
     })
-    
+
   }
 
   fileSelectedDNI2 = event => {
@@ -252,21 +254,21 @@ class SignUp extends Component {
 
               <br></br>
               <br></br>
-              <div class="custom-control custom-checkbox" style={{paddingLeft: '50px', paddingRight: '50px', paddingBottom:'15px'}}>
-                  <input type="checkbox" class="custom-control-input" id="salidaGrupal" checked={this.state.acepto} onChange={() => this.setState({ acepto: !this.state.acepto }) }/>
-                  <label class="custom-control-label" for="salidaGrupal" style={{cursor:'pointer'}}>Al crear cuenta estoy aceptando los <a className="forgotPass" href={'/terminos'}> términos y condiciones</a></label>
+              <div class="custom-control custom-checkbox" style={{ paddingLeft: '50px', paddingRight: '50px', paddingBottom: '15px' }}>
+                <input type="checkbox" class="custom-control-input" id="salidaGrupal" checked={this.state.acepto} onChange={() => this.setState({ acepto: !this.state.acepto })} />
+                <label class="custom-control-label" for="salidaGrupal" style={{ cursor: 'pointer' }}>Al crear cuenta estoy aceptando los <a className="forgotPass" href={'/terminos'}> términos y condiciones</a></label>
               </div>
-               <br></br>
-               <br></br>
+              <br></br>
+              <br></br>
 
               <div className="righ-container">
 
-                <input type="submit" className="btn-primero" value="Crear cuenta" disabled={!this.state.acepto}/>
+                <input type="submit" className="btn-primero" value="Crear cuenta" disabled={!this.state.acepto} />
                 <br></br>
                 <br></br>
 
                 <input type="submit" className="btn-primero" value="Cancelar" onClick={() => this.setState({ goToLogin: true })} />
-  
+
 
                 <CrearCuentaModal
                   show={this.state.denunciaModalShow}
