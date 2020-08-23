@@ -18,6 +18,7 @@ class CardDenuncia extends Component {
     const { compliantId } = this.props
     try {
       if (compliantId) {
+        console.log(compliantId);
         await userServices.updateCompliantStatus({
           compliantId,
           status,
