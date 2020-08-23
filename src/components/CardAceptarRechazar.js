@@ -38,7 +38,7 @@ class AceptarRechazar extends Component {
     const { newUsers } = this.state
     if (newUsers.length > 0) {
       return newUsers.map(newUser => {
-        const { id, profilePicture, idFront, idBack, firstName, lastName, identification, birthDate } = newUser
+        const { id, profilePicture, idFront, idBack, firstName, lastName, identification, birthDate, email } = newUser
         return (
           <div>
             <CardsAceptar
@@ -49,6 +49,7 @@ class AceptarRechazar extends Component {
               firstName={firstName}
               lastName={lastName}
               identification={identification}
+              email={email}
               birthDate={this.getFormattedDate(birthDate)}
               refresh={() => this.getaceptNewUser()}
             />

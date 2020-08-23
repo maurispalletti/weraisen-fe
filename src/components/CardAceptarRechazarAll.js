@@ -7,14 +7,21 @@ class CardsAceptar extends Component {
     updateFailed: false,
   }
 
+  
+
   async updateUserStatus() {
-    const { userId } = this.props
+    const { userId , email } = this.props
     try {
       if (userId) {
         await userServices.updateUserStatus({
           userId,
           status: "ACTIVE"
         })
+        await userServices.sendEmail({
+          emailDestino: email,
+          origen: 1
+        })
+
       }
     } catch (error) {
       console.log(error)
@@ -25,12 +32,16 @@ class CardsAceptar extends Component {
   }
 
   async updateUserStatusCancel() {
-    const { userId } = this.props
+    const { userId, email } = this.props
     try {
       if (userId) {
         await userServices.updateUserStatus({
           userId,
           status: "BLOCKED"
+        })
+        await userServices.sendEmail({
+          emailDestino: email,
+          origen: 2
         })
         this.setState({ updateFailed: false })
       }
@@ -43,7 +54,7 @@ class CardsAceptar extends Component {
   }
 
   render() {
-    const { dniFirst, dniSecond, profilePicture, firstName, lastName, birthDate, identification } = this.props;
+    const { dniFirst, dniSecond, profilePicture, firstName, lastName, birthDate, identification, email } = this.props;
 
     return (
       <div className="container-aceptar-rechazar">
@@ -59,6 +70,7 @@ class CardsAceptar extends Component {
             <p className="descripcion-profile-item"> <strong> Apellido:</strong> {lastName}</p>
             <p className="descripcion-profile-item"> <strong> Fecha Nacimiento:</strong> {birthDate}</p>
             <p className="descripcion-profile-item"> <strong> Número DNI:</strong> {identification}</p>
+            
           </div>
 
         </div>

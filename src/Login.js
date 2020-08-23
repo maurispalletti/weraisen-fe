@@ -33,9 +33,7 @@ class Login extends Component {
       const response = await userServices.login({ email, password })
       console.log(response);
       const { data: { id } } = response
-      let email = "Hola";
-      const response2 = await userServices.sendEmail({ email })
-      console.log(response2);
+     
       if (response.data.status === "ACTIVE") {
         // save Id in local storage
         localStorage.setItem("userId", id);

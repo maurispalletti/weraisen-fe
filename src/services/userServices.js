@@ -254,11 +254,16 @@ class userServices {
 		return axios.put(url, body, { headers })
 	}
 
-	static async sendEmail({email}) {
+	static async sendEmail({
+		emailDestino,
+		origen
+	
+	}) {
 		const url = `${customUrl}/api/v1/notifications/sendEmail`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {		
-			email				
+			emailDestino,
+			origen			
 		}
 		return axios.post(url, body, { headers })
 	}

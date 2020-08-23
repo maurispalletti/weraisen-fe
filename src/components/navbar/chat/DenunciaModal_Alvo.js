@@ -68,7 +68,7 @@ class DenunciaModal_Alvo extends Component {
 
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.onHide}>Denunciar</Button>
+          <Button onClick={this.props.onHide, () => this.updateUserStatus() }>Denunciar</Button>
           <Button onClick={this.props.onHide}>Cancelar</Button>
         </Modal.Footer>
       </Modal>
