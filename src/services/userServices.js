@@ -237,11 +237,11 @@ class userServices {
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
-	static async getUsersReportedByReason() {
-		const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
-		const headers = { 'Content-Type': 'application/json' }
-		return axios.get(url, { headers })
-	}
+	// static async getUsersReportedByReason() {
+	// 	const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
+	// 	const headers = { 'Content-Type': 'application/json' }
+	// 	return axios.get(url, { headers })
+	// }
 
 	static async getCategoriesPerGender() {
 		const url = `${customUrl}/api/v1/charts/categoriesPerGender`
