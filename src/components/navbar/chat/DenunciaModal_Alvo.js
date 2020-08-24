@@ -150,9 +150,7 @@ class DenunciaModal_Alvo extends Component {
          </div>
         </Modal.Body>
         <Modal.Footer>
-          <div>
-          <Button type="submit" className="primary" value={"Denunciar"}> Denuciar </Button>
-          </div>
+          <Button onClick={this.props.onHide}>Denunciar</Button>
           <Button onClick={this.props.onHide}>Cancelar</Button>
         </Modal.Footer>
         </Form>
