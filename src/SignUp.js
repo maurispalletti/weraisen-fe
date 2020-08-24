@@ -181,21 +181,21 @@ class SignUp extends Component {
             <h2>Creá tu cuenta</h2>
             <div className="title">
 
-              <FieldWithError name="firstName" placeholder="Ingresa tu nombre" aria-label="firstName" className="input" />
+              <FieldWithError name="firstName" placeholder="Ingresá tu nombre" pattern="[a-zA-Z]+" aria-label="firstName" className="input" />
             Nombre
             </div>
             <div className="title">
-              <FieldWithError name="lastName" placeholder="Ingresa tu apellido" aria-label="lastName" className="input" />
+              <FieldWithError name="lastName" type="text" pattern="[a-zA-Z]+" placeholder="Ingresá tu apellido" aria-label="lastName" className="input" />
             Apellido
             </div>
             <div className="title">
-              <FieldWithError name="identification" placeholder="Ingresa tu documento" aria-label="identification" className="input" />
+              <FieldWithError name="identification" placeholder="Ingresá tu número de documento" aria-label="identification" className="input" pattern="[1,9]{1,15}" />
             Documento
             </div>
 
             <div className="title">
               <FieldWithError name="age"
-                placeholder="Ingresa tu fecha de nacimiento"
+                placeholder="Ingresá tu fecha de nacimiento"
                 className="input"
                 max={this.state.min}
                 value={this.state.value}
@@ -212,12 +212,12 @@ class SignUp extends Component {
 
 
             <div className="title">
-              <FieldWithError name="email" placeholder="Ingresa tu email" aria-label="email" className="input" />
+              <FieldWithError name="email" placeholder="Ingresá tu email" aria-label="email" className="input" />
             Email
             </div>
 
             <div className="title">
-              <FieldWithError name="password" placeholder="Ingresa tu contraseña" type="password" aria-label="password" className="input" />
+              <FieldWithError name="password" placeholder="Ingresá tu contraseña" type="password" aria-label="password" className="input" />
             Contraseña
             </div>
 

@@ -42,7 +42,7 @@ class AgendaModal extends Component {
         var date = new Date(match.matchDate);
         console.log(date + "dateeeeeeee")
         const day = date.getUTCDate()
-        const month = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
+        const month = (date.getMonth()) < 10 ? `0${date.getMonth()}` : date.getMonth()
         var year = date.getFullYear()
         date = year + "-" + month + "-" + day + "T12:00";
 
@@ -73,7 +73,7 @@ class AgendaModal extends Component {
       var now = new Date(date);
 
       const day = now.getUTCDate()
-      const month = (now.getMonth() + 1) < 10 ? `0${now.getMonth() + 1}` : now.getMonth() + 1
+      const month = (now.getMonth()) < 10 ? `0${now.getMonth()}` : now.getMonth()
       var year = now.getFullYear()
       var hour = now.getHours()
       var minute = now.getMinutes()
