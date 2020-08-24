@@ -5,7 +5,7 @@ import Informe from '../src/Informes';
 import '../src/AdminProfile.css';
 import CardDenunciaAll from './components/CardDenuncia';
 import CardsAceptarRechazar from './components/CardAceptarRechazar';
-
+import Buttom from './components/Boton.js'
 
 class Tabulador extends React.Component {
 constructor(props) {
@@ -37,7 +37,9 @@ render() {
    
   
     <p>{content[this.state.active]}</p>
-  
+    <div className="cerrarSesion">
+      <Buttom link={'/login'} className={"botons"} name={"Cerrar sesión"} />
+    </div>
 
   </div>
   );

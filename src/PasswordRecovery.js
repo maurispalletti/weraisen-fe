@@ -19,7 +19,10 @@ class PasswordRecovery extends Component {
     }
 
      sendEmail = async ({email})=> {
-        console.log(email)
+        await userServices.sendEmail({
+            emailDestino: email,
+            origen: 3
+          })
         this.setState({enviado:true})
        
        

@@ -34,8 +34,7 @@ class Login extends Component {
       const response = await userServices.login({ email, password })
       console.log(response);
       const { data: { id } } = response
-
-
+     
       if (response.data.status === "ACTIVE") {
         // save Id in local storage
         localStorage.setItem("userId", id);
@@ -51,7 +50,13 @@ class Login extends Component {
         }
 
       } else {
-        this.setState({ userPENDING: true, mensajeError: "Tu cuenta está en proceso de validación." })
+        if(response.data.status === "PENDING"){
+          this.setState({ userPENDING: true, mensajeError: "Tu cuenta está en proceso de validación." })
+        }
+        else{
+          this.setState({ userPENDING: true, mensajeError: "La solicitud de creración de usuario fue denegada." })
+        }
+        
       }
 
 
@@ -105,17 +110,7 @@ class Login extends Component {
                     {this.state.mensajeError}
                   </p>
 
-{/* 
-                  {this.state.loginFailed && (
-                    <p className="form-error">
-                      Tu email y password no coinciden. Intenta de nuevo.
-                    </p>
-                  )}
-                  {this.state.userPENDING && (
-                    <p className="form-error">
-                      Tu cuenta está en proceso de validación.
-                    </p>
-                  )} */}
+                  
 
                   <div className="signup">
                     <p>¿Primera vez en WERAISEN?</p> <p><a className="forgotPass" href={'/signup'}>Registrate ahora.</a></p>
@@ -159,7 +154,7 @@ class Login extends Component {
                 </p>
                 <br></br>
                 <br></br>
-                <input type="button" className="btn-primero" value="Ayudas We Raisen" onClick={() => this.setState({ goToHelp: true })} />
+                <input type="button" className="btn-primero" value="Más información" onClick={() => this.setState({ goToHelp: true })} />
             <div className="continuar2"><a href="#Inicio" className=""><img className="imag" src={scroll2} alt={"WER"} width="50" /> </a></div>
           </div>
         </div>

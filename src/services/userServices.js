@@ -237,11 +237,11 @@ class userServices {
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
-	static async getUsersReportedByReason() {
-		const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
-		const headers = { 'Content-Type': 'application/json' }
-		return axios.get(url, { headers })
-	}
+	// static async getUsersReportedByReason() {
+	// 	const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
+	// 	const headers = { 'Content-Type': 'application/json' }
+	// 	return axios.get(url, { headers })
+	// }
 
 	static async getCategoriesPerGender() {
 		const url = `${customUrl}/api/v1/charts/categoriesPerGender`
@@ -352,16 +352,19 @@ static async getCategoriesPerCity(){
 		return axios.put(url, body, { headers })
 	}
 
-	static async updateCompliantStatus({
-		userId,
-		status,
+
+	static async sendEmail({
+		emailDestino,
+		origen
+	
 	}) {
-		const url = `${customUrl}/api/v1/admin/${userId}`
+		const url = `${customUrl}/api/v1/notifications/sendEmail`
 		const headers = { 'Content-Type': 'application/json' }
-		const body = {
-			status
+		const body = {		
+			emailDestino,
+			origen			
 		}
-		return axios.put(url, body, { headers })
+		return axios.post(url, body, { headers })
 	}
 
 	static async createCompliant({
