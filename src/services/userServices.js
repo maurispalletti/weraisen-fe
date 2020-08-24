@@ -353,6 +353,21 @@ static async getCategoriesPerCity(){
 	}
 
 
+	static async sendEmail({
+		emailDestino,
+		origen
+	
+	}) {
+		const url = `${customUrl}/api/v1/notifications/sendEmail`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {		
+			emailDestino,
+			origen			
+		}
+		return axios.post(url, body, { headers })
+	}
+
+
 	static async createCompliant({
 		userId,
 		accusedId,

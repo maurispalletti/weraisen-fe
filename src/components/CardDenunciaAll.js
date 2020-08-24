@@ -22,6 +22,12 @@ class CardDenuncia extends Component {
           compliantId,
           status,
         })
+        //manod mail
+        await userServices.sendEmail({
+          emailDestino: this.state.accused.email,
+          origen: 4
+        })
+
       }
     } catch (error) {
       console.log(error)
