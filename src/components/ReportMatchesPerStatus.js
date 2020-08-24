@@ -9,23 +9,23 @@ ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
 let chartConfigs;
 
-class GraficoUsersPerAge extends React.Component {
+class GraficomatchesPerStatus extends React.Component {
    
 
 
     UNSAFE_componentWillMount() {
 
-        console.log(this.props.usersPerAge)
+        console.log(this.props.matchesPerStatus)
         
-        const { usersPerAge } = this.props;
+        const { matchesPerStatus } = this.props;
 
 
 
 
         chartConfigs = {
             type: 'pie2d',// The chart type
-            width: '85%', // Width of the chart
-			height: '50%', // Height of the chart
+            width: '100%', // Width of the chart
+            height: '50%', // Height of the chart
             showlegend:"1",
             showpercentvalues:"1",
             legendposition:"bottom",
@@ -33,15 +33,15 @@ class GraficoUsersPerAge extends React.Component {
             dataFormat: 'json', // Data type
             dataSource: {
                 "chart": {
-                    "caption": "Porcentaje de usuarios por edad",
+                    "caption": "Porcentaje de encuentros por su estado",
                     "subCaption": "",
-                    "xAxisName": "Rango de edad",
-                    "yAxisName": "Cantidad de usuarios",
+                    "xAxisName": "Estado",
+                    "yAxisName": "Cantidad de encuentros",
                     "theme": "fusion",
-                    "plottooltext":"<b>$percentValue</b> de usuarios entre $label años "
+                    "plottooltext":"<b>$percentValue</b> de encuentros $label  "
                 },
                 
-                    "data": usersPerAge
+                    "data": matchesPerStatus
                 
             }
         };
@@ -58,4 +58,4 @@ class GraficoUsersPerAge extends React.Component {
 
 }
 
-export default GraficoUsersPerAge
+export default GraficomatchesPerStatus

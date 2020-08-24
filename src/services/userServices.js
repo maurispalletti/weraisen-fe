@@ -396,6 +396,19 @@ static async getCategoriesPerCity(){
 		}
 		return axios.post(url, body, { headers })
 	}
+
+	//informes para el guia
+	static async getMatchesPerMonthForGuide(userId) {
+		const url = `${customUrl}/api/v1/charts/matchesPerMonthForGuide/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+	
+	static async getMatchesByStatusForGuide(userId) {
+		const url = `${customUrl}/api/v1/charts/getMatchesByStatusForGuide/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
 }
 
 export default userServices

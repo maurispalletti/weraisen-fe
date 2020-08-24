@@ -44,8 +44,8 @@ console.log(aventura)
 
 		chartConfigs = {
 			type: 'stackedcolumn2d',// The chart type
-			width: '700', // Width of the chart
-			height: '400', // Height of the chart
+			width: '85%', // Width of the chart
+			height: '50%', // Height of the chart
 			showlegend: "1",
 			showpercentvalues: "1",
 			legendposition: "bottom",
