@@ -18,10 +18,17 @@ class CardDenuncia extends Component {
     const { compliantId } = this.props
     try {
       if (compliantId) {
+        console.log(compliantId);
         await userServices.updateCompliantStatus({
           compliantId,
           status,
         })
+        //manod mail
+        await userServices.sendEmail({
+          emailDestino: this.state.accused.email,
+          origen: 4
+        })
+
       }
     } catch (error) {
       console.log(error)

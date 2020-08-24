@@ -237,11 +237,11 @@ class userServices {
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
-	static async getUsersReportedByReason() {
-		const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
-		const headers = { 'Content-Type': 'application/json' }
-		return axios.get(url, { headers })
-	}
+	// static async getUsersReportedByReason() {
+	// 	const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
+	// 	const headers = { 'Content-Type': 'application/json' }
+	// 	return axios.get(url, { headers })
+	// }
 
 	static async getCategoriesPerGender() {
 		const url = `${customUrl}/api/v1/charts/categoriesPerGender`
@@ -356,12 +356,26 @@ static async getCategoriesPerCity(){
 		userId,
 		status,
 	}) {
-		const url = `${customUrl}/api/v1/admin/${userId}`
+		const url = `${customUrl}/api/v1/admin/compliant/${compliantId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			status
 		}
 		return axios.put(url, body, { headers })
+	}
+
+	static async sendEmail({
+		emailDestino,
+		origen
+	
+	}) {
+		const url = `${customUrl}/api/v1/notifications/sendEmail`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {		
+			emailDestino,
+			origen			
+		}
+		return axios.post(url, body, { headers })
 	}
 
 	static async createCompliant({
