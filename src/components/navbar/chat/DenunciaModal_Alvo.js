@@ -150,8 +150,8 @@ class DenunciaModal_Alvo extends Component {
          </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.onHide}>Denunciar</Button>
-          <Button onClick={this.props.onHide}>Cancelar</Button>
+         <input type="submit" className="primary" value={"Denunciar"} />
+         <Button onClick={this.props.onHide}>Cancelar</Button>
         </Modal.Footer>
         </Form>
           </Formik>
