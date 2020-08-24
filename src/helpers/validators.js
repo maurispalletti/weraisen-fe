@@ -40,10 +40,11 @@ export function GuideProfileSchema () {
   return Yup.object().shape({
     description: Yup.string().required('Ingresa una descripción'),
     city: Yup.string().required('Selecciona una ciudad'),      
-    
+    knowledges: Yup.array().required('Selecciona al menos una categoría'),
+    languages: Yup.array().required('Selecciona al menos un lenguaje'),
+    availableDays:Yup.array().required('Selecciona al menos un día')
   })
 }
-
 export function ProfileSchema () {
   return Yup.object().shape({
     firstName: Yup.string().required('Ingresa tu nombre'),

@@ -51,6 +51,7 @@ const cities = [
   { value: "San Martín de los Andes", description: 'San Martín de los Andes' },
   { value: "San Miguel de Tucumán", description: 'San Miguel de Tucumán' },
   { value: "San Rafael", description: 'San Rafael' },
+
   { value: "San Salvador de Jujuy", description: 'San Salvador de Jujuy' },
   { value: "Santa Fe", description: 'Santa Fe' },
   { value: "Santa Rosa", description: 'Santa Rosa' },
@@ -189,23 +190,23 @@ class GuideProfile extends Component {
                   </div>
                   <div className="Seccion">
                     <h2>Localidad de residencia</h2>
-                    <DropdownGender name="city" styleName={"input"} options={cities} />
+                    <DropdownGender name="city" styleName={"input"} options={cities} required />
                   </div>
                   <div className="Seccion">
                     <h2>Idiomas que manejás</h2>
                     <div className="container-fluid">
-                      <BotonSombreado onCategoryChange={this.handleLanguages} defaultSelected={this.state.languages}/>
+                      <BotonSombreado name="languages" onCategoryChange={this.handleLanguages} defaultSelected={this.state.languages} required/>
                     </div>
                   </div>
                   <div className="Seccion">
                     <h2>Días disponibles</h2>
                     <div className="container-fluid">
-                      <DiasDisponible onCategoryChange={this.handleAvailableDays} defaultSelected={this.state.availableDays}/>
+                      <DiasDisponible name="availableDays" onCategoryChange={this.handleAvailableDays} defaultSelected={this.state.availableDays} required/>
                     </div>
                   </div>
                   <div className="LastSection">
                     <h2>Conocimientos que posees</h2>
-                    <Categorias onCategoryChange={this.handleCategory} defaultSelected={this.state.knowledge}></Categorias>
+                    <Categorias name="knowledges" onCategoryChange={this.handleCategory} defaultSelected={this.state.knowledge} required></Categorias>
                   </div>
                   <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="salidaGrupal" checked={this.state.groupwalk} onChange={() => this.setState({ groupwalk: !this.state.groupwalk })} />
