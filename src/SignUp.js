@@ -183,15 +183,15 @@ class SignUp extends Component {
             <h2>Creá tu cuenta</h2>
             <div className="title">
 
-              <FieldWithError name="firstName" placeholder="Ingresá tu nombre" pattern="[a-zA-Z]+" aria-label="firstName" className="input" />
+              <FieldWithError name="firstName" placeholder="Ingresá tu nombre"  aria-label="firstName" className="input" />
             Nombre
             </div>
             <div className="title">
-              <FieldWithError name="lastName" type="text" pattern="[a-zA-Z]+" placeholder="Ingresá tu apellido" aria-label="lastName" className="input" />
+              <FieldWithError name="lastName" type="text"  placeholder="Ingresá tu apellido" aria-label="lastName" className="input" />
             Apellido
             </div>
             <div className="title">
-              <FieldWithError name="identification" placeholder="Ingresá tu número de documento" aria-label="identification" className="input" pattern="[1,9]{1,15}" />
+              <FieldWithError name="identification" placeholder="Ingresá tu número de documento" aria-label="identification" className="input"  />
             Documento
             </div>
 
