@@ -367,7 +367,6 @@ static async getCategoriesPerCity(){
 		return axios.post(url, body, { headers })
 	}
 
-
 	static async createCompliant({
 		userId,
 		accusedId,
