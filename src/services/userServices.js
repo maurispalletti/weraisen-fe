@@ -352,6 +352,17 @@ static async getCategoriesPerCity(){
 		return axios.put(url, body, { headers })
 	}
 
+	static async updateCompliantStatus({
+		compliantId,
+		status,
+	}) {
+		const url = `${customUrl}/api/v1/admin/compliant/${compliantId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			status
+		}
+		return axios.put(url, body, { headers })
+	}
 
 	static async sendEmail({
 		emailDestino,
