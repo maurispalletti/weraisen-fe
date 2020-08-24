@@ -353,7 +353,7 @@ static async getCategoriesPerCity(){
 	}
 
 	static async updateCompliantStatus({
-		userId,
+		compliantId,
 		status,
 	}) {
 		const url = `${customUrl}/api/v1/admin/compliant/${compliantId}`
