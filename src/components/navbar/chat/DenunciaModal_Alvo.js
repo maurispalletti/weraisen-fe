@@ -42,10 +42,10 @@ class DenunciaModal_Alvo extends Component {
           reason = "Sexual"
        }
         if (this.state.discriminacion) { 
-          reason = "Discriminacion"
+          reason = "Discriminación"
        }
         if (this.state.suplantacion) { 
-        reason = "Suplantacion"
+        reason = "Suplantación"
         }
       if (this.state.otro) { 
         reason = "Otro"
