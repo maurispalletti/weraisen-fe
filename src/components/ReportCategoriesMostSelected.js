@@ -24,10 +24,10 @@ class GraficoCategoriesMostSetelcted extends React.Component {
             dataFormat: 'json', // Data type
             dataSource: {
                 "chart": {
-                    "caption": "Cantidad de usuarios por categoría",
+                    "caption": "Cantidad de guías por categoría",
                     "subCaption": "",
                     "xAxisName": "Categorías",
-                    "yAxisName": "Cantidad de usuarios",
+                    "yAxisName": "Cantidad de guías",
                     "theme": "fusion",
 
 
@@ -58,7 +58,7 @@ class GraficoCategoriesMostSetelcted extends React.Component {
                 ],
                 "dataset": [
                     {
-                        "seriesname": "Cantidad de usuarios por categoría",
+                        "seriesname": "Cantidad de guías por categoría",
                         "color": "#9CD6AE",
                         "data": [
                             {

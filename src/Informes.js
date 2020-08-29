@@ -284,11 +284,11 @@ class Informes extends Component {
             </div>
 
             <div class="form-group" style={{ padding: "10px" }}>
-              <label for="usuarios" style={{ fontWeight: "bold", color: "#F9AA68", fontSize: "15px" }}>Informes de categorías</label>
+              <label for="usuarios" style={{ fontWeight: "bold", color: "#F9AA68", fontSize: "15px" }}>Informes de categorías elegidas por guía</label>
               <div class="checkbox" id="categorias" style={{ textAlign: "left" }}>
-                <input checked={this.state.categoriesMostSelectedSelect} onChange={() => this.setState({ categoriesMostSelectedSelect: !this.state.categoriesMostSelectedSelect })} name="categoriesMostSelected" type="checkbox" /> Categorías más elegidas <br></br>
-                <input checked={this.state.categoriesPerGenderSelect} onChange={() => this.setState({ categoriesPerGenderSelect: !this.state.categoriesPerGenderSelect })} name="categoriesPerGender" type="checkbox" /> Categorías elegidas por género <br></br>
-                <input checked={this.state.categoriesPerCitySelect} onChange={() => this.setState({ categoriesPerCitySelect: !this.state.categoriesPerCitySelect })} name="categoriesPerCity" type="checkbox" /> Categorías elegidas por ciudad<br></br>
+                <input checked={this.state.categoriesMostSelectedSelect} onChange={() => this.setState({ categoriesMostSelectedSelect: !this.state.categoriesMostSelectedSelect })} name="categoriesMostSelected" type="checkbox" /> Cantidad de guías por categoría <br></br>
+                <input checked={this.state.categoriesPerGenderSelect} onChange={() => this.setState({ categoriesPerGenderSelect: !this.state.categoriesPerGenderSelect })} name="categoriesPerGender" type="checkbox" /> Cantidad de guías por género <br></br>
+                <input checked={this.state.categoriesPerCitySelect} onChange={() => this.setState({ categoriesPerCitySelect: !this.state.categoriesPerCitySelect })} name="categoriesPerCity" type="checkbox" /> Cantidad de guías por ciudad<br></br>
               </div>
             </div>
           </div>
