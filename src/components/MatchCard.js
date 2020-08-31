@@ -93,7 +93,7 @@ export default class MatchCard extends Component {
     }
     if (status === 'Activo') {
       return (
-        <h4 className="card-text" style={{ textAlign: "center", width: 'auto', color: '#3AA02C' }}>Encuentro activo </h4>
+        <h3 className="card-text" style={{ textAlign: "center", width: 'auto', color: '#3AA02C' }}>Encuentro pendiiente </h3>
       )
     }
     if (status === 'Finalizado') {
@@ -103,7 +103,7 @@ export default class MatchCard extends Component {
     }
     if (status === 'Cancelado') {
       return (
-        <h4 className="card-text" style={{ textAlign: "center", width: 'auto', color: '#F03131' }}> Encuentro cancelado  </h4>
+        <h3 className="card-text" style={{ textAlign: "center", width: 'auto', color: '#F03131' }}> Encuentro cancelado  </h3>
       )
     }
     if (status === 'Anulado') {

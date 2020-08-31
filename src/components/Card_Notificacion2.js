@@ -32,7 +32,7 @@ class Card_Notificacion2 extends Component {
 								<Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.redirectToChat()}>Ir al chat</Button>
 								{/* <Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.setState({ goToChat: true })}>Ir al chat</Button> */}
 
-								<p className="card-title" style={{ marginBottom: "0px",   fontSize: '12px'  }}>{fecha}  {hora}</p>
+								{/* <p className="card-title" style={{ marginBottom: "0px",   fontSize: '12px'  }}>{fecha}  {hora}</p> */}
 						
 									</div>
 								</div>
