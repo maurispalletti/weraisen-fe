@@ -24,24 +24,27 @@ export default class MatchCard extends Component {
     }
   }
 
-  getFormattedDate(dat) {
+  getFormattedDate(dat) {;
+    console.log("fecha created" + dat);
     if (dat !== undefined) {
       const date = new Date(dat);
       const day = date.getUTCDate()
-      let hour = ('0' + date.getUTCHours()).slice(-2)
+      let hour = ('0' + date.getUTCHours()).slice(-2) - 3
       let minute = ('0' + date.getMinutes()).slice(-2)
       const month = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
       var year = date.getFullYear()
       if (hour !== "00") {
-        return day + "/" + month + "/" + year + "  " + (hour - 3) + ":" + minute;
+        console.log(day + "/" + month + "/" + year + "  " + hour + ":" + minute)
+        return day + "/" + month + "/" + year + "  " + hour + ":" + minute;
       }
       else {
+        console.log(day + "/" + month + "/" + year +"entro");
         return day + "/" + month + "/" + year;
 
       }
     }
   }
-  getFormattedDateN(dat) {
+  renderFecha(dat) {
     if (dat !== undefined) {
       const date = new Date(dat);
       const day = date.getUTCDate()
@@ -50,10 +53,21 @@ export default class MatchCard extends Component {
       const month = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
       var year = date.getFullYear()
       if (hour !== "00") {
-        return day + "/" + month + "/" + year + "  " + hour + ":" + minute;
+        return (
+          <div>
+            <h6 className="card-text" style={{ textAlign: "left", width: 'auto', color: 'white' }}>Fecha: {day + "/" + month + "/" + year } </h6>
+            <h6 className="card-text" style={{ textAlign: "left", width: 'auto', color: 'white' }}>Hora: { hour + ":" + minute} </h6>
+          </div>
+
+        )
       }
       else {
-        return day + "/" + month + "/" + year;
+        return (
+          <div>
+              <h6 className="card-text" style={{ textAlign: "center", width: 'auto', color: 'white' }}>Fecha: {day + "/" + month + "/" + year } </h6>
+
+          </div>
+        )
 
       }
     }
@@ -88,27 +102,47 @@ export default class MatchCard extends Component {
 
     if (status === 'Pendiente') {
       return (
-        <h3 className="card-text" style={{ textAlign: "center", width: 'auto' }}>Esperando aprobación </h3>
-      )
+        <div>
+          <br></br>
+          <br></br>
+          <h4 className="card-text" style={{ textAlign: "center", width: 'auto' }}>Esperando aprobación </h4>
+   
+      </div>)
     }
     if (status === 'Activo') {
       return (
-        <h3 className="card-text" style={{ textAlign: "center", width: 'auto', color: '#3AA02C' }}>Encuentro pendiiente </h3>
-      )
+        <div>
+        <h4 className="card-text" style={{ textAlign: "left", width: 'auto', color: '#3AA02C' }}>Encuentro pendiente </h4>
+       {this.renderFecha(this.props.matchDate)}
+        </div>
+        )
     }
     if (status === 'Finalizado') {
       return (
-        <h3 className="card-text" style={{ textAlign: "center", width: 'auto' }}>Encuentro finalizado </h3>
+        <div>
+        <br></br>
+        <br></br>
+        <h4 className="card-text" style={{ textAlign: "left", width: 'auto', color: '#F03131' }}>Encuentro finalizado </h4>
+        </div>
       )
     }
     if (status === 'Cancelado') {
       return (
-        <h3 className="card-text" style={{ textAlign: "center", width: 'auto', color: '#F03131' }}> Encuentro cancelado  </h3>
-      )
+        <div>
+        <br></br>
+        <br></br>
+        <h4 className="card-text" style={{ textAlign: "left", width: 'auto', color: '#F03131' }}> Encuentro cancelado  </h4>
+      
+        </div>
+        )
     }
     if (status === 'Anulado') {
       return (
-        <h3 className="card-text" style={{ textAlign: "center", width: 'auto' }}>Solicitud rechazada</h3>
+        <div>
+        <br></br>
+        <br></br>
+        <h4 className="card-text" style={{ textAlign: "left", width: 'auto', color: '#F03131' }}>Solicitud rechazada</h4>
+        </div>
       )
     }
 
@@ -129,25 +163,26 @@ export default class MatchCard extends Component {
     return (
       <div style={{ marginBottom: 10 }}>
         <div className="card col-sm-12 col-xs-12 " style={{ maxWidth: '400px', margin: '0px auto' }} >
+        <h3 className="card-title" style={{ marginTop: 18, marginBottom: 10, textAlign: "center" }}>{roleName}: {partnerName}</h3>
           <div className="row no-gutters ">
             <div className="col-sm-4 col-4" style={{ display: 'flex', alignItems: 'center', marginTop: 10, marginBottom: 10 }}>
               <img src={imgsrcWithFallback} style={{ width: '100px', height: '100px', objectFit: 'cover' }} className="card-img img-fluid" alt="..." />
             </div>
             <div className="col-sm-8 col-8"  >
               <div style={{ paddingLeft: 20, textAlign: 'center' }}>
-                <h3 className="card-title" style={{ marginTop: 18, marginBottom: 10, textAlign: "center" }}>{roleName}: {partnerName}</h3>
-                <br></br>
-                <div><h6 className="card-text" style={{ textAlign: "center", width: 'auto', color: 'white' }}>Fecha del encuentro: {this.getFormattedDateN(this.props.matchDate)} </h6></div>
-                <br></br>
+      
                 <div> {this.renderStatus()} </div>
-                <br></br>
+
                 <div className="row mb-2" style={{ marginTop: 10 }}>
                   {this.renderButtons()}
                 </div>
-                <div> <h6 className="card-text" style={{ textAlign: "right", marginBottom: '10px', width: 'auto', color: '#96989A', fontSize: '11px' }}>{this.getFormattedDate(this.props.date)} </h6></div>
+                <div>
+                </div>
               </div>
             </div>
           </div>
+          <h6 className="card-text" style={{ textAlign: "center", marginBottom: '10px', width: 'auto', color: '#96989A', fontSize: '11px' }}>Fecha y hora de la solicitud: {this.getFormattedDate(this.props.date)} </h6>
+
         </div>
       </div>
     )
