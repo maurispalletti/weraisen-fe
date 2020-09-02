@@ -14,20 +14,20 @@ class GraficoCityPerMatch extends React.Component {
 		console.log(this.props.citiesPerMatches)
 		const { citiesPerMatches } = this.props;
 
-		const arrayCategories= []
-		const arrayLabels=[]
+		const arrayCategories = []
+		const arrayLabels = []
 
 		for (let index = 0; index < citiesPerMatches.length; index++) {
 			const ciudad = citiesPerMatches[index];
-			
-			
-				arrayCategories.push({label: ciudad.category})
-				arrayLabels.push({value: ciudad.value, color: "#9CD6AE"})
-			
+
+
+			arrayCategories.push({ label: ciudad.category })
+			arrayLabels.push({ value: ciudad.value, color: "#9CD6AE" })
+
 		}
 
 
-		
+
 		chartConfigs = {
 			type: 'mscolumn2d',// The chart type
 			width: '85%', // Width of the chart
@@ -43,9 +43,9 @@ class GraficoCityPerMatch extends React.Component {
 				},
 				"categories": [
 					{
-						"category":  arrayCategories
-												
-						
+						"category": arrayCategories
+
+
 					}
 				],
 				"dataset": [
@@ -53,9 +53,9 @@ class GraficoCityPerMatch extends React.Component {
 						"seriesname": "Ciudades elegidas",
 						"color": "#9CD6AE",
 						"data": arrayLabels
-								
-						
-						
+
+
+
 					},
 				]
 			}
@@ -65,10 +65,28 @@ class GraficoCityPerMatch extends React.Component {
 
 	render() {
 		return (
-			
-            <ReactFC style={{float:"left"}}
-                {...chartConfigs} />
-               
+			<div>
+				<ReactFC style={{ float: "left" }}
+					{...chartConfigs} />
+
+				<fieldset class="form-group">
+
+					<div class="form-check">
+						<label class="form-check-label">
+							<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="2019" />
+								2019
+        					</label>
+					</div>
+					<div class="form-check">
+						<label class="form-check-label">
+							<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="2020" />
+									2020
+       					 </label>
+					</div>
+				</fieldset>
+			</div>
+
+
 		);
 	}
 }

@@ -73,7 +73,7 @@ class Informes extends Component {
         this.setState({
           categoriesPerCities: data,
         });
-        console.log(this.state.categoriesPerCities)
+        
       }
     } catch (error) {
       console.error(`There was an error trying to get the matches per categories`)
@@ -90,7 +90,7 @@ class Informes extends Component {
         this.setState({
           matchesPerCategories: data,
         });
-        
+
       }
     } catch (error) {
       console.error(`There was an error trying to get the matches per categories`)
@@ -141,7 +141,7 @@ class Informes extends Component {
         this.setState({
           categoriesPerGender: data,
         });
-
+console.log(this.state.categoriesPerGender)
       }
     } catch (error) {
       console.error(`There was an error trying to get the category per gender data`)
@@ -194,7 +194,7 @@ class Informes extends Component {
         this.setState({
           usersCreatedPerMonth: data,
         });
-
+console.log(this.state.usersCreatedPerMonth)
       }
     } catch (error) {
       console.error(`There was an error trying to get the citiesPerMonth data`)

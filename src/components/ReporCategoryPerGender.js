@@ -29,8 +29,6 @@ class GraficoCategoryPerGender extends React.Component {
                     "xAxisName": "Categorías",
                     "yAxisName": "Cantidad de usuarios",
                     "theme": "fusion",
-
-
                 },
                 "categories": [
                     {
