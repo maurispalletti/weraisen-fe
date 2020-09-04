@@ -26,7 +26,7 @@ class Card_Notificacion1 extends Component {
 								<div className="col text-center">
 								<Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.setState({ goToReview: true })}>Puntuar</Button>
 
-								<p className="card-title" style={{ marginBottom: "0px",   fontSize: '12px'  }}>{fecha}  {hora}</p>
+								{/* <p className="card-title" style={{ marginBottom: "0px",   fontSize: '12px'  }}>{fecha}  {hora}</p> */}
 									
 									</div>
 								</div>

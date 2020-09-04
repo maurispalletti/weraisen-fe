@@ -82,8 +82,7 @@ export default class Card_Guia extends React.Component {
       let age = this.calcularEdad(birthDate);
       const guiaSelec = this.props.guideId;
 
-      average = this.state.average;
-      
+      average = this.state.average.toFixed(1);
       return (
         <div className="card col-sm-12 col-xs-12" style={{ maxWidth: '400px', margin:'0px auto'  }}>
 
