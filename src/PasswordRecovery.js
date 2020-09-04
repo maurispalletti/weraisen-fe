@@ -49,7 +49,7 @@ class PasswordRecovery extends Component {
                             validationSchema={PasswordRecoverySchema}
                             onSubmit={(values) => this.sendEmail(values)}>
                             <Form>
-                                <p>Ingresa tu email para restablecer tu contraseña</p>
+                                <p>Ingresá tu email para restablecer tu contraseña</p>
                                 <FieldWithError name="email" aria-label="username" className="input" autoComplete="off" />Email
 
                             <div className="right-container" style={{ paddingTop: "50px" }}>
