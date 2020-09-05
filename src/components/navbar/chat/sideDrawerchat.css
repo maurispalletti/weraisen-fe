@@ -1,16 +1,16 @@
 .side-drawerchat{
     /* height: 22%; */
-    background: rgba(255,255,255,0.02);
-    box-shadow: 2px 0px 5px rgba(0,0,0,0.3);
+    background: #f9aa68;
+    box-shadow: 2px 0px 5px rgba(0,0,0);
     position: fixed;
     top:15px;
     right: 10px;
  
-    color:rgba(255,255,255,0.04) !important;
+    color: black !important;
     z-index: 200;
     cursor: pointer;
     font-family: 'Lato', sans-serif !important;
-      font-size: 1.2rem;
+      font-size: 18px;
     
 }
 
@@ -18,21 +18,21 @@
     list-style:none;
     margin-left: 0;
     padding-left: 5px;
-    color:white;
+    color: black;
 
 } 
 
  .side-drawerchat li{
     margin:0.5rem 0;
     margin-left: 0;
-    color:white;
+    color:black;
 }
 
 .side-drawerchat a{
     color: #94a0af;
     text-decoration: none;
     font-size: 1rem;
-    color:white;
+    color:black;
 }
 
 .side-drawerchat a:hover, .side-drawerchat a:active {
