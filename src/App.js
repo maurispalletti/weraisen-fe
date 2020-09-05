@@ -24,6 +24,7 @@ import PasswordRecovery from './PasswordRecovery'
 import ChangePassword from './ChangePassword'
 
 
+
 const history = createBrowserHistory();
 
 function App() {
@@ -49,8 +50,9 @@ function App() {
       <Route exact path={'/guideView'} component={GuideView}/>
       <Route exact path={'/MyReviews'} component={MyReviews}/>
       <Route exact path={'/PasswordRecovery'} component={PasswordRecovery}/>
-      <Route exact path={'/ChangePassword'} component={ChangePassword}/>
+      <Route exact path={'/ChangePassword/:userIdRecovery'} component={ChangePassword}/>
       <Route exact path={'/help'} component={Help}/>
+      
 
       <Route component={Error} />
       </Switch>
