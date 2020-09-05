@@ -249,11 +249,6 @@ class userServices {
 		return axios.get(url, { headers })
 	}
 
-	static async getCategoriesMostSelected() {
-		const url = `${customUrl}/api/v1/charts/categoriesMostSelected`
-		const headers = { 'Content-Type': 'application/json' }
-		return axios.get(url, { headers })
-	}
 	static async getUsersPerAge() {
 		const url = `${customUrl}/api/v1/charts/usersPerAge`
 		const headers = { 'Content-Type': 'application/json' }

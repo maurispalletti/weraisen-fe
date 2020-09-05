@@ -8,7 +8,6 @@ import GraficoCityPerMonth from './components/ReportCityPerMonth';
 import GraficoEncuentrosPorMes from './components/ReportMatchesPorMes';
 import GraficoNewUserPerMonth from './components/ReportNewUsersPerMonth';
 import GraficoCompliantsPerReason from './components/ReportCompliantsPerReason';
-import GraficoCategoriesMostSetelcted from './components/ReportCategoriesMostSelected';
 import GraficoUsersPerAge from './components/ReportUsersPerAge';
 import GraficoUsersPerLanguages from './components/ReportUsersPerLanguages';
 import GraficoUsersPerGender from './components/ReportUsersPerGender';
@@ -23,7 +22,6 @@ class Informes extends Component {
     citiesPerMatch: null,
     usersCreatedPerMonth: null,
     usersReportedPerReason: null,
-    categoriesMostSelected: null,
     usersCreatedPerAge: null,
     matchesPerCategories: null,
     usersPerLanguages: null,
@@ -40,7 +38,6 @@ class Informes extends Component {
     usersCreatedPerAgeSelect: false,
     usersPerLanguagesSelect: false,
 
-    categoriesMostSelectedSelect: false,
     categoriesPerGenderSelect: false,
     categoriesPerCitySelect: false
 
@@ -58,7 +55,6 @@ class Informes extends Component {
     this.getUsersReportedPerReason();
     this.getCategoriesPerGender();
     this.getCitiesPerMatch();
-    this.getCategoriesMostSelected();
     this.getMatchesPerCategories();
 
   }
@@ -73,7 +69,7 @@ class Informes extends Component {
         this.setState({
           categoriesPerCities: data,
         });
-        
+
       }
     } catch (error) {
       console.error(`There was an error trying to get the matches per categories`)
@@ -141,31 +137,13 @@ class Informes extends Component {
         this.setState({
           categoriesPerGender: data,
         });
-console.log(this.state.categoriesPerGender)
+        console.log(this.state.categoriesPerGender)
       }
     } catch (error) {
       console.error(`There was an error trying to get the category per gender data`)
     }
   }
-  getCategoriesMostSelected = async () => {
-
-    try {
-
-      const response = await userServices.getCategoriesMostSelected()
-
-      if (response.data) {
-        const { data } = response;
-
-        this.setState({
-          categoriesMostSelected: data,
-        });
-
-      }
-    } catch (error) {
-      console.error(`There was an error trying to get the categories most selected`)
-    }
-  }
-  getMatchesPerMonth = async () => {
+    getMatchesPerMonth = async () => {
     try {
       const response = await userServices.getMatchesPerMonth()
 
@@ -194,7 +172,7 @@ console.log(this.state.categoriesPerGender)
         this.setState({
           usersCreatedPerMonth: data,
         });
-console.log(this.state.usersCreatedPerMonth)
+        console.log(this.state.usersCreatedPerMonth)
       }
     } catch (error) {
       console.error(`There was an error trying to get the citiesPerMonth data`)
@@ -286,8 +264,7 @@ console.log(this.state.usersCreatedPerMonth)
             <div class="form-group" style={{ padding: "10px" }}>
               <label for="usuarios" style={{ fontWeight: "bold", color: "#F9AA68", fontSize: "15px" }}>Informes de categorías</label>
               <div class="checkbox" id="categorias" style={{ textAlign: "left" }}>
-                <input checked={this.state.categoriesMostSelectedSelect} onChange={() => this.setState({ categoriesMostSelectedSelect: !this.state.categoriesMostSelectedSelect })} name="categoriesMostSelected" type="checkbox" /> Categorías más elegidas <br></br>
-                <input checked={this.state.categoriesPerGenderSelect} onChange={() => this.setState({ categoriesPerGenderSelect: !this.state.categoriesPerGenderSelect })} name="categoriesPerGender" type="checkbox" /> Categorías elegidas por género <br></br>
+                <input checked={this.state.categoriesPerGenderSelect} onChange={() => this.setState({ categoriesPerGenderSelect: !this.state.categoriesPerGenderSelect })} name="categoriesPerGender" type="checkbox" /> Categorías más elegidas<br></br>
                 <input checked={this.state.categoriesPerCitySelect} onChange={() => this.setState({ categoriesPerCitySelect: !this.state.categoriesPerCitySelect })} name="categoriesPerCity" type="checkbox" /> Categorías elegidas por ciudad<br></br>
               </div>
             </div>
@@ -316,9 +293,6 @@ console.log(this.state.usersCreatedPerMonth)
             </div>
             <div className="GraphicWrapper" style={{ padding: "10px" }} >
               {this.state.usersCreatedPerAge && this.state.usersCreatedPerAgeSelect && <GraficoUsersPerAge usersPerAge={this.state.usersCreatedPerAge} />}
-            </div>
-            <div className="GraphicWrapper" style={{ padding: "10px" }} >
-              {this.state.categoriesMostSelected && this.state.categoriesMostSelectedSelect && <GraficoCategoriesMostSetelcted categoriesMostSelected={this.state.categoriesMostSelected} />}
             </div>
             <div className="GraphicWrapper" style={{ padding: "10px" }} >
               {this.state.usersPerLanguagesSelect && this.state.usersPerLanguages && <GraficoUsersPerLanguages usersPerLanguages={this.state.usersPerLanguages} />}

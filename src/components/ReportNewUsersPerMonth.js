@@ -22,7 +22,7 @@ class GraficoNewUserPerMonth extends React.Component {
         chartConfigs = {
             type: 'mscolumn2d',// The chart type
             width: '85%', // Width of the chart
-            height: '50%', // Height of the chart
+            height: '85%', // Height of the chart
             dataFormat: 'json', // Data type
             dataSource: {
                 "chart": {
