@@ -50,7 +50,7 @@ function App() {
       <Route exact path={'/guideView'} component={GuideView}/>
       <Route exact path={'/MyReviews'} component={MyReviews}/>
       <Route exact path={'/PasswordRecovery'} component={PasswordRecovery}/>
-      <Route exact path={'/ChangePassword'} component={ChangePassword}/>
+      <Route exact path={'/ChangePassword/:userIdRecovery'} component={ChangePassword}/>
       <Route exact path={'/help'} component={Help}/>
       
 
