@@ -171,7 +171,7 @@ class Login extends Component {
                 </p>
                 <br></br>
                 <br></br>
-                <input type="button" className="btn-primero" value="Ayudas We Raisen" onClick={() => this.setState({ goToHelp: true })} />
+                <input type="button" className="btn-primero" value="Más información" onClick={() => this.setState({ goToHelp: true })} />
             <div className="continuar2"><a href="#Inicio" className=""><img className="imag" src={scroll2} alt={"WER"} width="50" /> </a></div>
           </div>
         </div>

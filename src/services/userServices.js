@@ -11,6 +11,14 @@ class userServices {
 		return axios.post(url, body, { headers })
 	}
 
+	static async updatePassword({ userId, password }) {
+		const url = `${customUrl}/api/v1/users/updatePassword/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = { password }
+
+		return axios.post(url, body, { headers })
+	}
+
 	static async createUser({
 		firstName,
 		lastName,
@@ -93,6 +101,12 @@ class userServices {
 
 	static async getProfile(userId) {
 		const url = `${customUrl}/api/v1/users/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getUserIdbyEmail(email) {
+		const url = `${customUrl}/api/v1/users/email/${email}`
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
@@ -237,11 +251,11 @@ class userServices {
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
-	static async getUsersReportedByReason() {
-		const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
-		const headers = { 'Content-Type': 'application/json' }
-		return axios.get(url, { headers })
-	}
+	// static async getUsersReportedByReason() {
+	// 	const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
+	// 	const headers = { 'Content-Type': 'application/json' }
+	// 	return axios.get(url, { headers })
+	// }
 
 	static async getCategoriesPerGender() {
 		const url = `${customUrl}/api/v1/charts/categoriesPerGender`
@@ -352,6 +366,17 @@ static async getCategoriesPerCity(){
 		return axios.put(url, body, { headers })
 	}
 
+	static async updateCompliantStatus({
+		compliantId,
+		status,
+	}) {
+		const url = `${customUrl}/api/v1/admin/compliant/${compliantId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			status
+		}
+		return axios.put(url, body, { headers })
+	}
 
 	static async sendEmail({
 		emailDestino,
@@ -366,7 +391,6 @@ static async getCategoriesPerCity(){
 		}
 		return axios.post(url, body, { headers })
 	}
-
 
 	static async createCompliant({
 		userId,
@@ -385,6 +409,19 @@ static async getCategoriesPerCity(){
 			reason
 		}
 		return axios.post(url, body, { headers })
+	}
+
+	//informes para el guia
+	static async getMatchesPerMonthForGuide(userId) {
+		const url = `${customUrl}/api/v1/charts/matchesPerMonthForGuide/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+	
+	static async getMatchesByStatusForGuide(userId) {
+		const url = `${customUrl}/api/v1/charts/getMatchesByStatusForGuide/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
 	}
 }
 

@@ -55,7 +55,8 @@ class SignUp extends Component {
     acepto: false,
     front: dni1gris,
     back: dni2gris,
-    profile: icongris
+    profile: icongris,
+    repeatedEmail: false,
   }
 
   createUser = async ({
@@ -68,7 +69,7 @@ class SignUp extends Component {
     passwordRepeated,
   }) => {
     try {
-     
+
 
       if (password === passwordRepeated) {
         const birthDate = this.state.value;
@@ -87,7 +88,7 @@ class SignUp extends Component {
           console.log(`Imagen 3: ${imagenFotoPerfilUrl}`)
 
         } else {
-          this.setState({ signUpFailed: true, uploadFailed: true })
+          this.setState({ signUpFailed: true, uploadFailed: true, repeatedEmail: false })
         }
 
         const response = await userServices.createUser({
@@ -103,17 +104,20 @@ class SignUp extends Component {
           profilePicture: imagenFotoPerfilUrl.data
         })
 
-        const { data: { id } } = response
+        const { data: { id, repeatedEmail } } = response
 
-        // save Id in local storage
-        localStorage.setItem("userId", id);
+        if (repeatedEmail) {
+          this.setState({ passwordsMissmatch: false, uploadFailed: false, repeatedEmail: true, signUpFailed: false })
+        } else {
+          localStorage.setItem("userId", id);
+          this.setState({ passwordsMissmatch: false, uploadFailed: false, denunciaModalShow: true, signUpFailed: false, repeatedEmail: false })
+        }
 
-        this.setState({ passwordsMissmatch: false, uploadFailed: false, denunciaModalShow: true, signUpFailed: false })
       } else {
-        this.setState({ signUpFailed: true, passwordsMissmatch: true })
+        this.setState({ signUpFailed: true, passwordsMissmatch: true, repeatedEmail: false })
       }
     } catch (error) {
-      this.setState({ signUpFailed: true })
+      this.setState({ signUpFailed: true, repeatedEmail: false })
       console.error(`There was an error trying to create the user`)
     }
   }
@@ -183,21 +187,21 @@ class SignUp extends Component {
             <h2>Creá tu cuenta</h2>
             <div className="title">
 
-              <FieldWithError name="firstName" placeholder="Ingresa tu nombre" aria-label="firstName" className="input" />
+              <FieldWithError name="firstName" placeholder="Ingresá tu nombre" aria-label="firstName" className="input" />
             Nombre
             </div>
             <div className="title">
-              <FieldWithError name="lastName" placeholder="Ingresa tu apellido" aria-label="lastName" className="input" />
+              <FieldWithError name="lastName" type="text" placeholder="Ingresá tu apellido" aria-label="lastName" className="input" />
             Apellido
             </div>
             <div className="title">
-              <FieldWithError name="identification" placeholder="Ingresa tu documento" aria-label="identification" className="input" />
+              <FieldWithError name="identification" placeholder="Ingresá tu número de documento" aria-label="identification" className="input" />
             Documento
             </div>
 
             <div className="title">
               <FieldWithError name="age"
-                placeholder="Ingresa tu fecha de nacimiento"
+                placeholder="Ingresá tu fecha de nacimiento"
                 className="input"
                 max={this.state.min}
                 value={this.state.value}
@@ -214,12 +218,12 @@ class SignUp extends Component {
 
 
             <div className="title">
-              <FieldWithError name="email" placeholder="Ingresa tu email" aria-label="email" className="input" />
+              <FieldWithError name="email" placeholder="Ingresá tu email" aria-label="email" className="input" />
             Email
             </div>
 
             <div className="title">
-              <FieldWithError name="password" placeholder="Ingresa tu contraseña" type="password" aria-label="password" className="input" />
+              <FieldWithError name="password" placeholder="Ingresá tu contraseña" type="password" aria-label="password" className="input" />
             Contraseña
             </div>
 
@@ -277,6 +281,11 @@ class SignUp extends Component {
                 {this.state.passwordsMissmatch && (
                   <p className="form-error">
                     Las contreseñas no coinciden. Intenta de nuevo.
+                  </p>
+                )}
+                {this.state.repeatedEmail && (
+                  <p className="form-error">
+                    El email que usaste ya está registrado en nuestro sistema. Por favor intentá nuevamente con un nuevo email.
                   </p>
                 )}
                 {this.state.uploadFailed && (

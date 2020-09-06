@@ -4,8 +4,9 @@ import MyReviewCard from './components/MyReviewCard';
 import Header from '../src/components/Header'
 import './MyReviews.css';
 import userServices from './services/userServices'
-import Grafico from './components/ReporCategoryPerGender';
 
+import GraficoEncuentrosPorMesForGuide from './components/ReportMatchesPorMesForGuide';
+import GraficoMatchesPerStatus from './components/ReportMatchesPerStatus';
 let userId
 
 class MyReviews extends Component {
@@ -14,6 +15,8 @@ class MyReviews extends Component {
     searchFailed: false,
     reviews: [],
     loading: true,
+    matchesPerMonth: null,
+    matchesPerStatus: null
   }
 
 
@@ -23,17 +26,49 @@ class MyReviews extends Component {
     //this.setState({guiaIdState:userIdGuia})
     console.log("+++" + userId)
     await this.getReviews()
+    await this.getMatchesPerMonthForGuide()
+    await this.getMatchesByStatusForGuide()
   }
+  getMatchesPerMonthForGuide = async () => {
+    try {
+      const response = await userServices.getMatchesPerMonthForGuide(userId)
 
+      if (response.data) {
+        const { data } = response;
+
+        this.setState({
+          matchesPerMonth: data
+        });
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get the matchesPerMonth data`)
+    }
+  }
+  getMatchesByStatusForGuide = async () => {
+    try {
+      const response = await userServices.getMatchesByStatusForGuide(userId)
+
+      if (response.data) {
+        const { data } = response;
+
+        this.setState({
+          matchesPerStatus: data
+        });
+      }
+    } catch (error) {
+      console.error(`There was an error trying to get the matchesPerStatus data`)
+    }
+  }
   getReviews = async () => {
     try {
 
       const response = await userServices.getReviews(userId)
       if (response && response.data && response.data.length > 0) {
 
-        this.setState({ reviews: response.data, loading: false })
+        this.setState({ reviews: response.data })
         console.log(response.data)
       }
+      this.setState({ loading: false })
       return response.data;
     } catch (error) {
       console.error(`There was an error trying to get reviews: ${error}`)
@@ -98,12 +133,16 @@ class MyReviews extends Component {
 
 
     } else {
-      if (this.state.reviews.length < 1) {
+      if (this.state.reviews.length < 1 && !this.state.loading) {
         return (
           <div className="MyReviews">
             <Header />
             <div className="BodyGuide">
-              <h2>Aún no posees ninguna valoración</h2>
+              {/*<h3 style={{color:"black"}}>Aún no posees ninguna valoración</h3>*/}
+              <div className="grafico">
+                <h2>Mis Informes</h2>
+                <br></br>
+              </div>
             </div>
           </div>
         )
@@ -121,18 +160,23 @@ class MyReviews extends Component {
               <div className="grafico">
                 <h2>Mis Informes</h2>
                 <br></br>
-                <div style ={{alignContent:"center"}}>
-                <h4>Insertar gráficos</h4>
+                <div style={{ alignContent: "center" }}>
+                  <div className="GraphicWrapper" style={{ padding: "10px" }} >
+                    {this.state.matchesPerMonth && <GraficoEncuentrosPorMesForGuide matchesPerMonth={this.state.matchesPerMonth} />}
+                  </div>
+                  <div className="GraphicWrapper" style={{ padding: "10px" }} >
+                    {this.state.matchesPerStatus && <GraficoMatchesPerStatus matchesPerStatus={this.state.matchesPerStatus} />}
+                  </div>
                 </div>
-                
+
               </div>
             </div>
             <div className="buttonsSection">
               <input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToProfile: true })} />
             </div>
             {this.state.searchFailed && (
-                <p className="form-error">La búsqueda de encuentros falló. Intentá de nuevo por favor.</p>
-              )}
+              <p className="form-error">La búsqueda de encuentros falló. Intentá de nuevo por favor.</p>
+            )}
           </div>
         );
 
