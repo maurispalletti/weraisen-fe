@@ -1,6 +1,6 @@
 import React from 'react';
 import './Search.css';
-
+import { Redirect } from 'react-router'
 import neuquen from './avatars/ciudades/neuquen.png'
 import mendoza from './avatars/ciudades/mendoza.png'
 import bsas from './avatars/ciudades/bsas.png'
@@ -8,8 +8,9 @@ import cordoba from './avatars/ciudades/cordoba.png'
 import laplata from './avatars/ciudades/laplata.png'
 import mardel from './avatars/ciudades/mardel.png'
 import rosario from './avatars/ciudades/rosario.png'
-
+import Modal from '../src/components/navbar/chat/DenunciaModal_Alvo'
 import Header from '../src/components/Header'
+import { Button } from 'react-bootstrap';
 
 const provincias = [
     {
@@ -115,7 +116,10 @@ class Search1 extends React.Component {
     goToProfile: false,
     showMore: false,
     city: -1,
-    idProvincia: -1
+    idProvincia: -1,
+    citySave: false,
+    boton: false,
+    ir: false
   }
 
   mostrarFiltrosCiudades = () => {
@@ -124,28 +128,137 @@ class Search1 extends React.Component {
   }
   guardarCiudad = (ciudad) => {
     sessionStorage.setItem("filtrociudad", ciudad)
+    this.setState({ citySave: true })
+    this.setState({ boton: true })
     // localStorage.setItem("filtrociudad", ciudad)
   }
   handleCity = (values) => {
     this.setState({ city: values })
+    
     console.log(this.state.city)
+    
 
   }
 
   setearCiudad = (e) => {
 
     const opcion = e.target.value;
-    this.guardarCiudad(opcion)
+      this.guardarCiudad(opcion)
+    
 
   }
 
-  handlerCargarCiudades = (event) => {
+  handlerCargarCiudades =  (event) => {
     this.setState({ idProvincia: event.target.value });
-   
+    
+    
   }
+  validar = async () => {
+  if (this.citySave != true){
+    this.setState({ citySave: false })
+    this.setState({boton: true})
+  }
+  }
+
+  goTo (){
+    
+    this.setState({ir: true})
+    
+  }
+  
+
 
   render() {
-    return (
+    if (this.state.ir) {
+      return <Redirect to="/filters" />
+    }
+
+    if (this.state.citySave == false && this.state.boton != false) {
+			return (
+        <div className="Search">
+        <Header> </Header>
+
+        <div className="BodySearch">
+          <h2>Seleccioná la localidad que vas a visitar</h2>
+ 
+          <div className="Section1">
+          <h3>Ciudades más visitadas</h3>
+            <div> <a href="/filters"><img src={bsas} alt={"buenos aires"} width="100%" onClick={() => this.guardarCiudad("Buenos Aires")} /></a> </div>
+            <div><a href="/filters"><img src={cordoba} alt={"cordoba"} width="100%" onClick={() => this.guardarCiudad("Cordoba")} /></a></div>
+            <div><a href="/filters"><img src={laplata} alt={"laplata"} width="100%" onClick={() => this.guardarCiudad("La Plata")} /></a></div>
+            <div><a href="/filters"><img src={mardel} alt={"mardel"} width="100%" onClick={() => this.guardarCiudad("Mar del Plata")} /></a></div>
+            <div><a href="/filters"><img src={neuquen} alt={"Neuquen"} width="100%" onClick={() => this.guardarCiudad("Neuquen")} /></a></div>
+            <div><a href="/filters"><img src={mendoza} alt={"Mendoza"} width="100%" onClick={() => this.guardarCiudad("Mendoza")} /></a></div>
+            <div><a href="/filters"><img src={rosario} alt={"Rosario"} width="100%" onClick={() => this.guardarCiudad("Rosario")} /></a></div>
+          </div>
+          <br></br>
+          <h3 className="verMas" onClick={() => this.mostrarFiltrosCiudades()} >{this.state.showMore ? "Ocultar" : "Mostrar más ciudades"}</h3>
+         <br></br>
+          <div className="Filters" style={{ display: this.state.showMore ? 'block' : 'none' }}>
+          <div>
+            <div>
+                <h4>Provincia</h4>
+                <select name="provincias" className="Dropdown-search" id="selProvincias" onClick={this.handlerCargarCiudades}>
+                     <option value={-1}> Seleccionar... </option>
+                   
+                    {
+                        provincias.map((provincia, p) => (
+                            <option key={"provincia" + p} value={p}>{provincia.nombre}</option>
+                        ))
+                    }
+                                                        
+                </select>
+               
+            </div>
+            <br></br>
+            <div>
+                <h4>Ciudad</h4>
+                <select name="CIUDADES" id="selCiudad" className="Dropdown-search" onClick={this.setearCiudad} >
+                <option value={-1}> Seleccionar...</option> 
+              
+                    {
+                        this.state.idProvincia > -1 &&
+                        (
+                            provincias[this.state.idProvincia].ciudades.map((ciudad, c) => (
+                             
+                                <option key={"ciudad " + c} value={ciudad}>{ciudad}</option>
+                                
+                            ))
+                        )
+                    }
+                  
+                
+                </select>
+            </div>
+        </div>
+          <br></br>
+       <div className="ButtonSection">
+          <div>
+            <Button className="btn-primero" onClick={() => this.validar()}> Buscar guía</Button>
+          </div>
+           <div class="alert alert-dismissible alert-secondary" style={{ maxWidth: '300px', textAlign: 'center', marginLeft: 'auto', marginRight:'auto' }} role="alert">
+								<strong> Por favor ingrese una ciudad. </strong>
+               
+							</div>
+       </div>
+          <br></br>
+          </div>
+        <br></br>
+        <br></br>
+          {this.state.notLoggedInUser && (
+            <p className="form-error">Usuario no logueado.</p>
+          )}
+          {this.state.searchFailed && (
+            <p className="form-error">La búsqueda de guías falló. Intentá de nuevo.</p>
+          )}
+
+        </div>
+      </div>
+        
+      );
+    }
+    if (this.state.citySave == true && this.state.boton) {
+			return (
       <div className="Search">
         <Header> </Header>
 
@@ -170,19 +283,23 @@ class Search1 extends React.Component {
             <div>
                 <h4>Provincia</h4>
                 <select name="provincias" className="Dropdown-search" id="selProvincias" onClick={this.handlerCargarCiudades}>
-                    <option value={-1}> Seleccionar...</option>
+                     <option value={-1}> Seleccionar... </option>
+                   
                     {
                         provincias.map((provincia, p) => (
                             <option key={"provincia" + p} value={p}>{provincia.nombre}</option>
                         ))
                     }
+                                                        
                 </select>
+               
             </div>
             <br></br>
             <div>
                 <h4>Ciudad</h4>
                 <select name="CIUDADES" id="selCiudad" className="Dropdown-search" onClick={this.setearCiudad} >
-                <option value={-1}> Seleccionar...</option>
+                <option value={-1}> Seleccionar...</option> 
+              
                     {
                         this.state.idProvincia > -1 &&
                         (
@@ -193,13 +310,17 @@ class Search1 extends React.Component {
                             ))
                         )
                     }
+                  
+                
                 </select>
             </div>
         </div>
           <br></br>
-          <div className="ButtonSection">
-          <a href="/filters"><input type="button" className="btn-primero" value="Buscar guía" />
-                 </a> </div>
+       <div>
+         <div className="ButtonSection">
+           <Button className="btn-primero" onClick={() => this.goTo()}> Buscar guía</Button>
+          </div>
+       </div>
           <br></br>
           </div>
         <br></br>
@@ -213,11 +334,94 @@ class Search1 extends React.Component {
 
         </div>
       </div>
+        
+      );
+		}
+   
+    return (
+     
+      
+      <div className="Search">
+        <Header> </Header>
+
+        <div className="BodySearch">
+          <h2>Seleccioná la localidad que vas a visitar</h2>
+ 
+          <div className="Section1">
+          <h3>Ciudades más visitadas</h3>
+            <div> <a href="/filters"><img src={bsas} alt={"buenos aires"} width="100%" onClick={() => this.guardarCiudad("Buenos Aires")} /></a> </div>
+            <div><a href="/filters"><img src={cordoba} alt={"cordoba"} width="100%" onClick={() => this.guardarCiudad("Cordoba")} /></a></div>
+            <div><a href="/filters"><img src={laplata} alt={"laplata"} width="100%" onClick={() => this.guardarCiudad("La Plata")} /></a></div>
+            <div><a href="/filters"><img src={mardel} alt={"mardel"} width="100%" onClick={() => this.guardarCiudad("Mar del Plata")} /></a></div>
+            <div><a href="/filters"><img src={neuquen} alt={"Neuquen"} width="100%" onClick={() => this.guardarCiudad("Neuquen")} /></a></div>
+            <div><a href="/filters"><img src={mendoza} alt={"Mendoza"} width="100%" onClick={() => this.guardarCiudad("Mendoza")} /></a></div>
+            <div><a href="/filters"><img src={rosario} alt={"Rosario"} width="100%" onClick={() => this.guardarCiudad("Rosario")} /></a></div>
+          </div>
+          <br></br>
+          <h3 className="verMas" onClick={() => this.mostrarFiltrosCiudades()} >{this.state.showMore ? "Ocultar" : "Mostrar más ciudades"}</h3>
+         <br></br>
+          <div className="Filters" style={{ display: this.state.showMore ? 'block' : 'none' }}>
+          <div>
+            <div>
+                <h4>Provincia</h4>
+                <select name="provincias" className="Dropdown-search" id="selProvincias" onClick={this.handlerCargarCiudades}>
+                     <option value={-1}> Seleccionar... </option>
+                   
+                    {
+                        provincias.map((provincia, p) => (
+                            <option key={"provincia" + p} value={p}>{provincia.nombre}</option>
+                        ))
+                    }
+                                                        
+                </select>
+               
+            </div>
+            <br></br>
+            <div>
+                <h4>Ciudad</h4>
+                <select name="CIUDADES" id="selCiudad" className="Dropdown-search" onClick={this.setearCiudad} >
+                <option value={-1}> Seleccionar...</option> 
+              
+                    {
+                        this.state.idProvincia > -1 &&
+                        (
+                            provincias[this.state.idProvincia].ciudades.map((ciudad, c) => (
+                             
+                                <option key={"ciudad " + c} value={ciudad}>{ciudad}</option>
+                                
+                            ))
+                        )
+                    }
+                  
+                
+                </select>
+            </div>
+        </div>
+          <br></br>
+       <div>
+       <div className="ButtonSection">
+          <Button  className="btn-primero" onClick={() => this.validar()}> Buscar guía</Button>
+        </div>   
+       </div>
+          <br></br>
+          </div>
+        <br></br>
+        <br></br>
+          {this.state.notLoggedInUser && (
+            <p className="form-error">Usuario no logueado.</p>
+          )}
+          {this.state.searchFailed && (
+            <p className="form-error">La búsqueda de guías falló. Intentá de nuevo.</p>
+          )}
+
+        </div>
+      </div>
+    
     );
   }
+
 }
 
 export default Search1;
-
 
 
