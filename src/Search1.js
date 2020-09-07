@@ -236,7 +236,7 @@ class Search1 extends React.Component {
           <div>
             <Button className="btn-primero" onClick={() => this.validar()}> Buscar guía</Button>
           </div>
-           <div class="alert alert-dismissible alert-secondary" style={{ maxWidth: '300px', textAlign: 'center', marginLeft: 'auto', marginRight:'auto' }} role="alert">
+           <div class="alert alert-dismissible alert-secondary" style={{background: '#d48e4b', maxWidth: '300px', textAlign: 'center', marginLeft: 'auto', marginRight:'auto' }} role="alert">
 								<strong> Por favor ingrese una ciudad. </strong>
                
 							</div>
