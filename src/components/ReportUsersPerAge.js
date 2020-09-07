@@ -17,9 +17,7 @@ class GraficoUsersPerAge extends React.Component {
     state = {
         rbGenero: true,
     }
-
-    async componentDidMount() {
-
+    renderGraficos = () => {
         console.log(this.props.usersPerAge)
 
         const { usersPerAge } = this.props;
@@ -38,7 +36,7 @@ class GraficoUsersPerAge extends React.Component {
             drawcrossline: "1",
             dataSource: {
                 "chart": {
-                    "caption": "Porcentaje de usuarios por edad",
+                    "caption": "Porcentaje de usuarios por edad por género",
                     "subCaption": "",
                     "xAxisName": "Rango de edad",
                     "yAxisName": "Cantidad de usuarios",
@@ -171,7 +169,7 @@ class GraficoUsersPerAge extends React.Component {
             drawcrossline: "1",
             dataSource: {
                 "chart": {
-                    "caption": "Porcentaje de usuarios por edad",
+                    "caption": "Porcentaje de usuarios por edad por tipo de usuario",
                     "subCaption": "",
                     "xAxisName": "Rango de edad",
                     "yAxisName": "Cantidad de usuarios",
@@ -263,61 +261,36 @@ class GraficoUsersPerAge extends React.Component {
 
             }
         };
+    }
+    async componentDidMount() {
+
+        this.renderGraficos();
 
     }
 
 
     render() {
-        if (this.state.rbGenero) {
-            return (
-                <div class="container-fluid"> 
-                    <ReactFC style={{ float: "left" }}
-                        {...chartConfigs1} />
-                    <fieldset class="form-group" >
 
-                        <div class="form-check">
-                            <label class="form-check-label" style={{fontSize:"16px"}}>
-                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" defaultChecked="true" onChange={() => this.setState({ rbGenero: true })} checked={this.state.rbGenero}/>
-                         Por género
-                        </label>
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label" style={{fontSize:"16px"}}>
-                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2" onChange={() => this.setState({ rbGenero: false })} checked={!this.state.rbGenero} />
-                            Por modo guía/turista
-                         </label>
-                        </div>
-                    </fieldset>
+        return (
+            <div class="container-fluid">
+                {this.state.rbGenero && <ReactFC style={{ float: "left" }}{...chartConfigs1} />}
+                {!this.state.rbGenero && <ReactFC style={{ float: "left" }}{...chartConfigs2} />}
+                <div className="SeccionFiltros">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Seleccioná la opción
+                                    </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" onClick={() => this.setState({ rbGenero: true })}>Por género</a>
+                            <a class="dropdown-item" onClick={() => this.setState({ rbGenero :false })}>Por modo guía/turista</a>
 
-                </div>
-            )
-        } else {
-            return (
-                <div class="container-fluid">
-                    <div>
-                    <ReactFC style={{ float: "left"}}
-                        {...chartConfigs2} />
                         </div>
-                        <div>
-                    <fieldset class="form-group" >
-
-                        <div class="form-check">
-                            <label class="form-check-label" style={{fontSize:"16px"}}>
-                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1"  onChange={() => this.setState({ rbGenero: true })} checked={this.state.rbGenero} />
-                         Por género
-                        </label>
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label"style={{fontSize:"16px"}}>
-                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2" onChange={() => this.setState({ rbGenero: false })} checked={!this.state.rbGenero} />
-                            Por modo guía/turista
-                         </label>
-                        </div>
-                    </fieldset>
                     </div>
                 </div>
-            );
-        }
+
+            </div>
+        );
+
     }
 
 }

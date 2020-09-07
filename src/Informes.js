@@ -60,7 +60,7 @@ class Informes extends Component {
   }
   getCategoriesPerCity = async () => {
     try {
-      console.log("entrooooooooooooo")
+
       const response = await userServices.getCategoriesPerCity()
 
       if (response.data) {
@@ -77,7 +77,7 @@ class Informes extends Component {
   }
   getMatchesPerCategories = async () => {
     try {
-      console.log("entrooooooooooooo")
+
       const response = await userServices.getMatchesPerCategories()
 
       if (response.data) {
@@ -119,7 +119,7 @@ class Informes extends Component {
         this.setState({
           usersCreatedPerGender: data,
         });
-
+console.log(this.state.usersCreatedPerGender)
       }
     } catch (error) {
       console.error(`There was an error trying to get the users per gender`)
@@ -137,13 +137,13 @@ class Informes extends Component {
         this.setState({
           categoriesPerGender: data,
         });
-        console.log(this.state.categoriesPerGender)
+
       }
     } catch (error) {
       console.error(`There was an error trying to get the category per gender data`)
     }
   }
-    getMatchesPerMonth = async () => {
+  getMatchesPerMonth = async () => {
     try {
       const response = await userServices.getMatchesPerMonth()
 
@@ -154,7 +154,7 @@ class Informes extends Component {
           matchesPerMonth: data
         });
       }
-      
+
     } catch (error) {
       console.error(`There was an error trying to get the matchesPerMonth data`)
     }
@@ -173,9 +173,9 @@ class Informes extends Component {
         this.setState({
           usersCreatedPerMonth: data,
         });
-        
+
       }
-      console.log(this.state.usersCreatedPerMonth)
+
     } catch (error) {
       console.error(`There was an error trying to get the citiesPerMonth data`)
     }
@@ -193,6 +193,7 @@ class Informes extends Component {
         this.setState({
           usersReportedPerReason: data
         });
+        
       }
     } catch (error) {
       console.error(`There was an error trying to get the Reported users per reason data`)
@@ -212,7 +213,7 @@ class Informes extends Component {
           citiesPerMatch: data
 
         });
-
+     
       }
     } catch (error) {
       console.error(`There was an error trying to get the cities per match`)
@@ -255,7 +256,7 @@ class Informes extends Component {
               <div class="checkbox" id="usuarios" style={{ textAlign: "left" }}>
                 <input checked={this.state.newUsersSelect} onChange={() => this.setState({ newUsersSelect: !this.state.newUsersSelect })} name="newUsers" type="checkbox" /> Usuarios creados por mes<br></br>
                 <input checked={this.state.reportedUsersSelect} onChange={() => this.setState({ reportedUsersSelect: !this.state.reportedUsersSelect })} name="reportedUsersSelect" type="checkbox" /> Usuarios denunciados por tipo <br></br>
-                <input checked={this.state.usersCreatedPerGenderSelect} onChange={() => this.setState({ usersCreatedPerGenderSelect: !this.state.usersCreatedPerGenderSelect })} name="userCreatedPerMonth" type="checkbox" /> Usuarios creados por género <br></br>
+                <input checked={this.state.usersCreatedPerGenderSelect} onChange={() => this.setState({ usersCreatedPerGenderSelect: !this.state.usersCreatedPerGenderSelect })} name="userCreatedPerMonth" type="checkbox" /> Usuarios creados por tipo<br></br>
                 <input checked={this.state.usersCreatedPerAgeSelect} onChange={() => this.setState({ usersCreatedPerAgeSelect: !this.state.usersCreatedPerAgeSelect })} name="usersCreatedPerAge" type="checkbox" /> Usuarios creados por  edad <br></br>
                 <input checked={this.state.usersPerLanguagesSelect} onChange={() => this.setState({ usersPerLanguagesSelect: !this.state.usersPerLanguagesSelect })} name="usersPerLanguages" type="checkbox" /> Idiomas más elegidos <br></br>
               </div>

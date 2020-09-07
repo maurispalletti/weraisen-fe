@@ -20,14 +20,13 @@ class GraficoNewUserPerMonth extends React.Component {
 		option2020: true,
 		option2021: false,
 	}
-
-		async componentDidMount() {
+	renderGraficos = () => {
 		console.log("***" + this.props.usersCreatedPerMonth)
 		const { usersCreatedPerMonth } = this.props;
 
 		const arrayCategories2020 = []
 		const arrayCategories2019 = []
-		const arrayCategories2021= []
+		const arrayCategories2021 = []
 
 		const arrayLabelsG2020 = []
 		const arrayLabelsT2020 = []
@@ -37,7 +36,7 @@ class GraficoNewUserPerMonth extends React.Component {
 
 		const arrayLabelsG2019 = []
 		const arrayLabelsT2019 = []
-		
+
 
 		for (let index = 0; index < usersCreatedPerMonth.length; index++) {
 			const user = usersCreatedPerMonth[index];
@@ -57,12 +56,12 @@ class GraficoNewUserPerMonth extends React.Component {
 			const user = usersCreatedPerMonth[index];
 
 			if (user.year == 2019 && user.guide == true) {
-				arrayCategories2019.push(user.category )
+				arrayCategories2019.push(user.category)
 				arrayLabelsG2019.push({ value: user.value, color: "#F9AA68" })
 			}
 			else {
 				if (user.year == 2019 && user.guide == false) {
-					arrayCategories2019.push( user.category)
+					arrayCategories2019.push(user.category)
 					arrayLabelsT2019.push({ value: user.value, color: "#9CD6AE" })
 				}
 			}
@@ -72,19 +71,19 @@ class GraficoNewUserPerMonth extends React.Component {
 			const user = usersCreatedPerMonth[index];
 
 			if (user.year == 2021 && user.guide == true) {
-				arrayCategories2021.push(user.category )
+				arrayCategories2021.push(user.category)
 				arrayLabelsG2021.push({ value: user.value, color: "#F9AA68" })
 			}
 			else {
 				if (user.year == 2021 && user.guide == false) {
-					arrayCategories2021.push( user.category)
+					arrayCategories2021.push(user.category)
 					arrayLabelsT2021.push({ value: user.value, color: "#9CD6AE" })
 				}
 			}
 
 		}
 
-	
+
 		const arrayCategories2020SinDuplicados = Array.from(new Set(arrayCategories2020));
 		const arrayCategories2019SinDuplicados = Array.from(new Set(arrayCategories2019));
 		const arrayCategories2021SinDuplicados = Array.from(new Set(arrayCategories2021));
@@ -207,79 +206,37 @@ class GraficoNewUserPerMonth extends React.Component {
 		};
 
 	}
+	async componentDidMount() {
+		this.renderGraficos();
+	}
 
 	render() {
-		if (this.state.option2019) {
-			return (
 
-				<div style={{ alignItems: "center", padding: "auto" }}>
-					<div className="container-fluid" style={{ boxSizing: "border-box" }}>
-						<div className="SeccionGrafico" >
-							<ReactFC style={{ float: "left" }} {...chartConfigs2019} />
-						</div>
-						<div className="SeccionFiltros">
-							<div class="dropdown">
-								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Seleccioná el año
+		return (
+
+			<div style={{ alignItems: "center", padding: "auto" }}>
+				<div className="container-fluid" style={{ boxSizing: "border-box" }}>
+					<div className="SeccionGrafico" >
+						{this.state.option2019 && <ReactFC style={{ float: "left" }} {...chartConfigs2019} />}
+						{this.state.option2020 && <ReactFC style={{ float: "left" }} {...chartConfigs2020} />}
+						{this.state.option2021 && <ReactFC style={{ float: "left" }} {...chartConfigs2021} />}
+					</div>
+					<div className="SeccionFiltros">
+						<div class="dropdown">
+							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Seleccioná el año
                                     </button>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" onClick={() => this.setState({ option2019: true, option2020: false, option2021:false })}>2019</a>
-									<a class="dropdown-item" onClick={() => this.setState({ option2020: true, option2019: false, option2021:false})}>2020</a>
-									<a class="dropdown-item" onClick={() => this.setState({ option2021: true, option2019:false, option2020:false})}>2021</a>
-								</div>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" onClick={() => this.setState({ option2019: true, option2020: false, option2021: false })}>2019</a>
+								<a class="dropdown-item" onClick={() => this.setState({ option2020: true, option2019: false, option2021: false })}>2020</a>
+								<a class="dropdown-item" onClick={() => this.setState({ option2021: true, option2019: false, option2020: false })}>2021</a>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
 
-			);
-		} else {
-			if (this.state.option2020) {
-				return (
-					<div style={{ alignItems: "center", padding: "auto" }}>
-						<div className="container-fluid" style={{ boxSizing: "border-box" }}>
-							<div className="SeccionGrafico" >
-								<ReactFC style={{ float: "left" }} {...chartConfigs2020} />
-							</div>
-							<div className="SeccionFiltros">
-								<div class="dropdown">
-									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										Seleccioná el año
-                                    </button>
-									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										<a class="dropdown-item" onClick={() => this.setState({ option2019: true, option2020: false, option2021: false  })}>2019</a>
-										<a class="dropdown-item" onClick={() => this.setState({ option2020: true, option2019: false, option2021: false})}>2020</a>
-										<a class="dropdown-item" onClick={() => this.setState({ option2021: true, option2020: false, option2019: false})}>2021</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				);
-			} else{
-				return (
-					<div style={{ alignItems: "center", padding: "auto" }}>
-						<div className="container-fluid" style={{ boxSizing: "border-box" }}>
-							<div className="SeccionGrafico" >
-								<ReactFC style={{ float: "left" }} {...chartConfigs2021} />
-							</div>
-							<div className="SeccionFiltros">
-								<div class="dropdown">
-									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										Seleccioná el año
-                                    </button>
-									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										<a class="dropdown-item" onClick={() => this.setState({ option2019: true, option2020: false, option2021:false })}>2019</a>
-										<a class="dropdown-item" onClick={() => this.setState({ option2020: true, option2019: false, option2021: false })}>2020</a>
-										<a class="dropdown-item" onClick={() => this.setState({ option2021: true, option2020: false, option2019: false })}>2021</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				);
-			}
-		}
+		);
 	}
 }
 

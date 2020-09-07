@@ -13,8 +13,7 @@ class GraficoCategoryPerGender extends React.Component {
 	state = {
 		rbGenero: false,
 	}
-	async componentDidMount() {
-
+	renderGraficos = () => {
 		console.log("***" + this.props.categoriesPerGender)
 		const { categoriesPerGender } = this.props;
 
@@ -233,55 +232,35 @@ class GraficoCategoryPerGender extends React.Component {
 			}
 
 		};
-
 	}
+	async componentDidMount() {
+		this.renderGraficos();
+	}
+
+
 	render() {
-		if (!this.state.rbGenero) {
-			return (
-				<div class="container-fluid">
-					<ReactFC style={{ float: "left" }}
-						{...chartConfigs1} />
-					<fieldset class="form-group" >
 
-						<div class="form-check">
-							<label class="form-check-label" style={{ fontSize: "16px" }}>
-								<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" onChange={() => this.setState({ rbGenero: false })} checked={!this.state.rbGenero} />
-								 Por cantidad de usuarios
-								</label>
-						</div>
-						<div class="form-check">
-							<label class="form-check-label" style={{ fontSize: "16px" }}>
-								<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2" onChange={() => this.setState({ rbGenero: true })} />
-										Por género
-								 </label>
-						</div>
-					</fieldset>
+		return (
+			<div class="container-fluid">
+				{!this.state.rbGenero && <ReactFC style={{ float: "left" }}{...chartConfigs1} />}
+				{this.state.rbGenero && <ReactFC style={{ float: "left" }}{...chartConfigs2} />}
+				<div className="SeccionFiltros">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Seleccioná la opción
+                                    </button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" onClick={() => this.setState({ rbGenero: false })}>Por cantidad de usuarios</a>
+							<a class="dropdown-item" onClick={() => this.setState({ rbGenero: true })}>Por género</a>
 
+						</div>
+					</div>
 				</div>
-			);
-		} else {
-			return (
-				<div class="container-fluid">
-					<ReactFC style={{ float: "left" }}{...chartConfigs2} />
-					<fieldset class="form-group" >
 
-						<div class="form-check">
-							<label class="form-check-label" style={{ fontSize: "16px" }}>
-								<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" onChange={() => this.setState({ rbGenero: false })} checked={!this.state.rbGenero} />
-								Por cantidad de usuarios
-								</label>
-						</div>
-						<div class="form-check">
-							<label class="form-check-label" style={{ fontSize: "16px" }}>
-								<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2" onChange={() => this.setState({ rbGenero: true })} checked={this.state.rbGenero} />
-								Por género
-								 </label>
-						</div>
-					</fieldset>
+			</div>
+		);
 
-				</div>
-			);
-		}
+
 	}
 
 
