@@ -5,7 +5,8 @@ import Informe from '../src/Informes';
 import '../src/AdminProfile.css';
 import CardDenunciaAll from './components/CardDenuncia';
 import CardsAceptarRechazar from './components/CardAceptarRechazar';
-import Buttom from './components/Boton.js'
+import Buttom from './components/Boton.js';
+import pdf from '../src/icons/Linuxdoc-Ejemplo.pdf';
 
 class Tabulador extends React.Component {
 constructor(props) {
@@ -37,7 +38,12 @@ render() {
    
   
     <p>{content[this.state.active]}</p>
+    <div>
+
+    <a href={pdf}> Ver manual de usuario</a> 
+    </div>
     <div className="cerrarSesion">
+
       <Buttom link={'/login'} className={"botons"} name={"Cerrar sesión"} />
     </div>
 

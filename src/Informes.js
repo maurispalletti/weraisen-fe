@@ -265,10 +265,10 @@ console.log(this.state.usersCreatedPerGender)
             </div>
 
             <div class="form-group" style={{ padding: "10px" }}>
-              <label for="usuarios" style={{ fontWeight: "bold", color: "#F9AA68", fontSize: "15px" }}>Informes de categorías</label>
+              <label for="usuarios" style={{ fontWeight: "bold", color: "#F9AA68", fontSize: "15px" }}>Informes de categorías elegidas por guía</label>
               <div class="checkbox" id="categorias" style={{ textAlign: "left" }}>
-                <input checked={this.state.categoriesPerGenderSelect} onChange={() => this.setState({ categoriesPerGenderSelect: !this.state.categoriesPerGenderSelect })} name="categoriesPerGender" type="checkbox" /> Categorías más elegidas<br></br>
-                <input checked={this.state.categoriesPerCitySelect} onChange={() => this.setState({ categoriesPerCitySelect: !this.state.categoriesPerCitySelect })} name="categoriesPerCity" type="checkbox" /> Categorías elegidas por ciudad<br></br>
+                <input checked={this.state.categoriesPerGenderSelect} onChange={() => this.setState({ categoriesPerGenderSelect: !this.state.categoriesPerGenderSelect })} name="categoriesPerGender" type="checkbox" /> Categorías más elegidas por guía<br></br>
+                <input checked={this.state.categoriesPerCitySelect} onChange={() => this.setState({ categoriesPerCitySelect: !this.state.categoriesPerCitySelect })} name="categoriesPerCity" type="checkbox" /> Categorías elegidas por ciudad por guía<br></br>
               </div>
             </div>
           </div>

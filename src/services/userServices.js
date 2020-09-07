@@ -11,6 +11,14 @@ class userServices {
 		return axios.post(url, body, { headers })
 	}
 
+	static async updatePassword({ userId, password }) {
+		const url = `${customUrl}/api/v1/users/updatePassword/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = { password }
+
+		return axios.post(url, body, { headers })
+	}
+
 	static async createUser({
 		firstName,
 		lastName,
@@ -93,6 +101,12 @@ class userServices {
 
 	static async getProfile(userId) {
 		const url = `${customUrl}/api/v1/users/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getUserIdbyEmail(email) {
+		const url = `${customUrl}/api/v1/users/email/${email}`
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
