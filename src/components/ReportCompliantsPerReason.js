@@ -105,7 +105,7 @@ class GraficoReportedUsersPerReason extends React.Component {
 			dataFormat: 'json', // Data type
 			dataSource: {
 				"chart": {
-					"caption": "Cantidad de usuarios denunciados por motivo en el 2019",
+					"caption": "Cantidad de usuarios denunciados por motivo en el 2021",
 					"subCaption": "",
 					"xAxisName": "Motivos",
 					"yAxisName": "Cantidad de denuncias",
