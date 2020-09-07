@@ -117,7 +117,7 @@ class Login extends Component {
                <FieldWithError name="password" type="password" aria-label="password" autoComplete="off" className="input" />
                Contraseña
                <p><a className="forgotPass" href={'/PasswordRecovery'}>¿Olvidaste tu contraseña?</a> </p>
-               <button className="primary" style={{ backgroundColor: "#484e55",  fontSize: "15px", margin: "20px 20px 0px", padding: "10px 40px", border: "none", borderRadius: "0.2rem", textAlign: "right", margin: "3%", color: "white" }} value={"Aceptar"} size="sm" onClick={() => this.mandarMail('Resuelto')}> Mandar Mail </button>
+               {/* <button className="primary" style={{ backgroundColor: "#484e55",  fontSize: "15px", margin: "20px 20px 0px", padding: "10px 40px", border: "none", borderRadius: "0.2rem", textAlign: "right", margin: "3%", color: "white" }} value={"Aceptar"} size="sm" onClick={() => this.mandarMail('Resuelto')}> Mandar Mail </button> */}
                 <div className="right-container" style={{ padding: "0px" }}>
                   <input type="submit" className="btn-primero" value="Iniciar sesión" />
 
