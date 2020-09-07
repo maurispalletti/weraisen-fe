@@ -62,7 +62,7 @@ class PasswordRecovery extends Component {
 
 
 						{this.state.enviado &&
-							<div class="alert alert-dismissible alert-secondary" style={{ maxWidth: '300px', textAlign: 'center' }} role="alert">
+							<div class="alert alert-dismissible alert-secondary" style={{ background: '#d48e4b', maxWidth: '300px', textAlign: 'center' }} role="alert">
 								<strong>Se ha enviado el email.</strong> Por favor verifica tu casilla de correo
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close" onClick={() => this.setState({ goToLogin: true })}>
 									<span aria-hidden="true">&times;</span>
