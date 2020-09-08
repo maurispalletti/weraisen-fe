@@ -32,7 +32,7 @@ class Card_Notificacion extends Component {
 										<Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.setState({ goToChat: true })}>Ver encuentro</Button>
 										{/* <p className="card-title" style={{ marginBottom: "0px", fontSize: '12px' }}>{fecha} {hora}</p> */}
 									</div>
-									{status === 'Activa' && <div >xxxx</div>}
+						
 								</div>
 							</div>
 						</div>
