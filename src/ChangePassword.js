@@ -87,7 +87,7 @@ class ChangePassword extends Component {
 						</Formik>
 
 						{this.state.enviado &&
-							<div class="alert alert-dismissible alert-secondary" style={{ maxWidth: '300px', textAlign: 'center' }} role="alert">
+							<div class="alert alert-dismissible alert-secondary" style={{ background: '#d48e4b', maxWidth: '300px', textAlign: 'center' }} role="alert">
 								<strong>Se ha actualizado tu contraseña</strong> Vuelve a ingresar
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close" onClick={() => this.setState({ goToLogin: true })}>
 									<span aria-hidden="true">&times;</span>
