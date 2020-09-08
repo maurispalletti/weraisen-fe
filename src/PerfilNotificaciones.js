@@ -62,7 +62,7 @@ class Notificacion extends Component {
 				const minuto = fecha.getUTCMinutes()
 				const fecha3 = hora + ":" + minuto
 
-				if (notification.type === "Elegido") { //falta enviar usuario para chat, y encuentro para cancelar
+				if (notification.type === "Elegido") { 
 					return (
 						<div key={id}>
 							<CardNotificacion
@@ -72,11 +72,11 @@ class Notificacion extends Component {
 								hora={fecha3}
 								status={status}
 							/>
-							<br />
+								<br />
 						</div>
 					)
 				}
-				if (notification.type === "Review") { //falta enviar el usuario a la que se le va a hacer la review
+				if (notification.type === "Review") { 
 					return (
 						<div key={id}>
 							<CardNotificacion1
@@ -90,7 +90,7 @@ class Notificacion extends Component {
 						</div>
 					)
 				}
-				if (notification.type === "Aprobado") { //falta enviar usuario para chat
+				if (notification.type === "Aprobado") { 
 					return (
 						<div key={id}>
 							<CardNotificacion2
@@ -101,7 +101,7 @@ class Notificacion extends Component {
 								status={status}
 								chatId={notification.contentId}
 							/>
-							<br />
+								<br />
 						</div>
 					)
 				}
@@ -115,7 +115,8 @@ class Notificacion extends Component {
 								hora={fecha3}
 								status={status}
 							/>
-							<br />
+										<br />
+				
 						</div>
 					)
 				}

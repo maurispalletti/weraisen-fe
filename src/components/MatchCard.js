@@ -81,7 +81,7 @@ export default class MatchCard extends Component {
       return (
         <div className="col text-center" style={{ display: 'flex', flexDirection: 'row' }}>
           <Button variant="primary" size="sm" style={{ width: "50%" }} onClick={() => this.updateMatchStatus('Activo')}>Aceptar</Button>
-          <Button variant="primary" size="sm" style={{ width: "50%" }} onClick={() => this.updateMatchStatus('Cancelado')}>Rechazar</Button>
+          <Button variant="primary" size="sm" style={{ width: "50%" }} onClick={() => this.updateMatchStatus('Anulado')}>Rechazar</Button>
         </div>
       )
     }
