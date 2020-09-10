@@ -129,19 +129,20 @@ class SignUp extends Component {
   componentDidMount() {
     let hoy = new Date();
 
-    const dia = hoy.getDate();
+    let dia = hoy.getDate();
     let mes = (hoy.getMonth() + 1);
     mes = mes.toString()
-
     mes = mes.length === 1 ? "0" + mes : mes
-
+    dia = dia.toString()
+    dia = dia.length === 1 ? "0" + dia : dia
     const año = hoy.getFullYear();
     const añomin = año - 18
 
 
+
     const fechamin = añomin + "-" + mes + "-" + dia;
     hoy = año + "-" + mes + "-" + dia;
-
+    console.log(fechamin)
     this.setState(() => ({ value: hoy, min: fechamin }));
   }
 
@@ -187,11 +188,11 @@ class SignUp extends Component {
             <h2>Creá tu cuenta</h2>
             <div className="title">
 
-              <FieldWithError name="firstName" placeholder="Ingresá tu nombre" aria-label="firstName" className="input" />
+              <FieldWithError type="text" name="firstName" placeholder="Ingresá tu nombre" aria-label="firstName" className="input" />
             Nombre
             </div>
             <div className="title">
-              <FieldWithError name="lastName" type="text" placeholder="Ingresá tu apellido" aria-label="lastName" className="input" />
+              <FieldWithError type="text" name="lastName" type="text" placeholder="Ingresá tu apellido" aria-label="lastName" className="input" />
             Apellido
             </div>
             <div className="title">
@@ -218,17 +219,17 @@ class SignUp extends Component {
 
 
             <div className="title">
-              <FieldWithError name="email" placeholder="Ingresá tu email" aria-label="email" className="input" />
+              <FieldWithError type="email" name="email" placeholder="Ingresá tu email" aria-label="email" className="input" />
             Email
             </div>
 
             <div className="title">
-              <FieldWithError name="password" placeholder="Ingresá tu contraseña" type="password" aria-label="password" className="input" />
+              <FieldWithError name="password" minlength="5" placeholder="Ingresá tu contraseña" type="password" aria-label="password" className="input" />
             Contraseña
             </div>
 
             <div className="title">
-              <FieldWithError name="passwordRepeated" placeholder="Repetí tu contraseña" type="password" aria-label="passwordRepeated" className="input" />
+              <FieldWithError name="passwordRepeated" minlength="5" placeholder="Repetí tu contraseña" type="password" aria-label="passwordRepeated" className="input" />
             Repetí la contraseña</div>
             <br />
 

@@ -69,7 +69,7 @@ class AceptarRechazar extends Component {
     if (this.state.loading) {
       return (
         <div>
-          <h3 style={{ marginBottom: '18px' }}>Cargando usuarios pendientes de aprobación</h3>
+          <h3 style={{ marginBottom: '18px' }}>Cargando usuarios pendientes de aprobación...</h3>
         </div>
       )
     }
@@ -77,7 +77,7 @@ class AceptarRechazar extends Component {
       if (this.newUsersFailed) {
         return (
           <div>
-            <h3 style={{ marginBottom: '18px' }}>Ups el servicio ha fallado</h3>
+            <h3 style={{ marginBottom: '18px' }}>Ups! El servicio falló</h3>
           </div>
         )
       } else {
