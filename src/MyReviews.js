@@ -140,8 +140,8 @@ class MyReviews extends Component {
             <div className="BodyGuide">
               {/*<h3 style={{color:"black"}}>Aún no posees ninguna valoración</h3>*/}
               <div className="grafico">
-                <h2>Mis Informes</h2>
-                <br></br>
+                <h2>Aún no posees reseñas ni informes para mostrar.</h2>
+                  <br></br>
               </div>
             </div>
           </div>
