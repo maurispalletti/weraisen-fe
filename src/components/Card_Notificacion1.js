@@ -6,8 +6,25 @@ class Card_Notificacion1 extends Component {
 	state = {
 		goToReview: false,
 	}
+
+	renderButtons() {
+		const { status} = this.props;
+
+		// <Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.setState({ goToReview: true })}>Puntuar</Button>
+		if (status === 'Activa') {
+		  return (
+			<Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.setState({ goToReview: true })}>Puntuar</Button>
+		  )
+		}
+		else {
+			return(<Button variant="primary" size="sm" style={{ width: "60%", cursor:"default", color:"#7c7a7a", borderColor:"#3A3F44"}} disabled="true"  onClick={() => this.setState({ goToReview: true })}>Puntuar</Button>
+			)
+		}
+		
+	  }
+
 	render() {
-		const { name, description, fecha, hora } = this.props;
+		const { name, description } = this.props;
 
 		if (this.state.goToReview) {
 			return <Redirect to="/valoration" />
@@ -24,7 +41,8 @@ class Card_Notificacion1 extends Component {
 								
 								<div className="row mb-2">
 								<div className="col text-center">
-								<Button variant="primary" size="sm" style={{ width: "60%" }} onClick={() => this.setState({ goToReview: true })}>Puntuar</Button>
+								{this.renderButtons()}
+								
 
 								{/* <p className="card-title" style={{ marginBottom: "0px",   fontSize: '12px'  }}>{fecha}  {hora}</p> */}
 									
