@@ -72,7 +72,7 @@ class Login extends Component {
       
         //manod mail
         await userServices.sendEmail({
-          emailDestino: "irinarossi11@gmail.com",
+          emailDestino: "alvoscares@gmail.com",
           origen: 1
         })
 
