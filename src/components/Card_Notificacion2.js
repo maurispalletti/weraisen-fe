@@ -23,7 +23,7 @@ class Card_Notificacion2 extends Component {
 		}
 		else {
 			return(
-			<Button variant="primary" size="sm" style={{ width: "60%", cursor:"default", color:"#7c7a7a", borderColor:"#3A3F44" }} onClick={() => this.redirectToChat()}>Ir al chat</Button>
+			<Button variant="primary" size="sm" style={{ width: "60%", cursor:"default", color:"#7c7a7a", borderColor:"#3A3F44" }} disabled="true" onClick={() => this.redirectToChat()}>Ir al chat</Button>
 
 			)
 		}

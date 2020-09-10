@@ -106,7 +106,7 @@ class DenunciaModal_Alvo extends Component {
           <br></br>
           <div className="checkbox">
             <label>
-              <input style={{paddingLeft: "5px"}} checked={this.state.sexual} onChange={() => this.setState({ sexual: true })} name= "reason" type="radio"/> Acoso sexual y/o verbal.
+              <input style={{paddingLeft: "5px"}} checked={this.state.sexual} onChange={() => this.setState({ sexual: true })} name= "reason" type="radio" required= 'true'/> Acoso sexual y/o verbal.
            </label>
           </div>
 
