@@ -238,13 +238,13 @@ class SignUp extends Component {
             <div className="right-container">
               <label className="title">Subí foto de tu DNI para validar tu identidad</label><br></br>
               {/* <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler} ref={fileImput => this.fileImput = fileImput}/> */}
-              <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedDNI1} ref={fileImput1 => this.fileImput1 = fileImput1} />
-              <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedDNI2} ref={fileImput2 => this.fileImput2 = fileImput2} />
-              <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedFotoPerfil} ref={fileImput3 => this.fileImput3 = fileImput3} />
+              <input style={{ display: 'none' }} type="file" accept=".jpg, .jpeg, .png" onChange={this.fileSelectedDNI1} ref={fileImput1 => this.fileImput1 = fileImput1} />
+              <input style={{ display: 'none' }} type="file" accept=".jpg, .jpeg, .png"  onChange={this.fileSelectedDNI2} ref={fileImput2 => this.fileImput2 = fileImput2} />
+              <input style={{ display: 'none' }} type="file" accept=".jpg, .jpeg, .png" onChange={this.fileSelectedFotoPerfil} ref={fileImput3 => this.fileImput3 = fileImput3} />
 
               <div className="dni1">
                 <label className="input3">Frente</label><br></br>
-                <img src={this.state.front} alt={"dni frente"} width="150" onClick={() => this.fileImput1.click()} />
+                <img src={this.state.front} alt={"dni frente"} width="150"  onClick={() => this.fileImput1.click()} />
               </div>
               <div className="dni2">
                 <label className="input3">Dorso</label><br></br>
