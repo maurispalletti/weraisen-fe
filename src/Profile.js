@@ -215,7 +215,7 @@ class Profile extends Component {
 
                 <div className="guideSection">
                   {this.state.knowledge && this.state.knowledge.length > 0 } 
-                  <div className="be-guide">
+                  <div className="be-guide" style={{ display: this.state.isActiveGuide ? 'block' : 'none' }}>
                    Mostrarme activo 
                       <label class="switch">
                       <input type="checkbox" checked={this.state.isActiveGuide} onClick={() => this.estadoGuia()} />
