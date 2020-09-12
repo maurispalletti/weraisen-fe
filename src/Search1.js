@@ -128,8 +128,7 @@ class Search1 extends React.Component {
   }
   guardarCiudad = (ciudad) => {
     sessionStorage.setItem("filtrociudad", ciudad)
-    this.setState({ citySave: true })
-    this.setState({ boton: true })
+    this.setState({ citySave: true, boton: true })
     // localStorage.setItem("filtrociudad", ciudad)
   }
   handleCity = (values) => {

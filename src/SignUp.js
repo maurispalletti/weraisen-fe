@@ -7,6 +7,7 @@ import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import { SignUpSchema } from './helpers/validators'
 import DropdownGender from './forms/DropdownGender'
+import DropdownCity from './forms/DropdownCity'
 import dni1 from './icons/dni1.png'
 import dni2 from './icons/dni2.png'
 import icon from './icons/icon.svg'
@@ -37,6 +38,29 @@ const genders = [
   {
     value: "Otro",
     description: 'Otro'
+  },
+]
+
+const tiposdoc = [
+  {
+    value: "DNI",
+    description: 'DNI'
+  },
+  {
+    value: "Pasaporte",
+    description: 'Pasaporte'
+  },
+  {
+    value: "CedulaIdentidad",
+    description: 'Cédula de Identidad'
+  },
+  {
+    value: "Enrolamiento",
+    description: 'Libreta de Enrolamiento'
+  },
+  {
+    value: "Extranjera",
+    description: 'Cédula Extranjera'
   },
 ]
 
@@ -189,15 +213,19 @@ class SignUp extends Component {
             <div className="title">
 
               <FieldWithError type="text" name="firstName" placeholder="Ingresá tu nombre" aria-label="firstName" className="input" />
-            Nombre
+            Nombre 
             </div>
             <div className="title">
               <FieldWithError type="text" name="lastName" type="text" placeholder="Ingresá tu apellido" aria-label="lastName" className="input" />
             Apellido
             </div>
             <div className="title">
+              <DropdownCity name="identificationtype" styleName={"input"} options={tiposdoc}/>
+              Tipo de Documento
+               </div>
+            <div className="title">
               <FieldWithError name="identification" type="number" placeholder="Ingresá tu número de documento" aria-label="identification" className="input"  />
-            Documento
+            Número de Documento
             </div>
 
             <div className="title">
@@ -281,12 +309,12 @@ class SignUp extends Component {
                 />
                 {this.state.passwordsMissmatch && (
                   <p className="form-error">
-                    Las contreseñas no coinciden. Intenta de nuevo.
+                    Las contreseñas no coinciden.
                   </p>
                 )}
                 {this.state.repeatedEmail && (
                   <p className="form-error">
-                    El email que usaste ya está registrado en nuestro sistema. Por favor intentá nuevamente con un nuevo email.
+                    El email ingresado ya está registrado en nuestro sistema. 
                   </p>
                 )}
                 {this.state.uploadFailed && (
