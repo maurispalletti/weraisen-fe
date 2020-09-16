@@ -17,6 +17,9 @@ class GraficoCityPerMatch extends React.Component {
 		option2021: false,
 	}
 
+	/*componentDidMount() {
+		this.renderGraficos();
+	}*/
 	renderGraficos = () => {
 		console.log(this.props.citiesPerMatches)
 		const { citiesPerMatches } = this.props;
@@ -130,13 +133,11 @@ class GraficoCityPerMatch extends React.Component {
 			}
 		};
 	}
-	componentDidMount() {
-		this.renderGraficos();
-	}
+
 
 
 	render() {
-
+		this.renderGraficos();
 		return (
 
 			<div style={{ alignItems: "center", padding: "auto" }}>
