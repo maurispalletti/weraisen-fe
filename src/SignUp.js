@@ -7,6 +7,7 @@ import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import { SignUpSchema } from './helpers/validators'
 import DropdownGender from './forms/DropdownGender'
+import DropdownCity from './forms/DropdownCity'
 import dni1 from './icons/dni1.png'
 import dni2 from './icons/dni2.png'
 import icon from './icons/icon.svg'
@@ -37,6 +38,29 @@ const genders = [
   {
     value: "Otro",
     description: 'Otro'
+  },
+]
+
+const tiposdoc = [
+  {
+    value: "DNI",
+    description: 'DNI'
+  },
+  {
+    value: "Pasaporte",
+    description: 'Pasaporte'
+  },
+  {
+    value: "CedulaIdentidad",
+    description: 'Cédula de Identidad'
+  },
+  {
+    value: "Enrolamiento",
+    description: 'Libreta de Enrolamiento'
+  },
+  {
+    value: "Extranjera",
+    description: 'Cédula Extranjera'
   },
 ]
 
@@ -129,19 +153,20 @@ class SignUp extends Component {
   componentDidMount() {
     let hoy = new Date();
 
-    const dia = hoy.getDate();
+    let dia = hoy.getDate();
     let mes = (hoy.getMonth() + 1);
     mes = mes.toString()
-
     mes = mes.length === 1 ? "0" + mes : mes
-
+    dia = dia.toString()
+    dia = dia.length === 1 ? "0" + dia : dia
     const año = hoy.getFullYear();
     const añomin = año - 18
 
 
+
     const fechamin = añomin + "-" + mes + "-" + dia;
     hoy = año + "-" + mes + "-" + dia;
-
+    console.log(fechamin)
     this.setState(() => ({ value: hoy, min: fechamin }));
   }
 
@@ -187,16 +212,20 @@ class SignUp extends Component {
             <h2>Creá tu cuenta</h2>
             <div className="title">
 
-              <FieldWithError name="firstName" placeholder="Ingresá tu nombre" aria-label="firstName" className="input" />
-            Nombre
+              <FieldWithError type="text" pattern="^[A-Za-z]+$" name="firstName" placeholder="Ingresá tu nombre" aria-label="firstName" className="input" />
+            Nombre 
             </div>
             <div className="title">
-              <FieldWithError name="lastName" type="text" placeholder="Ingresá tu apellido" aria-label="lastName" className="input" />
+              <FieldWithError type="text" pattern="^[A-Za-z]+$" name="lastName" type="text" placeholder="Ingresá tu apellido" aria-label="lastName" className="input" />
             Apellido
             </div>
             <div className="title">
-              <FieldWithError name="identification" type="number" placeholder="Ingresá tu número de documento" aria-label="identification" className="input"  />
-            Documento
+              <DropdownCity name="identificationtype" styleName={"input"} options={tiposdoc}/>
+              Tipo de Documento
+               </div>
+            <div className="title">
+              <FieldWithError name="identification" pattern="[0-9]" type="number" placeholder="Ingresá tu número de documento" aria-label="identification" className="input"  />
+            Número de Documento
             </div>
 
             <div className="title">
@@ -218,17 +247,17 @@ class SignUp extends Component {
 
 
             <div className="title">
-              <FieldWithError name="email" placeholder="Ingresá tu email" aria-label="email" className="input" />
+              <FieldWithError type="email" name="email" placeholder="Ingresá tu email" aria-label="email" className="input" />
             Email
             </div>
 
             <div className="title">
-              <FieldWithError name="password" placeholder="Ingresá tu contraseña" type="password" aria-label="password" className="input" />
+              <FieldWithError name="password" minlength="5" placeholder="Ingresá tu contraseña" type="password" aria-label="password" className="input" />
             Contraseña
             </div>
 
             <div className="title">
-              <FieldWithError name="passwordRepeated" placeholder="Repetí tu contraseña" type="password" aria-label="passwordRepeated" className="input" />
+              <FieldWithError name="passwordRepeated" minlength="5" placeholder="Repetí tu contraseña" type="password" aria-label="passwordRepeated" className="input" />
             Repetí la contraseña</div>
             <br />
 
@@ -238,13 +267,13 @@ class SignUp extends Component {
             <div className="right-container">
               <label className="title">Subí foto de tu DNI para validar tu identidad</label><br></br>
               {/* <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler} ref={fileImput => this.fileImput = fileImput}/> */}
-              <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedDNI1} ref={fileImput1 => this.fileImput1 = fileImput1} />
-              <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedDNI2} ref={fileImput2 => this.fileImput2 = fileImput2} />
-              <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedFotoPerfil} ref={fileImput3 => this.fileImput3 = fileImput3} />
+              <input style={{ display: 'none' }} type="file" accept=".jpg, .jpeg, .png" onChange={this.fileSelectedDNI1} ref={fileImput1 => this.fileImput1 = fileImput1} />
+              <input style={{ display: 'none' }} type="file" accept=".jpg, .jpeg, .png"  onChange={this.fileSelectedDNI2} ref={fileImput2 => this.fileImput2 = fileImput2} />
+              <input style={{ display: 'none' }} type="file" accept=".jpg, .jpeg, .png" onChange={this.fileSelectedFotoPerfil} ref={fileImput3 => this.fileImput3 = fileImput3} />
 
               <div className="dni1">
                 <label className="input3">Frente</label><br></br>
-                <img src={this.state.front} alt={"dni frente"} width="150" onClick={() => this.fileImput1.click()} />
+                <img src={this.state.front} alt={"dni frente"} width="150"  onClick={() => this.fileImput1.click()} />
               </div>
               <div className="dni2">
                 <label className="input3">Dorso</label><br></br>
@@ -280,12 +309,12 @@ class SignUp extends Component {
                 />
                 {this.state.passwordsMissmatch && (
                   <p className="form-error">
-                    Las contreseñas no coinciden. Intenta de nuevo.
+                    Las contreseñas no coinciden.
                   </p>
                 )}
                 {this.state.repeatedEmail && (
                   <p className="form-error">
-                    El email que usaste ya está registrado en nuestro sistema. Por favor intentá nuevamente con un nuevo email.
+                    El email ingresado ya está registrado en nuestro sistema. 
                   </p>
                 )}
                 {this.state.uploadFailed && (
