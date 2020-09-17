@@ -168,7 +168,7 @@ class Matches extends Component {
     console.log(this.state.date)
     if (this.state.date !== "") {
       for (var match = 0; match < nameMatches.length; match++) {
-        const date = new Date(nameMatches[match].props.date);
+        const date = new Date(nameMatches[match].props.matchDate);
         const day = date.getUTCDate()
         const month = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
         var year = date.getFullYear()
@@ -308,9 +308,7 @@ class Matches extends Component {
                     </div>
 
                   </div>
-                  <div className="ButtonSection">
-                    <input type="button" className="btn-primero" value="Volver al menú principal" onClick={() => this.setState({ goToHome: true })} />
-                  </div>
+    
                   {this.state.searchFailed && (
                     <p className="form-error">La búsqueda de encuentros falló. Intentá de nuevo por favor.</p>
                   )}

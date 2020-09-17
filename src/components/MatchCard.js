@@ -112,6 +112,8 @@ export default class MatchCard extends Component {
     if (status === 'Activo') {
       return (
         <div>
+           <br></br>
+          <br></br>
         <h4 className="card-text" style={{ textAlign: "left", width: 'auto', color: '#3AA02C' }}>Encuentro pendiente </h4>
        {this.renderFecha(this.props.matchDate)}
         </div>
