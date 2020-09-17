@@ -19,6 +19,10 @@ class GraficoNewUserPerMonth extends React.Component {
 		option2019: false,
 		option2020: true,
 		option2021: false,
+		loading: true,
+	}
+	async componentDidMount() {
+		this.renderGraficos();
 	}
 	renderGraficos = () => {
 		console.log("***" + this.props.usersCreatedPerMonth)
@@ -103,7 +107,8 @@ class GraficoNewUserPerMonth extends React.Component {
 			arrayCategory2021Final.push({ label: element })
 		}
 
-
+		this.setState({ loading: false })
+		
 		chartConfigs2020 = {
 			type: 'mscolumn2d',// The chart type
 			width: '85%', // Width of the chart
@@ -206,11 +211,17 @@ class GraficoNewUserPerMonth extends React.Component {
 		};
 
 	}
-	async componentDidMount() {
-		this.renderGraficos();
-	}
+	
 
 	render() {
+		if (this.state.loading) {
+			return(
+				<div style={{ alignItems: "center", padding: "auto" }}>
+			<div className="SeccionGrafico">
+				Cargando gráfico
+			</div>
+			</div>
+			)}else{
 
 		return (
 
@@ -236,7 +247,7 @@ class GraficoNewUserPerMonth extends React.Component {
 				</div>
 			</div>
 
-		);
+		);}
 	}
 }
 

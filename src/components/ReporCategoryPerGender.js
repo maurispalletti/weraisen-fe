@@ -12,12 +12,16 @@ let chartConfigs2;
 class GraficoCategoryPerGender extends React.Component {
 	state = {
 		rbGenero: false,
+		loading:true,
+	}
+	async componentDidMount() {
+		this.renderGraficos();
 	}
 	renderGraficos = () => {
 		console.log("***" + this.props.categoriesPerGender)
 		const { categoriesPerGender } = this.props;
 
-
+this.setState({loading:false})
 		chartConfigs1 = {
 			type: 'mscolumn2d',// The chart type
 			width: '85%', // Width of the chart
@@ -233,13 +237,18 @@ class GraficoCategoryPerGender extends React.Component {
 
 		};
 	}
-	async componentDidMount() {
-		this.renderGraficos();
-	}
+
 
 
 	render() {
-
+		if (this.state.loading) {
+			return(
+				<div style={{ alignItems: "center", padding: "auto" }}>
+			<div className="SeccionGrafico">
+				Cargando gráfico...
+			</div>
+			</div>
+			)}else{
 		return (
 			<div class="container-fluid">
 				{!this.state.rbGenero && <ReactFC style={{ float: "left" }}{...chartConfigs1} />}
@@ -258,7 +267,7 @@ class GraficoCategoryPerGender extends React.Component {
 				</div>
 
 			</div>
-		);
+		);}
 
 
 	}

@@ -15,8 +15,12 @@ class GraficoReportedUsersPerReason extends React.Component {
 		option2019: false,
 		option2020: true,
 		option2021: false,
+		loading:true,
 	}
-	componentDidMount() {
+	async componentDidMount() {
+		this.renderGraficos();
+	}
+	renderGraficos() {
 
 		const { usersReportedPerReason } = this.props;
 
@@ -43,6 +47,7 @@ class GraficoReportedUsersPerReason extends React.Component {
 				}
 			}
 		}
+		this.setState({ loading: false })
 
 		chartConfigs2019 = {
 			type: 'mscolumn2d',// The chart type
@@ -129,6 +134,14 @@ class GraficoReportedUsersPerReason extends React.Component {
 
 
 	render() {
+		if (this.state.loading) {
+			return(
+				<div style={{ alignItems: "center", padding: "auto" }}>
+			<div className="SeccionGrafico">
+				Cargando gráfico
+			</div>
+			</div>
+			)}else{
 		if (this.state.option2020) {
 			return (
 
@@ -202,7 +215,7 @@ class GraficoReportedUsersPerReason extends React.Component {
 						</div>
 					</div>
 
-				);
+				);}
 			}
 		}
 	}

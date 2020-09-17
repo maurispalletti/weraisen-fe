@@ -15,6 +15,12 @@ class Grafico extends React.Component {
 		option2019: false,
 		option2020: true,
 		option2021: false,
+		loading:true,
+	}
+	async componentDidMount() {
+
+		this.renderGraficos();
+
 	}
 
 	renderGraficos = () => {
@@ -129,15 +135,20 @@ class Grafico extends React.Component {
 				}
 			};
 		}
+		this.setState({ loading: false })
 	}
-	async componentDidMount() {
-
-		this.renderGraficos();
-
-	}
+	
 
 
 	render() {
+		if (this.state.loading) {
+			return(
+				<div style={{ alignItems: "center", padding: "auto" }}>
+			<div className="SeccionGrafico">
+				Cargando gráfico
+			</div>
+			</div>
+			)}else{
 
 		return (
 
@@ -163,7 +174,7 @@ class Grafico extends React.Component {
 				</div>
 			</div>
 
-		);
+		);}
 
 
 	}

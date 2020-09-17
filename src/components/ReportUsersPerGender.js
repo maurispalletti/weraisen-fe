@@ -24,7 +24,12 @@ class GraficoUsersPerGender extends React.Component {
 		rbCombinado: false,
 		option2019: false,
 		option2020: true,
+		loading:true,
 	}
+	async componentDidMount() {
+		this.renderGraficos();
+	}
+
 	renderGraficos = () => {
 		console.log(this.props.usersPerGender)
 		const { usersPerGender } = this.props;
@@ -85,6 +90,7 @@ class GraficoUsersPerGender extends React.Component {
 				}
 
 			}
+this.setState({loading:false})
 
 			chartConfigsGe2019 = {
 				type: 'pie2d',// The chart type
@@ -286,12 +292,17 @@ class GraficoUsersPerGender extends React.Component {
 			};
 		}
 	}
-	async componentDidMount() {
-		this.renderGraficos();
-	}
-
+	
 
 	render() {
+		if (this.state.loading) {
+			return(
+				<div style={{ alignItems: "center", padding: "auto" }}>
+			<div className="SeccionGrafico">
+				Cargando gráfico...
+			</div>
+			</div>
+			)}else{
 
 		return (
 
@@ -333,7 +344,7 @@ class GraficoUsersPerGender extends React.Component {
 				</div>
 			</div>
 
-		);
+		);}
 	}
 }
 

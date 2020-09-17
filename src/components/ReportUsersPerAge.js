@@ -16,13 +16,19 @@ class GraficoUsersPerAge extends React.Component {
 
     state = {
         rbGenero: true,
+        loading:true,
+    }
+    async componentDidMount() {
+
+        this.renderGraficos();
+
     }
     renderGraficos = () => {
         console.log(this.props.usersPerAge)
 
         const { usersPerAge } = this.props;
 
-
+this.setState({loading:false})
 
         chartConfigs1 = {
             type: 'stackedcolumn2d',// The chart type
@@ -262,14 +268,18 @@ class GraficoUsersPerAge extends React.Component {
             }
         };
     }
-    async componentDidMount() {
-
-        this.renderGraficos();
-
-    }
+  
 
 
     render() {
+        if (this.state.loading) {
+			return(
+				<div style={{ alignItems: "center", padding: "auto" }}>
+			<div className="SeccionGrafico">
+				Cargando gráfico...
+			</div>
+			</div>
+			)}else{
 
         return (
             <div class="container-fluid">
@@ -289,7 +299,7 @@ class GraficoUsersPerAge extends React.Component {
                 </div>
 
             </div>
-        );
+        );}
 
     }
 

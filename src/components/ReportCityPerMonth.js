@@ -15,11 +15,12 @@ class GraficoCityPerMatch extends React.Component {
 		option2019: false,
 		option2020: true,
 		option2021: false,
+		loading: true,
 	}
 
-	/*componentDidMount() {
+	componentDidMount() {
 		this.renderGraficos();
-	}*/
+	}
 	renderGraficos = () => {
 		console.log(this.props.citiesPerMatches)
 		const { citiesPerMatches } = this.props;
@@ -48,7 +49,7 @@ class GraficoCityPerMatch extends React.Component {
 			}
 		}
 
-
+		this.setState({ loading: false })
 
 		chartConfigs2019 = {
 			type: 'mscolumn2d',// The chart type
@@ -132,12 +133,21 @@ class GraficoCityPerMatch extends React.Component {
 				]
 			}
 		};
+		
 	}
 
 
 
 	render() {
-		this.renderGraficos();
+		
+		if (this.state.loading) {
+			return(
+				<div style={{ alignItems: "center", padding: "auto" }}>
+			<div className="SeccionGrafico">
+				Cargando gráfico...
+			</div>
+			</div>
+			)}else{
 		return (
 
 			<div style={{ alignItems: "center", padding: "auto" }}>
@@ -162,7 +172,7 @@ class GraficoCityPerMatch extends React.Component {
 				</div>
 			</div>
 
-		);
+		);}
 	}
 
 
