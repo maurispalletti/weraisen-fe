@@ -111,6 +111,7 @@ class Profile extends Component {
     const {
       firstName,
       lastName,
+      profilePicture,
       birthDate,
       identification,
       gender,
@@ -130,6 +131,7 @@ class Profile extends Component {
     const initialValues = {
       firstName,
       lastName,
+      profilePicture,
       birthDate: this.getFormattedDate(birthDate),
       identification,
       gender,
@@ -184,6 +186,12 @@ class Profile extends Component {
               <Form>
                 <div className="profileData container-fluid">
                   <h2>¡Hola, {this.state.initialValues.firstName}!</h2>
+
+                  <div>
+							      <div className="FotoPerfil">
+								      <img src= {this.state.initialValues.profilePicture} alt="profile" style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
+							     </div>
+					      	</div>
 
                   <div className="title">
                     <FieldWithError disabled={!this.state.editable} name="firstName" placeholder="Nombre" aria-label="name" className="input" />
