@@ -139,9 +139,12 @@ class MyReviews extends Component {
             <Header />
             <div className="BodyGuide">
               {/*<h3 style={{color:"black"}}>Aún no posees ninguna valoración</h3>*/}
-              <div className="grafico">
+              <div className="Section">
                 <h2>Aún no posees reseñas ni informes para mostrar.</h2>
-                  <br></br>
+                <br></br>
+                <div className="buttonsSection">
+                  <input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToProfile: true })} />
+                </div>
               </div>
             </div>
           </div>

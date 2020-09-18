@@ -36,22 +36,22 @@ class GraficoCategoriesMostSetelcted extends React.Component {
                     {
                         "category": [
                             {
-                                "label": categoriesMostSelected[0].category
+                                "label": categoriesMostSelected[18].category
                             },
                             {
-                                "label": categoriesMostSelected[1].category
+                                "label": categoriesMostSelected[19].category
                             },
                             {
-                                "label": categoriesMostSelected[2].category
+                                "label": categoriesMostSelected[20].category
                             },
                             {
-                                "label": categoriesMostSelected[3].category
+                                "label": categoriesMostSelected[21].category
                             },
                             {
-                                "label": categoriesMostSelected[4].category
+                                "label": categoriesMostSelected[22].category
                             },
                             {
-                                "label": categoriesMostSelected[5].category
+                                "label": categoriesMostSelected[23].category
                             }
                         ]
                     }
@@ -62,27 +62,27 @@ class GraficoCategoriesMostSetelcted extends React.Component {
                         "color": "#9CD6AE",
                         "data": [
                             {
-                                "value": categoriesMostSelected[0].value,
+                                "value": categoriesMostSelected[18].value,
                                 "color": "#9CD6AE"
                             },
                             {
-                                "value": categoriesMostSelected[1].value,
+                                "value": categoriesMostSelected[19].value,
                                 "color": "#9CD6AE"
                             },
                             {
-                                "value": categoriesMostSelected[2].value,
+                                "value": categoriesMostSelected[20].value,
                                 "color": "#9CD6AE"
                             },
                             {
-                                "value": categoriesMostSelected[3].value,
+                                "value": categoriesMostSelected[21].value,
                                 "color": "#9CD6AE"
                             },
                             {
-                                "value": categoriesMostSelected[4].value,
+                                "value": categoriesMostSelected[22].value,
                                 "color": "#9CD6AE"
                             },
                             {
-                                "value": categoriesMostSelected[5].value,
+                                "value": categoriesMostSelected[23].value,
                                 "color": "#9CD6AE"
                             }
 
