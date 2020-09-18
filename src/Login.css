@@ -68,6 +68,7 @@ padding-top:0px;
   height: 100vh;
   padding-top: 80px;
   background: url("./icons/background-image.jpg") center ;
+  background-size: cover;
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
