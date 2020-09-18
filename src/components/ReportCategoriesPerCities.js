@@ -7,7 +7,7 @@ import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
 let chartConfigs;
-let ciudades = ["Cordoba", "Buenos Aires"];
+
 class GraficoCategoriesPerCities extends React.Component {
 
 	UNSAFE_componentWillMount() {
