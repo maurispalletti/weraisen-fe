@@ -66,6 +66,23 @@ class Login extends Component {
     }
   }
 
+  mandarMail = async (status) => {
+    const { compliantId } = this.props
+    try {
+      
+        //manod mail
+        await userServices.sendEmail({
+          emailDestino: "alvoscares@gmail.com",
+          origen: 1
+        })
+
+      
+    } catch (error) {
+      console.log(error)
+      console.error(`There was an error trying to update compliant status`)
+    }    
+  }
+
 
   render() {
     if (this.state.goToHome) {
@@ -100,7 +117,7 @@ class Login extends Component {
                <FieldWithError name="password" type="password" aria-label="password" autoComplete="off" className="input" />
                Contraseña
                <p><a className="forgotPass" href={'/PasswordRecovery'}>¿Olvidaste tu contraseña?</a> </p>
-               
+               {/* <button className="primary" style={{ backgroundColor: "#484e55",  fontSize: "15px", margin: "20px 20px 0px", padding: "10px 40px", border: "none", borderRadius: "0.2rem", textAlign: "right", margin: "3%", color: "white" }} value={"Aceptar"} size="sm" onClick={() => this.mandarMail('Resuelto')}> Mandar Mail </button> */}
                 <div className="right-container" style={{ padding: "0px" }}>
                   <input type="submit" className="btn-primero" value="Iniciar sesión" />
 
@@ -154,8 +171,11 @@ class Login extends Component {
                 </p>
                 <br></br>
                 <br></br>
-                <input type="button" className="btn-primero" value="Más información" onClick={() => this.setState({ goToHelp: true })} />
-            <div className="continuar2"><a href="#Inicio" className=""><img className="imag" src={scroll2} alt={"WER"} width="50" /> </a></div>
+                <div className="continuar2"><a href="#Inicio" className=""><img className="imag" src={scroll2} alt={"WER"} width="50" /> </a></div>
+                <br></br>
+             
+                <u><a style={{cursor:'pointer'}} onClick={() => this.setState({ goToHelp: true })}> Más información </a>
+                </u>
           </div>
         </div>
 

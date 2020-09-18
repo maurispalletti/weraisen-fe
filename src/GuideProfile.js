@@ -76,6 +76,8 @@ class GuideProfile extends Component {
     availableDays: [],
     languages: [],
     groupwalk: false,
+    idiom: true,
+    
   }
 
   getProfile = async () => {
@@ -170,6 +172,7 @@ class GuideProfile extends Component {
     if (this.state.goToProfile) {
       return <Redirect to="/Profile" />
     }
+    
     if (this.state.initialValues) {
       return (
         <div className="GuideProfile">
@@ -183,19 +186,28 @@ class GuideProfile extends Component {
               validationSchema={GuideProfileSchema}
               onSubmit={(values) => this.updateGuide(values)}>
               <Form>
+              
                 <div className="Section">
                   <div className="Seccion">
                     <h2>¡Describite para que otros te conozcan! </h2>
                     <FieldWithError component={'input'} name="description" placeholder={"Ingresá una breve descripción..."} aria-label="description" className="input" />
                   </div>
+                 
                   <div className="Seccion">
                     <h2>Localidad de residencia</h2>
                     <DropdownGender name="city" styleName={"input"} options={cities} required />
                   </div>
                   <div className="Seccion">
                     <h2>Idiomas que manejás</h2>
+                    {<div class="alert alert-dismissible alert-secondary" style={{ background: '#d48e4b', maxWidth: '300px', textAlign: 'center', marginLeft: 'auto', marginRight:' auto' }} role="alert">
+							            	<strong> No te olvides de ingresar idiomas, dias y conocimientos </strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" onClick={() => this.setState({ goToLogin: true })}>
+								          	<span aria-hidden="true">&times;</span>
+								      </button>
+							    </div>}
                     <div className="container-fluid">
-                      <BotonSombreado name="languages" onCategoryChange={this.handleLanguages} defaultSelected={this.state.languages} required/>
+                      <BotonSombreado name="languages" onCategoryChange={this.handleLanguages} defaultSelected={this.state.languages} required />
+                    
                     </div>
                   </div>
                   <div className="Seccion">

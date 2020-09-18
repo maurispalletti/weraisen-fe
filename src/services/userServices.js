@@ -117,6 +117,7 @@ class userServices {
 		lastName,
 		birthDate,
 		gender,
+		isActiveGuide,
 	}) {
 		const url = `${customUrl}/api/v1/tourists/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
@@ -125,6 +126,19 @@ class userServices {
 			lastName,
 			birthDate,
 			gender,
+			isActiveGuide,
+		}
+		return axios.put(url, body, { headers })
+	}
+
+	static async updateGuiaActivo({
+		userId,		
+		isActiveGuide,
+	}) {
+		const url = `${customUrl}/api/v1/tourists/updateGuiaActivo/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {			
+			isActiveGuide,
 		}
 		return axios.put(url, body, { headers })
 	}

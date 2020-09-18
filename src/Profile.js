@@ -138,10 +138,24 @@ class Profile extends Component {
     }
 
     this.setState({ initialValues, isActiveGuide, knowledge })
-    console.log('initial values' +this.initialValues)
+    console.log('initial values' + this.state.isActiveGuide )
   }
-  estadoGuia = () => {
+  estadoGuia =  async () => {
     this.setState({ isActiveGuide: !this.state.isActiveGuide });   
+    try {
+      
+      //cuactualizo si el ususario esta activo como guia o no
+      const userId = localStorage.getItem("userId");
+      if (userId) {
+        await userServices.updateGuiaActivo({
+          userId: userId,
+          isActiveGuide: !this.state.isActiveGuide
+        })}
+    
+  } catch (error) {
+    console.log(error)
+    console.error(`There was an error trying to update compliant status`)
+  }    
   }
 
  
@@ -201,7 +215,7 @@ class Profile extends Component {
 
                 <div className="guideSection">
                   {this.state.knowledge && this.state.knowledge.length > 0 } 
-                  <div className="be-guide">
+                  <div className="be-guide" style={{ display: this.state.isActiveGuide ? 'block' : 'none' }}>
                    Mostrarme activo 
                       <label class="switch">
                       <input type="checkbox" checked={this.state.isActiveGuide} onClick={() => this.estadoGuia()} />
