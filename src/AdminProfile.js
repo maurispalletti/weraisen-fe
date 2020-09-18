@@ -6,7 +6,7 @@ import '../src/AdminProfile.css';
 import CardDenunciaAll from './components/CardDenuncia';
 import CardsAceptarRechazar from './components/CardAceptarRechazar';
 import Buttom from './components/Boton.js';
-import pdf from '../src/icons/Linuxdoc-Ejemplo.pdf';
+import pdf from '../src/Imagenes_Alvo/MU_V1.pdf';
 
 class Tabulador extends React.Component {
 constructor(props) {
