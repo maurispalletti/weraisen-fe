@@ -135,7 +135,7 @@ class userServices {
 		userId,		
 		isActiveGuide,
 	}) {
-		const url = `${customUrl}/api/v1/tourists/updateGuiaActivo/${userId}`
+		const url = `${customUrl}/api/v1/guides/toggle-active/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {			
 			isActiveGuide,
