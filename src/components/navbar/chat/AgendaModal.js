@@ -77,16 +77,22 @@ class AgendaModal extends Component {
       var year = now.getFullYear()
       var hour = now.getHours()
       var minute = now.getMinutes()
-
+      var start = [year,now.getMonth() + 1, day, hour, minute]
       var matchDate = new Date(Date.UTC(year, month, day, hour, minute, 0, 0))
 
       await userServices.updateMatchDate(matchId, matchDate);
+      //manod mail
+      await userServices.sendEmailEncuentro({
+        match: match,
+        FechaHoraEncuentro: start
+      })
       this.setState(() => ({ goToChat: true }));
     } catch (error) {
       console.error(`There was an error trying to update match: ${error}`)
       return null
     }
   }
+  
 
   handleChange = (event) => {
     this.setState({ fecha: event.target.value });
@@ -130,7 +136,7 @@ class AgendaModal extends Component {
 
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={() => this.updateMatchDate(this.state.fecha)}>Agendar</Button>
+          <Button onClick={() => this.updateMatchDate(this.state.fecha)}>Agendar</Button>         
           <Button onClick={() => this.setState({ goToChat: true })}>Cancelar</Button>
         </Modal.Footer>
       </Modal>
