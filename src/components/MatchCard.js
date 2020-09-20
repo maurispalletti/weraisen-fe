@@ -70,9 +70,9 @@ export default class MatchCard extends Component {
         )
 
       }
+      
     }
   }
-
 
   renderButtons() {
     const { status, chatId, partnerRole } = this.props
@@ -112,6 +112,8 @@ export default class MatchCard extends Component {
     if (status === 'Activo') {
       return (
         <div>
+           <br></br>
+          <br></br>
         <h4 className="card-text" style={{ textAlign: "left", width: 'auto', color: '#3AA02C' }}>Encuentro pendiente </h4>
        {this.renderFecha(this.props.matchDate)}
         </div>
@@ -165,8 +167,10 @@ export default class MatchCard extends Component {
         <div className="card col-sm-12 col-xs-12 " style={{ maxWidth: '400px', margin: '0px auto' }} >
         <h3 className="card-title" style={{ marginTop: 18, marginBottom: 10, textAlign: "center" }}>{roleName}: {partnerName}</h3>
           <div className="row no-gutters ">
+
             <div className="col-sm-4 col-4" style={{ display: 'flex', alignItems: 'center', marginTop: 10, marginBottom: 10 }}>
               <img src={imgsrcWithFallback} style={{ width: '100px', height: '100px', objectFit: 'cover' }} className="card-img img-fluid" alt="..." />
+            
             </div>
             <div className="col-sm-8 col-8"  >
               <div style={{ paddingLeft: 20, textAlign: 'center' }}>

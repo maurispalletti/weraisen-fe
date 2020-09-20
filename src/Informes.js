@@ -8,7 +8,6 @@ import GraficoCityPerMonth from './components/ReportCityPerMonth';
 import GraficoEncuentrosPorMes from './components/ReportMatchesPorMes';
 import GraficoNewUserPerMonth from './components/ReportNewUsersPerMonth';
 import GraficoCompliantsPerReason from './components/ReportCompliantsPerReason';
-import GraficoCategoriesMostSetelcted from './components/ReportCategoriesMostSelected';
 import GraficoUsersPerAge from './components/ReportUsersPerAge';
 import GraficoUsersPerLanguages from './components/ReportUsersPerLanguages';
 import GraficoUsersPerGender from './components/ReportUsersPerGender';
@@ -23,7 +22,6 @@ class Informes extends Component {
     citiesPerMatch: null,
     usersCreatedPerMonth: null,
     usersReportedPerReason: null,
-    categoriesMostSelected: null,
     usersCreatedPerAge: null,
     matchesPerCategories: null,
     usersPerLanguages: null,
@@ -40,7 +38,6 @@ class Informes extends Component {
     usersCreatedPerAgeSelect: false,
     usersPerLanguagesSelect: false,
 
-    categoriesMostSelectedSelect: false,
     categoriesPerGenderSelect: false,
     categoriesPerCitySelect: false
 
@@ -58,13 +55,12 @@ class Informes extends Component {
     this.getUsersReportedPerReason();
     this.getCategoriesPerGender();
     this.getCitiesPerMatch();
-    this.getCategoriesMostSelected();
     this.getMatchesPerCategories();
 
   }
   getCategoriesPerCity = async () => {
     try {
-      console.log("entrooooooooooooo")
+
       const response = await userServices.getCategoriesPerCity()
 
       if (response.data) {
@@ -73,7 +69,7 @@ class Informes extends Component {
         this.setState({
           categoriesPerCities: data,
         });
-        console.log(this.state.categoriesPerCities)
+
       }
     } catch (error) {
       console.error(`There was an error trying to get the matches per categories`)
@@ -81,7 +77,7 @@ class Informes extends Component {
   }
   getMatchesPerCategories = async () => {
     try {
-      console.log("entrooooooooooooo")
+
       const response = await userServices.getMatchesPerCategories()
 
       if (response.data) {
@@ -90,7 +86,7 @@ class Informes extends Component {
         this.setState({
           matchesPerCategories: data,
         });
-        
+
       }
     } catch (error) {
       console.error(`There was an error trying to get the matches per categories`)
@@ -123,7 +119,7 @@ class Informes extends Component {
         this.setState({
           usersCreatedPerGender: data,
         });
-
+console.log(this.state.usersCreatedPerGender)
       }
     } catch (error) {
       console.error(`There was an error trying to get the users per gender`)
@@ -147,24 +143,6 @@ class Informes extends Component {
       console.error(`There was an error trying to get the category per gender data`)
     }
   }
-  getCategoriesMostSelected = async () => {
-
-    try {
-
-      const response = await userServices.getCategoriesMostSelected()
-
-      if (response.data) {
-        const { data } = response;
-
-        this.setState({
-          categoriesMostSelected: data,
-        });
-
-      }
-    } catch (error) {
-      console.error(`There was an error trying to get the categories most selected`)
-    }
-  }
   getMatchesPerMonth = async () => {
     try {
       const response = await userServices.getMatchesPerMonth()
@@ -176,6 +154,7 @@ class Informes extends Component {
           matchesPerMonth: data
         });
       }
+
     } catch (error) {
       console.error(`There was an error trying to get the matchesPerMonth data`)
     }
@@ -196,6 +175,7 @@ class Informes extends Component {
         });
 
       }
+
     } catch (error) {
       console.error(`There was an error trying to get the citiesPerMonth data`)
     }
@@ -213,6 +193,7 @@ class Informes extends Component {
         this.setState({
           usersReportedPerReason: data
         });
+        
       }
     } catch (error) {
       console.error(`There was an error trying to get the Reported users per reason data`)
@@ -232,7 +213,7 @@ class Informes extends Component {
           citiesPerMatch: data
 
         });
-
+     
       }
     } catch (error) {
       console.error(`There was an error trying to get the cities per match`)
@@ -275,7 +256,7 @@ class Informes extends Component {
               <div class="checkbox" id="usuarios" style={{ textAlign: "left" }}>
                 <input checked={this.state.newUsersSelect} onChange={() => this.setState({ newUsersSelect: !this.state.newUsersSelect })} name="newUsers" type="checkbox" /> Usuarios creados por mes<br></br>
                 <input checked={this.state.reportedUsersSelect} onChange={() => this.setState({ reportedUsersSelect: !this.state.reportedUsersSelect })} name="reportedUsersSelect" type="checkbox" /> Usuarios denunciados por tipo <br></br>
-                <input checked={this.state.usersCreatedPerGenderSelect} onChange={() => this.setState({ usersCreatedPerGenderSelect: !this.state.usersCreatedPerGenderSelect })} name="userCreatedPerMonth" type="checkbox" /> Usuarios creados por género <br></br>
+                <input checked={this.state.usersCreatedPerGenderSelect} onChange={() => this.setState({ usersCreatedPerGenderSelect: !this.state.usersCreatedPerGenderSelect })} name="userCreatedPerMonth" type="checkbox" /> Usuarios creados por tipo<br></br>
                 <input checked={this.state.usersCreatedPerAgeSelect} onChange={() => this.setState({ usersCreatedPerAgeSelect: !this.state.usersCreatedPerAgeSelect })} name="usersCreatedPerAge" type="checkbox" /> Usuarios creados por  edad <br></br>
                 <input checked={this.state.usersPerLanguagesSelect} onChange={() => this.setState({ usersPerLanguagesSelect: !this.state.usersPerLanguagesSelect })} name="usersPerLanguages" type="checkbox" /> Idiomas más elegidos <br></br>
               </div>
@@ -286,9 +267,8 @@ class Informes extends Component {
             <div class="form-group" style={{ padding: "10px" }}>
               <label for="usuarios" style={{ fontWeight: "bold", color: "#F9AA68", fontSize: "15px" }}>Informes de categorías elegidas por guía</label>
               <div class="checkbox" id="categorias" style={{ textAlign: "left" }}>
-                <input checked={this.state.categoriesMostSelectedSelect} onChange={() => this.setState({ categoriesMostSelectedSelect: !this.state.categoriesMostSelectedSelect })} name="categoriesMostSelected" type="checkbox" /> Cantidad de guías por categoría <br></br>
-                <input checked={this.state.categoriesPerGenderSelect} onChange={() => this.setState({ categoriesPerGenderSelect: !this.state.categoriesPerGenderSelect })} name="categoriesPerGender" type="checkbox" /> Cantidad de guías por género <br></br>
-                <input checked={this.state.categoriesPerCitySelect} onChange={() => this.setState({ categoriesPerCitySelect: !this.state.categoriesPerCitySelect })} name="categoriesPerCity" type="checkbox" /> Cantidad de guías por ciudad<br></br>
+                <input checked={this.state.categoriesPerGenderSelect} onChange={() => this.setState({ categoriesPerGenderSelect: !this.state.categoriesPerGenderSelect })} name="categoriesPerGender" type="checkbox" /> Categorías más elegidas por guía<br></br>
+                <input checked={this.state.categoriesPerCitySelect} onChange={() => this.setState({ categoriesPerCitySelect: !this.state.categoriesPerCitySelect })} name="categoriesPerCity" type="checkbox" /> Categorías elegidas por ciudad por guía<br></br>
               </div>
             </div>
           </div>
@@ -316,9 +296,6 @@ class Informes extends Component {
             </div>
             <div className="GraphicWrapper" style={{ padding: "10px" }} >
               {this.state.usersCreatedPerAge && this.state.usersCreatedPerAgeSelect && <GraficoUsersPerAge usersPerAge={this.state.usersCreatedPerAge} />}
-            </div>
-            <div className="GraphicWrapper" style={{ padding: "10px" }} >
-              {this.state.categoriesMostSelected && this.state.categoriesMostSelectedSelect && <GraficoCategoriesMostSetelcted categoriesMostSelected={this.state.categoriesMostSelected} />}
             </div>
             <div className="GraphicWrapper" style={{ padding: "10px" }} >
               {this.state.usersPerLanguagesSelect && this.state.usersPerLanguages && <GraficoUsersPerLanguages usersPerLanguages={this.state.usersPerLanguages} />}

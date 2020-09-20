@@ -4,29 +4,11 @@ import './Estilos.css';
 import { Redirect } from 'react-router'
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
-// import CheckboxGroupWithError from './forms/CheckboxGroupWithError'
 import Header from '../src/components/Header'
 
 import { ProfileSchema } from './helpers/validators'
 import userServices from './services/userServices'
 import Buttom from './components/Boton.js'
-// import DropdownGender from './forms/DropdownGender'
-
-
-// const genders = [
-//   {
-//     value: "Femenino",
-//     description: 'Femenino'
-//   },
-//   {
-//     value: "Masculino",
-//     description: 'Masculino'
-//   },
-//   {
-//     value: "Otro",
-//     description: 'Otro'
-//   },
-// ]
 
 class Profile extends Component {
 
@@ -39,6 +21,7 @@ class Profile extends Component {
     goToMyReviews: false,
     initialValues: null,
     isActiveGuide: false,
+    isGuide: false,
     knowledge: [],
     updateOk: false,
   }
@@ -71,7 +54,6 @@ class Profile extends Component {
     birthDate,
     gender,
   }) => {
-    console.log('entroooooooooooooooooooooooooooooo')
     try {
       const userId = localStorage.getItem("userId");
       if (userId) {
@@ -83,7 +65,6 @@ class Profile extends Component {
           birthDate,
           gender,
         })
-        console.log(response);
         const { data: { id } } = response
         console.log(id);
         this.setState({ editable: false, updateOk:true })
@@ -111,6 +92,7 @@ class Profile extends Component {
     const {
       firstName,
       lastName,
+      profilePicture,
       birthDate,
       identification,
       gender,
@@ -126,10 +108,17 @@ class Profile extends Component {
     console.log(`knowledge`)
     console.log(knowledge)
 
+    let isGuide = false;
+
+    if (knowledge && knowledge.length > 0) {
+      console.log('IS GUIDEEEE')
+      isGuide = true;
+    }
     
     const initialValues = {
       firstName,
       lastName,
+      profilePicture,
       birthDate: this.getFormattedDate(birthDate),
       identification,
       gender,
@@ -137,9 +126,9 @@ class Profile extends Component {
       email
     }
 
-    this.setState({ initialValues, isActiveGuide, knowledge })
-    console.log('initial values' + this.state.isActiveGuide )
+    this.setState({ initialValues, isActiveGuide, knowledge, isGuide })
   }
+
   estadoGuia =  async () => {
     this.setState({ isActiveGuide: !this.state.isActiveGuide });   
     try {
@@ -154,7 +143,7 @@ class Profile extends Component {
     
   } catch (error) {
     console.log(error)
-    console.error(`There was an error trying to update compliant status`)
+    console.error(`There was an error trying to update guide status`)
   }    
   }
 
@@ -184,6 +173,12 @@ class Profile extends Component {
               <Form>
                 <div className="profileData container-fluid">
                   <h2>¡Hola, {this.state.initialValues.firstName}!</h2>
+
+                  <div>
+							      <div className="FotoPerfil">
+								      <img src= {this.state.initialValues.profilePicture} alt="profile" style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
+							     </div>
+					      	</div>
 
                   <div className="title">
                     <FieldWithError disabled={!this.state.editable} name="firstName" placeholder="Nombre" aria-label="name" className="input" />
@@ -215,7 +210,7 @@ class Profile extends Component {
 
                 <div className="guideSection">
                   {this.state.knowledge && this.state.knowledge.length > 0 } 
-                  <div className="be-guide">
+                  <div className="be-guide" style={{ display: this.state.isGuide ? 'block' : 'none' }}>
                    Mostrarme activo 
                       <label class="switch">
                       <input type="checkbox" checked={this.state.isActiveGuide} onClick={() => this.estadoGuia()} />
@@ -228,7 +223,7 @@ class Profile extends Component {
 
                 <div className="buttonsSectionGuia">
                   <input type="button" className="btn-primero" style={{width: '257px'}}
-                    value={this.state.isActiveGuide ? "Actualizar mis datos de guía" : "Quiero ser guía"}
+                    value={this.state.isGuide ? "Actualizar mis datos de guía" : "Quiero ser guía"}
                     onClick={() => this.setState({ goToGuideProfile: true })} />
                 </div>
             

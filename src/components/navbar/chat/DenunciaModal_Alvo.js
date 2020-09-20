@@ -55,7 +55,6 @@ class DenunciaModal_Alvo extends Component {
         const description = values.description;
         const status = "Creado";
         
-      console.log ("HOLA");
       console.log(userId, accusedId, description, status, reason);
       userServices.createCompliant({ 
           userId,
@@ -64,8 +63,10 @@ class DenunciaModal_Alvo extends Component {
 	        status,
 	      	reason
         });
-        console.log("HOLA2")
         this.setState({ notificacion: true })
+      
+		
+		    await userServices.updateMatchStatus(localStorage.getItem("matchId"), 'Cancelado')
             
     } catch (error) {
       console.log(error)
@@ -100,12 +101,12 @@ class DenunciaModal_Alvo extends Component {
               </Modal.Title>
             </Modal.Header>
           <Modal.Body>
-          <h5 align="Left"> Desde We Raisen lamentamos que tengas que llegar a esta instancia,
-								contanos el motivo así nosotros evaluamos lo sucedido.</h5>
+          <h5 align="Left"> ¡Lamentamos que tengas que llegar a esta instancia!
+								Seleccioná el motivo y contanos en una breve descripción así nosotros podemos evaluar lo sucedido.</h5>
           <br></br>
           <div className="checkbox">
             <label>
-              <input style={{paddingLeft: "5px"}} checked={this.state.sexual} onChange={() => this.setState({ sexual: true })} name= "reason" type="radio"/> Acoso sexual y/o verbal.
+              <input style={{paddingLeft: "5px"}} checked={this.state.sexual} onChange={() => this.setState({ sexual: true })} name= "reason" type="radio" required= 'true'/> Acoso sexual y/o verbal.
            </label>
           </div>
 
@@ -140,7 +141,7 @@ class DenunciaModal_Alvo extends Component {
           <br></br>
                     
               <div style={{ maxWidth: '200px', margin: '0px auto'}}></div>
-              <a align="left">Por favor, describí lo sucedido para ayudarnos a tomar una decisión correcta.</a>
+              <a align="left">Por favor, describí lo sucedido.</a>
                    
           <div align = "center">
         

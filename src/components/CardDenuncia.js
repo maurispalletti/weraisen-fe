@@ -55,13 +55,13 @@ class CardDenunciaAll extends Component {
 
   render() {
     if (this.state.loading) {
-      return <h3 style={{ marginBottom: '18px' }}>Cargando usuarios con denuncias generadas</h3>
+      return <h3 style={{ marginBottom: '18px' }}>Cargando denuncias...</h3>
     } else if (this.complaintFailed) {
-      return <h3 style={{ marginBottom: '18px' }}>Ups... el servicio ha fallado</h3>
+      return <h3 style={{ marginBottom: '18px' }}>Ups! El servicio falló</h3>
     } else {
       return (
         <>
-          <h3 style={{ marginBottom: '18px' }}>Usuarios que poseen denuncias</h3>
+          <h3 style={{ marginBottom: '18px' }}>Usuarios denunciados</h3>
           {this.renderComplaints()}
         </>
       )

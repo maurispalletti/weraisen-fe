@@ -135,7 +135,7 @@ class userServices {
 		userId,		
 		isActiveGuide,
 	}) {
-		const url = `${customUrl}/api/v1/tourists/updateGuiaActivo/${userId}`
+		const url = `${customUrl}/api/v1/guides/toggle-active/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {			
 			isActiveGuide,
@@ -277,11 +277,6 @@ class userServices {
 		return axios.get(url, { headers })
 	}
 
-	static async getCategoriesMostSelected() {
-		const url = `${customUrl}/api/v1/charts/categoriesMostSelected`
-		const headers = { 'Content-Type': 'application/json' }
-		return axios.get(url, { headers })
-	}
 	static async getUsersPerAge() {
 		const url = `${customUrl}/api/v1/charts/usersPerAge`
 		const headers = { 'Content-Type': 'application/json' }

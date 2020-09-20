@@ -43,6 +43,7 @@ padding-top:0px;
  align-items: center;
  justify-content: center;
  color: #e0e0e4;
+ margin-left: 10px;
 }
 
 
@@ -67,6 +68,7 @@ padding-top:0px;
   height: 100vh;
   padding-top: 80px;
   background: url("./icons/background-image.jpg") center ;
+  background-size: cover;
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
