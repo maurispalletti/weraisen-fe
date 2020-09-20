@@ -174,7 +174,7 @@ class Login extends Component {
                 <div className="continuar2"><a href="#Inicio" className=""><img className="imag" src={scroll2} alt={"WER"} width="50" /> </a></div>
                 <br></br>
              
-                <u><a style={{cursor:'pointer'}} onClick={() => this.setState({ goToHelp: true })}> Más información </a>
+                <u><a style={{cursor:'pointer'}} onClick={() => this.setState({ goToHelp: true })}>Preguntas Frecuentes </a>
                 </u>
           </div>
         </div>
