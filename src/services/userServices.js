@@ -135,7 +135,7 @@ class userServices {
 		userId,		
 		isActiveGuide,
 	}) {
-		const url = `${customUrl}/api/v1/tourists/updateGuiaActivo/${userId}`
+		const url = `${customUrl}/api/v1/guides/toggle-active/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {			
 			isActiveGuide,
@@ -387,16 +387,63 @@ static async getCategoriesPerCity(){
 		return axios.put(url, body, { headers })
 	}
 
-	static async sendEmail({
-		emailDestino,
-		origen
+	static async sendEmailUsuarioAprobado({
+		emailDestino,		
 	
 	}) {
-		const url = `${customUrl}/api/v1/notifications/sendEmail`
+		const url = `${customUrl}/api/v1/notifications/sendEmailUsuarioAprobado`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {		
-			emailDestino,
-			origen			
+			emailDestino,						
+		}
+		return axios.post(url, body, { headers })
+	}
+
+	static async sendEmailUsuarioDenegado({
+		emailDestino,		
+	
+	}) {
+		const url = `${customUrl}/api/v1/notifications/sendEmailUsuarioDenegado`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {		
+			emailDestino,						
+		}
+		return axios.post(url, body, { headers })
+	}
+
+	static async sendEmailRestablecerContraseña({
+		emailDestino,		
+	
+	}) {
+		const url = `${customUrl}/api/v1/notifications/sendEmailRestablecerContraseña`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {		
+			emailDestino,						
+		}
+		return axios.post(url, body, { headers })
+	}
+
+	static async sendEmailCuentaBloqueada({
+		emailDestino,		
+	
+	}) {
+		const url = `${customUrl}/api/v1/notifications/sendEmailCuentaBloqueada`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {		
+			emailDestino,						
+		}
+		return axios.post(url, body, { headers })
+	}
+
+	static async sendEmailEncuentro({
+		match,
+		FechaHoraEncuentro
+	}) {
+		const url = `${customUrl}/api/v1/notifications/sendEmailEncuentro`
+		const headers = { 'Content-Type': 'application/json' }
+		const body = {		
+			match,
+			FechaHoraEncuentro, //Arreglo [año, mes, dia, hora, minuto]			
 		}
 		return axios.post(url, body, { headers })
 	}

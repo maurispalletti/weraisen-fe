@@ -20,9 +20,8 @@ class PasswordRecovery extends Component {
 	
 	sendEmail = async ({ email }) => {
 		try {
-			await userServices.sendEmail({
-				emailDestino: email,
-				origen: 3
+			await userServices.sendEmailRestablecerContraseña({
+				emailDestino: email,				
 			})
 			this.setState({ enviado: true })
 		} catch (error) {

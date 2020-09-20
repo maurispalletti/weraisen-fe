@@ -216,7 +216,7 @@ class SignUp extends Component {
             Nombre 
             </div>
             <div className="title">
-              <FieldWithError type="text" pattern="^[A-Za-z]+$" name="lastName" type="text" placeholder="Ingresá tu apellido" aria-label="lastName" className="input" />
+              <FieldWithError type="text" pattern="^[A-Za-z]+$" name="lastName" placeholder="Ingresá tu apellido" aria-label="lastName" className="input" />
             Apellido
             </div>
             <div className="title">
@@ -224,7 +224,7 @@ class SignUp extends Component {
               Tipo de Documento
                </div>
             <div className="title">
-              <FieldWithError name="identification" pattern="[0-9]" type="text" placeholder="Ingresá tu número de documento" aria-label="identification" className="input"  />
+              <FieldWithError name="identification" pattern="[0-9]+${10}" type="text" placeholder="Ingresá tu número de documento" aria-label="identification" className="input"  />
             Número de Documento
             </div>
 
