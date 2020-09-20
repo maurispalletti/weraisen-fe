@@ -224,7 +224,7 @@ class SignUp extends Component {
               Tipo de Documento
                </div>
             <div className="title">
-              <FieldWithError name="identification" pattern="[0-9]+$" type="text" placeholder="Ingresá tu número de documento" aria-label="identification" className="input"  />
+              <FieldWithError name="identification" pattern="[0-9]+${10}" type="text" placeholder="Ingresá tu número de documento" aria-label="identification" className="input"  />
             Número de Documento
             </div>
 

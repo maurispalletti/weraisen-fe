@@ -13,7 +13,7 @@ class AceptarRechazar extends Component {
 
   getFormattedDate(birthDate) {
     const date = new Date(birthDate);
-    const day = date.getDate()
+    const day = date.getUTCDate()
     const month = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
     var year = date.getFullYear()
 
