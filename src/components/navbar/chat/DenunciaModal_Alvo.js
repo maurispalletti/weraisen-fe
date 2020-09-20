@@ -78,7 +78,7 @@ class DenunciaModal_Alvo extends Component {
   
   render() {
     if (this.state.notificacion) {
-      return <Redirect to="/notificaciones" />
+      return <Redirect to="/matches" />
     }
 
     return (
@@ -112,21 +112,21 @@ class DenunciaModal_Alvo extends Component {
 
           <div className="checkbox">
             <label>
-              <input style={{paddingLeft: "5px"}} checked={this.state.discriminacion} onChange={() => this.setState({ discriminacion: true })}  name= "reason" type="radio" value="option"  />
+              <input style={{paddingLeft: "5px"}} checked={this.state.discriminacion} onChange={() => this.setState({ discriminacion: true })}  name= "reason" type="radio" value="option" required />
                 Discriminación.
             </label>
           </div>
 
           <div className="checkbox">
             <label>
-              <input checked={this.state.suplantacion} onChange={() => this.setState({ suplantacion: true })} name= "reason" type="radio" value="option" style={{ paddingLeft: "5px" }} />
+              <input checked={this.state.suplantacion} onChange={() => this.setState({ suplantacion: true })} name= "reason" type="radio" value="option" style={{ paddingLeft: "5px" }} required />
                                       Perfil falso, suplantación de identidad o
                                       mensajes sospechosos.
                                  </label>
           </div>
           <div className="checkbox">
             <label>
-              <input  checked={this.state.violencia} onChange={() => this.setState({ violencia: true })} name= "reason" type="radio" value="option" style={{ paddingLeft: "5px" }} />
+              <input  checked={this.state.violencia} onChange={() => this.setState({ violencia: true })} name= "reason" type="radio" value="option" style={{ paddingLeft: "5px" }} required />
                                       Amenazas violentas específicas relacionadas
                                       con el
                                       bienestar o la seguridad física.
@@ -134,7 +134,7 @@ class DenunciaModal_Alvo extends Component {
           </div>
           <div className="checkbox">
             <label >
-              <input checked={this.state.otro} onChange={() => this.setState({ otro: true })}  name= "reason" type="radio" value="option" style={{ paddingLeft: "5px" }} />
+              <input checked={this.state.otro} onChange={() => this.setState({ otro: true })}  name= "reason" type="radio" value="option" style={{ paddingLeft: "5px" }} required />
                                       Otro motivo.
                                  </label>
           </div>

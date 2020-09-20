@@ -79,7 +79,7 @@ class Profile extends Component {
 
   getFormattedDate(birthDate) {
     const date = new Date(birthDate);
-    const day = date.getDate()
+    const day = date.getUTCDate()
     const month = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
     var year = date.getFullYear()
 
@@ -176,7 +176,7 @@ class Profile extends Component {
 
                   <div>
 							      <div className="FotoPerfil">
-								      <img src= {this.state.initialValues.profilePicture} alt="profile" style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
+								      <img src= {this.state.initialValues.profilePicture} alt="profile" style={{ width: '200px', height: '200px', objectFit: 'cover', borderTopRightRadius: '12px', borderTopLeftRadius: '12px', borderBottomLeftRadius: '12px', borderBottomRightRadius: '12px' }} />
 							     </div>
 					      	</div>
 

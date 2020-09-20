@@ -6,6 +6,7 @@ import userServices from './services/userServices';
 import fotoFer from '../src/Imagenes_Alvo/Fer.png';
 import fotoLucre from '../src/Imagenes_Alvo/Lucre.png';
 import fotoLu from '../src/Imagenes_Alvo/Lu.png';
+import rosario from '../src/Imagenes_Alvo/rosario.jpg'
 
 class Home extends Component {
 	state = {
@@ -54,14 +55,14 @@ class Home extends Component {
 
 		this.setState({
 			guias: [
-				{ imagen: fotoFer, nombre: 'Fernando', edad: '5 estrellas', detalle: '"Hola me encanta el futbol, ofrezco mi experiencia en tours deportivos y también en deporte como tenis y paddle."'},
+				{ imagen: fotoFer, nombre: 'Fernando', edad: '5 estrellas', detalle: '"Hola me encanta el futbol, ofrezco mi experiencia en tours deportivos y también en deporte como tenis y paddle."' },
 				{ imagen: fotoLucre, nombre: 'Lucrecia', edad: '4 estrellas', detalle: '"Mis salidas se centran cultura y deportes. A su vez, podremos practicar inglés, si así lo deseas."' },
 				{ imagen: fotoLu, nombre: 'Luciana', edad: '5 estrellas', detalle: '"Soy estudiante de turismo, me apasiona conocer otras culturas. Yo te muestro la mía y vos me contas la tuya, te parece?🥰."' },
 			],
 			ciudades: [
 				{ imagen: "https://elplanetaurbano.com/wp-content/uploads/2017/06/Puerto-madero-2.jpg", nombre: 'Buenos Aires' },
 				{ imagen: "https://s.libertaddigital.com/2018/03/09/cordoba_argentina01.jpg", nombre: 'Córdoba' },
-				{ imagen: "https://latecla-repos-dgf.aplinews.com/archivos/noticias/fotografias/79032_3.jpg", nombre: 'Mar del Plata' },
+				{ imagen: rosario, nombre: 'Rosario' },
 
 			], initialValues
 		});
@@ -120,7 +121,7 @@ class Home extends Component {
 							</a></div>
 						<hr />
 						<div className='ml-auto'>
-							<h3 style={{ marginTop: '20px' }}>Guias con mejores puntuaciones</h3>
+							<h3 style={{ marginTop: '20px' }}>Guías con mejores puntuaciones</h3>
 						</div>
 						<hr />
 						<div className="bs-docs-section">
