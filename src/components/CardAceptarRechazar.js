@@ -83,7 +83,7 @@ class AceptarRechazar extends Component {
       } else {
         return (
           <div>
-            <h3 style={{ marginBottom: '18px' }}>Usuarios pendientes de aprobación</h3>
+            <h2 style={{ marginBottom: '18px' }}>Usuarios pendientes de aprobación</h2>
             {this.renderNewUsers()}
           </div>
         )

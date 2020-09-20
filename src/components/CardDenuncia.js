@@ -61,7 +61,7 @@ class CardDenunciaAll extends Component {
     } else {
       return (
         <>
-          <h3 style={{ marginBottom: '18px' }}>Usuarios denunciados</h3>
+          <h2 style={{ marginBottom: '18px' }}>Usuarios denunciados</h2>
           {this.renderComplaints()}
         </>
       )
