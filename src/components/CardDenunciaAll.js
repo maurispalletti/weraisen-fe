@@ -24,9 +24,8 @@ class CardDenuncia extends Component {
           status,
         })
         //manod mail
-        await userServices.sendEmail({
-          emailDestino: this.state.accused.email,
-          origen: 4
+        await userServices.sendEmailCuentaBloqueada({
+          emailDestino: this.state.accused.email,          
         })
 
       }

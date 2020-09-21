@@ -17,9 +17,8 @@ class CardsAceptar extends Component {
           userId,
           status: "ACTIVE"
         })
-        await userServices.sendEmail({
-          emailDestino: email,
-          origen: 1
+        await userServices.sendEmailUsuarioAprobado({
+          emailDestino: email,          
         })
 
       }
@@ -39,9 +38,8 @@ class CardsAceptar extends Component {
           userId,
           status: "BLOCKED"
         })
-        await userServices.sendEmail({
-          emailDestino: email,
-          origen: 2
+        await userServices.sendEmailUsuarioDenegado({
+          emailDestino: email,          
         })
         this.setState({ updateFailed: false })
       }

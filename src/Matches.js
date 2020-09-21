@@ -267,7 +267,7 @@ class Matches extends Component {
                 initialValues={INITIAL_VALUES}
                 onSubmit={(filters) => this.searchMatches(filters)}>
                 <Form>
-                  <h2 style={{ marginBottom: 40, display: this.state.showFilters ? 'none' : 'block' }}>Tus encuentros</h2>
+                  <h2 style={{ marginBottom: 40, display: this.state.showFilters ? 'none' : 'block' }}>Mis encuentros</h2>
 
                   <div className="Filters" style={{ display: this.state.showFilters ? 'block' : 'none' }}>
 

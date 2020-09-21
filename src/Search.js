@@ -200,9 +200,9 @@ class Search extends Component {
                   <br></br>
                   <h2>Idioma de tu guía</h2>
                   <Autocomplete defaultText={this.state.language} placeholder={'Ingresa las primeras letras del idioma'} name={'language'} items={languages} ></Autocomplete>
-                  <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="salidaGrupal" checked={this.state.groupwalk} onChange={() => this.setState({ groupwalk: !this.state.groupwalk }) }/>
-                  <label class="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
+                  <div className="custom-control custom-checkbox">
+                  <input type="checkbox" className="custom-control-input" id="salidaGrupal" checked={this.state.groupwalk} onChange={() => this.setState({ groupwalk: !this.state.groupwalk }) }/>
+                  <label className="custom-control-label" for="salidaGrupal">Permitir salidas grupales</label>
                 </div>
                 <br></br>
                   {this.state.ageValidationFailed && (

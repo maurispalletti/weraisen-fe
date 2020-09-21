@@ -6,7 +6,7 @@ import '../src/AdminProfile.css';
 import CardDenunciaAll from './components/CardDenuncia';
 import CardsAceptarRechazar from './components/CardAceptarRechazar';
 import Buttom from './components/Boton.js';
-import pdf from '../src/Imagenes_Alvo/MU_V1.pdf';
+import pdf from '../src/Imagenes_Alvo/Parte I.pdf';
 
 class Tabulador extends React.Component {
 constructor(props) {
@@ -31,9 +31,9 @@ render() {
     active = {this.state.active} 
     onChange = {active => this.setState({active})}
     >
-      <div key="aTAB"> Informes </div> 
-      <div key="bTAB"> Gestión de denuncias </div> 
-      <div key="cTAB"> Gestión de usuarios </div> 
+      <div key="aTAB" style={{fontSize:"18px"}}> Informes </div> 
+      <div key="bTAB" style={{fontSize:"18px"}}> Gestión de denuncias </div> 
+      <div key="cTAB" style={{fontSize:"18px"}}> Gestión de usuarios </div> 
     </Tabs>
    
   

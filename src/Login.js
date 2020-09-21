@@ -72,7 +72,7 @@ class Login extends Component {
       
         //manod mail
         await userServices.sendEmail({
-          emailDestino: "alvoscares@gmail.com",
+          emailDestino: "viccdiaz@gmail.com",
           origen: 1
         })
 
@@ -146,12 +146,12 @@ class Login extends Component {
 
           <div className="text"><p ><strong>
 
-            ¿Alguna vez has estado en una ciudad por primera vez y deseaste tener un guía amigo?
+            ¿Alguna vez estuviste en una ciudad por primera vez y deseaste tener un guía amigo?
                 </strong></p>
             <p>
               <strong>WeRaisen</strong> es una plataforma que utiliza la tecnología para conectarte con <strong>expertos locales.</strong></p>
 
-            <p>Únicamente tenes que especificar a dónde queres ir, cuándo y qué querés hacer allí... </p>
+            <p>Únicamente tenés que especificar a dónde querés ir, cuándo y qué querés hacer allí... </p>
             <p>Luego, sólo deberás <strong>enviar una solicitud</strong> al guía que más te guste.</p>
 
           </div>

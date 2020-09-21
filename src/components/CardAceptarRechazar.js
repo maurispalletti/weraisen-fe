@@ -13,7 +13,7 @@ class AceptarRechazar extends Component {
 
   getFormattedDate(birthDate) {
     const date = new Date(birthDate);
-    const day = date.getDate()
+    const day = date.getUTCDate()
     const month = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
     var year = date.getFullYear()
 
@@ -83,7 +83,7 @@ class AceptarRechazar extends Component {
       } else {
         return (
           <div>
-            <h3 style={{ marginBottom: '18px' }}>Usuarios pendientes de aprobación</h3>
+            <h2 style={{ marginBottom: '18px' }}>Usuarios pendientes de aprobación</h2>
             {this.renderNewUsers()}
           </div>
         )
