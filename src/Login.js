@@ -54,7 +54,7 @@ class Login extends Component {
           this.setState({ userPENDING: true, mensajeError: "Tu cuenta está en proceso de validación." })
         }
         else{
-          this.setState({ userPENDING: true, mensajeError: "La solicitud de creración de usuario fue denegada." })
+          this.setState({ userPENDING: true, mensajeError: "Tu cuenta fue bloqueada." })
         }
         
       }
