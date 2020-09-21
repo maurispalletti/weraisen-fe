@@ -133,7 +133,7 @@ class MyReviews extends Component {
 
 
     } else {
-      if (this.state.reviews.length < 1 && !this.state.loading) {
+      if (this.state.reviews.length < 0 && !this.state.loading) {
         return (
           <div className="MyReviews">
             <Header />
