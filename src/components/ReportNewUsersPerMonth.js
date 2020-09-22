@@ -112,7 +112,7 @@ class GraficoNewUserPerMonth extends React.Component {
 		chartConfigs2020 = {
 			type: 'mscolumn2d',// The chart type
 			width: '85%', // Width of the chart
-			height: '85%', // Height of the chart
+			height: '50%', // Height of the chart
 			dataFormat: 'json', // Data type
 			dataSource: {
 				"chart": {
@@ -145,7 +145,7 @@ class GraficoNewUserPerMonth extends React.Component {
 		chartConfigs2019 = {
 			type: 'mscolumn2d',// The chart type
 			width: '85%', // Width of the chart
-			height: '85%', // Height of the chart
+			height: '50%', // Height of the chart
 			dataFormat: 'json', // Data type
 			dataSource: {
 				"chart": {
@@ -179,7 +179,7 @@ class GraficoNewUserPerMonth extends React.Component {
 		chartConfigs2021 = {
 			type: 'mscolumn2d',// The chart type
 			width: '85%', // Width of the chart
-			height: '85%', // Height of the chart
+			height: '50%', // Height of the chart
 			dataFormat: 'json', // Data type
 			dataSource: {
 				"chart": {
