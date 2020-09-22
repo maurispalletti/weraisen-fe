@@ -81,6 +81,7 @@ class SignUp extends Component {
     back: dni2gris,
     profile: icongris,
     repeatedEmail: false,
+    repeatedId: false,
   }
 
   createUser = async ({
@@ -112,7 +113,7 @@ class SignUp extends Component {
           console.log(`Imagen 3: ${imagenFotoPerfilUrl}`)
 
         } else {
-          this.setState({ signUpFailed: true, uploadFailed: true, repeatedEmail: false })
+          this.setState({ signUpFailed: true, uploadFailed: true, repeatedEmail: false, repeatedId: false })
         }
 
         const response = await userServices.createUser({
@@ -128,20 +129,22 @@ class SignUp extends Component {
           profilePicture: imagenFotoPerfilUrl.data
         })
 
-        const { data: { id, repeatedEmail } } = response
+        const { data: { id, repeatedEmail, repeatedId } } = response
 
         if (repeatedEmail) {
-          this.setState({ passwordsMissmatch: false, uploadFailed: false, repeatedEmail: true, signUpFailed: false })
+          this.setState({ passwordsMissmatch: false, uploadFailed: false, repeatedEmail: true, signUpFailed: false, repeatedId: false })
+        } else if (repeatedId) {
+          this.setState({ passwordsMissmatch: false, uploadFailed: false, repeatedEmail: false, signUpFailed: false, repeatedId: true })
         } else {
           localStorage.setItem("userId", id);
-          this.setState({ passwordsMissmatch: false, uploadFailed: false, denunciaModalShow: true, signUpFailed: false, repeatedEmail: false })
+          this.setState({ passwordsMissmatch: false, uploadFailed: false, denunciaModalShow: true, signUpFailed: false, repeatedEmail: false, repeatedId: false })
         }
 
       } else {
-        this.setState({ signUpFailed: true, passwordsMissmatch: true, repeatedEmail: false })
+        this.setState({ signUpFailed: true, passwordsMissmatch: true, repeatedEmail: false, repeatedId: false })
       }
     } catch (error) {
-      this.setState({ signUpFailed: true, repeatedEmail: false })
+      this.setState({ signUpFailed: true, repeatedEmail: false, repeatedId: false })
       console.error(`There was an error trying to create the user`)
     }
   }
@@ -224,7 +227,7 @@ class SignUp extends Component {
               Tipo de Documento
                </div>
             <div className="title">
-              <FieldWithError name="identification" pattern="[0-9]+${10}" type="text" placeholder="Ingresá tu número de documento" aria-label="identification" className="input"  />
+              <FieldWithError name="identification" type="text" placeholder="Ingresá tu número de documento" aria-label="identification" className="input"  />
             Número de Documento
             </div>
 
@@ -315,6 +318,11 @@ class SignUp extends Component {
                 {this.state.repeatedEmail && (
                   <p className="form-error">
                     El email ingresado ya está registrado en nuestro sistema. 
+                  </p>
+                )}
+                {this.state.repeatedId && (
+                  <p className="form-error">
+                    La identificacíon ingresada esta asociada a un usuario ya creado.
                   </p>
                 )}
                 {this.state.uploadFailed && (
