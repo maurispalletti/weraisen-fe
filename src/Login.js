@@ -54,7 +54,7 @@ class Login extends Component {
           this.setState({ userPENDING: true, mensajeError: "Tu cuenta está en proceso de validación." })
         }
         else{
-          this.setState({ userPENDING: true, mensajeError: "La solicitud de creración de usuario fue denegada." })
+          this.setState({ userPENDING: true, mensajeError: "Tu cuenta fue bloqueada." })
         }
         
       }
@@ -146,12 +146,12 @@ class Login extends Component {
 
           <div className="text"><p ><strong>
 
-            ¿Alguna vez has estado en una ciudad por primera vez y deseaste tener un guía amigo?
+            ¿Alguna vez estuviste en una ciudad por primera vez y deseaste tener un guía amigo?
                 </strong></p>
             <p>
               <strong>WeRaisen</strong> es una plataforma que utiliza la tecnología para conectarte con <strong>expertos locales.</strong></p>
 
-            <p>Únicamente tenes que especificar a dónde queres ir, cuándo y qué querés hacer allí... </p>
+            <p>Únicamente tenés que especificar a dónde querés ir, cuándo y qué querés hacer allí... </p>
             <p>Luego, sólo deberás <strong>enviar una solicitud</strong> al guía que más te guste.</p>
 
           </div>
@@ -174,7 +174,7 @@ class Login extends Component {
                 <div className="continuar2"><a href="#Inicio" className=""><img className="imag" src={scroll2} alt={"WER"} width="50" /> </a></div>
                 <br></br>
              
-                <u><a style={{cursor:'pointer'}} onClick={() => this.setState({ goToHelp: true })}> Más información </a>
+                <u><a style={{cursor:'pointer'}} onClick={() => this.setState({ goToHelp: true })}>Preguntas Frecuentes </a>
                 </u>
           </div>
         </div>

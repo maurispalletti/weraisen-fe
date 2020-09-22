@@ -411,11 +411,11 @@ static async getCategoriesPerCity(){
 		return axios.post(url, body, { headers })
 	}
 
-	static async sendEmailRestablecerContraseña({
+	static async sendEmailRestablecerPass({
 		emailDestino,		
 	
 	}) {
-		const url = `${customUrl}/api/v1/notifications/sendEmailRestablecerContraseña`
+		const url = `${customUrl}/api/v1/notifications/sendEmailRestablecerPass`
 		const headers = { 'Content-Type': 'application/json' }
 		const body = {		
 			emailDestino,						

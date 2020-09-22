@@ -56,7 +56,7 @@ class Help extends Component {
           <br></br>
           <br></br>
           <div>
-            <h2>¿Cómo convertirme en guía?</h2>
+            <h2>¿Cómo activarme como guía?</h2>
             <br></br>
           </div>
         <div>
