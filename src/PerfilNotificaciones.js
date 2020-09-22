@@ -14,6 +14,9 @@ class Notificacion extends Component {
 		loading: true,
 		notificationsFailed: false,
 	}
+	async componentDidMount() {
+		this.getNotifications();
+	}
 
 	getNotifications = async () => {
 		try {
@@ -154,9 +157,7 @@ class Notificacion extends Component {
 	}
 
 
-	async componentDidMount() {
-		this.getNotifications();
-	}
+	
 
 	render() {
 		if (this.state.loading) {
