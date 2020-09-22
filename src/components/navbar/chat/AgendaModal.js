@@ -27,7 +27,7 @@ class AgendaModal extends Component {
 
     hoy = año + "-" + mes + "-" + dia + "T00:00";
 
-    this.setState(() => ({ min: hoy }));
+    this.setState({ min: hoy });
   }
 
   getDateMatch = async () => {
@@ -40,9 +40,10 @@ class AgendaModal extends Component {
         match = response.data
         // const date = new Date(match.matchDate);
         var date = new Date(match.matchDate);
-        console.log(date + "dateeeeeeee")
+
         const day = date.getUTCDate()
-        const month = (date.getMonth()) < 10 ? `0${date.getMonth()}` : date.getMonth()
+        const newMonth = date.getMonth() + 1
+        const month = newMonth < 10 ? `0${newMonth}` : newMonth
         var year = date.getFullYear()
         date = year + "-" + month + "-" + day + "T12:00";
 
