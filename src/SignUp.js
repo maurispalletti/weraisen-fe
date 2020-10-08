@@ -230,6 +230,12 @@ class SignUp extends Component {
               <FieldWithError name="identification" type="text" placeholder="Ingresá tu número de documento" aria-label="identification" className="input"  />
             Número de Documento
             </div>
+            <div class="alert alert-dismissible alert-secondary" style={{ background: '#d48e4b', maxWidth: '300px', textAlign:'center', marginLeft: 'auto', marginRight: 'auto'}} role="alert">
+								Recordá que WeRaisen está disponible sólo para personas mayores de edad.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
 
             <div className="title">
               <FieldWithError name="age"
@@ -241,12 +247,15 @@ class SignUp extends Component {
                 required
                 type="date"
               />
+           
+              
+            
             Fecha de nacimiento
             </div>
             <div className="title">
               <DropdownGender name="gender" styleName={"input"} options={genders} />
               Género
-               </div>
+            </div>
 
 
             <div className="title">

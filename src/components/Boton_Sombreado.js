@@ -42,14 +42,14 @@ export default class Boton_Sombreado extends Component {
                         <button type="button"
                             className={this.state.elegidas.length > 0 && this.state.elegidas.includes('Español') ? " button ItemSeleccionadoA" : "button ItemNoSeleccionadoA"}
                             onClick={() => this.agregarIdioma("Español")}
-                            style={{ width: '72px', height: '32px', margin: '10px' }}
+                            style={{ width: '72px', height: '32px', margin: '10px', color:'white' }}
                         >Español</button>
                     </div>
                     <div >
                         <button type="button"
                             className={this.state.elegidas.length > 0 && this.state.elegidas.includes('Inglés') ? "button ItemSeleccionadoA" : "button ItemNoSeleccionadoA"}
                             onClick={() => this.agregarIdioma("Inglés")}
-                            style={{ width: '72px', height: '32px', margin: '10px' }}
+                            style={{ width: '72px', height: '32px', margin: '10px', color:'white' }}
                         >Inglés</button>
                     </div>
                 </div>
@@ -58,14 +58,14 @@ export default class Boton_Sombreado extends Component {
                         <button type="button"
                             className={this.state.elegidas.length > 0 && this.state.elegidas.includes('Italiano') ? "button ItemSeleccionadoA" : "button ItemNoSeleccionadoA"}
                             onClick={() => this.agregarIdioma("Italiano")}
-                            style={{ width: '72px', height: '32px', margin: '10px' }}
+                            style={{ width: '72px', height: '32px', margin: '10px', color:'white' }}
                         >Italiano</button>
                     </div>
                     <div >
                         <button type="button"
                             className={this.state.elegidas.length > 0 && this.state.elegidas.includes('Portugués') ? "button ItemSeleccionadoA" : "button ItemNoSeleccionadoA"}
                             onClick={() => this.agregarIdioma("Portugués")}
-                            style={{ width: '72px', height: '32px', margin: '10px' }}
+                            style={{ width: '72px', height: '32px', margin: '10px', color:'white' }}
                         >Portugués</button>
                     </div>
                 </div>
@@ -74,14 +74,14 @@ export default class Boton_Sombreado extends Component {
                         <button type="button"
                             className={this.state.elegidas.length > 0 && this.state.elegidas.includes('Francés') ? "button ItemSeleccionadoA" : "button ItemNoSeleccionadoA"}
                             onClick={() => this.agregarIdioma("Francés")}
-                            style={{ width: '72px', height: '32px', margin: '10px' }}
+                            style={{ width: '72px', height: '32px', margin: '10px', color:'white' }}
                         >Francés</button>
                     </div>
                     <div >
                         <button type="button"
                             className={this.state.elegidas.length > 0 && this.state.elegidas.includes('Alemán') ? "button ItemSeleccionadoA" : "button ItemNoSeleccionadoA"}
                             onClick={() => this.agregarIdioma("Alemán")}
-                            style={{ width: '72px', height: '32px', margin: '10px' }}
+                            style={{ width: '72px', height: '32px', margin: '10px', color:'white' }}
                         >Alemán</button>
                     </div>
                 </div>
