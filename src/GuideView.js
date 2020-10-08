@@ -142,8 +142,10 @@ class GuideView extends Component {
 				//para convertir fecha en año y mes
 				const fecha = new Date(createdAt);
 				const year = fecha.getFullYear();
-				const month = fecha.getMonth();
+				const month = (fecha.getMonth() + 1 );
 				const fechaReview = year + "/" + month;
+
+				
 
 				return (
 					<ReviewsCard
