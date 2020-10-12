@@ -12,7 +12,7 @@ import DropdownGender from './forms/DropdownGender'
 const status = [
   {
     value: "Activo",
-    description: 'Activo'
+    description: 'Encuentro pendiente'
   },
   {
     value: "Finalizado",

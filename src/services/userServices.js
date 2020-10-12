@@ -132,12 +132,12 @@ class userServices {
 	}
 
 	static async updateGuiaActivo({
-		userId,		
+		userId,
 		isActiveGuide,
 	}) {
 		const url = `${customUrl}/api/v1/guides/toggle-active/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
-		const body = {			
+		const body = {
 			isActiveGuide,
 		}
 		return axios.put(url, body, { headers })
@@ -159,6 +159,12 @@ class userServices {
 
 	static async getMatches(userId) {
 		const url = `${customUrl}/api/v1/matches/users/${userId}`
+		const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getActiveMatchesByGuide(userId) {
+		const url = `${customUrl}/api/v1/matches/guide/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
@@ -253,12 +259,12 @@ class userServices {
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
-	static async getUsersCreatedPerMonth(){
-		
+	static async getUsersCreatedPerMonth() {
+
 		const url = `${customUrl}/api/v1/charts/usersCreatedPerMonth`
 		const headers = { 'Content-Type': 'application/json' }
-		
-		return axios.get(url,  { headers })
+
+		return axios.get(url, { headers })
 	}
 	static async getUsersReportedByReason() {
 		const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
@@ -283,28 +289,28 @@ class userServices {
 		return axios.get(url, { headers })
 	}
 
-static async getMatchesPerCategories(){
-	const url = `${customUrl}/api/v1/charts/matchesPerCategories`
+	static async getMatchesPerCategories() {
+		const url = `${customUrl}/api/v1/charts/matchesPerCategories`
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
-}
-static async getUsersPerLanguages(){
-	const url = `${customUrl}/api/v1/charts/usersPerLanguages`
+	}
+	static async getUsersPerLanguages() {
+		const url = `${customUrl}/api/v1/charts/usersPerLanguages`
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
-}
+	}
 
 
-static async getUsersPerGender(){
-	const url = `${customUrl}/api/v1/charts/usersPerGender`
+	static async getUsersPerGender() {
+		const url = `${customUrl}/api/v1/charts/usersPerGender`
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
-}
-static async getCategoriesPerCity(){
-	const url = `${customUrl}/api/v1/charts/categoriesPerCity`
+	}
+	static async getCategoriesPerCity() {
+		const url = `${customUrl}/api/v1/charts/categoriesPerCity`
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
-}
+	}
 
 
 	static async getNotifications(userId) {
@@ -388,49 +394,49 @@ static async getCategoriesPerCity(){
 	}
 
 	static async sendEmailUsuarioAprobado({
-		emailDestino,		
-	
+		emailDestino,
+
 	}) {
 		const url = `${customUrl}/api/v1/notifications/sendEmailUsuarioAprobado`
 		const headers = { 'Content-Type': 'application/json' }
-		const body = {		
-			emailDestino,						
+		const body = {
+			emailDestino,
 		}
 		return axios.post(url, body, { headers })
 	}
 
 	static async sendEmailUsuarioDenegado({
-		emailDestino,		
-	
+		emailDestino,
+
 	}) {
 		const url = `${customUrl}/api/v1/notifications/sendEmailUsuarioDenegado`
 		const headers = { 'Content-Type': 'application/json' }
-		const body = {		
-			emailDestino,						
+		const body = {
+			emailDestino,
 		}
 		return axios.post(url, body, { headers })
 	}
 
 	static async sendEmailRestablecerPass({
-		emailDestino,		
-	
+		emailDestino,
+
 	}) {
 		const url = `${customUrl}/api/v1/notifications/sendEmailRestablecerPass`
 		const headers = { 'Content-Type': 'application/json' }
-		const body = {		
-			emailDestino,						
+		const body = {
+			emailDestino,
 		}
 		return axios.post(url, body, { headers })
 	}
 
 	static async sendEmailCuentaBloqueada({
-		emailDestino,		
-	
+		emailDestino,
+
 	}) {
 		const url = `${customUrl}/api/v1/notifications/sendEmailCuentaBloqueada`
 		const headers = { 'Content-Type': 'application/json' }
-		const body = {		
-			emailDestino,						
+		const body = {
+			emailDestino,
 		}
 		return axios.post(url, body, { headers })
 	}
@@ -441,7 +447,7 @@ static async getCategoriesPerCity(){
 	}) {
 		const url = `${customUrl}/api/v1/notifications/sendEmailEncuentro`
 		const headers = { 'Content-Type': 'application/json' }
-		const body = {		
+		const body = {
 			match,
 			FechaHoraEncuentro, //Arreglo [año, mes, dia, hora, minuto]			
 		}
@@ -473,7 +479,7 @@ static async getCategoriesPerCity(){
 		const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
-	
+
 	static async getMatchesByStatusForGuide(userId) {
 		const url = `${customUrl}/api/v1/charts/getMatchesByStatusForGuide/${userId}`
 		const headers = { 'Content-Type': 'application/json' }
