@@ -244,7 +244,7 @@ class Informes extends Component {
           <div class="container-fluid" style={{ display: "flex", margin: "auto", textAlign: "center", justifyContent: "center" }}>
 
             <div class="form-group" style={{ padding: "10px", minWidth: "313px" }} >
-              <label for="encuentros" style={{ fontWeight: "bold", color: "#F9AA68", fontSize: "20px" }}>Informes de encuentros</label>
+              <label for="encuentros" style={{ fontWeight: "bold", color: "#F9AA68", fontSize: "20px", paddingRight:"30px" }}>Informes de encuentros</label>
               <div class="checkbox" id="encuentros" style={{ textAlign: "left" }}>
                 <input checked={this.state.matchesPerMonthSelect} onChange={() => this.setState({ matchesPerMonthSelect: !this.state.matchesPerMonthSelect })} name="matchesPerMonth" type="checkbox" /> <label for="encuentros" style={{ fontWeight: "bold", color: "#aaaaaa", fontSize: "18px" }}>Encuentros creados por mes</label><br></br>
                 <input checked={this.state.citiesPerMatchSelect} onChange={() => this.setState({ citiesPerMatchSelect: !this.state.citiesPerMatchSelect })} name="matchesPerMonth" type="checkbox" /> <label for="encuentros" style={{ fontWeight: "bold", color: "#aaaaaa", fontSize: "18px" }}>Encuentros creados por ciudad</label> <br></br>
@@ -253,7 +253,7 @@ class Informes extends Component {
             </div>
             <div class="form-group" style={{ padding: "10px", minWidth: "313px" }}>
               <label for="usuarios" style={{ fontWeight: "bold", color: "#F9AA68", fontSize: "20px" }}>Informes de usuarios</label>
-              <div class="checkbox" id="usuarios" style={{ textAlign: "left" }}>
+              <div class="checkbox" id="usuarios" style={{ textAlign: "left" , paddingLeft:"30px"}}>
                 <input checked={this.state.newUsersSelect} onChange={() => this.setState({ newUsersSelect: !this.state.newUsersSelect })} name="newUsers" type="checkbox" /> <label for="usuarios" style={{ fontWeight: "bold", color: "#aaaaaa", fontSize: "18px" }}>Usuarios creados por mes</label><br></br>
                 <input checked={this.state.usersCreatedPerGenderSelect} onChange={() => this.setState({ usersCreatedPerGenderSelect: !this.state.usersCreatedPerGenderSelect })} name="userCreatedPerMonth" type="checkbox" />  <label for="usuarios" style={{ fontWeight: "bold", color: "#aaaaaa", fontSize: "18px" }}>Usuarios creados por tipo</label><br></br>
                 <input checked={this.state.usersCreatedPerAgeSelect} onChange={() => this.setState({ usersCreatedPerAgeSelect: !this.state.usersCreatedPerAgeSelect })} name="usersCreatedPerAge" type="checkbox" />  <label for="usuarios" style={{ fontWeight: "bold", color: "#aaaaaa", fontSize: "18px" }}>Usuarios creados por edad</label><br></br>
@@ -264,8 +264,8 @@ class Informes extends Component {
             </div>
 
             <div class="form-group" style={{ padding: "10px", minWidth: "313px" }}>
-              <label for="usuarios" style={{ fontWeight: "bold", color: "#F9AA68", fontSize: "20px" }}>Informes de Guías</label>
-              <div class="checkbox" id="categorias" style={{ textAlign: "left" }}>
+              <label for="usuarios" style={{ fontWeight: "bold", color: "#F9AA68", fontSize: "20px", paddingRight:"30px" }}>Informes de Guías</label>
+              <div class="checkbox" id="categorias" style={{ textAlign: "left", paddingLeft:"30px" }}>
                 <input checked={this.state.categoriesPerGenderSelect} onChange={() => this.setState({ categoriesPerGenderSelect: !this.state.categoriesPerGenderSelect })} name="categoriesPerGender" type="checkbox" /> <label for="usuarios" style={{ fontWeight: "bold", color: "#aaaaaa", fontSize: "18px" }}>Categorias más elegidas</label><br></br>
                 <input checked={this.state.categoriesPerCitySelect} onChange={() => this.setState({ categoriesPerCitySelect: !this.state.categoriesPerCitySelect })} name="categoriesPerCity" type="checkbox" /> <label for="usuarios" style={{ fontWeight: "bold", color: "#aaaaaa", fontSize: "18px" }}>Categorias elegidas por ciudad</label><br></br>
                 <input checked={this.state.usersPerLanguagesSelect} onChange={() => this.setState({ usersPerLanguagesSelect: !this.state.usersPerLanguagesSelect })} name="usersPerLanguages" type="checkbox" />  <label for="usuarios" style={{ fontWeight: "bold", color: "#aaaaaa", fontSize: "18px" }}>Idiomas más elegidos</label><br></br>
