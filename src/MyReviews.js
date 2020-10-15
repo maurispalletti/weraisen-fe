@@ -15,8 +15,8 @@ class MyReviews extends Component {
     searchFailed: false,
     reviews: [],
     loading: true,
-    matchesPerMonth: null,
-    matchesPerStatus: null
+    matchesPerMonth: [],
+    matchesPerStatus: []
   }
 
 
@@ -135,14 +135,14 @@ class MyReviews extends Component {
 
 
     } else {
-      if (this.state.reviews.length < 0 && !this.state.loading) {
+      if (this.state.reviews.length < 1 && !this.state.loading && this.matchesPerMonth==null && this.matchesPerStatus==null) {
         return (
           <div className="MyReviews">
             <Header />
             <div className="BodyGuide">
               {/*<h3 style={{color:"black"}}>Aún no posees ninguna valoración</h3>*/}
               <div className="Section">
-                <h2>Aún no posees reseñas ni informes para mostrar.</h2>
+                <h2>Aún no posees valoraciones ni informes para mostrar.</h2>
                 <br></br>
                 <div className="buttonsSection">
                   <input type="button" className="btn-primero" value="Volver" onClick={() => this.setState({ goToProfile: true })} />
