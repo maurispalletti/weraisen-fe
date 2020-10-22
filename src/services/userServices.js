@@ -1,19 +1,25 @@
-import axios from 'axios'
-import { YearView } from 'react-calendar';
-const customUrl = `http://localhost:3001`;
+import axios from 'axios';
+import config from '../config'
+
+const token = config.token;
+const customUrl = config.apiUrl;
+const headers = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }
 
 class userServices {
 	static async login({ email, password }) {
 		const url = `${customUrl}/api/v1/users/login`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = { email, password }
+
+    console.log('Custom URL: ' + customUrl);
+    console.log('Token: ' + token);
 
 		return axios.post(url, body, { headers })
 	}
 
 	static async updatePassword({ userId, password }) {
 		const url = `${customUrl}/api/v1/users/updatePassword/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = { password }
 
 		return axios.post(url, body, { headers })
@@ -32,7 +38,7 @@ class userServices {
 		profilePicture,
 	}) {
 		const url = `${customUrl}/api/v1/users/signup`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			firstName,
 			lastName,
@@ -57,7 +63,7 @@ class userServices {
 		groupwalk,
 		knowledge }) {
 		const url = `${customUrl}/api/v1/guides/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			description,
 			city,
@@ -79,7 +85,7 @@ class userServices {
 		groupwalk,
 		tourDay, }) {
 		const url = `${customUrl}/api/v1/guides`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			fromAge: parseInt(fromAge),
 			toAge: parseInt(toAge),
@@ -93,21 +99,15 @@ class userServices {
 		return axios.post(url, body, { headers })
 	}
 
-	// static async getReviews(guideUserId) {
-	// 	const url = `${customUrl}/api/v1/reviews/user/${guideUserId}`
-	// 	const headers = { 'Content-Type': 'application/json' }
-	// 	return axios.get(url, { headers })
-	// }
-
 	static async getProfile(userId) {
 		const url = `${customUrl}/api/v1/users/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
 	static async getUserIdbyEmail(email) {
 		const url = `${customUrl}/api/v1/users/email/${email}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
@@ -120,7 +120,7 @@ class userServices {
 		isActiveGuide,
 	}) {
 		const url = `${customUrl}/api/v1/tourists/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			firstName,
 			lastName,
@@ -136,7 +136,7 @@ class userServices {
 		isActiveGuide,
 	}) {
 		const url = `${customUrl}/api/v1/guides/toggle-active/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			isActiveGuide,
 		}
@@ -145,27 +145,27 @@ class userServices {
 
 	static async getConversation({ touristId, guideId }) {
 		const url = `${customUrl}/api/v1/chat/conversation`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = { touristId, guideId }
 		return axios.post(url, body, { headers })
 	}
 
 	static async sendMessage(chatId, messages) {
 		const url = `${customUrl}/api/v1/chat/${chatId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = { messages }
 		return axios.put(url, body, { headers })
 	}
 
 	static async getMatches(userId) {
 		const url = `${customUrl}/api/v1/matches/users/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
 	static async getActiveMatchesByGuide(userId) {
 		const url = `${customUrl}/api/v1/matches/guide/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
@@ -177,7 +177,7 @@ class userServices {
 		matchDate
 	}) {
 		const url = `${customUrl}/api/v1/matches`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			tourist,
 			guide,
@@ -190,33 +190,33 @@ class userServices {
 
 	static async getChat(chatId) {
 		const url = `${customUrl}/api/v1/chat/${chatId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
 	static async getMatchByChatId(chatId) {
 		const url = `${customUrl}/api/v1/matches/chats/${chatId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
 	static async updateMatch(chatId, status) {
 		const url = `${customUrl}/api/v1/matches/chats/${chatId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = { status }
 		return axios.put(url, body, { headers })
 	}
 
 	static async updateMatchStatus(matchId, status) {
 		const url = `${customUrl}/api/v1/matches/${matchId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = { status }
 		return axios.put(url, body, { headers })
 	}
 
 	static async updateMatchDate(matchId, matchDate) {
 		const url = `${customUrl}/api/v1/matches/updateDate/${matchId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = { matchDate }
 		return axios.put(url, body, { headers })
 	}
@@ -229,7 +229,7 @@ class userServices {
 		description
 	}) {
 		const url = `${customUrl}/api/v1/reviews`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			giver,
 			owner,
@@ -243,85 +243,80 @@ class userServices {
 	static async getReviews(userId) {
 		const url = `${customUrl}/api/v1/reviews/user/${userId}`
 		console.log(url);
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
 	//Informes
 	static async getMatchesPerMonth() {
 		const url = `${customUrl}/api/v1/charts/matchesPerMonth`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
 	static async getCitiesPerMatch() {
 		const url = `${customUrl}/api/v1/charts/citiesPerMatch`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 	static async getUsersCreatedPerMonth() {
 
 		const url = `${customUrl}/api/v1/charts/usersCreatedPerMonth`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 
 		return axios.get(url, { headers })
 	}
 	static async getUsersReportedByReason() {
 		const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
-	// static async getUsersReportedByReason() {
-	// 	const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
-	// 	const headers = { 'Content-Type': 'application/json' }
-	// 	return axios.get(url, { headers })
-	// }
 
 	static async getCategoriesPerGender() {
 		const url = `${customUrl}/api/v1/charts/categoriesPerGender`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
 	static async getUsersPerAge() {
 		const url = `${customUrl}/api/v1/charts/usersPerAge`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
 	static async getMatchesPerCategories() {
 		const url = `${customUrl}/api/v1/charts/matchesPerCategories`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 	static async getUsersPerLanguages() {
 		const url = `${customUrl}/api/v1/charts/usersPerLanguages`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
 
 	static async getUsersPerGender() {
 		const url = `${customUrl}/api/v1/charts/usersPerGender`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 	static async getCategoriesPerCity() {
 		const url = `${customUrl}/api/v1/charts/categoriesPerCity`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
 
 	static async getNotifications(userId) {
 		const url = `${customUrl}/api/v1/notifications/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
 	static async getUnreadNotifications(userId) {
 		const url = `${customUrl}/api/v1/notifications/unread/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
@@ -330,7 +325,7 @@ class userServices {
 		status,
 	}) {
 		const url = `${customUrl}/api/v1/notifications/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			status
 		}
@@ -347,13 +342,13 @@ class userServices {
 
 	static async getaceptNewUser() {
 		const url = `${customUrl}/api/v1/admin/pending`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
 	static async getCompliantsList() {
 		const url = `${customUrl}/api/v1/admin/compliant`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
@@ -362,7 +357,7 @@ class userServices {
 		status,
 	}) {
 		const url = `${customUrl}/api/v1/admin/compliant/${compliantId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			status
 		}
@@ -374,7 +369,7 @@ class userServices {
 		status,
 	}) {
 		const url = `${customUrl}/api/v1/admin/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			status
 		}
@@ -386,7 +381,7 @@ class userServices {
 		status,
 	}) {
 		const url = `${customUrl}/api/v1/admin/compliant/${compliantId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			status
 		}
@@ -398,7 +393,7 @@ class userServices {
 
 	}) {
 		const url = `${customUrl}/api/v1/notifications/sendEmailUsuarioAprobado`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			emailDestino,
 		}
@@ -410,7 +405,7 @@ class userServices {
 
 	}) {
 		const url = `${customUrl}/api/v1/notifications/sendEmailUsuarioDenegado`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			emailDestino,
 		}
@@ -422,7 +417,7 @@ class userServices {
 
 	}) {
 		const url = `${customUrl}/api/v1/notifications/sendEmailRestablecerPass`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			emailDestino,
 		}
@@ -434,7 +429,7 @@ class userServices {
 
 	}) {
 		const url = `${customUrl}/api/v1/notifications/sendEmailCuentaBloqueada`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			emailDestino,
 		}
@@ -446,7 +441,7 @@ class userServices {
 		FechaHoraEncuentro
 	}) {
 		const url = `${customUrl}/api/v1/notifications/sendEmailEncuentro`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			match,
 			FechaHoraEncuentro, //Arreglo [año, mes, dia, hora, minuto]			
@@ -462,7 +457,7 @@ class userServices {
 		reason
 	}) {
 		const url = `${customUrl}/api/v1/users/compliant`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			userId,
 			accusedId,
@@ -476,13 +471,13 @@ class userServices {
 	//informes para el guia
 	static async getMatchesPerMonthForGuide(userId) {
 		const url = `${customUrl}/api/v1/charts/matchesPerMonthForGuide/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 
 	static async getMatchesByStatusForGuide(userId) {
 		const url = `${customUrl}/api/v1/charts/getMatchesByStatusForGuide/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
+		// const headers = { 'Content-Type': 'application/json' }
 		return axios.get(url, { headers })
 	}
 }

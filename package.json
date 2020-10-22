@@ -7,6 +7,8 @@
     "bootstrap": "^4.5.0",
     "calendar": "^0.1.0",
     "calender": "^1.0.3",
+    "config": "^3.3.2",
+    "dotenv": "^8.2.0",
     "formik": "^1.5.8",
     "fusioncharts": "^3.14.1",
     "jquery": "^3.4.1",

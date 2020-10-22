@@ -23,8 +23,6 @@ import MyReviews from './MyReviews';
 import PasswordRecovery from './PasswordRecovery'
 import ChangePassword from './ChangePassword'
 
-
-
 const history = createBrowserHistory();
 
 function App() {
