@@ -9,9 +9,17 @@ ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 let chartConfigs;
 
 class Grafico extends React.Component {
+	async componentDidMount() {
 
+		this.renderGraficos();
+
+	}
+	renderGraficos = () => {
+
+		
+	}
 	UNSAFE_componentWillMount() {
-		console.log(this.props.matchesPerMonth)
+		console.log("**"+this.props.matchesPerMonth)
 
 		const { matchesPerMonth } = this.props;
 
