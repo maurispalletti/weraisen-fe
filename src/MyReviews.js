@@ -15,24 +15,15 @@ class MyReviews extends Component {
     searchFailed: false,
     reviews: [],
     loading: true,
-    matchesPerMonth: [],
-    matchesPerStatus: []
+    matchesPerMonth: null,
+    matchesPerStatus: null
   }
 
-
-
-  async componentDidMount() {
-    userId = localStorage.getItem("userId");
-    //this.setState({guiaIdState:userIdGuia})
-    console.log("+++" + userId)
-    await this.getReviews()
-    await this.getMatchesPerMonthForGuide()
-    await this.getMatchesByStatusForGuide()
-  }
   getMatchesPerMonthForGuide = async () => {
+    
     try {
       const response = await userServices.getMatchesPerMonthForGuide(userId)
-
+      console.log(response.data)
       if (response.data) {
         const { data } = response;
 
@@ -40,6 +31,7 @@ class MyReviews extends Component {
           matchesPerMonth: data
         });
       }
+      
     } catch (error) {
       console.error(`There was an error trying to get the matchesPerMonth data`)
     }
@@ -47,18 +39,29 @@ class MyReviews extends Component {
   getMatchesByStatusForGuide = async () => {
     try {
       const response = await userServices.getMatchesByStatusForGuide(userId)
-
+      console.log(response.data)
       if (response.data) {
         const { data } = response;
 
         this.setState({
           matchesPerStatus: data
         });
+        
       }
     } catch (error) {
       console.error(`There was an error trying to get the matchesPerStatus data`)
     }
   }
+
+  async componentDidMount() {
+    userId = localStorage.getItem("userId");
+    //this.setState({guiaIdState:userIdGuia})
+    
+    await this.getReviews()
+    await this.getMatchesPerMonthForGuide()
+    await this.getMatchesByStatusForGuide()
+  }
+ 
   getReviews = async () => {
     try {
 
