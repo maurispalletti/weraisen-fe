@@ -337,7 +337,7 @@ class userServices {
 		const fd = new FormData();
 		fd.append('file', file);
 
-		return axios.post(url, fd)
+		return axios.post(url, fd, { headers })
 	}
 
 	static async getaceptNewUser() {
