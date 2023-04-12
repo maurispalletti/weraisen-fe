@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'formik'
+import './Checkbox.css'
 
 export default function Checkbox (props) {
   return (
     <Field name={props.name}>
       {({ field, form }) => (
-        <label>
-          <input
-            type="checkbox"
+        <div className="contenedor">
+        <label className="label" > <input className="form-check" type="checkbox"
             {...props}
             checked={field.value.includes(props.value.value)}
             onChange={() => {
@@ -23,6 +23,7 @@ export default function Checkbox (props) {
           />
           <span>{props.value.description}</span>
         </label>
+        </div>
       )}
     </Field>
   )

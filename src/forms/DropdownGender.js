@@ -7,11 +7,11 @@ export default function DropdownGender(props) {
     <div>
       <label className="dopdown-label">{props.title}</label>
       <Field className={props.styleName} name={props.name} component="select" placeholder="Select...">
-        <option value="">Género...</option>
+        <option value="">Seleccioná...</option>
         {props.options && props.options.length > 0
           ? props.options.map(opt => {
             return (
-              <option key={opt.value} value={opt.value}>
+              <option   style={{color:'black'}} key={opt.value} value={opt.value}>
                 {opt.description}
               </option>
             )

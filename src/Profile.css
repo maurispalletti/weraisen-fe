@@ -1,102 +1,47 @@
 .Profile {
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
   text-align: center;
-  overflow: scroll;
-  height: 100vh;
-  align-items: center;
-  justify-content: top;
-  font-size: calc(10px + 2vmin);
-  color: green;
-  text-align: center;
-  background-color: #7dca96;
-  color: white;
+  background: #272B30;
+ height: 100vh;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+padding-block-end: 10vh;
+ overflow: scroll; 
+  
 }
 
-.button {
-  color: white;
-  background-color: #f7913c;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 0px 5px;
-  border-radius: 12px;
-  width: 30vw;
-  height: 40px;
+.BodyProfile {
+  /* padding-top: 5vh; */
+  overflow: scroll; 
 }
 
-.buttonGuia {
-  color: white;
-  background-color: #f7913c;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 0px 5px;
-  border-radius: 12px;
-  width: 30vw;
-  height: 40px;
+
+.cerrarSesion {
+  font-size: 15px;
 }
 
-.cancel-button {
-  color: white;
-  background-color: #f9aa68;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  font-size: 16px;
-  margin: 0px 5px;
-  border-radius: 12px;
-  width: 30vw;
-  height: 40px;
-  line-height: 40px;
-}
 
-.profileTitle {
-  color: white;
-  font-weight: bolder;
-  font-size: 25px;
-  margin: 40px 0 20px;
-}
-
-.profileData {
-  color: white;
-  font-weight: bolder;
-  display: flex;
-  flex-direction: column;
-}
 
 .guideSection {
-  color: white;
-  font-weight: bolder;
+  color:rgba(255,255,255,0.8);
   margin-top: 30px;
+  font-size: 15px !important; 
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: 'Lato', sans-serif !important;
+
 }
 
-.buttonsSection {
-  margin: 30px 10%;
-  display: flex;
-  flex-direction: row;
+
+.buttonsSectionGuia {
+ /* margin: 30px 10%;*/
   align-content: center;
   text-align: center;
 }
 
-.buttonsSectionGuia {
-  margin: 30px 10%;
+.cerrarSesionSection {
+  margin: 15vh 0 5vh;
   align-content: center;
   text-align: center;
 }
@@ -112,6 +57,7 @@
   font-size: 16px;
   margin: 5px 2px;
   border-radius: 12px;
+  
 }
 
 .be-guide {
@@ -126,7 +72,8 @@
   display: inline-block;
   width: 60px;
   height: 34px;
-  margin: 3px 10px;
+  margin: 0px 10px;
+
 }
 
 .switch input { 
@@ -162,6 +109,14 @@
 .slider.round {
   border-radius: 34px;
 }
+.anim:hover{
+  transform: scale(1.4,1.4);
+  -moz-transform: scale(1.4,1.4);
+  -o-transform: scale(1.4,1.4);
+  -ms-transform: scale(1.4,1.4);
+  -webkit-transform: scale(1.4,1.4);
+
+}
 
 .slider.round:before {
   border-radius: 50%;
@@ -181,3 +136,13 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 /* ////////////////// Round Slider ///////////////// */
+
+.custom-control-label{
+  font-size: 16px;
+
+}
+.updateOk{
+  font-size: 16px;
+  color:#9cd6ae;
+  font-weight: 600;
+}

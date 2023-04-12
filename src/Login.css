@@ -1,70 +1,159 @@
 .Login {
+  box-sizing: content-box;
   text-align: center;
-  background-color: #7dca96;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: 'Lato',sans-serif !important;
+  background-color: #2c2b2b;
+  opacity: 0.9;
+  width: 300px;
+  border-radius: 6px;
+padding-top:0px;
 }
-
-.login-button {
-  color: white;
-  background-color: #f7913c;
-  border: none;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  border-radius: 12px;
-}
-
-.forgotPass {
-  text-decoration: none;
-    color: white;
-    font-size: larger;
-}
-
-.signup-button {
-  color: white;
-  background-color: #f9aa68;
-  border: none;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  border-radius: 12px;
-  width: 60vw;
-  font-weight: 600;
-}
-
-.login-input {
-  border: none;
-  width: 60vw;
-  height: 20px;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  border-radius: 12px;
-}
+ 
 
 .signup {
-  margin-top: 40px;
+
+  display: block;
+
+ color: #b2b8be;
+ padding-top:0px;
 }
 
-.form-error {
-  padding-bottom: 5px;
-  padding-top: 5px;
-  color: #ff0000;
-  font-size: 16px;
+
+.submit:hover {
+  margin-top: 30px;
+  display: block;
+  font-size: 12px;
+  text-align: center;
+  color: #6d7781;
+}
+
+
+
+.contaainer {
+ height: 100vh;
+  width: 100%;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  font-family: 'Lato',sans-serif !important;
+  text-align: center;
+ align-items: center;
+ justify-content: center;
+ color: #e0e0e4;
+ margin-left: 10px;
+}
+
+
+
+#scrollhere {
+  /* background: #2f313d; */
+  background: #F9AA68;
+  width: 100%;
+  height: 100vh;
+  padding-top: 100px;
+}
+.comenzar {
+  position: relative;
+  top:150px;
+  
+}
+.Inicio{
+  text-align: center;
+  align-items: center;
+}
+#Inicio {
+  height: 100vh;
+  padding-top: 80px;
+  background: url("./icons/background-image.jpg") center ;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  color: #F9AA68;
+  text-align: center;
+  align-items: center; 
+}
+
+
+.eslogan{
+  padding-top: 10px;
+  font-size: calc(10px + 2vmin);
+}
+.texto{
+  position: relative;
+  top:190px;
+}
+
+
+.index__section-title2{
+  color: #9CD6AE;
+}
+
+.index__section-title{
+  color: #F9AA68
+}
+
+#WeRaisen {
+  font-size: calc(10px + 2vmin);
+  background: #9CD6AE;
+  width: 100%;
+  height: 100vh;
+  padding-top: 50px;
+  color: #4f4f53;
+  word-spacing: 1pt;
+
+}
+.text{
+  padding-top: 50px;
+}
+
+#Funcionamiento {
+  font-size: calc(10px + 2vmin);
+  background:#F9AA68;
+  height: 100vh;
+  padding-top: 50px;
+  color: #4f4f53;
+  word-spacing: 1pt;
+  width:100%;
+}
+.continuar{
+  position:center;
+  padding-top: 10%;
+}
+
+.continuar1{
+  position:center;
+  padding-top:10px;
+}
+
+.continuar2{
+  position:center;
+  padding-top: 1%;
+}
+
+.imag:hover{
+  transform: scale(1.2,1.2);
+  -moz-transform: scale(1.4,1.4);
+  -o-transform: scale(1.4,1.4);
+  -ms-transform: scale(1.4,1.4);
+  -webkit-transform: scale(1.2,1.2);
+}
+.logo{
+  margin-top: 0px;
+}
+.web{
+  margin-top: 50px;
+  margin-bottom: 0px;
+}
+.scrollButton {
+  color: black;
+  text-decoration: none;
+  padding: 5px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  box-shadow:2px 2px 2px lightgrey;
+  cursor: pointer;
 }

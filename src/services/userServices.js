@@ -1,10 +1,26 @@
-import axios from 'axios'
+import axios from 'axios';
+import config from '../config'
+
+const token = config.token;
+const customUrl = config.apiUrl;
+const headers = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }
 
 class userServices {
 	static async login({ email, password }) {
-		const url = `http://localhost:3001/api/v1/users/login`
-		const headers = { 'Content-Type': 'application/json' }
+		const url = `${customUrl}/api/v1/users/login`
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = { email, password }
+
+    console.log('Custom URL: ' + customUrl);
+    console.log('Token: ' + token);
+
+		return axios.post(url, body, { headers })
+	}
+
+	static async updatePassword({ userId, password }) {
+		const url = `${customUrl}/api/v1/users/updatePassword/${userId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = { password }
 
 		return axios.post(url, body, { headers })
 	}
@@ -13,22 +29,27 @@ class userServices {
 		firstName,
 		lastName,
 		identification,
-		age,
-		city,
+		birthDate,
 		gender,
 		email,
-		password }) {
-		const url = `http://localhost:3001/api/v1/users/signup`
-		const headers = { 'Content-Type': 'application/json' }
+		password,
+		idFront,
+		idBack,
+		profilePicture,
+	}) {
+		const url = `${customUrl}/api/v1/users/signup`
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			firstName,
 			lastName,
 			identification,
-			age,
-			city,
+			birthDate,
 			gender,
 			email,
-			password
+			password,
+			idFront,
+			idBack,
+			profilePicture,
 		}
 		return axios.post(url, body, { headers })
 	}
@@ -36,36 +57,428 @@ class userServices {
 	static async updateGuide({
 		userId,
 		description,
+		city,
 		languages,
+		availableDays,
+		groupwalk,
 		knowledge }) {
-		const url = `http://localhost:3001/api/v1/guides/${userId}`
-		const headers = { 'Content-Type': 'application/json' }
+		const url = `${customUrl}/api/v1/guides/${userId}`
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
 			description,
+			city,
 			languages,
+			availableDays,
+			groupwalk,
 			knowledge
 		}
 		return axios.put(url, body, { headers })
 	}
 
 	static async getGuides({
-		city,
 		fromAge,
 		toAge,
 		gender,
 		language,
-		knowledge }) {
-		const url = `http://localhost:3001/api/v1/guides`
-		const headers = { 'Content-Type': 'application/json' }
+		city,
+		knowledge,
+		groupwalk,
+		tourDay, }) {
+		const url = `${customUrl}/api/v1/guides`
+		// const headers = { 'Content-Type': 'application/json' }
 		const body = {
-			city,
 			fromAge: parseInt(fromAge),
 			toAge: parseInt(toAge),
 			gender,
 			language,
-			knowledge
+			city,
+			knowledge,
+			groupwalk,
+			tourDay
 		}
 		return axios.post(url, body, { headers })
+	}
+
+	static async getProfile(userId) {
+		const url = `${customUrl}/api/v1/users/${userId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getUserIdbyEmail(email) {
+		const url = `${customUrl}/api/v1/users/email/${email}`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async updateProfile({
+		userId,
+		firstName,
+		lastName,
+		birthDate,
+		gender,
+		isActiveGuide,
+	}) {
+		const url = `${customUrl}/api/v1/tourists/${userId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			firstName,
+			lastName,
+			birthDate,
+			gender,
+			isActiveGuide,
+		}
+		return axios.put(url, body, { headers })
+	}
+
+	static async updateGuiaActivo({
+		userId,
+		isActiveGuide,
+	}) {
+		const url = `${customUrl}/api/v1/guides/toggle-active/${userId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			isActiveGuide,
+		}
+		return axios.put(url, body, { headers })
+	}
+
+	static async getConversation({ touristId, guideId }) {
+		const url = `${customUrl}/api/v1/chat/conversation`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = { touristId, guideId }
+		return axios.post(url, body, { headers })
+	}
+
+	static async sendMessage(chatId, messages) {
+		const url = `${customUrl}/api/v1/chat/${chatId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = { messages }
+		return axios.put(url, body, { headers })
+	}
+
+	static async getMatches(userId) {
+		const url = `${customUrl}/api/v1/matches/users/${userId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getActiveMatchesByGuide(userId) {
+		const url = `${customUrl}/api/v1/matches/guide/${userId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async createMatch({
+		tourist,
+		guide,
+		city,
+		knowledge,
+		matchDate
+	}) {
+		const url = `${customUrl}/api/v1/matches`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			tourist,
+			guide,
+			city,
+			knowledge,
+			matchDate
+		}
+		return axios.post(url, body, { headers })
+	}
+
+	static async getChat(chatId) {
+		const url = `${customUrl}/api/v1/chat/${chatId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getMatchByChatId(chatId) {
+		const url = `${customUrl}/api/v1/matches/chats/${chatId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async updateMatch(chatId, status) {
+		const url = `${customUrl}/api/v1/matches/chats/${chatId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = { status }
+		return axios.put(url, body, { headers })
+	}
+
+	static async updateMatchStatus(matchId, status) {
+		const url = `${customUrl}/api/v1/matches/${matchId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = { status }
+		return axios.put(url, body, { headers })
+	}
+
+	static async updateMatchDate(matchId, matchDate) {
+		const url = `${customUrl}/api/v1/matches/updateDate/${matchId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = { matchDate }
+		return axios.put(url, body, { headers })
+	}
+
+	static async postReview({
+		giver,
+		owner,
+		matchId,
+		points,
+		description
+	}) {
+		const url = `${customUrl}/api/v1/reviews`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			giver,
+			owner,
+			matchId,
+			points,
+			description
+		}
+		return axios.post(url, body, { headers })
+	}
+
+	static async getReviews(userId) {
+		const url = `${customUrl}/api/v1/reviews/user/${userId}`
+		console.log(url);
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	//Informes
+	static async getMatchesPerMonth() {
+		const url = `${customUrl}/api/v1/charts/matchesPerMonth`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getCitiesPerMatch() {
+		const url = `${customUrl}/api/v1/charts/citiesPerMatch`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+	static async getUsersCreatedPerMonth() {
+
+		const url = `${customUrl}/api/v1/charts/usersCreatedPerMonth`
+		// const headers = { 'Content-Type': 'application/json' }
+
+		return axios.get(url, { headers })
+	}
+	static async getUsersReportedByReason() {
+		const url = `${customUrl}/api/v1/charts/usersReportedPerReason`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getCategoriesPerGender() {
+		const url = `${customUrl}/api/v1/charts/categoriesPerGender`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getUsersPerAge() {
+		const url = `${customUrl}/api/v1/charts/usersPerAge`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getMatchesPerCategories() {
+		const url = `${customUrl}/api/v1/charts/matchesPerCategories`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+	static async getUsersPerLanguages() {
+		const url = `${customUrl}/api/v1/charts/usersPerLanguages`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+
+	static async getUsersPerGender() {
+		const url = `${customUrl}/api/v1/charts/usersPerGender`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+	static async getCategoriesPerCity() {
+		const url = `${customUrl}/api/v1/charts/categoriesPerCity`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+
+	static async getNotifications(userId) {
+		const url = `${customUrl}/api/v1/notifications/${userId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getUnreadNotifications(userId) {
+		const url = `${customUrl}/api/v1/notifications/unread/${userId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async updateNotifications({
+		userId,
+		status,
+	}) {
+		const url = `${customUrl}/api/v1/notifications/${userId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			status
+		}
+		return axios.put(url, body, { headers })
+	}
+
+	static async upLoadImg(file) {
+		const url = `${customUrl}/api/v1/users/identification`
+		const fd = new FormData();
+		fd.append('file', file);
+
+		return axios.post(url, fd, { headers })
+	}
+
+	static async getaceptNewUser() {
+		const url = `${customUrl}/api/v1/admin/pending`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getCompliantsList() {
+		const url = `${customUrl}/api/v1/admin/compliant`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async updateCompliantStatus({
+		compliantId,
+		status,
+	}) {
+		const url = `${customUrl}/api/v1/admin/compliant/${compliantId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			status
+		}
+		return axios.put(url, body, { headers })
+	}
+
+	static async updateUserStatus({
+		userId,
+		status,
+	}) {
+		const url = `${customUrl}/api/v1/admin/${userId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			status
+		}
+		return axios.put(url, body, { headers })
+	}
+
+	static async updateCompliantStatus({
+		compliantId,
+		status,
+	}) {
+		const url = `${customUrl}/api/v1/admin/compliant/${compliantId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			status
+		}
+		return axios.put(url, body, { headers })
+	}
+
+	static async sendEmailUsuarioAprobado({
+		emailDestino,
+
+	}) {
+		const url = `${customUrl}/api/v1/notifications/sendEmailUsuarioAprobado`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			emailDestino,
+		}
+		return axios.post(url, body, { headers })
+	}
+
+	static async sendEmailUsuarioDenegado({
+		emailDestino,
+
+	}) {
+		const url = `${customUrl}/api/v1/notifications/sendEmailUsuarioDenegado`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			emailDestino,
+		}
+		return axios.post(url, body, { headers })
+	}
+
+	static async sendEmailRestablecerPass({
+		emailDestino,
+
+	}) {
+		const url = `${customUrl}/api/v1/notifications/sendEmailRestablecerPass`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			emailDestino,
+		}
+		return axios.post(url, body, { headers })
+	}
+
+	static async sendEmailCuentaBloqueada({
+		emailDestino,
+
+	}) {
+		const url = `${customUrl}/api/v1/notifications/sendEmailCuentaBloqueada`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			emailDestino,
+		}
+		return axios.post(url, body, { headers })
+	}
+
+	static async sendEmailEncuentro({
+		match,
+		FechaHoraEncuentro
+	}) {
+		const url = `${customUrl}/api/v1/notifications/sendEmailEncuentro`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			match,
+			FechaHoraEncuentro, //Arreglo [año, mes, dia, hora, minuto]			
+		}
+		return axios.post(url, body, { headers })
+	}
+
+	static async createCompliant({
+		userId,
+		accusedId,
+		description,
+		status,
+		reason
+	}) {
+		const url = `${customUrl}/api/v1/users/compliant`
+		// const headers = { 'Content-Type': 'application/json' }
+		const body = {
+			userId,
+			accusedId,
+			description,
+			status,
+			reason
+		}
+		return axios.post(url, body, { headers })
+	}
+
+	//informes para el guia
+	static async getMatchesPerMonthForGuide(userId) {
+		const url = `${customUrl}/api/v1/charts/matchesPerMonthForGuide/${userId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
+	}
+
+	static async getMatchesByStatusForGuide(userId) {
+		const url = `${customUrl}/api/v1/charts/getMatchesByStatusForGuide/${userId}`
+		// const headers = { 'Content-Type': 'application/json' }
+		return axios.get(url, { headers })
 	}
 }
 

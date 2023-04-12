@@ -1,21 +1,26 @@
 import React, { Component } from 'react'
 import './SignUp.css';
-import loginServices from './services/userServices'
+import './Estilos.css';
+import userServices from './services/userServices'
 import { Redirect } from 'react-router'
-
 import { Formik, Form } from 'formik'
 import FieldWithError from './forms/FieldWithError'
 import { SignUpSchema } from './helpers/validators'
 import DropdownGender from './forms/DropdownGender'
-
+import DropdownCity from './forms/DropdownCity'
+import dni1 from './icons/dni1.png'
+import dni2 from './icons/dni2.png'
+import icon from './icons/icon.svg'
+import icongris from './icons/icon-gris.svg'
+import dni1gris from './icons/frente-gris.png'
+import dni2gris from './icons/dorso-gris.png'
+import CrearCuentaModal from './components/CrearCuentaModal_Alvo'
 
 const INITIAL_VALUES = {
   firstName: '',
   lastName: '',
-  age: '',
   identification: '',
   gender: '',
-  city: '',
   email: '',
   password: '',
   passwordRepeated: '',
@@ -36,96 +41,319 @@ const genders = [
   },
 ]
 
-class SignUp extends Component {
+const tiposdoc = [
+  {
+    value: "DNI",
+    description: 'DNI'
+  },
+  {
+    value: "Pasaporte",
+    description: 'Pasaporte'
+  },
+  {
+    value: "CedulaIdentidad",
+    description: 'Cédula de Identidad'
+  },
+  {
+    value: "Enrolamiento",
+    description: 'Libreta de Enrolamiento'
+  },
+  {
+    value: "Extranjera",
+    description: 'Cédula Extranjera'
+  },
+]
 
+class SignUp extends Component {
   state = {
-    goToHome: false,
+    goToLogin: false,
     signUpFailed: false,
+    uploadFailed: false,
     passwordsMissmatch: false,
+    value: '',
+    min: '',
+    denunciaModalShow: false,
+    imagenDNI1: null,
+    imagenDNI2: null,
+    imagenFotoPerfil: null,
+    acepto: false,
+    front: dni1gris,
+    back: dni2gris,
+    profile: icongris,
+    repeatedEmail: false,
+    repeatedId: false,
   }
 
   createUser = async ({
     firstName,
     lastName,
-    age,
     identification,
     gender,
-    city,
     email,
     password,
     passwordRepeated,
   }) => {
     try {
+
+
       if (password === passwordRepeated) {
-        const response = await loginServices.createUser({
+        const birthDate = this.state.value;
+
+        let imagenDNI1Url;
+        let imagenDNI2Url;
+        let imagenFotoPerfilUrl;
+
+        if (this.state.imagenDNI1 && this.state.imagenDNI2 && this.state.imagenFotoPerfil) {
+          imagenDNI1Url = await userServices.upLoadImg(this.state.imagenDNI1);
+          imagenDNI2Url = await userServices.upLoadImg(this.state.imagenDNI2);
+          imagenFotoPerfilUrl = await userServices.upLoadImg(this.state.imagenFotoPerfil);
+
+          console.log(`Imagen 1: ${JSON.stringify(imagenDNI1Url)}`)
+          console.log(`Imagen 2: ${imagenDNI2Url}`)
+          console.log(`Imagen 3: ${imagenFotoPerfilUrl}`)
+
+        } else {
+          this.setState({ signUpFailed: true, uploadFailed: true, repeatedEmail: false, repeatedId: false })
+        }
+
+        const response = await userServices.createUser({
           firstName,
           lastName,
           identification,
-          age,
-          city,
+          birthDate,
           gender,
           email,
-          password
+          password,
+          idFront: imagenDNI1Url.data,
+          idBack: imagenDNI2Url.data,
+          profilePicture: imagenFotoPerfilUrl.data
         })
 
-        const { data: { id } } = response
+        const { data: { id, repeatedEmail, repeatedId } } = response
 
-        // save Id in local storage
-        localStorage.setItem("userId", id);
+        if (repeatedEmail) {
+          this.setState({ passwordsMissmatch: false, uploadFailed: false, repeatedEmail: true, signUpFailed: false, repeatedId: false })
+        } else if (repeatedId) {
+          this.setState({ passwordsMissmatch: false, uploadFailed: false, repeatedEmail: false, signUpFailed: false, repeatedId: true })
+        } else {
+          localStorage.setItem("userId", id);
+          this.setState({ passwordsMissmatch: false, uploadFailed: false, denunciaModalShow: true, signUpFailed: false, repeatedEmail: false, repeatedId: false })
+        }
 
-        this.setState({ passwordsMissmatch: false, goToHome: true, signUpFailed: false })
       } else {
-        this.setState({ signUpFailed: true, passwordsMissmatch: true })
+        this.setState({ signUpFailed: true, passwordsMissmatch: true, repeatedEmail: false, repeatedId: false })
       }
-
     } catch (error) {
-      this.setState({ signUpFailed: true })
+      this.setState({ signUpFailed: true, repeatedEmail: false, repeatedId: false })
       console.error(`There was an error trying to create the user`)
     }
   }
 
+  handleChange = (event) => {
+    this.setState({ value: event.target.value });
+  }
+
+  componentDidMount() {
+    let hoy = new Date();
+
+    let dia = hoy.getDate();
+    let mes = (hoy.getMonth() + 1);
+    mes = mes.toString()
+    mes = mes.length === 1 ? "0" + mes : mes
+    dia = dia.toString()
+    dia = dia.length === 1 ? "0" + dia : dia
+    const año = hoy.getFullYear();
+    const añomin = año - 18
+
+
+
+    const fechamin = añomin + "-" + mes + "-" + dia;
+    hoy = año + "-" + mes + "-" + dia;
+    console.log(fechamin)
+    this.setState(() => ({ value: hoy, min: fechamin }));
+  }
+
+  fileSelectedDNI1 = event => {
+    this.setState({
+      imagenDNI1: event.target.files[0], front: dni1
+    })
+
+  }
+
+  fileSelectedDNI2 = event => {
+    this.setState({
+      imagenDNI2: event.target.files[0], back: dni2
+    })
+  }
+
+  fileSelectedFotoPerfil = event => {
+    this.setState({
+      imagenFotoPerfil: event.target.files[0], profile: icon
+    })
+  }
+
   render() {
-    if (this.state.goToHome) {
-      return <Redirect to="/home" />
+
+    let denunciaModalClose = () => this.setState({ denunciaModalShow: false, goToLogin: true });
+    if (this.state.goToLogin) {
+      return <Redirect to="/login" />
+    }
+    if (this.state.pendingScreen) {
+      return <div><h3>Estamos validando tu perfil</h3></div>
     }
 
     return (
+
       <div className="SignUp">
+
+
         <Formik
           initialValues={INITIAL_VALUES}
           validationSchema={SignUpSchema}
           onSubmit={(values) => this.createUser(values)}>
           <Form>
-            <div className="signUpTitle">CREA TU CUENTA</div>
+            <h2>Creá tu cuenta</h2>
+            <div className="title">
 
-            <FieldWithError name="firstName" placeholder="Nombre" aria-label="firstName" className="input" />
-            <FieldWithError name="lastName" placeholder="Apellido" aria-label="lastName" className="input" />
-            <FieldWithError name="age" placeholder="Edad" aria-label="age" className="input" />
-            <FieldWithError name="identification" placeholder="ID / DNI / PASAPORTE" aria-label="identification" className="input" />
-            <DropdownGender name="gender" styleName={"Dropdown-g"} options={genders} />
-            <FieldWithError name="city" placeholder="Ciudad de residencia" aria-label="city" className="input" />
-            <FieldWithError name="email" placeholder="Email" aria-label="email" className="input" />
-            <FieldWithError name="password" placeholder="Password" type="password" aria-label="password" className="input" />
-            <FieldWithError name="passwordRepeated" placeholder="Repite tu password" type="password" aria-label="passwordRepeated" className="input" />
+              <FieldWithError type="text" pattern="^[A-Za-z]+$" name="firstName" placeholder="Ingresá tu nombre" aria-label="firstName" className="input" />
+            Nombre 
+            </div>
+            <div className="title">
+              <FieldWithError type="text" pattern="^[A-Za-z]+$" name="lastName" placeholder="Ingresá tu apellido" aria-label="lastName" className="input" />
+            Apellido
+            </div>
+            <div className="title">
+              <DropdownCity name="identificationtype" styleName={"input"} options={tiposdoc}/>
+              Tipo de Documento
+               </div>
+            <div className="title">
+              <FieldWithError name="identification" type="text" placeholder="Ingresá tu número de documento" aria-label="identification" className="input"  />
+            Número de Documento
+            </div>
+            <div class="alert alert-dismissible alert-secondary" style={{ background: '#d48e4b', maxWidth: '300px', textAlign:'center', marginLeft: 'auto', marginRight: 'auto'}} role="alert">
+								Recordá que WeRaisen está disponible sólo para personas mayores de edad.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+
+            <div className="title">
+              <FieldWithError name="age"
+                placeholder="Ingresá tu fecha de nacimiento"
+                className="input"
+                max={this.state.min}
+                value={this.state.value}
+                onChange={this.handleChange}
+                required
+                type="date"
+              />
+           
+              
+            
+            Fecha de nacimiento
+            </div>
+            <div className="title">
+              <DropdownGender name="gender" styleName={"input"} options={genders} />
+              Género
+            </div>
+
+
+            <div className="title">
+              <FieldWithError type="email" name="email" placeholder="Ingresá tu email" aria-label="email" className="input" />
+            Email
+            </div>
+
+            <div className="title">
+              <FieldWithError name="password" minlength="5" placeholder="Ingresá tu contraseña" type="password" aria-label="password" className="input" />
+            Contraseña
+            </div>
+
+            <div className="title">
+              <FieldWithError name="passwordRepeated" minlength="5" placeholder="Repetí tu contraseña" type="password" aria-label="passwordRepeated" className="input" />
+            Repetí la contraseña</div>
+            <br />
+
+
+
 
             <div className="right-container">
-              <input type="submit" className="login-button" value="Crear cuenta" />
-              {this.state.passwordsMissmatch && (
-                <p className="form-error">
-                  Las contreseñas no coinciden. Intanta de nuevo.
-                </p>
-              )}
-              {this.state.signUpFailed && (
-                <p className="form-error">
-                  Creación de usuario falló. Intanta de nuevo.
-                </p>
-              )}
+              <label className="title">Subí foto de tu DNI para validar tu identidad</label><br></br>
+              {/* <input style={{ display: 'none' }} type="file" onChange={this.fileSelectedHandler} ref={fileImput => this.fileImput = fileImput}/> */}
+              <input style={{ display: 'none' }} type="file" accept=".jpg, .jpeg, .png" onChange={this.fileSelectedDNI1} ref={fileImput1 => this.fileImput1 = fileImput1} />
+              <input style={{ display: 'none' }} type="file" accept=".jpg, .jpeg, .png"  onChange={this.fileSelectedDNI2} ref={fileImput2 => this.fileImput2 = fileImput2} />
+              <input style={{ display: 'none' }} type="file" accept=".jpg, .jpeg, .png" onChange={this.fileSelectedFotoPerfil} ref={fileImput3 => this.fileImput3 = fileImput3} />
+
+              <div className="dni1">
+                <label className="input3">Frente</label><br></br>
+                <img src={this.state.front} alt={"dni frente"} width="150"  onClick={() => this.fileImput1.click()} />
+              </div>
+              <div className="dni2">
+                <label className="input3">Dorso</label><br></br>
+                <img src={this.state.back} alt={"dni detras"} width="150" onClick={() => this.fileImput2.click()} />
+              </div>
+              <br />
+              <label className="title">Subí una foto que se mostrará en tu perfil</label>
+              <div className="profile">
+                <img src={this.state.profile} alt={"Foto de perfil"} width="60" onClick={() => this.fileImput3.click()} />
+              </div>
+
+              <br></br>
+              <br></br>
+              <div class="custom-control custom-checkbox" style={{ paddingLeft: '50px', paddingRight: '50px', paddingBottom: '15px' }}>
+                <input type="checkbox" class="custom-control-input" id="salidaGrupal" checked={this.state.acepto} onChange={() => this.setState({ acepto: !this.state.acepto })} />
+                <label class="custom-control-label" for="salidaGrupal" style={{ cursor: 'pointer' }}>Al crear cuenta estoy aceptando los <a className="forgotPass" href={'/terminos'}> términos y condiciones</a></label>
+              </div>
+              <br></br>
+              <br></br>
+
+              <div className="righ-container">
+
+                <input type="submit" className="btn-primero" value="Crear cuenta" disabled={!this.state.acepto} />
+                <br></br>
+                <br></br>
+
+                <input type="submit" className="btn-primero" value="Cancelar" onClick={() => this.setState({ goToLogin: true })} />
+
+
+                <CrearCuentaModal
+                  show={this.state.denunciaModalShow}
+                  onHide={denunciaModalClose}
+                />
+                {this.state.passwordsMissmatch && (
+                  <p className="form-error">
+                    Las contreseñas no coinciden.
+                  </p>
+                )}
+                {this.state.repeatedEmail && (
+                  <p className="form-error">
+                    El email ingresado ya está registrado en nuestro sistema. 
+                  </p>
+                )}
+                {this.state.repeatedId && (
+                  <p className="form-error">
+                    La identificacíon ingresada esta asociada a un usuario ya creado.
+                  </p>
+                )}
+                {this.state.uploadFailed && (
+                  <p className="form-error">
+                    Sube tus fotos de DNI y de perfil para poder continuar.
+                  </p>
+                )}
+                {this.state.signUpFailed && (
+                  <p className="form-error">
+                    Creación de usuario falló. Intenta de nuevo.
+                  </p>
+                )}
+              </div>
             </div>
           </Form>
         </Formik>
+
       </div>
+
     );
   }
 };
 
 export default SignUp;
+

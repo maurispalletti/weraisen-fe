@@ -1,0 +1,81 @@
+.Search {
+  
+  background: #272B30;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lato',sans-serif !important;
+  overflow: hidden;
+  position:relative ; 
+  text-align: center;
+
+
+}
+
+
+.Section1{
+  padding-top: 40px;
+  display: block;
+  width: 400px;
+  margin:0px auto;
+  
+
+}
+
+.input-switch{
+ border-radius: 50px;
+ 
+}
+
+.BodySearch {
+  padding-top: 5vh;
+ overflow: scroll; 
+ align-items: center;
+ position: center;
+ text-align:center;
+
+}
+.Dropdown-search {
+
+ width: 250px;
+ padding: 25px 0px;
+ background: transparent;
+ border: 0;
+ border-bottom: 1px solid rgba(255,255,255,0.04);
+ outline: none;
+ color: #696970;
+ font-size: 18px;
+
+}
+
+.search-button {
+ background: #d48e4b;
+ border: 0;
+ width: 250px;
+ height: 40px;
+ border-radius: 3px;
+ color: white;
+ cursor: pointer;
+ transition: background 0.3s ease-in-out;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+.BodySearch::-webkit-scrollbar{
+ width: 7px;
+}
+
+.BodySearch::-webkit-scrollbar-thumb{
+ background: #d48e4b;
+ border-radius: 5px;
+}
+
+.Fecha{
+  padding-top: 20px;
+}
+
+.verMas{
+  cursor: pointer;
+}

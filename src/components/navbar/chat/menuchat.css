@@ -1,0 +1,26 @@
+.toggle-buttonchat{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 24px;
+    width: 30px;
+    background: transparent;
+    border:none;
+    cursor: pointer;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.toggle-buttonchat:focus{
+    outline: none;
+}
+
+.toggle-button__linechat{
+    width: 3px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.76);
+}
+
+
+

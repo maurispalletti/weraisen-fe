@@ -1,182 +1,147 @@
 import React, { Component } from 'react';
-import './Home.css';
-import avatar_1 from './avatars/avatar_1.svg';
-import home from './icons/home.svg'
-// import bar from './icons/BAR.png'
-// import culture from './icons/CULTURE.png'
-// import walking from './icons/WALKING.png'
-// import food from './icons/FOOD.png'
-// import nature from './icons/NATURE.png'
-// import shopping from './icons/SHOPPING.png'
-import Autocomplete from './Component/Autocomplete.js'
-import Desplegable from './Component/Desplegable.js'
-// import ciudadesCba from './Component/CiudadesCba.js'
-
-import { Redirect } from 'react-router'
-import { Formik, Form } from 'formik'
-import FieldWithError from './forms/FieldWithError'
-import DropdownGender from './forms/DropdownGender'
-
-const genders = [
-  {
-    value: "Cualquiera",
-    description: 'Cualquiera'
-  },
-  {
-    value: "Femenino",
-    description: 'Femenino'
-  },
-  {
-    value: "Masculino",
-    description: 'Masculino'
-  },
-  {
-    value: "Otro",
-    description: 'Otro'
-  },
-]
-
-const languages = ['Español', 'Inglés', 'Alemán', 'Italiano', 'Francés', 'Portugués', 'Japonés', 'Chino', 'Ruso', 'Turco', 'Neerlandés', 'Polaco']
-
-const knowledge = ['Bares', 'Restaurantes', 'Museos', 'Espectáculos', 'Deportes', 'Montaña', 'Fotografía', 'Naturaleza', 'Arte', 'Fiesta']
-
-const cities = ['Cordoba', 'Buenos Aires', 'Rosario', 'Villa Carlos Paz', 'Mendoza', 'Hernando', 'Bariloche', 'La Pampa', 'Salta', 'Neuquen', 'Posadas', 'La Plata', 'Villa General Belgrano', 'Miramar', 'Puerto Madryn']
-
-const INITIAL_VALUES = {
-  fromAge: '',
-  toAge: ''
-}
+import Header from './components/Header';
+import { Fragment } from 'react';
+import CardGuiaHome from './components/Card_Guia_Home';
+import userServices from './services/userServices';
+import fotoFer from '../src/Imagenes_Alvo/Fer.png';
+import fotoLucre from '../src/Imagenes_Alvo/Lucre.png';
+import fotoLu from '../src/Imagenes_Alvo/Lu.png';
+import rosario from '../src/Imagenes_Alvo/rosario.jpg'
 
 class Home extends Component {
-  state = {
-    goToResults: false,
-    searchFailed: false,
-    ageValidationFailed: false,
-    notLoggedInUser: false,
-  }
+	state = {
+		guias: [],
+		ciudades: [],
+		initialValues: null,
+	}
 
-  searchGuides = async ({ fromAge, toAge, gender }) => {
+	getProfile = async () => {
+		try {
+			const userId = localStorage.getItem("userId");
+			if (userId) {
+				const response = await userServices.getProfile(userId)
+				console.log(response.data);
+				return response.data;
 
-    const filters = { fromAge, toAge, gender }
+			} else {
+				this.setState({ notLoggedInUser: true })
+			}
+		} catch (error) {
+			console.error(`There was an error trying to get the profile`)
+		}
+	}
 
-    if (parseFloat(fromAge) > parseFloat(toAge)) {
-      this.setState({ ageValidationFailed: true })
-    } else {
+	//apenas se carga el componente se ejecuta este metodo
+	async componentDidMount() {
+		const {
+			firstName,
+			lastName,
+			age,
+			identification,
+			gender,
+			city,
+			email,
+		} = await this.getProfile()
 
-      const city = localStorage.getItem("filter_city");
-      const language = localStorage.getItem("filter_language");
-      const knowledge = localStorage.getItem("filter_knowledge");
+		const initialValues = {
+			firstName,
+			lastName,
+			age,
+			identification,
+			gender,
+			city,
+			email
+		}
 
-      filters[`city`] = city;
-      filters[`language`] = language;
-      filters[`knowledge`] = knowledge;
+		this.setState({
+			guias: [
+				{ imagen: fotoFer, nombre: 'Fernando', edad: '5 estrellas', detalle: '"Hola me encanta el futbol, ofrezco mi experiencia en tours deportivos y también en deporte como tenis y paddle."' },
+				{ imagen: fotoLucre, nombre: 'Lucrecia', edad: '4 estrellas', detalle: '"Mis salidas se centran cultura y deportes. A su vez, podremos practicar inglés, si así lo deseas."' },
+				{ imagen: fotoLu, nombre: 'Luciana', edad: '5 estrellas', detalle: '"Soy estudiante de turismo, me apasiona conocer otras culturas. Yo te muestro la mía y vos me contas la tuya, te parece?🥰."' },
+			],
+			ciudades: [
+				{ imagen: "https://elplanetaurbano.com/wp-content/uploads/2017/06/Puerto-madero-2.jpg", nombre: 'Buenos Aires' },
+				{ imagen: "https://s.libertaddigital.com/2018/03/09/cordoba_argentina01.jpg", nombre: 'Córdoba' },
+				{ imagen: rosario, nombre: 'Rosario' },
 
-      const filtersString = JSON.stringify(filters);
-      console.log(filtersString);
-      localStorage.setItem(`filters`, filtersString);
+			], initialValues
+		});
+	}
 
-      localStorage.removeItem("filter_city");
-      localStorage.removeItem("filter_language");
-      localStorage.removeItem("filter_knowledge");
+	mostrarGuias = () => {
+		const guias = this.state.guias;
+		if (guias.length === 0) return null;
 
-      this.setState({ goToResults: true })
-    }
-  }
+		return (
+			<React.Fragment>
+				<div className="container-fluid">
+					<div className="card-columns">
+						{guias.map((guia, index) => (
+							<CardGuiaHome
+								key={index}
+								guia={guia}
+							/>
+						))}
+					</div>
+				</div>
+			</React.Fragment>
+		)
+	}
 
-  render() {
-    if (this.state.goToResults) {
-      return <Redirect to="/results" />
-    }
+	mostrarCiudades = () => {
+		const ciudades = this.state.ciudades;
+		return (
+			<React.Fragment>
+				<div className="container-fluid">
+					<div className="card-columns">
+						{ciudades.map((cuidad, index) => (
+							<CardGuiaHome
+								key={index}
+								guia={cuidad}
+							/>
+						))}
+					</div>
+				</div>
+			</React.Fragment>
+		)
+	}
 
-    return (
-      <div className="Home">
-        <div className="Header">
-          <a href={"/home"} className="HomeIcon">
-            <img src={home} alt={"Home"} />
-          </a>
-          <div className="HeaderImage">
-            <a href={"/profile"}>
-              <img src={avatar_1} alt={"User"} />
-            </a>
-          </div>
-        </div>
-        <div className="Body">
-          <Formik
-            initialValues={INITIAL_VALUES}
-            onSubmit={(filters) => this.searchGuides(filters)}>
-            <Form>
-              <h2>¡Planifica tu recorrido!</h2>
-              <div className="Section">
-                <h4>¿A dónde querés ir?</h4>
-                <h5>Ingresá las primeras letras de la ciudad...</h5>
-                <Autocomplete name={'city'} items={cities}></Autocomplete>
-              </div>
-              <div className="Section">
-                <h4>Elegí el idioma de tu guía:</h4>
-                <h5>Ingresá las primeras letras del idioma...</h5>
-                <Autocomplete name={'language'} items={languages}></Autocomplete>
-              </div>
-              <div className="Section">
-                <h4>¿Cuándo?</h4>
-                <Desplegable />
-              </div>
-              <div className="Section">
-                <h4>Género de tu guía</h4>
-                <DropdownGender name="gender" styleName={"Dropdown-home"} options={genders} />
-              </div>
-              <div className="Section">
-                <h4>Rango de edad</h4>
-                <FieldWithError name="fromAge" placeholder="Desde" aria-label="description" className="TextBox-input" />
-                <FieldWithError name="toAge" placeholder="Hasta" aria-label="description" className="TextBox-input" />
-                {this.state.ageValidationFailed && (
-                  <p className="form-error">La edad en el campo 'Desde' debe ser menor a la edad en el campo 'Hasta'.</p>
-                )}
-              </div>
-              <div className="LastSection">
-                <h4>Por último, elegí la categoría que desees:</h4>
-                <h5>Ingresá las primeras letras de la categoría...</h5>
-                <Autocomplete name={'knowledge'} items={knowledge} ></Autocomplete>
-              </div>
-              <div className="Section">
-                <input type="submit" className="SearchButton" value="Buscar guías" />
-              </div>
-              {this.state.notLoggedInUser && (
-                <p className="form-error">Usuario no logueado.</p>
-              )}
-              {this.state.searchFailed && (
-                <p className="form-error">La búsqueda de guías falló. Intantá de nuevo.</p>
-              )}
-            </Form>
-          </Formik>
-        </div>
-      </div>
-    );
-  }
+	render() {
+		if (this.state.initialValues) {
+			return (
+				<Fragment>
+					<Header />
+					<div className="container-fluid">
+						<h2 style={{ marginTop: '20px' }}>¡Hola, {this.state.initialValues.firstName}!</h2>
+						<div className='m-auto' style={{ paddingLeft: "10px", peddingRight: "10px" }}>
+							<h4 style={{ lineHeight: 1.5, marginLeft: "10px" }}>Encontrá a tu guía ideal para que te acompañe en tu recorrido y así vivir una experiencia única</h4>
+						</div>
+						<div className="" style={{ alignItems: "center", paddingTop: '10px' }}>
+							<a href="/search"><input type="submit" className="btn-primero" value="Comenzá tu experiencia" style={{ display: "block", margin: "auto" }} />
+							</a></div>
+						<hr />
+						<div className='ml-auto'>
+							<h3 style={{ marginTop: '20px' }}>Guías con mejores puntuaciones</h3>
+						</div>
+						<hr />
+						<div className="bs-docs-section">
+							{this.mostrarGuias()}
+						</div>
+						<hr />
+						<div className='ml-auto'>
+							<h3 >Ciudades más visitadas</h3>
+						</div>
+
+						<hr />
+						<div className="bs-docs-section">
+							{this.mostrarCiudades()}
+						</div>
+					</div>
+				</Fragment>
+			);
+		} else {
+			return null
+		}
+	}
 }
-
 export default Home;
-
-
-
-/* <div className="ActivitiesSection">
-<div className="Activity">
-  <img alt={"Activity"} src={culture} />
-</div>
-<div className="Activity">
-  <img alt={"Activity"} src={food} />
-</div>
-<div className="Activity">
-  <img alt={"Activity"} src={walking} />
-</div>
-</div>
-<div className="ActivitiesSection">
-<div className="Activity">
-  <img alt={"Activity"} src={nature} />
-</div>
-<div className="Activity">
-  <img alt={"Activity"} src={shopping} />
-</div >
-<div className="Activity">
-  <img alt={"Activity"} src={bar} />
-</div>
-</div> */
